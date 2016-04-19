@@ -1,0 +1,144 @@
+.progress-bar {
+  margin-bottom: 30px;
+}
+
+.progress-bar ul {
+  margin: 0;
+  padding: 0;
+}
+
+.progress-bar ul li {
+  display: inline-block;
+}
+
+#step2, #step3 {
+  display: none;
+}
+
+.package {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.package .chose-package {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.package .chose-package .btn-chose {
+  border: none;
+  padding: 10px 20px;
+}
+
+.post-job {
+  width: 70%;
+  margin: 0 auto;
+  text-align: left;
+  padding: 0;
+}
+
+.post-job li {
+  display: block;
+}
+
+.post-job .group-attachment {
+  position: relative;
+}
+
+.post-job textarea {
+  min-height: 300px;
+}
+
+.post-job .img-avatar {
+  position: relative;
+}
+
+.post-job .functions-link {
+  position: absolute;
+  right: 0;
+  top: 45px;
+}
+
+.post-job .functions-link ul {
+  margin: 0;
+  padding: 0;
+}
+
+.post-job .functions-link ul li {
+  display: inline-block;
+  margin-right: 30px;
+}
+
+.post-job .job-items {
+  position: relative;
+}
+
+.post-job .job-items .remove-items {
+  position: absolute;
+  right: -26px;
+  top: 13px;
+}
+
+.post-job .add-more {
+  margin: 30px 0 20px 0;
+}
+
+.post-job .package {
+  margin-bottom: 20px;
+}
+
+.post-job .package .no-free-package ul {
+  margin: 0 0 30px 0;
+  padding: 0;
+}
+
+.post-job .package .no-free-package ul li {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+.post-job .btn-discard {
+  border: none;
+  padding: 10px 20px;
+}
+
+.attachment-image {
+  margin-top: 20px;
+}
+
+.attachment-image ul {
+  margin: 0;
+  padding: 0;
+}
+
+.attachment-image ul li {
+  display: inline-block;
+  margin: 0 20px 20px 0;
+  position: relative;
+  cursor: pointer;
+}
+
+.attachment-image ul li img {
+  width: 120px;
+  height: 100px;
+}
+
+.attachment-image ul li .remove-link {
+  position: absolute;
+  top: 42%;
+  left: 46%;
+  display: none;
+}
+
+.attachment-image ul li:hover .remove-link {
+  display: block;
+}
+
+.attachment-image ul li .image-upload label {
+  cursor: pointer;
+}
+
+.attachment-image ul li .image-upload input {
+  display: none;
+}

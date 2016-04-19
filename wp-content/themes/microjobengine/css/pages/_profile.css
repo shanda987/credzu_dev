@@ -1,0 +1,52 @@
+.profile {
+  margin-top: 30px;
+}
+
+.profile .edit-link, .profile .title {
+  display: inline-block;
+}
+
+.profile .block-intro {
+  text-align: left;
+  position: relative;
+}
+
+.profile .block-intro p {
+  margin: 0;
+}
+
+.profile .block-skill {
+  margin: 20px 0;
+}
+
+.profile .block-skill ul {
+  margin: 0;
+  padding: 0;
+}
+
+.profile .block-skill ul li {
+  display: inline-block;
+  border: 1px solid #d2d2d2;
+  padding: 10px 20px;
+}
+
+.profile .block-billing ul {
+  margin: 0;
+  padding: 0;
+}
+
+.profile .block-billing ul li {
+  display: block;
+}
+
+.profile .block-billing ul li .title, .profile .block-billing ul li .info-content {
+  display: inline-block;
+}
+
+.profile .block-items {
+  text-align: left;
+}
+
+.profile .block-items ul {
+  padding: 0;
+}

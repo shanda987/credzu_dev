@@ -1,0 +1,53 @@
+.outer {
+  position: relative;
+  min-height: 448px;
+}
+
+.banner {
+  min-height: 250px;
+  position: relative;
+}
+
+.search-slider {
+  position: relative;
+  z-index: 1;
+}
+
+.search-slider .function-images {
+  position: absolute;
+  right: 0;
+  top: 15px;
+}
+
+.search-slider .function-images ul {
+  padding: 0;
+}
+
+.search-slider .function-images ul li {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+.search-form {
+  width: 100%;
+  text-align: center;
+}
+
+.search-form input {
+  height: 50px;
+  width: 400px;
+  padding-left: 40px;
+}
+
+.search-form .btn-search {
+  height: 50px;
+  padding: 0px 25px;
+  position: relative;
+  right: 5px;
+  border: none;
+}
+
+.search-form .icon-search {
+  position: absolute;
+  margin: 15px 0 0 15px;
+}

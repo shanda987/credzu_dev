@@ -1,0 +1,129 @@
+.image-items {
+  float: left;
+  margin-right: 20px;
+}
+
+.image-items img {
+  width: 100px;
+  height: 100px;
+}
+
+.order .add-extra ul {
+  padding: 0;
+}
+
+.order .add-extra ul li {
+  display: block;
+}
+
+.order .add-extra .btn-extra {
+  cursor: pointer;
+}
+
+.order .pack-chose, .order .package-price {
+  display: inline-block;
+}
+
+.btn-checkout {
+  padding: 10px 20px;
+  border: none;
+}
+
+.checkout-payment {
+  width: 70%;
+  margin: 0 auto;
+}
+
+.payment-signin .text-social, .payment-signin .list-social {
+  display: inline-block;
+}
+
+.payment-signin .list-social {
+  padding: 0;
+  margin-top: 13px;
+}
+
+.payment-signin .list-social li {
+  display: inline-block;
+  margin-left: 10px;
+}
+
+.load-more {
+  margin-top: 50px;
+}
+
+.load-more .btn-submit {
+  border: none;
+  padding: 5px 20px;
+}
+
+.order-name h3 {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.order-name .status {
+  background: none;
+}
+
+.delivery {
+  margin: 20px 0;
+}
+
+.delivery .btn-delivery {
+  border: none;
+  padding: 10px 20px;
+}
+
+.dispute .btn-dispute {
+  border: none;
+  padding: 10px 20px;
+}
+
+.dispute .title {
+  margin-bottom: 20px;
+}
+
+.text-description .title {
+  font-weight: bold;
+}
+
+.file-attachment ul {
+  padding: 0;
+  margin: 20px 0;
+}
+
+.file-attachment ul li {
+  display: inline-block;
+  margin: 0 10px 15px 0;
+}
+
+.file-attachment ul li img {
+  width: 120px;
+  height: 100px;
+}
+
+.related {
+  margin-top: 20px;
+  text-align: left;
+}
+
+.related ul {
+  padding-left: 10px;
+}
+
+.send-message, .attachment-file {
+  display: inline-block;
+}
+
+.attachment-file {
+  margin-right: 20px;
+}
+
+.attachment-file .image-upload label {
+  cursor: pointer;
+}
+
+.attachment-file .image-upload input {
+  display: none;
+}

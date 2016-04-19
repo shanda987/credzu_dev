@@ -1,0 +1,75 @@
+.form-authentication input {
+  min-height: 45px;
+}
+
+.form-authentication input[type="checkbox"] {
+  min-height: auto;
+}
+
+.form-authentication .submit {
+  border: none;
+  padding: 10px 50px;
+}
+
+.form-authentication .link-join {
+  margin-top: 10px;
+  min-height: 60px;
+}
+
+.form-authentication .note-paragraph {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.social-authentication {
+  margin-top: 30px;
+}
+
+.social-authentication ul {
+  margin: 0;
+  padding: 0;
+}
+
+.social-authentication li {
+  list-style: none;
+}
+
+.social-authentication li a {
+  display: block;
+  margin-bottom: 20px;
+  padding: 10px 0 10px 20px;
+}
+
+.social-authentication li a.face {
+  border: 1px solid #3b5998;
+  color: #3b5998;
+}
+
+.social-authentication li a.twitter {
+  border: 1px solid #68c5ef;
+  color: #68c5ef;
+}
+
+.social-authentication li a.google {
+  border: 1px solid #ea4335;
+  color: #ea4335;
+}
+
+.social-authentication li a.linkin {
+  border: 1px solid #007ab5;
+  color: #007ab5;
+}
+
+.social-authentication li a i {
+  margin-right: 10px;
+}
+
+.form-reset {
+  text-align: left;
+  margin: 0 auto;
+  width: 50%;
+}
+
+.note-paragraph {
+  color: #000;
+}

@@ -1,0 +1,47 @@
+.column-image {
+    width: 74px;
+}
+img.ae-tax-images-media,
+.column-image img {
+    max-height: 25px;
+    max-width: 25px;
+    height: auto;
+    width: auto;
+    display: inline-block;
+    border: 2px solid #eee;
+}
+#ae-tax-images-photo {
+    max-height: 125px;
+    max-width: 125px;
+    height: auto;
+    width: auto;
+    border: 2px solid #ccc;
+}
+.featured-tax{
+    width: 100%;
+}
+.left{
+    float: left!important;
+}
+.right{
+    float: right;
+}
+.margin-20{
+    margin-right:20px!important;
+}
+.margin-top-3{
+    margin-top: 3px!important;
+}
+.clearfix:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+}
+.clearfix { display: inline-block; }
+/* start commented backslash hack \*/
+* html .clearfix { height: 1%; }
+.clearfix { display: block; }
+/* close commented backslash hack */

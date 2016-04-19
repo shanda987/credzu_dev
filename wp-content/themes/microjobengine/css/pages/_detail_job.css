@@ -1,0 +1,291 @@
+.block-items-detail .bar-title {
+  padding-top: 20px;
+  min-height: 70px;
+}
+
+.block-items-detail .bar-title h2 {
+  font-size: 18px;
+  margin: 0;
+}
+
+.block-items-detail .items-private ul {
+  padding-left: 0;
+}
+
+.block-items-detail .items-private ul li {
+  display: inline-block;
+  margin-right: 30px;
+}
+
+.block-items-detail .gallery {
+  margin: 20px 0;
+}
+
+.block-items-detail .information-items-detail .tabs-information .tab-content {
+  padding: 20px;
+}
+
+.block-items-detail .list-extra {
+  padding-left: 0;
+}
+
+.block-items-detail .list-extra li {
+  display: block;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.block-items-detail .list-extra li .packge-chose {
+  width: 70%;
+}
+
+.block-items-detail .list-extra li .package-price {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.block-items-detail .btn-order, .block-items-detail .btn-bookmark {
+  border: none;
+  padding: 10px 20px;
+}
+
+.block-items-detail .title {
+  line-height: 30px;
+}
+
+.block-items-detail .review-job {
+  margin-top: 40px;
+}
+
+.block-items-detail .review-job ul {
+  padding-left: 0;
+}
+
+.block-items-detail .review-job ul li {
+  display: block;
+  margin-bottom: 30px;
+}
+
+.block-items-detail .review-job ul li .image-avatar {
+  float: left;
+  margin-right: 20px;
+}
+
+.block-items-detail .review-job ul li .image-avatar img {
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+}
+
+.block-items-detail .review-job ul li .profile-viewer h4 {
+  font-size: 16px;
+}
+
+.block-items-detail .tags ul {
+  padding-left: 0;
+}
+
+.block-items-detail .tags ul li {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+.block-items-detail .package-statistic {
+  position: relative;
+  border: 1px solid #d2d2d2;
+  padding: 8px;
+}
+
+.block-items-detail .package-statistic .vote {
+  position: absolute;
+  right: 8px;
+  top: 8px;
+}
+
+.block-items-detail .package-statistic .text-content {
+  margin-top: 20px;
+}
+
+.block-items-detail .sharing {
+  margin: 20px 0 10px 0;
+}
+
+.block-items-detail .sharing .link-social {
+  display: inline-block;
+}
+
+.block-items-detail .sharing ul {
+  padding-left: 0;
+}
+
+.block-items-detail .sharing ul li {
+  display: inline-block;
+  margin-left: 10px;
+}
+
+.block-items-detail .action {
+  margin: 0 0 20px 0;
+}
+
+.block-items-detail .action .btn-order {
+  padding: 10px 68px;
+}
+
+.block-items-detail .add-extra {
+  margin-bottom: 30px;
+}
+
+.block-items-detail .add-extra .btn-extra {
+  width: 100%;
+  padding: 10px 0;
+  border: none;
+}
+
+.block-items-detail .add-extra .list-extra {
+  margin-top: 20px;
+  border: 1px solid #d2d2d2;
+  padding: 8px;
+}
+
+.block-items-detail .personal-profile {
+  border: 1px solid #d2d2d2;
+  padding: 8px;
+  margin-bottom: 20px;
+}
+
+.block-items-detail .personal-profile img {
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+}
+
+.block-items-detail .personal-profile h4 {
+  margin: 20px 0;
+}
+
+.block-items-detail .personal-profile ul {
+  padding-left: 0;
+}
+
+.block-items-detail .personal-profile ul li {
+  display: block;
+  padding: 10px 0;
+}
+
+.block-items-detail .personal-profile .link-personal li {
+  display: inline-block;
+  padding: 0;
+}
+
+.user-edit .name-items {
+  position: relative;
+}
+
+.user-edit .name-items input {
+  padding-right: 100px;
+}
+
+.user-edit .name-items .label-status {
+  position: absolute;
+  right: 0;
+  top: 8px;
+  right: 8px;
+  background: #d2d2d2;
+  padding: 5px 20px;
+}
+
+.user-edit .block-category, .user-edit .block-time, .user-edit .text-time {
+  display: inline-block;
+}
+
+.user-edit .block-category select {
+  height: 40px;
+}
+
+.user-edit .block-time {
+  margin-left: 25px;
+}
+
+.user-edit .block-time input {
+  width: auto;
+}
+
+.user-edit .edit-text {
+  border: none;
+}
+
+.user-edit .group-attachment {
+  position: relative;
+}
+
+.user-edit .group-attachment .functions-link {
+  position: absolute;
+  right: 0;
+  top: 45px;
+}
+
+.user-edit .group-attachment .functions-link ul {
+  margin: 0;
+  padding: 0;
+}
+
+.user-edit .group-attachment .functions-link ul li {
+  display: inline-block;
+  margin-right: 30px;
+}
+
+.user-edit .add-extra {
+  padding: 0;
+}
+
+.user-edit .add-extra li {
+  display: block;
+  position: relative;
+}
+
+.user-edit .add-extra li .remove-items {
+  position: absolute;
+  right: 0;
+  top: 12px;
+}
+
+.user-edit .add-extra li .price {
+  width: 90%;
+}
+
+.current-order {
+  border: 1px solid #d2d2d2;
+  padding: 8px;
+}
+
+.current-order .title-column {
+  margin-top: 20px;
+}
+
+.current-order ul {
+  padding: 0;
+}
+
+.current-order ul li {
+  display: block;
+  position: relative;
+}
+
+.current-order ul li h2 {
+  font-size: 16px;
+}
+
+.current-order ul li .label-status {
+  position: absolute;
+  right: 0;
+  top: -6px;
+  background: #d2d2d2;
+  padding: 3px 20px;
+}
+
+.current-order ul li .total-message {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
