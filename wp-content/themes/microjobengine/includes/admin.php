@@ -1464,6 +1464,14 @@ class ET_Admin extends AE_Base
                             'name' => 'search_normal_text',
                             'class' => 'option-item bg-grey-input ',
                             'label' => __('Sub headline in homepage', ET_DOMAIN)
+                        ),
+						array(
+                            'id' => 'search-input-textform',
+                            'type' => 'text',
+                            'title' => __("Search Form in homepage", ET_DOMAIN) ,
+                            'name' => 'search_input_textform',
+                            'class' => '',
+                            'label' => __('Search Form in homepage', ET_DOMAIN)
                         )
                     )
                 ) ,
