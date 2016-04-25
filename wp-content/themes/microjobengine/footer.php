@@ -26,7 +26,7 @@
     }
 
     $copyright = ae_get_option('copyright');
-    //$copyright = apply_filters('ae_attribution_footer', $copyright . '<span class="enginethemes"></span>');
+    $copyright = apply_filters('ae_attribution_footer', $copyright . '<span class="enginethemes">Powered by <a href="https://www.enginethemes.com/themes/microjobengine">MicrojobEngine Theme</a></span>');
     ?>
     <div class="et-pull-bottom">
         <div class="container">
