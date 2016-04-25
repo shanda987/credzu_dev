@@ -48,6 +48,7 @@ if(!function_exists('mJobModalSignUp')) {
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
+                    test
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><img
                                     src="<?php echo get_template_directory_uri() ?>/assets/img/icon-close.png" alt=""></span></button>
                         <h4 class="modal-title" id="myModalLabel2"><?php _e('Join us', ET_DOMAIN); ?></h4>
