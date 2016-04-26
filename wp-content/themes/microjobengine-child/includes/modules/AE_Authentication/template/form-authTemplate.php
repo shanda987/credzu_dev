@@ -18,6 +18,9 @@ if(!function_exists('mJobSignUpFormStepOne')) {
                 <div class="note-paragraph"><?php echo $intro ?></div>
                 <div class="form-group clearfix insert-email">
                     <div class="input-group">
+                        <button class="btn-submit waves-effect waves-light">Client</button>
+                        <button class="btn-submit waves-effect waves-light">Company</button>
+
                         <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
                         <button class="btn-submit btn-continue waves-effect waves-light"><?php _e('CONTINUE', ET_DOMAIN); ?><i class="fa fa-angle-right"></i></button>
                         <input type="text" name="user_email" id="user_email" class="form-control" placeholder="<?php _e('Enter your email here', ET_DOMAIN); ?>">
@@ -81,7 +84,7 @@ if(!function_exists('mJobSignUpForm')) {
                                 <div class="input-group">
                                     <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
                                     <input type="text" name="user_email" id="user_email" class="form-control" placeholder="Email">
-                                </div>    
+                                </div>
                             </div>
                             <?php
                         }
@@ -90,10 +93,10 @@ if(!function_exists('mJobSignUpForm')) {
                         <div class="input-group">
                             <div class="input-group-addon"><i class="fa fa-user"></i></div>
                             <input type="text" name="user_login" id="user_login" class="form-control" placeholder="User name">
-                        </div>    
+                        </div>
                     </div>
                     <div class="form-group clearfix">
-                        <div class="input-group">       
+                        <div class="input-group">
                             <div class="input-group-addon"><i class="fa fa-lock"></i></div>
                             <input type="password" name="user_pass" id="user_pass" class="form-control" placeholder="Enter your password">
                         </div>
@@ -171,7 +174,7 @@ if(!function_exists('mJobSignInForm')) {
                         <div class="input-group">
                             <div class="input-group-addon"><i class="fa fa-lock"></i></div>
                             <input type="password" name="user_pass" id="user_pass" class="form-control" placeholder="Password">
-                        </div>    
+                        </div>
                     </div>
                     <div class="row clearfix">
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 float-left">
@@ -302,13 +305,13 @@ if(!function_exists('mJobChangePasswordForm')) {
                     </div>
                 </div>
                 <div class="form-group clearfix">
-                    <div class="input-group">    
+                    <div class="input-group">
                         <div class="input-group-addon no-addon"></div>
                         <input type="password" name="new_password" id="new_password" placeholder="<?php _e('New password', ET_DOMAIN); ?>">
                     </div>
                 </div>
                 <div class="form-group clearfix">
-                    <div class="input-group">    
+                    <div class="input-group">
                         <div class="input-group-addon no-addon"></div>
                         <input type="password" name="renew_password" id="renew_password" placeholder="<?php _e('Confirm new password', ET_DOMAIN); ?>">
                     </div>

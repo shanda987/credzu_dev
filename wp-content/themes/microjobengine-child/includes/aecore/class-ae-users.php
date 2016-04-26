@@ -592,8 +592,8 @@ class AE_Users
     }
 
     /**
-     * Unban a user 
-     * @param string|int $user_id 
+     * Unban a user
+     * @param string|int $user_id
      * @return void
      */
     public function unban( $user_id ) {
