@@ -62,34 +62,34 @@ get_header();
                     </div>
                 </div>
             </div>
-				
-				<div class="block-intro">
-					<div class="container">
-						<p class="block-title float-center"><?php echo get_field('bottom_title', $term )?></p>
-						<ul>
-							<li class="col-lg-4 col-md-4 col-sm-12 col-xs-12 clearfix wow fadeInUp">
-								<div class="text-article pull-right">
-									<h5><a href="#" class="title"><?php echo get_field('bottom_block_1_title', $term )?></a></h5>
-									<?php echo get_field('bottom_block_1_content', $term )?>              
-								</div>
-							</li>
-							<li class="col-lg-4 col-md-4 col-sm-12 col-xs-12 clearfix wow fadeInUp">
-								<div class="text-article pull-right">
-									<h5><a href="#" class="title"><?php echo get_field('bottom_block_2_title', $term )?></a></h5>
-									<?php echo get_field('bottom_block_2_content', $term )?> 
-								</div>
-							</li>
-							<li class="col-lg-4 col-md-4 col-sm-12x col-xs-12 clearfix wow fadeInUp">
-								<div class="text-article pull-right">
-									<h5><a href="#" class="title"><?php echo get_field('bottom_block_3_title', $term )?></a></h5>
-									<?php echo get_field('bottom_block_3_content', $term )?>
-								</div>
-							</li>
-						</ul>
-					</div>
-				</div>
-			
         </div>
+		
+		<div class="block-intro">
+			<div class="container">
+				<p class="block-title float-center"><?php echo get_field('bottom_title', $term )?></p>
+				<ul>
+					<li class="col-lg-4 col-md-4 col-sm-12 col-xs-12 clearfix wow fadeInUp">
+						<div class="text-article pull-right">
+							<h5><a href="#" class="title"><?php echo get_field('bottom_block_1_title', $term )?></a></h5>
+							<?php echo get_field('bottom_block_1_content', $term )?>              
+						</div>
+					</li>
+					<li class="col-lg-4 col-md-4 col-sm-12 col-xs-12 clearfix wow fadeInUp">
+						<div class="text-article pull-right">
+							<h5><a href="#" class="title"><?php echo get_field('bottom_block_2_title', $term )?></a></h5>
+							<?php echo get_field('bottom_block_2_content', $term )?> 
+						</div>
+					</li>
+					<li class="col-lg-4 col-md-4 col-sm-12x col-xs-12 clearfix wow fadeInUp">
+						<div class="text-article pull-right">
+							<h5><a href="#" class="title"><?php echo get_field('bottom_block_3_title', $term )?></a></h5>
+							<?php echo get_field('bottom_block_3_content', $term )?>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+		
     </div>
 <?php
 get_footer();
