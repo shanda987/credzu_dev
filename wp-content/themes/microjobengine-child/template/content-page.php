@@ -14,8 +14,10 @@ else {
     <div class="container">
 	
 		<div class="search-form">
-            <h1 class="wow fadeInDown"><?php _e($term->name, ET_DOMAIN); ?></h1>
-            <h4 class="wow fadeInDown"><?php _e($term->description, ET_DOMAIN); ?></h4>
+			<div class="container">
+				<h1 class="wow fadeInDown"><?php _e($term->name, ET_DOMAIN); ?></h1>
+				<h4 class="wow fadeInDown"><?php _e($term->description, ET_DOMAIN); ?></h4>
+			</div>
         </div>
 	
     </div>
