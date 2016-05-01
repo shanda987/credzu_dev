@@ -21,9 +21,14 @@
             nextStep: function(event) {
                 event.preventDefault();
                 var view = this;
+                var role = $(event.currentTarget).find('#role').val();
+                if( role == '' ){
+                    role = 'company';
+                }
                 if(view.form_validator.form()) {
                     view.model = new Models.mJobUser({
                         user_email: $(event.currentTarget).find('#user_email').val(),
+                        role: role,
                         do_action: 'check_email'
                     });
 
@@ -35,6 +40,7 @@
 
                                 // Open next step - modal sign up
                                 view.signUpModal.$el.find('form').append('<input type="hidden" id="user_email" name="user_email" value="'+ view.model.get('user_email') +'"/>');
+                                view.signUpModal.$el.find('form').append('<input type="hidden" id="role" name="role" value="'+ view.model.get('role') +'"/>');
                                 // Open modal
                                 view.signUpModal.openModal();
                             }
@@ -79,7 +85,7 @@
         Views.selectUserRole = Views.Modal_Box.extend({
             el: '#selectUserRole',
             events: {
-                'submit form' : 'nextStep'
+                'click .btn-select-user-role' : 'nextStep'
             },
             initialize: function() {
                 AE.Views.Modal_Box.prototype.initialize.call();
@@ -87,63 +93,13 @@
                 if(typeof this.SignUpEmailModal === "undefined") {
                     this.SignUpEmailModal = new Views.SignUpEmailModal();
                 }
-                this.initValidator();
             },
             nextStep: function(event) {
+                var view = this;
                 event.preventDefault();
-                var view = this;
-                if(view.form_validator.form()) {
-                    view.model = new Models.mJobUser({
-                        user_email: $(event.currentTarget).find('#user_email').val(),
-                        do_action: 'check_email'
-                    });
-
-                    this.model.save('', '', {
-                        success: function (result, resp, jqXHR) {
-                            if( resp.success ) {
-                                // Close this modal
-                                view.closeModal();
-
-                                // Open next step - modal sign up
-                                view.signUpModal.$el.find('form').append('<input type="hidden" id="user_email" name="user_email" value="'+ view.model.get('user_email') +'"/>');
-                                // Open modal
-                                view.signUpModal.openModal();
-                            }
-                            else {
-                                AE.pubsub.trigger('ae:notification', {
-                                    msg: resp.msg,
-                                    notice_type: 'error'
-                                });
-                            }
-                        }
-                    });
-
-                }
-            },
-            initValidator: function() {
-                var view = this;
-                view.form_validator = view.$el.find('form').validate({
-                    rules: {
-                        user_email: {
-                            required: true,
-                            email: true
-                        }
-                    },
-                    errorElement: "p",
-                    highlight:function(element, errorClass, validClass){
-                        var $target = $(element );
-                        var $parent = $(element ).parent();
-                        $parent.addClass('has-error');
-                        $target.addClass('has-visited');
-                    },
-                    unhighlight:function(element, errorClass, validClass){
-                        // position error label after generated textarea
-                        var $target = $(element );
-                        var $parent = $(element ).parent();
-                        $parent.removeClass('has-error');
-                        $target.removeClass('has-visited');
-                    }
-                })
+                view.SignUpEmailModal.$el.find('form').append('<input type="hidden" id="role" name="role" value="'+ $(event.currentTarget).attr('data-value') +'"/>');
+                view.SignUpEmailModal.openModal();
+                view.closeModal();
             }
         });
         // MODAL SIGN UP
@@ -151,7 +107,7 @@
             el: '#signUpStep2',
             initialize: function() {
                 AE.pubsub.on('ae:form:submit:success', this.registerSuccess, this);
-            },
+                },
             registerSuccess: function(result, resp, jqXHR, type) {
                 if(type == 'signUp') {
                     var view = this;

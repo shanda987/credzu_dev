@@ -6,6 +6,7 @@ class ET_Microjobengine extends AE_Base
         if (!current_user_can('manage_options') || et_load_mobile()) {
             show_admin_bar(false);
         };
+        $this->init_user_roles();
         $this->add_action('init', 'theme_init');
         register_nav_menu('et_header_standard', __("Standard Header menu", ET_DOMAIN));
 //        register_nav_menu('et_mobile', __("Mobile menu", ET_DOMAIN));
@@ -124,7 +125,43 @@ class ET_Microjobengine extends AE_Base
         add_image_size("mjob_detail_slider", 665, 375, true);
 
     }
+    /**
+     * initialize user role for this site
+     *
+     * @param void
+     * @return void
+     * @since 1.0
+     * @package MicrojobEngine
+     * @category void
+     * @author JACK BUI
+     */
+    public function init_user_roles(){
+        global $wp_roles;
+        /**
+         * register wp_role FREELANCER
+         */
+        if (!isset($wp_roles->roles[INDIVIDUAL])) {
 
+            //all new roles
+            add_role(INDIVIDUAL, __('Individual', ET_DOMAIN) , array(
+                'read' => true,
+                // true allows this capability
+                'edit_posts' => true,
+                'delete_posts' => false,
+            ));
+        }
+        /**
+         * add new role EMPLOYER
+         */
+        if (!isset($wp_roles->roles[COMPANY])) {
+            add_role(COMPANY, __('Company', ET_DOMAIN) , array(
+                'read' => true,
+                // true allows this capability
+                'edit_posts' => true,
+                'delete_posts' => false,
+            ));
+        }
+    }
     /**
      * init theme
      * @since 1.0

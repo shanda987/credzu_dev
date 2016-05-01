@@ -72,3 +72,6 @@
 .beforeSignup li{
     padding-top: 0;
 }
+.beforeSignup .btn-select-user-role i{
+    color: #337ab7;
+}

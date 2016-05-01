@@ -57,15 +57,15 @@ if(!function_exists('mJobSignUpFormBeforeStepOne')) {
                     <div class="row">
                         <li class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <div class="outer-payment-items">
-                                <a href="#" class="btn-submit-price-plan select-payment" data-type="paypal"><i class="fa fa-user fa-4x"></i>
-                                    <p class="text-bank">INDIVIDUAL</p>
+                                <a href="#" class="btn-submit-price-plan btn-select-user-role" data-value="individual"><i class="fa fa-user fa-4x"></i>
+                                    <p class="text-bank"><?php _e('Individual', ET_DOMAIN); ?></p>
                                 </a>
                             </div>
                         </li>
-                        <li class="col-lg-6 col-md-6 col-sm-6 col-xs-12" "="">
+                        <li class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                         <div class="outer-payment-items">
-                            <a href="#" class="btn-submit-price-plan select-payment" data-type="paypal"><i class="fa fa-building fa-4x"></i>
-                                <p class="text-bank">COMPANY</p>
+                            <a href="#" class="btn-submit-price-plan btn-select-user-role" data-value="company"><i class="fa fa-building fa-4x"></i>
+                                <p class="text-bank"><?php _e('Service Provide', ET_DOMAIN); ?></p>
                             </a>
                         </div>
                         </li>

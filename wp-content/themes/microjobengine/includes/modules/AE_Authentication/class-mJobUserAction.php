@@ -31,7 +31,10 @@ class mJobUserAction extends AE_UserAction
         $this->add_filter('ae_reset_pass_response', 'mJobFilterResetPassword');
         $this->add_filter('ae_convert_user', 'mJobFilterUser');
         $this->add_filter('ae_confirm_user_time_out', 'mJobConfirmUser');
-
+        /**
+         * check role for user when register
+         */
+        $this->add_filter('ae_pre_insert_user', 'ae_check_role_user');
         // User action
         $this->add_action('ae_insert_user', 'mJobAfterRegisterUser', 10, 2);
         $this->add_action('ae_user_forgot', 'mJobAfterForgotPassword', 10, 2);
@@ -373,6 +376,22 @@ class mJobUserAction extends AE_UserAction
         $this->mJobAddModalSignUpBeforeStepOne();
         $this->mJobAddModalSignUp();
         $this->mJobAddModalForgotPassword();
+    }
+    /**
+     * check user role when signup
+     *
+     * @param void
+     * @return void
+     * @since 1.0
+     * @package MicrojobEngine
+     * @category void
+     * @author JACK BUI
+     */
+    public function ae_check_role_user($user_data) {
+        if ( isset($user_data['role'] ) && ($user_data['role'] != INDIVIDUAL && $user_data['role'] != COMPANY)) {
+            unset($user_data['role']);
+        }
+        return $user_data;
     }
 }
 
