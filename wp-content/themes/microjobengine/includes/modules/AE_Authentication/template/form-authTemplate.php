@@ -113,6 +113,15 @@ if(!function_exists('mJobSignUpForm')) {
                     ?>
                 </div>
                 <div class="inner-form">
+                    <div class="form-group clearfix">
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="fa fa-user"></i></div>
+                            <select name="role">
+                                <option value="company"><?php _e('Company', ET_DOMAIN);?></option>
+                                <option value="individual"><?php _e('Individual', ET_DOMAIN);?></option>
+                            </select>
+                        </div>
+                    </div>
                     <?php
                         if(empty($email)) {
                             ?>
