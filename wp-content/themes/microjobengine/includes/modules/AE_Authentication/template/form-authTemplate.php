@@ -86,7 +86,7 @@ if(!function_exists('mJobSignUpForm')) {
      * @category Authentication Template
      * @author Tat Thien
      */
-    function mJobSignUpForm($email = '', $is_page = false, $redirect_url = 'dashboard', $header_text = "") {
+    function mJobSignUpForm($email = '', $is_page = false, $redirect_url = 'dashboard', $header_text = "", $role = '') {
         ?>
         <div id="signUpForm">
             <?php
@@ -113,6 +113,7 @@ if(!function_exists('mJobSignUpForm')) {
                     ?>
                 </div>
                 <div class="inner-form">
+                    <?php if( $role): ?>
                     <div class="form-group clearfix">
                         <div class="input-group">
                             <div class="input-group-addon"><i class="fa fa-user"></i></div>
@@ -123,6 +124,7 @@ if(!function_exists('mJobSignUpForm')) {
                         </div>
                     </div>
                     <?php
+                    endif;
                         if(empty($email)) {
                             ?>
                             <div class="form-group clearfix">
@@ -374,7 +376,7 @@ if(!function_exists('mJobAuthFormOnPage')) {
     function mJobAuthFormOnPage($redirect_url = false, $signin_text = "", $signup_text = "") {
         echo '<div id="authentication-page">';
         mJobSignInForm(true, $redirect_url, $signin_text);
-        mJobSignUpForm('', true, $redirect_url, $signup_text);
+        mJobSignUpForm('', true, $redirect_url, $signup_text, true);
         echo '</div>';
     }
 }
