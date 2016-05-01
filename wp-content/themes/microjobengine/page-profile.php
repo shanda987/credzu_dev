@@ -29,7 +29,7 @@ get_header();
     <div class="container mjob-profile-page">
         <div class="title-top-pages">
             <p class="block-title"><?php _e('MY PROFILE', ET_DOMAIN); ?></p>
-            <p><a href="<?php echo et_get_page_link('dashboard'); ?>" class="btn-back"><i class="fa fa-angle-left"></i><?php _e('Back to dashboard', ET_DOMAIN); ?></a></p>
+            <p><?php _e('Here is your profile information', ET_DOMAIN); ?></p>
         </div>
         <div class="row profile">
             <div class="col-lg-4 col-md-4 col-sm-12 col-sx-12 block-items-detail profile">
