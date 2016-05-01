@@ -45,6 +45,7 @@ class mJobUserAction extends AE_UserAction
 
         // Add template
         $this->add_action('wp_footer', 'mJobAuthenticationTemplate');
+        $this->add_filter('ae_register_email_template_select', 'mJobFilterEmailRegister', 10, 2);
     }
 
     /**
@@ -430,6 +431,26 @@ class mJobUserAction extends AE_UserAction
             }
         }
         return false;
+    }
+    /**
+     * Filter Email when user register
+     *
+     * @param string $message
+     * @param object $user
+     * @return string $message
+     * @since 1.0
+     * @package MicrojobEngine
+     * @category void
+     * @author JACK BUI
+     */
+    public function mJobFilterEmailRegister($message, $user){
+        if( isset( $user->ID) ) {
+            $is_individual = $this->is_individual($user->ID);
+            if ( $is_individual ){
+                $message = ae_get_option('register_mail_template_individual');
+            }
+        }
+        return $message;
     }
 }
 

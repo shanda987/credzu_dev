@@ -237,6 +237,7 @@ class AE_Mailing extends AE_Base
         } else {
             $message = ae_get_option('register_mail_template');
         }
+        $message = apply_filters('ae_register_email_template_select', $message, $user);
         $this->wp_mail($user_email, $subject, $message, array(
             'user_id' => $user_id
         ));

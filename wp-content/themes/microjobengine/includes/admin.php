@@ -1993,7 +1993,7 @@ class ET_Admin extends AE_Base
                 ) ,
                 array(
                     'args' => array(
-                        'title' => __("Register Mail Template", ET_DOMAIN) ,
+                        'title' => __("Register Mail Template for Company role", ET_DOMAIN) ,
                         'id' => 'register-mail',
                         'class' => 'payment-gateway',
                         'name' => '',
@@ -2011,7 +2011,26 @@ class ET_Admin extends AE_Base
                         )
                     )
                 ) ,
-
+                array(
+                    'args' => array(
+                        'title' => __("Register Mail Template For Individual role", ET_DOMAIN) ,
+                        'id' => 'register-mail-1',
+                        'class' => 'payment-gateway',
+                        'name' => '',
+                        'desc' => __("Send to user when he registers successfully.", ET_DOMAIN),
+                        'toggle' => true
+                    ) ,
+                    'fields' => array(
+                        array(
+                            'id' => 'register_mail_template_individual',
+                            'type' => 'editor',
+                            'title' => __("Register Mail for Individual role", ET_DOMAIN) ,
+                            'name' => 'register_mail_template_individual',
+                            'class' => '',
+                            'reset' => 1
+                        )
+                    )
+                ) ,
                 array(
                     'args' => array(
                         'title' => __("Confirm Mail Template", ET_DOMAIN) ,
