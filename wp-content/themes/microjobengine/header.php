@@ -33,7 +33,6 @@ global $current_user;
     ?>
 </head>
 <body <?php body_class(); ?>>
-<?php exit('testgit'); ?>
 	<header id="et-header">
 		<div class="et-pull-top">
 			<div class="row">
