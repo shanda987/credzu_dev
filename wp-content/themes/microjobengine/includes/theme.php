@@ -420,6 +420,12 @@ class ET_Microjobengine extends AE_Base
                 wp_redirect(home_url('404'));
             }
         }
+        if( is_page_template('page-post-service.php') ){
+            $user_role = ae_user_role($user_ID);
+            if( !is_super_admin() &&  $user_role != 'company' ){
+                wp_redirect(home_url());
+            }
+        }
     }
     /**
      * filter profile link and change it to author posts link

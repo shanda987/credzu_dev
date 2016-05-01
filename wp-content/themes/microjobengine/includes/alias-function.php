@@ -128,11 +128,15 @@ if(!function_exists('mJobShowUserHeader')) {
                 $post_link = et_get_page_link('post-service') . '?return_url=' . $absolute_url;
             }
            ?>
+            <?php
+             $user_role = ae_user_role($user_ID);
+            if( is_super_admin() || $user_role == 'company' ): ?>
             <div class="link-post-services">
                 <a href="<?php echo $post_link; ?>"><?php _e('Post a mJob', ET_DOMAIN); ?>
                     <div class="plus-circle"><i class="fa fa-plus"></i></div>
                 </a>
             </div>
+            <?php endif; ?>
             <div class="user-account">
                 <div class="dropdown et-dropdown">
                     <div class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">

@@ -393,6 +393,44 @@ class mJobUserAction extends AE_UserAction
         }
         return $user_data;
     }
+    /**
+     * check if user is company role
+     *
+     * @param integer $user_id
+     * @return Boolean true if is company role and false if it isn't
+     * @since 1.0
+     * @package MicrojobEngine
+     * @category void
+     * @author JACK BUI
+     */
+    public function is_company( $user_id ){
+        if( !empty($user_id) ){
+            $user_role =  ae_user_role($user_id);
+            if( $user_role == COMPANY ){
+                return true;
+            }
+        }
+        return false;
+    }
+    /**
+     * check if user is individual role
+     *
+     * @param integer $user_id
+     * @return Boolean true if is company role and false if it isn't
+     * @since 1.0
+     * @package MicrojobEngine
+     * @category void
+     * @author JACK BUI
+     */
+    public function is_individual( $user_id ){
+        if( !empty($user_id) ){
+            $user_role =  ae_user_role($user_id);
+            if( $user_role == INDIVIDUAL ){
+                return true;
+            }
+        }
+        return false;
+    }
 }
 
 $new_instance = mJobUserAction::getInstance();
