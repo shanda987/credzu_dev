@@ -426,6 +426,12 @@ class ET_Microjobengine extends AE_Base
                 wp_redirect(home_url());
             }
         }
+        if( is_page_template('page-order.php') ){
+            $is_individual = mJobUserAction()->is_individual($user_ID);
+            if( !is_super_admin() && !$is_individual ){
+                wp_redirect(home_url());
+            }
+        }
     }
     /**
      * filter profile link and change it to author posts link

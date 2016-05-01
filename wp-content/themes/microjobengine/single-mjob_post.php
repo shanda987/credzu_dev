@@ -109,7 +109,9 @@ echo '<script type="text/template" id="mjob_single_data" >'.json_encode($current
                                     </div>
                                 </div>
                                 <div class="outer-function-group">
-                                    <?php if( $user_ID != $current->post_author ): ?>
+                                    <?php
+                                    $is_invidual = mJobUserAction()->is_individual($user_ID);
+                                    if( $user_ID != $current->post_author && ($is_invidual || is_super_admin()) ): ?>
                                     <button class="btn-submit btn-order waves-effect waves-light <?php echo $disableClass; ?>" ><?php echo sprintf(__('ORDER (<span class="mjob-price">%s</span>)', ET_DOMAIN), $current->et_budget_text) ; ?></button>
                                     <?php endif; ?>
                                     <button class="btn-bookmark"><i class="fa fa-heart"></i></button>
@@ -222,7 +224,9 @@ echo '<script type="text/template" id="mjob_single_data" >'.json_encode($current
                                 </div>
                             </div>
                             <div class="action">
-                                <?php if( $user_ID != $current->post_author ): ?>
+                                <?php
+                                $is_invidual = mJobUserAction()->is_individual($user_ID);
+                                if( $user_ID != $current->post_author && ($is_invidual || is_super_admin()) ): ?>
                                 <button class="btn-submit btn-order btn-order-aside-bar waves-effect waves-light <?php echo $disableClass; ?>" ><?php echo sprintf(__('ORDER NOW (<span class="mjob-price">%s</span>)', ET_DOMAIN), $current->et_budget_text) ; ?></button>
                                 <?php endif; ?>
                                 <button class="btn-bookmark"><i class="fa fa-heart"></i></button>
