@@ -31,6 +31,38 @@ if(!function_exists('mJobModalSignUpStepOne')) {
         <?php
     }
 }
+if(!function_exists('mJobModalSignUpBeforeStepOne')) {
+    /**
+     * Modal sign up step 1 - Enter email
+     * @param void
+     * @return void
+     * @since 1.0
+     * @package MicrojobEngine
+     * @category Authentication Template
+     * @author Tat Thien
+     */
+    function mJobModalSignUpBeforeStepOne($intro) {
+        ?>
+        <div class="modal fade" id="selectUserRole" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><img
+                                    src="<?php echo get_template_directory_uri() ?>/assets/img/icon-close.png" alt=""></span></button>
+                        <h4 class="modal-title" id="myModalLabel1"><?php _e('Get your free account!', ET_DOMAIN); ?></h4>
+                    </div>
+                    <div class="modal-body">
+                        <?php
+                        // Show form
+                        mJobSignUpFormBeforeStepOne($intro);
+                        ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <?php
+    }
+}
 
 if(!function_exists('mJobModalSignUp')) {
     /**

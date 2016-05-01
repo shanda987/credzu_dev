@@ -65,3 +65,10 @@
     color: #10a2ef !important;
     font-family: "open-sansbold";
 }*/
+.beforeSignup{
+    list-style: none;
+    padding-left: 0;
+}
+.beforeSignup li{
+    padding-top: 0;
+}

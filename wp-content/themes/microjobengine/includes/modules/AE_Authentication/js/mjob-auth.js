@@ -75,7 +75,77 @@
                 })
             }
         });
+        // MODAL SIGN UP STEP 1: Input email
+        Views.selectUserRole = Views.Modal_Box.extend({
+            el: '#selectUserRole',
+            events: {
+                'submit form' : 'nextStep'
+            },
+            initialize: function() {
+                AE.Views.Modal_Box.prototype.initialize.call();
+                AE.pubsub.trigger('ae:init:modal:signup', this);
+                if(typeof this.SignUpEmailModal === "undefined") {
+                    this.SignUpEmailModal = new Views.SignUpEmailModal();
+                }
+                this.initValidator();
+            },
+            nextStep: function(event) {
+                event.preventDefault();
+                var view = this;
+                if(view.form_validator.form()) {
+                    view.model = new Models.mJobUser({
+                        user_email: $(event.currentTarget).find('#user_email').val(),
+                        do_action: 'check_email'
+                    });
 
+                    this.model.save('', '', {
+                        success: function (result, resp, jqXHR) {
+                            if( resp.success ) {
+                                // Close this modal
+                                view.closeModal();
+
+                                // Open next step - modal sign up
+                                view.signUpModal.$el.find('form').append('<input type="hidden" id="user_email" name="user_email" value="'+ view.model.get('user_email') +'"/>');
+                                // Open modal
+                                view.signUpModal.openModal();
+                            }
+                            else {
+                                AE.pubsub.trigger('ae:notification', {
+                                    msg: resp.msg,
+                                    notice_type: 'error'
+                                });
+                            }
+                        }
+                    });
+
+                }
+            },
+            initValidator: function() {
+                var view = this;
+                view.form_validator = view.$el.find('form').validate({
+                    rules: {
+                        user_email: {
+                            required: true,
+                            email: true
+                        }
+                    },
+                    errorElement: "p",
+                    highlight:function(element, errorClass, validClass){
+                        var $target = $(element );
+                        var $parent = $(element ).parent();
+                        $parent.addClass('has-error');
+                        $target.addClass('has-visited');
+                    },
+                    unhighlight:function(element, errorClass, validClass){
+                        // position error label after generated textarea
+                        var $target = $(element );
+                        var $parent = $(element ).parent();
+                        $parent.removeClass('has-error');
+                        $target.removeClass('has-visited');
+                    }
+                })
+            }
+        });
         // MODAL SIGN UP
         Views.SignUpModal = Views.Modal_Box.extend({
             el: '#signUpStep2',
@@ -285,8 +355,8 @@
             },
             openSignUpEmailModal: function(event) {
                 event.preventDefault();
-                if( typeof this.emailModal === 'undefined' ) {
-                    this.emailModal = new Views.SignUpEmailModal();
+                if( typeof this.selectUserRole === 'undefined' ) {
+                    this.selectUserRole = new Views.selectUserRole();
                 }
 
                 // close signin modal
@@ -294,7 +364,7 @@
                     this.signInModal.closeModal();
                 }
 
-                this.emailModal.openModal();
+                this.selectUserRole.openModal();
                 AE.App.authModal = this.emailModal;
             },
             openForgotPasswordModal: function(event) {

@@ -36,7 +36,46 @@ if(!function_exists('mJobSignUpFormStepOne')) {
         <?php
     }
 }
+if(!function_exists('mJobSignUpFormBeforeStepOne')) {
+    /**
+     * Render sign up form step before 1
+     * @param string $intro      Form intro
+     * @return void
+     * @since 1.0
+     * @package MicrojobEngine
+     * @category Authentication Template
+     * @author Tat Thien
+     */
+    function mJobSignUpFormBeforeStepOne($intro) {
+        // Add filter to change the content of note
+        //$intro = apply_filters('mjob_signup_form_note', $intro);
+        ?>
+        <form id="signUpFormStep1" class="form-authentication et-form">
+            <div class="inner-form">
+                <div class="note-paragraph"><?php echo $intro ?></div>
+                <ul class="list-price beforeSignup">
+                    <div class="row">
+                        <li class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <div class="outer-payment-items">
+                                <a href="#" class="btn-submit-price-plan select-payment" data-type="paypal"><i class="fa fa-user fa-4x"></i>
+                                    <p class="text-bank">INDIVIDUAL</p>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="col-lg-6 col-md-6 col-sm-6 col-xs-12" "="">
+                        <div class="outer-payment-items">
+                            <a href="#" class="btn-submit-price-plan select-payment" data-type="paypal"><i class="fa fa-building fa-4x"></i>
+                                <p class="text-bank">COMPANY</p>
+                            </a>
+                        </div>
+                        </li>
 
+                    </div></ul>
+            </div>
+        </form>
+        <?php
+    }
+}
 if(!function_exists('mJobSignUpForm')) {
     /**
      * Render sign up form

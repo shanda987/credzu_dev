@@ -41,10 +41,7 @@ class mJobUserAction extends AE_UserAction
         $this->add_action('wp_enqueue_scripts', 'mJobAuthScripts');
 
         // Add template
-        $this->add_action('wp_footer', 'mJobAddModalSignIn');
-        $this->add_action('wp_footer', 'mJobAddModalSignUpStepOne');
-        $this->add_action('wp_footer', 'mJobAddModalSignUp');
-        $this->add_action('wp_footer', 'mJobAddModalForgotPassword');
+        $this->add_action('wp_footer', 'mJobAuthenticationTemplate');
     }
 
     /**
@@ -270,7 +267,21 @@ class mJobUserAction extends AE_UserAction
 
         mJobModalSignUpStepOne($intro);
     }
-
+    /**
+     * Add modal sign up before step one into footer
+     * @param void
+     * @return void
+     * @since 1.0
+     * @package MicrojobEngine
+     * @category Authentication
+     * @author Tat Thien
+     */
+    public function mJobAddModalSignUpBeforeStepOne() {
+        $default_intro = __('<p><strong>Choose the appropriate account</strong></p>', ET_DOMAIN);
+        $default_intro .= __('<p>If you are an Individual looking to hire other select "Individual". If you are company looking to provide service select "Company." </p>', ET_DOMAIN);
+        $intro = ae_get_option("sign_up_before_intro_text", $default_intro);
+        mJobModalSignUpBeforeStepOne($intro);
+    }
     /**
      * Add modal sign up into footer
      * @param void
@@ -345,6 +356,23 @@ class mJobUserAction extends AE_UserAction
         } else {
             return true;
         }
+    }
+    /**
+     * include all authentication template
+     *
+     * @param void
+     * @return void
+     * @since 1.0
+     * @package MicrojobEngine
+     * @category void
+     * @author JACK BUI
+     */
+    public function mJobAuthenticationTemplate(){
+        $this->mJobAddModalSignIn();
+        $this->mJobAddModalSignUpStepOne();
+        $this->mJobAddModalSignUpBeforeStepOne();
+        $this->mJobAddModalSignUp();
+        $this->mJobAddModalForgotPassword();
     }
 }
 

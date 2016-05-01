@@ -1,5 +1,5 @@
 <?php
-define("ET_UPDATE_PATH", "http://update.enginethemes.com/?do=product-update");
+define("ET_UPDATE_PATH", "");
 define("ET_VERSION", '1.0.3');
 if (!defined('ET_URL')) define('ET_URL', 'http://www.enginethemes.com/');
 if (!defined('ET_CONTENT_DIR')) define('ET_CONTENT_DIR', WP_CONTENT_DIR . '/et-content/');
