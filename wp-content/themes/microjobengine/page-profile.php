@@ -70,38 +70,44 @@ get_header();
                             <li>
                                 <div id="first_name" class="info-content">
                                     <div class="" data-type="input" data-name="first_name" data-id="#first_name">
-                                        <input name="first_name" placeholder="<?php echo $first_name; ?>" value="<?php echo $first_name; ?>" />
+                                        <label for="first_name"><?php _e('First Name', ET_DOMAIN )?></label>
+                                        <input type="text" name="first_name" placeholder="<?php echo $first_name; ?>" value="<?php echo $first_name; ?>" />
                                     </div>
                                 </div>
                             </li>
                             <li>
                                 <div id="last_name" class="info-content">
                                     <div class="" data-type="input" data-name="last_name" data-id="#last_name">
-                                        <input name="last_name" placeholder="<?php echo $last_name; ?>" value="<?php echo $last_name; ?>" />
+                                        <label for="last_name"><?php _e('Last Name', ET_DOMAIN )?></label>
+                                        <input type="text"  name="last_name" placeholder="<?php echo $last_name; ?>" value="<?php echo $last_name; ?>" />
                                     </div>
                                 </div>
                             </li>
                             <li>
                                 <div id="phone" class="info-content">
                                     <div class="" data-type="input" data-name="phone" data-id="#phone">
-                                        <input name="phone" placeholder="<?php echo $phone; ?>" value="<?php echo $phone; ?>" />
+                                        <label for="phone"><?php _e('Phone', ET_DOMAIN )?></label>
+                                        <input type="text"  name="phone" placeholder="<?php echo $phone; ?>" value="<?php echo $phone; ?>" />
                                     </div>
                                 </div>
                             </li>
                             <li>
                                 <div id="business_email" class="info-content">
                                     <div class="" data-type="input" data-name="business_email" data-id="#business_email">
-                                        <input name="business_email" placeholder="<?php echo $business_email; ?>" value="<?php echo $business_email; ?>" />
+                                        <label for="business_email"><?php _e('Email', ET_DOMAIN )?></label>
+                                        <input type="email"  name="business_email" placeholder="<?php echo $business_email; ?>" value="<?php echo $business_email; ?>" />
                                     </div>
                                 </div>
                             </li>
                             <li>
                                 <div id="billing_full_address" class="info-content  text-address">
+                                    <label for="billing_full_address"><?php _e('Physical Address', ET_DOMAIN )?></label>
                                     <textarea class="" name="billing_full_address"><?php echo $billing_full_address; ?></textarea>
                                 </div>
                             </li>
                             <li>
                                 <div id="credit_goal" class="info-content  text-address">
+                                    <label for="credit_goal"><?php _e('Credit goals', ET_DOMAIN )?></label>
                                     <textarea class="" name="credit_goal"><?php echo $credit_goal; ?></textarea>
                                 </div>
                             </li>

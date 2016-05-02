@@ -33,6 +33,20 @@ $current->is_edit = $is_edit;
 $count_review = mJobCountReview($current->ID);
 
 echo '<script type="text/template" id="mjob_single_data" >'.json_encode($current).'</script>';
+$user = mJobUser::getInstance();
+$user_data = $user->convert($current_user->data);
+$user_role = ae_user_role($current_user->ID);
+
+// Convert profile
+$profile_obj = $ae_post_factory->get('mjob_profile');
+$profile_id = get_user_meta($user_ID, 'user_profile_id', true);
+if($profile_id) {
+    $post = get_post($profile_id);
+    if($post && !is_wp_error($post)) {
+        $profile = $profile_obj->convert($post);
+    }
+    echo '<script type="text/json" id="mjob_profile_data" >'.json_encode($profile).'</script>';
+}
 ?>
     <div id="content" class="mjob-single-page">
         <?php get_template_part('template/content', 'page');?>

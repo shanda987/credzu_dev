@@ -45,7 +45,8 @@
         Views.SingleMjob = Backbone.View.extend({
             el: '.mjob-single-page',
             events: {
-                'click .mjob-order-action': 'mJobOrderAction',
+                //'click .mjob-order-action': 'mJobOrderAction',
+                'click .mjob-order-action': 'showConfirmForm',
                 'click .edit-mjob-action': 'openEditForm',
                 'click .mjob-order-disable': 'disableNotification'
             },
@@ -272,6 +273,45 @@
                 AE.pubsub.trigger('ae:notification', {
                     msg: ae_globals.disableNotification,
                     notice_type: 'error'
+                });
+            },
+            showConfirmForm: function(e){
+                e.preventDefault();
+                var view = this;
+                if( typeof view.modalConfirm === 'undefined' ){
+                    view.modalConfirm = new Views.ModalConfirm();
+                }
+                if( $('#mjob_profile_data').length > 0 ){
+                    data = JSON.parse($('#mjob_profile_data').html());
+                    var profileModel = new Models.mJobProfile(data);
+                }
+                else{
+                    var profileModel = new Models.mJobProfile();
+                }
+                view.modalConfirm.onOpen(profileModel);
+            }
+        });
+        Views.ModalConfirm = Views.Modal_Box.extend({
+            el: '#confirmInfo',
+            events: {},
+            initialize: function () {
+                AE.Views.Modal_Box.prototype.initialize.call();
+
+            },
+            onOpen: function(model){
+                var view = this;
+                view.setupFields(model);
+                view.openModal();
+            },
+            setupFields: function(model){
+                var view = this;
+                view.model = model;
+                var form_field = $('#confirm-form');
+                form_field.find('input[type="text"],input[type="hidden"], input[type="email"], textarea,select').each(function() {
+                    var $input = $(this);
+                    if( $input.attr('name') != '_wpnonce' ) {
+                        $input.val(view.model.get($input.attr('name')));
+                    }
                 });
             }
         });

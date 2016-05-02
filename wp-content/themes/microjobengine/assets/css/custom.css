@@ -107,3 +107,37 @@
     margin-right: 10%;
     margin-top: 50px;
 }
+.confirm-header-modal{
+    background: #fff;
+    color: #000;
+}
+#confirmInfo .confirmInforContent{
+    min-width: 55%;
+}
+#confirm-form ul{
+    list-style: none;
+}
+#confirm-form ul li{
+    margin-top: 20px;
+}
+#confirm-form ul li:first-child{
+    margin-top: 0;
+}
+#confirm-form ul input{
+    width: 100%;
+    min-height: 35px;
+    border-top:none;
+    border-left:none;
+    border-right: none;
+}
+#confirm-form ul textarea{
+    height: 60px;
+    border-top:none;
+    border-left:none;
+    border-right: none;
+}
+#confirm-form .button-sb{
+    text-align: right;
+    margin-right: 10%;
+    margin-top: 50px;
+}

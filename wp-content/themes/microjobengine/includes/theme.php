@@ -945,6 +945,7 @@ class ET_Microjobengine extends AE_Base
         if(is_singular('mjob_post') || is_page_template('page-order.php') || is_page_template('page-process-payment.php')) {
             get_template_part('template-js/review', 'item');
         }
+        get_template_part('template-js/modal', 'confirm-info');
     }
     /**
      * add more global variable

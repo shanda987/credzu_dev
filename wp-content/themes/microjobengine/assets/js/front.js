@@ -130,7 +130,11 @@
         Models.mJobUser = Backbone.Model.extend({
             action: 'mjob_sync_user'
         });
-
+        Models.mJobProfile = Backbone.Model.extend({
+            action: 'mjob_sync_profile',
+            initialize: function () {
+            }
+        });
         /**
          * model mjob
          */
