@@ -296,6 +296,7 @@
             events: {},
             initialize: function () {
                 AE.Views.Modal_Box.prototype.initialize.call();
+                // Set nonce for security purpose
 
             },
             onOpen: function(model){
@@ -313,6 +314,17 @@
                         $input.val(view.model.get($input.attr('name')));
                     }
                 });
+                this.model.set('_wpnonce', $('#profile_wpnonce').val());
+                if(typeof this.profileForm === "undefined") {
+                    this.profileForm = new Views.AE_Form({
+                        el: '.form-confirm-info', // Wrapper of form
+                        model: this.model,
+                        rules: {
+                        },
+                        type: 'update-profile-modal',
+                        blockTarget: '.form-confirm-info button'
+                    });
+                }
             }
         });
         /**

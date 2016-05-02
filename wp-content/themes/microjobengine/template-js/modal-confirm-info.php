@@ -12,7 +12,7 @@
                 <h4 class="modal-title" id="myModalLabelForgot"><?php _e('CONFIRM CONTACT INFORMATION', ET_DOMAIN) ?></h4>
             </div>
             <div class="modal-body delivery-order">
-                <div class="form-delivery-order">
+                <div class="form-delivery-order form-confirm-info">
                     <form id="confirm-form">
                         <ul>
                                 <li>
