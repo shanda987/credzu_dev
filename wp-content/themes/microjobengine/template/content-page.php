@@ -1,6 +1,7 @@
 <?php
 global $user_ID;
 $absolute_url = full_url( $_SERVER );
+$term = get_queried_object(); //04-22-2016
 if( is_page_template('page-post-service.php') ){
     $post_link = '#';
 }
