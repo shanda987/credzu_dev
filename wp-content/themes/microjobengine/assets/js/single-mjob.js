@@ -297,7 +297,7 @@
             initialize: function () {
                 AE.Views.Modal_Box.prototype.initialize.call();
                 // Set nonce for security purpose
-
+                AE.pubsub.on('ae:form:submit:success', this.step1Success, this);
             },
             onOpen: function(model){
                 var view = this;
@@ -325,6 +325,14 @@
                         blockTarget: '.form-confirm-info button'
                     });
                 }
+            },
+            step1Success: function(result, resp, jqXHR, type) {
+                if( type == 'pdate-profile-modal' ){
+                    view.showStepTwo();
+                }
+            },
+            showStepTwo: function(){
+
             }
         });
         /**

@@ -54,6 +54,7 @@
                                     </div>
                                 </li>
                             <li class="button-sb">
+                                <input type="hidden" class="input-item" name="_wpnonce" id="profile_wpnonce" value="<?php echo de_create_nonce('ae-mjob_post-sync');?>" />
                                 <button class="btn-submit btn-save waves-effect waves-light" type="submit"><?php _e('SAVE', ET_DOMAIN); ?></button>
                             </li>
                         </ul>
