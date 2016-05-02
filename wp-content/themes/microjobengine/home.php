@@ -30,7 +30,7 @@ $img_url = ae_get_option('search_video_fallback', get_stylesheet_directory_uri()
             <form action="<?php echo get_site_url(); ?>" class="form-search">
                 <div class="outer-form">
                     <span class="text"><?php _e('I am looking for', ET_DOMAIN); ?></span>
-                    <input type="text" name="s" class="text-search-home" placeholder="<?php _e('a logo design', ET_DOMAIN); ?>">
+                    <input type="text" name="s" class="text-search-home" placeholder="<?php _e($search_text['search_input_textform'], ET_DOMAIN); ?>">
                     <button class="btn-search hvr-buzz-out waves-effect waves-light"><div class="search-title"><span class="text-search"><?php _e('SEARCH NOW', ET_DOMAIN) ;?></span></div></button>
                 </div>
             </form>
