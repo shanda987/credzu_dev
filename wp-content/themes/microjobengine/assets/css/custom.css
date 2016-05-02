@@ -84,3 +84,26 @@
 .profile .upload-profile-avatar{
     margin: 0 0;
 }
+.profile .block-billing ul li .info-content{
+    width: 100%;
+}
+.profile .block-billing ul li .info-content input{
+    width: 100%;
+    min-height: 35px;
+    border-top:none;
+    border-left:none;
+    border-right: none;
+}
+.profile .block-billing ul li .info-content textarea{
+    border-top:none;
+    border-left:none;
+    border-right: none;
+}
+.profile .block-billing ul li{
+    margin-bottom: 20px;
+}
+.profile .block-billing  .button-sb{
+    text-align: right;
+    margin-right: 10%;
+    margin-top: 50px;
+}
