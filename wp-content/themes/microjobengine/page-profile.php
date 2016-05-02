@@ -65,46 +65,51 @@ get_header();
                         </div>
                     </div>
                     <div class="block-billing">
+                        <form>
                         <ul>
                             <li>
                                 <div id="first_name" class="info-content">
-                                    <div class="text-content" data-type="input" data-name="first_name" data-id="#first_name">
-                                        <p><?php echo $first_name; ?></p>
+                                    <div class="" data-type="input" data-name="first_name" data-id="#first_name">
+                                        <input name="first_name" placeholder="<?php echo $first_name; ?>" value="<?php echo $first_name; ?>" />
                                     </div>
                                 </div>
                             </li>
                             <li>
                                 <div id="last_name" class="info-content">
-                                    <div class="text-content" data-type="input" data-name="last_name" data-id="#last_name">
-                                        <p><?php echo $last_name; ?></p>
+                                    <div class="" data-type="input" data-name="last_name" data-id="#last_name">
+                                        <input name="last_name" placeholder="<?php echo $last_name; ?>" value="<?php echo $last_name; ?>" />
                                     </div>
                                 </div>
                             </li>
                             <li>
                                 <div id="phone" class="info-content">
-                                    <div class="text-content" data-type="input" data-name="phone" data-id="#phone">
-                                        <p><?php echo $phone; ?></p>
+                                    <div class="" data-type="input" data-name="phone" data-id="#phone">
+                                        <input name="phone" placeholder="<?php echo $phone; ?>" value="<?php echo $phone; ?>" />
                                     </div>
                                 </div>
                             </li>
                             <li>
                                 <div id="business_email" class="info-content">
-                                    <div class="text-content" data-type="input" data-name="business_email" data-id="#business_email">
-                                        <p><?php echo $business_email; ?></p>
+                                    <div class="" data-type="input" data-name="business_email" data-id="#business_email">
+                                        <input name="business_email" placeholder="<?php echo $business_email; ?>" value="<?php echo $business_email; ?>" />
                                     </div>
                                 </div>
                             </li>
                             <li>
-                                <div id="billing_full_address" class="info-content text-content text-address">
-                                    <textarea class="editable" name="billing_full_address"><?php echo $billing_full_address; ?></textarea>
+                                <div id="billing_full_address" class="info-content  text-address">
+                                    <textarea class="" name="billing_full_address"><?php echo $billing_full_address; ?></textarea>
                                 </div>
                             </li>
                             <li>
-                                <div id="credit_goal" class="info-content text-content text-address">
-                                    <textarea class="editable" name="credit_goal"><?php echo $credit_goal; ?></textarea>
+                                <div id="credit_goal" class="info-content  text-address">
+                                    <textarea class="" name="credit_goal"><?php echo $credit_goal; ?></textarea>
                                 </div>
                             </li>
+                            <li class="button-sb">
+                                <button class="btn-submit btn-save waves-effect waves-light" type="submit"><?php _e('UPDATE', ET_DOMAIN); ?></button>
+                            </li>
                         </ul>
+                        </form>
                     </div>
                 </div>
                 
