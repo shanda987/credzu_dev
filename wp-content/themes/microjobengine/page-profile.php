@@ -64,7 +64,7 @@ get_header();
                             </a>
                         </div>
                     </div>
-                    <div class="block-billing">
+                    <div class="block-billing mjob-profile-form">
                         <form>
                         <ul>
                             <li>

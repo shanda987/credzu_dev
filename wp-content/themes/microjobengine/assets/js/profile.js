@@ -269,6 +269,16 @@
 
                 // Set nonce for security purpose
                 this.model.set('_wpnonce', $('#profile_wpnonce').val());
+                if(typeof this.profileForm === "undefined") {
+                    this.profileForm = new Views.AE_Form({
+                        el: '.mjob-profile-form', // Wrapper of form
+                        model: this.model,
+                        rules: {
+                        },
+                        type: 'update-profile',
+                        blockTarget: '.mjob-profile-form button'
+                    });
+                }
             },
             enterChangeInput: function(event){
                 var view = this;
