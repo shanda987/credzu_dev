@@ -102,6 +102,9 @@ get_header();
                                     <input type="text" name="credit_goal" id="credit_goal" placeholder="<?php _e('Credit goals', ET_DOMAIN); ?>">
                                 </div>
                             </div>
+                            <div class="form-group clearfix float-right change-pass-button-method">
+                                <button class="btn-submit"><?php _e('Update', ET_DOMAIN); ?></button>
+                            </div>
                         </form>
                     </div>
                 </div>
