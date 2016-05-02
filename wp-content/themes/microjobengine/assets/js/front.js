@@ -792,7 +792,55 @@
                 return price;
             }
         });
-
+        Views.ProcessHiring = Backbone.View.extend({
+            el: '.form-confirm-info',
+            events: {},
+            initialize: function () {
+                this.initProcessHiring();
+            },
+            initProcessHiring: function(){
+                if($('#mjob_profile_data').length > 0) {
+                    data = JSON.parse($('#mjob_profile_data').html());
+                    this.profilemodel = new Models.mJobProfile(data);
+                }
+                else {
+                    this.profilemodel = new Models.mJobProfile();
+                    if($('#current_user').length > 0) {
+                        this.profilemodel.set({
+                            post_author: currentUser.data.ID,
+                            post_type: 'mjob_profile',
+                            post_title: currentUser.data.display_name,
+                            post_status: 'publish',
+                            post_content: '',
+                            payment_info: '',
+                            billing_full_name: '',
+                            billing_full_address: '',
+                            billing_country: '',
+                            billing_vat: '',
+                            first_name: '',
+                            last_name: '',
+                            phone: '',
+                            business_email: '',
+                            credit_goal: ''
+                        })
+                    }
+                }
+                console.log(this.profilemodel);
+                // Set nonce for security purpose
+                this.profilemodel.set('_wpnonce', $('#profile_wpnonce').val());
+                if(typeof this.profileForm === "undefined") {
+                    this.profileForm = new Views.AE_Form({
+                        el: '.form-confirm-info', // Wrapper of form
+                        model: this.profilemodel,
+                        rules: {
+                        },
+                        type: 'update-profile-hiring',
+                        blockTarget: '.form-confirm-info button'
+                    });
+                }
+            },
+        });
+        new Views.ProcessHiring();
         // Serialize object
         jQuery.fn.serializeObject = function(){
             var self = this,

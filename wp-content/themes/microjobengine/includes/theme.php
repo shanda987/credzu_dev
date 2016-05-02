@@ -945,7 +945,6 @@ class ET_Microjobengine extends AE_Base
         if(is_singular('mjob_post') || is_page_template('page-order.php') || is_page_template('page-process-payment.php')) {
             get_template_part('template-js/review', 'item');
         }
-        get_template_part('template-js/modal', 'confirm-info');
     }
     /**
      * add more global variable
@@ -1021,6 +1020,7 @@ class ET_Microjobengine extends AE_Base
         $vars['uploadSuccess'] = __('Job slider updated successfully!', ET_DOMAIN);
         $vars['user_confirm'] = ae_get_option('user_confirm');
         $vars['permalink_structure'] = get_option('permalink_structure');
+        $vars['process_hiring'] = et_get_page_link('process-hiring');
         return $vars;
     }
     /**
