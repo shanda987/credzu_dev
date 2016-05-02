@@ -20,10 +20,15 @@ if($profile_id) {
 
 $description = !empty($profile->profile_description) ? $profile->profile_description : __('There is no content', ET_DOMAIN);
 $payment_info = !empty($profile->payment_info) ? $profile->payment_info : __('There is no content', ET_DOMAIN);
-$billing_full_name = !empty($profile->billing_full_name) ? $profile->billing_full_name : __('There is no content', ET_DOMAIN);
-$billing_full_address = !empty($profile->billing_full_address) ? $profile->billing_full_address : __('There is no content', ET_DOMAIN);
+$billing_full_name = !empty($profile->billing_full_name) ? $profile->billing_full_name : __('First Name', ET_DOMAIN);
+$billing_full_address = !empty($profile->billing_full_address) ? $profile->billing_full_address : __('Physical address', ET_DOMAIN);
 $billing_country = !empty($profile->billing_country) ? $profile->billing_country : '';
 $billing_vat = !empty($profile->billing_vat) ? $profile->billing_vat : __('There is no content', ET_DOMAIN);
+$first_name = !empty($profile->first_name) ? $profile->first_name : __('First name', ET_DOMAIN);
+$last_name = !empty($profile->last_name) ? $profile->last_name : __('Last name', ET_DOMAIN);
+$phone = !empty($profile->phone) ? $profile->phone : __('Phone', ET_DOMAIN);
+$business_email = !empty($profile->business_email) ? $profile->business_email : __('Email', ET_DOMAIN);
+$credit_goal = !empty($profile->credit_goal) ? $profile->credit_goal : __('Credit Goals', ET_DOMAIN);
 get_header();
 ?>
     <div class="container mjob-profile-page">
@@ -49,70 +54,58 @@ get_header();
                             <?php } ?>
                         </select>
                     </div>
-                    <div class="block-intro">
-                        <p class="title"><?php _e('DESCRIPTION', ET_DOMAIN); ?></p>
-                        <div class="vote">
-                            <div class="rate-it star" data-score="<?php echo mJobUserCountReview($user_ID); ?>"></div>
-                        </div>
-                        <div id="post_content" class="text-content-wrapper text-content">
-                            <div><textarea class="editable" name="profile_description">
-                                <?php echo strip_tags($description); ?>
-                            </textarea></div>   
-                        </div>
-                    </div>
-                    <div class="block-payment">
-                        <p class="title"><?php _e('PAYMENT INFO', ET_DOMAIN); ?></p>
-                        <div id="payment_info" class="text-content-wrapper text-content">
-                            <div><textarea class="editable" name="payment_info">
-                                <?php echo $payment_info; ?>
-                            </textarea></div>
+                    <div class="float-center profile-avatar">
+                        <div class="upload-profile-avatar">
+                            <div class="back-top-hover"><i class="fa fa-upload"></i></div>
+                            <a href="#" class="">
+                                <?php
+                                echo mJobAvatar($user_ID, 75);
+                                ?>
+                            </a>
                         </div>
                     </div>
                     <div class="block-billing">
-                        <p class="title"><?php _e('BILLING INFO', ET_DOMAIN); ?></p>
                         <ul>
                             <li>
-                                <div class="cate-title"><?php _e('Business full name', ET_DOMAIN); ?></div>
-                                <div id="billing_full_name" class="info-content">
-                                    <div class="text-content" data-type="input" data-name="billing_full_name" data-id="#billing_full_name"><p><?php echo $billing_full_name; ?></p></div>
+                                <div id="first_name" class="info-content">
+                                    <div class="text-content" data-type="input" data-name="first_name" data-id="#first_name">
+                                        <p><?php echo $first_name; ?></p>
+                                    </div>
                                 </div>
                             </li>
                             <li>
-                                <div class="cate-title full-address"><?php _e('Full Address', ET_DOMAIN); ?></div>
+                                <div id="last_name" class="info-content">
+                                    <div class="text-content" data-type="input" data-name="last_name" data-id="#last_name">
+                                        <p><?php echo $last_name; ?></p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div id="phone" class="info-content">
+                                    <div class="text-content" data-type="input" data-name="phone" data-id="#phone">
+                                        <p><?php echo $phone; ?></p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div id="business_email" class="info-content">
+                                    <div class="text-content" data-type="input" data-name="business_email" data-id="#business_email">
+                                        <p><?php echo $business_email; ?></p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
                                 <div id="billing_full_address" class="info-content text-content text-address">
                                     <textarea class="editable" name="billing_full_address"><?php echo $billing_full_address; ?></textarea>
                                 </div>
                             </li>
                             <li>
-                                <div class="cate-title"><?php _e('Country', ET_DOMAIN); ?></div>
-                                <div id="billing_country" class="info-content">
-                                    <?php
-                                    ae_tax_dropdown('country', array(
-                                        'id' => 'billing_country',
-                                        'name' => 'billing_country',
-                                        'class' => 'chosen-single is-chosen',
-                                        'hide_empty' => false,
-                                        'show_option_all' => __('Select your country', ET_DOMAIN),
-                                        'selected' => (int) $billing_country,
-                                    ));
-                                    ?>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="cate-title"><?php _e('VAT or Tax Number', ET_DOMAIN); ?></div>
-                                <div id="billing_vat" class="info-content">
-                                    <div class="text-content" data-type="input" data-name="billing_vat" data-id="#billing_vat"><p><?php echo $billing_vat; ?></p></div>
+                                <div id="credit_goal" class="info-content text-content text-address">
+                                    <textarea class="editable" name="credit_goal"><?php echo $credit_goal; ?></textarea>
                                 </div>
                             </li>
                         </ul>
                     </div>
-
-                    <div class="block-connect-social">
-                    <p class="title"><?php _e('CONNECT TO SOCIALS', ET_DOMAIN); ?></p>
-                    <?php
-                        ae_render_connect_social_button();
-                    ?>
-                </div>
                 </div>
                 
             </div>

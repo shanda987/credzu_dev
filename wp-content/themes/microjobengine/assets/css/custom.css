@@ -78,3 +78,9 @@
 .order-ct{
     padding-top: 20px;
 }
+.upload-profile-avatar img{
+    width: 75px;
+}
+.profile .upload-profile-avatar{
+    margin: 0 0;
+}

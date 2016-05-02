@@ -223,6 +223,8 @@
                 'click textarea.editable': 'onClickTextarea',
                 'change select': 'onChangeInput',
                 'click .upload-profile-avatar': 'openUploadModal',
+                'keypress .input-field': 'enterChangeInput',
+                'keypress .textarea.editable': 'enterChangeTextarea'
             },
             initialize: function () {
                 // Resize textarea
@@ -248,7 +250,12 @@
                             billing_full_name: '',
                             billing_full_address: '',
                             billing_country: '',
-                            billing_vat: ''
+                            billing_vat: '',
+                            first_name: '',
+                            last_name: '',
+                            phone: '',
+                            business_email: '',
+                            credit_goal: ''
                         })
                     }
                 }
@@ -262,6 +269,18 @@
 
                 // Set nonce for security purpose
                 this.model.set('_wpnonce', $('#profile_wpnonce').val());
+            },
+            enterChangeInput: function(event){
+                var view = this;
+                if( event.keyCode == 13 ){
+                    view.onChangeInput(event);
+                }
+            },
+            enterChangeTextarea: function(event){
+                var view = this;
+                if( event.keyCode == 13 ){
+                    view.onChangeInput(event);
+                }
             },
             openEditArea: function (event) {
                 event.preventDefault();

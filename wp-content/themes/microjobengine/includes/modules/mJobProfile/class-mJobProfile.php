@@ -28,7 +28,12 @@ class mJobProfile extends mJobPost{
             'billing_vat',
             'status',
             'time_delivery',
-            'profile_description'
+            'profile_description',
+            'first_name',
+            'last_name',
+            'phone',
+            'business_email',
+            'credit_goal'
         );
         $this->post_type_singular = 'Profile';
         $this->post_type_regular = 'Profiles';

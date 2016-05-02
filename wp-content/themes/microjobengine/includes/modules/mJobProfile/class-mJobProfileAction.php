@@ -213,10 +213,14 @@ class mJobProfileAction extends mJobPostAction
         $result->post_content= !empty($result->post_content) ? $result->post_content : __('There is no content', ET_DOMAIN);
         $result->payment_info = !empty($result->payment_info) ? $result->payment_info : __('There is no content', ET_DOMAIN);
         $result->billing_full_name = !empty($result->billing_full_name) ? $result->billing_full_name : __('There is no content', ET_DOMAIN);
-        $result->billing_full_address = !empty($result->billing_full_address) ? $result->billing_full_address : __('There is no content', ET_DOMAIN);
+        $result->billing_full_address = !empty($result->billing_full_address) ? $result->billing_full_address : __('Physical address', ET_DOMAIN);
         $result->billing_country = !empty($result->billing_country) ? $result->billing_country : __('There is no content', ET_DOMAIN);
         $result->billing_vat = !empty($result->billing_vat) ? $result->billing_vat : __('There is no content', ET_DOMAIN);
-
+        $result->first_name = !empty($result->first_name) ? $result->first_name : __('First Name', ET_DOMAIN);
+        $result->last_name = !empty($result->last_name) ? $result->last_name : __('Last Name', ET_DOMAIN);
+        $result->phone = !empty($result->phone) ? $result->phone : __('Phone', ET_DOMAIN);
+        $result->business_email = !empty($result->business_email) ? $result->business_email : __('Email', ET_DOMAIN);
+        $result->credit_goal = !empty($result->credit_goal) ? $result->credit_goal : __('Credit_goals', ET_DOMAIN);
         return $result;
     }
 
