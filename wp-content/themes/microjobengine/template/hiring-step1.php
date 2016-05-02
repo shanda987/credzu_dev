@@ -59,14 +59,14 @@ $credit_goal = !empty($profile->credit_goal) ? $profile->credit_goal : '';
                 <input type="text" name="billing_full_address" id="billing_full_address" placeholder="<?php _e('Physical address', ET_DOMAIN); ?>" value="<?php echo $billing_full_address; ?>">
             </div>
         </div>
-        <div class="form-group clearfix">
-            <div class="input-group">
-                <div class="input-group-addon no-addon"></div>
-                <input type="text" name="credit_goal" id="credit_goal" placeholder="<?php _e('Credit goals', ET_DOMAIN); ?>" value="<?php echo $credit_goal; ?>">
-            </div>
-        </div>
+<!--        <div class="form-group clearfix">-->
+<!--            <div class="input-group">-->
+<!--                <div class="input-group-addon no-addon"></div>-->
+<!--                <input type="text" name="credit_goal" id="credit_goal" placeholder="--><?php //_e('Credit goals', ET_DOMAIN); ?><!--" value="--><?php //echo $credit_goal; ?><!--">-->
+<!--            </div>-->
+<!--        </div>-->
         <div class="form-group clearfix float-right change-pass-button-method">
-            <button class="btn-submit"><?php _e('Update', ET_DOMAIN); ?></button>
+            <button class="btn-submit"><?php _e('Save', ET_DOMAIN); ?></button>
         </div>
         <input type="hidden" class="input-item" name="_wpnonce" id="profile_wpnonce" value="<?php echo de_create_nonce('ae-mjob_post-sync');?>" />
     </form>
