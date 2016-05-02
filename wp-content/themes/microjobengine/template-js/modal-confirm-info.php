@@ -13,51 +13,47 @@
             </div>
             <div class="modal-body delivery-order">
                 <div class="form-delivery-order form-confirm-info">
-                    <form id="confirm-form">
-                        <ul>
-                                <li>
-                                    <div id="first_name" class="info-content">
-                                        <div class="" data-type="input" data-name="first_name" data-id="#first_name">
-                                            <label for="first_name"><?php _e('First Name', ET_DOMAIN )?></label>
-                                            <input type="text" name="first_name" placeholder="" value="" />
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div id="last_name" class="info-content">
-                                        <div class="" data-type="input" data-name="last_name" data-id="#last_name">
-                                            <label for="last_name"><?php _e('Last Name', ET_DOMAIN )?></label>
-                                            <input type="text" name="last_name" placeholder="" value="" />
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div id="phone" class="info-content">
-                                        <div class="" data-type="input" data-name="phone" data-id="#phone">
-                                            <label for="phone"><?php _e('Phone', ET_DOMAIN )?></label>
-                                            <input type="text" name="phone" placeholder="" value="" />
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div id="business_email" class="info-content">
-                                        <div class="" data-type="input" data-name="business_email" data-id="#business_email">
-                                            <label for="business_email"><?php _e('Email', ET_DOMAIN )?></label>
-                                            <input type="email" name="business_email" placeholder="" value="" />
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div id="billing_full_address" class="info-content  text-address">
-                                        <label for="billing_full_address"><?php _e('Physical Address', ET_DOMAIN )?></label>
-                                        <textarea class="" name="billing_full_address"></textarea>
-                                    </div>
-                                </li>
-                            <li class="button-sb">
-                                <input type="hidden" class="input-item" name="_wpnonce" id="profile_wpnonce" value="<?php echo de_create_nonce('ae-mjob_post-sync');?>" />
-                                <button class="btn-submit btn-save waves-effect waves-light" type="submit"><?php _e('SAVE', ET_DOMAIN); ?></button>
-                            </li>
-                        </ul>
+                    <form class="et-form" id="confirm-form">
+                        <div class="form-group clearfix">
+                            <div class="input-group">
+                                <div class="input-group-addon no-addon"></div>
+                                <input type="text" name="first_name" id="first_name" placeholder="<?php _e('First Name', ET_DOMAIN); ?>">
+                            </div>
+                        </div>
+                        <div class="form-group clearfix">
+                            <div class="input-group">
+                                <div class="input-group-addon no-addon"></div>
+                                <input type="text" name="last_name" id="last_name" placeholder="<?php _e('Last Name', ET_DOMAIN); ?>">
+                            </div>
+                        </div>
+                        <div class="form-group clearfix">
+                            <div class="input-group">
+                                <div class="input-group-addon no-addon"></div>
+                                <input type="text" name="phone" id="phone" placeholder="<?php _e('Phone', ET_DOMAIN); ?>">
+                            </div>
+                        </div>
+                        <div class="form-group clearfix">
+                            <div class="input-group">
+                                <div class="input-group-addon no-addon"></div>
+                                <input type="email" name="business_email" id="business_email" placeholder="<?php _e('Email', ET_DOMAIN); ?>">
+                            </div>
+                        </div>
+                        <div class="form-group clearfix">
+                            <div class="input-group">
+                                <div class="input-group-addon no-addon"></div>
+                                <input type="text" name="billing_full_address" id="billing_full_address" placeholder="<?php _e('Physical address', ET_DOMAIN); ?>">
+                            </div>
+                        </div>
+<!--                        <div class="form-group clearfix">-->
+<!--                            <div class="input-group">-->
+<!--                                <div class="input-group-addon no-addon"></div>-->
+<!--                                <input type="text" name="credit_goal" id="credit_goal" placeholder="--><?php //_e('Credit goals', ET_DOMAIN); ?><!--">-->
+<!--                            </div>-->
+<!--                        </div>-->
+                        <div class="form-group clearfix float-right change-pass-button-method">
+                            <button class="btn-submit"><?php _e('Update', ET_DOMAIN); ?></button>
+                        </div>
+                        <input type="hidden" class="input-item" name="_wpnonce" id="profile_wpnonce" value="<?php echo de_create_nonce('ae-mjob_post-sync');?>" />
                     </form>
                 </div>
             </div>
