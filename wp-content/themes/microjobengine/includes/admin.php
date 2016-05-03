@@ -2121,7 +2121,46 @@ class ET_Admin extends AE_Base
                         )
                     )
                 ) ,
-
+                array(
+                    'args' => array(
+                        'title' => __("Client Agreement Mail Template", ET_DOMAIN) ,
+                        'id' => 'client-agreement-mail',
+                        'class' => 'payment-gateway',
+                        'name' => '',
+                        'desc' => __("Send to client to notify signing successfully! ", ET_DOMAIN),
+                        'toggle' => true
+                    ) ,
+                    'fields' => array(
+                        array(
+                            'id' => 'client_agreement_mail_template',
+                            'type' => 'editor',
+                            'title' => __("Client Agreement Mail Template", ET_DOMAIN) ,
+                            'name' => 'client_agreement_mail_template',
+                            'class' => '',
+                            'reset' => 1
+                        )
+                    )
+                ) ,
+                array(
+                    'args' => array(
+                        'title' => __("Company Agreement Mail Template", ET_DOMAIN) ,
+                        'id' => 'company-agreement-mail',
+                        'class' => 'payment-gateway',
+                        'name' => '',
+                        'desc' => __("Send to company to notify signing successfully!", ET_DOMAIN),
+                        'toggle' => true
+                    ) ,
+                    'fields' => array(
+                        array(
+                            'id' => 'company_agreement_mail_template',
+                            'type' => 'editor',
+                            'title' => __("Client Agreement Mail Template", ET_DOMAIN) ,
+                            'name' => 'company_agreement_mail_template',
+                            'class' => '',
+                            'reset' => 1
+                        )
+                    )
+                ) ,
                 array(
                     'args' => array(
                         'title' => __("Microjob Related Mail Template", ET_DOMAIN) ,
