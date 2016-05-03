@@ -10,3 +10,4 @@ require_once dirname(__FILE__) . '/AE_Message/index.php';
 require_once dirname(__FILE__) . '/mJobProfile/index.php';
 require_once dirname(__FILE__) . '/mJob/index.php';
 require_once dirname(__FILE__) . '/mJobConversation/index.php';
+require_once dirname(__FILE__) . '/mJobAgreement/index.php';
