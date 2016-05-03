@@ -33,7 +33,11 @@ class mJobProfile extends mJobPost{
             'last_name',
             'phone',
             'business_email',
-            'credit_goal'
+            'credit_goal',
+            'client_signature',
+            'company_name',
+            'company_address',
+            'company_signature'
         );
         $this->post_type_singular = 'Profile';
         $this->post_type_regular = 'Profiles';

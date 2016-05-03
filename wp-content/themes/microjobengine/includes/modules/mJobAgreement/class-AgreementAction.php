@@ -81,6 +81,51 @@ function addAddress(){
     }
     return $name;
 }
+add_shortcode('client-signature', 'addSignature');
+/**
+ * add first name to shortcode
+ *
+ * @param array $atts
+ * @return void
+ * @since 1.0
+ * @package MicrojobEngine
+ * @category void
+ * @author JACK BUI
+ */
+function addSignature(){
+    global $user_ID;
+    $profile = mJobProfileAction()->getProfile($user_ID);
+    $name = '[client-signature]';
+    if( !empty($profile) ){
+        $name =  $profile->client_signature;
+    }
+    return $name;
+}
+add_shortcode('company-signature', 'addCompanySignature');
+/**
+ * add first name to shortcode
+ *
+ * @param array $atts
+ * @return void
+ * @since 1.0
+ * @package MicrojobEngine
+ * @category void
+ * @author JACK BUI
+ */
+function addCompanySignature(){
+    $name = '[company-signature]';
+    if( isset($_GET['jid']) ){
+        $mjob = mJobAction()->get_mjob($_GET['jid']);
+        if( !empty($mjob) ) {
+            $profile = mJobProfileAction()->getProfile($mjob->post_author);
+            if (!empty($profile)) {
+                $name = $profile->company_signature;
+                return $name;
+            }
+        }
+    }
+    return $name;
+}
 add_shortcode('company-name', 'addCompanyName');
 /**
  * add first name to shortcode
@@ -93,7 +138,7 @@ add_shortcode('company-name', 'addCompanyName');
  * @author JACK BUI
  */
 function addCompanyName(){
-    $name = 'company-name';
+    $name = '[company-name]';
     if( isset($_GET['jid']) ){
         $mjob = mJobAction()->get_mjob($_GET['jid']);
         if( !empty($mjob) ) {
