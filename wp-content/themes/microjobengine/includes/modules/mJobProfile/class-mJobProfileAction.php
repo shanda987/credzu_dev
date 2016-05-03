@@ -259,5 +259,28 @@ class mJobProfileAction extends mJobPostAction
         </div>
         <?php
     }
+    /**
+     * get user profile
+     *
+     * @param integer $user_id
+     * @return void
+     * @since 1.0
+     * @package MicrojobEngine
+     * @category void
+     * @author JACK BUI
+     */
+    public function getProfile($user_id){
+        global  $ae_post_factory, $post;
+        $profile_obj = $ae_post_factory->get('mjob_profile');
+        $profile_id = get_user_meta($user_id, 'user_profile_id', true);
+        $profile = '';
+        if($profile_id) {
+            $post = get_post($profile_id);
+            if($post && !is_wp_error($post)) {
+                $profile = $profile_obj->convert($post);
+            }
+        }
+        return $profile;
+    }
 }
 $new_instance = mJobProfileAction::getInstance();

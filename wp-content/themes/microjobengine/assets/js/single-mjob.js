@@ -278,7 +278,7 @@
             showConfirmForm: function(e){
                 e.preventDefault();
                 var view = this;
-                window.location.href = ae_globals.process_hiring;
+                window.location.href = ae_globals.process_hiring+'?jid='+ this.model.get('ID');
             }
         });
         /**

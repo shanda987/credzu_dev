@@ -974,3 +974,24 @@ if(!function_exists('mJobAddFacebookSharingImage')) {
 
     add_action('wp_head', 'mJobAddFacebookSharingImage');
 }
+if( !function_exists('mJobProfileAction') ){
+    /**
+     * return profile class
+     *
+     * @param void
+     * @return void
+     * @since 1.0
+     * @package MicrojobEngine
+     * @category void
+     * @author JACK BUI
+     */
+    function mJobProfileAction(){
+        return mJobProfileAction::getInstance();
+    }
+}
+if( !function_exists('mJobPostAction') ){
+    function mJobPostAction()
+    {
+        return mJobPostAction::getInstance();
+    }
+}

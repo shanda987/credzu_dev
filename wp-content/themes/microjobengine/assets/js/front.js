@@ -805,7 +805,7 @@
                 }
                 else {
                     this.profilemodel = new Models.mJobProfile();
-                    if($('#current_user').length > 0) {
+                    if($('#current_user').length > 0 && ae_globals.user_ID != 0) {
                         this.profilemodel.set({
                             post_author: currentUser.data.ID,
                             post_type: 'mjob_profile',
