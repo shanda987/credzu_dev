@@ -13,12 +13,12 @@ get_header();
 ?>
 <div id="content" class="mjob-post-service">
     <div class="container float-center">
-        <p class="block-title"><?php _e('CONFIRM CONTACT INFORMATION', ET_DOMAIN); ?></p>
         <div class="progress-bar">
             <div class="mjob-progress-bar-item">
-            <?php mJobProgressBar(3, true); ?>
+                <?php mJobProgressBar(3, true); ?>
             </div>
         </div>
+        <p class="block-title"><?php _e('CONFIRM CONTACT INFORMATION', ET_DOMAIN); ?></p>
         <?php
 
             get_template_part( 'template/hiring', 'step1' );
