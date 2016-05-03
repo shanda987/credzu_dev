@@ -166,7 +166,7 @@ function addMjobPrice(){
     if( isset($_GET['jid']) ){
         $mjob = mJobAction()->get_mjob($_GET['jid']);
         if( !empty($mjob) ) {
-            return $mjob->et_budget;
+            return $mjob->et_budget_text;
         }
     }
     return '';
