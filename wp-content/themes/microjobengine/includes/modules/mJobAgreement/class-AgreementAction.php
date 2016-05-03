@@ -131,3 +131,43 @@ function addAddressName(){
     }
     return $name;
 }
+add_shortcode('mjob-description', 'addMjobDescription');
+/**
+ * add first name to shortcode
+ *
+ * @param array $atts
+ * @return void
+ * @since 1.0
+ * @package MicrojobEngine
+ * @category void
+ * @author JACK BUI
+ */
+function addMjobDescription(){
+    if( isset($_GET['jid']) ){
+        $mjob = mJobAction()->get_mjob($_GET['jid']);
+        if( !empty($mjob) ) {
+            return $mjob->post_content;
+        }
+    }
+    return '';
+}
+add_shortcode('mjob-price', 'addMjobPrice');
+/**
+ * add first name to shortcode
+ *
+ * @param array $atts
+ * @return void
+ * @since 1.0
+ * @package MicrojobEngine
+ * @category void
+ * @author JACK BUI
+ */
+function addMjobPrice(){
+    if( isset($_GET['jid']) ){
+        $mjob = mJobAction()->get_mjob($_GET['jid']);
+        if( !empty($mjob) ) {
+            return $mjob->et_budget;
+        }
+    }
+    return '';
+}
