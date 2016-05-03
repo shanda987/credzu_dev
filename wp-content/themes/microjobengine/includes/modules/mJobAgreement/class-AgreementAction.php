@@ -35,7 +35,7 @@ add_shortcode('client-first-name', 'addFirstName');
  function addFirstName(){
     global $user_ID;
     $profile = mJobProfileAction()->getProfile($user_ID);
-    $name = '';
+    $name = '[client-first-name]';
     if( !empty($profile) ){
         $name =  $profile->first_name;
     }
@@ -55,7 +55,7 @@ add_shortcode('client-last-name', 'addLastName');
 function addLastName(){
     global $user_ID;
     $profile = mJobProfileAction()->getProfile($user_ID);
-    $name = '';
+    $name = '[client-last-name]';
     if( !empty($profile) ){
         $name =  $profile->last_name;
     }
@@ -75,7 +75,7 @@ add_shortcode('client-address', 'addAddress');
 function addAddress(){
     global $user_ID;
     $profile = mJobProfileAction()->getProfile($user_ID);
-    $name = '';
+    $name = '[client-address]';
     if( !empty($profile) ){
         $name =  $profile->billing_full_address;
     }
@@ -93,7 +93,7 @@ add_shortcode('company-name', 'addCompanyName');
  * @author JACK BUI
  */
 function addCompanyName(){
-    $name = '';
+    $name = 'company-name';
     if( isset($_GET['jid']) ){
         $mjob = mJobAction()->get_mjob($_GET['jid']);
         if( !empty($mjob) ) {
@@ -118,7 +118,7 @@ add_shortcode('company-address', 'addAddressName');
  * @author JACK BUI
  */
 function addAddressName(){
-    $name = '';
+    $name = '[company-address]';
     if( isset($_GET['jid']) ){
         $mjob = mJobAction()->get_mjob($_GET['jid']);
         if( !empty($mjob) ) {
@@ -169,7 +169,7 @@ function addMjobPrice(){
             return $mjob->et_budget_text;
         }
     }
-    return '';
+    return '[mjob-price]';
 }
 add_shortcode('timestamp', 'addTimeStamp');
 /**
