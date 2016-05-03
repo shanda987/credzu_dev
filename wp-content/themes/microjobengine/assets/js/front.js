@@ -866,8 +866,14 @@
                 $('.page-template-page-process-hiring .block-title').html(ae_globals.process_hiring_step2);
                 $('.form-confirm-billing').show();
                 $('.form-confirm-info').hide();
-                $('select[name="use_billing_address"]').val(this.profilemodel.get('use_billing_address'));
-                $('select[name="use_holder_account"]').val(this.profilemodel.get('use_holder_account'));
+                var use_billing_address = this.profilemodel.get('use_billing_address');
+                var use_holder_account = this.profilemodel.get('use_holder_account');
+                if( use_billing_address != '' ) {
+                    $('select[name="use_billing_address"]').val(this.profilemodel.get('use_billing_address'));
+                }
+                if( use_holder_account != '' ) {
+                    $('select[name="use_holder_account"]').val(this.profilemodel.get('use_holder_account'));
+                }
                 if( this.profilemodel.get('use_billing_address') == 'no' ){
                     $('.billing-order-address').show();
                 }
