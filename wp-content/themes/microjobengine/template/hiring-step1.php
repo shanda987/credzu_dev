@@ -28,7 +28,7 @@ $business_email = !empty($profile->business_email) ? $profile->business_email : 
 $credit_goal = !empty($profile->credit_goal) ? $profile->credit_goal : '';
 ?>
 <div class="form-confirm-info">
-    <form class="et-form">
+    <form class="et-form post-job">
         <div class="form-group clearfix">
             <div class="input-group">
                 <div class="input-group-addon no-addon"></div>

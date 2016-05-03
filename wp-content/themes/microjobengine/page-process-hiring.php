@@ -13,7 +13,7 @@ get_header();
 ?>
 <div id="content" class="mjob-post-service">
     <div class="container float-center">
-        <p class="block-title"><?php _e('POST A MJOB', ET_DOMAIN); ?></p>
+        <p class="block-title"><?php _e('CONFIRM CONTACT INFORMATION', ET_DOMAIN); ?></p>
         <div class="progress-bar">
             <div class="mjob-progress-bar-item">
             <?php mJobProgressBar(3, true); ?>
