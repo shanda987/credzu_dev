@@ -1021,6 +1021,8 @@ class ET_Microjobengine extends AE_Base
         $vars['user_confirm'] = ae_get_option('user_confirm');
         $vars['permalink_structure'] = get_option('permalink_structure');
         $vars['process_hiring'] = et_get_page_link('process-hiring');
+        $vars['process_hiring_step2'] = __('CONFIRM BILLING INFORMATION', ET_DOMAIN);
+        $vars['process_hiring_step3'] = __('REVIEW AND SIGN AGREEMENTS', ET_DOMAIN);
         return $vars;
     }
     /**

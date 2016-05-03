@@ -793,10 +793,16 @@
             }
         });
         Views.ProcessHiring = Backbone.View.extend({
-            el: '.form-confirm-info',
-            events: {},
+            el: '.page-template-page-process-hiring',
+            events: {
+                'change select[name="use_billing_address"]': 'selectBilling',
+                'change select[name="use_holder_account"]': 'selectAccount'
+
+            },
             initialize: function () {
                 this.initProcessHiring();
+                AE.pubsub.on('ae:form:submit:success', this.afterSave, this);
+
             },
             initProcessHiring: function(){
                 if($('#mjob_profile_data').length > 0) {
@@ -825,7 +831,6 @@
                         })
                     }
                 }
-                console.log(this.profilemodel);
                 // Set nonce for security purpose
                 this.profilemodel.set('_wpnonce', $('#profile_wpnonce').val());
                 if(typeof this.profileForm === "undefined") {
@@ -838,7 +843,83 @@
                         blockTarget: '.form-confirm-info button'
                     });
                 }
+                if(typeof this.billingForm === "undefined") {
+                    this.bilingForm = new Views.AE_Form({
+                        el: '.form-confirm-billing', // Wrapper of for
+                        model: this.profilemodel,
+                        rules: {
+                        },
+                        type: 'update-billing-hiring',
+                        blockTarget: '.form-confirm-billing button'
+                    });
+                }
             },
+            afterSave: function(result, resp, jqXHR, type){
+                var view = this;
+                if( resp.success ) {
+                    if (type == 'update-profile-hiring') {
+                        view.showStep2();
+                    }
+                }
+            },
+            showStep2: function(){
+                $('.page-template-page-process-hiring .block-title').html(ae_globals.process_hiring_step2);
+                $('.form-confirm-billing').show();
+                $('.form-confirm-info').hide();
+                $('select[name="use_billing_address"]').val(this.profilemodel.get('use_billing_address'));
+                $('select[name="use_holder_account"]').val(this.profilemodel.get('use_holder_account'));
+                if( this.profilemodel.get('use_billing_address') == 'no' ){
+                    $('.billing-order-address').show();
+                }
+                if( this.profilemodel.get('use_holder_account') == 'no' ){
+                    $('.account-holder').show();
+                }
+                this.showStepTwo();
+
+            },
+            showStepOne: function(){
+                $('.post-service-step-1').addClass('active');
+                $('.post-service-step-1').removeClass('done');
+                $('.post-service-step-2').removeClass('active');
+                $('.progress-bar-success').removeClass('half');
+                $('.progress-bar-success').removeClass('full');
+            },
+            showStepTwo: function() {
+                $('.post-service-step-1').removeClass('active');
+                $('.post-service-step-1').addClass('done');
+                $('.post-service-step-2').addClass('active');
+                $('.post-service-step-3').removeClass('active');
+                $('.progress-bar-success').addClass('half');
+                $('.progress-bar-success').removeClass('full');
+            },
+            showStepThree: function() {
+                $('.post-service-step-1').addClass('done');
+                $('.post-service-step-2').removeClass('active');
+                $('.post-service-step-2').addClass('done');
+                $('.post-service-step-3').addClass('active');
+                $('.progress-bar-success').removeClass('half');
+                $('.progress-bar-success').addClass('full');
+            },
+            selectBilling: function(event){
+                event.preventDefault();
+                $target = $(event.currentTarget);
+                if( $target.val() == 'no' ){
+                    $('.billing-order-address').show();
+                }
+                else{
+                    $('.billing-order-address').hide();
+                }
+            },
+            selectAccount: function(event){
+                event.preventDefault();
+                $target = $(event.currentTarget);
+                if( $target.val() == 'no' ){
+                    $('.account-holder').show();
+                }
+                else{
+                    $('.account-holder').hide();
+                }
+            }
         });
         new Views.ProcessHiring();
         // Serialize object

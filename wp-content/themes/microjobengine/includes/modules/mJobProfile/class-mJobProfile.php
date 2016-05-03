@@ -37,7 +37,14 @@ class mJobProfile extends mJobPost{
             'client_signature',
             'company_name',
             'company_address',
-            'company_signature'
+            'company_signature',
+            'account_number',
+            'routing_number',
+            'billing_other_address',
+            'account_holder',
+            'use_holder_account',
+            'use_billing_address'
+
         );
         $this->post_type_singular = 'Profile';
         $this->post_type_regular = 'Profiles';

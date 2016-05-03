@@ -121,3 +121,20 @@
 .page-template-page-profile .upload-profile-avatar img{
     border-radius: 50%;
 }
+.page-template-page-process-hiring .form-confirm-billing{
+    display: none;
+}
+.page-template-page-process-hiring .hiring-process-select{
+    height: 35px;
+    line-height: 30px;
+    background: none;
+    box-shadow: none;
+    border-radius: 0;
+    border: none;
+    border-bottom: 1px solid #dfe0e5;
+    padding-left: 0;
+    width: 40%;
+}
+.page-template-page-process-hiring .billing-order-address, .page-template-page-process-hiring .account-holder{
+    display: none;
+}
