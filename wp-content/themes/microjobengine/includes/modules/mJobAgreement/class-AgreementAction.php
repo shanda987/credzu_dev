@@ -183,8 +183,8 @@ add_shortcode('timestamp', 'addTimeStamp');
  * @author JACK BUI
  */
 function addTimeStamp(){
-
-    return time();
+    $time_option = get_option('date_format');
+    return date($time_option, time());
 }
 add_shortcode('ip-address', 'addIpAddress');
 /**
