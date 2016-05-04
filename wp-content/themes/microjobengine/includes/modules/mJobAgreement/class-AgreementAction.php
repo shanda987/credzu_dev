@@ -81,7 +81,7 @@ function addAddress(){
     }
     return $name;
 }
-add_shortcode('client-signature', 'addSignature');
+add_shortcode('signature', 'addSignature');
 /**
  * add first name to shortcode
  *
@@ -95,34 +95,49 @@ add_shortcode('client-signature', 'addSignature');
 function addSignature(){
     global $user_ID;
     $profile = mJobProfileAction()->getProfile($user_ID);
-    $name = '[client-signature]';
+    $name = '[signature]';
     if( !empty($profile) ){
-        $name =  $profile->client_signature;
+        $name =  $profile->signature;
     }
     return $name;
 }
-add_shortcode('company-signature', 'addCompanySignature');
+add_shortcode('client-email', 'addClientEmail');
 /**
- * add first name to shortcode
+ * add client email to shortcode
  *
- * @param array $atts
+ * @param void
  * @return void
  * @since 1.0
  * @package MicrojobEngine
  * @category void
  * @author JACK BUI
  */
-function addCompanySignature(){
-    $name = '[company-signature]';
-    if( isset($_GET['jid']) ){
-        $mjob = mJobAction()->get_mjob($_GET['jid']);
-        if( !empty($mjob) ) {
-            $profile = mJobProfileAction()->getProfile($mjob->post_author);
-            if (!empty($profile)) {
-                $name = $profile->company_signature;
-                return $name;
-            }
-        }
+function addClientEmail(){
+    global $user_ID;
+    $profile = mJobProfileAction()->getProfile($user_ID);
+    $name = '[client-email]';
+    if( !empty($profile) ){
+        $name =  $profile->business_email;
+    }
+    return $name;
+}
+add_shortcode('client-phone', 'addClientPhone');
+/**
+ * add client email to shortcode
+ *
+ * @param void
+ * @return void
+ * @since 1.0
+ * @package MicrojobEngine
+ * @category void
+ * @author JACK BUI
+ */
+function addClientPhone(){
+    global $user_ID;
+    $profile = mJobProfileAction()->getProfile($user_ID);
+    $name = '[client-phone]';
+    if( !empty($profile) ){
+        $name =  $profile->phone;
     }
     return $name;
 }
@@ -176,7 +191,7 @@ function addAddressName(){
     }
     return $name;
 }
-add_shortcode('mjob-description', 'addMjobDescription');
+add_shortcode('service-description', 'addMjobDescription');
 /**
  * add first name to shortcode
  *
@@ -194,9 +209,9 @@ function addMjobDescription(){
             return $mjob->post_content;
         }
     }
-    return '';
+    return '[service-description]';
 }
-add_shortcode('mjob-price', 'addMjobPrice');
+add_shortcode('service-price', 'addMjobPrice');
 /**
  * add first name to shortcode
  *
@@ -214,7 +229,27 @@ function addMjobPrice(){
             return $mjob->et_budget_text;
         }
     }
-    return '[mjob-price]';
+    return '[service-price]';
+}
+add_shortcode('service-duration', 'addMjobDuration');
+/**
+ * add service duration to shortcode
+ *
+ * @param array $atts
+ * @return void
+ * @since 1.0
+ * @package MicrojobEngine
+ * @category void
+ * @author JACK BUI
+ */
+function addMjobDuration(){
+    if( isset($_GET['jid']) ){
+        $mjob = mJobAction()->get_mjob($_GET['jid']);
+        if( !empty($mjob) ) {
+            return $mjob->time_delivery;
+        }
+    }
+    return '[service-duration]';
 }
 add_shortcode('timestamp', 'addTimeStamp');
 /**
