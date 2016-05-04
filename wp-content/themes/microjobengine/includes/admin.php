@@ -1814,7 +1814,7 @@ class ET_Admin extends AE_Base
                              'id' => 'mjob_agreement_slug',
                              'type' => 'text',
                              'title' => __("Single agreement page Slug", ET_DOMAIN) ,
-                             'name' => 'mjob_agreement_slug',
+                             'name' => 'mjob_agreementu_slug',
                              'placeholder' => __("Single agreement page Slug", ET_DOMAIN) ,
                              'class' => 'option-item bg-grey-input ',
                              'default' => 'service_agreement'
