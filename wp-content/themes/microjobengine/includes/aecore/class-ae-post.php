@@ -779,6 +779,9 @@ class AE_Posts
         $query = new WP_Query($args);
         return $query;
     }
+    public function add_meta_box() {
+
+    }
 }
 
 /**
@@ -816,6 +819,22 @@ class AE_PostFact
     public function get($post_type) {
         if (isset(self::$objects[$post_type])) return self::$objects[$post_type];
         return null;
+    }
+    /**
+     * Description
+     *
+     * @param void
+     * @return void
+     * @since 1.0
+     * @package MicrojobEngine
+     * @category void
+     * @author JACK BUI
+     */
+    public function get_all(){
+        if ( isset( self::$objects ) ) {
+            return self::$objects;
+        }
+        return NULL;
     }
 }
 

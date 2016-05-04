@@ -60,7 +60,7 @@ require_once dirname( __FILE__ ).'/payment/visitor-use-package.php';
 
 //WC inegrate
 require_once dirname(__FILE__) . '/wc_integration/class-wc-integrate.php';
-
+require_once dirname( __FILE__ ).'/class-ae-form.php';
 // class control payment
 require_once dirname( __FILE__ ).'/payments.php';
 require_once dirname( __FILE__ ).'/class-ae-payments.php';
@@ -68,7 +68,7 @@ require_once dirname( __FILE__ ).'/class-ae-package.php';
 require_once dirname( __FILE__ ).'/class-ae-orders.php';
 
 require_once dirname( __FILE__ ).'/class-ae-mapstyle.php';
-
+require_once dirname( __FILE__ ).'/class-ae-metabox.php';
 require_once dirname( __FILE__ ).'/class-ae-validator.php';
 require_once dirname( __FILE__ ).'/framework.php';
 require_once dirname( __FILE__ ).'/functions.php';

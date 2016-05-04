@@ -1426,3 +1426,37 @@ if( !function_exists( 'et_unban_expired_users') ) {
     }
 }
 add_action( 'et_cron_unban_users', 'et_unban_expired_users' );
+/**
+ * Generate an HTML tag. Atributes are escaped. Content is NOT escaped.
+ *
+ * @param string $tag
+ *
+ * @return string
+ */
+if ( ! function_exists( 'html' ) ):
+    function html( $tag ) {
+        static $SELF_CLOSING_TAGS = array( 'area', 'base', 'basefont', 'br', 'hr', 'input', 'img', 'link', 'meta' );
+        $args = func_get_args();
+        $tag = array_shift( $args );
+        if ( is_array( $args[0] ) ) {
+            $closing = $tag;
+            $attributes = array_shift( $args );
+            foreach ( $attributes as $key => $value ) {
+                if ( false === $value ) {
+                    continue;
+                }
+                if ( true === $value ) {
+                    $value = $key;
+                }
+                $tag .= ' ' . $key . '="' . esc_attr( $value ) . '"';
+            }
+        } else {
+            list( $closing ) = explode( ' ', $tag, 2 );
+        }
+        if ( in_array( $closing, $SELF_CLOSING_TAGS ) ) {
+            return "<{$tag} />";
+        }
+        $content = implode( '', $args );
+        return "<{$tag}>{$content}</{$closing}>";
+    }
+endif;

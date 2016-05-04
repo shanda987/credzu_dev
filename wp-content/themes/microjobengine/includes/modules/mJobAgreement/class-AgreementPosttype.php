@@ -40,6 +40,7 @@ class agreementPostType extends mJobPost{
     public function init(){
         $this->registerPosttype();
         register_taxonomy_for_object_type('mjob_category', 'mjob_agreement');
+        $this->add_meta_box();
     }
     /**
       * override convert function
@@ -58,6 +59,37 @@ class agreementPostType extends mJobPost{
         $data = parent::convert($post_data, $thumbnail, $excerpt, $singular);
         $data->post_content = $data->unfiltered_content;
         return $data;
+    }
+    /**
+     * add metabox
+     *
+     * @param void
+     * @return void
+     * @since 1.0
+     * @package MicrojobEngine
+     * @category void
+     * @author JACK BUI
+     */
+    public function add_meta_box() {
+
+            $post_type   = 'mjob_agreement';
+            $meta_box_id = $post_type . "_metabox";
+            $title       = __('Shortcode', ET_DOMAIN);
+            $arg         = array(
+                'post_type' => $post_type,
+                'context'   => 'advanced',
+                'priority'  => 'default',
+            );
+            $input       = array(
+                array(
+                    'title' => __( 'Latitude', ET_DOMAIN ),
+                    'type'  => 'html',
+                    'name'  => '_latitude',
+                    'value'=> ae_get_option('agreement_shortcode', 'Hello')
+                ),
+
+            );
+            new AE_Metabox( $meta_box_id, $title, $arg, $input );
     }
 }
 $new_instance = agreementPostType::getInstance();

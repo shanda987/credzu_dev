@@ -1049,6 +1049,23 @@ class ET_Admin extends AE_Base
                         )
                     )
                 ),
+                array(
+                    'args' => array(
+                        'title' => __("Agreement shortcode explaination", ET_DOMAIN) ,
+                        'id' => 'Cash',
+                        'class' => 'payment-gateway',
+                        'desc' => __("Agreement shortcode explaination.", ET_DOMAIN) ,
+                    ) ,
+                    'fields' => array(
+                        array(
+                            'id' => 'agreement_shortcode',
+                            'type' => 'editor',
+                            'title' => __("Align", ET_DOMAIN) ,
+                            'name' => 'agreement_shortcode',
+                            'class' => 'option-item bg-grey-input ',
+                        )
+                    )
+                ) ,
             )
         );
 

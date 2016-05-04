@@ -19,6 +19,7 @@ class mJobPostAction extends AE_PostAction{
      */
     public  function __construct($post_type = 'post'){
         parent::__construct($post_type);
+        $this->add_meta_box();
     }
     /**
      * sync post
@@ -176,6 +177,28 @@ class mJobPostAction extends AE_PostAction{
             );
         }
         return apply_filters('mjob_check_pending_account', $result, $request);
+    }
+    /**
+     * Add metabox
+     *
+     * @param void
+     * @return void
+     * @since 1.0
+     * @package MicrojobEngine
+     * @category void
+     * @author JACK BUI
+     */
+    public function add_meta_box() {
+        //Global
+        global $ae_post_factory;
+        $post_objects = $ae_post_factory->get_all();
+        if ( $post_objects != NULL ) {
+            foreach ( $post_objects as $post_object ) {
+                if ( method_exists( $post_object, 'add_meta_box' ) ) {
+                    $post_object->add_meta_box();
+                }
+            }
+        }
     }
 
 }
