@@ -1801,7 +1801,26 @@ class ET_Admin extends AE_Base
                              'default' => 'skill'
                          )
                      )
-                 )
+                 ),
+                 array(
+                     'args' => array(
+                         'title' => __("Agreement Single", ET_DOMAIN) ,
+                         'id' => 'agreement-slug',
+                         'class' => 'list-package',
+                         'desc' => __("Enter a string to customize agrement single permalink structure slug.", ET_DOMAIN) ,
+                     ) ,
+                     'fields' => array(
+                         array(
+                             'id' => 'mjob_agreement_slug',
+                             'type' => 'text',
+                             'title' => __("Single agreement page Slug", ET_DOMAIN) ,
+                             'name' => 'mjob_agreement_slug',
+                             'placeholder' => __("Single agreement page Slug", ET_DOMAIN) ,
+                             'class' => 'option-item bg-grey-input ',
+                             'default' => 'service_agreement'
+                         )
+                     )
+                 ) ,
 
              )
          );
