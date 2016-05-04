@@ -1053,7 +1053,7 @@ class ET_Admin extends AE_Base
                     'args' => array(
                         'title' => __("Agreement shortcode explaination", ET_DOMAIN) ,
                         'id' => 'Cash',
-                        'class' => 'payment-gateway',
+                        'class' => '',
                         'desc' => __("Agreement shortcode explaination.", ET_DOMAIN) ,
                     ) ,
                     'fields' => array(
