@@ -167,6 +167,7 @@ function addCompanyName(){
     return $name;
 }
 add_shortcode('company-address', 'addAddressName');
+
 /**
  * add first name to shortcode
  *
@@ -185,6 +186,31 @@ function addAddressName(){
             $profile = mJobProfileAction()->getProfile($mjob->post_author);
             if (!empty($profile)) {
                 $name = $profile->billing_full_address;
+                return $name;
+            }
+        }
+    }
+    return $name;
+}
+add_shortcode('company-first-name', 'addCompanyFirstName');
+/**
+ * add first name to shortcode
+ *
+ * @param array $atts
+ * @return void
+ * @since 1.0
+ * @package MicrojobEngine
+ * @category void
+ * @author JACK BUI
+ */
+function addCompanyFirstName(){
+    $name = '[company-first-name]';
+    if( isset($_GET['jid']) ){
+        $mjob = mJobAction()->get_mjob($_GET['jid']);
+        if( !empty($mjob) ) {
+            $profile = mJobProfileAction()->getProfile($mjob->post_author);
+            if (!empty($profile)) {
+                $name = $profile->company_first_name;
                 return $name;
             }
         }

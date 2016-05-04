@@ -37,6 +37,7 @@ class mJobProfile extends mJobPost{
             'signature',
             'company_name',
             'company_address',
+            'company_first_name',
             'account_number',
             'routing_number',
             'billing_other_address',
