@@ -41,7 +41,16 @@ if($profile_id) {
             </div>
         </div>
         <div class="form-group clearfix float-left check-terms">
-
+            <div id="signature-pad" class="m-signature-pad">
+                <div class="m-signature-pad--body">
+                    <canvas></canvas>
+                </div>
+                <div class="m-signature-pad--footer">
+                    <div class="description">Sign above</div>
+                    <button type="button" class="button clear" data-action="clear">Clear</button>
+                    <button type="button" class="button save" data-action="save">Save</button>
+                </div>
+            </div>
         </div>
         <div class="form-group clearfix float-right change-pass-button-method">
             <button class="btn-submit"><?php _e('Save', ET_DOMAIN); ?></button>
