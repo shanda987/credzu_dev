@@ -31,21 +31,19 @@ class agreementAction extends mJobPostAction{
      * @author JACK BUI
      */
     public function agreement_add_scripts(){
-        $this->add_style('css-sign-js', get_template_directory_uri() . '/includes/modules/mJobAgreement/css/signature-pad.css', array(
-            'jquery',
-            'underscore',
-            'backbone',
-            'appengine'), ET_VERSION, true);
-        $this->add_script('sign-js', get_template_directory_uri() . '/includes/modules/mJobAgreement/js/signature_pad.js', array(
-            'jquery',
-            'underscore',
-            'backbone',
-            'appengine'), ET_VERSION, true);
-        $this->add_script('app-js', get_template_directory_uri() . '/includes/modules/mJobAgreement/js/app.js', array(
-            'jquery',
-            'underscore',
-            'backbone',
-            'appengine'), ET_VERSION, true);
+        if( is_page_template('page-process-hiring.php') ) {
+            $this->add_style('css-sign-js', get_template_directory_uri() . '/includes/modules/mJobAgreement/css/signature-pad.css', ET_VERSION);
+            $this->add_script('sign-js', get_template_directory_uri() . '/includes/modules/mJobAgreement/js/signature_pad.js', array(
+                'jquery',
+                'underscore',
+                'backbone',
+                'appengine'), ET_VERSION, true);
+            $this->add_script('app-js', get_template_directory_uri() . '/includes/modules/mJobAgreement/js/app.js', array(
+                'jquery',
+                'underscore',
+                'backbone',
+                'appengine'), ET_VERSION, true);
+        }
     }
 }
 new agreementAction();
