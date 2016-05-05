@@ -19,7 +19,15 @@ if($profile_id) {
         <div class="form-group clearfix float-left check-terms">
             <div class="checkbox">
                 <label>
-                    <input type="checkbox" name="term_privacy" id="term_privacy"><span class="text-choosen"><?php _e('I accept with the', ET_DOMAIN); ?>
+                    <input type="checkbox" name="read_and_understand" id="read_and_understand"><span class="text-choosen"><?php _e('I read and understand the', ET_DOMAIN); ?>
+                        <a href="<?php echo et_get_page_link('tos'); ?>" target="_blank"><?php _e('I read and understand the ', ET_DOMAIN); ?></a></span>
+                </label>
+            </div>
+        </div>
+        <div class="form-group clearfix float-left check-terms">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="received_two" id="received_two"><span class="text-choosen"><?php _e('I received two copies of the', ET_DOMAIN); ?>
                         <a href="<?php echo et_get_page_link('tos'); ?>" target="_blank"><?php _e('terms and conditions', ET_DOMAIN); ?></a></span>
                 </label>
             </div>
@@ -27,15 +35,7 @@ if($profile_id) {
         <div class="form-group clearfix float-left check-terms">
             <div class="checkbox">
                 <label>
-                    <input type="checkbox" name="term_privacy" id="term_privacy"><span class="text-choosen"><?php _e('I accept with the', ET_DOMAIN); ?>
-                        <a href="<?php echo et_get_page_link('tos'); ?>" target="_blank"><?php _e('terms and conditions', ET_DOMAIN); ?></a></span>
-                </label>
-            </div>
-        </div>
-        <div class="form-group clearfix float-left check-terms">
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" name="term_privacy" id="term_privacy"><span class="text-choosen"><?php _e('I accept with the', ET_DOMAIN); ?>
+                    <input type="checkbox" name="read_and_understand_2" id="read_and_understand_2"><span class="text-choosen"><?php _e('I read and understand the', ET_DOMAIN); ?>
                         <a href="<?php echo et_get_page_link('tos'); ?>" target="_blank"><?php _e('terms and conditions', ET_DOMAIN); ?></a></span>
                 </label>
             </div>

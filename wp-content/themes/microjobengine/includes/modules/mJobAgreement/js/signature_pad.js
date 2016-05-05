@@ -37,7 +37,6 @@ var SignaturePad = (function (document) {
     var SignaturePad = function (canvas, options) {
         var self = this,
             opts = options || {};
-
         this.velocityFilterWeight = opts.velocityFilterWeight || 0.7;
         this.minWidth = opts.minWidth || 0.5;
         this.maxWidth = opts.maxWidth || 2.5;

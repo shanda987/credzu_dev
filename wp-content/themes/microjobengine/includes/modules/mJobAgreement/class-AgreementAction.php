@@ -38,11 +38,6 @@ class agreementAction extends mJobPostAction{
                 'underscore',
                 'backbone',
                 'appengine'), ET_VERSION, true);
-            $this->add_script('app-js', get_template_directory_uri() . '/includes/modules/mJobAgreement/js/app.js', array(
-                'jquery',
-                'underscore',
-                'backbone',
-                'appengine'), ET_VERSION, true);
         }
     }
 }

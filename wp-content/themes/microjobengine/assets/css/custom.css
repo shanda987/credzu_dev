@@ -135,6 +135,10 @@
     padding-left: 0;
     width: 40%;
 }
-.page-template-page-process-hiring .billing-order-address, .page-template-page-process-hiring .account-holder{
+.page-template-page-process-hiring .billing-order-address, .page-template-page-process-hiring .account-holder, .page-template-page-process-hiring .form-sign-agreement{
     display: none;
+}
+.page-template-page-process-hiring .clear{
+    margin-right: 20px;
+    cursor: pointer;
 }

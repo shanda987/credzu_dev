@@ -860,6 +860,9 @@
                     if (type == 'update-profile-hiring') {
                         view.showStep2();
                     }
+                    else if(type == 'update-billing-hiring'){
+                        view.showStep3();
+                    }
                 }
             },
             showStep2: function(){
@@ -882,6 +885,41 @@
                 }
                 this.showStepTwo();
 
+            },
+            showStep3: function(){
+                var view = this;
+                $('.page-template-page-process-hiring .block-title').html(ae_globals.process_hiring_step3);
+                $('.form-sign-agreement').show();
+                $('.form-confirm-billing').hide();
+                var wrapper = document.getElementById("signature-form"),
+                    clearButton = wrapper.querySelector("[data-action=clear]"),
+                    saveButton = wrapper.querySelector("[data-action=save]"),
+                    canvas = wrapper.querySelector("canvas"),
+                    signaturePad;
+                window.onresize = view.resizeCanvas;
+                view.resizeCanvas(canvas);
+                signaturePad = new SignaturePad(canvas);
+                clearButton.addEventListener("click", function (event) {
+                    signaturePad.clear();
+                });
+                saveButton.addEventListener("click", function (event) {
+                    if (signaturePad.isEmpty()) {
+                        alert("Please provide signature first.");
+                    } else {
+                        window.open(signaturePad.toDataURL());
+                    }
+                });
+                this.showStepThree();
+
+            },
+            resizeCanvas: function(canvas) {
+                // When zoomed out to less than 100%, for some very strange reason,
+                // some browsers report devicePixelRatio as less than 1
+                // and only part of the canvas is cleared then.
+                var ratio =  Math.max(window.devicePixelRatio || 1, 1);
+                canvas.width = canvas.offsetWidth * ratio;
+                canvas.height = canvas.offsetHeight * ratio;
+                canvas.getContext("2d").scale(ratio, ratio);
             },
             showStepOne: function(){
                 $('.post-service-step-1').addClass('active');
