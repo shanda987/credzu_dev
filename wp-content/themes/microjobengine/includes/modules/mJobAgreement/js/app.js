@@ -1,4 +1,4 @@
-var wrapper = document.getElementById("signature-pad"),
+var wrapper = document.getElementById("signature-form"),
     clearButton = wrapper.querySelector("[data-action=clear]"),
     saveButton = wrapper.querySelector("[data-action=save]"),
     canvas = wrapper.querySelector("canvas"),

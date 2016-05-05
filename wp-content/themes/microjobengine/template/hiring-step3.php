@@ -15,7 +15,7 @@ if($profile_id) {
 }
 ?>
 <div class="form-sign-agreement">
-    <form class="et-form post-job">
+    <form class="et-form post-job" id="signature-form">
         <div class="form-group clearfix float-left check-terms">
             <div class="checkbox">
                 <label>
@@ -46,14 +46,13 @@ if($profile_id) {
                     <canvas></canvas>
                 </div>
                 <div class="m-signature-pad--footer">
-                    <div class="description">Sign above</div>
-                    <button type="button" class="button clear" data-action="clear">Clear</button>
-                    <button type="button" class="button save" data-action="save">Save</button>
+                    <div class="description"><?php _e('Draw your signature above', ET_DOMAIN); ?></div>
                 </div>
             </div>
         </div>
         <div class="form-group clearfix float-right change-pass-button-method">
-            <button class="btn-submit"><?php _e('Save', ET_DOMAIN); ?></button>
+            <a  class="button clear" data-action="clear"><?php _e('CLEAR SIGNATURE', ET_DOMAIN); ?></a>
+            <button type="button" class="button save btn-submit" data-action="save"><?php _e('SIGN', ET_DOMAIN) ?></button>
         </div>
         <input type="hidden" class="input-item" name="_wpnonce" id="profile_wpnonce" value="<?php echo de_create_nonce('ae-mjob_post-sync');?>" />
     </form>
