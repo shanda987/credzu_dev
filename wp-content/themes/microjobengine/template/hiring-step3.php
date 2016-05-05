@@ -13,33 +13,30 @@ if($profile_id) {
         $profile = $profile_obj->convert($post);
     }
 }
+$agreements = array();
+if( isset($_GET['jid']) && !empty($_GET['jid'] ) ){
+    $mjob = mJobAction()->get_mjob($_GET['jid']);
+    if( isset($mjob->mjob_category['0']) ){
+        $agreements = agreementAction()->get_agreement_by_cats($mjob->mjob_category['0']);
+    }
+}
 ?>
 <div class="form-sign-agreement">
     <form class="et-form post-job" id="signature-form">
-        <div class="form-group clearfix float-left check-terms">
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" name="read_and_understand" id="read_and_understand"><span class="text-choosen"><?php _e('I read and understand the', ET_DOMAIN); ?>
-                        <a href="<?php echo et_get_page_link('tos'); ?>" target="_blank"><?php _e('I read and understand the ', ET_DOMAIN); ?></a></span>
-                </label>
-            </div>
-        </div>
-        <div class="form-group clearfix float-left check-terms">
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" name="received_two" id="received_two"><span class="text-choosen"><?php _e('I received two copies of the', ET_DOMAIN); ?>
-                        <a href="<?php echo et_get_page_link('tos'); ?>" target="_blank"><?php _e('terms and conditions', ET_DOMAIN); ?></a></span>
-                </label>
-            </div>
-        </div>
-        <div class="form-group clearfix float-left check-terms">
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" name="read_and_understand_2" id="read_and_understand_2"><span class="text-choosen"><?php _e('I read and understand the', ET_DOMAIN); ?>
-                        <a href="<?php echo et_get_page_link('tos'); ?>" target="_blank"><?php _e('terms and conditions', ET_DOMAIN); ?></a></span>
-                </label>
-            </div>
-        </div>
+        <?php if( !empty($agreements) ):
+            foreach( $agreements as $key=>$value):
+            ?>
+                <div class="form-group clearfix float-left check-terms">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" name="read_and_understand" id="read_and_understand"><span class="text-choosen"><?php _e('I read and understand the', ET_DOMAIN); ?>
+                                <a href="<?php echo $value->permalink; ?>" target="_blank"><?php echo $value->post_title; ?></a></span>
+                        </label>
+                    </div>
+                </div>
+        <?php
+            endforeach;
+        endif; ?>
         <div class="form-group clearfix float-left check-terms">
             <div id="signature-pad" class="m-signature-pad">
                 <div class="m-signature-pad--body">

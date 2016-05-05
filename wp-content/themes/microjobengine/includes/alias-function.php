@@ -989,6 +989,22 @@ if( !function_exists('mJobProfileAction') ){
         return mJobProfileAction::getInstance();
     }
 }
+if( !function_exists('agreementAction') ){
+    /**
+     * return profile class
+     *
+     * @param void
+     * @return void
+     * @since 1.0
+     * @package MicrojobEngine
+     * @category void
+     * @author JACK BUI
+     */
+    function agreementAction(){
+        return agreementAction::getInstance();
+    }
+}
+
 if( !function_exists('mJobPostAction') ){
     function mJobPostAction()
     {

@@ -40,6 +40,31 @@ class agreementAction extends mJobPostAction{
                 'appengine'), ET_VERSION, true);
         }
     }
+    /**
+     * get agreements by categories
+     *
+     * @param integer $cat_id
+     * @return void
+     * @since 1.0
+     * @package MicrojobEngine
+     * @category void
+     * @author JACK BUI
+     */
+    public function get_agreement_by_cats($cat_id){
+        $args = array(
+            'post_type'=> 'mjob_agreement',
+            'post_status'=> 'publish',
+            'tax_query' => array(
+                array(
+                  'taxonomy' => 'mjob_category',
+                  'field' => 'id',
+                  'terms' => $cat_id // Where term_id of Term 1 is "1".
+                )
+            )
+        );
+        $agreements = get_posts($args);
+        return $agreements;
+    }
 }
 new agreementAction();
 add_shortcode('client-first-name', 'addFirstName');
