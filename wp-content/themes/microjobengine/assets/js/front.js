@@ -898,15 +898,16 @@
                     signaturePad;
                 window.onresize = view.resizeCanvas;
                 view.resizeCanvas(canvas);
-                signaturePad = new SignaturePad(canvas);
+                view.signaturePad = new SignaturePad(canvas);
                 clearButton.addEventListener("click", function (event) {
-                    signaturePad.clear();
+                    view.signaturePad.clear();
                 });
                 saveButton.addEventListener("click", function (event) {
-                    if (signaturePad.isEmpty()) {
+                    if (view.signaturePad.isEmpty()) {
                         alert("Please provide signature first.");
                     } else {
-                        window.open(signaturePad.toDataURL());
+                        console.log(view.signaturePad.toDataURL());
+                        //window.open(signaturePad.toDataURL());
                     }
                 });
                 this.showStepThree();
