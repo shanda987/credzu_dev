@@ -800,6 +800,7 @@
 
             },
             initialize: function () {
+                this.blockUi = new Views.BlockUi();
                 this.initProcessHiring();
                 AE.pubsub.on('ae:form:submit:success', this.afterSave, this);
 
@@ -891,23 +892,38 @@
                 $('.page-template-page-process-hiring .block-title').html(ae_globals.process_hiring_step3);
                 $('.form-sign-agreement').show();
                 $('.form-confirm-billing').hide();
-                var wrapper = document.getElementById("signature-form"),
-                    clearButton = wrapper.querySelector("[data-action=clear]"),
-                    saveButton = wrapper.querySelector("[data-action=save]"),
-                    canvas = wrapper.querySelector("canvas"),
-                    signaturePad;
+                view.wrapper = document.getElementById("signature-form");
+                    view.clearButton = view.wrapper.querySelector("[data-action=clear]");
+                    view.saveButton = view.wrapper.querySelector("[data-action=save]");
+                    view.canvas = view.wrapper.querySelector("canvas");
+                    view.signaturePad;
                 window.onresize = view.resizeCanvas;
-                view.resizeCanvas(canvas);
-                view.signaturePad = new SignaturePad(canvas);
-                clearButton.addEventListener("click", function (event) {
+                view.resizeCanvas(view.canvas);
+                view.signaturePad = new SignaturePad(view.canvas);
+                view.signaturePad.fromDataURL(this.profilemodel.get('signature'));
+                view.clearButton.addEventListener("click", function (event) {
                     view.signaturePad.clear();
                 });
-                saveButton.addEventListener("click", function (event) {
+                view.saveButton.addEventListener("click", function (event) {
                     if (view.signaturePad.isEmpty()) {
                         alert("Please provide signature first.");
                     } else {
-                        console.log(view.signaturePad.toDataURL());
-                        //window.open(signaturePad.toDataURL());
+                        //view.reMoveBlank(view.canvas );
+                        view.profilemodel.set('signature', view.signaturePad.toDataURL());
+                        view.profilemodel.save( '', '', {
+                            beforeSend: function () {
+                                view.blockUi.block(view.saveButton);
+                            },
+                            success: function (result, res, jqXHR) {
+                                if (res.success) {
+                                    AE.pubsub.trigger('ae:notification', {
+                                        msg: res.msg,
+                                        notice_type: 'success'
+                                    });
+                                    view.blockUi.unblock();
+                                }
+                            }
+                        });
                     }
                 });
                 this.showStepThree();
@@ -922,6 +938,57 @@
                 canvas.height = canvas.offsetHeight * ratio;
                 canvas.getContext("2d").scale(ratio, ratio);
             },
+            reMoveBlank: function (canvas) {
+            var imgWidth = canvas.width;
+            var imgHeight = canvas.height;
+                this._ctx = canvas.getContext('2d');
+            var imageData = this._ctx.getImageData(0, 0, imgWidth, imgHeight),
+                data = imageData.data,
+                getAlpha = function(x, y) {
+                    return data[(imgWidth*y + x) * 4 + 3]
+                },
+                scanY = function (fromTop) {
+                    var offset = fromTop ? 1 : -1;
+
+                    // loop through each row
+                    for(var y = fromTop ? 0 : imgHeight - 1; fromTop ? (y < imgHeight) : (y > -1); y += offset) {
+
+                        // loop through each column
+                        for(var x = 0; x < imgWidth; x++) {
+                            if (getAlpha(x, y)) {
+                                return y;
+                            }
+                        }
+                    }
+                    return null; // all image is white
+                },
+                scanX = function (fromLeft) {
+                    var offset = fromLeft? 1 : -1;
+
+                    // loop through each column
+                    for(var x = fromLeft ? 0 : imgWidth - 1; fromLeft ? (x < imgWidth) : (x > -1); x += offset) {
+
+                        // loop through each row
+                        for(var y = 0; y < imgHeight; y++) {
+                            if (getAlpha(x, y)) {
+                                return x;
+                            }
+                        }
+                    }
+                    return null; // all image is white
+                };
+
+            var cropTop = scanY(true),
+                cropBottom = scanY(false),
+                cropLeft = scanX(true),
+                cropRight = scanX(false);
+
+            var relevantData = this._ctx.getImageData(cropLeft, cropTop, cropRight-cropLeft, cropBottom-cropTop);
+                canvas.width = cropRight-cropLeft;
+            canvas.height = cropBottom-cropTop;
+            this._ctx.clearRect(0, 0, cropRight-cropLeft, cropBottom-cropTop);
+            this._ctx.putImageData(relevantData, 0, 0);
+        },
             showStepOne: function(){
                 $('.post-service-step-1').addClass('active');
                 $('.post-service-step-1').removeClass('done');
