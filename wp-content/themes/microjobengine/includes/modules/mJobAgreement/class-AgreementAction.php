@@ -154,7 +154,7 @@ function addSignature(){
         $name =  $profile->signature;
     }
     $file_path = decodeImage($name);
-    return '<img src="'.$file_path.'" />';
+    return '<img class="signature-img" src="'.$file_path.'" />';
 }
 /**
  * decode image
