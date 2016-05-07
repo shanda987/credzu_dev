@@ -1056,6 +1056,22 @@
             },
             setupFields: function(data){
                 var view = this;
+                var gdata = {
+                    id: data.ID,
+                    action: 'mjob-get-agreement-info'
+                }
+                $.ajax({
+                    url: ae_globals.ajaxURL,
+                    type: 'post',
+                    data: gdata,
+                    beforeSend: function() {
+                    },
+                    success: function(res) {
+                        if (res.success) {
+
+                        }
+                    }
+                });
                 $('#agreement_modal_title').html(data.post_title);
                 $('.agreement_modal_content').html(data.post_content);
             }

@@ -146,7 +146,9 @@
     min-width: 75%;
 }
 .agreement_modal_content{
-    word-wrap: break-word;
+    word-wrap: break-word
+    height: 674px;
+    overflow-y: auto;
 }
 .signature-img{
     width: 15%;

@@ -19,6 +19,7 @@ class agreementAction extends mJobPostAction{
     public  function __construct($post_type = 'mjob_post'){
         parent::__construct($post_type);
         $this->add_action('wp_enqueue_scripts', 'agreement_add_scripts', 9);
+        $this->add_ajax('mjob-get-agreement-info', 'getAgreementInfo');
     }
     /**
      * add script
@@ -72,6 +73,19 @@ class agreementAction extends mJobPostAction{
             }
         }
         return $arr_agr;
+    }
+    /**
+     * Get agreement info
+     *
+     * @param void
+     * @return void
+     * @since 1.0
+     * @package MicrojobEngine
+     * @category void
+     * @author JACK BUI
+     */
+    public function getAgreementInfo(){
+
     }
 }
 new agreementAction();
