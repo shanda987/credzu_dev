@@ -905,34 +905,59 @@
                 view.clearButton.addEventListener("click", function (event) {
                     view.signaturePad.clear();
                 });
+                view.target_form = $('#signature-form');
+                view.field_to_check = new Array();
+                $('#signature-form').find('input[type="checkbox"]').each( function(){
+                    view.field_to_check[$(this).attr('name')] = "required"
+                });
+                view.initValidator(view.target_form, view.field_to_check);
                 view.saveButton.addEventListener("click", function (event) {
                     event.preventDefault();
-                    $('#signature-form').find('input[type="checkbox"]').each( function(){
-                       console.log($(this).prop('checked'));
-                    });
-                    if (view.signaturePad.isEmpty()) {
-                        alert("Please provide signature first.");
-                    } else {
-                        //view.reMoveBlank(view.canvas );
-                        view.profilemodel.set('signature', view.signaturePad.toDataURL());
-                        view.profilemodel.save( '', '', {
-                            beforeSend: function () {
-                                view.blockUi.block(view.saveButton);
-                            },
-                            success: function (result, res, jqXHR) {
-                                if (res.success) {
-                                    AE.pubsub.trigger('ae:notification', {
-                                        msg: res.msg,
-                                        notice_type: 'success'
-                                    });
-                                    view.blockUi.unblock();
+                    if( view.target_form.valid() ){
+                        if (view.signaturePad.isEmpty()) {
+                            alert("Please provide signature first.");
+                        } else {
+                            //view.reMoveBlank(view.canvas );
+                            view.profilemodel.set('signature', view.signaturePad.toDataURL());
+                            view.profilemodel.save('', '', {
+                                beforeSend: function () {
+                                    view.blockUi.block(view.saveButton);
+                                },
+                                success: function (result, res, jqXHR) {
+                                    if (res.success) {
+                                        AE.pubsub.trigger('ae:notification', {
+                                            msg: res.msg,
+                                            notice_type: 'success'
+                                        });
+                                        view.blockUi.unblock();
+                                    }
                                 }
-                            }
-                        });
+                            });
+                        }
                     }
                 });
                 this.showStepThree();
 
+            },
+            initValidator: function($target_form, field_to_check){
+                var view = this;
+                var form_validator = $target_form.validate({
+                    errorElement: "p",
+                    rules: field_to_check,
+                    highlight:function(element, errorClass, validClass){
+                        var $target = $(element );
+                        var $parent = $(element ).parent();
+                        $parent.addClass('has-error');
+                        $target.addClass('has-visited');
+                    },
+                    unhighlight:function(element, errorClass, validClass){
+                        // position error label after generated textarea
+                        var $target = $(element );
+                        var $parent = $(element ).parent();
+                        $parent.removeClass('has-error');
+                        $target.removeClass('has-visited');
+                    }
+                });
             },
             resizeCanvas: function(canvas) {
                 // When zoomed out to less than 100%, for some very strange reason,
