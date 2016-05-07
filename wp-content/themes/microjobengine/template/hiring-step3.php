@@ -25,8 +25,6 @@ if( isset($_GET['jid']) && !empty($_GET['jid'] ) ){
     <form class="et-form post-job" id="signature-form">
         <?php if( !empty($agreements) ):
             foreach( $agreements as $key=>$value):
-                echo '<pre>';
-                var_dump($value);
             ?>
                 <div class="form-group clearfix float-left check-terms">
                     <div class="checkbox">
