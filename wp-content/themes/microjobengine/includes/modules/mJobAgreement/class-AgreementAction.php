@@ -153,7 +153,25 @@ function addSignature(){
     if( !empty($profile) ){
         $name =  $profile->signature;
     }
-    return $name;
+    $file_path = decodeImage($name);
+    return '<img src="'.$file_path.'" />';
+}
+/**
+ * decode image
+ *
+ * @param void
+ * @return void
+ * @since 1.0
+ * @package MicrojobEngine
+ * @category void
+ * @author JACK BUI
+ */
+function decodeImage($data_uri){
+    $encoded_image = explode(",", $data_uri)[1];
+    $decoded_image = base64_decode($encoded_image);
+    $file_path = get_stylesheet_directory_uri().'/assets/img/signature.png';
+    file_put_contents($file_path, $decoded_image);
+    return $file_path;
 }
 add_shortcode('client-email', 'addClientEmail');
 /**
