@@ -25,12 +25,13 @@ if( isset($_GET['jid']) && !empty($_GET['jid'] ) ){
     <form class="et-form post-job" id="signature-form">
         <?php if( !empty($agreements) ):
             foreach( $agreements as $key=>$value):
+                echo '<script type="text/json" id="agreement_data_'.$value->ID.'" >'.json_encode($value).'</script>';
             ?>
                 <div class="form-group clearfix float-left check-terms">
                     <div class="checkbox">
                         <label>
-                            <input type="checkbox" name="read_and_understand" id="read_and_understand"><span class="text-choosen"><?php _e('I read and understand the', ET_DOMAIN); ?>
-                                <a href="<?php echo $value->permalink; ?>" target="_blank"><?php echo $value->post_title; ?></a></span>
+                            <input type="checkbox" name="read_and_understand_<?php echo $value->ID; ?>" id="read_and_understand_<?php echo $value->ID; ?>"><span class="text-choosen"><?php _e('I read and understand the', ET_DOMAIN); ?>
+                                <a href="#" data-id="<?php echo $value->ID ?>" class="agreement-title-link"><?php echo $value->post_title; ?></a></span>
                         </label>
                     </div>
                 </div>

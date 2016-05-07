@@ -796,7 +796,8 @@
             el: '.page-template-page-process-hiring',
             events: {
                 'change select[name="use_billing_address"]': 'selectBilling',
-                'change select[name="use_holder_account"]': 'selectAccount'
+                'change select[name="use_holder_account"]': 'selectAccount',
+                'click .agreement-title-link': 'showModalAgreement'
 
             },
             initialize: function () {
@@ -1031,6 +1032,32 @@
                 else{
                     $('.account-holder').hide();
                 }
+            },
+            showModalAgreement: function(e){
+                e.preventDefault();
+                $target = $(e.currentTarget);
+                if( typeof this.agreementModal == 'undefined' ){
+                    this.agreementModal = new Views.agreementModal();
+                }
+                var aid = $target.attr('data-id');
+                var data = JSON.parse($('#agreement_data_'+aid).html());
+                this.agreementModal.onOpen(data);
+            },
+        });
+        Views.agreementModal = Views.Modal_Box.extend({
+            el: '#agreement_modal',
+            initialize: function() {
+                AE.Views.Modal_Box.prototype.initialize.call();
+            },
+            onOpen: function(data){
+                var view = this;
+                view.openModal();
+                view.setupFields(data);
+            },
+            setupFields: function(data){
+                var view = this;
+                $('#agreement_modal_title').html(data.post_title);
+                $('.agreement_modal_content').html(data.post_content);
             }
         });
         new Views.ProcessHiring();

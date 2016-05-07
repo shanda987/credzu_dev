@@ -142,3 +142,9 @@
     margin-right: 20px;
     cursor: pointer;
 }
+.agreement_modal_dialog{
+    min-width: 75%;
+}
+.agreement_modal_content{
+    word-wrap: break-word;
+}
