@@ -906,6 +906,10 @@
                     view.signaturePad.clear();
                 });
                 view.saveButton.addEventListener("click", function (event) {
+                    event.preventDefault();
+                    $('#signature-form').find('input[type="checkbox"]').each( function(){
+                       console.log($(this).prop('checked'));
+                    });
                     if (view.signaturePad.isEmpty()) {
                         alert("Please provide signature first.");
                     } else {
@@ -1056,24 +1060,29 @@
             },
             setupFields: function(data){
                 var view = this;
-                var gdata = {
-                    id: data.ID,
-                    action: 'mjob-get-agreement-info'
-                }
-                $.ajax({
-                    url: ae_globals.ajaxURL,
-                    type: 'post',
-                    data: gdata,
-                    beforeSend: function() {
-                    },
-                    success: function(res) {
-                        if (res.success) {
+                view.data = data;
+                $('#agreement_modal_title').html(view.data.post_title);
+                $('.agreement_modal_content').html(view.data.post_content);
+                //var gdata = {
+                //    id: view.data.ID,
+                //    jid: view.$el.find('#mjob_id').val(),
+                //    action: 'mjob-get-agreement-info'
+                //}
+                //if( $('.signature-img').length > 0 ) {
+                //    $.ajax({
+                //        url: ae_globals.ajaxURL,
+                //        type: 'post',
+                //        data: gdata,
+                //        beforeSend: function () {
+                //        },
+                //        success: function (res) {
+                //            if (res.success) {
+                //                $('.signature-img').attr('src', res.data);
+                //            }
+                //        }
+                //    });
+                //}
 
-                        }
-                    }
-                });
-                $('#agreement_modal_title').html(data.post_title);
-                $('.agreement_modal_content').html(data.post_content);
             }
         });
         new Views.ProcessHiring();

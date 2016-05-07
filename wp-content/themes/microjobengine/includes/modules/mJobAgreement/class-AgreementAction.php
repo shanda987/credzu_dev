@@ -85,7 +85,28 @@ class agreementAction extends mJobPostAction{
      * @author JACK BUI
      */
     public function getAgreementInfo(){
+        global $ae_post_factory;
+        $arg_obj = $ae_post_factory->get('mjob_agreement');
+        $request = $_REQUEST;
+        if( isset($request['id']) ){
+            $post = get_post($request['id']);
+            $img_path = decodeImage($post->signature);
+            if( $post ) {
+                $post = $arg_obj->convert($post);
+                wp_send_json( array(
+                        'success'=> true,
+                        'msg'=> __('Success', ET_DOMAIN),
+                        'data'=> $img_path
+                    )
+                );
+            }
 
+        }
+        wp_send_json( array(
+            'success'=> false,
+            'msg'=> __('Failed to get information!', ET_DOMAIN),
+            'data' => array()
+        ));
     }
 }
 new agreementAction();
@@ -241,8 +262,8 @@ add_shortcode('company-name', 'addCompanyName');
  */
 function addCompanyName(){
     $name = '[company-name]';
-    if( isset($_GET['jid']) ){
-        $mjob = mJobAction()->get_mjob($_GET['jid']);
+    if( isset($_REQUEST['jid']) ){
+        $mjob = mJobAction()->get_mjob($_REQUEST['jid']);
         if( !empty($mjob) ) {
             $profile = mJobProfileAction()->getProfile($mjob->post_author);
             if (!empty($profile)) {
@@ -267,8 +288,8 @@ add_shortcode('company-address', 'addAddressName');
  */
 function addAddressName(){
     $name = '[company-address]';
-    if( isset($_GET['jid']) ){
-        $mjob = mJobAction()->get_mjob($_GET['jid']);
+    if( isset($_REQUEST['jid']) ){
+        $mjob = mJobAction()->get_mjob($_REQUEST['jid']);
         if( !empty($mjob) ) {
             $profile = mJobProfileAction()->getProfile($mjob->post_author);
             if (!empty($profile)) {
@@ -292,8 +313,8 @@ add_shortcode('company-first-name', 'addCompanyFirstName');
  */
 function addCompanyFirstName(){
     $name = '[company-first-name]';
-    if( isset($_GET['jid']) ){
-        $mjob = mJobAction()->get_mjob($_GET['jid']);
+    if( isset($_REQUEST['jid']) ){
+        $mjob = mJobAction()->get_mjob($_REQUEST['jid']);
         if( !empty($mjob) ) {
             $profile = mJobProfileAction()->getProfile($mjob->post_author);
             if (!empty($profile)) {
@@ -316,8 +337,8 @@ add_shortcode('service-description', 'addMjobDescription');
  * @author JACK BUI
  */
 function addMjobDescription(){
-    if( isset($_GET['jid']) ){
-        $mjob = mJobAction()->get_mjob($_GET['jid']);
+    if( isset($_REQUEST['jid']) ){
+        $mjob = mJobAction()->get_mjob($_REQUEST['jid']);
         if( !empty($mjob) ) {
             return $mjob->post_content;
         }
@@ -336,8 +357,8 @@ add_shortcode('service-price', 'addMjobPrice');
  * @author JACK BUI
  */
 function addMjobPrice(){
-    if( isset($_GET['jid']) ){
-        $mjob = mJobAction()->get_mjob($_GET['jid']);
+    if( isset($_REQUEST['jid']) ){
+        $mjob = mJobAction()->get_mjob($_REQUEST['jid']);
         if( !empty($mjob) ) {
             return $mjob->et_budget_text;
         }
@@ -356,8 +377,8 @@ add_shortcode('service-duration', 'addMjobDuration');
  * @author JACK BUI
  */
 function addMjobDuration(){
-    if( isset($_GET['jid']) ){
-        $mjob = mJobAction()->get_mjob($_GET['jid']);
+    if( isset($_REQUEST['jid']) ){
+        $mjob = mJobAction()->get_mjob($_REQUEST['jid']);
         if( !empty($mjob) ) {
             return $mjob->time_delivery;
         }

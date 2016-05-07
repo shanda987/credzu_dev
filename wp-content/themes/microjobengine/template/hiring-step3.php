@@ -14,6 +14,7 @@ if($profile_id) {
     }
 }
 $agreements = array();
+$mjob = array();
 if( isset($_GET['jid']) && !empty($_GET['jid'] ) ){
     $mjob = mJobAction()->get_mjob($_GET['jid']);
     if( isset($mjob->mjob_category['0']) ){
@@ -23,6 +24,7 @@ if( isset($_GET['jid']) && !empty($_GET['jid'] ) ){
 ?>
 <div class="form-sign-agreement">
     <form class="et-form post-job" id="signature-form">
+        <input type="hidden" name="mjob_id" id="mjob_id" value="<?php echo $mjob->ID ?>" />
         <?php if( !empty($agreements) ):
             foreach( $agreements as $key=>$value):
                 echo '<script type="text/json" id="agreement_data_'.$value->ID.'" >'.json_encode($value).'</script>';
