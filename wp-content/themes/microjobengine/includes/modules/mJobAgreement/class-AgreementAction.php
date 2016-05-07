@@ -169,8 +169,9 @@ function addSignature(){
 function decodeImage($data_uri){
     $encoded_image = explode(",", $data_uri)[1];
     $decoded_image = base64_decode($encoded_image);
-    $file_path = get_stylesheet_directory_uri().'/assets/img/signature.png';
+    $file_path = dirname(__FILE__).'/img/signature.png';
     file_put_contents($file_path, $decoded_image);
+    $file_path = get_template_directory_uri(). '/includes/modules/mJobAgreement/img/signature.png';
     return $file_path;
 }
 add_shortcode('client-email', 'addClientEmail');
