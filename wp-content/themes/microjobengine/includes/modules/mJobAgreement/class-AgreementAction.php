@@ -51,6 +51,8 @@ class agreementAction extends mJobPostAction{
      * @author JACK BUI
      */
     public function get_agreement_by_cats($cat_id){
+        global $ae_post_factory;
+        $agr_obj = $ae_post_factory->get('mjob_agreement');
         $args = array(
             'post_type'=> 'mjob_agreement',
             'post_status'=> 'publish',
@@ -63,7 +65,13 @@ class agreementAction extends mJobPostAction{
             )
         );
         $agreements = get_posts($args);
-        return $agreements;
+        $arr_agr = array();
+        if( !empty($agreements) ){
+            foreach( $agreements as $key=> $agreement){
+                array_push($arr_agr, $agr_obj->convert($agreement));
+            }
+        }
+        return $arr_agr;
     }
 }
 new agreementAction();
