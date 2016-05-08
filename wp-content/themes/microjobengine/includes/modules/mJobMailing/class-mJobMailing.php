@@ -474,7 +474,23 @@ class mJobMailing extends AE_Mailing
         $email_msg = ae_get_option('consumer_agreement_mail_template', '');
         $attachment = $file_path;
         $result = $this->wp_mail($emails, $subject, $email_msg, array('user_id' => $user_ID),'', $attachment);
-        var_dump($result);
+    }
+    /**
+     * Send consumer rights statement
+     *
+     * @param void
+     * @return void
+     * @since 1.0
+     * @package MicrojobEngine
+     * @category void
+     * @author JACK BUI
+     */
+    public function email_agreement( $emails, $file_path ){
+        global $user_ID;
+        $subject = __('Consumer rights statement email', ET_DOMAIN);
+        $email_msg = ae_get_option('agreement_mail_template', '');
+        $attachment = $file_path;
+        $result = $this->wp_mail($emails, $subject, $email_msg, array('user_id' => $user_ID),'', $attachment);
     }
 
 }

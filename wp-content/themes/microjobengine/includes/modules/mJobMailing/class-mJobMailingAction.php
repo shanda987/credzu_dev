@@ -91,7 +91,7 @@ class mJobMailingAction extends AE_Base
         $this->mail->email_consumer_rights($emails, $file_path);
     }
     public function mJobMailAgreement($emails, $file_path){
-
+        $this->mail->email_agreement($emails, $file_path);
     }
 }
 $new_instance = mJobMailingAction::getInstance();
