@@ -2159,19 +2159,19 @@ class ET_Admin extends AE_Base
                 ) ,
                 array(
                     'args' => array(
-                        'title' => __("Client Agreement Mail Template", ET_DOMAIN) ,
+                        'title' => __("Consumer right statement Mail Template", ET_DOMAIN) ,
                         'id' => 'client-agreement-mail',
                         'class' => 'payment-gateway',
                         'name' => '',
-                        'desc' => __("Send to client to notify signing successfully! ", ET_DOMAIN),
+                        'desc' => __("Send to client and cc company to notify consumer right statement! ", ET_DOMAIN),
                         'toggle' => true
                     ) ,
                     'fields' => array(
                         array(
-                            'id' => 'client_agreement_mail_template',
+                            'id' => 'consumer_agreement_mail_template',
                             'type' => 'editor',
-                            'title' => __("Client Agreement Mail Template", ET_DOMAIN) ,
-                            'name' => 'client_agreement_mail_template',
+                            'title' => __("Consumer right statement Mail Template", ET_DOMAIN) ,
+                            'name' => 'consumer_agreement_mail_template',
                             'class' => '',
                             'reset' => 1
                         )
@@ -2179,19 +2179,19 @@ class ET_Admin extends AE_Base
                 ) ,
                 array(
                     'args' => array(
-                        'title' => __("Company Agreement Mail Template", ET_DOMAIN) ,
+                        'title' => __("Agreement Mail Template", ET_DOMAIN) ,
                         'id' => 'company-agreement-mail',
                         'class' => 'payment-gateway',
                         'name' => '',
-                        'desc' => __("Send to company to notify signing successfully!", ET_DOMAIN),
+                        'desc' => __("Send to client and company to notify Agreement and cancellation!", ET_DOMAIN),
                         'toggle' => true
                     ) ,
                     'fields' => array(
                         array(
-                            'id' => 'company_agreement_mail_template',
+                            'id' => 'agreement_mail_template',
                             'type' => 'editor',
-                            'title' => __("Client Agreement Mail Template", ET_DOMAIN) ,
-                            'name' => 'company_agreement_mail_template',
+                            'title' => __("Send to client and company to notify Agreement and cancellation!", ET_DOMAIN) ,
+                            'name' => 'agreement_mail_template',
                             'class' => '',
                             'reset' => 1
                         )
