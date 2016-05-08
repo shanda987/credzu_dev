@@ -20,7 +20,8 @@ class agreementPostType extends mJobPost{
         $this->post_type = 'mjob_agreement';
         parent::__construct( $this->post_type, $taxs, $meta_data, $localize);
         $this->meta = array(
-            'is_consumer_right_statement'
+            'is_consumer_right_statement',
+            'is_notice_cancellation'
         );
         $this->post_type_singular = 'Agreement';
         $this->post_type_regular = 'Agreements';
