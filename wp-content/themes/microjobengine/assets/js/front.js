@@ -921,6 +921,10 @@
                         } else {
                             //view.reMoveBlank(view.canvas );
                             view.profilemodel.set('signature', view.signaturePad.toDataURL());
+                            view.mjob_id = '';
+                            if( view.$el.find('#mjob_id').length > 0){
+                                view.mjob_id = view.$el.find('#mjob_id').val();
+                            }
                             view.profilemodel.save('', '', {
                                 beforeSend: function () {
                                     view.blockUi.block(view.saveButton);
@@ -932,7 +936,8 @@
                                             url: ae_globals.ajaxURL,
                                             data: {
                                                 action: 'mjob-send-agreement-email',
-                                                aid: view.ageement_ids
+                                                aid: view.ageement_ids,
+                                                jid: view.mjob_id
                                             },
                                             beforeSend: function() {
 

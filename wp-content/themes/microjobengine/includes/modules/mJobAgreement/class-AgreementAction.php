@@ -133,6 +133,7 @@ class agreementAction extends mJobPostAction{
                 $content = '';
                // $content .= '<h1 style="text-align: center">'.$post->post_title.'</h1>';
                 $content .= $post->post_content;
+                var_dump($content);
                 $emails = array(
                     $profile->business_email
                 );
