@@ -54,6 +54,7 @@ if( isset($_GET['jid']) && !empty($_GET['jid'] ) ){
             </div>
         </div>
         <div class="form-group clearfix float-right change-pass-button-method">
+            <a  class="button mjob-process-hiring-back" ><?php _e('back', ET_DOMAIN); ?></a>
             <a  class="button clear" data-action="clear"><?php _e('CLEAR SIGNATURE', ET_DOMAIN); ?></a>
             <button type="button" class="button save btn-submit" data-action="save"><?php _e('SIGN', ET_DOMAIN) ?></button>
         </div>

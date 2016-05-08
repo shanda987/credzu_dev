@@ -275,9 +275,9 @@ class mJobProfileAction extends mJobPostAction
         $profile_id = get_user_meta($user_id, 'user_profile_id', true);
         $profile = '';
         if($profile_id) {
-            $post = get_post($profile_id);
-            if($post && !is_wp_error($post)) {
-                $profile = $profile_obj->convert($post);
+            $p = get_post($profile_id);
+            if($p && !is_wp_error($p)) {
+                $profile = $profile_obj->convert($p);
             }
         }
         return $profile;

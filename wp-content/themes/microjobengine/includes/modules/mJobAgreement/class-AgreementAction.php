@@ -125,10 +125,10 @@ class agreementAction extends mJobPostAction{
         $agr_obj = $ae_post_factory->get('mjob_agreement');
         $request = $_REQUEST;
         $email1 = '';
-        if( isset($_REQUEST['jid']) && !empty($_REQUEST['jid']) ){
-            $post1 = get_post($_REQUEST['jid']);
+        if( isset($request['jid']) && !empty($request['jid']) ){
+            $post1 = get_post($request['jid']);
             if( isset($post1->post_author) ) {
-                $profile1 = mJobProfileAction()->getProfile($post1->author);
+                $profile1 = mJobProfileAction()->getProfile($post1->post_author);
                 if( isset($profile1->business_email) ) {
                     $email1 = $profile1->business_email;
                 }
@@ -149,6 +149,7 @@ class agreementAction extends mJobPostAction{
                 if( !empty($email1) ){
                     array_push($emails, $email1);
                 }
+                var_dump($emails);
                 if( !empty($post->is_consumer_right_statement) && $post->is_consumer_right_statement == '1' ){
                     $file_path = AE_Pdf_Creator()->pdfGenarate($content, $file_name);
                     $file_path = array($file_path);
