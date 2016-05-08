@@ -20,6 +20,7 @@ class agreementPostType extends mJobPost{
         $this->post_type = 'mjob_agreement';
         parent::__construct( $this->post_type, $taxs, $meta_data, $localize);
         $this->meta = array(
+            'is_consumer_right_statement'
         );
         $this->post_type_singular = 'Agreement';
         $this->post_type_regular = 'Agreements';
@@ -82,11 +83,11 @@ class agreementPostType extends mJobPost{
             );
             $input       = array(
                 array(
-                    'title' => __( 'Latitude', ET_DOMAIN ),
+                    'title' => __( 'Agreement shortcode', ET_DOMAIN ),
                     'type'  => 'html',
                     'name'  => '_latitude',
                     'value'=> ae_get_option('agreement_shortcode', 'Hello')
-                ),
+                )
 
             );
             new AE_Metabox( $meta_box_id, $title, $arg, $input );

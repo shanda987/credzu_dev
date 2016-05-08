@@ -907,8 +907,10 @@
                 });
                 view.target_form = $('#signature-form');
                 view.field_to_check = new Array();
+                view.ageement_ids = new Array();
                 $('#signature-form').find('input[type="checkbox"]').each( function(){
                     view.field_to_check[$(this).attr('name')] = "required"
+                    view.ageement_ids.push($(this).attr('data-id'));
                 });
                 view.initValidator(view.target_form, view.field_to_check);
                 view.saveButton.addEventListener("click", function (event) {
@@ -925,6 +927,20 @@
                                 },
                                 success: function (result, res, jqXHR) {
                                     if (res.success) {
+                                        $.ajax({
+                                            type: 'POST',
+                                            url: ae_globals.ajaxURL,
+                                            data: {
+                                                action: 'mjob-send-agreement-email',
+                                                aid: view.ageement_ids
+                                            },
+                                            beforeSend: function() {
+
+                                            },
+                                            success: function(resp, status, jqXHR) {
+
+                                            }
+                                        })
                                         AE.pubsub.trigger('ae:notification', {
                                             msg: res.msg,
                                             notice_type: 'success'

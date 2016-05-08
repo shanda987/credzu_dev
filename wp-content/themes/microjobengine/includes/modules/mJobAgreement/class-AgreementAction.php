@@ -20,6 +20,7 @@ class agreementAction extends mJobPostAction{
         parent::__construct($post_type);
         $this->add_action('wp_enqueue_scripts', 'agreement_add_scripts', 9);
         $this->add_ajax('mjob-get-agreement-info', 'getAgreementInfo');
+        $this->add_ajax('mjob-send-agreement-email', 'sendEmailAgreement');
     }
     /**
      * add script
@@ -107,6 +108,32 @@ class agreementAction extends mJobPostAction{
             'msg'=> __('Failed to get information!', ET_DOMAIN),
             'data' => array()
         ));
+    }
+    /**
+     * Send agreement email
+     *
+     * @param void
+     * @return void
+     * @since 1.0
+     * @package MicrojobEngine
+     * @category void
+     * @author JACK BUI
+     */
+    public function sendEmailAgreement(){
+        global $ae_post_factory;
+        $agr_obj = $ae_post_factory->get('mjob_agreement');
+        $request = $_REQUEST;
+        if( isset($request['aid']) && !empty($request['aid']) ){
+            foreach($request['aid'] as $key=>$value){
+                $post = get_post($value);
+                $post = $agr_obj->convert($post);
+                if( !empty($post->is_consumer_right_statement) && $post->is_consumer_right_statement == '1' ){
+                    AE_Pdf_Creator()->init();
+                    $file_path = AE_Pdf_Creator()->pdfGenarate($post->post_content);
+                    var_dump($file_path);
+                }
+            }
+        }
     }
 }
 new agreementAction();

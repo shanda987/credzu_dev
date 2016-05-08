@@ -32,7 +32,7 @@ if( isset($_GET['jid']) && !empty($_GET['jid'] ) ){
                 <div class="form-group clearfix float-left check-terms">
                     <div class="checkbox">
                         <label>
-                            <input type="checkbox" name="read_and_understand_<?php echo $value->ID; ?>" id="read_and_understand_<?php echo $value->ID; ?>"><span class="text-choosen"><?php _e('I read and understand the', ET_DOMAIN); ?>
+                            <input type="checkbox" data-id="<?php echo $value->ID ?>" name="read_and_understand_<?php echo $value->ID; ?>" id="read_and_understand_<?php echo $value->ID; ?>"><span class="text-choosen"><?php _e('I read and understand the', ET_DOMAIN); ?>
                                 <a href="#" data-id="<?php echo $value->ID ?>" class="agreement-title-link"><?php echo $value->post_title; ?></a></span>
                         </label>
                     </div>

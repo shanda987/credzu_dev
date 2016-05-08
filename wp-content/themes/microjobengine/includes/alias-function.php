@@ -1011,3 +1011,19 @@ if( !function_exists('mJobPostAction') ){
         return mJobPostAction::getInstance();
     }
 }
+if( !function_exists('AE_Pdf_Creator') ){
+    /**
+     * get instance of AE_Pdf_Creator class
+     *
+     * @param void
+     * @return object instance of class AE_Pdf_Creator
+     * @since 1.0
+     * @package MicrojobEngine
+     * @category void
+     * @author JACK BUI
+     */
+    function AE_Pdf_Creator(){
+        $instance = AE_Pdf_Creator::getInstance();
+        return $instance;
+    }
+}
