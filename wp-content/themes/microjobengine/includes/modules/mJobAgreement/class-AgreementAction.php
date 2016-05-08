@@ -229,7 +229,7 @@ function addSignature(){
         $name =  $profile->signature;
     }
     $file_path = decodeImage($name);
-    return '<img style="width:19%" class="signature-img" src="'.$file_path.'" />';
+    return '<img style="width:140px" class="signature-img" src="'.$file_path.'" />';
 }
 /**
  * decode image
