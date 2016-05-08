@@ -127,10 +127,16 @@ class agreementAction extends mJobPostAction{
             foreach($request['aid'] as $key=>$value){
                 $post = get_post($value);
                 $post = $agr_obj->convert($post);
+                $file_name = 'file'.time();
+                AE_Pdf_Creator()->init();
+                $content = '<h1 style="text-align: center">'.$post->post_title.'</h1>';
+                $content .= $post->post_content;
                 if( !empty($post->is_consumer_right_statement) && $post->is_consumer_right_statement == '1' ){
-                    AE_Pdf_Creator()->init();
-                    $file_path = AE_Pdf_Creator()->pdfGenarate($post->post_content);
+                    $file_path = AE_Pdf_Creator()->pdfGenarate($content, $file_name);
                     var_dump($file_path);
+                }
+                else{
+                    $file_path = AE_Pdf_Creator()->pdfGenarate($content, $file_name);
                 }
             }
         }

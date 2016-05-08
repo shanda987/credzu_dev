@@ -42,7 +42,7 @@ class AE_Pdf_Creator extends AE_Base{
      * @category void
      * @author JACK BUI
      */
-    public function pdfGenarate($content){
+    public function pdfGenarate($content, $file_name){
         $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
         // set document information
         $pdf->SetCreator(PDF_CREATOR);
@@ -69,7 +69,7 @@ class AE_Pdf_Creator extends AE_Base{
         }
         // ---------------------------------------------------------
         // set font
-        $pdf->SetFont('times', 'BI', 20);
+        $pdf->SetFont('times', 'R', 13);
         // add a page
         $pdf->AddPage();
         // set some text to print
@@ -78,11 +78,11 @@ class AE_Pdf_Creator extends AE_Base{
             Default page header and footer are disabled using setPrintHeader() and setPrintFooter() methods.
 EOD;
 // print a block of text using Write()
-        $pdf->Write(0, $txt, '', 0, 'C', true, 0, false, false, 0);
 // ---------------------------------------------------------
 //Close and output PDF document
+        $pdf->writeHTML($content, true, false, true, false, '');
         ob_start();
-        $pdf->Output(dirname(__FILE__).'/files/file_1.pdf', 'I');
+        $pdf->Output(dirname(__FILE__).'/files/'.$file_name.'.pdf', 'F');
         $content = ob_get_clean();
         var_dump($content);
         $file_path = get_template_directory_uri().'/includes/modules/AE_PDF_Creator/file_1.pdf';
