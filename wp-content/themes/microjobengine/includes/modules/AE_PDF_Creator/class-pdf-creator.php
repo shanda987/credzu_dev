@@ -76,8 +76,8 @@ class AE_Pdf_Creator extends AE_Base{
 // ---------------------------------------------------------
 //Close and output PDF document
         $pdf->writeHTML($content, true, false, true, false, '');
-        $pdf->Output(dirname(__FILE__).'/files/'.$file_name.'.pdf', 'F');
-        $file_path = get_template_directory_uri().'/includes/modules/AE_PDF_Creator/files/'.$file_name.'.pdf';
+        $pdf->Output(WP_CONTENT_DIR.'/et-content/files/'.$file_name.'.pdf', 'F');
+        $file_path = WP_CONTENT_DIR.'/et-content/files/'.$file_name.'.pdf';
 //============================================================+
 // END OF FILE
 //============================================================+
