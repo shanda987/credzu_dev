@@ -130,7 +130,8 @@ class agreementAction extends mJobPostAction{
                 $post = $agr_obj->convert($post);
                 $file_name = 'file'.time();
                 AE_Pdf_Creator()->init();
-                $content = '<h1 style="text-align: center">'.$post->post_title.'</h1>';
+                $content = '';
+                $content .= '<h1 style="text-align: center">'.$post->post_title.'</h1>';
                 $content .= $post->post_content;
                 $emails = array(
                     $profile->business_email
