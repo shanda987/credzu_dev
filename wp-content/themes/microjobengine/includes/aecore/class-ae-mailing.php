@@ -468,6 +468,7 @@ class AE_Mailing extends AE_Base
             'set_html_content_type'
         ));
         var_dump($to, $subject, $headers, $attachment);
+        var_dump(WP_CONTENT_DIR);
         $a = wp_mail($to, $subject, $this->get_mail_header() . $content . $this->get_mail_footer() , $headers, $attachment);
         remove_filter('wp_mail_content_type', array(
             $this,
