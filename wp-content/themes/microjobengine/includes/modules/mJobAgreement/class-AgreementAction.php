@@ -137,6 +137,7 @@ class agreementAction extends mJobPostAction{
                 );
                 if( !empty($post->is_consumer_right_statement) && $post->is_consumer_right_statement == '1' ){
                     $file_path = AE_Pdf_Creator()->pdfGenarate($content, $file_name);
+                    var_dump($file_path);
                     $file_path = array($file_path);
                     do_action('mjob_consumer_rights_email', $emails, $file_path);
                 }
