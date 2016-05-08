@@ -70,6 +70,7 @@ class AE_Pdf_Creator extends AE_Base{
         // ---------------------------------------------------------
         // set font
         $pdf->SetFont('times', 'R', 13);
+        $pdf->SetAutoPageBreak(True, PDF_MARGIN_FOOTER);
         // add a page
         $pdf->AddPage();
 // print a block of text using Write()
