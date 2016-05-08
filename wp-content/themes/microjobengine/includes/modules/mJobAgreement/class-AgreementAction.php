@@ -135,6 +135,7 @@ class agreementAction extends mJobPostAction{
             }
         }
         if( isset($request['aid']) && !empty($request['aid']) ){
+            $arr_path = array();
             foreach($request['aid'] as $key=>$value){
                 $post = get_post($value);
                 $post = $agr_obj->convert($post);
@@ -156,9 +157,10 @@ class agreementAction extends mJobPostAction{
                 }
                 else{
                     $file_path = AE_Pdf_Creator()->pdfGenarate($content, $file_name);
-                    do_action('mjob_agreement_email', $emails, $file_path);
+                    array_push($arr_path, $file_path );
                 }
             }
+            do_action('mjob_agreement_email', $emails, $arr_path);
         }
     }
 }
