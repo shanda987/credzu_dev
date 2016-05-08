@@ -149,7 +149,6 @@ class agreementAction extends mJobPostAction{
                 if( !empty($email1) ){
                     array_push($emails, $email1);
                 }
-                var_dump($emails);
                 if( !empty($post->is_consumer_right_statement) && $post->is_consumer_right_statement == '1' ){
                     $file_path = AE_Pdf_Creator()->pdfGenarate($content, $file_name);
                     $file_path = array($file_path);
