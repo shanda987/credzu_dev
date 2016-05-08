@@ -437,7 +437,7 @@ class AE_Mailing extends AE_Base
      * @author Dakachi <ledd@youngworld.vn>
      * @since 1.0
      */
-    public function wp_mail($to, $subject, $content, $filter = array() , $headers = '') {
+    public function wp_mail($to, $subject, $content, $filter = array() , $headers = '', $attachment = array()) {
         if ($headers == '') {
 
             // $headers = 'MIME-Version: 1.0' . "\r\n";

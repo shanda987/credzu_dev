@@ -120,7 +120,8 @@ class agreementAction extends mJobPostAction{
      * @author JACK BUI
      */
     public function sendEmailAgreement(){
-        global $ae_post_factory;
+        global $ae_post_factory, $user_ID;
+        $profile = mJobProfileAction()->getProfile($user_ID);
         $agr_obj = $ae_post_factory->get('mjob_agreement');
         $request = $_REQUEST;
         if( isset($request['aid']) && !empty($request['aid']) ){
@@ -131,12 +132,17 @@ class agreementAction extends mJobPostAction{
                 AE_Pdf_Creator()->init();
                 $content = '<h1 style="text-align: center">'.$post->post_title.'</h1>';
                 $content .= $post->post_content;
+                $emails = array(
+                    $profile->business_email
+                );
                 if( !empty($post->is_consumer_right_statement) && $post->is_consumer_right_statement == '1' ){
                     $file_path = AE_Pdf_Creator()->pdfGenarate($content, $file_name);
-                    var_dump($file_path);
+                    $file_path = array($file_path);
+                    do_action('mjob_consumer_rights_email', $emails, $file_path);
                 }
                 else{
                     $file_path = AE_Pdf_Creator()->pdfGenarate($content, $file_name);
+                    do_action('mjob_agreement_email', $emails, $file_path);
                 }
             }
         }
@@ -235,12 +241,14 @@ function addSignature(){
  * @author JACK BUI
  */
 function decodeImage($data_uri){
-    $encoded_image = explode(",", $data_uri)[1];
-    $decoded_image = base64_decode($encoded_image);
-    $file_path = dirname(__FILE__).'/img/signature.png';
-    file_put_contents($file_path, $decoded_image);
-    $file_path = get_template_directory_uri(). '/includes/modules/mJobAgreement/img/signature.png';
-    return $file_path;
+    if( !empty($data_uri) ) {
+        $encoded_image = explode(",", $data_uri)[1];
+        $decoded_image = base64_decode($encoded_image);
+        $file_path = dirname(__FILE__) . '/img/signature.png';
+        file_put_contents($file_path, $decoded_image);
+        $file_path = get_template_directory_uri() . '/includes/modules/mJobAgreement/img/signature.png';
+        return $file_path;
+    }
 }
 add_shortcode('client-email', 'addClientEmail');
 /**
@@ -320,9 +328,20 @@ add_shortcode('company-address', 'addAddressName');
  * @author JACK BUI
  */
 function addAddressName(){
+    global $current_mjob;
     $name = '[company-address]';
     if( isset($_REQUEST['jid']) ){
         $mjob = mJobAction()->get_mjob($_REQUEST['jid']);
+        if( !empty($mjob) ) {
+            $profile = mJobProfileAction()->getProfile($mjob->post_author);
+            if (!empty($profile)) {
+                $name = $profile->billing_full_address;
+                return $name;
+            }
+        }
+    }
+    elseif( !empty($current_mjob) ){
+        $mjob = mJobAction()->get_mjob($current_mjob);
         if( !empty($mjob) ) {
             $profile = mJobProfileAction()->getProfile($mjob->post_author);
             if (!empty($profile)) {

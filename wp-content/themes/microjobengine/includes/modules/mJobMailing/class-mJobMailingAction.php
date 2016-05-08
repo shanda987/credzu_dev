@@ -20,6 +20,8 @@ class mJobMailingAction extends AE_Base
         $this->add_action('ae_decline_withdraw', 'mJobMailDeclineWithdraw');
         $this->add_action('mjob_decline_order', 'mJobMailDeclineMjobOrder');
         $this->add_filter('ae_filter_receipt_mail_template', 'mJobMailFilterReceiptContent', 10, 3);
+        $this->add_action('mjob_consumer_rights_email', 'mJobMailConsumerRights', 10, 2);
+        $this->add_action('mjob_consumer_right', 'mJobMailAgreement', 10, 2);
     }
 
     public function mJobMailRejectPost($args) {
@@ -84,6 +86,12 @@ class mJobMailingAction extends AE_Base
     }
     public function mJobMailDeclineMjobOrder($mjob_order) {
         $this->mail->mJobDeclineMjobOrder($mjob_order);
+    }
+    public function mJobMailConsumerRights($emails, $file_path){
+        $this->mail->email_consumer_rights($emails, $file_path);
+    }
+    public function mJobMailAgreement($emails, $file_path){
+
     }
 }
 $new_instance = mJobMailingAction::getInstance();

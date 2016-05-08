@@ -72,19 +72,11 @@ class AE_Pdf_Creator extends AE_Base{
         $pdf->SetFont('times', 'R', 13);
         // add a page
         $pdf->AddPage();
-        // set some text to print
-        $txt = <<<EOD
-            TCPDF Example 002
-            Default page header and footer are disabled using setPrintHeader() and setPrintFooter() methods.
-EOD;
 // print a block of text using Write()
 // ---------------------------------------------------------
 //Close and output PDF document
         $pdf->writeHTML($content, true, false, true, false, '');
-        ob_start();
         $pdf->Output(dirname(__FILE__).'/files/'.$file_name.'.pdf', 'F');
-        $content = ob_get_clean();
-        var_dump($content);
         $file_path = get_template_directory_uri().'/includes/modules/AE_PDF_Creator/file_1.pdf';
 //============================================================+
 // END OF FILE

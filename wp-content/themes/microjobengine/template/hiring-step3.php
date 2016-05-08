@@ -13,9 +13,12 @@ if($profile_id) {
         $profile = $profile_obj->convert($post);
     }
 }
+global $current_mjob;
+$current_mjob = '';
 $agreements = array();
 $mjob = array();
 if( isset($_GET['jid']) && !empty($_GET['jid'] ) ){
+    $current_mjob = $_GET['jid'];
     $mjob = mJobAction()->get_mjob($_GET['jid']);
     if( isset($mjob->mjob_category['0']) ){
         $agreements = agreementAction()->get_agreement_by_cats($mjob->mjob_category['0']);
