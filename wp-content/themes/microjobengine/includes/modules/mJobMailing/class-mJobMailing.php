@@ -474,6 +474,7 @@ class mJobMailing extends AE_Mailing
         $email_msg = ae_get_option('consumer_agreement_mail_template', '');
         $attachment = $file_path;
         $result = $this->wp_mail($emails, $subject, $email_msg, array('user_id' => $user_ID), $attachment);
+        var_dump($result);
     }
 
 }
