@@ -1,4 +1,4 @@
-<?php
+ <?php
 global $wp_query, $ae_post_factory, $post, $current_user, $user_ID;
 $user = mJobUser::getInstance();
 $user_data = $user->convert($current_user->data);
@@ -26,6 +26,15 @@ $last_name = !empty($profile->last_name) ? $profile->last_name : '';
 $phone = !empty($profile->phone) ? $profile->phone : '';
 $business_email = !empty($profile->business_email) ? $profile->business_email : '';
 $credit_goal = !empty($profile->credit_goal) ? $profile->credit_goal : '';
+ $mjob = '';
+if( isset($_GET['jid']) && !empty($_GET['jid'] ) ){
+ $current_mjob = $_GET['jid'];
+ $mjob = mJobAction()->get_mjob($_GET['jid']);
+}
+ $link = '';
+ if( isset($mjob->permalink)){
+     $link = $mjob->permalink;
+ }
 ?>
 <div class="form-confirm-info">
     <form class="et-form post-job">
@@ -66,6 +75,7 @@ $credit_goal = !empty($profile->credit_goal) ? $profile->credit_goal : '';
 <!--            </div>-->
 <!--        </div>-->
         <div class="form-group clearfix float-right change-pass-button-method">
+            <a href="<?php echo $link ?>"  class="button  mjob-process-hiring-back" ><i class="fa fa-arrow-left"></i> <?php _e('BACK', ET_DOMAIN); ?></a>
             <button class="btn-submit"><?php _e('Save', ET_DOMAIN); ?></button>
         </div>
         <input type="hidden" class="input-item" name="_wpnonce" id="profile_wpnonce" value="<?php echo de_create_nonce('ae-mjob_post-sync');?>" />

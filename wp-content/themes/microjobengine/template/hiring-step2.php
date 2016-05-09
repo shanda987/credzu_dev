@@ -63,6 +63,7 @@ if($profile_id) {
             </div>
         </div>
         <div class="form-group clearfix float-right change-pass-button-method">
+            <a  class="button  mjob-process-hiring-back mjob-process-hiring-back-step1" ><i class="fa fa-arrow-left"></i> <?php _e('BACK', ET_DOMAIN); ?></a>
             <button class="btn-submit"><?php _e('Save', ET_DOMAIN); ?></button>
         </div>
         <input type="hidden" class="input-item" name="_wpnonce" id="profile_wpnonce" value="<?php echo de_create_nonce('ae-mjob_post-sync');?>" />

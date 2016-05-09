@@ -799,6 +799,7 @@
                 'change select[name="use_holder_account"]': 'selectAccount',
                 'click .agreement-title-link': 'showModalAgreement',
                 'click .mjob-process-hiring-back-step2': 'backStep2',
+                'click .mjob-process-hiring-back-step1': 'backStep1',
 
             },
             initialize: function () {
@@ -1047,6 +1048,12 @@
                 $('.form-sign-agreement').hide();
                 this.backStepTwo();
             },
+            backStep1: function(e){
+                e.preventDefault();
+                $('.form-confirm-info').show();
+                $('.form-confirm-billing').hide();
+                this.showStepOne();
+            },
             showStepOne: function(){
                 $('.post-service-step-1').addClass('active');
                 $('.post-service-step-1').removeClass('done');
@@ -1108,7 +1115,7 @@
                 $('.progress-bar-success').addClass('half');
                 $('.progress-bar-success').removeClass('full');
                 $('.post-service-step-2').removeClass('done');
-            }
+            },
         });
         Views.agreementModal = Views.Modal_Box.extend({
             el: '#agreement_modal',
