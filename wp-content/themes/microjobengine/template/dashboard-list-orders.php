@@ -43,7 +43,13 @@ if( is_page_template('page-dashboard.php') ){
         <?php endif; ?>
 
     <?php } else { ?>
-        <p class="no-items"><?php _e('There are no orders found!', ET_DOMAIN); ?></p>
+        <div class="dashboard-notification">
+            <p class="cl-items"><?php _e('The bad news?', ET_DOMAIN); ?></p>
+            <p class="cl-items"><?php _e('... you not have hired a company?', ET_DOMAIN); ?></p>
+            <p class="cl-items"><?php _e('The good news?', ET_DOMAIN); ?></p>
+            <?php $archive_link =  get_post_type_archive_link('mjob_post'); ?>
+            <p class="cl-items"><?php echo sprintf(__('... you can <a href="%s">click here</a> to view companies and service', ET_DOMAIN),  $archive_link); ?></p>
+        </div>
     <?php } ?>
 
     <?php
