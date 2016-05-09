@@ -948,10 +948,10 @@
                                                     msg: res.msg,
                                                     notice_type: 'success'
                                                 });
+                                                view.blockUi.unblock();
                                                 window.location.href = resp.data.permalink;
                                             }
                                         })
-                                        view.blockUi.unblock();
                                     }
                                 }
                             });
