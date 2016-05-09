@@ -122,11 +122,14 @@ class agreementAction extends mJobPostAction{
     public function sendEmailAgreement(){
         global $ae_post_factory, $user_ID;
         $profile = mJobProfileAction()->getProfile($user_ID);
+        $mjob_obj = $ae_post_factory->get('mjob_post');
         $agr_obj = $ae_post_factory->get('mjob_agreement');
         $request = $_REQUEST;
         $email1 = '';
+        $post1 = '';
         if( isset($request['jid']) && !empty($request['jid']) ){
             $post1 = get_post($request['jid']);
+            $post1 = $mjob_obj->convert($post1);
             if( isset($post1->post_author) ) {
                 $profile1 = mJobProfileAction()->getProfile($post1->post_author);
                 if( isset($profile1->business_email) ) {
@@ -166,6 +169,11 @@ class agreementAction extends mJobPostAction{
                 }
             }
             do_action('mjob_agreement_email', $emails, $arr_path);
+            wp_send_json(array(
+                'success'=> true,
+                'msg'=> __('Success!', ET_DOMAIN),
+                'data'=>$post1
+            ));
         }
     }
 }

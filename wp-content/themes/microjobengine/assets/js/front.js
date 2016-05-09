@@ -944,13 +944,13 @@
 
                                             },
                                             success: function(resp, status, jqXHR) {
-
+                                                AE.pubsub.trigger('ae:notification', {
+                                                    msg: res.msg,
+                                                    notice_type: 'success'
+                                                });
+                                                window.location.href = resp.data.permalink;
                                             }
                                         })
-                                        AE.pubsub.trigger('ae:notification', {
-                                            msg: res.msg,
-                                            notice_type: 'success'
-                                        });
                                         view.blockUi.unblock();
                                     }
                                 }
