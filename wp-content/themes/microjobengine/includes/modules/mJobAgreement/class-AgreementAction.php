@@ -273,9 +273,8 @@ function decodeImage($data_uri){
     if( !empty($data_uri) ) {
         $encoded_image = explode(",", $data_uri)[1];
         $decoded_image = base64_decode($encoded_image);
-        $file_path = dirname(__FILE__) . '/img/signature.png';
+        $file_path = WP_CONTENT_DIR. 'files/img/signature_'.time().'.png';
         file_put_contents($file_path, $decoded_image);
-        $file_path = get_template_directory_uri() . '/includes/modules/mJobAgreement/img/signature.png';
         return $file_path;
     }
 }
@@ -399,7 +398,7 @@ function addCompanyFirstName(){
         if( !empty($mjob) ) {
             $profile = mJobProfileAction()->getProfile($mjob->post_author);
             if (!empty($profile)) {
-                $name = $profile->company_first_name;
+                $name = $profile->first_name;
                 return $name;
             }
         }
