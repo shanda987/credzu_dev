@@ -425,7 +425,8 @@ function addCompanySignature(){
             $profile = mJobProfileAction()->getProfile($mjob->post_author);
             if (!empty($profile)) {
                 $name = $profile->signature;
-                return $name;
+                $file_path = decodeImage($name);
+                return '<img style="width:170px" class="signature-img" src="'.$file_path.'" />';
             }
         }
     }
