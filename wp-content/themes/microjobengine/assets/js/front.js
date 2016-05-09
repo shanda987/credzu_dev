@@ -797,7 +797,8 @@
             events: {
                 'change select[name="use_billing_address"]': 'selectBilling',
                 'change select[name="use_holder_account"]': 'selectAccount',
-                'click .agreement-title-link': 'showModalAgreement'
+                'click .agreement-title-link': 'showModalAgreement',
+                'click .mjob-process-hiring-back-step2': 'backStep2'
 
             },
             initialize: function () {
@@ -1040,6 +1041,12 @@
             this._ctx.clearRect(0, 0, cropRight-cropLeft, cropBottom-cropTop);
             this._ctx.putImageData(relevantData, 0, 0);
         },
+            backStep2: function(e){
+                e.preventDefault();
+                $('.form-confirm-billing').show();
+                $('.form-sign-agreement').hide();
+                this.showStepTwo();
+            },
             showStepOne: function(){
                 $('.post-service-step-1').addClass('active');
                 $('.post-service-step-1').removeClass('done');

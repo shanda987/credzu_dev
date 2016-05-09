@@ -54,9 +54,9 @@ if( isset($_GET['jid']) && !empty($_GET['jid'] ) ){
             </div>
         </div>
         <div class="form-group clearfix float-right change-pass-button-method">
-            <a  class="button mjob-process-hiring-back" ><?php _e('back', ET_DOMAIN); ?></a>
+            <a  class="button  mjob-process-hiring-back mjob-process-hiring-back-step2" ><i class="fa fa-arrow-left"></i> <?php _e('BACK', ET_DOMAIN); ?></a>
             <a  class="button clear" data-action="clear"><?php _e('CLEAR SIGNATURE', ET_DOMAIN); ?></a>
-            <button type="button" class="button save btn-submit" data-action="save"><?php _e('SIGN', ET_DOMAIN) ?></button>
+            <button type="button" class="button save btn-submit" data-action="save"><?php _e('SIGN  ', ET_DOMAIN) ?><i class="fa fa-arrow-right"></i></button>
         </div>
         <input type="hidden" class="input-item" name="_wpnonce" id="profile_wpnonce" value="<?php echo de_create_nonce('ae-mjob_post-sync');?>" />
     </form>

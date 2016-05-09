@@ -153,3 +153,7 @@
 .signature-img{
     width: 19%;
 }
+.page-template-page-process-hiring .mjob-process-hiring-back{
+    margin-right: 20px;
+    cursor: pointer;
+}
