@@ -398,6 +398,31 @@ function addCompanyFirstName(){
     }
     return $name;
 }
+add_shortcode('company-signature', 'addCompanySignature');
+/**
+ * add company signature
+ *
+ * @param array $atts
+ * @return void
+ * @since 1.0
+ * @package MicrojobEngine
+ * @category void
+ * @author JACK BUI
+ */
+function addCompanySignature(){
+    $name = '[company-signature]';
+    if( isset($_REQUEST['jid']) ){
+        $mjob = mJobAction()->get_mjob($_REQUEST['jid']);
+        if( !empty($mjob) ) {
+            $profile = mJobProfileAction()->getProfile($mjob->post_author);
+            if (!empty($profile)) {
+                $name = $profile->signature;
+                return $name;
+            }
+        }
+    }
+    return $name;
+}
 add_shortcode('service-description', 'addMjobDescription');
 /**
  * add first name to shortcode
