@@ -273,7 +273,7 @@ function decodeImage($data_uri){
     if( !empty($data_uri) ) {
         $encoded_image = explode(",", $data_uri)[1];
         $decoded_image = base64_decode($encoded_image);
-        $file_path = WP_CONTENT_DIR. '/et-conent/files/img/signature_'.time().'.png';
+        $file_path = WP_CONTENT_DIR. '/et-content/files/img/signature_'.time().'.png';
         file_put_contents($file_path, $decoded_image);
         return $file_path;
     }
