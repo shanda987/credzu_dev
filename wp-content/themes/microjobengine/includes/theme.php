@@ -432,6 +432,11 @@ class ET_Microjobengine extends AE_Base
                 wp_redirect(home_url());
             }
         }
+        if( is_page_template('page-process-hiring.php') ){
+            if( !$user_ID || !isset($_REQUEST['jid'])){
+                wp_redirect(home_url());
+            }
+        }
     }
     /**
      * filter profile link and change it to author posts link
