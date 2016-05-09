@@ -1045,12 +1045,7 @@
                 e.preventDefault();
                 $('.form-confirm-billing').show();
                 $('.form-sign-agreement').hide();
-                $('.post-service-step-1').removeClass('active');
-                $('.post-service-step-1').addClass('done');
-                $('.post-service-step-2').addClass('active');
-                $('.post-service-step-3').removeClass('active');
-                $('.progress-bar-success').addClass('half');
-                $('.progress-bar-success').removeClass('full');
+                this.backStepTwo();
             },
             showStepOne: function(){
                 $('.post-service-step-1').addClass('active');
@@ -1105,6 +1100,15 @@
                 var data = JSON.parse($('#agreement_data_'+aid).html());
                 this.agreementModal.onOpen(data);
             },
+            backStepTwo: function(){
+                $('.post-service-step-1').removeClass('active');
+                $('.post-service-step-1').addClass('done');
+                $('.post-service-step-2').addClass('active');
+                $('.post-service-step-3').removeClass('active');
+                $('.progress-bar-success').addClass('half');
+                $('.progress-bar-success').removeClass('full');
+                $('.post-service-step-2').removeClass('done');
+            }
         });
         Views.agreementModal = Views.Modal_Box.extend({
             el: '#agreement_modal',
