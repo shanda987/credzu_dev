@@ -1133,26 +1133,13 @@
                     beforeSend: function () {
                     },
                     success: function ( result, res, jqXHR ) {
-                        if (res.success && res.data.ACK) {
-                            //if( res.data.updateAuthor ){
-                            //    window.location.href = res.data.permalink;
-                            //}
-                            //else {
-                            //    // call method onSubmitPaymenSuccess
-                            //    // update form check out and submit
-                            //    $('#checkout_form').attr('action', res.data.url);
-                            //    if ($('#checkout_form .packageType').length > 0) {
-                            //        $('#checkout_form .packageType').val(view.model.get('et_package_type'));
-                            //    }
-                            //    if (typeof res.data.extend !== "undefined") {
-                            //        $('#checkout_form .payment_info').html('').append(res.data.extend.extend_fields);
-                            //    }
-                            //    // trigger click on submit button
-                            //    $('#payment_submit').click();
-                            //}
+                        if (res.success ) {
+                            if( typeof res.data != 'undefined' ){
+                                window.location.href = res.data.permalink;
+                            }
                         } else {
                             AE.pubsub.trigger('ae:notification', {
-                                msg: resp.msg,
+                                msg: res.msg,
                                 notice_type: 'error'
                             });
                         }

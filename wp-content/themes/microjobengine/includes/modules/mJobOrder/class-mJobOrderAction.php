@@ -78,7 +78,6 @@ class mJobOrderAction extends mJobPostAction{
                 if(isset($request['finished']) && $request['finished'] == '1') {
                     AE_WalletAction()->transferWorkingToAvailable($request['seller_id'], $request['ID'], $request['real_amount']);
                 }
-
                 $response = $this->sync_post($request);
                 if ($response['success']) {
                     $result = $response['data'];
@@ -91,14 +90,14 @@ class mJobOrderAction extends mJobPostAction{
                         wp_send_json($response);
                     }
                     $total = $mjob->et_budget;
-                    if (!empty($result->extra_ids)) {
-                        foreach ($result->extra_ids as $key => $value) {
-                            $extra = mJobExtraAction()->get_extra_of_mjob($value, $result->post_parent);
-                            if ($extra) {
-                                $total += $extra->et_budget;
-                            }
-                        }
-                    }
+//                    if (!empty($result->extra_ids)) {
+//                        foreach ($result->extra_ids as $key => $value) {
+//                            $extra = mJobExtraAction()->get_extra_of_mjob($value, $result->post_parent);
+//                            if ($extra) {
+//                                $total += $extra->et_budget;
+//                            }
+//                        }
+//                    }
                     $currency = mjob_get_currency();
                     update_post_meta($result->ID, 'amount', $total);
                     update_post_meta($result->ID, 'real_amount', mJobRealPrice($total));
@@ -107,10 +106,10 @@ class mJobOrderAction extends mJobPostAction{
                     update_post_meta($result->ID, 'buyer_id', $result->post_author);
                     $response['data'] = $order_obj->convert($result);
                     $response['data']->updateAuthor = false;
-                    if (!isset($request['noSetupPayment'])) {
-                        $response = $this->setupPayment($response['data']);
-                        $response['data']['updateAuthor'] = false;
-                    }
+//                    if (!isset($request['noSetupPayment'])) {
+//                        $response = $this->setupPayment($response['data']);
+//                        $response['data']['updateAuthor'] = false;
+//                    }
                 }
             }
         }
