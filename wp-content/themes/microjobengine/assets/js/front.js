@@ -915,6 +915,7 @@
                     view.ageement_ids.push($(this).attr('data-id'));
                 });
                 view.initValidator(view.target_form, view.field_to_check);
+                view.setupOrder();
                 view.saveButton.addEventListener("click", function (event) {
                     event.preventDefault();
                     if( view.target_form.valid() ){
@@ -950,7 +951,8 @@
                                                     notice_type: 'success'
                                                 });
                                                 view.blockUi.unblock();
-                                                window.location.href = resp.data.permalink;
+                                                view.saveOrder();
+                                                //window.location.href = resp.data.permalink;
                                             }
                                         })
                                     }
@@ -1115,6 +1117,47 @@
                 $('.progress-bar-success').addClass('half');
                 $('.progress-bar-success').removeClass('full');
                 $('.post-service-step-2').removeClass('done');
+            },
+            setupOrder: function(){
+                var view = this;
+                if( typeof view.orderModel === 'undefined' ){
+                    if( $('#mjob-order-info').length > 0 ) {
+                        orderdata = JSON.parse($('#mjob-order-info').html());
+                        view.orderModel = new Models.Order(orderdata);
+                    }
+                }
+            },
+            saveOrder: function(){
+                var view = this;
+                view.orderModel.save( '', '', {
+                    beforeSend: function () {
+                    },
+                    success: function ( result, res, jqXHR ) {
+                        if (res.success && res.data.ACK) {
+                            //if( res.data.updateAuthor ){
+                            //    window.location.href = res.data.permalink;
+                            //}
+                            //else {
+                            //    // call method onSubmitPaymenSuccess
+                            //    // update form check out and submit
+                            //    $('#checkout_form').attr('action', res.data.url);
+                            //    if ($('#checkout_form .packageType').length > 0) {
+                            //        $('#checkout_form .packageType').val(view.model.get('et_package_type'));
+                            //    }
+                            //    if (typeof res.data.extend !== "undefined") {
+                            //        $('#checkout_form .payment_info').html('').append(res.data.extend.extend_fields);
+                            //    }
+                            //    // trigger click on submit button
+                            //    $('#payment_submit').click();
+                            //}
+                        } else {
+                            AE.pubsub.trigger('ae:notification', {
+                                msg: resp.msg,
+                                notice_type: 'error'
+                            });
+                        }
+                    }
+                } );
             },
         });
         Views.agreementModal = Views.Modal_Box.extend({

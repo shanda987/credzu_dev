@@ -23,6 +23,14 @@ if( isset($_GET['jid']) && !empty($_GET['jid'] ) ){
     if( isset($mjob->mjob_category['0']) ){
         $agreements = agreementAction()->get_agreement_by_cats($mjob->mjob_category['0']);
     }
+    $order_args = array(
+        'post_title' => sprintf(__('Order for %s ', ET_DOMAIN), $mjob->post_title),
+        'post_content' => sprintf(__('Order for %s ', ET_DOMAIN), $mjob->post_title),
+        'post_parent' => $mjob->ID,
+        'amount' => $mjob->et_budget,
+        '_wpnonce' => de_create_nonce('ae-mjob_post-sync'),
+    );
+    echo '<script type="text/template" id="mjob-order-info">' . json_encode($order_args) . '</script>';
 }
 ?>
 <div class="form-sign-agreement">
