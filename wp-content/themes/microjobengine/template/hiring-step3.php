@@ -25,7 +25,7 @@ if( isset($_GET['jid']) && !empty($_GET['jid'] ) ){
     }
     $order_args = array(
         'post_title' => sprintf(__('Order for %s ', ET_DOMAIN), $mjob->post_title),
-        'post_content' => sprintf(__('Order for %s ', ET_DOMAIN), $mjob->post_title),
+        'post_content' => $mjob->post_content,
         'post_parent' => $mjob->ID,
         'amount' => $mjob->et_budget,
         '_wpnonce' => de_create_nonce('ae-mjob_post-sync'),
