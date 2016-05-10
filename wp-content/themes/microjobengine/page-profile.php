@@ -68,37 +68,37 @@ get_header();
                         <form class="et-form">
                         <div class="form-group clearfix">
                             <div class="input-group">
-                                <div class="input-group-addon no-addon"></div>
+                                <div class="input-group-addon no-addon"><?php _e('First Name:', ET_DOMAIN); ?></div>
                                 <input type="text" name="first_name" id="first_name" placeholder="<?php _e('First Name', ET_DOMAIN); ?>" value="<?php echo $first_name; ?>">
                             </div>
                         </div>
                         <div class="form-group clearfix">
                             <div class="input-group">
-                                <div class="input-group-addon no-addon"></div>
+                                <div class="input-group-addon no-addon"><?php _e('Last Name:', ET_DOMAIN); ?></div>
                                 <input type="text" name="last_name" id="last_name" placeholder="<?php _e('Last Name', ET_DOMAIN); ?>" value="<?php echo $last_name; ?>">
                             </div>
                         </div>
                         <div class="form-group clearfix">
                             <div class="input-group">
-                                <div class="input-group-addon no-addon"></div>
+                                <div class="input-group-addon no-addon"><?php _e('Phone:', ET_DOMAIN); ?></div>
                                 <input type="text" name="phone" id="phone" placeholder="<?php _e('Phone', ET_DOMAIN); ?>" value="<?php echo $phone; ?>">
                             </div>
                         </div>
                         <div class="form-group clearfix">
                             <div class="input-group">
-                                <div class="input-group-addon no-addon"></div>
+                                <div class="input-group-addon no-addon"><?php _e('Email:', ET_DOMAIN); ?></div>
                                 <input type="email" name="business_email" id="business_email" placeholder="<?php _e('Email', ET_DOMAIN); ?>" value="<?php echo $business_email; ?>" >
                             </div>
                         </div>
                         <div class="form-group clearfix">
                             <div class="input-group">
-                                <div class="input-group-addon no-addon"></div>
+                                <div class="input-group-addon no-addon"><?php _e('Address:', ET_DOMAIN); ?></div>
                                 <input type="text" name="billing_full_address" id="billing_full_address" placeholder="<?php _e('Physical address', ET_DOMAIN); ?>" value="<?php echo $billing_full_address; ?>">
                             </div>
                         </div>
                         <div class="form-group clearfix">
                                 <div class="input-group">
-                                    <div class="input-group-addon no-addon"></div>
+                                    <div class="input-group-addon no-addon"><?php _e('Credit goals:', ET_DOMAIN); ?></div>
                                     <input type="text" name="credit_goal" id="credit_goal" placeholder="<?php _e('Credit goals', ET_DOMAIN); ?>" value="<?php echo $credit_goal; ?>">
                                 </div>
                             </div>
