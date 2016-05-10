@@ -27,7 +27,7 @@ $billing_vat = !empty($profile->billing_vat) ? $profile->billing_vat : __('There
 $first_name = !empty($profile->first_name) ? $profile->first_name : '';
 $last_name = !empty($profile->last_name) ? $profile->last_name : '';
 $phone = !empty($profile->phone) ? $profile->phone : '';
-$business_email = !empty($profile->business_email) ? $profile->business_email : '';
+$business_email = !empty($profile->business_email) ? $profile->business_email : $user_data->user_email;
 $credit_goal = !empty($profile->credit_goal) ? $profile->credit_goal : '';
 get_header();
 ?>
