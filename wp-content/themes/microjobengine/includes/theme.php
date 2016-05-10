@@ -681,7 +681,12 @@ class ET_Microjobengine extends AE_Base
                 'backbone',
                 'appengine',
                 'front'), ET_VERSION, true);
-
+            $this->add_script('mask-js', get_template_directory_uri() . '/assets/js/jquery.maskedinput.min.js', array(
+                'jquery',
+                'underscore',
+                'backbone',
+                'appengine',
+                'front'), ET_VERSION, true);
             $this->add_script('profile', get_template_directory_uri() . '/assets/js/profile.js', array(
                 'jquery',
                 'underscore',

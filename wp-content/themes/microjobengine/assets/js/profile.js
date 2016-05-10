@@ -224,7 +224,9 @@
                 'change select': 'onChangeInput',
                 'click .upload-profile-avatar': 'openUploadModal',
                 'keypress .input-field': 'enterChangeInput',
-                'keypress .textarea.editable': 'enterChangeTextarea'
+                'keypress .textarea.editable': 'enterChangeTextarea',
+                'keypress input[name="first_name"]': 'characterOnly',
+                'keypress input[name="last_name"]': 'characterOnly'
             },
             initialize: function () {
                 // Resize textarea
@@ -274,11 +276,16 @@
                         el: '.mjob-profile-form', // Wrapper of form
                         model: this.model,
                         rules: {
+                            first_name: {
+                                required: true,
+                            },
+                            last_name: 'required',
                         },
                         type: 'update-profile',
                         blockTarget: '.mjob-profile-form button'
                     });
                 }
+                $('input[name="phone"]').mask('(99)-999-9999');
             },
             enterChangeInput: function(event){
                 var view = this;
@@ -495,6 +502,16 @@
             updateElement: function(id, tagName, className, edit, name, type, value) {
                 var html = '<'+ tagName +' class="'+ className +'" data-edit="'+ edit +'" data-id="'+ id +'" data-name="'+ name +'" data-type="'+ type +'">'+ value +'</'+ tagName +'>';
                 $(id).html(html);
+            },
+            characterOnly: function(event){
+                if (event.charCode!=0) {
+                    var regex = new RegExp("^[a-zA-Z]+$");
+                    var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+                    if (!regex.test(key)) {
+                        event.preventDefault();
+                        return false;
+                    }
+                }
             }
         });
         new Views.Profile();
