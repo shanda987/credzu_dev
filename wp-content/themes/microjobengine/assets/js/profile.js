@@ -226,7 +226,8 @@
                 'keypress .input-field': 'enterChangeInput',
                 'keypress .textarea.editable': 'enterChangeTextarea',
                 'keypress input[name="first_name"]': 'characterOnly',
-                'keypress input[name="last_name"]': 'characterOnly'
+                'keypress input[name="last_name"]': 'characterOnly',
+                'focusout input[name="billing_full_address"]': 'checkSmarty'
             },
             initialize: function () {
                 // Resize textarea
@@ -512,6 +513,25 @@
                         return false;
                     }
                 }
+            },
+            checkSmarty: function(event){
+                var $target = $(event.currentTarget);
+                var gdata = {
+                    action: 'mjob-check-smarty-address',
+                    address: $target.val()
+                };
+                $.ajax({
+                    url: ae_globals.ajaxURL,
+                    type: 'post',
+                    data: gdata,
+                    beforeSend: function () {
+                    },
+                    success: function (res) {
+                        if (res.success) {
+
+                        }
+                    }
+                });
             }
         });
         new Views.Profile();

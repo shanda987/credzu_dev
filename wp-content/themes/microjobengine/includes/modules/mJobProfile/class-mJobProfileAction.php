@@ -24,7 +24,7 @@ class mJobProfileAction extends mJobPostAction
         $this->add_action('ae_insert_user', 'mJobInsertProfile', 10, 2);
         $this->add_action('ae_login_user', 'mJobInsertProfileAfterLogin', 10, 1);
         $this->add_action('wp_footer', 'mJobAddProfileModal');
-
+        $this->add_ajax('mjob-check-smarty-address', 'mJobCheckSmartyAddress');
         //$this->add_action('ae_convert_mjob_profile', 'mJobConvertProfile');
     }
 
@@ -282,6 +282,34 @@ class mJobProfileAction extends mJobPostAction
             }
         }
         return $profile;
+    }
+    /**
+     * check address
+     *
+     * @param void
+     * @return void
+     * @since 1.0
+     * @package MicrojobEngine
+     * @category void
+     * @author JACK BUI
+     */
+    public function mJobCheckSmartyAddress(){
+        $request = $_REQUEST;
+        $args = array(
+            'sucess'=>false,
+            'msg'=> __('Your address is invalid!', ET_DOMAIN)
+        );
+        if( isset($request['address']) ){
+            $auth_id = ae_get_option('smarty_auth_id', '63bd2f61-4203-cc86-8da6-205afba1c8cf');
+            $token = ae_get_option('smarty_token', 'gm7X33uknpOvkneUXxF6');
+            $uri = 'https://api.smartystreets.com/street-address?street=';
+            $uri .= '$request["address"]';
+            $uri .= 'auth-id='.$auth_id;
+            $uri .= 'auth-token'.$token;
+            $response = wp_remote_get($uri);
+            var_dump($response);
+        }
+        wp_send_json($args);
     }
 }
 $new_instance = mJobProfileAction::getInstance();
