@@ -6621,8 +6621,10 @@ body.page-template-page-profile-php .plus-circle {
   background: #fff;
   box-shadow: 1px 0px 30px rgba(188, 207, 219, 0.7);
   border-radius: 4px;
-  margin: 0 10px;
+  /*margin: 0 10px;*/
   position: relative;
+  margin-left: 30px;
+  margin-button:60px;
 }
 
 .slider {
