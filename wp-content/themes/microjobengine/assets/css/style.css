@@ -21698,3 +21698,74 @@ Copyright (c) 2015 Daniel Eden
 a.waves-effect .waves-ripple {
   z-index: -1;
 }
+.mjob-single-order-page .order-detail-price .price-items {
+  position: absolute;
+  color: #10a2ef;
+  font-family: 'Montserrat', sans-serif;
+}
+.mjob-single-order-page .order-detail-price .order-price, .mjob-single-order-page .order-detail-price .order-extra, .mjob-single-order-page .order-detail-price .total-order {
+  padding: 25px 30px;
+  position: relative;
+}
+.mjob-single-order-page .order-detail-price .order-price p, .mjob-single-order-page .order-detail-price .order-extra p, .mjob-single-order-page .order-detail-price .total-order p {
+  margin-bottom: 0;
+}
+.mjob-single-order-page .order-detail-price .order-price .price-items, .mjob-single-order-page .order-detail-price .order-extra .price-items, .mjob-single-order-page .order-detail-price .total-order .price-items {
+  top: 15px;
+  right: 25px;
+  font-size: 30px;
+}
+.mjob-single-order-page .order-detail-price .order-price .price-items sup, .mjob-single-order-page .order-detail-price .order-extra .price-items sup, .mjob-single-order-page .order-detail-price .total-order .price-items sup {
+  font-size: 18px;
+}
+.mjob-single-order-page .order-detail-price .order-price .days-order, .mjob-single-order-page .order-detail-price .order-extra .days-order, .mjob-single-order-page .order-detail-price .total-order .days-order {
+  position: absolute;
+  right: 30px;
+  bottom: 25px;
+}
+.mjob-single-order-page .order-detail-price .order-price .time-order, .mjob-single-order-page .order-detail-price .order-extra .time-order, .mjob-single-order-page .order-detail-price .total-order .time-order {
+  color: #aaafb3;
+}
+.mjob-single-order-page .order-detail-price .order-price .time-order i, .mjob-single-order-page .order-detail-price .order-extra .time-order i, .mjob-single-order-page .order-detail-price .total-order .time-order i {
+  padding-right: 10px;
+  font-size: 14px;
+}
+.mjob-single-order-page .order-detail-price .order-extra {
+  border: 1px solid #dfe0e5;
+  border-left: 0;
+  border-right: 0;
+}
+.mjob-single-order-page .order-detail-price .order-extra ul {
+  padding-left: 0;
+}
+.mjob-single-order-page .order-detail-price .order-extra ul li {
+  display: block;
+  position: relative;
+  margin-bottom: 20px;
+}
+.mjob-single-order-page .order-detail-price .order-extra ul li:last-child {
+  margin-bottom: 0;
+}
+.mjob-single-order-page .order-detail-price .order-extra ul li .extra-title {
+  width: 80%;
+  line-height: 25px;
+}
+.mjob-single-order-page .order-detail-price .order-extra ul li .price-items {
+  top: 0;
+  right: 0;
+  font-size: 18px;
+}
+.mjob-single-order-page .order-detail-price .order-extra ul li .price-items sup {
+  font-size: 12px;
+}
+.mjob-single-order-page .order-detail-price .total-order {
+  background: #f2f7fa;
+}
+.mjob-single-order-page .order-detail-price .total-order .title-cate {
+  padding-bottom: 10px;
+}
+.mjob-single-order-page .order-detail-price .total-order .price-items {
+  top: 15px;
+  right: 25px;
+  font-size: 30px;
+}

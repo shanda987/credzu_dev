@@ -185,7 +185,10 @@ class mJobOrderAction extends mJobPostAction{
         $result->mjob_author_name = $author->display_name;
         $result->mjob_author_url = get_author_posts_url($mjob->post_author);
         $result->mjob_content = $mjob->post_content;
+        $result->mjob_price_text = mJobPriceFormat($mjob->et_budget);
         $result->mjob_id = $mjob->ID;
+        $result->mjob_price = $mjob->et_budget;
+        $result->mjob_time_delivery = $mjob->time_delivery;
         $result->order_date = sprintf( _x( '%s ago', '%s = human-readable time difference', ET_DOMAIN ), human_time_diff( strtotime($result->post_date), time() ));
         $result->amount_text = mJobPriceFormat($result->amount);
         $date_format = get_option('date_format');
