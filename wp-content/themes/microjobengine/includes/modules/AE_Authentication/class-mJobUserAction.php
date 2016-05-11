@@ -93,7 +93,10 @@ class mJobUserAction extends AE_UserAction
                             'last_name' => $request['bank_last_name'],
                             'name' => $request['bank_name'],
                             'swift_code' => $request['bank_swift_code'],
-                            'account_no' => $request['bank_account_no']
+                            'account_no' => $request['bank_account_no'],
+                            'routing_no' => $request['bank_routing_no'],
+                            'payee_name_override' => $request['payee_name_override'],
+                            'payee_name_override_status' => $request['payee_name_override_status'],
                         );
                         update_user_meta($current_user->ID, 'payment_info', $payment_info);
                     }
@@ -187,7 +190,7 @@ class mJobUserAction extends AE_UserAction
      * @author Tat Thien
      */
     public function mJobAfterRegisterUser($result, $user_data) {
-        // add key confirm for user 
+        // add key confirm for user
         if(ae_get_option('user_confirm')) {
             update_user_meta($result, 'register_status', 'unconfirm');
             update_user_meta($result, 'key_confirm', md5($user_data['user_email']));

@@ -258,7 +258,15 @@
                             last_name: '',
                             phone: '',
                             business_email: '',
-                            credit_goal: ''
+                            credit_goal: '',
+                            company_name: '',
+                            company_address: '',
+                            company_phone: '',
+                            company_email: '',
+                            company_website: '',
+                            company_year_established: '',
+                            company_amount_of_employees: '',
+                            company_description: ''
                         })
                     }
                 }
@@ -286,6 +294,7 @@
                         blockTarget: '.mjob-profile-form button'
                     });
                 }
+                $('input[name="phone"]').mask('(99)-999-9999');
                 $('input[name="phone"]').mask('(99)-999-9999');
             },
             enterChangeInput: function(event){

@@ -44,7 +44,14 @@
             <div class="view-all float-center"><a href="<?php echo et_get_page_link('my-list-order'); ?>"><?php _e('View all', ET_DOMAIN); ?></a></div>
         <?php endif; ?>
     <?php } else { ?>
-        <p class="no-items"><?php _e('There are no tasks found!', ET_DOMAIN); ?></p>
+        <p class="no-items">
+        <?php
+            _e('The bad news?<br>
+               Currently, you do not have any clients<br>
+               The good news?<br>
+               You can get clients by creating a listing.
+            ', ET_DOMAIN); ?>
+        </p>
     <?php } ?>
 </div>
 <?php

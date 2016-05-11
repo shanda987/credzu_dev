@@ -28,7 +28,11 @@ $first_name = !empty($profile->first_name) ? $profile->first_name : '';
 $last_name = !empty($profile->last_name) ? $profile->last_name : '';
 $phone = !empty($profile->phone) ? $profile->phone : '';
 $business_email = !empty($profile->business_email) ? $profile->business_email : $user_data->user_email;
-$credit_goal = !empty($profile->credit_goal) ? $profile->credit_goal : '';
+
+if ( $is_individual ) {
+    $credit_goal = !empty($profile->credit_goal) ? $profile->credit_goal : '';
+}
+
 get_header();
 ?>
     <div class="container mjob-profile-page">
@@ -96,19 +100,21 @@ get_header();
                                 <input type="text" name="billing_full_address" id="billing_full_address" placeholder="<?php _e('Physical address', ET_DOMAIN); ?>" value="<?php echo $billing_full_address; ?>">
                             </div>
                         </div>
+                        <?php if ( $is_individual ): ?>
                         <div class="form-group clearfix">
                                 <div class="input-group">
                                     <div class="input-group-addon no-addon"><?php _e('Credit goals:', ET_DOMAIN); ?></div>
                                     <input type="text" name="credit_goal" id="credit_goal" placeholder="<?php _e('Credit goals', ET_DOMAIN); ?>" value="<?php echo $credit_goal; ?>">
                                 </div>
                             </div>
+                        <?php endif; ?>
                             <div class="form-group clearfix float-right change-pass-button-method">
                                 <button class="btn-submit"><?php _e('Update', ET_DOMAIN); ?></button>
                             </div>
                         </form>
                     </div>
                 </div>
-                
+
             </div>
         </div>
     </div>

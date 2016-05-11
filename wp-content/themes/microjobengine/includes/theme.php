@@ -666,7 +666,7 @@ class ET_Microjobengine extends AE_Base
                 'appengine',
                 'front'), ET_VERSION, true);
         }
-        if(is_page_template('page-profile.php')) {
+        if(is_page_template('page-profile.php') || is_page_template('page-profile-company.php')) {
             // Cropper library
             $this->add_script('cropper-js', get_template_directory_uri() . '/assets/js/lib/cropper.min.js', array(
                 'jquery',
