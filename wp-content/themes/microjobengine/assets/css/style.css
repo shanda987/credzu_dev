@@ -12519,6 +12519,7 @@ body.archive .block-title {
 .mjob_conversation_detail_page .current-order {
   padding: 30px;
   margin-left: 30px;
+  border-radius: 4px;
 }
 @media (max-width: 991px) {
   .mjob_conversation_detail_page .current-order {
