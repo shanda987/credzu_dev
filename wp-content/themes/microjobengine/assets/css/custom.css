@@ -166,3 +166,12 @@
 .dashboard-notification{
     padding-top: 30%;
 }
+.order-detail-profile{
+    margin-top: 0 !important;
+}
+.order-mjob-content{
+    margin-top: 40px!important;
+}
+.mjob-single-order-page .personal-profile{
+    padding-bottom: 0!important;
+}

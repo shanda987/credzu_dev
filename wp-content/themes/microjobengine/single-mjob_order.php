@@ -1,8 +1,10 @@
 <?php
 get_header();
-global $wp_query, $ae_post_factory, $post, $user_ID;
+global $wp_query, $ae_post_factory, $post, $user_ID, $current_user;
 $post_object    = $ae_post_factory->get( 'mjob_order' );
 $current        = $post_object->convert($post);
+$user = mJobUser::getInstance();
+$user_data = $user->convert($current_user->data);
 $flag = false;
 if( $user_ID == $current->post_author ){
     $to_user = $current->mjob_author;
@@ -124,6 +126,32 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                 <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 current block-items-detail profile">
                     <div class="box-aside">
                         <div class="order-detail-price">
+                            <div class="order-extra">
+                                <div class="personal-profile order-detail-profile">
+                                    <div class="float-center profile-avatar">
+                                        <div class="">
+                                            <a href="#" class="">
+                                                <?php
+                                                echo mJobAvatar($user_ID, 75);
+                                                ?>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <h4 class="float-center">
+                                        <div id="display_name">
+                                            <div class="" data-edit="user" data-id="" data-name="display_name" data-type="input"><?php echo $current_user->display_name; ?></div>
+                                        </div>
+                                    </h4>
+                                    <div class="line">
+                                        <span class="line-distance"></span>
+                                    </div>
+                                    <h4 class="float-center order-mjob-content">
+                                        <div >
+                                            <div class="" data-edit="user" data-id="" data-name="display_name" data-type="input"><?php echo $current->post_content; ?></div>
+                                        </div>
+                                    </h4>
+                                </div>
+                            </div>
                             <div class="order-price">
                                 <p class="title-cate"><?php _e('Price', ET_DOMAIN); ?></p>
                                 <p class="price-items"><?php echo $current->mjob_price_text; ?></p>
