@@ -295,7 +295,7 @@
                     });
                 }
                 $('input[name="phone"]').mask('(99)-999-9999');
-                $('input[name="phone"]').mask('(99)-999-9999');
+                $('input[name="company_phone"]').mask('(99)-999-9999');
             },
             enterChangeInput: function(event){
                 var view = this;
