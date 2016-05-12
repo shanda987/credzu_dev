@@ -298,6 +298,7 @@
                         post_title: "required",
                         mjob_category: "required",
                         post_content: "required",
+                        client_requirements: "required",
                         time_delivery: {
                             required: true,
                             min: 0

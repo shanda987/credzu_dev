@@ -8,6 +8,11 @@ $user = mJobUser::getInstance();
 $user_data = $user->convert($current_user->data);
 $user_role = ae_user_role($current_user->ID);
 
+// Protect the Page
+if ($user_role !== COMPANY) {
+    wp_redirect(home_url()); exit;
+}
+
 // Convert profile
 $profile_obj = $ae_post_factory->get('mjob_profile');
 $profile_id = get_user_meta($user_ID, 'user_profile_id', true);
@@ -19,13 +24,6 @@ if($profile_id) {
     echo '<script type="text/json" id="mjob_profile_data" >'.json_encode($profile).'</script>';
 }
 
-// $description = !empty($profile->profile_description) ? $profile->profile_description : __('There is no content', ET_DOMAIN);
-// $payment_info = !empty($profile->payment_info) ? $profile->payment_info : __('There is no content', ET_DOMAIN);
-// $billing_full_name = !empty($profile->billing_full_name) ? $profile->billing_full_name : '';
-// $billing_full_address = !empty($profile->billing_full_address) ? $profile->billing_full_address : '';
-// $billing_country = !empty($profile->billing_country) ? $profile->billing_country : '';
-// $billing_vat = !empty($profile->billing_vat) ? $profile->billing_vat : __('There is no content', ET_DOMAIN);
-
 $company_name = !empty($profile->company_name) ? $profile->company_name : '';
 $company_address = !empty($profile->company_address) ? $profile->company_address : '';
 $company_phone = !empty($profile->company_phone) ? $profile->company_phone : '';
@@ -35,11 +33,6 @@ $company_year_established = !empty($profile->company_year_established) ? $profil
 $company_amount_of_employees = !empty($profile->company_amount_of_employees) ? $profile->company_amount_of_employees : '';
 $company_description = !empty($profile->company_description) ? $profile->company_description : '';
 
-// $first_name = !empty($profile->first_name) ? $profile->first_name : '';
-// $last_name = !empty($profile->last_name) ? $profile->last_name : '';
-// $phone = !empty($profile->phone) ? $profile->phone : '';
-// $business_email = !empty($profile->business_email) ? $profile->business_email : $user_data->user_email;
-// $credit_goal = !empty($profile->credit_goal) ? $profile->credit_goal : '';
 get_header();
 ?>
     <div class="container mjob-profile-page">

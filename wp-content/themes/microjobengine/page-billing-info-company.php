@@ -10,6 +10,11 @@ $user = mJobUser::getInstance();
 $user_data = $user->convert($current_user->data);
 $user_role = ae_user_role($current_user->ID);
 
+// Protect the Page
+if ($user_role !== COMPANY) {
+    wp_redirect(home_url()); exit;
+}
+
 $profile_obj = $ae_post_factory->get('mjob_profile');
 $profile_id = get_user_meta($user_ID, 'user_profile_id', true);
 if($profile_id) {

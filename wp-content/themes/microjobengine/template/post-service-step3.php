@@ -29,7 +29,7 @@ else{
                     <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
                     <input type="number" name="time_delivery" placeholder="<?php _e('Time delivery', ET_DOMAIN); ?>" class="input-item time-delivery" min="0" pattern="[-+]?[0-9]*[.,]?[0-9]+" required>
                     <span class="text-note"><?php _e('Day(s)', ET_DOMAIN); ?></span>
-                </div>    
+                </div>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 clearfix category-area">
                 <div class="input-group">
@@ -43,12 +43,22 @@ else{
                             'show_option_all' => false
                         )
                     ) ;?>
-                </div>    
+                </div>
             </div>
         </div>
         <div class="form-group">
-            <label><?php _e('DESCRIPTION', ET_DOMAIN) ?></label>
-            <?php wp_editor( '', 'post_content', ae_editor_settings()  );  ?>    
+            <label><?php _e('YOUR SERVICE DESCRIPTION', ET_DOMAIN) ?></label>
+            <p>
+            This will be appended to the agreement the client signs.
+            </p>
+            <?php wp_editor( '', 'post_content', ae_editor_settings()  );  ?>
+        </div>
+        <div class="form-group">
+            <label><?php _e('YOUR CLIENT REQUIREMENTS ', ET_DOMAIN) ?></label>
+            <p>
+            These are details your client must provide for you to do your job.
+            </p>
+            <?php wp_editor( '', 'client_requirements', ae_editor_settings()  );  ?>
         </div>
         <div class="form-group group-attachment gallery_container" id="gallery_container">
             <div class="outer-carousel-gallery">

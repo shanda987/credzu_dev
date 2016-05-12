@@ -435,6 +435,21 @@ class mJobUserAction extends AE_UserAction
         }
         return false;
     }
+
+    /**
+     * Get the user role
+     * @param integer $user_id
+     * @return string
+     * @since 1.0
+     * @package MicrojobEngine
+     * @category void
+     * @author Jesse Boyer
+     */
+    public function get_role( $user_id ){
+        if(! empty($user_id) ){
+            return ae_user_role($user_id);
+        }
+    }
     /**
      * Filter Email when user register
      *

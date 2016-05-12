@@ -8,8 +8,13 @@ $theme_name = 'microjobengine';
 define('THEME_NAME', $theme_name);
 define('ET_DOMAIN', 'enginetheme');
 define('MOBILE_PATH', TEMPLATEPATH . '/mobile/');
+
+/** User Role Types */
+define('ADMIN', 'administrator');
 define('INDIVIDUAL', 'individual');
 define('COMPANY', 'company');
+define('STAFF', 'staff');
+
 // define( 'ALLOW_UNFILTERED_UPLOADS', true );
 
 if (!defined('THEME_CONTENT_DIR ')) define('THEME_CONTENT_DIR', WP_CONTENT_DIR . '/et-content' . '/' . $theme_name);

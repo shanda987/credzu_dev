@@ -46,11 +46,13 @@
     <?php } else { ?>
         <p class="no-items">
         <?php
-            _e('The bad news?<br>
+            $absolute_url = full_url( $_SERVER );
+            $post_link = et_get_page_link('post-service') . '?return_url=' . $absolute_url;
+            _e("The bad news?<br>
                Currently, you do not have any clients<br>
                The good news?<br>
-               You can get clients by creating a listing.
-            ', ET_DOMAIN); ?>
+               You can get clients by <a href='$post_link'>creating a listing</a>.
+            ", ET_DOMAIN); ?>
         </p>
     <?php } ?>
 </div>

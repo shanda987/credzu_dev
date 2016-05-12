@@ -24,6 +24,7 @@ class mJobPosttype extends mJobPost{
             'et_payment_package',
             'et_price',
             'et_budget',
+            'client_requirements',
             'rating_score',
             'total_orders',
             'total_reviews',

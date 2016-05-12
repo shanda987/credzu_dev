@@ -1,5 +1,13 @@
 <?php
+
+global $user_ID;
+$user_role = mJobUserAction()->get_role($user_ID);
+if ($user_role !== COMPANY) {
+    wp_redirect(home_url()); exit;
+}
+
 get_header();
+
 /**
  * Template Name: Post a service
  *
@@ -11,10 +19,13 @@ get_header();
  * @author JACK BUI
  */
 $disable_plan = ae_get_option('disable_plan', false);
+
 ?>
 <div id="content" class="mjob-post-service">
     <div class="container float-center">
-        <p class="block-title"><?php _e('POST A MJOB', ET_DOMAIN); ?></p>
+        @TODO: Will need to make sure the company has been approved
+
+        <p class="block-title"><?php _e('POST A LISTING', ET_DOMAIN); ?></p>
         <?php if(!$disable_plan) : ?>
         <div class="progress-bar">
             <div class="mjob-progress-bar-item">
@@ -27,18 +38,24 @@ $disable_plan = ae_get_option('disable_plan', false);
         </div>
         <?php
         endif;
+        // @TODO -- DISABLE THIS FOR NOW, It will be determined on if the company is Approved.
         // check disable payment plan or not
-        if(!$disable_plan) {
-            get_template_part( 'template/post-service', 'step1' );
-        }
-        if(!$user_ID) {
-            get_template_part( 'template/post-service', 'step2' );
-        }
+        // if(!$disable_plan) {
+        //     get_template_part( 'template/post-service', 'step1' );
+        // }
+
+        // Shows login page if not logged in, dont need it i dont think
+        // if(!$user_ID) {
+        //     get_template_part( 'template/post-service', 'step2' );
+        // }
+
         get_template_part( 'template/post-service', 'step3' );
+
         if(!$disable_plan) {
             get_template_part( 'template/post-service', 'step4' );
         } ?>
     </div>
+
 </div>
 <?php
 get_footer();

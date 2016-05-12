@@ -161,6 +161,20 @@ class ET_Microjobengine extends AE_Base
                 'delete_posts' => false,
             ));
         }
+        /**
+         * add new role STAFF
+         */
+        if (!isset($wp_roles->roles[STAFF])) {
+            add_role(STAFF, __('Staff', ET_DOMAIN) , array(
+                'read' => true,
+                // true allows this capability
+                'edit_posts' => true,
+                'delete_posts' => false,
+            ));
+            $role = get_role(STAFF);
+            $role->add_cap('manage_company_approval');
+            $role->add_cap('manage_company_billing');
+        }
     }
     /**
      * init theme

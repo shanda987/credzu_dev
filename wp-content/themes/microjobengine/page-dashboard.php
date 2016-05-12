@@ -10,22 +10,24 @@
  * @author JACK BUI
  */
 global $user_ID;
-$is_individual = mJobUserAction()->is_individual($user_ID);
+
+$user_role = mJobUserAction()->get_role($user_ID);
 
 get_header();
 ?>
 
-<?php if (! ($is_individual)): ?>
-<div>
-<!--
-@TODO
-Check if meta of user profile "company_approved" is set and it == 1
-add CSS styles to put at top
+    <?php if ($user_role == COMPANY):?>
+    <div>
+    <!--
+    @TODO
+    Check if meta of user profile "company_approved" is set and it == 1
+    add CSS styles to put at top
+    -->
+    Your account is pending. You must complete your profile and then click <a href="plus-circle">Activate Account</a> in order to post listings.
+    </div>
+    <?php endif; ?>
 
--->
-Your account is pending. You must complete your profile and then click <a href="plus-circle">Activate Account</a> in order to post listings.
-</div>
-<?php endif; ?>
+
     <div id="content">
         <div class="block-page">
             <div class="container dashboard withdraw">
@@ -42,14 +44,23 @@ Your account is pending. You must complete your profile and then click <a href="
                             <div class="tabs-information">
 
                                 <div class="order-ct">
-                                    <?php
-                                    if( $is_individual ):?>
+                                    <?php if ($user_role == INDIVIDUAL):?>
                                     <div role="tabpanel" class="tab-pane active order-container-control" id="order">
                                         <?php get_template_part('template/dashboard-list', 'orders'); ?>
                                     </div>
-                                    <?php else: ?>
+                                    <?php elseif ($user_role == COMPANY): ?>
                                     <div role="tabpanel" class="tab-pane task-container-control" id="task">
                                         <?php get_template_part('template/dashboard-list', 'tasks'); ?>
+                                    </div>
+                                    <?php elseif ($user_role == STAFF): ?>
+                                    <div role="tabpanel" class="tab-pane task-container-control" id="task"> <!-- Change ID? -->
+                                        <?php get_template_part('template/dashboard-list', 'staff'); ?>
+                                    </div>
+                                    <?php elseif ($user_role == ADMIN): ?>
+                                    <div role="tabpanel" class="tab-pane task-container-control" id="task">
+                                        <div class="list-order list-task-wrapper">
+                                            <p class="no-items">The Admin Dashboard</p>
+                                        </div>
                                     </div>
                                     <?php endif; ?>
                                 </div>

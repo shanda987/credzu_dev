@@ -1,3 +1,4 @@
+<?php init_user_roles()?>
 <footer id="footer">
     <?php
     if( is_active_sidebar( 'mjob-footer-1' )    || is_active_sidebar( 'mjob-footer-2' )
