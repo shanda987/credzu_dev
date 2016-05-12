@@ -13,7 +13,7 @@ if($profile_id) {
         $profile = $profile_obj->convert($post);
     }
 }
-
+$is_individual = mJobUserAction()->is_individual($user_ID);
 $country_id = isset($profile->tax_input['country'][0]) ? $profile->tax_input['country'][0]->term_id : '';
 $languages = isset($profile->tax_input['language']) ? $profile->tax_input['language'] : '';
 $display_name = isset($user_data->display_name) ? $user_data->display_name : '';

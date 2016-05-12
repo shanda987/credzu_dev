@@ -9,7 +9,23 @@
  * @category void
  * @author JACK BUI
  */
-get_header(); ?>
+global $user_ID;
+$is_individual = mJobUserAction()->is_individual($user_ID);
+
+get_header();
+?>
+
+<?php if (! ($is_individual)): ?>
+<div>
+<!--
+@TODO
+Check if meta of user profile "company_approved" is set and it == 1
+add CSS styles to put at top
+
+-->
+Your account is pending. You must complete your profile and then click <a href="plus-circle">Activate Account</a> in order to post listings.
+</div>
+<?php endif; ?>
     <div id="content">
         <div class="block-page">
             <div class="container dashboard withdraw">
@@ -27,8 +43,6 @@ get_header(); ?>
 
                                 <div class="order-ct">
                                     <?php
-                                    global $user_ID;
-                                    $is_individual = mJobUserAction()->is_individual($user_ID);
                                     if( $is_individual ):?>
                                     <div role="tabpanel" class="tab-pane active order-container-control" id="order">
                                         <?php get_template_part('template/dashboard-list', 'orders'); ?>

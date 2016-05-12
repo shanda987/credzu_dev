@@ -35,6 +35,7 @@ class mJobProfile extends mJobPost{
             'business_email',
             'credit_goal',
             'signature',
+            'company_approved', // <-- must be 1 for a company to manage things.
             'company_name',
             'company_address',
             'company_phone',
