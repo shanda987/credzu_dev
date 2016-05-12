@@ -160,41 +160,23 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                             </div>
                             <div class="order-extra">
                                 <p class="title-cate"><?php _e('Extra', ET_DOMAIN); ?></p>
-                                <?php
-                                $mjob_price = $current->mjob_price;
-                                if(!empty($current->extra_info)):
-                                    ?>
-                                    <ul>
-                                        <?php
-                                        foreach( $current->extra_info as $key=>$extra) {
-                                            $extra = (object)$extra;
-                                            ?>
-                                            <li>
-                                                <p class="extra-title"><?php echo $extra->post_title; ?></p>
-                                                <p class="price-items"><?php echo mJobPriceFormat($extra->et_budget);  ?></p>
-                                            </li>
-                                        <?php } ?>
-                                    </ul>
-                                <?php elseif( $mjob_price != $current->amount) : ?>
-                                    <ul>
-                                        <li>
-                                            <p class="extra-title"><?php _e("Total extra's price") ?></p>
-                                            <p class="price-items"><?php echo mJobPriceFormat($current->amount - $mjob_price) ?></p>
-                                        </li>
-                                    </ul>
-                                <?php else: ?>
-                                    <p class="no-extra">
-                                        <?php _e('There are no extra services', ET_DOMAIN); ?>
-                                    </p>
-                                <?php endif; ?>
-
+                                <p><?php _e('All disputes have been sent to credit bureaus. Waiting for response', ET_DOMAIN); ?></p>
                             </div>
                             <div class="total-order">
-                                <p class="title-cate"><?php _e('Total price', ET_DOMAIN); ?></p>
-                                <p class="price-items"><?php echo mJobPriceFormat($current->amount); ?></p>
+                                <p><i class="fa fa-exclamation-circle" aria-hidden="true"></i><?php _e(' Here are the details for your order and company hired', ET_DOMAIN); ?></p>
                             </div>
                         </div>
                 </div>
+                    <div class="box-aside box-aside2">
+                        <div class="order-detail-price">
+                            <div class="order-price">
+                                <p class="title-cate"><?php _e('Requirement here', ET_DOMAIN); ?></p>
+                                
+                            </div>
+                            <div class="total-order">
+                                <p><i class="fa fa-exclamation-circle" aria-hidden="true"></i><?php _e(' There are tasks you must complete', ET_DOMAIN); ?></p>
+                            </div>
+                        </div>
             </div>
         </div>
     </div>
