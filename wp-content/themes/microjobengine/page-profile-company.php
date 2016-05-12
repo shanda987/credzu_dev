@@ -60,19 +60,19 @@ get_header();
                         <div class="form-group clearfix">
                             <div class="input-group">
                                 <div class="input-group-addon no-addon"><?php _e('Company Name:', ET_DOMAIN); ?></div>
-                                <input type="text" name="first_name" id="company_name" placeholder="<?php _e('Company Name', ET_DOMAIN); ?>" value="<?php echo $company_name; ?>">
+                                <input type="text" name="company_name" id="company_name" placeholder="<?php _e('Company Name', ET_DOMAIN); ?>" value="<?php echo $company_name; ?>">
                             </div>
                         </div>
                         <div class="form-group clearfix">
                             <div class="input-group">
                                 <div class="input-group-addon no-addon"><?php _e('Company Address:', ET_DOMAIN); ?></div>
-                                <input type="text" name="last_name" id="company_address" placeholder="<?php _e('Company Address', ET_DOMAIN); ?>" value="<?php echo $company_address; ?>">
+                                <input type="text" name="company_address" id="company_address" placeholder="<?php _e('Company Address', ET_DOMAIN); ?>" value="<?php echo $company_address; ?>">
                             </div>
                         </div>
                         <div class="form-group clearfix">
                             <div class="input-group">
                                 <div class="input-group-addon no-addon"><?php _e('Company Phone:', ET_DOMAIN); ?></div>
-                                <input type="text" name="phone" id="phone" placeholder="<?php _e('Company Phone', ET_DOMAIN); ?>" value="<?php echo $company_phone; ?>">
+                                <input type="text" name="company_phone" id="company_phone" placeholder="<?php _e('Company Phone', ET_DOMAIN); ?>" value="<?php echo $company_phone; ?>">
                             </div>
                         </div>
                         <div class="form-group clearfix">
