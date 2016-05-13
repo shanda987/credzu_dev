@@ -156,7 +156,7 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                 <p class="time-order"><i class="fa fa-clock-o" aria-hidden="true"></i><?php _e('Time delivery', ET_DOMAIN); ?></p>
                                 <p class="days-order"><?php echo sprintf(__('%s days', ET_DOMAIN), $current->mjob_time_delivery); ?></p>
                             </div>
-                            <div class="order-extra current-order list-order">
+                            <div class="order-extra list-order">
                                 <p class="title-cate"><?php _e('Status', ET_DOMAIN); ?></p>
                                 <p><?php _e('All disputes have been sent to credit bureaus. Waiting for response', ET_DOMAIN); ?></p>
                                 <div class="label-status label-status-order <?php echo $current->status_class; ?>">
