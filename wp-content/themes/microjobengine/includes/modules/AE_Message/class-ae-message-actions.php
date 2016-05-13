@@ -170,7 +170,6 @@ class AE_Private_Message_Actions extends mJobPostAction
                 $result->et_files[] = $value;
             }
         }
-
         return $result;
     }
 

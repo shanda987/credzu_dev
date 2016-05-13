@@ -38,6 +38,7 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                             $args = array(
                                 'post_type' => 'ae_message',
                                 'post_status' => 'publish',
+                                'post_parent'=>$current->ID,
                                 'meta_query' => array(
                                     'relation' => 'AND',
                                     array(
@@ -50,10 +51,6 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                             'key' => 'from_user',
                                             'value' => $user_ID,
                                         )
-                                    ),
-                                    array(
-                                        'key' => 'parent_conversation_id',
-                                        'value' => $current->ID,
                                     )
                                 ),
                                 'orderby' => 'date',
@@ -72,9 +69,10 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
 
                         echo '<div class="wrapper-list-conversation"><ul class="list-conversation">';
                             //get_template_part('template/message', 'item');
+                        $msg_obj = $ae_post_factory->get('ae_message');
                             while($messages_query->have_posts()):
                                 $messages_query->the_post();
-                                $convert = $post_object->convert($post);
+                                $convert = $msg_obj->convert($post);
                                 $post_data[] = $convert;
                                 get_template_part('template/message', 'item');
                             endwhile;
@@ -171,7 +169,7 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                         <div class="order-detail-price">
                             <div class="order-price">
                                 <p class="title-cate"><?php _e('Requirement here', ET_DOMAIN); ?></p>
-                                
+
                             </div>
                             <div class="total-order">
                                 <p><i class="fa fa-exclamation-circle" aria-hidden="true"></i><?php _e(' There are tasks you must complete', ET_DOMAIN); ?></p>
