@@ -15,17 +15,7 @@ if ($user_role !== COMPANY) {
     wp_redirect(home_url()); exit;
 }
 
-$profile_obj = $ae_post_factory->get('mjob_profile');
-$profile_id = get_user_meta($user_ID, 'user_profile_id', true);
-
-if($profile_id) {
-    $post = get_post($profile_id);
-    if($post && !is_wp_error($post)) {
-        $profile = $profile_obj->convert($post);
-    }
-    echo '<script type="text/json" id="mjob_profile_data" >'.json_encode($profile).'</script>';
-}
-// var_dump($company_name);
+$profile = mJobProfileAction()->getProfile($user_ID, "mjob_profile_data");
 
 // Bank account data
 $company_name = !empty($profile->company_name) ? $profile->company_name : '';
@@ -38,11 +28,14 @@ $bank_payee_name_override = isset($user_data->payment_info['bank']) ? $user_data
 $bank_payee_name_override_status = isset($user_data->payment_info['bank']) ? $user_data->payment_info['bank']['payee_name_override_status'] : '';
 
 get_header();
+
+// If Company, this outputs the Company Status bar (Doesn't show when approved)
+echo mJobProfileAction()->display_company_status($user_role, $profile->company_status);
 ?>
     <div class="container mjob-payment-method-page dashboard withdraw">
         <div class="row title-top-pages">
-            <p class="block-title"><?php _e('Payment method', ET_DOMAIN); ?></p>
-            <p><?php _e('Here is your payment method page', ET_DOMAIN); ?></p>
+            <p class="block-title"><?php _e('Billing Info', ET_DOMAIN); ?></p>
+            <p><a href="<?php echo et_get_page_link('dashboard'); ?>" class="btn-back"><i class="fa fa-angle-left"></i><?php _e('Back to dashboard', ET_DOMAIN); ?></a></p>
         </div>
         <div class="row profile">
             <div class="col-lg-3 col-md-3 col-sm-12 col-sx-12 block-items-detail profile">

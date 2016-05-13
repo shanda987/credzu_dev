@@ -27,9 +27,13 @@ $user_role = ae_user_role($current_user->ID);
 //}
 $profile = mJobProfileAction()->getProfile($user_ID, "mjob_profile_data");
 
+// @TODO @DEBUG -- Need credentials for Giact, this will go on the billing page
+// In the method it will die; right now for testing.
+// mJobProfileAction()->verifyBankInfo('00010001000', '123456789');
+
 get_header();
 
-// Output the company status approval
+// If Company, this outputs the Company Status bar (Doesn't show when approved)
 echo mJobProfileAction()->display_company_status($user_role, $profile->company_status);
 ?>
 
@@ -38,7 +42,6 @@ echo mJobProfileAction()->display_company_status($user_role, $profile->company_s
             <div class="container dashboard withdraw">
                 <div class="row title-top-pages">
                     <p class="block-title"><?php _e('DASHBOARD', ET_DOMAIN); ?></p>
-                    <p><?php _e('Here are your current orders', ET_DOMAIN); ?></p>
                 </div>
                 <div class="row profile">
                     <div class="col-lg-3 col-md-3 col-sm-12 col-sx-12 block-items-detail profile">

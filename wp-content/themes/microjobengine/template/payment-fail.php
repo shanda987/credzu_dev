@@ -2,7 +2,7 @@
 /**
  * this template for payment fail, you can overide this template by child theme
 */
-global $ad;	
+global $ad;
 ?>
 <div class="redirect-content" >
 	<div class="main-center float-center">
@@ -16,7 +16,7 @@ global $ad;
 					<p><?php _e("You are now redirected to submit listing page",ET_DOMAIN);?></p>
 					<p class="time-leave"><?php printf(__('Time left: %s', ET_DOMAIN ), '<span class="count_down">10</span>')  ?></p>
 				</div>
-				<?php echo '<a href="'.$permalink.'" class="btn-submit">'.__("Post a mjob", ET_DOMAIN).'</a>';
+				<?php echo '<a href="'.$permalink.'" class="btn-submit">'.__("Post a Listing", ET_DOMAIN).'</a>';
 			else :
 				$permalink	=	home_url();
 			?>

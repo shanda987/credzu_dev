@@ -26,7 +26,7 @@ $orders = AE_Payment::get_current_order($user_ID);
             echo sprintf(__('Currently, this function is not available. You should setup the mJob package <a href="%s">here</a>', ET_DOMAIN), $url);
         }
         else{
-            echo sprintf(__('Currently, you cannot post a mJob. For more details, please contact %s', ET_DOMAIN), $admin_email);
+            echo sprintf(__('Currently, you cannot post a Listing. For more details, please contact %s', ET_DOMAIN), $admin_email);
         }
         return;
     }

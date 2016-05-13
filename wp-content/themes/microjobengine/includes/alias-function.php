@@ -149,7 +149,7 @@ if(!function_exists('mJobShowUserHeader')) {
                     <ul class="dropdown-menu et-dropdown-login" aria-labelledby="dLabel">
                         <li><a href="<?php echo et_get_page_link('dashboard'); ?>"><?php _e('Dashboard', ET_DOMAIN); ?></a></li>
                         <li><a href="<?php echo et_get_page_link("profile"); ?>"><?php _e('My profile', ET_DOMAIN); ?></a></li>
-                        <li class="post-service-link"><a href="<?php echo et_get_page_link('post-service'); ?>"><?php _e('Post a mJob', ET_DOMAIN); ?>
+                        <li class="post-service-link"><a href="<?php echo et_get_page_link('post-service'); ?>"><?php _e('Post a Listing', ET_DOMAIN); ?>
                                 <div class="plus-circle"><i class="fa fa-plus"></i></div>
                         </a></li>
                         <li class="get-message-link">

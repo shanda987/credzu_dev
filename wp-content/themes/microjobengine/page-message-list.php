@@ -8,7 +8,7 @@ get_header();
     <div class="row title-top-pages">
         <p class="title-pages float-center">Message list</p>
         <div class="col-lg-6 col-md-6 col-sm-6 col-sx-12">
-            <a href="">Back to dashboard</a>
+            <p><a href="<?php echo et_get_page_link('dashboard'); ?>" class="btn-back"><i class="fa fa-angle-left"></i><?php _e('Back to dashboard', ET_DOMAIN); ?></a></p>
         </div>
         <div class="col-lg-6 col-md-6 col-sm-6 col-sx-12 float-right">
         </div>

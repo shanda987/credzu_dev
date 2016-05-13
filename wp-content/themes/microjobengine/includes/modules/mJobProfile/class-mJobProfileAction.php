@@ -212,6 +212,37 @@ class mJobProfileAction extends mJobPostAction
         ));
     }
 
+    /**
+     * Verifies Routing Numbers to a Bank
+     * @param $account_no
+     * @return string json
+     * @since 1.0
+     * @package MicrojobEngine
+     * @category Profile
+     * @author Jesse Boyer
+     */
+    public function verifyBankInfo($account_no, $routing_no) {
+        // This may have to use SOAP :()
+        $response = wp_remote_post('https://api.giact.com/VerificationServices/V5/InquiriesWS.asmx', array(
+            // 'Username' => '?',
+            // 'Password' => '?',
+            'RoutingNumber' => $account_no,
+            'AccountNumber' => $routing_no,
+            'GVerifyEnabled' => 1,
+            'TestMode' => 1
+        ));
+
+        echo '<pre>';
+        print_r($response);
+        die;
+
+        wp_send_json(array(
+            'success' => true,
+            'msg' => __('Your profile picture has been uploaded successfully.', ET_DOMAIN) ,
+            'data' => $response
+        ));
+    }
+
     public function mJobConvertProfile($result) {
         $user = get_userdata($result->post_author);
         $result->post_content= !empty($result->post_content) ? $result->post_content : __('There is no content', ET_DOMAIN);

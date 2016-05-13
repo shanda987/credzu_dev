@@ -36,7 +36,7 @@ $display_name = isset($user_data->display_name) ? $user_data->display_name : '';
                 <li class="hvr-wobble-horizontal"><a href="<?php echo et_get_page_link('payment-method') ?>"><?php _e('Payment method', ET_DOMAIN); ?></a></li>
                 <li class="hvr-wobble-horizontal"><a href="<?php echo et_get_page_link('change-password') ?>"><?php _e('Change password', ET_DOMAIN); ?></a></li>
             <?php elseif ($user_role == COMPANY ): ?>
-                <li class="hvr-wobble-horizontal"><a href="#"><?php _e('My Listings', ET_DOMAIN); ?></a></li>
+                <li class="hvr-wobble-horizontal"><a href="<?php echo et_get_page_link('my-listing-jobs'); ?>"><?php _e('My Listings', ET_DOMAIN); ?></a></li>
                 <li class="hvr-wobble-horizontal"><a href="<?php echo et_get_page_link('profile'); ?>"><?php _e('Personal Profile', ET_DOMAIN); ?></a></li>
                 <li class="hvr-wobble-horizontal"><a href="<?php echo et_get_page_link('profile-company'); ?>"><?php _e('Company Profile', ET_DOMAIN); ?></a></li>
                 <li class="hvr-wobble-horizontal"><a href="<?php echo et_get_page_link('billing-info-company'); ?>"><?php _e('Billing Information', ET_DOMAIN); ?></a></li>

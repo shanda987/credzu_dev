@@ -13,16 +13,7 @@ if ($user_role !== COMPANY) {
     wp_redirect(home_url()); exit;
 }
 
-// Convert profile
-$profile_obj = $ae_post_factory->get('mjob_profile');
-$profile_id = get_user_meta($user_ID, 'user_profile_id', true);
-if($profile_id) {
-    $post = get_post($profile_id);
-    if($post && !is_wp_error($post)) {
-        $profile = $profile_obj->convert($post);
-    }
-    echo '<script type="text/json" id="mjob_profile_data" >'.json_encode($profile).'</script>';
-}
+$profile = mJobProfileAction()->getProfile($user_ID, "mjob_profile_data");
 
 $company_name = !empty($profile->company_name) ? $profile->company_name : '';
 $company_address = !empty($profile->company_address) ? $profile->company_address : '';
@@ -34,11 +25,14 @@ $company_amount_of_employees = !empty($profile->company_amount_of_employees) ? $
 $company_description = !empty($profile->company_description) ? $profile->company_description : '';
 
 get_header();
+
+// If Company, this outputs the Company Status bar (Doesn't show when approved)
+echo mJobProfileAction()->display_company_status($user_role, $profile->company_status);
 ?>
     <div class="container mjob-profile-page">
         <div class="title-top-pages">
-            <p class="block-title"><?php _e('MY PROFILE', ET_DOMAIN); ?></p>
-            <p><?php _e('Here is your profile information', ET_DOMAIN); ?></p>
+            <p class="block-title"><?php _e('Company PROFILE', ET_DOMAIN); ?></p>
+            <p><a href="<?php echo et_get_page_link('dashboard'); ?>" class="btn-back"><i class="fa fa-angle-left"></i><?php _e('Back to dashboard', ET_DOMAIN); ?></a></p>
         </div>
         <div class="row profile">
             <div class="col-lg-4 col-md-4 col-sm-12 col-sx-12 block-items-detail profile">
