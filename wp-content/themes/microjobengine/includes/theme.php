@@ -171,6 +171,8 @@ class ET_Microjobengine extends AE_Base
                 'edit_posts' => true,
                 'delete_posts' => false,
             ));
+            // These are temporary examples, we can adjust them later.
+            //
             $role = get_role(STAFF);
             $role->add_cap('manage_company_approval');
             $role->add_cap('manage_company_billing');

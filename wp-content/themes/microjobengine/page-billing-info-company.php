@@ -17,6 +17,7 @@ if ($user_role !== COMPANY) {
 
 $profile_obj = $ae_post_factory->get('mjob_profile');
 $profile_id = get_user_meta($user_ID, 'user_profile_id', true);
+
 if($profile_id) {
     $post = get_post($profile_id);
     if($post && !is_wp_error($post)) {

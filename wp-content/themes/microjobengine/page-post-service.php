@@ -1,5 +1,4 @@
 <?php
-
 global $user_ID;
 $user_role = mJobUserAction()->get_role($user_ID);
 if ($user_role !== COMPANY) {

@@ -15,6 +15,15 @@ define('INDIVIDUAL', 'individual');
 define('COMPANY', 'company');
 define('STAFF', 'staff');
 
+/** Company Status' */
+define('COMPANY_STATUS_REGISTERED', 'registered');
+define('COMPANY_STATUS_UNDER_REVIEW', 'under_review');
+define('COMPANY_STATUS_NEEDS_CHANGES', 'needs_changes');
+define('COMPANY_STATUS_SUSPENDED', 'suspended');
+define('COMPANY_STATUS_APPROVED', 'approved');
+define('COMPANY_STATUS_DECLINED', 'declined');
+
+
 // define( 'ALLOW_UNFILTERED_UPLOADS', true );
 
 if (!defined('THEME_CONTENT_DIR ')) define('THEME_CONTENT_DIR', WP_CONTENT_DIR . '/et-content' . '/' . $theme_name);

@@ -11,3 +11,8 @@ If you import jesse.sql the logins are as follows:
     user:user
     company:company
     staff:staff
+
+Anytime metadata is added to `class-mjobProfile.php`, place this in a view file to add to
+the DB:
+
+    init_user_roles()
