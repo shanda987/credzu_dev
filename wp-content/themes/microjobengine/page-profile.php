@@ -2,7 +2,7 @@
 /**
  * Template Name: Page Profile
  */
-global $wp_query, $ae_post_factory, $post, $current_user, $user_ID;
+global $wp_query, $ae_post_factory, $post, $current_user, $user_ID, $is_individual;
 $user = mJobUser::getInstance();
 $user_data = $user->convert($current_user->data);
 $user_role = ae_user_role($current_user->ID);

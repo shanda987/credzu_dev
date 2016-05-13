@@ -443,6 +443,7 @@ class ET_Microjobengine extends AE_Base
             }
         }
         if( is_page_template('page-order.php') ){
+            global $is_individual;
             $is_individual = mJobUserAction()->is_individual($user_ID);
             if( !is_super_admin() && !$is_individual ){
                 wp_redirect(home_url());

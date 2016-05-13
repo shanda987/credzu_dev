@@ -10,19 +10,21 @@
  * @author JACK BUI
  */
 global $current_user, $ae_post_factory, $user_ID;
-
 // Get user info
 $user = mJobUser::getInstance();
 $user_data = $user->convert($current_user->data);
 $user_role = ae_user_role($current_user->ID);
 
+/*
+ * @TODO Jesse You should use hook template_redirect to redirect a page Don't use wp_redirect direct on a page template.
+ *
+ * @TODO Admin and Individual user role also can view dashbaord too.
+ *
+ */
 // Protect the Page
-if ($user_role !== COMPANY) {
-    wp_redirect(home_url()); exit;
-}
-
-
-
+//if ($user_role !== COMPANY && !is_super_admin()) {
+//    wp_redirect(home_url()); exit;
+//}
 $profile_obj = $ae_post_factory->get('mjob_profile');
 $profile_id = get_user_meta($user_ID, 'user_profile_id', true);
 
