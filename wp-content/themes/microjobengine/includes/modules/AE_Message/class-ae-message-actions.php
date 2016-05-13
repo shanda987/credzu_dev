@@ -92,7 +92,6 @@ class AE_Private_Message_Actions extends mJobPostAction
     public function syncMessage(){
         global $user_ID;
         $request = $_REQUEST;
-
         if(isset($request['conversation_content'])) {
             $request['post_content'] = $request['conversation_content'];
         };

@@ -16,8 +16,6 @@
 			initialize: function() {
 				this.paged = 1;
 			}
-
-
 		});
 	});
 })(jQuery, window.AE.Models, window.AE.Collections, window.AE.Views);

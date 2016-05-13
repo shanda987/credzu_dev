@@ -72,24 +72,24 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                         $msg_obj = $ae_post_factory->get('ae_message');
                             while($messages_query->have_posts()):
                                 $messages_query->the_post();
-                                $convert = $msg_obj->convert($post);
-                                $post_data[] = $convert;
+                                $convert_msg = $msg_obj->convert($post);
+                                $post_data_msg[] = $convert_msg;
                                 get_template_part('template/message', 'item');
                             endwhile;
-                            wp_reset_postdata();
+                            wp_reset_query();
                         echo '</ul></div>';
 
                         /**
                          * render post data for js
                          */
-                        echo '<script type="data/json" class="message_postdata" >' . json_encode($post_data) . '</script>';
+                        echo '<script type="data/json" class="message_postdata" >' . json_encode($post_data_msg) . '</script>';
                         ?>
 
                     <div class="compose-conversation mjob-conversation-form">
                         <form>
-                            <input type="hidden" id="from_user" value="<?php echo $user_ID; ?>">
-                            <input type="hidden" id="to_user" value="<?php echo $to_user; ?>">
-                            <input type="hidden" id="post_parent" value="<?php echo $current->ID; ?>">
+                            <input type="hidden" id="from_user" name="from_user" value="<?php echo $user_ID; ?>">
+                            <input type="hidden" id="to_user" name="to_user" value="<?php echo $to_user; ?>">
+                            <input type="hidden" id="post_parent" name="post_parent" value="<?php echo $current->ID; ?>">
                             <input type="hidden" class="input-item post-service_nonce" name="_wpnonce" value="<?php echo de_create_nonce('ae-mjob_post-sync');?>" />
                             <div class="form-group compose">
                                 <div class="attachment-file gallery_container_single_conversation" id="message_modal_gallery_container">
