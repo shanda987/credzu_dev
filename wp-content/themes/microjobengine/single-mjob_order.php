@@ -159,8 +159,8 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                             <div class="order-extra list-order">
                                 <p class="title-cate"><?php _e('Status', ET_DOMAIN); ?></p>
                                 <p><?php _e('All disputes have been sent to credit bureaus. Waiting for response', ET_DOMAIN); ?></p>
-                                <div class="label-status label-status-order <?php echo $current->status_class; ?>">
-                                    <span><?php echo $current->status_text; ?></span>
+                                <div class="label-status label-status-order pending-color">
+                                    <span><?php _e('ALERT', ET_DOMAIN); ?></span>
                                 </div>
                             </div>
                             <div class="total-order">
