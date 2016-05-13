@@ -44,8 +44,17 @@ $display_name = isset($user_data->display_name) ? $user_data->display_name : '';
                 <li class="hvr-wobble-horizontal"><a href="<?php echo et_get_page_link('change-password') ?>"><?php _e('Change password', ET_DOMAIN); ?></a></li>
             <?php elseif ($user_role == ADMIN):?>
                 <!-- Admin Options -->
+                <li class="hvr-wobble-horizontal"><a href="<?php echo et_get_page_link('profile'); ?>"><?php _e('Personal Profile', ET_DOMAIN); ?></a></li>
+                <li class="line-distance"></li>
+                <li class="hvr-wobble-horizontal"><a href="<?php echo et_get_page_link('change-password') ?>"><?php _e('Change password', ET_DOMAIN); ?></a></li>
             <?php elseif ($user_role == STAFF):?>
-                <li>Staff</li>
+                <li class="hvr-wobble-horizontal"><a href="<?php echo et_get_page_link('profile'); ?>"><?php _e('Personal Profile', ET_DOMAIN); ?></a></li>
+                <li class="hvr-wobble-horizontal"><a href="<?php echo et_get_page_link('staff-manage-company') ?>"><?php _e('Manage Companies', ET_DOMAIN); ?></a></li>
+                <li class="hvr-wobble-horizontal"><a href="<?php echo et_get_page_link('staff-manage-listing') ?>"><?php _e('Manage Listings', ET_DOMAIN); ?></a></li>
+                <li class="hvr-wobble-horizontal"><a href="<?php echo et_get_page_link('staff-manage-billing') ?>"><?php _e('Manage Billing', ET_DOMAIN); ?></a></li>
+                <li class="hvr-wobble-horizontal"><a href="<?php echo et_get_page_link('staff-manage-dispute') ?>"><?php _e('Manage Disputes', ET_DOMAIN); ?></a></li>
+                <li class="line-distance"></li>
+                <li class="hvr-wobble-horizontal"><a href="<?php echo et_get_page_link('change-password') ?>"><?php _e('Change password', ET_DOMAIN); ?></a></li>
             <?php else:?>
                 <li>Error: Unknown Role</li>
                 <!-- For any user role not checked -->

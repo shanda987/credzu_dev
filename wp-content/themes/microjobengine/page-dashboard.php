@@ -25,31 +25,13 @@ $user_role = ae_user_role($current_user->ID);
 //if ($user_role !== COMPANY && !is_super_admin()) {
 //    wp_redirect(home_url()); exit;
 //}
-$profile_obj = $ae_post_factory->get('mjob_profile');
-$profile_id = get_user_meta($user_ID, 'user_profile_id', true);
-
-if($profile_id) {
-    $post = get_post($profile_id);
-    if($post && !is_wp_error($post)) {
-        $profile = $profile_obj->convert($post);
-    }
-    echo '<script type="text/json" id="mjob_profile_data" >'.json_encode($profile).'</script>';
-}
+$profile = mJobProfileAction()->getProfile($user_ID, "mjob_profile_data");
 
 get_header();
+
+// Output the company status approval
+echo mJobProfileAction()->display_company_status($user_role, $profile->company_status);
 ?>
-
-    <?php if ($user_role == COMPANY):?>
-    <div>
-    <!--
-    @TODO
-    Check if meta of user profile "company_approved" is set and it == 1
-    add CSS styles to put at top
-    -->
-    Your account is pending. You must complete your profile and then click <a href="plus-circle">Activate Account</a> in order to post listings.
-    </div>
-    <?php endif; ?>
-
 
     <div id="content">
         <div class="block-page">

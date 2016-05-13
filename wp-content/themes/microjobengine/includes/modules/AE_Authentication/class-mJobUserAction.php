@@ -451,6 +451,18 @@ class mJobUserAction extends AE_UserAction
         }
     }
     /**
+     * Get the company status
+     * @param integer $user_id
+     * @return string
+     * @since 1.0
+     * @package MicrojobEngine
+     * @category void
+     * @author Jesse Boyer
+     */
+    public function get_company_status( $user_id ) {
+        return get_user_meta($user_id, 'company_status', true);
+    }
+    /**
      * Filter Email when user register
      *
      * @param string $message

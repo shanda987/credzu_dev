@@ -183,3 +183,27 @@
     right: -7px!important;
     top: 20px!important;
 }
+
+.top-message {
+
+    width: 100%;
+    border-bottom: 1px solid silver;
+    text-align: center;
+    z-index: 1001;
+    padding: 10px;
+    background: #fff;
+    box-shadow: 1px 0px 46px rgba(188, 207, 219, 0.7)
+}
+
+.btn-basic {
+    background: #10a2ef;
+    color: #fff !important;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    padding: 5px 10px 5px 10px;
+    margin: 0 5px;
+}
+.btn-basic:hover {
+    color: #fff !important;
+    background: #56BAEF;
+}

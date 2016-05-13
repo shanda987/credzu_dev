@@ -267,13 +267,14 @@ class mJobProfileAction extends mJobPostAction
      * get user profile
      *
      * @param integer $user_id
+     * @param string|boolean $json_to_page (optional) Provide and ID
      * @return void
      * @since 1.0
      * @package MicrojobEngine
      * @category void
      * @author JACK BUI
      */
-    public function getProfile($user_id){
+    public function getProfile($user_id, $json_to_page = false){
         global  $ae_post_factory, $post;
         $profile_obj = $ae_post_factory->get('mjob_profile');
         $profile_id = get_user_meta($user_id, 'user_profile_id', true);
@@ -283,9 +284,52 @@ class mJobProfileAction extends mJobPostAction
             if($p && !is_wp_error($p)) {
                 $profile = $profile_obj->convert($p);
             }
+            if ($json_to_page) {
+                echo "<script type='text/json' id='$id' >".json_encode($profile).'</script>';
+            }
         }
         return $profile;
     }
+
+    /**
+     * Displays the header messages for a profile
+     *
+     * @param integer $user_id
+     * @param string $company_status
+     * @return void
+     * @since 1.0
+     * @package MicrojobEngine
+     * @category void
+     * @author Jesse Boyer
+     */
+    public function display_company_status($user_role, $company_status){
+        $output = '';
+        if ($user_role == COMPANY && $company_status != COMPANY_STATUS_APPROVED) {
+
+            $output .= '<div class="top-message"><span>';
+
+            if ($company_status == COMPANY_STATUS_REGISTERED || !$company_status) {
+                $output .= "Your account is pending. You must complete your profile and then click
+                <a href='#' class='btn-basic'>Activate Account</a> in order to post listings.";
+            }
+            elseif ($company_status == COMPANY_STATUS_UNDER_REVIEW) {
+                $output .= 'Your account is under review.';
+            }
+            elseif ($company_status == COMPANY_STATUS_NEEDS_CHANGES) {
+                $output .= "Your account needs changes. You must update your profile and then click
+                <a href='#' class='btn-basic'>Activate Account</a> in order to post listings.";
+            }
+            elseif ($company_status == COMPANY_STATUS_DECLINED) {
+                $output .= "Sorry. Your account was declined by our staff.";
+            }
+            elseif ($company_status == COMPANY_STATUS_SUSPENDED) {
+                $output .= "This account has been suspended.";
+            }
+            $output .= '</span></div>';
+        }
+        return $output;
+    }
+
     /**
      * check address
      *

@@ -1,6 +1,5 @@
 <?php
     global $ae_post_factory, $user_ID;
-    $post_obj = $ae_post_factory->get('mjob_order');
     $default = array();
     if( is_page_template('page-dashboard.php') ){
         $default = array('posts_per_page'=> 5);
@@ -9,48 +8,55 @@
 <div class="list-order list-task-wrapper">
     <?php
     $args = array(
-        'post_type' => 'mjob_order',
-        'post_status' => array(
-            'publish',
-            'delivery',
-            'disputed',
-            'disputing',
-            'late',
-            'finished'
-        ),
-        'meta_key' => 'seller_id',
-        'meta_value' => array($user_ID),
-        'meta_compare' => 'IN'
+        'role'         => COMPANY,
+        'meta_key'     => 'company_status',
     );
-    $args = wp_parse_args($args, $default);
-    $postdata = array();
-    $task_query = new WP_Query($args);
-    if($task_query->have_posts()) {
+    $companies = get_users($args);
+
+    if($companies) {
         ?>
         <ul class="list-tasks">
             <?php
-            while($task_query->have_posts()) {
-                $task_query->the_post();
-                $convert = $post_obj->convert($post);
-                $postdata[] = $convert;
-                get_template_part('template/task-list', 'item');
-            }
+            foreach ($companies as $key => $value) {
+                $profile = mJobProfileAction()->getProfile($value->ID);
 
-            wp_reset_postdata();
+                // @TODO: Below will be a template for Company Users
+                ?>
+                <li class="task-item">
+                    <div>
+                    <h2><?php echo $profile->post_title; ?></h2>
+                    <p><?php _e('Status: ', ET_DOMAIN);?>
+                        <?php echo ($profile->company_status != '') ? $profile->company_status : COMPANY_STATUS_REGISTERED; ?>
+                        <?php echo $profile->author_name;?>
+                    </p>
+                        <span class="date-post">
+                            <?php echo et_the_time(get_the_time('U')); ?>
+                        </span>
+                    </div>
+                    <div class="pull-right">
+                        <a class="btn-basic" href="?user_id=<?=$value->ID?>&company_status=<?=COMPANY_STATUS_APPROVED?>">Approve</a>
+                        <a class="btn-basic" href="?user_id=<?=$value->ID?>&company_status=<?=COMPANY_STATUS_DECLINED?>">Decline</a>
+                        <a class="btn-basic" href="?user_id=<?=$value->ID?>&company_status=<?=COMPANY_STATUS_SUSPENDED?>">Suspend</a>
+                        <a class="btn-basic" href="?user_id=<?=$value->ID?>&company_status=<?=COMPANY_STATUS_NEEDS_CHANGES?>">Needs Changes</a>
+                    </div>
+                    <div class="clearfix"></div>
+                </li>
+                <?php
+            }
+            // while($task_query->have_posts()) {
+            //     $task_query->the_post();
+            //     $convert = $post_obj->convert($post);
+            //     $postdata[] = $convert;
+            //     get_template_part('template/task-list', 'item');
+            // }
+
+            // wp_reset_postdata();
             ?>
         </ul>
 
         <?php if(is_page_template('page-dashboard.php')) : ?>
             <div class="view-all float-center"><a href="<?php echo et_get_page_link('my-list-order'); ?>"><?php _e('View all', ET_DOMAIN); ?></a></div>
         <?php endif; ?>
-    <?php } else { ?>
-        <p class="no-items">
-        <?php
-            _e('This will be for the Staff Area<br>
-               There may be various STAFF_<TYPES><br>
-               So we can differentiate them in here if needed.
-            ', ET_DOMAIN); ?>
-        </p>
     <?php } ?>
 </div>
 <?php
