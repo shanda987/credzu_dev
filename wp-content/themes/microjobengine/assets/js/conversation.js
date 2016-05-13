@@ -29,7 +29,6 @@
                     conversationCollection = new Collections.Message();
                 }
             }
-
             // Conversation list view
             var conversationList = new Views.ConversationList({
                 itemView: conversationItem,
@@ -73,7 +72,6 @@
                     messageCollection = new Collections.Message();
                 }
             }
-
             // Message list view
             var messageList = new Views.MessageList({
                 itemView: messageItem,

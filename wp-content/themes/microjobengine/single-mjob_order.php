@@ -89,7 +89,7 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                         <form>
                             <input type="hidden" id="from_user" value="<?php echo $user_ID; ?>">
                             <input type="hidden" id="to_user" value="<?php echo $to_user; ?>">
-                            <input type="hidden" id="conversation_id" value="<?php echo $current->ID; ?>">
+                            <input type="hidden" id="post_parent" value="<?php echo $current->ID; ?>">
                             <input type="hidden" class="input-item post-service_nonce" name="_wpnonce" value="<?php echo de_create_nonce('ae-mjob_post-sync');?>" />
                             <div class="form-group compose">
                                 <div class="attachment-file gallery_container_single_conversation" id="message_modal_gallery_container">
@@ -181,4 +181,5 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
 </div>
 </div>
 <?php
+echo '<script type="data/json" id="default-message-query">'.json_encode($messages_query->query).'</script>';
 get_footer();
