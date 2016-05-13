@@ -179,3 +179,7 @@
     margin-top: 60px;
     margin-bottom: 30px;
 }
+.label-status-order{
+    right: -7px!important;
+    top: 20px!important;
+}
