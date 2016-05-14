@@ -602,9 +602,10 @@
             el: 'body',
             model: [],
             events: {
-
+                'click .btn-active-action': 'activeAccount'
             },
             initialize: function (options) {
+                this.blockUi = new Views.BlockUi();
                 this.$('.chosen-single').chosen({
                     width: '100%',
                     max_selected_options: 1
@@ -790,6 +791,37 @@
                     var price       =   amount_text + format;
                 }
                 return price;
+            },
+            activeAccount: function(e){
+                e.preventDefault();
+                var $target = $(e.currentTarget);
+                var view = this;
+                var pdata = {
+                    action: 'mjob-check-user-active'
+                }
+                $.ajax({
+                    url: ae_globals.ajaxURL,
+                    type: 'post',
+                    data: pdata,
+                    beforeSend: function () {
+                        view.blockUi.block($target);
+                    },
+                    success: function (res) {
+                        if( res.success ){
+                            AE.pubsub.trigger('ae:notification', {
+                                msg: res.msg,
+                                notice_type: 'success'
+                            });
+                        }
+                        else{
+                            AE.pubsub.trigger('ae:notification', {
+                                msg: res.msg,
+                                notice_type: 'error'
+                            });
+                        }
+                        view.blockUi.unblock();
+                    }
+                });
             }
         });
         Views.ProcessHiring = Backbone.View.extend({

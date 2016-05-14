@@ -26,6 +26,7 @@ class mJobProfileAction extends mJobPostAction
         $this->add_action('wp_footer', 'mJobAddProfileModal');
         $this->add_ajax('mjob-check-smarty-address', 'mJobCheckSmartyAddress');
         $this->add_action('ae_convert_mjob_profile', 'mJobConvertProfile');
+        $this->add_ajax('mjob-check-user-active',  'mJobCheckActiveAccount');
     }
 
     /**
@@ -345,21 +346,21 @@ class mJobProfileAction extends mJobPostAction
             $output .= '<div class="top-message"><span>';
 
             if ($company_status == COMPANY_STATUS_REGISTERED || !$company_status) {
-                $output .= "Your account is pending. You must complete your profile and then click
-                <a href='#' class='btn-basic'>Activate Account</a> in order to post listings.";
+                $output .= __("Your account is pending. You must complete your profile and then click", ET_DOMAIN);
+                $output .= __("<a href='#' class='btn-basic btn-active-action'>Activate Account</a> in order to post listings.", ET_DOMAIN);
             }
             elseif ($company_status == COMPANY_STATUS_UNDER_REVIEW) {
-                $output .= 'Your account is under review.';
+                $output .= __('Your account is under review.', ET_DOMAIN);
             }
             elseif ($company_status == COMPANY_STATUS_NEEDS_CHANGES) {
-                $output .= "Your account needs changes. You must update your profile and then click
-                <a href='#' class='btn-basic'>Activate Account</a> in order to post listings.";
+                $output .= __("Your account needs changes. You must update your profile and then click", ET_DOMAIN);
+                $output .= __("<a href='#' class='btn-basic'>Activate Account</a> in order to post listings.", ET_DOMAIN);
             }
             elseif ($company_status == COMPANY_STATUS_DECLINED) {
-                $output .= "Sorry. Your account was declined by our staff.";
+                $output .= __("Sorry. Your account was declined by our staff.", ET_DOMAIN);
             }
             elseif ($company_status == COMPANY_STATUS_SUSPENDED) {
-                $output .= "This account has been suspended.";
+                $output .= __("This account has been suspended.", ET_DOMAIN);
             }
             $output .= '</span></div>';
         }
@@ -368,14 +369,15 @@ class mJobProfileAction extends mJobPostAction
     /**
       * Check company profile
       *
-      * @param
-      * @return void
+      * @param object $profile
+      * @param array $fields_to_check is a array meta_field to check
+      * @return bolean true if there is a empty field that user need to fill and false if that it's enough
       * @since 1.4
       * @package MicrojobEngine
       * @category CREDZU
       * @author JACK BUI
       */
-    public function check_company_profile($profile, $fields_to_check = array()){
+    public function empty_company_profile($profile, $fields_to_check = array()){
         if( !empty($profile) ){
             $profile_arr = (array)$profile;
             if( !empty($fields_to_check) ) {
@@ -396,6 +398,49 @@ class mJobProfileAction extends mJobPostAction
             }
         }
 
+    }
+    /**
+      * check company can active or not
+      *
+      * @param void
+      * @return void
+      * @since 1.4
+      * @package MicrojobEngine
+      * @category CREDZU
+      * @author JACK BUI
+      */
+    public function mJobCheckActiveAccount(){
+        global $user_ID;
+        $profile = $this->getProfile($user_ID);
+        $arr_to_check = array(
+            'company_name',
+            'company_address',
+            'company_phone',
+            'company_email',
+            'company_website',
+            'company_year_established',
+            'company_amount_of_employees',
+            'company_description'
+        );
+        $check = $this->empty_company_profile($profile, $arr_to_check);
+        if( !$check ){
+            /*
+             * @TODO Handle this function after user complete their profile information
+             * this is for Jack
+             */
+            wp_send_json(array(
+                'success'=> true,
+                'msg'=> __('Success!', ET_DOMAIN)
+            ));
+        }
+        else{
+            wp_send_json( array(
+                    'success'=> false,
+                    'msg'=> __('Please complete your profile before click active account button!', ET_DOMAIN)
+                )
+
+            );
+        }
     }
 }
 $new_instance = mJobProfileAction::getInstance();
