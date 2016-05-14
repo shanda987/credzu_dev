@@ -424,10 +424,7 @@ class mJobProfileAction extends mJobPostAction
         );
         $check = $this->empty_company_profile($profile, $arr_to_check);
         if( !$check ){
-            /*
-             * @TODO Handle this function after user complete their profile information
-             * this is for Jack
-             */
+            update_user_meta($user_ID, 'user_status', COMPANY_STATUS_UNDER_REVIEW);
             wp_send_json(array(
                 'success'=> true,
                 'msg'=> __('Success!', ET_DOMAIN)
