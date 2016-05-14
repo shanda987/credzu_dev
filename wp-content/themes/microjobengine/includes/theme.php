@@ -438,8 +438,15 @@ class ET_Microjobengine extends AE_Base
         }
         if( is_page_template('page-post-service.php') ){
             $user_role = ae_user_role($user_ID);
+            $status = get_user_meta($user_ID, 'user_status', true);
             if( !is_super_admin() &&  $user_role != 'company' ){
-                wp_redirect(home_url());
+                    wp_redirect(home_url());
+
+            }
+            else{
+                if( $user_role == COMPANY && $status != COMPANY_STATUS_APPROVED ){
+                    wp_redirect(home_url());
+                }
             }
         }
         if( is_page_template('page-order.php') ){
