@@ -1027,3 +1027,29 @@ if( !function_exists('AE_Pdf_Creator') ){
         return $instance;
     }
 }
+if( function_exists('ae_is_empty_array_value') ){
+    /**
+      * Check if there is a empty value in array
+      *
+      * @param array $arr
+      * @return boolean true if there is at least a empty value in array and false if there isn't.
+      * @since 1.4
+      * @package MicrojobEngine
+      * @category CREDZU
+      * @author JACK BUI
+      */
+    function ae_is_empty_array_value($arr = array() ){
+        if( !empty($arr) ){
+            foreach( $arr as $key=> $value){
+                if( empty($value) ){
+                    return true;
+                }
+            }
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+
+}

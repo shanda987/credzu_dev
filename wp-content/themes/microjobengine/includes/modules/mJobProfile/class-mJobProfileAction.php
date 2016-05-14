@@ -365,5 +365,37 @@ class mJobProfileAction extends mJobPostAction
         }
         return $output;
     }
+    /**
+      * Check company profile
+      *
+      * @param
+      * @return void
+      * @since 1.4
+      * @package MicrojobEngine
+      * @category CREDZU
+      * @author JACK BUI
+      */
+    public function check_company_profile($profile, $fields_to_check = array()){
+        if( !empty($profile) ){
+            $profile_arr = (array)$profile;
+            if( !empty($fields_to_check) ) {
+                if( is_array($fields_to_check) ) {
+                    foreach ($profile_arr as $key => $value) {
+                        if (in_array($key, $fields_to_check) && empty($value)) {
+                            return true;
+                        }
+                    }
+                    return false;
+                }
+                else{
+                    return ae_is_empty_array_value($profile_arr);
+                }
+            }
+            else{
+                return false;
+            }
+        }
+
+    }
 }
 $new_instance = mJobProfileAction::getInstance();
