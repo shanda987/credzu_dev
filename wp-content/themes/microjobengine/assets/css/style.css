@@ -8691,7 +8691,7 @@ body.page-template-page-profile-php .plus-circle {
   .block-hot-items ul li .name-items {
     text-overflow: ellipsis;
     /*width: 89%;*/
-    max-width: 156px;
+    max-width: 140px;
     white-space: nowrap;
     overflow: hidden;
   }
