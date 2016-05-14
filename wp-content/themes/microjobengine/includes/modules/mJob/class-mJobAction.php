@@ -658,5 +658,19 @@ class mJobAction extends mJobPostAction{
         }
         wp_send_json($breadcrumb);
     }
+    /**
+      * get user status
+      *
+      * @param integer/string $user_id
+      * @return string $user_status
+      * @since 1.4
+      * @package MicrojobEngine
+      * @category CREDZU
+      * @author JACK BUI
+      */
+    public function getUserStatus( $user_id = '' ){
+        $user_status = get_user_meta($user_id, 'user_status', true);
+        return $user_status;
+    }
 }
 new mJobAction();

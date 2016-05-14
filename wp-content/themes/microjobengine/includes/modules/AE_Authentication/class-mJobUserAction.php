@@ -177,6 +177,7 @@ class mJobUserAction extends AE_UserAction
     public function mJobFilterUser($result) {
         $result->avatar = mJobAvatar($result->ID, 35);
         $result->payment_info = get_user_meta($result->ID, 'payment_info', true);
+        $result->user_status = get_user_meta($result->ID, 'user_status', true);
         return $result;
     }
 
@@ -195,7 +196,9 @@ class mJobUserAction extends AE_UserAction
             update_user_meta($result, 'register_status', 'unconfirm');
             update_user_meta($result, 'key_confirm', md5($user_data['user_email']));
         }
-
+        if( isset($user_data['role']) && $user_data['role'] == COMPANY ){
+            update_user_meta($result, 'user_status', COMPANY_STATUS_REGISTERED);
+        }
         // send email registration to user
         $this->mail->register_mail($result);
     }

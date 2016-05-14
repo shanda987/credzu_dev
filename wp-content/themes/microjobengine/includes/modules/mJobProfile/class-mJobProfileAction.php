@@ -25,7 +25,7 @@ class mJobProfileAction extends mJobPostAction
         $this->add_action('ae_login_user', 'mJobInsertProfileAfterLogin', 10, 1);
         $this->add_action('wp_footer', 'mJobAddProfileModal');
         $this->add_ajax('mjob-check-smarty-address', 'mJobCheckSmartyAddress');
-        //$this->add_action('ae_convert_mjob_profile', 'mJobConvertProfile');
+        $this->add_action('ae_convert_mjob_profile', 'mJobConvertProfile');
     }
 
     /**
@@ -48,6 +48,9 @@ class mJobProfileAction extends mJobPostAction
 
         if(!is_wp_error($profile)) {
             update_user_meta($result, 'user_profile_id', $profile);
+            /*
+             * @TODO  @Jesse Why should we check $user->display_name == COMPANY ?
+             */
             if ($user->display_name == COMPANY) {
                 update_user_meta($result, 'company_status', COMPANY_STATUS_REGISTERED);
             }
@@ -256,6 +259,7 @@ class mJobProfileAction extends mJobPostAction
         $result->phone = !empty($result->phone) ? $result->phone : __('Phone', ET_DOMAIN);
         $result->business_email = !empty($result->business_email) ? $result->business_email : $user->user_email;
         $result->credit_goal = !empty($result->credit_goal) ? $result->credit_goal : __('Credit_goals', ET_DOMAIN);
+        $result->company_status = get_user_meta($user->ID,'user_status', true);
         return $result;
     }
 
@@ -310,6 +314,7 @@ class mJobProfileAction extends mJobPostAction
         $profile_obj = $ae_post_factory->get('mjob_profile');
         $profile_id = get_user_meta($user_id, 'user_profile_id', true);
         $profile = '';
+        $id = $json_to_page;
         if($profile_id) {
             $p = get_post($profile_id);
             if($p && !is_wp_error($p)) {

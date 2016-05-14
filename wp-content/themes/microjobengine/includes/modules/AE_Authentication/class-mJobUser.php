@@ -3,6 +3,7 @@
 class mJobUser extends AE_Users
 {
     public static $instance;
+    public $user_status;
 
     /**
      * Get instance method
