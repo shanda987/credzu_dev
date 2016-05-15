@@ -792,37 +792,37 @@
                 }
                 return price;
             },
-            activeAccount: function(e){
-                e.preventDefault();
-                var $target = $(e.currentTarget);
-                var view = this;
-                var pdata = {
-                    action: 'mjob-check-user-active'
-                }
-                $.ajax({
-                    url: ae_globals.ajaxURL,
-                    type: 'post',
-                    data: pdata,
-                    beforeSend: function () {
-                        view.blockUi.block($target);
-                    },
-                    success: function (res) {
-                        if( res.success ){
-                            AE.pubsub.trigger('ae:notification', {
-                                msg: res.msg,
-                                notice_type: 'success'
-                            });
-                        }
-                        else{
-                            AE.pubsub.trigger('ae:notification', {
-                                msg: res.msg,
-                                notice_type: 'error'
-                            });
-                        }
-                        view.blockUi.unblock();
-                    }
-                });
-            }
+        //    activeAccount: function(e){
+        //        e.preventDefault();
+        //        var $target = $(e.currentTarget);
+        //        var view = this;
+        //        var pdata = {
+        //            action: 'mjob-check-user-active'
+        //        }
+        //        $.ajax({
+        //            url: ae_globals.ajaxURL,
+        //            type: 'post',
+        //            data: pdata,
+        //            beforeSend: function () {
+        //                view.blockUi.block($target);
+        //            },
+        //            success: function (res) {
+        //                if( res.success ){
+        //                    AE.pubsub.trigger('ae:notification', {
+        //                        msg: res.msg,
+        //                        notice_type: 'success'
+        //                    });
+        //                }
+        //                else{
+        //                    AE.pubsub.trigger('ae:notification', {
+        //                        msg: res.msg,
+        //                        notice_type: 'error'
+        //                    });
+        //                }
+        //                view.blockUi.unblock();
+        //            }
+        //        });
+        //    }
         });
         Views.ProcessHiring = Backbone.View.extend({
             el: '.page-template-page-process-hiring',
@@ -893,6 +893,9 @@
             afterSave: function(result, resp, jqXHR, type){
                 var view = this;
                 if( resp.success ) {
+                    if( type == 'update-profile'){
+                        view.UserStatus();
+                    }
                     if (type == 'update-profile-hiring') {
                         view.showStep2();
                     }
@@ -900,6 +903,32 @@
                         view.showStep3();
                     }
                 }
+            },
+            UserStatus: function(){
+                var pdata = {
+                    action: 'mjob-check-user-active'
+                }
+                $.ajax({
+                    url: ae_globals.ajaxURL,
+                    type: 'post',
+                    data: pdata,
+                    beforeSend: function () {
+                    },
+                    success: function (res) {
+                        if( res.success ){
+                            AE.pubsub.trigger('ae:notification', {
+                                msg: res.msg,
+                                notice_type: 'success'
+                            });
+                        }
+                        else{
+                            AE.pubsub.trigger('ae:notification', {
+                                msg: res.msg,
+                                notice_type: 'error'
+                            });
+                        }
+                    }
+                });
             },
             showStep2: function(){
                 $('.page-template-page-process-hiring .block-title').html(ae_globals.process_hiring_step2);

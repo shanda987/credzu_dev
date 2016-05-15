@@ -346,8 +346,7 @@ class mJobProfileAction extends mJobPostAction
             $output .= '<div class="top-message"><span>';
 
             if ($company_status == COMPANY_STATUS_REGISTERED || !$company_status) {
-                $output .= __("Your account is pending. You must complete your profile and then click", ET_DOMAIN);
-                $output .= __("<a href='#' class='btn-basic btn-active-action'>Activate Account</a> in order to post listings.", ET_DOMAIN);
+                $output .= __("ACCOUNT PENDING: Please complete your Personal Profile, Company Profile and Billing information so we can review and approve your account", ET_DOMAIN);
             }
             elseif ($company_status == COMPANY_STATUS_UNDER_REVIEW) {
                 $output .= __('Your account is under review.', ET_DOMAIN);
