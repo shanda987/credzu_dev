@@ -50,7 +50,8 @@ class mJobProfile extends mJobPost{
             'billing_other_address',
             'account_holder',
             'use_holder_account',
-            'use_billing_address'
+            'use_billing_address',
+            'bank_name'
 
         );
         $this->post_type_singular = 'Profile';

@@ -112,7 +112,15 @@ class mJobProfileAction extends mJobPostAction
                 'msg' => __('Your account is pending. You have to activate your account to continue this step.', ET_DOMAIN)
             ));
         }
-
+        if( isset($request['routing_number']) ) {
+            $response = $this->getBankName($request['routing_number']);
+            if( !$response['success'] ){
+                wp_send_json($response);
+            }
+            else{
+                $request['bank_name'] = $response['data'];
+            }
+        }
         $result = $this->sync_post($request);
         if($result['success'] != false && !is_wp_error($result)) {
             if($request['method'] == 'create') {
@@ -224,6 +232,8 @@ class mJobProfileAction extends mJobPostAction
      * @package MicrojobEngine
      * @category Profile
      * @author Jesse Boyer
+     * @author Jack Bui
+     *
      */
     public function verifyBankInfo($account_no, $routing_no) {
         // This may have to use SOAP :()
@@ -246,6 +256,43 @@ class mJobProfileAction extends mJobPostAction
             'data' => $response
         ));
     }
+    /**
+      * get bank name
+      *
+      * @param string $routing_number
+      * @return array $response
+      * @since 1.4
+      * @package MicrojobEngine
+      * @category CREDZU
+      * @author JACK BUI
+      */
+    public function getBankName($routing_number = ''){
+        $uri = 'http://www.routingnumbers.info/api/name.json?rn='. $routing_number;
+        $data = wp_remote_post($uri);
+        $response = array(
+            'success'=> false,
+            'msg'=> __('Failed!', ET_DOMAIN)
+        );
+        if( isset($data['body']) ){
+            $data = $data['body'];
+            $data = json_decode($data);
+            if( $data->code == 200 ){
+                $response = array(
+                    'success'=> true,
+                    'msg'=> __('Success!', ET_DOMAIN),
+                    'data'=> $data->name
+                );
+            }
+            else{
+                $response = array(
+                    'success'=> false,
+                    'msg'=> $data->message
+                );
+            }
+        }
+        return $response;
+    }
+
 
     public function mJobConvertProfile($result) {
         $user = get_userdata($result->post_author);
