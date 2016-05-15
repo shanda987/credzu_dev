@@ -120,6 +120,7 @@ class mJobProfileAction extends mJobPostAction
             else{
                 $request['bank_name'] = $response['data'];
             }
+            //$this->verifyBankInfo( $request['account_number'], $request['routing_number']);
         }
         $result = $this->sync_post($request);
         if($result['success'] != false && !is_wp_error($result)) {
@@ -237,15 +238,27 @@ class mJobProfileAction extends mJobPostAction
      */
     public function verifyBankInfo($account_no, $routing_no) {
         // This may have to use SOAP :()
-        $response = wp_remote_post('https://api.giact.com/VerificationServices/V5/InquiriesWS.asmx', array(
-            // 'Username' => '?',
-            // 'Password' => '?',
-            'RoutingNumber' => $account_no,
-            'AccountNumber' => $routing_no,
-            'GVerifyEnabled' => 1,
-            'TestMode' => 1
-        ));
+        $uri = "https://api.giact.com/VerificationServices/V5/InquiriesWS.asmx?WSDL";
+        try {
+            $client = @new SOAPClient($uri);  // or preferably, use a url for $wsdl
+            exit('sfdsfsdfsdfsdf');
+            $auth         = new ChannelAdvisorAuth('XHBKT-C50M-T7F7-UFKL-TU9CK', 'fmieTL-QNE_3PYo');
+            $header     = new SoapHeader($uri, "APICredentials", $auth, false);
 
+            // Be sure to replace soapMethodToUse with a mouthed for this specific web service.
+            $response = $client->__soapCall("PostInquiry", array(
+                'Inquiry'=>array(
+                "check" => array(
+                    "RoutingNumber"        => $routing_no,
+                    "AccountNumber"    => $account_no        // The ads ID
+                )
+            ) ), NULL, $header);
+
+        } catch (Exception $e) {
+
+            echo $e->getMessage();
+
+        }
         echo '<pre>';
         print_r($response);
         die;
