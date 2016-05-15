@@ -419,7 +419,17 @@ class mJobProfileAction extends mJobPostAction
             'company_website',
             'company_year_established',
             'company_amount_of_employees',
-            'company_description'
+            'company_description',
+            'account_number',
+            'routing_number',
+            'billing_other_address',
+            'account_holder',
+            'use_holder_account',
+            'use_billing_address',
+            'first_name',
+            'last_name',
+            'phone',
+            'business_email'
         );
         $check = $this->empty_company_profile($profile, $arr_to_check);
         if( !$check ){
