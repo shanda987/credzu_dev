@@ -207,3 +207,6 @@
     color: #fff !important;
     background: #56BAEF;
 }
+.mjob-profile-page .account-holder, .mjob-profile-page .billing-order-address{
+    display: none;
+}

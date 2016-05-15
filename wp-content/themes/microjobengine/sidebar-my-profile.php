@@ -30,7 +30,7 @@ $display_name = isset($user_data->display_name) ? $user_data->display_name : '';
             <li class="hvr-wobble-horizontal"><a href="<?php echo et_get_page_link('dashboard'); ?>"><?php _e('Dashboard', ET_DOMAIN); ?></a></li>
             <?php if ($user_role == INDIVIDUAL ):?>
                 <li class="hvr-wobble-horizontal"><a href="<?php echo et_get_page_link('profile'); ?>"><?php _e('My Profile', ET_DOMAIN); ?></a></li>
-                <li class="hvr-wobble-horizontal"><a href="<?php echo et_get_page_link('revenues'); ?>"><?php _e('Billing information', ET_DOMAIN); ?></a></li>
+                <li class="hvr-wobble-horizontal"><a href="<?php echo et_get_page_link('billing-info'); ?>"><?php _e('Billing information', ET_DOMAIN); ?></a></li>
                 <li class="hvr-wobble-horizontal"><a href="#"><?php _e('Earn money', ET_DOMAIN); ?></a></li>
                 <li class="line-distance"></li>
                 <li class="hvr-wobble-horizontal"><a href="<?php echo et_get_page_link('payment-method') ?>"><?php _e('Payment method', ET_DOMAIN); ?></a></li>

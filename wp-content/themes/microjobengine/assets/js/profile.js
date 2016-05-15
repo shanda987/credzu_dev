@@ -231,7 +231,9 @@
             },
             initialize: function () {
                 // Resize textarea
-                autosize(this.$el.find('textarea'));
+                if( this.$el.find('textarea').length > 0) {
+                    autosize(this.$el.find('textarea'));
+                }
 
                 this.blockUi = new Views.BlockUi();
 

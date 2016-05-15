@@ -1208,6 +1208,95 @@
                 } );
             },
         });
+        Views.billingInfo = Backbone.View.extend({
+            el: '.page-template-page-billing-info',
+            events: {
+                'change select[name="use_billing_address"]': 'selectBilling',
+                'change select[name="use_holder_account"]': 'selectAccount'
+
+            },
+            initialize: function () {
+                this.blockUi = new Views.BlockUi();
+                this.initBillingInfo();
+                AE.pubsub.on('ae:form:submit:success', this.afterSave, this);
+
+            },
+            selectBilling: function(event){
+                event.preventDefault();
+                $target = $(event.currentTarget);
+                if( $target.val() == 'no' ){
+                    $('.billing-order-address').show();
+                }
+                else{
+                    $('.billing-order-address').hide();
+                }
+            },
+            selectAccount: function(event){
+                event.preventDefault();
+                $target = $(event.currentTarget);
+                if( $target.val() == 'no' ){
+                    $('.account-holder').show();
+                }
+                else{
+                    $('.account-holder').hide();
+                }
+            },
+            initBillingInfo: function(){
+                if($('#mjob_profile_data').length > 0) {
+                    data = JSON.parse($('#mjob_profile_data').html());
+                    this.profilemodel = new Models.mJobProfile(data);
+                }
+                else {
+                    this.profilemodel = new Models.mJobProfile();
+                    if($('#current_user').length > 0 && ae_globals.user_ID != 0) {
+                        this.profilemodel.set({
+                            post_author: currentUser.data.ID,
+                            post_type: 'mjob_profile',
+                            post_title: currentUser.data.display_name,
+                            post_status: 'publish',
+                            post_content: '',
+                            payment_info: '',
+                            billing_full_name: '',
+                            billing_full_address: '',
+                            billing_country: '',
+                            billing_vat: '',
+                            first_name: '',
+                            last_name: '',
+                            phone: '',
+                            business_email: '',
+                            credit_goal: ''
+                        })
+                    }
+                }
+                // Set nonce for security purpose
+                this.profilemodel.set('_wpnonce', $('#profile_wpnonce').val());
+                if(typeof this.billingForm === "undefined") {
+                    this.billingForm = new Views.AE_Form({
+                        el: '.form-confirm-billing-profile', // Wrapper of for
+                        model: this.profilemodel,
+                        rules: {
+                        },
+                        type: 'update-billing-hiring-profile',
+                        blockTarget: '.form-confirm-billing-profile button'
+                    });
+                }
+                var use_billing_address = this.profilemodel.get('use_billing_address');
+                var use_holder_account = this.profilemodel.get('use_holder_account');
+                if( use_billing_address != '' ) {
+                    $('select[name="use_billing_address"]').val(this.profilemodel.get('use_billing_address'));
+                }
+                if( use_holder_account != '' ) {
+                    $('select[name="use_holder_account"]').val(this.profilemodel.get('use_holder_account'));
+                }
+                if( this.profilemodel.get('use_billing_address') == 'no' ){
+                    $('.billing-order-address').show();
+                }
+                if( this.profilemodel.get('use_holder_account') == 'no' ){
+                    $('.account-holder').show();
+                }
+            },
+        });
+        new Views.billingInfo();
         Views.agreementModal = Views.Modal_Box.extend({
             el: '#agreement_modal',
             initialize: function() {
