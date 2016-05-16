@@ -122,6 +122,7 @@ class mJobProfileAction extends mJobPostAction
             }
             $res = $this->verifyBankInfo( $request['account_number'], $request['routing_number']);
             if( !$res['success'] ){
+                $res['ms'] = __('Error with billing information. Please try again. Call 888-831-4742 if the problem continues', ET_DOMAIN);
                 wp_send_json($res);
             }
         }
