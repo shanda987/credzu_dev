@@ -135,12 +135,21 @@ class AE_GVerify extends AE_Base{
             $validate = $info->PostInquiryResult;
             $response_account = $validate->AccountResponseCode;
             if ($response_account == 'ND00') {
-                $response = "Pass";
+                $response = array(
+                    'success'=>true,
+                    'msg'=> __('Success!', ET_DOMAIN)
+                );
             } else {
-                $response = $validate->VerificationResponse;
+                $response = array(
+                    'success'=> false,
+                    'msg'=>$validate->VerificationResponse
+                );
             }
         } catch (SoapFault $fault) {
-            echo $fault->faultcode . "-" . $fault->faultstring;
+            $response = array(
+                'success'=> false,
+                'msg'=>$fault->faultcode . "-" . $fault->faultstring
+            );
         }
         return $response;
         unset($this->soapClient);

@@ -120,7 +120,10 @@ class mJobProfileAction extends mJobPostAction
             else{
                 $request['bank_name'] = $response['data'];
             }
-            $this->verifyBankInfo( $request['account_number'], $request['routing_number']);
+            $res = $this->verifyBankInfo( $request['account_number'], $request['routing_number']);
+            if( !$res['success'] ){
+                wp_send_json($res);
+            }
         }
         $result = $this->sync_post($request);
         if($result['success'] != false && !is_wp_error($result)) {
@@ -241,14 +244,7 @@ class mJobProfileAction extends mJobPostAction
         $password = ae_get_option('giact_api_password', 'fmieTL-QNE_3PYo');
         AE_GVerify()->init($username, $password);
         $result = AE_GVerify()->verifyPayment($routing_no, $account_no, array('TestMode'=>true));
-        var_dump($result);
-        die;
-
-        wp_send_json(array(
-            'success' => true,
-            'msg' => __('Your profile picture has been uploaded successfully.', ET_DOMAIN) ,
-            'data' => $response
-        ));
+        return $result;
     }
     /**
       * get bank name
