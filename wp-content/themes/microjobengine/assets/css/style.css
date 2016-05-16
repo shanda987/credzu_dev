@@ -3390,6 +3390,9 @@ tbody.collapse.in {
   font-size: 0;
   white-space: nowrap;
 }
+.btn-group.bootstrap-select {
+  width: auto !important; /** This defaults to 1% which pushes fields over */
+}
 .input-group-btn > .btn {
   position: relative;
 }

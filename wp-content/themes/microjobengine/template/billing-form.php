@@ -32,7 +32,7 @@ if($profile_id) {
         <div class="form-group clearfix">
             <div class="input-group">
                 <div class="input-group-addon no-addon"><?php _e('Billing address ( same as your address):', ET_DOMAIN); ?></div>
-                <select class="hiring-process-select" name="use_billing_address">
+                <select class="hiring-process-select selectpicker" name="use_billing_address">
                     <option value="yes"><?php _e('Yes', ET_DOMAIN);?></option>
                     <option value="no"><?php _e('No', ET_DOMAIN);?></option>
                 </select>
@@ -47,7 +47,7 @@ if($profile_id) {
         <div class="form-group clearfix">
             <div class="input-group">
                 <div class="input-group-addon no-addon"><?php _e('Account holder ( Is this your account?):', ET_DOMAIN); ?></div>
-                <select class="hiring-process-select" name="use_holder_account">
+                <select class="hiring-process-select selectpicker" name="use_holder_account">
                     <option value="yes"><?php _e('Yes', ET_DOMAIN);?></option>
                     <option value="no"><?php _e('No', ET_DOMAIN);?></option>
                 </select>

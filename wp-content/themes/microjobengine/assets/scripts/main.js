@@ -10,6 +10,8 @@
             autoPlay:3000,
         });
 
+        // $("select")
+
         Views.PostJob = Backbone.View.extend({
             el: 'body',
             events: {

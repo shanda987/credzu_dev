@@ -655,6 +655,12 @@ class ET_Microjobengine extends AE_Base
             'backbone',
             'appengine'), ET_VERSION, true);
 
+        $this->add_script('bootstrap-select', get_template_directory_uri() . '/assets/js/bootstrap-select.min.js', array(
+            'jquery',
+            'underscore',
+            'backbone',
+            'appengine'), ET_VERSION, true);
+
         $this->add_script('front', get_template_directory_uri() . '/assets/js/front.js', array(
             'jquery',
             'underscore',
@@ -808,6 +814,7 @@ class ET_Microjobengine extends AE_Base
         //$this->add_existed_style('bootstrap');
         wp_deregister_style('bootstrap');
         $this->add_style('toastr', get_template_directory_uri() . '/assets/css/toastr.min.css', ET_VERSION);
+        $this->add_style('bootstrap-select', get_template_directory_uri() . '/assets/css/bootstrap-select.min.css', ET_VERSION);
         $this->add_style('chosen', get_template_directory_uri() . '/assets/css/chosen.css', ET_VERSION);
         $this->add_style('cropper', get_template_directory_uri() . '/assets/css/cropper.min.css', ET_VERSION);
         // Font Awesome
