@@ -17,7 +17,7 @@ get_header();
 
             <div class="col-lg-8 col-md-8 col-sm-12 col-sx-12">
                 <div class="block-profile">
-                        <?php get_template_part('template/billing', 'form'); ?>
+                    <?php get_template_part('template/billing', 'form'); ?>
                 </div>
 
             </div>

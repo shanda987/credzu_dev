@@ -340,14 +340,13 @@ class mJobProfileAction extends mJobPostAction
      * get user profile
      *
      * @param integer $user_id
-     * @param string|boolean $json_to_page (optional) Provide and ID
      * @return void
      * @since 1.0
      * @package MicrojobEngine
      * @category void
      * @author JACK BUI
      */
-    public function getProfile($user_id, $json_to_page = false){
+    public function getProfile($user_id){
         global  $ae_post_factory, $post;
         $profile_obj = $ae_post_factory->get('mjob_profile');
         $profile_id = get_user_meta($user_id, 'user_profile_id', true);
@@ -358,11 +357,27 @@ class mJobProfileAction extends mJobPostAction
             if($p && !is_wp_error($p)) {
                 $profile = $profile_obj->convert($p);
             }
-            if ($json_to_page) {
-                echo "<script type='text/json' id='$id' >".json_encode($profile).'</script>';
-            }
         }
         return $profile;
+    }
+
+    /**
+     * Output JSON for user Profile
+     *
+     * @param object $profile (The getProfile must be called first)
+     * @return void
+     * @since 1.0
+     * @package MicrojobEngine
+     * @category void
+     * @author JESSE BOYER
+     */
+    public function getProfileJson($profile) {
+
+      if ($profile) {
+        return "<script type='text/json' id='mjob_profile_data'>".json_encode($profile).'</script>';
+      }
+
+      return false;
     }
 
     /**

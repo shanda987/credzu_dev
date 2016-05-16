@@ -15,7 +15,8 @@ if ($user_role !== COMPANY) {
     wp_redirect(home_url()); exit;
 }
 
-$profile = mJobProfileAction()->getProfile($user_ID, "mjob_profile_data");
+$profile = mJobProfileAction()->getProfile($user_ID);
+echo mJobProfileAction()->getProfileJson($profile);
 
 // Bank account data
 $company_name = !empty($profile->company_name) ? $profile->company_name : '';
@@ -54,43 +55,9 @@ echo mJobProfileAction()->display_company_status($user_role, $profile->company_s
                             The billing information below will be used to generate payments from you/your company to Credzu, LLC for the purpose of paying for the listings you create on Credzu.com
                             </p>
                             <div id="bankAccountForm">
-                                <form class="et-form">
-
-                                    <div class="form-group clearfix">
-                                        <div class="input-group">
-                                            <div class="input-group-addon"><i class="fa fa-university"></i></div>
-                                            <input type="text" name="bank_name" id="bank_name" placeholder="<?php _e('Bank name', ET_DOMAIN); ?>"  value="<?php echo $bank_name; ?>">
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group clearfix">
-                                        <div class="input-group">
-                                            <div class="input-group-addon"><i class="fa fa-university"></i></div>
-                                            <input type="text" name="billing_address" id="billing_address" placeholder="<?php _e('Billing address', ET_DOMAIN); ?>"  value="<?php echo $billing_address; ?>">
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group clearfix">
-                                        <div class="input-group">
-                                            <div class="input-group-addon"><i class="fa fa-th-large"></i></div>
-                                            <div class="bank-group">
-                                                <div class="bank">
-                                                    <input type="text" name="bank_routing_no" id="bank_routing_no" placeholder="<?php _e('Routing number', ET_DOMAIN); ?>" value="<?php echo $bank_routing_no; ?>">
-                                                </div>
-                                                <div class="bank">
-                                                    <input type="text" name="bank_account_no" id="bank_account_no" placeholder="<?php _e('Account number', ET_DOMAIN); ?>"  value="<?php echo $bank_account_no; ?>">
-                                                </div>
-                                                <div class="bank">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group float-right send-button-method clearfix">
-                                        <button class="btn-submit btn-send"><?php _e('Save', ET_DOMAIN); ?></button>
-                                    </div>
-                                </form>
+                            <?php get_template_part('template/billing', 'form'); ?>
                             </div>
+                            <input type="hidden" class="input-item" name="_wpnonce" id="profile_wpnonce" value="<?php echo de_create_nonce('ae-mjob_post-sync');?>" />
                         </div>
                         <div role="tabpanel" class="tab-pane" id="incoming-payments">
                             <div id="paypalAccountForm">

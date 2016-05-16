@@ -25,7 +25,8 @@ $user_role = ae_user_role($current_user->ID);
 //if ($user_role !== COMPANY && !is_super_admin()) {
 //    wp_redirect(home_url()); exit;
 //}
-$profile = mJobProfileAction()->getProfile($user_ID, "mjob_profile_data");
+$profile = mJobProfileAction()->getProfile($user_ID);
+echo mJobProfileAction()->getProfileJson($profile);
 
 // @TODO @DEBUG -- Need credentials for Giact, this will go on the billing page
 // In the method it will die; right now for testing.

@@ -7,7 +7,8 @@ $user = mJobUser::getInstance();
 $user_data = $user->convert($current_user->data);
 $user_role = ae_user_role($current_user->ID);
 
-$profile = mJobProfileAction()->getProfile($user_ID, "mjob_profile_data");
+$profile = mJobProfileAction()->getProfile($user_ID);
+echo mJobProfileAction()->getProfileJson($profile);
 
 $description = !empty($profile->profile_description) ? $profile->profile_description : __('There is no content', ET_DOMAIN);
 $payment_info = !empty($profile->payment_info) ? $profile->payment_info : __('There is no content', ET_DOMAIN);

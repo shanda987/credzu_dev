@@ -13,7 +13,8 @@ if ($user_role !== COMPANY) {
     wp_redirect(home_url()); exit;
 }
 
-$profile = mJobProfileAction()->getProfile($user_ID, "mjob_profile_data");
+$profile = mJobProfileAction()->getProfile($user_ID);
+echo mJobProfileAction()->getProfileJson($profile);
 
 $company_name = !empty($profile->company_name) ? $profile->company_name : '';
 $company_address = !empty($profile->company_address) ? $profile->company_address : '';
