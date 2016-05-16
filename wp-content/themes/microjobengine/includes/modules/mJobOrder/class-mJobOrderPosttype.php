@@ -29,7 +29,13 @@ class mJobOrderPosttype extends mJobPost{
             'order_delivery',
             'seller_id',
             'reject_message',
-            'order_delivery_day'
+            'order_delivery_day',
+            // If the company listing is bought, we store the timestamp the moment it is
+            // approved. Then, we use PHP to calculate if 72 hours have passed before
+            // they can start working on something.
+            // This will NOT apply to people REBUYING the same listing, there is no 72
+            // hour limit with the SAME client.
+            'company_status_approved_timestamp',
         );
         $this->post_type_singular = 'Microjob Order';
         $this->post_type_regular = 'Microjob Orders';

@@ -28,10 +28,6 @@ $user_role = ae_user_role($current_user->ID);
 $profile = mJobProfileAction()->getProfile($user_ID);
 echo mJobProfileAction()->getProfileJson($profile);
 
-// @TODO @DEBUG -- Need credentials for Giact, this will go on the billing page
-// In the method it will die; right now for testing.
-// mJobProfileAction()->verifyBankInfo('00010001000', '123456789');
-
 get_header();
 
 // If Company, this outputs the Company Status bar (Doesn't show when approved)
