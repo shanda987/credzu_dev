@@ -8,8 +8,7 @@
 <div class="list-order list-task-wrapper">
     <?php
     $args = array(
-        'role'         => COMPANY,
-        'meta_key'     => 'company_status',
+        'role'         => COMPANY
     );
     $companies = get_users($args);
 
@@ -19,8 +18,7 @@
             <?php
             foreach ($companies as $key => $value) {
                 $profile = mJobProfileAction()->getProfile($value->ID);
-
-                // @TODO: Below will be a template for Company Users
+                // @TODO: Below will be a Notification for everything
                 ?>
                 <li class="task-item">
                     <div>

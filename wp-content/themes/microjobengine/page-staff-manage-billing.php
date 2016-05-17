@@ -24,22 +24,13 @@ get_header();
 
             <div class="col-lg-8 col-md-8 col-sm-12 col-sx-12">
                 <div class="block-profile">
-                        <div class="form-group clearfix">
-                                <div class="input-group">
-                                    Items in here.
-                                </div>
-                            </div>
-                            <div class="form-group clearfix float-right change-pass-button-method">
-                                <button class="btn-submit"><?php _e('Update', ET_DOMAIN); ?></button>
-                            </div>
-                        </form>
-                    </div>
+                    Billing Items Here
                 </div>
-
             </div>
+
         </div>
     </div>
-    <input type="hidden" class="input-item" name="_wpnonce" id="profile_wpnonce" value="<?php echo de_create_nonce('ae-mjob_post-sync');?>" />
+
 <?php
 get_footer();
 ?>

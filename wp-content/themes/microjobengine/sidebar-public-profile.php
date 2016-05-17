@@ -47,7 +47,7 @@ $billing_vat = !empty($profile->billing_vat) ? $profile->billing_vat : "";
             <p><?php echo $user_data->user_email; ?></p>
         </div>
     <?php endif; ?>
-    
+
     <div class="line">
         <span class="line-distance"></span>
     </div>

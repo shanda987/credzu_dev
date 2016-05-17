@@ -130,7 +130,7 @@ if(!function_exists('mJobShowUserHeader')) {
            ?>
             <?php
              $user_role = ae_user_role($user_ID);
-            if( is_super_admin() || $user_role == 'company' ): ?>
+            if( is_super_admin() || $user_role == COMPANY ): ?>
             <div class="link-post-services">
                 <a class="btn-basic" href="<?php echo $post_link; ?>"><?php _e('Post a Listing', ET_DOMAIN); ?>
                     <div class="plus-circle"><i class="fa fa-plus"></i></div>
