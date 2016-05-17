@@ -244,7 +244,7 @@ class mJobProfileAction extends mJobPostAction
         $username = ae_get_option('giact_api_username', 'XHBKT-C50M-T7F7-UFKL-TU9CK');
         $password = ae_get_option('giact_api_password', 'fmieTL-QNE_3PYo');
         AE_GVerify()->init($username, $password);
-        $result = AE_GVerify()->verifyPayment($routing_no, $account_no, array('TestMode'=>true));
+        $result = AE_GVerify()->verifyPayment($routing_no, $account_no);
         return $result;
     }
     /**
