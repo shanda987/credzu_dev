@@ -399,20 +399,20 @@ class mJobProfileAction extends mJobPostAction
             $output .= '<div class="top-message"><span>';
 
             if ($company_status == COMPANY_STATUS_REGISTERED || !$company_status) {
-                $output .= __("ACCOUNT PENDING: Please complete your Personal Profile, Company Profile and Billing information so we can review and approve your account", ET_DOMAIN);
+                $output .= __("<i class='fa fa-asterisk'></i> Please complete your Personal Profile, Company Profile and Billing information so we can review and approve your account", ET_DOMAIN);
             }
             elseif ($company_status == COMPANY_STATUS_UNDER_REVIEW) {
-                $output .= __('Your account is under review.', ET_DOMAIN);
+                $output .= __('<i class="fa fa-hourglass"></i> Your account is under review.', ET_DOMAIN);
             }
             elseif ($company_status == COMPANY_STATUS_NEEDS_CHANGES) {
-                $output .= __("Your account needs changes. You must update your profile and then click", ET_DOMAIN);
+                $output .= __("<i class='fa fa-flag'></i> Your account needs changes. You must update your profile and then click", ET_DOMAIN);
                 $output .= __("<a href='#' class='btn-basic'>Activate Account</a> in order to post listings.", ET_DOMAIN);
             }
             elseif ($company_status == COMPANY_STATUS_DECLINED) {
-                $output .= __("Sorry. Your account was declined by our staff.", ET_DOMAIN);
+                $output .= __("<i class='fa fa-exclamation-triangle'></i> Sorry. Your account was declined by our staff.", ET_DOMAIN);
             }
             elseif ($company_status == COMPANY_STATUS_SUSPENDED) {
-                $output .= __("This account has been suspended.", ET_DOMAIN);
+                $output .= __("<i class='fa fa-ban'></i> This account has been suspended.", ET_DOMAIN);
             }
             $output .= '</span></div>';
         }
