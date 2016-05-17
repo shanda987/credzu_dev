@@ -185,13 +185,12 @@
 }
 
 .top-message {
-
     width: 100%;
     border-bottom: 1px solid silver;
     text-align: center;
     z-index: 1001;
     padding: 10px;
-    background: #fff;
+    background: #FFFBCF;
     box-shadow: 1px 0px 46px rgba(188, 207, 219, 0.7)
 }
 

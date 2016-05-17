@@ -10939,6 +10939,12 @@ body.archive .block-title {
   font-weight: 700;
   text-decoration: none;
 }
+.profile .block-statistic ul li a.active {
+  color: #10a2ef;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+  text-decoration: none;
+}
 .profile .block-statistic .private-account {
   margin-top: 30px;
 }
