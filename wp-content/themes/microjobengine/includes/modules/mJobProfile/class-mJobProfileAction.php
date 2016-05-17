@@ -125,25 +125,30 @@ class mJobProfileAction extends mJobPostAction
                 if( (int)$wrong_request < 3) {
                     $res = $this->verifyBankInfo($request['account_number'], $request['routing_number']);
                     if (!$res['success']) {
-                        $wrong_request += 1;
+                        $wrong_request = (int)$wrong_request + 1;
+                        $time = time();
                         update_post_meta($request['ID'], 'wrong_request', $wrong_request);
-                        update_post_meta($request['ID'], 'time_wrong_request', date());
+                        update_post_meta($request['ID'], 'time_wrong_request', $time);
                         $res['msg'] = __('Error with billing information. Please try again. Call 888-831-4742 if the problem continues', ET_DOMAIN);
                         wp_send_json($res);
                     }
                 }
                 else{
                     $wrong_time = get_post_meta($request['ID'], 'time_wrong_request', true);
-                    $t = date() - $wrong_time;
-                    if( $t >= 86400 ){
+                    $t = time() - (int)$wrong_time;
+                    if( $t >= 86400 && (int)$wrong_time > 0){
                         update_post_meta($request['ID'], 'wrong_request', 0);
                         $res = $this->verifyBankInfo($request['account_number'], $request['routing_number']);
                         if (!$res['success']) {
                             update_post_meta($request['ID'], 'wrong_request', 1);
-                            update_post_meta($request['ID'], 'time_wrong_request', date());
+                            update_post_meta($request['ID'], 'time_wrong_request', time());
                             $res['msg'] = __('Error with billing information. Please try again. Call 888-831-4742 if the problem continues', ET_DOMAIN);
                             wp_send_json($res);
                         }
+                    }
+                    else{
+                        $res['msg'] = __('1Error with billing information. Please try again. Call 888-831-4742 if the problem continues', ET_DOMAIN);
+                        wp_send_json($res);
                     }
                 }
             }
