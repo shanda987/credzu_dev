@@ -20,10 +20,6 @@ $country_id = isset($profile->tax_input['country'][0]) ? $profile->tax_input['co
 $languages = isset($profile->tax_input['language']) ? $profile->tax_input['language'] : '';
 $display_name = isset($user_data->display_name) ? $user_data->display_name : '';
 
-// Highlight the currently selected item
-//$_SERVER['REQUEST_URI_PATH'] = parse_url(rtrim($_SERVER['REQUEST_URI'], '/'), PHP_URL_PATH);
-//$pg_name = end(explode('/', $_SERVER['REQUEST_URI_PATH']));
-// et_get_page_link('profile');
 ?>
 <div class="block-statistic">
     <div class="dropdown">
