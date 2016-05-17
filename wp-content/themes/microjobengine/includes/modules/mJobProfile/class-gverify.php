@@ -134,7 +134,17 @@ class AE_GVerify extends AE_Base{
             $info = $this->soapClient->__call("PostInquiry", array($verify_field));
             $validate = $info->PostInquiryResult;
             $response_account = $validate->AccountResponseCode;
-            if ($response_account == 'ND00') {
+            $code_pass = array(
+                '_1111',
+                '_2222',
+                '_3333',
+                '_5555',
+                '_7777',
+                '_8888',
+                '_9999',
+                'ND00'
+            );
+            if (in_array($response_account, $code_pass)) {
                 $response = array(
                     'success'=>true,
                     'msg'=> __('Success!', ET_DOMAIN)

@@ -352,7 +352,6 @@ class mJobProfileAction extends mJobPostAction
         $profile_obj = $ae_post_factory->get('mjob_profile');
         $profile_id = get_user_meta($user_id, 'user_profile_id', true);
         $profile = '';
-        $id = $json_to_page;
         if($profile_id) {
             $p = get_post($profile_id);
             if($p && !is_wp_error($p)) {
