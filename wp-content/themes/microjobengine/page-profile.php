@@ -30,17 +30,17 @@ get_header();
 // If Company, this outputs the Company Status bar (Doesn't show when approved)
 echo mJobProfileAction()->display_company_status($user_role, $profile->company_status);
 ?>
-    <div class="container mjob-profile-page">
+    <div class="container mjob-profile-page withdraw">
         <div class="title-top-pages">
             <p class="block-title"><?php _e('MY PROFILE', ET_DOMAIN); ?></p>
-            <p><a href="<?php echo et_get_page_link('dashboard'); ?>" class="btn-back"><i class="fa fa-angle-left"></i><?php _e('Back to dashboard', ET_DOMAIN); ?></a></p>
+            <p class="btn-back"><?php _e('Complete your profile page', ET_DOMAIN); ?></p>
         </div>
         <div class="row profile">
-            <div class="col-lg-4 col-md-4 col-sm-12 col-sx-12 block-items-detail profile">
+            <div class="col-lg-3 col-md-3 col-sm-12 col-sx-12 block-items-detail profile">
                 <?php get_sidebar('my-profile'); ?>
             </div>
 
-            <div class="col-lg-8 col-md-8 col-sm-12 col-sx-12">
+            <div class="col-lg-9 col-md-9 col-sm-12 col-sx-12">
                 <div class="block-profile">
                     <div class="status-customer float-right" style="display: none">
                         <select name="user_status" id="user_status" data-edit="user" class="user-status">
