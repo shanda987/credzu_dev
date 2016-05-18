@@ -112,7 +112,7 @@ class mJobProfileAction extends mJobPostAction
                 'msg' => __('Your account is pending. You have to activate your account to continue this step.', ET_DOMAIN)
             ));
         }
-        if( isset($request['routing_number']) || isset($request['account_number']) ) {
+        if( ( isset($request['routing_number']) && !empty($request['routing_number']) ) || (isset($request['account_number']) && !empty($request['account_number']))  ){
             $response = $this->getBankName($request['routing_number']);
             if( !$response['success'] ){
                 wp_send_json($response);
