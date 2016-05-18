@@ -730,6 +730,14 @@ class ET_Microjobengine extends AE_Base
                 'front'), ET_VERSION, true);
 
         }
+        if( is_page_template('page-process-hiring.php') ){
+            $this->add_script('mask-js', get_template_directory_uri() . '/assets/js/jquery.maskedinput.min.js', array(
+                'jquery',
+                'underscore',
+                'backbone',
+                'appengine',
+                'front'), ET_VERSION, true);
+        }
         if(is_page_template('page-dashboard.php')) {
             $this->add_script('chart', get_template_directory_uri() . '/assets/js/lib/chart.min.js', array(
                 'jquery',

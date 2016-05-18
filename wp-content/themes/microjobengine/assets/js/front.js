@@ -838,6 +838,9 @@
                 this.blockUi = new Views.BlockUi();
                 this.initProcessHiring();
                 AE.pubsub.on('ae:form:submit:success', this.afterSave, this);
+                if( $('#phone').length > 0 ){
+                    $('#phone').mask('(999)-999-9999');
+                }
 
             },
             initProcessHiring: function(){
@@ -874,6 +877,11 @@
                         el: '.form-confirm-info', // Wrapper of form
                         model: this.profilemodel,
                         rules: {
+                            first_name: 'required',
+                            last_name: 'required',
+                            phone: 'required',
+                             business_email: 'required',
+                            billing_full_address: 'required'
                         },
                         type: 'update-profile-hiring',
                         blockTarget: '.form-confirm-info button'

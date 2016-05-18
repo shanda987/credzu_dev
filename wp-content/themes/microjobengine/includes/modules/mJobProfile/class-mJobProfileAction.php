@@ -112,44 +112,57 @@ class mJobProfileAction extends mJobPostAction
                 'msg' => __('Your account is pending. You have to activate your account to continue this step.', ET_DOMAIN)
             ));
         }
-        if( ( isset($request['routing_number']) && !empty($request['routing_number']) ) || (isset($request['account_number']) && !empty($request['account_number']))  ){
-            $response = $this->getBankName($request['routing_number']);
-            if( !$response['success'] ){
-                wp_send_json($response);
-            }
-            else{
-                $request['bank_name'] = $response['data'];
-            }
-            if( isset($request['ID'] ) ) {
-                $wrong_request = get_post_meta($request['ID'], 'wrong_request', true);
-                if( (int)$wrong_request < 3) {
-                    $res = $this->verifyBankInfo($request['account_number'], $request['routing_number']);
-                    if (!$res['success']) {
-                        $wrong_request = (int)$wrong_request + 1;
-                        $time = time();
-                        update_post_meta($request['ID'], 'wrong_request', $wrong_request);
-                        update_post_meta($request['ID'], 'time_wrong_request', $time);
-                        $res['msg'] = __('Error with billing information. Please try again. Call 888-831-4742 if the problem continues', ET_DOMAIN);
-                        wp_send_json($res);
-                    }
+        if( isset($request['is_billing']) && $request['is_billing'] == '1' ) {
+            if ((isset($request['routing_number']) && !empty($request['routing_number'])) || (isset($request['account_number']) && !empty($request['account_number']))) {
+                $response = $this->getBankName($request['routing_number']);
+                if (!$response['success']) {
+                    wp_send_json($response);
+                } else {
+                    $request['bank_name'] = $response['data'];
                 }
-                else{
-                    $wrong_time = get_post_meta($request['ID'], 'time_wrong_request', true);
-                    $t = time() - (int)$wrong_time;
-                    if( $t >= 86400 && (int)$wrong_time > 0){
-                        update_post_meta($request['ID'], 'wrong_request', 0);
+                if (isset($request['ID'])) {
+                    $check_ac_rt = get_post_meta($request['ID'], 'account_routing', true);
+                    $str_ac = isset($request['routing_number']) ? $request['routing_number'] : '';
+                    $str_rt = isset($request['account_number']) ? $request['account_number'] : '';
+                    $str_ac_rt = $str_ac . '_' . $str_rt;
+                    if ($check_ac_rt == $str_ac_rt || empty($check_ac_rt)) {
+                        $wrong_request = get_post_meta($request['ID'], 'wrong_request', true);
+                        if ((int)$wrong_request < 3) {
+                            $res = $this->verifyBankInfo($request['account_number'], $request['routing_number']);
+                            if (!$res['success']) {
+                                $wrong_request = (int)$wrong_request + 1;
+                                $time = time();
+                                update_post_meta($request['ID'], 'wrong_request', $wrong_request);
+                                update_post_meta($request['ID'], 'time_wrong_request', $time);
+                                $res['msg'] = __('Error with billing information. Please try again. Call 888-831-4742 if the problem continues', ET_DOMAIN);
+                                wp_send_json($res);
+                            }
+                        } else {
+                            $wrong_time = get_post_meta($request['ID'], 'time_wrong_request', true);
+                            $t = time() - (int)$wrong_time;
+                            if ($t >= 86400 && (int)$wrong_time > 0) {
+                                update_post_meta($request['ID'], 'wrong_request', 0);
+                                $res = $this->verifyBankInfo($request['account_number'], $request['routing_number']);
+                                if (!$res['success']) {
+                                    update_post_meta($request['ID'], 'wrong_request', 1);
+                                    update_post_meta($request['ID'], 'time_wrong_request', time());
+                                    $res['msg'] = __('Error with billing information. Please try again. Call 888-831-4742 if the problem continues', ET_DOMAIN);
+                                    wp_send_json($res);
+                                }
+                            } else {
+                                $res['msg'] = __('Error with billing information. Please try again. Call 888-831-4742 if the problem continues', ET_DOMAIN);
+                                wp_send_json($res);
+                            }
+                        }
+                        update_post_meta($request['ID'], 'account_routing', $str_ac_rt);
+                    } else {
                         $res = $this->verifyBankInfo($request['account_number'], $request['routing_number']);
                         if (!$res['success']) {
-                            update_post_meta($request['ID'], 'wrong_request', 1);
-                            update_post_meta($request['ID'], 'time_wrong_request', time());
                             $res['msg'] = __('Error with billing information. Please try again. Call 888-831-4742 if the problem continues', ET_DOMAIN);
                             wp_send_json($res);
                         }
                     }
-                    else{
-                        $res['msg'] = __('Error with billing information. Please try again. Call 888-831-4742 if the problem continues', ET_DOMAIN);
-                        wp_send_json($res);
-                    }
+
                 }
             }
         }
@@ -317,12 +330,12 @@ class mJobProfileAction extends mJobPostAction
         $result->post_content= !empty($result->post_content) ? $result->post_content : __('There is no content', ET_DOMAIN);
         $result->payment_info = !empty($result->payment_info) ? $result->payment_info : __('There is no content', ET_DOMAIN);
         $result->billing_full_name = !empty($result->billing_full_name) ? $result->billing_full_name : __('There is no content', ET_DOMAIN);
-        $result->billing_full_address = !empty($result->billing_full_address) ? $result->billing_full_address : __('Physical address', ET_DOMAIN);
+        $result->billing_full_address = !empty($result->billing_full_address) ? $result->billing_full_address : '';
         $result->billing_country = !empty($result->billing_country) ? $result->billing_country : __('There is no content', ET_DOMAIN);
         $result->billing_vat = !empty($result->billing_vat) ? $result->billing_vat : __('There is no content', ET_DOMAIN);
-        $result->first_name = !empty($result->first_name) ? $result->first_name : __('First Name', ET_DOMAIN);
-        $result->last_name = !empty($result->last_name) ? $result->last_name : __('Last Name', ET_DOMAIN);
-        $result->phone = !empty($result->phone) ? $result->phone : __('Phone', ET_DOMAIN);
+        $result->first_name = !empty($result->first_name) ? $result->first_name : '';
+        $result->last_name = !empty($result->last_name) ? $result->last_name : '';
+        $result->phone = !empty($result->phone) ? $result->phone : '';
         $result->business_email = !empty($result->business_email) ? $result->business_email : $user->user_email;
         $result->credit_goal = !empty($result->credit_goal) ? $result->credit_goal : __('Credit_goals', ET_DOMAIN);
         $result->company_status = get_user_meta($user->ID,'user_status', true);
