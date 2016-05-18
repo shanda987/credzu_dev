@@ -38,17 +38,16 @@
                 });
 
                 // Form control
-                var paypalAccountForm = new Views.AE_Form({
-                    el: '#paypalAccountForm',
+                var incomingPaymentsForm = new Views.AE_Form({
+                    el: '#incomingPaymentsForm',
                     model: view.user,
                     rules: {
-                        paypal_email: {
+                        company_payee_name_override: {
                             required: true,
-                            email: true
                         }
                     },
-                    type: 'savePayPalAccount',
-                    blockTarget: '#paypalAccountForm button'
+                    type: 'saveIncomingPayment',
+                    blockTarget: '#incomingPaymentsForm button'
                 });
             },
         });

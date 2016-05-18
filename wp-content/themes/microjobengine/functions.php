@@ -23,6 +23,10 @@ define('COMPANY_STATUS_SUSPENDED', 'suspended');
 define('COMPANY_STATUS_APPROVED', 'approved');
 define('COMPANY_STATUS_DECLINED', 'declined');
 
+/** Company Billing Status */
+define('COMPANY_PAYEE_NAME_OVERRIDE_STATUS_APPROVED', 'approved');
+define('COMPANY_PAYEE_NAME_OVERRIDE_STATUS_PENDING', 'pending');
+define('COMPANY_PAYEE_NAME_OVERRIDE_STATUS_DECLINED', 'declined');
 
 // define( 'ALLOW_UNFILTERED_UPLOADS', true );
 

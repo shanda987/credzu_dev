@@ -4,16 +4,9 @@ $user = mJobUser::getInstance();
 $user_data = $user->convert($current_user->data);
 $user_role = ae_user_role($current_user->ID);
 
-// Convert profile
-$profile_obj = $ae_post_factory->get('mjob_profile');
-$profile_id = get_user_meta($user_ID, 'user_profile_id', true);
-if($profile_id) {
-    $post = get_post($profile_id);
-    if($post && !is_wp_error($post)) {
-        $profile = $profile_obj->convert($post);
-        echo '<script type="text/json" id="mjob_profile_data" >'.json_encode($profile).'</script>';
-    }
-}
+$profile = mJobProfileAction()->getProfile($user_ID);
+echo mJobProfileAction()->getProfileJson($profile);
+
 ?>
 <div class="form-confirm-billing-profile">
     <form class="et-form">

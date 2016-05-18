@@ -55,39 +55,23 @@ echo mJobProfileAction()->display_company_status($user_role, $profile->company_s
                             The billing information below will be used to generate payments from you/your company to Credzu, LLC for the purpose of paying for the listings you create on Credzu.com
                             </p>
                             <div id="bankAccountForm">
-                            <?php get_template_part('template/billing', 'form'); ?>
+                                <?php get_template_part('template/billing', 'form'); ?>
                             </div>
                             <input type="hidden" class="input-item" name="_wpnonce" id="profile_wpnonce" value="<?php echo de_create_nonce('ae-mjob_post-sync');?>" />
                         </div>
                         <div role="tabpanel" class="tab-pane" id="incoming-payments">
-                            <div id="paypalAccountForm">
-                                <p>
-                                This is the "payee" to whom payments will be made when a client hires you/your company.
-                                If this is different than your company name it will not change until it is approved.
-                                </p>
-                                <p>
-                                Current Payee Name:
-                                </p>
-                                <form class="et-form">
-                                    <div class="form-group clearfix">
-                                        <div class="input-group">
-                                            <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
-                                            <input type="text" name="company_payee_name_override" id="company_payee_name_override" placeholder="<?php _e('Payee Name', ET_DOMAIN); ?>" value="<?=($bank_payee_name_override_status == 'approved') ? $bank_payee_name_override : $company_name; ?>">
-                                            <i class="fa fa-circle text-warning"></i> <span class="text-warning">Pending</span>
-                                            <i class="fa fa-circle text-success"></i> <span class="text-success">Approved</span>
-                                            <i class="fa fa-circle text-error"></i> <span class="text-error">Declined</span>
-                                        </div>
-
-                                    </div>
-                                    <div class="form-group clearfix float-right save-button-paypal">
-                                        <button class="btn-submit btn-save"><?php _e('Save', ET_DOMAIN); ?></button>
-                                    </div>
-                                </form>
+                            <p>
+                            This is the "payee" to whom payments will be made when a client hires you/your company. If this is different than your company name it will not change until it is approved.
+                            </p>
+                            <div id="incomingPaymentsForm">
+                            <?php get_template_part('template/billing-form', 'payee'); ?>
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
+
         </div>
     </div>
 <?php

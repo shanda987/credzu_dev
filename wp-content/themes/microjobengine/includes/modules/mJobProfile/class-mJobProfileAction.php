@@ -52,9 +52,9 @@ class mJobProfileAction extends mJobPostAction
             /*
              * @TODO  @Jesse Why should we check $user->display_name == COMPANY ?
              */
-            // if ($user->display_name == COMPANY) {
-            //     update_user_meta($result, 'company_status', COMPANY_STATUS_REGISTERED);
-            // }
+            if ($user->display_name == COMPANY) {
+                update_user_meta($result, 'company_status', COMPANY_STATUS_REGISTERED);
+            }
         }
     }
 

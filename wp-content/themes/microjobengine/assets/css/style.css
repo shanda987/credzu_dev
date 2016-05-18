@@ -12387,16 +12387,16 @@ body.archive .block-title {
 .withdraw #bankAccountForm .btn-send {
   padding: 13px 85px;
 }
-.withdraw #bankAccountForm, .withdraw #paypalAccountForm, .withdraw #changePassForm {
+.withdraw #bankAccountForm, .withdraw #incomingPaymentsForm, .withdraw #changePassForm {
   width: 80%;
 }
 @media (max-width: 991px) {
-  .withdraw #bankAccountForm, .withdraw #paypalAccountForm, .withdraw #changePassForm {
+  .withdraw #bankAccountForm, .withdraw #incomingPaymentsForm, .withdraw #changePassForm {
     width: 93%;
   }
 }
 @media (max-width: 767px) {
-  .withdraw #bankAccountForm, .withdraw #paypalAccountForm, .withdraw #changePassForm {
+  .withdraw #bankAccountForm, .withdraw #incomingPaymentsForm, .withdraw #changePassForm {
     width: 100%;
   }
 }
@@ -12413,7 +12413,7 @@ body.archive .block-title {
     width: 100%;
   }
 }
-.withdraw #paypalAccountForm .btn-save {
+.withdraw #incomingPaymentsForm .btn-save {
   padding: 13px 85px;
   margin-top: 30px;
 }

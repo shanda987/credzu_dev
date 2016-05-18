@@ -8,7 +8,7 @@
 <div class="list-order list-task-wrapper">
     <?php
     $args = array(
-        'role'         => COMPANY
+        'role' => COMPANY
     );
     $companies = get_users($args);
 
