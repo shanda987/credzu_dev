@@ -4,6 +4,14 @@
  */
 global $wp_query, $ae_post_factory, $post, $current_user, $user_ID, $is_individual;
 
+$profile_id = (isset($_GET['profile_id'])) ? (int) $_GET['profile_id'] : false;
+$company_status = (isset($_GET['company_status'])) ? $_GET['company_status'] : false;
+
+
+if ($profile_id && $company_status) {
+    update_post_meta($profile_id, 'company_status', $company_status);
+}
+
 get_header();
 ?>
     <div class="container mjob-profile-page">
@@ -21,7 +29,7 @@ get_header();
                     <div class="list-order list-task-wrapper">
                         <?php
                         $args = array(
-                            'role'         => COMPANY
+                            'role' => COMPANY
                         );
                         $companies = get_users($args);
 
@@ -33,9 +41,14 @@ get_header();
                                     $profile = mJobProfileAction()->getProfile($value->ID);
                                     ?>
                                     <li class="task-item">
+                                    <pre>
+                                        </pre>
                                         <div>
+                                        hey: <?php echo get_post_meta($profile->ID, 'company_status', true);?>
                                         <h2><?php echo $profile->post_title; ?></h2>
                                         <p><?php _e('Status: ', ET_DOMAIN);?>
+                                            <?=$profile->company_status?> <?=$profile->ID?>
+                                            <br>
                                             <?php echo ($profile->company_status != '') ? $profile->company_status : COMPANY_STATUS_REGISTERED; ?>
                                             <?php echo $profile->author_name;?>
                                         </p>
@@ -44,10 +57,10 @@ get_header();
                                             </span>
                                         </div>
                                         <div class="pull-right">
-                                            <a class="btn-basic" href="?user_id=<?=$value->ID?>&company_status=<?=COMPANY_STATUS_APPROVED?>">Approve</a>
-                                            <a class="btn-basic" href="?user_id=<?=$value->ID?>&company_status=<?=COMPANY_STATUS_DECLINED?>">Decline</a>
-                                            <a class="btn-basic" href="?user_id=<?=$value->ID?>&company_status=<?=COMPANY_STATUS_SUSPENDED?>">Suspend</a>
-                                            <a class="btn-basic" href="?user_id=<?=$value->ID?>&company_status=<?=COMPANY_STATUS_NEEDS_CHANGES?>">Needs Changes</a>
+                                            <a class="btn-basic" href="?profile_id=<?=$profile->ID?>&company_status=<?=COMPANY_STATUS_APPROVED?>">Approve</a>
+                                            <a class="btn-basic" href="?profile_id=<?=$value->ID?>&company_status=<?=COMPANY_STATUS_DECLINED?>">Decline</a>
+                                            <a class="btn-basic" href="?profile_id=<?=$value->ID?>&company_status=<?=COMPANY_STATUS_SUSPENDED?>">Suspend</a>
+                                            <a class="btn-basic" href="?profile_id=<?=$value->ID?>&company_status=<?=COMPANY_STATUS_NEEDS_CHANGES?>">Needs Changes</a>
                                         </div>
                                         <div class="clearfix"></div>
                                     </li>
