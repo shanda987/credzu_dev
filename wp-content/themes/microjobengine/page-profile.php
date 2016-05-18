@@ -91,8 +91,8 @@ echo mJobProfileAction()->display_company_status($user_role, $profile->company_s
                         </div>
                         <div class="form-group clearfix">
                             <div class="input-group">
-                                <div class="input-group-addon no-addon"><?php _e('Address:', ET_DOMAIN); ?></div>
-                                <input type="text" name="billing_full_address" id="billing_full_address" placeholder="<?php _e('Physical address', ET_DOMAIN); ?>" value="<?php echo $billing_full_address; ?>">
+                                <div class="input-group-addon no-addon"><?php _e('Address Line 1:', ET_DOMAIN); ?></div>
+                                <input type="text" name="billing_full_address" id="billing_full_address" placeholder="<?php _e('Address Line 1', ET_DOMAIN); ?>" value="<?php echo $billing_full_address; ?>">
                             </div>
                         </div>
                         <div class="form-group clearfix">

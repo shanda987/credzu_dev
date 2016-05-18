@@ -291,6 +291,12 @@
                                 required: true,
                             },
                             last_name: 'required',
+                            phone: 'required',
+                            email: 'required',
+                            billing_full_address: 'required',
+                            city: 'required',
+                            state: 'required',
+                            zip_code: 'required',
                         },
                         type: 'update-profile',
                         blockTarget: '.mjob-profile-form button'
