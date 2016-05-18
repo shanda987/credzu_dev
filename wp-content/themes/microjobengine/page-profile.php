@@ -95,6 +95,30 @@ echo mJobProfileAction()->display_company_status($user_role, $profile->company_s
                                 <input type="text" name="billing_full_address" id="billing_full_address" placeholder="<?php _e('Physical address', ET_DOMAIN); ?>" value="<?php echo $billing_full_address; ?>">
                             </div>
                         </div>
+                        <div class="form-group clearfix">
+                            <div class="input-group">
+                                <div class="input-group-addon no-addon"><?php _e('Address line 2:', ET_DOMAIN); ?></div>
+                                <input type="text" name="address_line2" id="address_line2" placeholder="<?php _e('Address Line 2', ET_DOMAIN); ?>" value="<?php echo $profile->address_line2; ?>">
+                            </div>
+                        </div>
+                        <div class="form-group clearfix">
+                            <div class="input-group">
+                                <div class="input-group-addon no-addon"><?php _e('City:', ET_DOMAIN); ?></div>
+                                <input type="text" name="city" id="city" placeholder="<?php _e('City', ET_DOMAIN); ?>" value="<?php echo $profile->city; ?>">
+                            </div>
+                        </div>
+                        <div class="form-group clearfix">
+                            <div class="input-group">
+                                <div class="input-group-addon no-addon"><?php _e('State:', ET_DOMAIN); ?></div>
+                                <input type="text" name="state" id="state" placeholder="<?php _e('State', ET_DOMAIN); ?>" value="<?php echo $profile->state; ?>">
+                            </div>
+                        </div>
+                        <div class="form-group clearfix">
+                            <div class="input-group">
+                                <div class="input-group-addon no-addon"><?php _e('Zip code:', ET_DOMAIN); ?></div>
+                                <input type="text" name="zip_code" id="zip_code" placeholder="<?php _e('Zip code', ET_DOMAIN); ?>" value="<?php echo $profile->zip_code; ?>">
+                            </div>
+                        </div>
                         <?php if ( $is_individual ): ?>
                         <div class="form-group clearfix">
                                 <div class="input-group">
