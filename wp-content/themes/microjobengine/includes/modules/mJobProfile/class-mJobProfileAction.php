@@ -152,7 +152,7 @@ class mJobProfileAction extends mJobPostAction
                                     wp_send_json($res);
                                 }
                             } else {
-                                $res['msg'] = __('1Error with billing information. Please try again. Call 888-831-4742 if the problem continues', ET_DOMAIN);
+                                $res['msg'] = __('Error with billing information. Please try again. Call 888-831-4742 if the problem continues', ET_DOMAIN);
                                 wp_send_json($res);
                             }
                         }
