@@ -5,6 +5,7 @@
     if( is_page_template('page-dashboard.php') ){
         $default = array('posts_per_page'=> 5);
     }
+    $profile = mJobProfileAction()->getProfile($user_ID);
 ?>
 <div class="list-order list-task-wrapper">
     <?php
