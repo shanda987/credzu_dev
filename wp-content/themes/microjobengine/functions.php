@@ -25,7 +25,8 @@ define('COMPANY_STATUS_DECLINED', 'declined');
 
 /** Company Billing Status */
 define('COMPANY_PAYEE_NAME_OVERRIDE_STATUS_APPROVED', 'approved');
-define('COMPANY_PAYEE_NAME_OVERRIDE_STATUS_PENDING', 'pending');
+define('COMPANY_PAYEE_NAME_OVERRIDE_STATUS_UNDER_REVIEW', 'under_review');
+define('COMPANY_PAYEE_NAME_OVERRIDE_STATUS_UNDER_REVIEW_EXISTS', 'under_review_exists');
 define('COMPANY_PAYEE_NAME_OVERRIDE_STATUS_DECLINED', 'declined');
 
 // define( 'ALLOW_UNFILTERED_UPLOADS', true );

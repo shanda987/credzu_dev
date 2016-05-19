@@ -8,6 +8,11 @@ $profile = mJobProfileAction()->getProfile($user_ID);
 echo mJobProfileAction()->getProfileJson($profile);
 
 ?>
+
+<p>
+The billing information below will be used to generate payments from you/your company to Credzu, LLC for the purpose of paying for the listings you create on Credzu.com
+</p>
+
 <div class="form-confirm-billing-profile">
     <form class="et-form">
         <div class="form-group clearfix">

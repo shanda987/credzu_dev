@@ -51,18 +51,12 @@ echo mJobProfileAction()->display_company_status($user_role, $profile->company_s
                     </ul>
                     <div class="tab-content">
                         <div role="tabpanel" class="tab-pane active" id="outgoing-payments">
-                            <p>
-                            The billing information below will be used to generate payments from you/your company to Credzu, LLC for the purpose of paying for the listings you create on Credzu.com
-                            </p>
                             <div id="bankAccountForm">
                                 <?php get_template_part('template/billing', 'form'); ?>
                             </div>
                             <input type="hidden" class="input-item" name="_wpnonce" id="profile_wpnonce" value="<?php echo de_create_nonce('ae-mjob_post-sync');?>" />
                         </div>
                         <div role="tabpanel" class="tab-pane" id="incoming-payments">
-                            <p>
-                            This is the "payee" to whom payments will be made when a client hires you/your company. If this is different than your company name it will not change until it is approved.
-                            </p>
                             <div id="incomingPaymentsForm">
                             <?php get_template_part('template/billing-form', 'payee'); ?>
                             </div>

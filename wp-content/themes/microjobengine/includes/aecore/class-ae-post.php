@@ -141,9 +141,6 @@ class AE_Posts
 
         $meta = apply_filters('ae_' . $this->post_type . '_convert_metadata', $this->meta, $post, $singular);
 
-        return $meta;
-
-
         // generate meta data
         if (!empty($meta)) {
             foreach ($meta as $key) {
