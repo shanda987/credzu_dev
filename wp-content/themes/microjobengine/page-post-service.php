@@ -1,6 +1,6 @@
 <?php
 global $user_ID;
-$user_role = mJobUserAction()->get_role($user_ID);
+//$user_role = mJobUserAction()->get_role($user_ID);
 //if (!is_super_admin() || $user_role !== COMPANY) {
 //    wp_redirect(home_url()); exit;
 //}
