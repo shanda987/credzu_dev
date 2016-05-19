@@ -2,6 +2,7 @@
 class AE_Taxonomy_Meta extends AE_Base{
     public static $instance;
     public $tax;
+    public $list_fields;
     /**
      * getInstance method
      *
@@ -25,6 +26,17 @@ class AE_Taxonomy_Meta extends AE_Base{
         $this->add_filter('manage_edit-'.$tax.'_columns', 'ae_add_tax_column' );
         $this->add_filter('manage_'.$tax.'_custom_column', 'ae_add_tax_column_content', 10, 3 );
         $this->add_action( 'admin_enqueue_scripts', 'ae_tax_enqueue_scripts'  );
+        $this->list_fields = array(
+            'featured-tax',
+            'mjob_category_image',
+            'cat_bottom_title',
+            'cat_bottom_block1_title',
+            'cat_bottom_block2_title',
+            'cat_bottom_block3_title',
+            'cat_bottom_block1_content',
+            'cat_bottom_block2_content',
+            'cat_bottom_block3_content'
+            );
     }
     /**
      * Description
@@ -70,6 +82,36 @@ class AE_Taxonomy_Meta extends AE_Base{
             <input type="checkbox" name="featured-tax" class="left margin-20 margin-top-3" value="true" />
             <label for="featured-tax" class="left"><?php _e('Featured taxonomy', ET_DOMAIN); ?></label>
         </div>
+        <br/>
+        <br/>
+        <p>
+            <label for="cat_bottom_title"><?php _e('Bottom Title', ET_DOMAIN) ?></label>
+            <input type="text" name="cat_bottom_title" />
+        </p>
+        <p>
+            <label for="cat_bottom_block1_title"><?php _e('Bottom block 1 title', ET_DOMAIN) ?></label>
+            <input type="text" name="cat_bottom_block1_title" />
+        </p>
+        <p>
+            <label for="cat_bottom_block1_content"><?php _e('Bottom block 1 content', ET_DOMAIN) ?></label>
+            <textarea name="cat_bottom_block1_content" rows="5"> </textarea>
+        </p>
+        <p>
+            <label for="cat_bottom_block2_title"><?php _e('Bottom block 2 title', ET_DOMAIN) ?></label>
+            <input type="text" name="cat_bottom_block2_title" />
+        </p>
+        <p>
+            <label for="cat_bottom_block2_content"><?php _e('Bottom block 2 content', ET_DOMAIN) ?></label>
+            <textarea name="cat_bottom_block2_content" rows="5"> </textarea>
+        </p>
+        <p>
+            <label for="cat_bottom_block3_title"><?php _e('Bottom block 3 title', ET_DOMAIN) ?></label>
+            <input type="text" name="cat_bottom_block3_title" />
+        </p>
+        <p>
+            <label for="cat_bottom_block3_content"><?php _e('Bottom block 3 content', ET_DOMAIN) ?></label>
+            <textarea name="cat_bottom_block3_content" rows="5"> </textarea>
+        </p>
         </div>
         <div class="clearfix"></div>
         <br/>
@@ -87,14 +129,21 @@ class AE_Taxonomy_Meta extends AE_Base{
      * @author JACK BUI
      */
     public function ae_save_tax_meta( $term_id, $tt_id ){
-        if( isset( $_POST['featured-tax'] ) && '' !== $_POST['featured-tax'] ){
-            $group = sanitize_title( $_POST['featured-tax'] );
-            add_term_meta( $term_id, 'featured-tax', $group, true );
+        $request = $_REQUEST;
+        foreach( $this->list_fields as $key=> $value){
+            if( isset($request[$value]) ){
+                $group = $group = sanitize_title( $request[$value] );
+                update_term_meta($term_id, $value, $group);
+            }
         }
-        if( isset( $_POST['mjob_category_image'] ) && '' !== $_POST['mjob_category_image'] ){
-            $group = sanitize_title( $_POST['mjob_category_image'] );
-            update_term_meta( $term_id, 'mjob_category_image', $group );
-        }
+//        if( isset( $_POST['featured-tax'] ) && '' !== $_POST['featured-tax'] ){
+//            $group = sanitize_title( $_POST['featured-tax'] );
+//            add_term_meta( $term_id, 'featured-tax', $group, true );
+//        }
+//        if( isset( $_POST['mjob_category_image'] ) && '' !== $_POST['mjob_category_image'] ){
+//            $group = sanitize_title( $_POST['mjob_category_image'] );
+//            update_term_meta( $term_id, 'mjob_category_image', $group );
+//        }
     }
     /**
      * edit form tax

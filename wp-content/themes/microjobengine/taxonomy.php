@@ -1,7 +1,6 @@
 <?php
 global $wp_query, $ae_post_factory, $post;
 $post_object = $ae_post_factory->get('mjob_post');
-
 $term = get_queried_object();
 get_header();
 ?>
@@ -62,6 +61,7 @@ get_header();
                 </div>
             </div>
         </div>
+        <?php get_template_part('template/cat', 'block'); ?>l
     </div>
 <?php
 get_footer();

@@ -15,7 +15,6 @@
  */
 get_header();
 ?>
-
 	<div id="content">
 		<div class="container dashboard withdraw">
 			<!-- block control  -->

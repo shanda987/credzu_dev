@@ -535,7 +535,6 @@ class ET_Microjobengine extends AE_Base
              $author = get_user_by('id', $result->post_author);
              $result->author_name = isset($author->display_name) ? $author->display_name : __('Unnamed', ET_DOMAIN);
          }
-
          //comments field
          if (!isset($result->comment_number)) {
              $num_comments = get_comments_number($result->ID);
