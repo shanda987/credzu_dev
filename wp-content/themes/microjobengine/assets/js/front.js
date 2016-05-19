@@ -1217,17 +1217,15 @@
             },
         });
         Views.billingInfo = Backbone.View.extend({
-            el: '.page-template-page-billing-info',
+            el: '.section-billing-info',
             events: {
                 'change select[name="use_billing_address"]': 'selectBilling',
                 'change select[name="use_holder_account"]': 'selectAccount'
-
             },
             initialize: function () {
                 this.blockUi = new Views.BlockUi();
                 this.initBillingInfo();
                 AE.pubsub.on('ae:form:submit:success', this.afterSave, this);
-
             },
             selectBilling: function(event){
                 event.preventDefault();
@@ -1273,7 +1271,7 @@
                             phone: '',
                             business_email: '',
                             credit_goal: ''
-                        })
+                        });
                     }
                 }
                 // Set nonce for security purpose
@@ -1288,8 +1286,13 @@
                         blockTarget: '.form-confirm-billing-profile button'
                     });
                 }
+
+                // Hide by default at first.
+                $('.billing-order-address, .account-holder').hide();
+
                 var use_billing_address = this.profilemodel.get('use_billing_address');
                 var use_holder_account = this.profilemodel.get('use_holder_account');
+
                 if( use_billing_address != '' ) {
                     $('select[name="use_billing_address"]').val(this.profilemodel.get('use_billing_address'));
                 }

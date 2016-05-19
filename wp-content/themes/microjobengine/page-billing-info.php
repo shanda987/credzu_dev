@@ -5,7 +5,7 @@
  */
 get_header();
 ?>
-    <div class="container mjob-profile-page withdraw">
+    <div class="container mjob-profile-page withdraw section-billing-info">
         <div class="title-top-pages">
             <p class="block-title"><?php _e('MY BILLING INFORMATION', ET_DOMAIN); ?></p>
             <p class="btn-back"><?php _e('Complete your billing information', ET_DOMAIN); ?></p>

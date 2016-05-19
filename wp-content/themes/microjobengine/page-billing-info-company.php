@@ -33,7 +33,7 @@ get_header();
 // If Company, this outputs the Company Status bar (Doesn't show when approved)
 echo mJobProfileAction()->display_company_status($user_role, $profile->company_status);
 ?>
-    <div class="container mjob-payment-method-page dashboard withdraw">
+    <div class="container mjob-payment-method-page dashboard withdraw section-billing-info">
         <div class="row title-top-pages">
             <p class="block-title"><?php _e('Billing Info', ET_DOMAIN); ?></p>
             <p><a href="<?php echo et_get_page_link('dashboard'); ?>" class="btn-back"><i class="fa fa-angle-left"></i><?php _e('Back to dashboard', ET_DOMAIN); ?></a></p>
