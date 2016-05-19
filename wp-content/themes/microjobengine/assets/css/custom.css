@@ -195,17 +195,25 @@
 }
 
 .btn-basic {
+    display: inline-block;
     background: #10a2ef;
     color: #fff !important;
     border-radius: 3px;
     -moz-border-radius: 3px;
     padding: 5px 10px 5px 10px;
     margin: 0 5px;
+    text-decoration: none;
 }
-.btn-basic:hover {
+.btn-basic:hover, .btn-basic:active {
     color: #fff !important;
     background: #56BAEF;
+    text-decoration: none;
 }
+.btn-basic.disabled {
+    opacity: .4;
+}
+
+
 .mjob-profile-page .account-holder, .mjob-profile-page .billing-order-address{
     display: none;
 }

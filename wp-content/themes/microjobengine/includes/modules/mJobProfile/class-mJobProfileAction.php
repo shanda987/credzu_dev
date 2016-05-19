@@ -466,6 +466,24 @@ class mJobProfileAction extends mJobPostAction
         }
         return $output;
     }
+
+    /**
+     * Tells if the company is active, for hiding post button.
+     *
+     * @return boolean
+     */
+    public function isCompanyActive() {
+        global $user_ID;
+        $profile = $this->getProfile($user_ID);
+        if (! $profile || ! property_exists($profile, 'company_status')) {
+            return false;
+        }
+        if ($profile->company_status == COMPANY_STATUS_APPROVED) {
+            return true;
+        }
+        return false;
+    }
+
     /**
       * Check company profile
       *

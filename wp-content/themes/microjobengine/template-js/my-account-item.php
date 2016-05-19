@@ -2,11 +2,21 @@
     <div class="list-notification">
         <span class="link-notification"><i class="fa fa-bell"></i></span>
     </div>
+    <?php
+    $user_role = ae_user_role($user_ID);
+    if( is_super_admin() || $user_role == COMPANY ): ?>
     <div class="link-post-services">
-        <a class="btn-basic" href="<?php echo et_get_page_link('post-service'); ?>"><?php _e('Post a Listing', ET_DOMAIN); ?>
+        <?php if (mJobProfileAction()->isCompanyActive()): ?>
+        <a class="btn-basic" href="<?php echo $post_link; ?>"><?php _e('Post a Listing', ET_DOMAIN); ?>
             <div class="plus-circle"><i class="fa fa-plus"></i></div>
         </a>
+        <?php else: ?>
+        <a class="btn-basic disabled" href="#" onclick="return false;" data-toggle="tooltip" data-placement="bottom" title="You must have an Active account to post a listing"><?php _e('Post a Listing', ET_DOMAIN); ?>
+            <div class="plus-circle"><i class="fa fa-plus"></i></div>
+        </a>
+        <?php endif;?>
     </div>
+    <?php endif;?>
     <div class="user-account">
         <div class="dropdown et-dropdown">
             <div class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
