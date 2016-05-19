@@ -201,4 +201,17 @@ class mJobPostAction extends AE_PostAction{
         }
     }
 
+    /**
+     * This will determine if an item has a 72 hour waiting period
+     *
+     * @return boolean
+     * @since 1.0
+     * @package MicrojobEngine
+     * @category void
+     * @author Jesse Boyer
+     */
+    public function belongsToCreditCategory($postId) {
+        // @TODO Either here or in AE_Terms?
+    }
+
 }

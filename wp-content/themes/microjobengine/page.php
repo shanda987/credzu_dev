@@ -13,9 +13,9 @@
  * @subpackage MicrojobEngine
  * @since MicrojobEngine 1.0
  */
-	global $post;
-	get_header();
-	the_post();
+global $post;
+get_header();
+the_post();
 ?>
 <div id="content" class="container dashboard withdraw">
 	<!-- block control  -->

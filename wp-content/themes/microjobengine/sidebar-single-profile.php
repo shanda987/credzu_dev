@@ -14,14 +14,8 @@ $user = mJobUser::getInstance();
 $user_data = $user->get($user_id);
 
 // Convert profile
-$profile_obj = $ae_post_factory->get('mjob_profile');
-$profile_id = get_user_meta($user_id, 'user_profile_id', true);
-if($profile_id) {
-    $profile = get_post($profile_id);
-    if($profile && !is_wp_error($profile)) {
-        $profile = $profile_obj->convert($profile);
-    }
-}
+$profile = mJobProfileAction()->getProfile($user_ID);
+
 
 // User profile information
 $description = !empty($profile->profile_description) ? $profile->profile_description : "";

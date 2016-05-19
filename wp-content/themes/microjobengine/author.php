@@ -9,14 +9,7 @@ $author = mJobUser::getInstance();
 $author_data = $author->get($author_id);
 
 // Convert profile
-$profile_obj = $ae_post_factory->get('mjob_profile');
-$profile_id = get_user_meta($author_id, 'user_profile_id', true);
-if($profile_id) {
-    $post = get_post($profile_id);
-    if($post && !is_wp_error($post)) {
-        $profile = $profile_obj->convert($post);
-    }
-}
+$profile = mJobProfileAction()->getProfile($user_ID);
 
 get_header();
 ?>

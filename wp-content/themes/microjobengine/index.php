@@ -13,7 +13,7 @@
  * @subpackage MicrojobEngine
  * @since MicrojobEngine 1.0
  */
-	get_header();
+get_header();
 ?>
 <div class="container">
 	<h1>This is index.php</h1>

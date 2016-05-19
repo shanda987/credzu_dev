@@ -6,9 +6,9 @@
  * @subpackage Freelance Engine
  * @since Freelance Engine 1.0
  */
+get_header();
+?>
 
-get_header(); ?>
-	
 <div id="content" class="blog-header-container">
 	<div class="container">
 		<!-- blog header -->

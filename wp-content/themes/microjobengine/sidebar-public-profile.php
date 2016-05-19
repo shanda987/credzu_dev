@@ -12,14 +12,8 @@ if(is_author()) {
 }
 
 // Convert profile
-$profile_obj = $ae_post_factory->get('mjob_profile');
-$profile_id = get_user_meta($user_id, 'user_profile_id', true);
-if($profile_id) {
-    $post = get_post($profile_id);
-    if($post && !is_wp_error($post)) {
-        $profile = $profile_obj->convert($post);
-    }
-}
+$profile = mJobProfileAction()->getProfile($user_ID);
+
 
 // User profile information
 $description = !empty($profile->profile_description) ? nl2br($profile->profile_description) : "";

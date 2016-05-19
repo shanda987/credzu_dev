@@ -16,7 +16,7 @@ $post_object = $ae_post_factory->get('mjob_post');
         }
     } else {
         ?>
-        <div class="not-found"><?php _e('There are no mJobs found!', ET_DOMAIN); ?></div>
+        <div class="not-found"><?php _e('No Listings found!', ET_DOMAIN); ?></div>
         <?php
     }
 ?>

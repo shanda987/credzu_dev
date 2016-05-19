@@ -13,7 +13,7 @@
  * @subpackage MicrojobEngine
  * @since MicrojobEngine 1.0
  */
-	get_header(); 
+get_header();
 ?>
 
 <section class="blog-header-container">
@@ -27,8 +27,8 @@
 		            <input type="text" name="s" placeholder="<?php _e("Search at blog",ET_DOMAIN) ?>">
 		        </form>
 		    </div>
-		</div>      
-		<!--// blog header  -->	
+		</div>
+		<!--// blog header  -->
 	</div>
 </section>
 

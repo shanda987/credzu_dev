@@ -13,9 +13,9 @@
  * @subpackage MicrojobEngine
  * @since MicrojobEngine 1.0
  */
-	global $post;
-	get_header();
-	the_post();
+global $post;
+get_header();
+the_post();
 $cats = get_the_category($post->ID);
 $parent = $cats['0']->parent;
 $breadcrum = '<h2><span>'.$cats["0"]->name.'</span></h2>';

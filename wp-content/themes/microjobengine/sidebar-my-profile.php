@@ -4,17 +4,7 @@ $user = mJobUser::getInstance();
 $user_data = $user->convert($current_user->data);
 $user_role = ae_user_role($current_user->ID);
 
-// Convert profile
-$profile_obj = $ae_post_factory->get('mjob_profile');
-$profile_id = get_user_meta($user_ID, 'user_profile_id', true);
-if($profile_id) {
-    $post = get_post($profile_id);
-    if($post && !is_wp_error($post)) {
-        $profile = $profile_obj->convert($post);
-    }
-}
-
-$user_role = ae_user_role($current_user->ID);
+$profile = mJobProfileAction()->getProfile($user_ID);
 
 $country_id = isset($profile->tax_input['country'][0]) ? $profile->tax_input['country'][0]->term_id : '';
 $languages = isset($profile->tax_input['language']) ? $profile->tax_input['language'] : '';
