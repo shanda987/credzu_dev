@@ -443,13 +443,13 @@ class ET_Microjobengine extends AE_Base
         }
         if( is_page_template('page-post-service.php') ){
             $user_role = ae_user_role($user_ID);
-            $status = get_user_meta($user_ID, 'user_status', true);
+            $profile = mJobProfileAction()->getProfile($user_ID);
             if( !is_super_admin() &&  $user_role != 'company' ){
                     wp_redirect(home_url());
 
             }
             else{
-                if( $user_role == COMPANY && $status != COMPANY_STATUS_APPROVED ){
+                if( $user_role == COMPANY && $profile->company_status != COMPANY_STATUS_APPROVED ){
                     wp_redirect(home_url());
                 }
             }
