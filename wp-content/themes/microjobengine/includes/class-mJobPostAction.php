@@ -214,4 +214,35 @@ class mJobPostAction extends AE_PostAction{
         // @TODO Either here or in AE_Terms?
     }
 
+    /**
+     * Gathers mjob_posts for the user
+     *
+     * @param int $userId
+     * @param int $limit default is 5
+     * @param array|csv|integer $exclude_post_id Items to exclude, usually the current post
+     * @return Post Object
+     * @since 1.0
+     * @package MicrojobEngine
+     * @category void
+     * @author Jesse Boyer
+     */
+    public function getOtherPosts($userId, $limit = 5, $exclude_post_id = false) {
+        $args = array(
+          'author' => (int) $userId,
+          'post_type' => 'mjob_post',
+          'post_status' => 'publish',
+          'post_limit' => (int) $limit,
+        );
+        if (is_numeric($exclude_post_id)) {
+            if (is_array($exclude_post_id)) {
+                $args['post__not_in'] = $exclude_post_id;
+            } else {
+                $args['post__not_in'] = [$exclude_post_id];
+            }
+        }
+
+        $query = new WP_Query($args);
+        return $query->get_posts();
+    }
+
 }

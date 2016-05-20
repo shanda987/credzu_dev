@@ -9,13 +9,14 @@ if($user_id == $user_ID) {
         $user_id = $seller_id;
     }
 }
-
 $user = mJobUser::getInstance();
 $user_data = $user->get($user_id);
 
 // Convert profile
 $profile = mJobProfileAction()->getProfile($user_ID);
 
+// Get the other posts
+$other_posts = mJobProfileAction()->getOtherPosts($user_ID, 5, get_the_ID());
 
 // User profile information
 $description = !empty($profile->profile_description) ? $profile->profile_description : "";
@@ -108,15 +109,32 @@ $languages = isset($profile->tax_input['language']) ? $profile->tax_input['langu
                 <?php
             }
             ?>
+
         </ul>
 
+        <div class="link-personal">
+            <h4>Other Listings</h4>
+            <?php foreach ($other_posts as $post):?>
+            <div class="row other-listing-item">
+                <div class="col-md-10">
+                    <a href="<?=get_permalink($post->ID)?>"><?=$post->post_title?></a>
+                </div>
+                <div class="col-md-2">
+                    <span class="price">$5.00</span>
+                </div>
+            </div>
+            <?php endforeach;?>
+        </div>
 
+        <?php if( is_super_admin() || $profile->post_title == COMPANY):?>
         <div class="link-personal">
             <ul>
                 <?php mJobShowContactLink($user_id); ?>
                 <li><a href="<?php echo get_author_posts_url($user_id); ?>" class="profile-link"><?php _e('View my profile', ET_DOMAIN); ?><i class="fa fa-user"></i></a></li>
             </ul>
         </div>
+        <?php endif;?>
+
     </div>
 </div>
 
