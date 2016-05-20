@@ -2,7 +2,7 @@
 class AE_Taxonomy_Meta extends AE_Base{
     public static $instance;
     public $tax;
-    public $list_fields;
+    public $meta;
     /**
      * getInstance method
      *
@@ -18,7 +18,7 @@ class AE_Taxonomy_Meta extends AE_Base{
      * the constructor of this class
      *
      */
-    public  function __construct( $tax = 'category' ){
+    public  function __construct( $tax = 'category', $meta = array() ){
         $this->add_action($tax.'_add_form_fields', 'ae_add_form_fields');
         $this->add_action( 'created_'.$tax, 'ae_save_tax_meta', 10, 2 );
         $this->add_action( $tax .'_edit_form_fields', 'ae_edit_tax_group_field', 10, 2 );
@@ -26,17 +26,8 @@ class AE_Taxonomy_Meta extends AE_Base{
         $this->add_filter('manage_edit-'.$tax.'_columns', 'ae_add_tax_column' );
         $this->add_filter('manage_'.$tax.'_custom_column', 'ae_add_tax_column_content', 10, 3 );
         $this->add_action( 'admin_enqueue_scripts', 'ae_tax_enqueue_scripts'  );
-        $this->list_fields = array(
-            'featured-tax',
-            'mjob_category_image',
-            'cat_bottom_title',
-            'cat_bottom_block1_title',
-            'cat_bottom_block2_title',
-            'cat_bottom_block3_title',
-            'cat_bottom_block1_content',
-            'cat_bottom_block2_content',
-            'cat_bottom_block3_content'
-            );
+        $this->tax = $tax;
+        $this->meta = $meta;
     }
     /**
      * Description
@@ -130,7 +121,7 @@ class AE_Taxonomy_Meta extends AE_Base{
      */
     public function ae_save_tax_meta( $term_id, $tt_id ){
         $request = $_REQUEST;
-        foreach( $this->list_fields as $key=> $value){
+        foreach( $this->meta as $key=> $value){
             if( isset($request[$value]) ){
                 $group = $group = sanitize_title( $request[$value] );
                 update_term_meta($term_id, $value, $group);
@@ -174,7 +165,7 @@ class AE_Taxonomy_Meta extends AE_Base{
             ? ' style="display: none;"'
             : '';
         $arr = array();
-        foreach( $this->list_fields as $key=>$value ){
+        foreach( $this->meta as $key=>$value ){
             $arr[$value] = get_term_meta($term->term_id, $value, true);
         }
         ?>
@@ -217,7 +208,7 @@ class AE_Taxonomy_Meta extends AE_Base{
         </tr>
         <tr class="form-field term-slug-wrap">
             <th scope="row"><label for="cat_bottom_block2_content"><?php _e('Bottom block 2 content', ET_DOMAIN) ?></label></th>
-            <td><textarea name="cat_bottom_block2_content" rows="5"> value="<?php echo $arr['cat_bottom_block2_content']; ?>"</textarea></td>
+            <td><textarea name="cat_bottom_block2_content" rows="5"> <?php echo $arr['cat_bottom_block2_content']; ?></textarea></td>
         </tr>
         <tr class="form-field term-slug-wrap">
             <th scope="row"><label for="cat_bottom_block3_title"><?php _e('Bottom block 3 title', ET_DOMAIN) ?></label></th>
@@ -256,7 +247,7 @@ class AE_Taxonomy_Meta extends AE_Base{
 //            update_term_meta($term_id, 'mjob_category_image', false);
 //        }
         $request = $_REQUEST;
-        foreach( $this->list_fields as $key=> $value){
+        foreach( $this->meta as $key=> $value){
             if( isset($request[$value]) && !empty($request[$value])  ){
                 $group = $group = sanitize_title( $request[$value] );
                 update_term_meta($term_id, $value, $group);
@@ -335,5 +326,82 @@ class AE_Taxonomy_Meta extends AE_Base{
             'term_id'          => $term_id,
         ) );
     }
+    /**
+      * convert
+      *
+      * @param object $term
+      * @return void
+      * @since 1.4
+      * @package MicrojobEngine
+      * @category CREDZU
+      * @author JACK BUI
+      */
+    public function convert($term){
+        foreach( $this->meta as $key=>$value ){
+            $val = get_term_meta($term->term_id, $value, true);
+            $term->$value = $val;
+        }
+        return $term;
+    }
 
 }
+/**
+ * class AE_PostFact
+ * factory class to generate ae post object
+ */
+class AE_TaxFact
+{
+
+    static $objects;
+
+    /**
+     * contruct init post type
+     */
+    function __construct() {
+        self::$objects = array(
+            'tax' => AE_Taxonomy_Meta::getInstance()
+        );
+    }
+
+    /**
+     * set a post type object to machine
+     * @param String $post_type
+     * @param AE_Post object $object
+     */
+    public function set($tax, $object) {
+        self::$objects[$tax] = $object;
+    }
+
+    /**
+     * get post type object in class object instance
+     * @param String $post_type The post type want to use
+     * @return Object
+     */
+    public function get($tax) {
+        if (isset(self::$objects[$tax])) return self::$objects[$tax];
+        return null;
+    }
+    /**
+     * Description
+     *
+     * @param void
+     * @return void
+     * @since 1.0
+     * @package MicrojobEngine
+     * @category void
+     * @author JACK BUI
+     */
+    public function get_all(){
+        if ( isset( self::$objects ) ) {
+            return self::$objects;
+        }
+        return NULL;
+    }
+}
+
+/**
+ * set a global object factory
+ */
+global $ae_tax_factory;
+$ae_tax_factory = new AE_TaxFact();
+$ae_tax_factory->set('category', new AE_Posts('category'));

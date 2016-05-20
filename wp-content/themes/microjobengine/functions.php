@@ -49,7 +49,19 @@ if(!defined('MJOB')) {
 }
 
 require_once dirname(__FILE__) . '/includes/index.php';
-new AE_Taxonomy_Meta('mjob_category');
+global $ae_tax_factory;
+$meta  = array(
+    'featured-tax',
+    'mjob_category_image',
+    'cat_bottom_title',
+    'cat_bottom_block1_title',
+    'cat_bottom_block2_title',
+    'cat_bottom_block3_title',
+    'cat_bottom_block1_content',
+    'cat_bottom_block2_content',
+    'cat_bottom_block3_content'
+);
+$ae_tax_factory->set('mjob_category', new AE_Taxonomy_Meta('mjob_category', $meta) );
 if (!class_exists('AE_Base')) return;
 
 //require_once dirname(__FILE__) . '/mobile/functions.php';
