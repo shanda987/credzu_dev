@@ -247,7 +247,7 @@
 }
 
 .other-listing-item a:hover {
-    color: rgba(137, 138, 144, 1);
+    color: rgba(137, 138, 144, 1 );
 }
 
 .other-listing-item .price {

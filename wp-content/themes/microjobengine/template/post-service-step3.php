@@ -30,6 +30,9 @@ foreach ($post_type->meta as $key => $value) {
 }
 ?>
 <div class="step-wrapper step-post" id="step-post">
+    <p>
+    This will post a public listing for a client to find you and hire you for your services. <br>For the best results give your Job Title a descriptive name.
+    </p>
     <form class="post-job post et-form" id="">
         <div class="form-group clearfix">
             <div class="input-group">
@@ -70,7 +73,7 @@ foreach ($post_type->meta as $key => $value) {
         <div class="form-group">
             <label><?php _e('YOUR CLIENT REQUIREMENTS ', ET_DOMAIN) ?></label>
             <p>
-            Select any items that your client must provide to you in order to do your services.
+            Select any items that your client must provide to you in order to do your services (Optional).
             </p>
             <div class="row">
                 <?php

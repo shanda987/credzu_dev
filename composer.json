@@ -1,0 +1,12 @@
+{
+    "name": "credzu/credzu",
+    "require": {
+        "dompdf/dompdf": "v0.7.0"
+    },
+    "authors": [
+        {
+            "name": "Jesse Boyer",
+            "email": "imboyus@gmail.com"
+        }
+    ]
+}

@@ -36,16 +36,15 @@ $disable_plan = ae_get_option('disable_plan', false);
         </div>
         <?php
         endif;
-        // @TODO -- DISABLE THIS FOR NOW, It will be determined on if the company is Approved.
         // check disable payment plan or not
         // if(!$disable_plan) {
         //     get_template_part( 'template/post-service', 'step1' );
         // }
 
         // Shows login page if not logged in, dont need it i dont think
-        // if(!$user_ID) {
-        //     get_template_part( 'template/post-service', 'step2' );
-        // }
+        if(!$user_ID) {
+            get_template_part( 'template/post-service', 'step2' );
+        }
 
         get_template_part( 'template/post-service', 'step3' );
 

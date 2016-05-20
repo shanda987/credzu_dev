@@ -24,7 +24,7 @@ get_header();
                 <div class="col-lg-12 col-md-12 col-sm-12 col-sx-12">
                     <a href="<?php /*echo et_get_page_link('dashboard'); */?>"><?php /*_e('Back to dashboard', ET_DOMAIN); */?></a>
                 </div>-->
-                <p class="block-title"><?php _e('MY JOBS', ET_DOMAIN); ?></p>
+                <p class="block-title"><?php _e('MY LISTINGS', ET_DOMAIN); ?></p>
                 <div class="filter"><?php get_template_part('template/filter', 'template');?></div>
                 <p><a href="<?php echo et_get_page_link('dashboard'); ?>" class="btn-back"><i class="fa fa-angle-left"></i><?php _e('Back to dashboard', ET_DOMAIN); ?></a></p>
             </div>
