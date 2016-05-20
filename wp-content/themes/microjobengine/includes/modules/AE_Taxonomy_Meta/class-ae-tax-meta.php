@@ -123,7 +123,7 @@ class AE_Taxonomy_Meta extends AE_Base{
         $request = $_REQUEST;
         foreach( $this->meta as $key=> $value){
             if( isset($request[$value]) ){
-                $group = $group = sanitize_title( $request[$value] );
+                $group =  $request[$value] ;
                 update_term_meta($term_id, $value, $group);
             }
         }
@@ -249,7 +249,7 @@ class AE_Taxonomy_Meta extends AE_Base{
         $request = $_REQUEST;
         foreach( $this->meta as $key=> $value){
             if( isset($request[$value]) && !empty($request[$value])  ){
-                $group = $group = sanitize_title( $request[$value] );
+                $group =  $request[$value] ;
                 update_term_meta($term_id, $value, $group);
             }
             else{
