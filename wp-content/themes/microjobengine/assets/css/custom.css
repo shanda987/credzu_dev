@@ -213,6 +213,25 @@
     opacity: .4;
 }
 
+.dashboard-new-listing {
+    height: 387px;
+    text-align: center;
+    position: relative;
+}
+.dashboard-new-listing a {
+  display: inline-block;
+  color: silver;
+  font-size: 20px;
+  vertical-align: middle;
+  padding: 120px 50px 50px 50px;
+  height: 380px;
+}
+
+.dashboard-new-listing a span:first-child {
+    font-size: 60px;
+    display: block;
+}
+
 
 .mjob-profile-page .account-holder, .mjob-profile-page .billing-order-address{
     display: none;

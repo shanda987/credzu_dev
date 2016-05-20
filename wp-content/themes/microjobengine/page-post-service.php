@@ -22,7 +22,6 @@ $disable_plan = ae_get_option('disable_plan', false);
 ?>
 <div id="content" class="mjob-post-service">
     <div class="container float-center">
-        @TODO: Will need to make sure the company has been approved
 
         <p class="block-title"><?php _e('POST A LISTING', ET_DOMAIN); ?></p>
         <?php if(!$disable_plan) : ?>
@@ -31,7 +30,7 @@ $disable_plan = ae_get_option('disable_plan', false);
             <?php if(!$user_ID):
                 mJobProgressBar(4, true);
                 else:
-                    mJobProgressBar(3, true);
+                    mJobProgressBar(2, true);
                 endif; ?>
             </div>
         </div>

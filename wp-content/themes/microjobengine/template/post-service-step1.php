@@ -1,6 +1,6 @@
 <?php
 /**
- * Step 1 select pricing to post a service
+ * Step 1 Describe the Service
  *
  * @param void
  * @return void

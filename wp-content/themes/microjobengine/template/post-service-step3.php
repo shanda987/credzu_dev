@@ -1,4 +1,8 @@
 <?php
+
+// They will Submit their Post here with their billing info and the charge.
+global $ae_post_factory;
+
 if(isset($_REQUEST['id'])) {
     $post = get_post($_REQUEST['id']);
     if($post) {
@@ -14,9 +18,19 @@ if( isset($_GET['return_url'])  ){
 else{
     $return = home_url();
 }
+
+// Get the Client Options for the checkboxes
+$post_type = $ae_post_factory->get('mjob_post');
+$options_array = [];
+foreach ($post_type->meta as $key => $value) {
+    if (strpos($value, 'option_') === false) {
+        continue;
+    }
+    $options_array[] = $value;
+}
 ?>
 <div class="step-wrapper step-post" id="step-post">
-    <form class="post-job  post et-form" id="">
+    <form class="post-job post et-form" id="">
         <div class="form-group clearfix">
             <div class="input-group">
                 <div class="input-group-addon"><i class="fa fa-adn"></i></div>
@@ -56,9 +70,29 @@ else{
         <div class="form-group">
             <label><?php _e('YOUR CLIENT REQUIREMENTS ', ET_DOMAIN) ?></label>
             <p>
-            These are details your client must provide for you to do your job.
+            Select any items that your client must provide to you in order to do your services.
             </p>
-            <?php wp_editor( '', 'client_requirements', ae_editor_settings()  );  ?>
+            <div class="row">
+                <?php
+                // This will make a two column multi-row
+                $i = 0;
+                foreach ($options_array as $option):
+                    $break = ( ++$i % 2 == 0 ) ? true : false;
+                    if ($break) {
+                        echo '<div class="row-fluid">';
+                    }
+                ?>
+                    <div class="col-md-6">
+                        <input type="checkbox" name="<?=$option?>" id="<?=$option?>" value="1">
+                        <label for="<?=$option?>"><?=ucwords(str_replace(['option', '_'], ['', ' '], $option));?></label>
+                    </div>
+
+                <?php
+                if ($break) {
+                    echo "</div>";
+                }
+                endforeach; ?>
+            </div>
         </div>
         <div class="form-group group-attachment gallery_container" id="gallery_container">
             <div class="outer-carousel-gallery">
@@ -96,7 +130,7 @@ else{
             $switch_skill = ae_get_option('switch_skill');
             if(!$switch_skill){
                 ?>
-                <input type="text" class="form-control text-field skill" id="skill" placeholder="<?php _e("Enter microjob tags", ET_DOMAIN); ?>" name=""  autocomplete="off" spellcheck="false" >
+                <input type="text" class="form-control text-field skill" id="skill" placeholder="<?php _e("Enter listing tags", ET_DOMAIN); ?>" name=""  autocomplete="off" spellcheck="false" >
                 <ul class="skills-list" id="skills_list"></ul>
                 <?php
             }else{

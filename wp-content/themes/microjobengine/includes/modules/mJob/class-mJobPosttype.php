@@ -24,11 +24,18 @@ class mJobPosttype extends mJobPost{
             'et_payment_package',
             'et_price',
             'et_budget',
-            'client_requirements',
             'rating_score',
             'total_orders',
             'total_reviews',
             'et_carousels',
+            // The Options are for what a Company needs from a client
+            'option_credit_report_upload',
+            'option_credit_report_credentials',
+            'option_utility_bill',
+            'option_contact_information', // First, Last, Address, Phone, etc.
+            'option_social_security_card',
+            'option_government_issued_id',
+            'option_billing_information',
             'modified_date'
         );
         $this->post_type_singular = 'Microjob';
@@ -96,6 +103,7 @@ class mJobPosttype extends mJobPost{
     public function convert( $post_data, $thumbnail = 'thumbnail', $excerpt = TRUE, $singular = FALSE ) {
         $data = parent::convert($post_data, $thumbnail, $excerpt, $singular);
         $data->post_content = $data->unfiltered_content;
+        get_post_custom();
         return $data;
     }
 }

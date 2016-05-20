@@ -1,5 +1,28 @@
+<?php
+global $ae_post_factory;
+
+// Get the Client Options for the checkboxes
+$post_type = $ae_post_factory->get('mjob_post');
+$options_array = [];
+foreach ($post_type->meta as $key => $value) {
+    if (strpos($value, 'option_') === false) {
+        continue;
+    }
+    $options_array[] = $value;
+}
+
+// Re-tick the checkboxes
+$existing_meta = get_post_meta($wp_query->post->ID);
+$checkbox_fields = [];
+foreach ($existing_meta as $key => $value) {
+    if (strpos($key, 'option_') === false) {
+        continue;
+    }
+    $checkbox_fields[] = $key;
+}
+?>
 <form  class="post-job step-post post et-form edit-mjob-form" style="display: none">
-    <p class="mjob-title">Edit a Job</p>
+    <p class="mjob-title">Edit Your Listing</p>
     <div class="form-group clearfix">
         <div class="input-group">
             <div class="input-group-addon"><i class="fa fa-adn"></i></div>
@@ -30,8 +53,35 @@
         </div>
     </div>
     <div class="form-group">
-        <label><?php _e('DESCRIPTION', ET_DOMAIN) ?></label>
+        <label><?php _e('YOUR SERVICE DESCRIPTION', ET_DOMAIN) ?></label>
         <?php wp_editor( '', 'post_content', ae_editor_settings()  );  ?>
+    </div>
+    <div class="form-group">
+        <label><?php _e('YOUR CLIENT REQUIREMENTS ', ET_DOMAIN) ?></label>
+        <p>
+        Select any items that your client must provide to you in order to do your services.
+        </p>
+        <div class="row">
+            <?php
+            // This will make a two column multi-row
+            $i = 0;
+            foreach ($options_array as $option):
+                $break = ( ++$i % 2 == 0 ) ? true : false;
+                if ($break) {
+                    echo '<div class="row-fluid">';
+                }
+            ?>
+                <div class="col-md-6">
+                    <input type="checkbox" name="<?=$option?>" id="<?=$option?>" <?=in_array($option, $checkbox_fields) ? 'checked="checked"' : '' ?>>
+                    <label for="<?=$option?>"><?=ucwords(str_replace(['option', '_'], ['', ' '], $option));?></label>
+                </div>
+
+            <?php
+            if ($break) {
+                echo "</div>";
+            }
+            endforeach; ?>
+        </div>
     </div>
     <div class="form-group group-attachment gallery_container" id="gallery_container">
         <div class="outer-carousel-gallery">
@@ -64,7 +114,7 @@
         $switch_skill = ae_get_option('switch_skill');
         if(!$switch_skill){
             ?>
-            <input type="text" class="form-control text-field skill" id="skill" placeholder="<?php _e("Enter microjob tags", ET_DOMAIN); ?>" name=""  autocomplete="off" spellcheck="false" >
+            <input type="text" class="form-control text-field skill" id="skill" placeholder="<?php _e("Enter listing tags", ET_DOMAIN); ?>" name=""  autocomplete="off" spellcheck="false" >
             <ul class="skills-list" id="skills_list"></ul>
             <?php
         }else{

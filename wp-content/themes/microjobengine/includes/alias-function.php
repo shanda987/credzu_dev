@@ -871,6 +871,12 @@ if( !function_exists('mJobProgressBar') ){
             <li class="post-service-step-4" data-id="step4"><span class="link-step4"><?php _e('4', ET_DOMAIN) ;?></span></li>
             <div class="progress-bar-success"></div>
         </ul>
+<?php   elseif ($type == 2): ?>
+        <ul class="step-2-col">
+                <li class="post-service-step-1 active" data-id="step1"><span class="link-step1"><?php _e('1', ET_DOMAIN) ; ?></span></li>
+                <li class="post-service-step-2" data-id="step-post"><span class="link-step2"><?php _e('2', ET_DOMAIN); ?></span></li>
+                <div class="progress-bar-success"></div>
+            </ul>
 <?php   else: ?>
             <ul class="step-3-col">
                 <li class="post-service-step-1 active" data-id="step1"><span class="link-step1"><?php _e('1', ET_DOMAIN) ; ?></span></li>
