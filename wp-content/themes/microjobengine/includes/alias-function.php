@@ -487,7 +487,8 @@ if( !function_exists('list_tax_of_mjob' )) {
     {
         $class = 'list-categories';
         if ($class = 'skill') $class = 'list-skill';
-        $terms = get_the_terms($id, $taxonomy); ?>
+        $terms = get_the_terms($id, $taxonomy);
+        ?>
         <h3 class="title-content"><?php
             printf($title); ?></h3>
         <?php

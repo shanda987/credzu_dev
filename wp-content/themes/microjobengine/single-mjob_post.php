@@ -118,6 +118,18 @@ if($profile_id) {
                                 <div class="tabs-information">
                                     <span class="title"><?php _e('DESCRIPTION', ET_DOMAIN) ;?></span>
                                     <div class="tabs-information" id="description"><?php echo $current->post_content; ?></div>
+                                    <?php $terms = get_the_terms($current->ID, 'mjob_requirement');
+                                    if( !empty($terms) && !is_wp_error($terms) ):
+                                    ?>
+                                    <span class="title"><?php _e('REQUIREMENTS', ET_DOMAIN) ;?></span>
+                                    <ul>
+                                        <?php foreach( $terms as $term): ?>
+                                            <li><?php echo $term->name ?></li>
+                                        <?php endforeach; ?>
+                                    </ul>
+                                    <?php endif; ?>
+                                    <span class="title"><?php _e('AGREEMENT TERMS', ET_DOMAIN) ;?></span>
+                                    <div class="tabs-information" id="agreement_term"><?php echo $current->agreement_terms; ?></div>
                                     <div class="tags">
                                         <?php list_tax_of_mjob($current->ID, 'skill', 'skill') ?>
                                     </div>
