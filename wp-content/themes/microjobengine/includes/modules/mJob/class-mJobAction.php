@@ -58,6 +58,13 @@ class mJobAction extends mJobPostAction{
             exit;
         }
         $request = $response['data'];
+        if( isset($request['mjob_category'])) {
+            global $ae_tax_factory;
+            $term = get_term_by('id', $request['mjob_category'], 'mjob_category');
+            $obj = $ae_tax_factory->get('mjob_category');
+            $term = $obj->convert($term);
+            $request['et_payment_package'] = $term->pricing_plan;
+        }
         if ($request['method'] != 'create' && !isset($request['renew']) ) {
             unset($request['et_payment_package']);
         }
