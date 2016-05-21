@@ -223,20 +223,13 @@ if($profile_id) {
                     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 aside-detail-bar">
                         <div class="box-aside blog-detail">
                             <div class="package-statistic">
+                                <?php
+                                $is_invidual = mJobUserAction()->is_individual($user_ID);
+                                if( $user_ID != $current->post_author && ($is_invidual || is_super_admin()) ): ?>
+                                    <button class="btn-submit btn-order  btn-custom-order btn-order-aside-bar waves-effect waves-light <?php echo $disableClass; ?>" ><?php echo sprintf(__('ORDER NOW (<span class="mjob-price">%s</span>)', ET_DOMAIN), $current->et_budget_text) ; ?></button>
+                                <?php endif; ?>
                                 <div class="action">
-                                    <?php
-                                    $is_invidual = mJobUserAction()->is_individual($user_ID);
-                                    if( $user_ID != $current->post_author && ($is_invidual || is_super_admin()) ): ?>
-                                    <button class="btn-submit btn-order btn-order-aside-bar waves-effect waves-light <?php echo $disableClass; ?>" ><?php echo sprintf(__('ORDER NOW (<span class="mjob-price">%s</span>)', ET_DOMAIN), $current->et_budget_text) ; ?></button>
-                                    <?php else: ?>
-                                    <span class="price"><?php echo mJobPriceFormat($current->et_budget) ?></span>
-                                    <?php endif; ?>
                                     <button class="btn-bookmark"><i class="fa fa-heart"></i></button>
-                                </div>
-                                <span class="price"><?php echo mJobPriceFormat($current->et_budget) ?></span>
-                                <div class="vote">
-                                    <div class="rate-it" data-score="<?php echo round($current->rating_score, 1); ?>"></div>
-                                    <span class="total-review"><?php printf('(%s)',  $current->mjob_total_reviews); ?></span>
                                 </div>
                                 <div class="text-content">
                                     <ul>

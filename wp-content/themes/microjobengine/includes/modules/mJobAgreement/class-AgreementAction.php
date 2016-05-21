@@ -452,6 +452,26 @@ function addMjobDescription(){
     }
     return '[service-description]';
 }
+add_shortcode('agreement-terms', 'addMjobAgreementTerms');
+/**
+ * add first name to shortcode
+ *
+ * @param array $atts
+ * @return void
+ * @since 1.0
+ * @package MicrojobEngine
+ * @category void
+ * @author JACK BUI
+ */
+function addMjobAgreementTerms(){
+    if( isset($_REQUEST['jid']) ){
+        $mjob = mJobAction()->get_mjob($_REQUEST['jid']);
+        if( !empty($mjob) ) {
+            return $mjob->agreement_terms;
+        }
+    }
+    return '[agreement-terms]';
+}
 add_shortcode('service-price', 'addMjobPrice');
 /**
  * add first name to shortcode
