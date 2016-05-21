@@ -18,8 +18,43 @@ if($user_ID) $step--;
     </form>
     <ul class="list-price">
         <div class="row">
-            How do we make this published with a submit button?
-            They are Saved as Drafts. I want to use the mjob Backbbone to undraft it.
+            <?php
+            $paypal = ae_get_option('paypal');
+            if($paypal['enable']) {
+                ?>
+                <li class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                    <div class="outer-payment-items">
+                        <a href="#" class="btn-submit-price-plan select-payment" data-type="paypal"><img src="<?php echo get_stylesheet_directory_uri() ?>/assets/img/icon-paypal.png" alt="" class="img-logo">
+                        <p class="text-bank"><?php _e("PAYPAL", ET_DOMAIN); ?></p>
+                        </a>
+                    </div>
+                </li>
+            <?php }
+            $co = ae_get_option('2checkout');
+            if($co['enable']) {
+                ?>
+                <li class="col-lg-4 col-md-4 col-sm-6 col-xs-12"">
+                    <div class="outer-payment-items">
+                        <a href="#" class="btn-submit-price-plan select-payment" data-type="2checkout"><img src="<?php echo get_stylesheet_directory_uri() ?>/assets/img/icon-2checkout.png" alt="">
+                        <p class="text-checkout"><?php _e("2CHECKOUT", ET_DOMAIN); ?></p>
+                        </a>
+                    </div>
+                </li>
+                <?php
+            }
+            $cash = ae_get_option('cash');
+            if($cash['enable']) {
+                ?>
+                <li class="col-lg-4 col-md-4 col-sm-6 col-xs-12"">
+                    <div class="outer-payment-items">
+                        <a href="#" class="btn-submit-price-plan select-payment" data-type="cash"><img src="<?php echo get_stylesheet_directory_uri() ?>/assets/img/icon-cash.png" alt="">
+                        <p class="text-cash"><?php _e("CASH", ET_DOMAIN); ?></p></a>
+                    </div>
+                </li>
+            </ul>
+            <?php }
+            do_action( 'after_payment_list' );
+            ?>
         </div>
     </ul>
     <?php do_action( 'after_payment_list_wrapper' ); ?>
