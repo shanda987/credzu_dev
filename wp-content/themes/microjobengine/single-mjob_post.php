@@ -49,7 +49,7 @@ if($profile_id) {
 }
 ?>
     <div id="content" class="mjob-single-page">
-        <?php get_template_part('template/content', 'page');?>
+        <?php //get_template_part('template/content', 'page');?>
         <div class="block-items-detail">
             <div class="container">
                 <div class="row block-detail-job">
@@ -227,6 +227,8 @@ if($profile_id) {
                                 $is_invidual = mJobUserAction()->is_individual($user_ID);
                                 if( $user_ID != $current->post_author && ($is_invidual || is_super_admin()) ): ?>
                                     <button class="btn-submit btn-order  btn-custom-order btn-order-aside-bar waves-effect waves-light <?php echo $disableClass; ?>" ><?php echo sprintf(__('ORDER NOW (<span class="mjob-price">%s</span>)', ET_DOMAIN), $current->et_budget_text) ; ?></button>
+                                <?php else:  ?>
+                                    <span class="price"><?php echo mJobPriceFormat($current->et_budget) ?></span>
                                 <?php endif; ?>
                                 <div class="action">
                                     <button class="btn-bookmark"><i class="fa fa-heart"></i></button>

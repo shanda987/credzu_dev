@@ -13,10 +13,10 @@ $user = mJobUser::getInstance();
 $user_data = $user->get($user_id);
 
 // Convert profile
-$profile = mJobProfileAction()->getProfile($user_ID);
+$profile = mJobProfileAction()->getProfile($user_id);
 
 // Get the other posts
-$other_posts = mJobProfileAction()->getOtherPosts($user_ID, 5, get_the_ID());
+$other_posts = mJobProfileAction()->getOtherPosts($user_id, 5, array($post->ID) );
 
 // User profile information
 $description = !empty($profile->profile_description) ? $profile->profile_description : "";
@@ -32,6 +32,7 @@ $languages = isset($profile->tax_input['language']) ? $profile->tax_input['langu
             ?>
         </div>
         <h4 class="float-center"><?php echo $display_name; ?></h4>
+        <p class="company-description"><?php echo $profile->company_description; ?></p>
         <div class="line">
             <span class="line-distance"></span>
         </div>
@@ -41,34 +42,9 @@ $languages = isset($profile->tax_input['language']) ? $profile->tax_input['langu
                     <span><i class="fa fa-map-marker"></i><?php _e('From ', ET_DOMAIN) ?></span>
                 </div>
                 <div class="pull-right">
-                    <?php echo $country_name; ?>
+                    <?php echo $profile->company_address; ?>
                 </div>
             </li>
-
-            <li class="language clearfix">
-                <div class="pull-left">
-                    <span><i class="fa fa-globe"></i><?php _e('Languages ', ET_DOMAIN); ?></span>
-                </div>
-                <div class="pull-right">
-                    <?php
-                    if(!empty($languages)) {
-                        foreach($languages as $language) {
-                            ?>
-                            <p class="lang-item"><?php echo $language->name; ?></p>
-                            <?php
-                        }
-                    }
-                    ?>
-                </div>
-            </li>
-
-            <li class="bio clearfix">
-                <span> <i class="fa fa-info-circle"></i><?php _e('Bio', ET_DOMAIN); ?></span>
-                <div class="content-bio">
-                    <?php echo wp_trim_words($description, 50, '...'); ?>
-                </div>
-            </li>
-
             <?php
             /**
              * Show information for public profile
@@ -114,10 +90,15 @@ $languages = isset($profile->tax_input['language']) ? $profile->tax_input['langu
 
         <div class="link-personal">
             <h4>Other Listings</h4>
-            <?php foreach ($other_posts as $post):?>
-            <div class="row other-listing-item">
+            <?php
+            global $ae_post_factory;
+            $obj = $ae_post_factory->get('mjob_post');
+            foreach ($other_posts as $post):
+                $post = $obj->convert($post);
+                ?>
+            <div class="row other-listing-item other-listing-item-new">
                 <div class="col-md-10">
-                    <a href="<?=get_permalink($post->ID)?>"><?=$post->post_title?></a>
+                    <a href="<?php echo $post->permalink; ?>"><?php echo $post->post_title?></a>
                 </div>
                 <div class="col-md-2">
                     <span class="price">$5.00</span>
@@ -125,16 +106,6 @@ $languages = isset($profile->tax_input['language']) ? $profile->tax_input['langu
             </div>
             <?php endforeach;?>
         </div>
-
-        <?php if( is_super_admin() || $profile->post_title == COMPANY):?>
-        <div class="link-personal">
-            <ul>
-                <?php mJobShowContactLink($user_id); ?>
-                <li><a href="<?php echo get_author_posts_url($user_id); ?>" class="profile-link"><?php _e('View my profile', ET_DOMAIN); ?><i class="fa fa-user"></i></a></li>
-            </ul>
-        </div>
-        <?php endif;?>
-
     </div>
 <!--</div>-->
 

@@ -567,5 +567,31 @@ class mJobProfileAction extends mJobPostAction
             );
         }
     }
+    /**
+      * Get other mjobs of a user
+      *
+      * @param integer $user_id
+      * @param integer $number is number of posts to showing
+      * @param integer $not_in is the post id we will not get
+      * @return array $posts a array of posts object
+      * @since 1.4
+      * @package MicrojobEngine
+      * @category CREDZU
+      * @author JACK BUI
+      */
+    public function getOtherPosts($user_id, $number = 5, $not_in = ''){
+        $args = array(
+            'post_type'=> 'mjob_post',
+            'post_status'=> array(
+                'unpause',
+                'publish'
+            ),
+            'posts_per_page'=> $number,
+            'author'=> $user_id,
+            'post__not_in'=> $not_in
+        );
+        $posts = get_posts($args);
+        return $posts;
+    }
 }
 $new_instance = mJobProfileAction::getInstance();

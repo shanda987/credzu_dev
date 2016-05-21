@@ -329,4 +329,9 @@
     position: relative;
     overflow: hidden;
 }
-
+.other-listing-item-new:last-child{
+    border: none;
+}
+.company-description{
+    text-align: center;
+}
