@@ -281,3 +281,37 @@
 .muted {
     color: #aaafb2;
 }
+.requirement-style{
+    width: 100%;
+}
+.requirement-style .chosen-choices{
+    border: none!important;
+}
+.requirement-style .chosen-choices .search-field{
+    width: 100%;
+    border-bottom: 1px solid rgba(137, 138, 144, 0.2)!important;
+}
+.requirement-style .chosen-choices .search-field input {
+    height: 45px!important;
+    width: 100%!important;;
+    padding: 0 !important;
+    border: 0!important;;
+    border-bottom: 1px solid rgba(137, 138, 144, 0.2)!important;
+    box-shadow: none!important;;
+    outline: none!important;;
+}
+.chosen-container-multi .chosen-choices li.search-choice {
+    position: relative;
+    margin: 3px 0 3px 5px;
+    padding: 3px 20px 3px 5px;
+    border: 1px solid #aaa;
+    border-radius: 3px;
+    background-color: #aaa;
+    background-clip: padding-box;
+    color: #333;
+    line-height: 13px;
+    cursor: default;
+}
+
+
+

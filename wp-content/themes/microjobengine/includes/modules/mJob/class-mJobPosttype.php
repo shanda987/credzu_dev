@@ -75,6 +75,7 @@ class mJobPosttype extends mJobPost{
         $this->registerTaxonomy($tax, $tax_text_singular, $tax_text_regular, array( $this->post_type ), $labels, $args);
         $this->taxs = array(
             'mjob_category',
+            'mjob_requirement',
             'skill'
         );
     }

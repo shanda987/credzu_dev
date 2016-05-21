@@ -614,7 +614,7 @@
                 console.log(this.$('.multi-tax-item').length);
                 this.$('.multi-tax-item').chosen({
                     width: '100%',
-                     max_selected_options: 3,
+                     max_selected_options: 20,
                     inherit_select_classes: true
                 });
                 // Trigger show notification

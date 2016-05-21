@@ -58,21 +58,18 @@ else{
         <div class="form-group">
             <label><?php _e('YOUR SERVICE DESCRIPTION', ET_DOMAIN) ?></label>
             <p>
-            This will be appended to the agreement the client signs.
+            <?php _e('This will be appended to the agreement the client signs.', ET_DOMAIN); ?>
             </p>
             <?php wp_editor( '', 'post_content', ae_editor_settings()  );  ?>
         </div>
         <div class="form-group">
             <label><?php _e('YOUR CLIENT REQUIREMENTS ', ET_DOMAIN) ?></label>
             <p>
-            Select any items that your client must provide to you in order to do your services (Optional).
+            <?php _e('Select any items that your client must provide to you in order to do your services (Optional).', ET_DOMAIN); ?>
             </p>
-            <div class="row">
-            <div class="row">
-                <div class="input-group">
-                    <div class="input-group-addon"><i class="fa fa-pagelines"></i></div>
+                <div class="input-group requirement-style">
                     <?php ae_tax_dropdown( 'mjob_requirement' ,
-                    array(  'attr' => 'data-chosen-width="100%"   data-placeholder="'.__("Choose Client's requirement", ET_DOMAIN).'"',
+                    array(  'attr' => 'multiple data-chosen-width="100%"   data-placeholder="'.__("Choose Client's requirement", ET_DOMAIN).'"',
                         'class' => 'chosen multi-tax-item tax-item required',
                         'hide_empty' => false,
                         'hierarchical' => true ,
@@ -81,7 +78,6 @@ else{
                     )
                 ) ;?>
                 </div>
-            </div>
         </div>
         <div class="form-group group-attachment gallery_container" id="gallery_container">
             <div class="outer-carousel-gallery">
