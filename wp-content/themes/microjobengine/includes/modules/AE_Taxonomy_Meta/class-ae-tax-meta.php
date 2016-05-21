@@ -40,7 +40,9 @@ class AE_Taxonomy_Meta extends AE_Base{
      * @author JACK BUI
      */
     public function ae_add_form_fields($taxonomy) {
-        global $featured_tax;
+        global $featured_tax, $user_ID, $ae_post_factory;
+        $ae_pack = $ae_post_factory->get('pack');
+        $packs = $ae_pack->fetch('pack');
         $term_id = 0;
         // Remove image URL
         $remove_url = add_query_arg( array(
@@ -53,6 +55,18 @@ class AE_Taxonomy_Meta extends AE_Base{
         $hidden = empty( $value )
             ? ' style="display: none;"'
             : ''; ?>
+        <div class="form-field term-group">
+        <label><?php _e('Pricing plan', ET_DOMAIN) ?></label>
+        <div>
+            <select name="pricing_plan">
+            <?php if(!empty($packs)):
+                foreach($packs as $pack):
+                    ?>
+                    <option  value="<?php echo $pack->sku; ?>"><?php echo $pack->post_title; ?></option>
+                <?php endforeach;
+            endif; ?>
+        </select>
+        </div>
         <div class="form-field term-group">
         <label><?php _e('Taxonomy image', ET_DOMAIN) ?></label>
         <div>
@@ -148,7 +162,9 @@ class AE_Taxonomy_Meta extends AE_Base{
      * @author JACK BUI
      */
     function ae_edit_tax_group_field( $term, $taxonomy ){
-        global $featured_tax;
+        global $featured_tax, $user_ID, $ae_post_factory;
+        $ae_pack = $ae_post_factory->get('pack');
+        $packs = $ae_pack->fetch('pack');
         // get current group
         $check = '';
         $featured_tax = get_term_meta( $term->term_id, 'featured-tax', true );
@@ -169,6 +185,23 @@ class AE_Taxonomy_Meta extends AE_Base{
             $arr[$value] = get_term_meta($term->term_id, $value, true);
         }
         ?>
+        <tr class="form-field term-group-wrap">
+            <th scope="row"><label for="featured-tax"><?php _e( 'Pricing plan', ET_DOMAIN ); ?></label></th>
+            <td>
+                <select name="pricing_plan">
+                <?php if(!empty($packs)):
+                    foreach($packs as $pack):
+                        $selected = '';
+                        if( $pack->sku == $arr['pricing_plan']):
+                            $selected = 'selected';
+                        endif;
+                    ?>
+                    <option <?php echo $selected; ?> value="<?php echo $pack->sku; ?>"><?php echo $pack->post_title; ?></option>
+                <?php endforeach;
+                    endif; ?>
+                </select>
+            </td>
+        </tr>
         <tr class="form-field term-group-wrap">
         <th scope="row"><label for="featured-tax"><?php _e( 'Featured taxonomy', ET_DOMAIN ); ?></label></th>
         <td><input type="checkbox" name="featured-tax" value="true" <?php echo $check; ?>/> <label for="featured-tax"><?php _e('Featured taxonomy', ET_DOMAIN); ?></label></td>

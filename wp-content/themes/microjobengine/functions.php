@@ -59,7 +59,8 @@ $meta  = array(
     'cat_bottom_block3_title',
     'cat_bottom_block1_content',
     'cat_bottom_block2_content',
-    'cat_bottom_block3_content'
+    'cat_bottom_block3_content',
+    'pricing_plan'
 );
 $ae_tax_factory->set('mjob_category', new AE_Taxonomy_Meta('mjob_category', $meta) );
 if (!class_exists('AE_Base')) return;
