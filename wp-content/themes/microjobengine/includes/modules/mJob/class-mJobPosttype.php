@@ -28,6 +28,7 @@ class mJobPosttype extends mJobPost{
             'total_orders',
             'total_reviews',
             'et_carousels',
+            'agreement_terms',
             // The Options are for what a Company needs from a client
 //            'option_credit_report_upload',
 //            'option_credit_report_credentials',

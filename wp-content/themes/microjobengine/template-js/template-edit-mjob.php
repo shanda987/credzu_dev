@@ -22,7 +22,7 @@ foreach ($existing_meta as $key => $value) {
 }
 ?>
 <form  class="post-job step-post post et-form edit-mjob-form" style="display: none">
-    <p class="mjob-title">Edit Your Listing</p>
+    <p class="mjob-title"><?php _e('Edit Your Listing', ET_DOMAIN); ?></p>
     <div class="form-group clearfix">
         <div class="input-group">
             <div class="input-group-addon"><i class="fa fa-adn"></i></div>
@@ -34,7 +34,7 @@ foreach ($existing_meta as $key => $value) {
             <div class="input-group delivery-time">
                 <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
                 <input type="number" name="time_delivery" placeholder="Time delivery" value="" class="input-item time-delivery" min="0">
-                <span class="text-note">Day(s)</span>
+                <span class="text-note"><?php _e('Day(s', ET_DOMAIN) ?></span>
             </div>
         </div>
         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 category-area">
@@ -59,29 +59,26 @@ foreach ($existing_meta as $key => $value) {
     <div class="form-group">
         <label><?php _e('YOUR CLIENT REQUIREMENTS ', ET_DOMAIN) ?></label>
         <p>
-        Select any items that your client must provide to you in order to do your services.
+            <?php _e('Select any items that your client must provide to you in order to do your services (Optional).', ET_DOMAIN); ?>
         </p>
-        <div class="row">
-            <?php
-            // This will make a two column multi-row
-            $i = 0;
-            foreach ($options_array as $option):
-                $break = ( ++$i % 2 == 0 ) ? true : false;
-                if ($break) {
-                    echo '<div class="row-fluid">';
-                }
-            ?>
-                <div class="col-md-6">
-                    <input type="checkbox" name="<?=$option?>" id="<?=$option?>" <?=in_array($option, $checkbox_fields) ? 'checked="checked"' : '' ?>>
-                    <label for="<?=$option?>"><?=ucwords(str_replace(['option', '_'], ['', ' '], $option));?></label>
-                </div>
-
-            <?php
-            if ($break) {
-                echo "</div>";
-            }
-            endforeach; ?>
+        <div class="input-group requirement-style">
+            <?php ae_tax_dropdown( 'mjob_requirement' ,
+                array(  'attr' => 'multiple data-chosen-width="100%"   data-placeholder="'.__("Choose Client's requirement", ET_DOMAIN).'"',
+                    'class' => 'chosen multi-tax-item tax-item required',
+                    'hide_empty' => false,
+                    'hierarchical' => true ,
+                    'id' => 'mjob_requirement' ,
+                    'show_option_all' => false
+                )
+            ) ;?>
         </div>
+    </div>
+    <div class="form-group">
+        <label><?php _e('AGREEMENT TERMS', ET_DOMAIN) ?></label>
+        <p>
+            <?php _e('This will be appended to the agreement the client signs.', ET_DOMAIN); ?>
+        </p>
+        <?php wp_editor( '', 'agreement_terms', ae_editor_settings()  );  ?>
     </div>
     <div class="form-group group-attachment gallery_container" id="gallery_container">
         <div class="outer-carousel-gallery">

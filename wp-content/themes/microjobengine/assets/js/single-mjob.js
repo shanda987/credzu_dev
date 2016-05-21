@@ -458,6 +458,10 @@
                                 if( null != tinymce.EditorManager.get('post_content') ) {
                                     tinymce.EditorManager.get('post_content').setContent(view.mjobModel.get('post_content'));
                                 }
+                                tinymce.EditorManager.execCommand('mceAddEditor', true, "agreement_terms");
+                                if( null != tinymce.EditorManager.get('agreement_terms') ) {
+                                    tinymce.EditorManager.get('agreement_terms').setContent(view.mjobModel.get('agreement_terms'));
+                                }
                             }
                             if (typeof view.carousels === 'undefined') {
                                 view.carousels = new Views.Carousel({

@@ -57,9 +57,6 @@ else{
         </div>
         <div class="form-group">
             <label><?php _e('YOUR SERVICE DESCRIPTION', ET_DOMAIN) ?></label>
-            <p>
-            <?php _e('This will be appended to the agreement the client signs.', ET_DOMAIN); ?>
-            </p>
             <?php wp_editor( '', 'post_content', ae_editor_settings()  );  ?>
         </div>
         <div class="form-group">
@@ -78,6 +75,13 @@ else{
                     )
                 ) ;?>
                 </div>
+        </div>
+        <div class="form-group">
+            <label><?php _e('AGREEMENT TERMS', ET_DOMAIN) ?></label>
+            <p>
+                <?php _e('This will be appended to the agreement the client signs.', ET_DOMAIN); ?>
+            </p>
+            <?php wp_editor( '', 'agreement_terms', ae_editor_settings()  );  ?>
         </div>
         <div class="form-group group-attachment gallery_container" id="gallery_container">
             <div class="outer-carousel-gallery">
