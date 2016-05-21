@@ -49,12 +49,9 @@ class mJobProfileAction extends mJobPostAction
 
         if(!is_wp_error($profile)) {
             update_user_meta($result, 'user_profile_id', $profile);
-            /*
-             * @TODO  @Jesse Why should we check $user->display_name == COMPANY ?
-             */
-            if ($user->display_name == COMPANY) {
-                update_user_meta($result, 'company_status', COMPANY_STATUS_REGISTERED);
-            }
+//            if ($user->display_name == COMPANY) {
+//                update_user_meta($result, 'company_status', COMPANY_STATUS_REGISTERED);
+//            }
         }
     }
 
