@@ -1,7 +1,7 @@
 <?php
 
 // They will Submit their Post here with their billing info and the charge.
-global $ae_post_factory;
+global $ae_post_factory, $user_ID;
 
 if(isset($_REQUEST['id'])) {
     $post = get_post($_REQUEST['id']);
@@ -18,13 +18,13 @@ if( isset($_GET['return_url'])  ){
 else{
     $return = home_url();
 }
-
 // Get the Client Options for the checkboxes
 ?>
 <div class="step-wrapper step-post" id="step-post">
-    <p>
-    This will post a public listing for a client to find you and hire you for your services. <br>For the best results give your Job Title a descriptive name.
-    </p>
+    <?php if( mJobProfileAction()->isCompanyActive() ): ?>
+        <p>
+            <?php _e('This will post a public listing for a client to find you and hire you for your services. <br>For the best results give your Job Title a descriptive name.', ET_DOMAIN); ?>
+        </p>
     <form class="post-job post et-form" id="">
         <div class="form-group clearfix">
             <div class="input-group">
@@ -141,4 +141,7 @@ else{
             <input type="hidden" class="input-item post-service_nonce" name="_wpnonce" value="<?php echo de_create_nonce('ae-mjob_post-sync');?>" />
         </div>
     </form>
+    <?php else: ?>
+        <?php echo sprintf(__('In order to submit listings, you must complete your <a href="%s">profile</a> and <a href="%s">billing information.</a></a>', ET_DOMAIN), et_get_page_link('profile-company'), et_get_page_link('billing-info-company') )?>
+    <?php endif; ?>
 </div>

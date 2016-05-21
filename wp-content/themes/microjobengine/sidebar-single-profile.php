@@ -24,7 +24,7 @@ $display_name = isset($user_data->display_name) ? $user_data->display_name : '';
 $country_name = isset($profile->tax_input['country'][0]) ? $profile->tax_input['country'][0]->name : '';
 $languages = isset($profile->tax_input['language']) ? $profile->tax_input['language'] : '';
 ?>
-<div class="box-aside">
+<!--<div class="box-aside">-->
     <div class="personal-profile">
         <div class="float-center">
             <?php
@@ -136,6 +136,6 @@ $languages = isset($profile->tax_input['language']) ? $profile->tax_input['langu
         <?php endif;?>
 
     </div>
-</div>
+<!--</div>-->
 
 <?php wp_reset_query(); ?>

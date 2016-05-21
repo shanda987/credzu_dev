@@ -252,9 +252,9 @@ if($profile_id) {
                                     </ul>
                                 </div>
                             </div>
+                            <?php get_sidebar('single-profile'); ?>
                         </div>
 
-                        <?php get_sidebar('single-profile'); ?>
                     </div>
                 </div>
             </div>

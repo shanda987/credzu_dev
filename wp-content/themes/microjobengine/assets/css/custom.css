@@ -316,5 +316,17 @@
     margin-top:0!important;
     position: initial!important;
 }
-
+.btn-post-listing{
+    border-radius: 45px;
+    padding: 13px 22px;
+    border: none;
+    background: #10a2ef;
+    color: #fff!important;
+    box-shadow: -1px 6px 19px rgba(16, 162, 239, 0.4);
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    outline: none;
+    position: relative;
+    overflow: hidden;
+}
 

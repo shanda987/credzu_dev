@@ -449,9 +449,9 @@ class ET_Microjobengine extends AE_Base
 
             }
             else{
-                if( $user_role == COMPANY && $profile->company_status != COMPANY_STATUS_APPROVED ){
-                    wp_redirect(home_url());
-                }
+//                if( $user_role == COMPANY && $profile->company_status != COMPANY_STATUS_APPROVED ){
+//                    wp_redirect(home_url());
+//                }
             }
         }
         if( is_page_template('page-order.php') ){
