@@ -611,9 +611,10 @@
                     max_selected_options: 1
                 });
                 this.blockUi = new Views.BlockUi();
+                console.log(this.$('.multi-tax-item').length);
                 this.$('.multi-tax-item').chosen({
                     width: '100%',
-                    // max_selected_options: parseInt(ae_globals.max_cat),
+                     max_selected_options: 3,
                     inherit_select_classes: true
                 });
                 // Trigger show notification

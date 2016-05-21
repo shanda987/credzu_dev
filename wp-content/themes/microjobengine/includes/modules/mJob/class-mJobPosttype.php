@@ -29,13 +29,13 @@ class mJobPosttype extends mJobPost{
             'total_reviews',
             'et_carousels',
             // The Options are for what a Company needs from a client
-            'option_credit_report_upload',
-            'option_credit_report_credentials',
-            'option_utility_bill',
-            'option_contact_information', // First, Last, Address, Phone, etc.
-            'option_social_security_card',
-            'option_government_issued_id',
-            'option_billing_information',
+//            'option_credit_report_upload',
+//            'option_credit_report_credentials',
+//            'option_utility_bill',
+//            'option_contact_information', // First, Last, Address, Phone, etc.
+//            'option_social_security_card',
+//            'option_government_issued_id',
+//            'option_billing_information',
             'modified_date'
         );
         $this->post_type_singular = 'Microjob';
@@ -47,6 +47,10 @@ class mJobPosttype extends mJobPost{
         $tax = 'mjob_category';
         $tax_text_singular = 'Microjob Category';
         $tax_text_regular = 'Microjob Categories';
+        $this->registerTaxonomy($tax, $tax_text_singular, $tax_text_regular, array( $this->post_type ));
+        $tax = 'mjob_requirement';
+        $tax_text_singular = 'Microjob Requirement';
+        $tax_text_regular = 'Microjob Requirement';
         $this->registerTaxonomy($tax, $tax_text_singular, $tax_text_regular, array( $this->post_type ));
         /**
          * Register skill taxonomy

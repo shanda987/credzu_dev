@@ -20,14 +20,6 @@ else{
 }
 
 // Get the Client Options for the checkboxes
-$post_type = $ae_post_factory->get('mjob_post');
-$options_array = [];
-foreach ($post_type->meta as $key => $value) {
-    if (strpos($value, 'option_') === false) {
-        continue;
-    }
-    $options_array[] = $value;
-}
 ?>
 <div class="step-wrapper step-post" id="step-post">
     <p>
@@ -76,25 +68,19 @@ foreach ($post_type->meta as $key => $value) {
             Select any items that your client must provide to you in order to do your services (Optional).
             </p>
             <div class="row">
-                <?php
-                // This will make a two column multi-row
-                $i = 0;
-                foreach ($options_array as $option):
-                    $break = ( ++$i % 2 == 0 ) ? true : false;
-                    if ($break) {
-                        echo '<div class="row-fluid">';
-                    }
-                ?>
-                    <div class="col-md-6">
-                        <input type="checkbox" name="<?=$option?>" id="<?=$option?>" value="1">
-                        <label for="<?=$option?>"><?=ucwords(str_replace(['option', '_'], ['', ' '], $option));?></label>
-                    </div>
-
-                <?php
-                if ($break) {
-                    echo "</div>";
-                }
-                endforeach; ?>
+            <div class="row">
+                <div class="input-group">
+                    <div class="input-group-addon"><i class="fa fa-pagelines"></i></div>
+                    <?php ae_tax_dropdown( 'mjob_requirement' ,
+                    array(  'attr' => 'data-chosen-width="100%"   data-placeholder="'.__("Choose Client's requirement", ET_DOMAIN).'"',
+                        'class' => 'chosen multi-tax-item tax-item required',
+                        'hide_empty' => false,
+                        'hierarchical' => true ,
+                        'id' => 'mjob_requirement' ,
+                        'show_option_all' => false
+                    )
+                ) ;?>
+                </div>
             </div>
         </div>
         <div class="form-group group-attachment gallery_container" id="gallery_container">
