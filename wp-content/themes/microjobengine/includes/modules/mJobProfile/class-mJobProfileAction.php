@@ -175,6 +175,7 @@ class mJobProfileAction extends mJobPostAction
         if($result['success'] != false && !is_wp_error($result)) {
             if($request['method'] == 'create') {
                 update_user_meta($current_user->ID, 'user_profile_id', $result['data']->ID);
+                update_post_meta($current_user->ID, 'business_email', $current_user->user_email);
             }
 
             wp_send_json(array(

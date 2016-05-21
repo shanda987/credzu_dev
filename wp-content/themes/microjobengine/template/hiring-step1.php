@@ -65,9 +65,34 @@ if( isset($_GET['jid']) && !empty($_GET['jid'] ) ){
         <div class="form-group clearfix">
             <div class="input-group">
                 <div class="input-group-addon no-addon"></div>
-                <input type="text" name="billing_full_address" id="billing_full_address" placeholder="<?php _e('Physical address', ET_DOMAIN); ?>" value="<?php echo $billing_full_address; ?>">
+                <input type="text" name="billing_full_address" id="billing_full_address" placeholder="<?php _e('Address Line 1', ET_DOMAIN); ?>" value="<?php echo $billing_full_address; ?>">
             </div>
         </div>
+        <div class="form-group clearfix">
+            <div class="input-group">
+                <div class="input-group-addon no-addon"></div>
+                <input type="text" name="address_line2" id="address_line2" placeholder="<?php _e('Address Line 2', ET_DOMAIN); ?>" value="<?php echo $profile->address_line2; ?>">
+            </div>
+        </div>
+        <div class="form-group clearfix">
+            <div class="input-group">
+                <div class="input-group-addon no-addon"></div>
+                <input type="text" name="city" id="city" placeholder="<?php _e('City', ET_DOMAIN); ?>" value="<?php echo $profile->city; ?>">
+            </div>
+        </div>
+        <div class="form-group clearfix">
+            <div class="input-group">
+                <div class="input-group-addon no-addon"></div>
+                <input type="text" name="state" id="state" placeholder="<?php _e('State', ET_DOMAIN); ?>" value="<?php echo $profile->state; ?>">
+            </div>
+        </div>
+        <div class="form-group clearfix">
+            <div class="input-group">
+                <div class="input-group-addon no-addon"></div>
+                <input type="text" name="zip_code" id="zip_code" placeholder="<?php _e('Zip code', ET_DOMAIN); ?>" value="<?php echo $profile->zip_code; ?>">
+            </div>
+        </div>
+
 <!--        <div class="form-group clearfix">-->
 <!--            <div class="input-group">-->
 <!--                <div class="input-group-addon no-addon"></div>-->
