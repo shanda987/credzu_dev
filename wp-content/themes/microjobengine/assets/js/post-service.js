@@ -82,6 +82,61 @@
                 view.$el.find('.pm-pack-price-text').html(model.get('plan_price_text'));
                 view.$el.find('.pm-pack-price-total').html(model.get('plan_price_text'));
                 view.$el.find('input[name="amount"]').html(model.get('plan_price'));
+                //define extra item
+                var extraItem = Views.PostItem.extend({
+                    tagName: 'li',
+                    className: 'extra-item',
+                    template: _.template($('#extra-item-loop').html()),
+                    events: _.extend({
+                        'click input[type="checkbox"]': 'checkBox'
+                    }, Views.PostItem.prototype.events),
+                    onItemBeforeRender: function () {
+                        // before render view
+                    },
+                    onItemRendered: function () {
+                        var view = this;
+                        view.$el.attr('data-id', view.model.get('ID'));
+                    },
+                    checkBox: function (e) {
+                        $target = $(e.currentTarget);
+                        AE.pubsub.trigger('mjob:extra:add', $target);
+                    }
+                });
+                /**
+                 * list view control mjob list
+                 */
+                ListExtras = Views.ListPost.extend({
+                    tagName: 'ul',
+                    itemView: extraItem,
+                    itemClass: 'extra-item'
+                });
+                $('.extra-container').each(function () {
+                    if (typeof view.extraCollection == 'undefined') {
+                        //Get public  collection
+                        if ($('.extra_postdata').length > 0) {
+                            var extra = JSON.parse($('.extra_postdata').html());
+                            view.extraCollection = new Collections.Extras(extra);
+                        } else {
+                            view.extraCollection = new Collections.Extras();
+                        }
+                    }
+                    /**
+                     * init list blog view
+                     */
+                    view.listExtras = new ListExtras({
+                        itemView: extraItem,
+                        collection: view.extraCollection,
+                        el: $(this).find('.mjob-list-extras')
+                    });
+                    view.listExtras.render();
+                    /**
+                     * init block control list blog
+                     */
+                    new Views.BlockControl({
+                        collection: view.extraCollection,
+                        el: $(this)
+                    });
+                });
             },
             showStepFour: function(){
                 $('.post-service-step-1').addClass('done');

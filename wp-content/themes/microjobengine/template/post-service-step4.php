@@ -55,7 +55,7 @@ if($user_ID) $step--;
                         <div class="add-extra">
                             <span class="title-sub"><?php _e('Extra', ET_DOMAIN); ?></span>
                             <div class="extra-container">
-                                <?php //    get_template_part('template/list', 'extras'); ?>
+                                <?php     get_template_part('template/new-list', 'extras'); ?>
                             </div>
                         </div>
                         <div class="float-right">
