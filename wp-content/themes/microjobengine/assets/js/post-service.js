@@ -78,6 +78,10 @@
                     },
                     hints: raty.hint
                 });
+                view.$el.find('.pm-pack-description').html(model.get('plan_content'));
+                view.$el.find('.pm-pack-price-text').html(model.get('plan_price_text'));
+                view.$el.find('.pm-pack-price-total').html(model.get('plan_price_text'));
+                view.$el.find('input[name="amount"]').html(model.get('plan_price'));
             },
             showStepFour: function(){
                 $('.post-service-step-1').addClass('done');

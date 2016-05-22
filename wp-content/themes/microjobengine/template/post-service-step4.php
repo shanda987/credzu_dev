@@ -65,7 +65,7 @@ if($user_ID) $step--;
                     </div>
                 </div>
             </div>
-            <input type="hidden" name="amount" value="<?php //echo $total ?>">
+            <input type="hidden" name="amount" value="">
         </div>
     </div>
 </div>

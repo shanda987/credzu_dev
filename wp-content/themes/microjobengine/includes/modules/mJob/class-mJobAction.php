@@ -311,6 +311,11 @@ class mJobAction extends mJobPostAction{
         if( isset($result->tax_input['skill']) ){
             $result->skill = $result->tax_input['skill'];
         }
+        $package = $ae_post_factory->get('pack');
+        $plan = $package->get($result->et_payment_package);
+        $result->plan_price = $plan->et_price;
+        $result->plan_price_text = mJobPriceFormat($plan->et_price);
+        $result->plan_content = $plan->post_content;
         return $result;
     }
 
