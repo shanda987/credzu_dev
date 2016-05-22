@@ -939,7 +939,6 @@
                         billing_zip_code: 'required'
                     }
                 }
-                console.log(rules);
                 if(typeof this.billingForm === "undefined") {
                     this.bilingForm = new Views.AE_Form({
                         el: '.form-confirm-billing', // Wrapper of for
