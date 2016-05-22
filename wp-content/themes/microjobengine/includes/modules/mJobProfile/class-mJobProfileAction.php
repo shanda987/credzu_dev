@@ -40,9 +40,15 @@ class mJobProfileAction extends mJobPostAction
      */
     public function mJobInsertProfile($result, $user_data) {
         $user = get_userdata($result);
+        if(ae_user_role($user->ID) == COMPANY){
+            $status = 'draft';
+        }
+        else{
+            $status = 'publish';
+        }
         $profile = wp_insert_post(array(
             'post_type' => 'mjob_profile',
-            'post_status' => 'publish',
+            'post_status' => $status,
             'post_title' => $user->display_name,
             'post_author' => $result
         ));
@@ -67,10 +73,16 @@ class mJobProfileAction extends mJobPostAction
     public function mJobInsertProfileAfterLogin($result) {
         $user_profile_id = get_user_meta($result->ID, 'user_profile_id', true);
         $profile = get_post($user_profile_id);
+        if(ae_user_role($user_profile_id) == COMPANY){
+            $status = 'draft';
+        }
+        else{
+            $status = 'publish';
+        }
         if(empty($user_profile_id) || empty($profile)) {
             $profile = wp_insert_post(array(
                 'post_type' => 'mjob_profile',
-                'post_status' => 'publish',
+                'post_status' => $status,
                 'post_title' => $result->display_name,
                 'post_author' => $result->ID
             ));
@@ -101,7 +113,6 @@ class mJobProfileAction extends mJobPostAction
                 'msg' => __('Invalid user.', ET_DOMAIN)
             ));
         }
-
         // Check active user
         if(!mJobUserActivate($current_user->ID)) {
             wp_send_json(array(
@@ -170,6 +181,9 @@ class mJobProfileAction extends mJobPostAction
                     }
                 }
             }
+        }
+        if( ae_user_role($current_user->ID) == COMPANY ) {
+            $request['post_status'] = 'draft';
         }
         $result = $this->sync_post($request);
         if($result['success'] != false && !is_wp_error($result)) {
