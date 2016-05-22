@@ -34,7 +34,7 @@ if($profile_id) {
             <div class="input-group">
                 <div class="input-group-addon no-addon"></div>
                 <label for="use_billing_address"><?php _e('Billing address ( same as your address)', ET_DOMAIN); ?></label></br>
-                <select class="hiring-process-select" name="use_billing_address">
+                <select class="hiring-process-select" name="use_billing_address" id="use_billing_address">
                     <option value="yes"><?php _e('Yes', ET_DOMAIN);?></option>
                     <option value="no"><?php _e('No', ET_DOMAIN);?></option>
                 </select>
@@ -44,6 +44,30 @@ if($profile_id) {
             <div class="input-group">
                 <div class="input-group-addon no-addon"></div>
                 <input type="text" name="billing_other_address" id="billing_other_address" placeholder="<?php _e('Address', ET_DOMAIN); ?>" value="<?php echo $profile->billing_other_address; ?>">
+            </div>
+        </div>
+        <div class="form-group clearfix billing-order-address">
+            <div class="input-group">
+                <div class="input-group-addon no-addon"></div>
+                <input type="text" name="billing_address_line2" id="address_line2" placeholder="<?php _e('Address Line 2', ET_DOMAIN); ?>" value="<?php echo $profile->billing_address_line2; ?>">
+            </div>
+        </div>
+        <div class="form-group clearfix billing-order-address">
+            <div class="input-group">
+                <div class="input-group-addon no-addon"></div>
+                <input type="text" name="billing_city" id="city" placeholder="<?php _e('City', ET_DOMAIN); ?>" value="<?php echo $profile->billing_city; ?>">
+            </div>
+        </div>
+        <div class="form-group clearfix billing-order-address">
+            <div class="input-group">
+                <div class="input-group-addon no-addon"></div>
+                <input type="text" name="billing_state" id="state" placeholder="<?php _e('State', ET_DOMAIN); ?>" value="<?php echo $profile->billing_state; ?>">
+            </div>
+        </div>
+        <div class="form-group clearfix billing-order-address">
+            <div class="input-group">
+                <div class="input-group-addon no-addon"></div>
+                <input type="text" name="billing_zip_code" id="zip_code" placeholder="<?php _e('Zip code', ET_DOMAIN); ?>" value="<?php echo $profile->billing_zip_code; ?>">
             </div>
         </div>
         <div class="form-group clearfix">

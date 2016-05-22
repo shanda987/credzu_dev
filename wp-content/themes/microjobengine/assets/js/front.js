@@ -888,16 +888,6 @@
                         blockTarget: '.form-confirm-info button'
                     });
                 }
-                if(typeof this.billingForm === "undefined") {
-                    this.bilingForm = new Views.AE_Form({
-                        el: '.form-confirm-billing', // Wrapper of for
-                        model: this.profilemodel,
-                        rules: {
-                        },
-                        type: 'update-billing-hiring',
-                        blockTarget: '.form-confirm-billing button'
-                    });
-                }
             },
             afterSave: function(result, resp, jqXHR, type){
                 var view = this;
@@ -939,7 +929,29 @@
                     }
                 });
             },
+            initStep2:function(use_address){
+                var rules = {};
+                if( use_address == 'no') {
+                    var rules = {
+                        billing_other_address: 'required',
+                        billing_city: 'required',
+                        billing_state: 'required',
+                        billing_zip_code: 'required'
+                    }
+                }
+                console.log(rules);
+                if(typeof this.billingForm === "undefined") {
+                    this.bilingForm = new Views.AE_Form({
+                        el: '.form-confirm-billing', // Wrapper of for
+                        model: this.profilemodel,
+                        rules: rules,
+                        type: 'update-billing-hiring',
+                        blockTarget: '.form-confirm-billing button'
+                    });
+                }
+            },
             showStep2: function(){
+                this.initStep2(this.profilemodel.get('use_billing_address'));
                 $('.page-template-page-process-hiring .block-title').html(ae_globals.process_hiring_step2);
                 $('.form-confirm-billing').show();
                 $('.form-confirm-info').hide();
