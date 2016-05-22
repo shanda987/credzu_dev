@@ -37,6 +37,37 @@ class mJobExtraPosttype extends mJobPost{
      */
     public function init(){
         $this->registerPosttype();
+        $this->add_meta_box();
+    }
+    /**
+     * add metabox
+     *
+     * @param void
+     * @return void
+     * @since 1.0
+     * @package MicrojobEngine
+     * @category void
+     * @author JACK BUI
+     */
+    public function add_meta_box() {
+
+        $post_type   = 'mjob_extra';
+        $meta_box_id = $post_type . "_metabox";
+        $title       = __('Extra meta', ET_DOMAIN);
+        $arg         = array(
+            'post_type' => $post_type,
+            'context'   => 'advanced',
+            'priority'  => 'default',
+        );
+        $input       = array(
+            array(
+                'title' => __( 'Extra price', ET_DOMAIN ),
+                'type'  => 'text',
+                'name'  => 'et_budget'
+            )
+
+        );
+        new AE_Metabox( $meta_box_id, $title, $arg, $input );
     }
 }
 $new_instance = mJobExtraPosttype::getInstance();
