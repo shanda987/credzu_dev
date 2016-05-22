@@ -62,6 +62,23 @@
                 $('.progress-bar-success').removeClass('half');
                 $('.progress-bar-success').addClass('full');
             },
+            setupStep3: function(model){
+                var view = this;
+                view.$el.find('.pm-mjob-img img').attr('src', model.get('the_post_thumbnail'));
+                view.$el.find('.pm-mjob-img').attr('href', model.get('permalink'));
+                view.$el.find('.pm-mjob-title').attr('href', model.get('permalink'));
+                view.$el.find('.pm-mjob-title').html(model.get('post_title'));
+                view.$el.find('.pm-by-author').html(model.get('author_name'));
+                view.$el.find('.pm-price-text').html(model.get('et_budget_text'));
+                view.$el.find('.rate-it').raty({
+                    readOnly: true,
+                    half: true,
+                    score: function() {
+                        return model.get('rating_score');
+                    },
+                    hints: raty.hint
+                });
+            },
             showStepFour: function(){
                 $('.post-service-step-1').addClass('done');
                 $('.post-service-step-2').removeClass('active');
@@ -257,7 +274,7 @@
                 if( typeof model.get('ID') !== 'undefined' ) {
                     view.$el.find('input[name="post_parent"]').val(model.get('ID'));
                 }
-                view.extrasListView.syncChange();
+               // view.extrasListView.syncChange();
                 // Show step 3
                 view.redirect_url = '';
                 if( typeof res.data.redirect_url !== 'undefined') {
@@ -269,6 +286,7 @@
                     }
                 }
                 view.showStepThree();
+                this.setupStep3(model);
                 return false;
             },
             redirectPage: function(result, res, jqXHR){

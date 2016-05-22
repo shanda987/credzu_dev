@@ -338,9 +338,9 @@
 .float-left{
     float: left!important;
 }
-.step-post{
-    display: none!important;
-}
-#step4{
-    display: block;
-}
+/*.step-post{*/
+    /*display: none!important;*/
+/*}*/
+/*#step4{*/
+    /*display: block;*/
+/*}*/
