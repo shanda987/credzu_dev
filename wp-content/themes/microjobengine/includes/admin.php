@@ -649,7 +649,25 @@ class ET_Admin extends AE_Base
                             'class' => 'option-item bg-grey-input '
                         )
                     )
-                )
+                ),
+                array(
+                    'args' => array(
+                        'title' => __("Admin emails", ET_DOMAIN) ,
+                        'id' => 'admin-emails',
+                        'class' => '',
+                        'desc' => __("Setup admin's emails here.(Ex: abc1@example.com, abc2@example.com", ET_DOMAIN)
+                    ) ,
+
+                    'fields' => array(
+                        array(
+                            'id' => 'admin_emails',
+                            'type' => 'text',
+                            'title' => __("Admin Emails", ET_DOMAIN) ,
+                            'name' => 'admin_emails',
+                            'class' => 'option-item bg-grey-input '
+                        )
+                    )
+                ) ,
             )
         );
 
