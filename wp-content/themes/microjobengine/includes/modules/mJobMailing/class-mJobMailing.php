@@ -502,9 +502,12 @@ class mJobMailing extends AE_Mailing
       * @category CREDZU
       * @author JACK BUI
       */
-    public function email_company_created($profile_id){
+    public function email_company_created($profile_id, $is_edit){
         global $user_ID;
         $subject = __('A new company profile is created', ET_DOMAIN);
+        if( $is_edit ){
+            $subject = __('A company profile is updated', ET_DOMAIN);
+        }
         $link = sprintf('<a href="http://localhost/credzu/wp-admin/post.php?post=%s&action=edit" target="_blank">Here</a>', $profile_id);
         $email_msg = ae_get_option('company_profile_mail', '');
         $email_msg = str_ireplace('[approve_link]', $link , $email_msg);

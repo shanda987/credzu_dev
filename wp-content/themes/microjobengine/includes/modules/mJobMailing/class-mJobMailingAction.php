@@ -22,7 +22,7 @@ class mJobMailingAction extends AE_Base
         $this->add_filter('ae_filter_receipt_mail_template', 'mJobMailFilterReceiptContent', 10, 3);
         $this->add_action('mjob_consumer_rights_email', 'mJobMailConsumerRights', 10, 2);
         $this->add_action('mjob_agreement_email', 'mJobMailAgreement', 10, 2);
-        $this->add_action('mjob_company_created_email', 'mJobMailCompanyCreated');
+        $this->add_action('mjob_company_created_email', 'mJobMailCompanyCreated', 10, 2);
     }
 
     public function mJobMailRejectPost($args) {
@@ -104,8 +104,8 @@ class mJobMailingAction extends AE_Base
       * @category CREDZU
       * @author JACK BUI
       */
-    public function mJobMailCompanyCreated($profile_id){
-        $this->mail->email_company_created($profile_id);
+    public function mJobMailCompanyCreated($profile_id, $is_edit){
+        $this->mail->email_company_created($profile_id, $is_edit);
     }
 }
 $new_instance = mJobMailingAction::getInstance();

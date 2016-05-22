@@ -90,7 +90,7 @@ class mJobProfileAction extends mJobPostAction
 
             if(!is_wp_error($profile)) {
                 update_user_meta($result->ID, 'user_profile_id', $profile);
-                do_action('mjob_company_created_email', $profile->ID);
+                do_action('mjob_company_created_email', $profile);
             }
         }
     }
@@ -185,6 +185,9 @@ class mJobProfileAction extends mJobPostAction
             }
         }
         if( ae_user_role($current_user->ID) == COMPANY ) {
+            if( $request['post_status'] == 'publish' ){
+                do_action('mjob_company_created_email', $request['ID'], true);
+            }
             $request['post_status'] = 'draft';
         }
         $result = $this->sync_post($request);
