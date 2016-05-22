@@ -102,31 +102,6 @@ foreach ($existing_meta as $key => $value) {
     </div>
     <div class="mjob-extras-wrapper">
     </div>
-    <div class="add-more">
-        <a href="#" class="mjob-add-extra-btn"><?php _e('Add extra', ET_DOMAIN); ?><span class="icon-plus"><i class="fa fa-plus"></i></span></a>
-    </div>
-    <div class="form-group clearfix skill-control">
-        <span>TAGS</span>
-        <?php
-        $switch_skill = ae_get_option('switch_skill');
-        if(!$switch_skill){
-            ?>
-            <input type="text" class="form-control text-field skill" id="skill" placeholder="<?php _e("Enter listing tags", ET_DOMAIN); ?>" name=""  autocomplete="off" spellcheck="false" >
-            <ul class="skills-list" id="skills_list"></ul>
-            <?php
-        }else{
-            ae_tax_dropdown( 'skill' , array(  'attr' => 'data-chosen-width="100%" data-chosen-disable-search="" multiple data-placeholder="'.__(" Skills (max is 5)", ET_DOMAIN).'"',
-                    'class' => 'sw_skill chosen multi-tax-item tax-item required',
-                    'hide_empty' => false,
-                    'hierarchical' => true ,
-                    'id' => 'skill' ,
-                    'show_option_all' => false
-                )
-            );
-        }
-
-        ?>
-    </div>
     <div class="form-group">
         <button class="btn-submit btn-save" type="submit"><?php _e('SAVE', ET_DOMAIN); ?></button>
         <a href=="#" class="btn-discard mjob-discard-action"><?php _e('DISCARD', ET_DOMAIN ); ?></a>
