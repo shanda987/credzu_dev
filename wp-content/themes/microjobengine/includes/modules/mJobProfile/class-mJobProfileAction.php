@@ -190,6 +190,9 @@ class mJobProfileAction extends mJobPostAction
             }
             $request['post_status'] = 'draft';
         }
+        if( isset($request['last_name']) ){
+            $request['last_name'] = strtoupper(substr($request['last_name'], 0, 1));
+        }
         $result = $this->sync_post($request);
         if($result['success'] != false && !is_wp_error($result)) {
             if($request['method'] == 'create') {
