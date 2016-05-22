@@ -22,6 +22,7 @@ class mJobMailingAction extends AE_Base
         $this->add_filter('ae_filter_receipt_mail_template', 'mJobMailFilterReceiptContent', 10, 3);
         $this->add_action('mjob_consumer_rights_email', 'mJobMailConsumerRights', 10, 2);
         $this->add_action('mjob_agreement_email', 'mJobMailAgreement', 10, 2);
+        $this->add_action('mjob_company_created_email', 'mJobMailCompanyCreated');
     }
 
     public function mJobMailRejectPost($args) {
@@ -92,6 +93,19 @@ class mJobMailingAction extends AE_Base
     }
     public function mJobMailAgreement($emails, $file_path){
         $this->mail->email_agreement($emails, $file_path);
+    }
+    /**
+      * Send an email to admin everytime a compnay is created
+      *
+      * @param integer/string $profile_id
+      * @return void
+      * @since 1.4
+      * @package MicrojobEngine
+      * @category CREDZU
+      * @author JACK BUI
+      */
+    public function mJobMailCompanyCreated($profile_id){
+        $this->mail->email_company_created($profile_id);
     }
 }
 $new_instance = mJobMailingAction::getInstance();

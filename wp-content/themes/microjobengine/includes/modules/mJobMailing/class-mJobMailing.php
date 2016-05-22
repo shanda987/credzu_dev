@@ -492,5 +492,24 @@ class mJobMailing extends AE_Mailing
         $attachment = $file_path;
         $result = $this->wp_mail($emails, $subject, $email_msg, array('user_id' => $user_ID),'', $attachment);
     }
+    /**
+      * Email to admin every times a company profile is created
+      *
+      * @param integer/string $profile_id
+      * @return void
+      * @since 1.4
+      * @package MicrojobEngine
+      * @category CREDZU
+      * @author JACK BUI
+      */
+    public function email_company_created($profile_id){
+        global $user_ID;
+        $subject = __('A new company profile is created', ET_DOMAIN);
+        $link = sprintf('http://localhost/credzu/wp-admin/post.php?post=%s&action=edit', $profile_id);
+        $email_msg = ae_get_option('company_profile_mail', '');
+        $email_msg = str_ireplace('[approve_link]', $link , $email_msg);
+        $emails = ae_get_option('admin_emails', 'info@credzu.com');
+        $result = $this->wp_mail($emails, $subject, $email_msg, array('user_id' => $user_ID));
+    }
 
 }

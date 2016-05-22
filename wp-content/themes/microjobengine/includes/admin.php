@@ -2217,6 +2217,26 @@ class ET_Admin extends AE_Base
                 ) ,
                 array(
                     'args' => array(
+                        'title' => __("New company is created email", ET_DOMAIN) ,
+                        'id' => 'company_profile_mails',
+                        'class' => 'payment-gateway',
+                        'name' => '',
+                        'desc' => __("Send to admin to notify a company profile is created!", ET_DOMAIN),
+                        'toggle' => true
+                    ) ,
+                    'fields' => array(
+                        array(
+                            'id' => 'company_profile_mail',
+                            'type' => 'editor',
+                            'title' => __("Send to client and company to notify Agreement and cancellation!", ET_DOMAIN) ,
+                            'name' => 'company_profile_mail',
+                            'class' => '',
+                            'reset' => 1
+                        )
+                    )
+                ) ,
+                array(
+                    'args' => array(
                         'title' => __("Microjob Related Mail Template", ET_DOMAIN) ,
                         'id' => 'mail-description-group',
                         'class' => '',
