@@ -32,7 +32,7 @@
 		</div>
 		<div class="form-item">
 			<div class="label"><?php _e("Short description about this package",ET_DOMAIN);?></div>
-			<input class="bg-grey-input not-empty" name="post_content" type="text" />
+			<textarea class="bg-grey-input not-empty" name="post_content" ></textarea>
 		</div>
 		<div class="form-item">
 			<div class="label"><?php _e("Featured mJob",ET_DOMAIN);?></div>

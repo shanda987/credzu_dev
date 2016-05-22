@@ -335,3 +335,12 @@
 .company-description{
     text-align: center;
 }
+.float-left{
+    float: left!important;
+}
+.step-post{
+    display: none!important;
+}
+#step4{
+    display: block;
+}

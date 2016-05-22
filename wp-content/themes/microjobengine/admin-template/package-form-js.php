@@ -36,7 +36,7 @@
 
 			<div class="form-item">
 				<div class="label"><?php _e("Short description about this package",ET_DOMAIN);?></div>
-				<input class="bg-grey-input not-empty" name="post_content" type="text" value="{{= post_content }}" />
+				<textarea class="bg-grey-input not-empty" name="post_content" >{{= unfiltered_content }}</textarea>
 			</div>
 
 			<div class="form-item">

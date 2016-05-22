@@ -21,7 +21,6 @@ else{
 // Get the Client Options for the checkboxes
 ?>
 <div class="step-wrapper step-post" id="step-post">
-    <?php if( mJobProfileAction()->isCompanyActive() ): ?>
         <p>
             <?php _e('This will post a public listing for a client to find you and hire you for your services. <br>For the best results give your Job Title a descriptive name.', ET_DOMAIN); ?>
         </p>
@@ -110,38 +109,10 @@ else{
         </div>
         <div class="mjob-extras-wrapper">
         </div>
-        <div class="add-more">
-            <a href="#" class="mjob-add-extra-btn"><?php _e('Add extra', ET_DOMAIN); ?><span class="icon-plus"><i class="fa fa-plus"></i></span></a>
-        </div>
-        <div class="form-group skill-control">
-            <span><?php _e("TAGS", ET_DOMAIN); ?></span>
-            <?php
-            $switch_skill = ae_get_option('switch_skill');
-            if(!$switch_skill){
-                ?>
-                <input type="text" class="form-control text-field skill" id="skill" placeholder="<?php _e("Enter listing tags", ET_DOMAIN); ?>" name=""  autocomplete="off" spellcheck="false" >
-                <ul class="skills-list" id="skills_list"></ul>
-                <?php
-            }else{
-                ae_tax_dropdown( 'skill' , array(  'attr' => 'data-chosen-width="100%" data-chosen-disable-search="" multiple data-placeholder="'.__(" Skills (max is 5)", ET_DOMAIN).'"',
-                        'class' => 'sw_skill chosen multi-tax-item tax-item required',
-                        'hide_empty' => false,
-                        'hierarchical' => true ,
-                        'id' => 'skill' ,
-                        'show_option_all' => false
-                    )
-                );
-            }
-
-            ?>
-        </div>
         <div class="form-group">
             <button class="btn-submit btn-save waves-effect waves-light" type="submit"><?php _e('SAVE', ET_DOMAIN); ?></button>
             <a href="<?php echo $return; ?>" class="btn-discard"><?php _e('DISCARD', ET_DOMAIN ); ?></a>
             <input type="hidden" class="input-item post-service_nonce" name="_wpnonce" value="<?php echo de_create_nonce('ae-mjob_post-sync');?>" />
         </div>
     </form>
-    <?php else: ?>
-        <?php echo sprintf(__('In order to submit listings, you must complete your <a href="%s">profile</a> and <a href="%s">billing information.</a></a>', ET_DOMAIN), et_get_page_link('profile-company'), et_get_page_link('billing-info-company') )?>
-    <?php endif; ?>
 </div>

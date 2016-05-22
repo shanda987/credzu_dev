@@ -492,13 +492,18 @@ class mJobProfileAction extends mJobPostAction
     public function isCompanyActive() {
         global $user_ID;
         $profile = $this->getProfile($user_ID);
-        if (! $profile || ! property_exists($profile, 'company_status')) {
-            return false;
-        }
-        if ($profile->company_status == COMPANY_STATUS_APPROVED) {
+//        if (! $profile || ! property_exists($profile, 'company_status')) {
+//            return false;
+//        }
+//        if ($profile->company_status == COMPANY_STATUS_APPROVED) {
+//            return true;
+//        }
+        if( $profile->post_status == 'publish'){
             return true;
         }
-        return false;
+        else {
+            return false;
+        }
     }
 
     /**
