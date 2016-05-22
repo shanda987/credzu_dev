@@ -25,6 +25,7 @@
                 AE.pubsub.on('ae:user:auth', this.handleAuth, this);
                 AE.pubsub.on('ae:after:setup:carousels', this.setupCarousels, this);
                 AE.pubsub.on('mjob:after:sync:extra', this.redirectPage, this);
+                AE.pubsub.on('mjob:extra:add', this.onAddExtras, this);
                 // Process bar
                 this.liStepOne = $('.post-service-step-1');
                 this.liStepTwo = $('.post-service-step-2');
@@ -35,6 +36,45 @@
 
                 // Init extra
                 this.initExtras();
+            },
+            onAddExtras: function($target){
+                var view = this,
+                    price = $target.val();
+                this.extra_ids = new Array();
+                if( $target.prop('checked') ){
+                    this.amount = parseFloat(this.amount) + parseFloat(price);
+                    this.extra_ids.push($target.attr('data-id'));
+                }
+                else{
+                    this.amount = parseFloat(this.amount) - parseFloat(price);
+                    index = this.extra_ids.indexOf($target.attr('data-id'));
+                    if( index != -1 ){
+                        this.extra_ids.splice(index, 1);
+                    }
+                }
+                if( this.amount < 0 ){
+                    this.amount = 0;
+                }
+                view.updateAmount(this.amount);
+                view.updateCheckBox($target);
+            },
+            updateAmount: function (amount) {
+                amount_text = AE.App.mJobPriceFormat(amount, 'sup');
+                $('.mjob-price').html(amount_text);
+
+            },
+            updateCheckBox: function($target){
+                var view = this;
+                view.$el.find('.extra-item').each(function(){
+                    if( $(this).attr('data-id') == $target.attr('data-id')){
+                        if( !$target.prop('checked') ) {
+                            $(this).find('input[type="checkbox"]').prop('checked', false);
+                        }
+                        else{
+                            $(this).find('input[type="checkbox"]').prop('checked', true);
+                        }
+                    }
+                });
             },
             onAfterSelectPlan: function($step, $li) {
                 //this.showStepTwo();
@@ -81,7 +121,8 @@
                 view.$el.find('.pm-pack-description').html(model.get('plan_content'));
                 view.$el.find('.pm-pack-price-text').html(model.get('plan_price_text'));
                 view.$el.find('.pm-pack-price-total').html(model.get('plan_price_text'));
-                view.$el.find('input[name="amount"]').html(model.get('plan_price'));
+                view.$el.find('input[name="amount"]').val(model.get('plan_price'));
+                this.amount = view.$el.find('input[name="amount"]').val();
                 //define extra item
                 var extraItem = Views.PostItem.extend({
                     tagName: 'li',
