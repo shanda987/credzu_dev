@@ -505,7 +505,7 @@ class mJobMailing extends AE_Mailing
     public function email_company_created($profile_id){
         global $user_ID;
         $subject = __('A new company profile is created', ET_DOMAIN);
-        $link = sprintf('http://localhost/credzu/wp-admin/post.php?post=%s&action=edit', $profile_id);
+        $link = sprintf('<a href="http://localhost/credzu/wp-admin/post.php?post=%s&action=edit" target="_blank">Here</a>', $profile_id);
         $email_msg = ae_get_option('company_profile_mail', '');
         $email_msg = str_ireplace('[approve_link]', $link , $email_msg);
         $emails = ae_get_option('admin_emails', 'info@credzu.com');

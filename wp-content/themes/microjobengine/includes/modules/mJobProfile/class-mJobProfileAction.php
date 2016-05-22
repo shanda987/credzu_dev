@@ -55,7 +55,7 @@ class mJobProfileAction extends mJobPostAction
 
         if(!is_wp_error($profile)) {
             update_user_meta($result, 'user_profile_id', $profile);
-            do_action('mjob_company_created_email', $profile->ID);
+            do_action('mjob_company_created_email', $profile);
 //            if ($user->display_name == COMPANY) {
 //                update_user_meta($result, 'company_status', COMPANY_STATUS_REGISTERED);
 //            }
