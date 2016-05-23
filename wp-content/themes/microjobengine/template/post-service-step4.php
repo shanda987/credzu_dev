@@ -20,6 +20,7 @@ if($user_ID) $step--;
                                 <p class="title-sub"><?php _e('Microjob name', ET_DOMAIN); ?></p>
                                 <li>
                                     <div class="inner">
+                                        <div class="ribbon-featured"><span><?php _e('Featured', ET_DOMAIN); ?></span></div>
                                         <div class="vote">
                                             <div class="rate-it" data-score=""></div>
                                         </div>

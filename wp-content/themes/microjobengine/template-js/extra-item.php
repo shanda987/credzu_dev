@@ -3,7 +3,7 @@
         <div class="packge-chose">
             <div class="checkbox">
                 <label>
-                    <input data-id="{{= ID}}" type="checkbox" value="{{= et_budget}}" name="mjob_extra">
+                    <input data-id="{{= ID}}" data-featured="0" type="checkbox" value="{{= et_budget}}" name="mjob_extra">
                     <span>{{= post_title}}</span>
                 </label>
             </div>

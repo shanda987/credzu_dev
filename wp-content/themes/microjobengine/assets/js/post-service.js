@@ -44,8 +44,12 @@
                 if( $target.prop('checked') ){
                     this.amount = parseFloat(this.amount) + parseFloat(price);
                     this.extra_ids.push($target.attr('data-id'));
+                    if( $target.hasClass('is_featured') ){
+                        view.$el.find('.ribbon-featured').show();
+                    }
                 }
                 else{
+                    view.$el.find('.ribbon-featured').hide();
                     this.amount = parseFloat(this.amount) - parseFloat(price);
                     index = this.extra_ids.indexOf($target.attr('data-id'));
                     if( index != -1 ){
@@ -138,6 +142,9 @@
                     onItemRendered: function () {
                         var view = this;
                         view.$el.attr('data-id', view.model.get('ID'));
+                        if( view.model.get('is_featured').length > 0 ){
+                            view.$el.find('input[type="checkbox"]').addClass('is_featured');
+                        }
                     },
                     checkBox: function (e) {
                         $target = $(e.currentTarget);

@@ -22,7 +22,8 @@ class mJobExtraPosttype extends mJobPost{
         $this->post_type_singular = 'Microjob Extra';
         $this->post_type_regular = 'Microjob Extras';
         $this->meta = array(
-            'et_budget'
+            'et_budget',
+            'is_featured'
         );
     }
     /**
@@ -64,6 +65,12 @@ class mJobExtraPosttype extends mJobPost{
                 'title' => __( 'Extra price', ET_DOMAIN ),
                 'type'  => 'text',
                 'name'  => 'et_budget'
+            ),
+            array(
+                'title'=> __('Is Featured', ET_DOMAIN),
+                'type'=> 'checkbox',
+                'name'=> 'is_featured',
+                'choices'=> array('featured')
             )
 
         );
