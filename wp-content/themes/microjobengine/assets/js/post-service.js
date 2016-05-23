@@ -99,11 +99,16 @@
                 $('.progress-bar-success').removeClass('full');
             },
             showStepThree: function() {
+                //$('.post-service-step-1').addClass('done');
+                //$('.post-service-step-2').removeClass('active');
+                //$('.post-service-step-2').addClass('done');
+                //$('.post-service-step-3').addClass('active');
+                //$('.progress-bar-success').removeClass('half');
+                //$('.progress-bar-success').addClass('full');
+                $('.post-service-step-1').removeClass('active');
                 $('.post-service-step-1').addClass('done');
-                $('.post-service-step-2').removeClass('active');
-                $('.post-service-step-2').addClass('done');
-                $('.post-service-step-3').addClass('active');
-                $('.progress-bar-success').removeClass('half');
+                $('.post-service-step-2').addClass('active');
+                $('.post-service-step-3').removeClass('active');
                 $('.progress-bar-success').addClass('full');
             },
             setupStep3: function(model){
@@ -188,11 +193,16 @@
                 });
             },
             showStepFour: function(){
+                //$('.post-service-step-1').addClass('done');
+                //$('.post-service-step-2').removeClass('active');
+                //$('.post-service-step-2').addClass('done');
+                //$('.post-service-step-3').addClass('active');
+                //$('.progress-bar-success').removeClass('half');
+                //$('.progress-bar-success').addClass('full');
+                $('.post-service-step-1').removeClass('active');
                 $('.post-service-step-1').addClass('done');
-                $('.post-service-step-2').removeClass('active');
-                $('.post-service-step-2').addClass('done');
-                $('.post-service-step-3').addClass('active');
-                $('.progress-bar-success').removeClass('half');
+                $('.post-service-step-2').addClass('active');
+                $('.post-service-step-3').removeClass('active');
                 $('.progress-bar-success').addClass('full');
             },
             setupFields: function() {
