@@ -54,6 +54,12 @@ else{
                 </div>
             </div>
         </div>
+        <div class="form-group clearfix">
+            <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-money" aria-hidden="true"></i></div>
+                <input type="number" name="et_budget" placeholder="<?php _e('Price', ET_DOMAIN); ?>" class="input-item" min="0" pattern="[-+]?[0-9]*[.,]?[0-9]+" required>
+            </div>
+        </div>
         <div class="form-group">
             <label><?php _e('YOUR SERVICE DESCRIPTION', ET_DOMAIN) ?></label>
             <?php wp_editor( '', 'post_content', ae_editor_settings()  );  ?>

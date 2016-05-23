@@ -48,7 +48,7 @@ class mJobAction extends mJobPostAction{
      */
     public function syncPost(){
         $request = $_POST;
-        $request['et_budget'] = ae_get_option('mjob_price', 5);
+       // $request['et_budget'] = ae_get_option('mjob_price', 5);
         if (!isset($request['rating_score'])) {
             $request['rating_score'] = 0;
         }
