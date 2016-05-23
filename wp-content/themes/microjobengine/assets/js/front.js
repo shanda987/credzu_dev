@@ -1289,11 +1289,25 @@
                 // Set nonce for security purpose
                 this.profilemodel.set('_wpnonce', $('#profile_wpnonce').val());
                 if(typeof this.billingForm === "undefined") {
+                    use_address = this.profilemodel.get('use_billing_address');
+                    rules = {
+                        routing_number: 'required',
+                        account_number: 'required'
+                    };
+                    if( use_address == 'no') {
+                        var rules = {
+                            billing_other_address: 'required',
+                            billing_city: 'required',
+                            billing_state: 'required',
+                            billing_zip_code: 'required',
+                            routing_number: 'required',
+                            account_number: 'required',
+                        }
+                    }
                     this.billingForm = new Views.AE_Form({
                         el: '.form-confirm-billing-profile', // Wrapper of for
                         model: this.profilemodel,
-                        rules: {
-                        },
+                        rules: rules,
                         type: 'update-billing-hiring-profile',
                         blockTarget: '.form-confirm-billing-profile button'
                     });

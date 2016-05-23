@@ -282,23 +282,42 @@
 
                 // Set nonce for security purpose
                 this.model.set('_wpnonce', $('#profile_wpnonce').val());
+                rules = {
+                    first_name: {
+                        required: true,
+                    },
+                    last_name: 'required',
+                        phone: 'required',
+                        email: 'required',
+                        billing_full_address: 'required',
+                        city: 'required',
+                        state: 'required',
+                        zip_code: 'required',
+                };
+                type = 'update-profile';
+                if($('.page-template-page-profile-company').length > 0){
+                    type = 'update-profile-company'
+                    rules = {
+                        company_name: {
+                            required: true,
+                        },
+                        company_address: 'required',
+                        company_city: 'required',
+                        company_state: 'required',
+                        company_zip_code: 'required',
+                        company_phone: 'required',
+                        company_email: 'required',
+                        company_year_established: 'required',
+                        company_amount_of_employees: 'required',
+                        company_description: 'required',
+                    };
+                }
                 if(typeof this.profileForm === "undefined") {
                     this.profileForm = new Views.AE_Form({
                         el: '.mjob-profile-form', // Wrapper of form
                         model: this.model,
-                        rules: {
-                            first_name: {
-                                required: true,
-                            },
-                            last_name: 'required',
-                            phone: 'required',
-                            email: 'required',
-                            billing_full_address: 'required',
-                            city: 'required',
-                            state: 'required',
-                            zip_code: 'required',
-                        },
-                        type: 'update-profile',
+                        rules: rules,
+                        type: type,
                         blockTarget: '.mjob-profile-form button'
                     });
                 }

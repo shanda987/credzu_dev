@@ -313,9 +313,14 @@ class mJobAction extends mJobPostAction{
         }
         $package = $ae_post_factory->get('pack');
         $plan = $package->get($result->et_payment_package);
-        $result->plan_price = $plan->et_price;
-        $result->plan_price_text = mJobPriceFormat($plan->et_price);
-        $result->plan_content = $plan->post_content;
+        $result->plan_price = '';
+        $result->plan_price_text = mJobPriceFormat(0);
+        $result->plan_content = '';
+        if( !empty($plan) ) {
+            $result->plan_price = $plan->et_price;
+            $result->plan_price_text = mJobPriceFormat($plan->et_price);
+            $result->plan_content = $plan->post_content;
+        }
         return $result;
     }
 
