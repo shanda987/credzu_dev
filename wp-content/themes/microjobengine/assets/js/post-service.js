@@ -123,6 +123,7 @@
                 view.$el.find('.pm-pack-price-total').html(model.get('plan_price_text'));
                 view.$el.find('input[name="amount"]').val(model.get('plan_price'));
                 this.amount = view.$el.find('input[name="amount"]').val();
+                view.$el.find('.float-center').removeClass('float-center');
                 //define extra item
                 var extraItem = Views.PostItem.extend({
                     tagName: 'li',

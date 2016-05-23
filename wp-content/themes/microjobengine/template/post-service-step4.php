@@ -7,7 +7,7 @@ if($disable_plan) $step--;
 if($user_ID) $step--;
 ?>
 <div class="step-payment" id="step4">
-    <div id="content" class="mjob-single-page mjob-order-page float-left">
+    <div id="content" class="mjob-single-page mjob-order-page mjob-float-left">
         <div class="block-page">
             <div class="container dashboard withdraw">
                 <div class="title-top-pages">

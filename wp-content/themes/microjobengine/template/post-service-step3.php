@@ -61,7 +61,7 @@ else{
         <div class="form-group">
             <label><?php _e('YOUR CLIENT REQUIREMENTS ', ET_DOMAIN) ?></label>
             <p>
-            <?php _e('Select any items that your client must provide to you in order to do your services (Optional).', ET_DOMAIN); ?>
+            <?php _e('Select the information you require of your client in order to perform the job. Anything selected, we will collect from the client for you.', ET_DOMAIN); ?>
             </p>
                 <div class="input-group requirement-style">
                     <?php ae_tax_dropdown( 'mjob_requirement' ,
@@ -78,7 +78,7 @@ else{
         <div class="form-group">
             <label><?php _e('AGREEMENT TERMS', ET_DOMAIN) ?></label>
             <p>
-                <?php _e('This will be appended to the agreement the client signs.', ET_DOMAIN); ?>
+                <?php _e('Reduce your job to a legal description which includes any promises to your client.', ET_DOMAIN); ?>
             </p>
             <?php wp_editor( '', 'agreement_terms', ae_editor_settings()  );  ?>
         </div>

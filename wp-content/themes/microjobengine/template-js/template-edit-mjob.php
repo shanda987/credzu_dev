@@ -59,7 +59,7 @@ foreach ($existing_meta as $key => $value) {
     <div class="form-group">
         <label><?php _e('YOUR CLIENT REQUIREMENTS ', ET_DOMAIN) ?></label>
         <p>
-            <?php _e('Select any items that your client must provide to you in order to do your services (Optional).', ET_DOMAIN); ?>
+            <?php _e('Select the information you require of your client in order to perform the job. Anything selected, we will collect from the client for you.', ET_DOMAIN); ?>
         </p>
         <div class="input-group requirement-style">
             <?php ae_tax_dropdown( 'mjob_requirement' ,
