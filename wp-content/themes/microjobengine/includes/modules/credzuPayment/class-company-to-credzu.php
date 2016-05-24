@@ -91,6 +91,7 @@ class companyToCredzu extends AE_Base{
             $content = str_ireplace('[current_time]', $time, $content );
         }
         $file_name = 'company_to_credzu_'.time();
+        AE_Pdf_Creator()->init();
         $path = AE_Pdf_Creator()->pdfGenarate($content, $file_name);
         var_dump($path);
         exit;
