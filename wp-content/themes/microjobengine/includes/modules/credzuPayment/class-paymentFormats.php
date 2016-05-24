@@ -60,9 +60,12 @@ class credzuPaymentFormat extends mJobPost{
         $input       = array(
             array(
                 'title'=> __('This format is  "company pay for Creduz"', ET_DOMAIN),
-                'type'=> 'checkbox',
+                'type'=> 'select',
                 'name'=> 'company_to_credzu',
-                'choices'=> array('yes')
+                'choices'=> array(
+                    'no',
+                    'yes'
+                )
             )
 
         );

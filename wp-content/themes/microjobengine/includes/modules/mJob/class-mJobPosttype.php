@@ -29,6 +29,8 @@ class mJobPosttype extends mJobPost{
             'total_reviews',
             'et_carousels',
             'agreement_terms',
+            'extra_ids',
+            'extra_objects',
             // The Options are for what a Company needs from a client
 //            'option_credit_report_upload',
 //            'option_credit_report_credentials',
@@ -37,7 +39,8 @@ class mJobPosttype extends mJobPost{
 //            'option_social_security_card',
 //            'option_government_issued_id',
 //            'option_billing_information',
-            'modified_date'
+            'modified_date',
+            'is_featured'
         );
         $this->post_type_singular = 'Microjob';
         $this->post_type_regular = 'Microjobs';

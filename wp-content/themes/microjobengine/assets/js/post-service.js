@@ -13,7 +13,8 @@
                     'click .mjob-replace-image': 'replaceImage',
                     'click .mjob-delete-image': 'deleteImage',
                     'click .mjob-add-extra-btn': 'addExtras',
-                    'click .done': 'selectStep'
+                    'click .done': 'selectStep',
+                    'click .mjob-btn-checkout':  'checkOut'
                 }, Views.SubmitPost.prototype.events);
             },
             initialize: function(){
@@ -36,11 +37,11 @@
 
                 // Init extra
                 this.initExtras();
+                this.extra_ids = new Array();
             },
             onAddExtras: function($target){
                 var view = this,
                     price = $target.val();
-                this.extra_ids = new Array();
                 if( $target.prop('checked') ){
                     this.amount = parseFloat(this.amount) + parseFloat(price);
                     this.extra_ids.push($target.attr('data-id'));
@@ -640,6 +641,20 @@
                 }
 
             },
+            checkOut: function(e){
+                e.preventDefault();
+                this.model.set('extra_ids', this.extra_ids);
+                this.model.set('checkout', 1);
+                this.model.save( '', '', {
+                    beforeSend: function () {
+
+                    },
+                    success: function ( result, res, jqXHR ) {
+                        if ( res.success ) {
+                        }
+                    }
+                } );
+            }
         });
 
     });

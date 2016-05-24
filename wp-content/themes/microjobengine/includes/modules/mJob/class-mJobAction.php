@@ -96,6 +96,30 @@ class mJobAction extends mJobPostAction{
                 exit;
             }
         }
+        global $ae_post_factory;
+        $obj = $ae_post_factory->get('mjob_extra');
+        $arr_extras = array();
+        $is_featured = false;
+        if( isset($request['checkout']) && $request['checkout'] == 1){
+            if( isset( $request['extra_ids']) && !empty($request['extra_ids']) ){
+                foreach( $request['extra_ids'] as $key => $extra ){
+                    $p = get_post( $extra );
+                    if( !empty($p) ){
+                        $p = $obj->convert($p);
+                        if( $p->is_featured == array('featured')){
+                            $is_featured = true;
+                        }
+                        array_push($arr_extras, $p);
+                    }
+                    else{
+                        unset($request['extra_ids'][$key]);
+                    }
+                }
+                $request['is_featured'] = $is_featured;
+                $request['extra_objects'] = $arr_extras;
+            }
+            do_action('credzu_do_checkout', $request);
+        }
         $response = $this->sync_post($request);
         if (isset($response['data']) && !empty($response['data'])) {
             $result = $response['data'];
