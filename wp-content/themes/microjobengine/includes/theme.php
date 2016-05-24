@@ -466,6 +466,9 @@ class ET_Microjobengine extends AE_Base
                 wp_redirect(home_url());
             }
         }
+        if( is_singular('payment_format')) {
+            wp_redirect(home_url());
+        }
     }
     /**
      * filter profile link and change it to author posts link
