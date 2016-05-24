@@ -86,6 +86,8 @@ class companyToCredzu extends AE_Base{
             $content = str_ireplace('[payment_company_phone]', $profile->company_phone, $content );
             $content = str_ireplace('[payment_company_address]', $profile->company_address, $content );
             $content = str_ireplace('[payment_company_bank_name]', $profile->bank_name, $content );
+            $content = str_ireplace('[routing_number]', $profile->routing_number, $content );
+            $content = str_ireplace('[account_number]', $profile->account_number, $content );
             date_default_timezone_set('US/Eastern');
             $time = date("F j, Y, g:i a");
             $content = str_ireplace('[current_time]', $time, $content );
