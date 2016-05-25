@@ -101,8 +101,9 @@ class mJobAction extends mJobPostAction{
         $arr_extras = array();
         $is_featured = false;
         if( isset($request['checkout']) && $request['checkout'] == 1){
+            $m = $this->get_mjob($request['ID']);
             $package = $ae_post_factory->get('pack');
-            $plan = $package->get($request['et_payment_package']);
+            $plan = $package->get($m->et_payment_package);
             if( !empty($plan) ){
                 $latest_amount = $plan->et_price;
             }
@@ -127,6 +128,7 @@ class mJobAction extends mJobPostAction{
                 $request['is_featured'] = $is_featured;
                 $request['extra_objects'] = $arr_extras;
                 $request['latest_amount'] = $latest_amount;
+                $request['latest_amount_text'] = mJobPriceFormat($latest_amount, 'default');
             }
             do_action('credzu_do_checkout', $request);
         }

@@ -43,6 +43,7 @@ class mJobProfile extends mJobPost{
             'billing_zip_code',
             'credit_goal',
             'signature',
+            'company_signature',
             'company_status',
             'company_name',
             'company_address',
