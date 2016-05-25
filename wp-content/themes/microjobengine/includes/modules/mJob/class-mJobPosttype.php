@@ -31,6 +31,7 @@ class mJobPosttype extends mJobPost{
             'agreement_terms',
             'extra_ids',
             'extra_objects',
+            'latest_amount',
             // The Options are for what a Company needs from a client
 //            'option_credit_report_upload',
 //            'option_credit_report_credentials',

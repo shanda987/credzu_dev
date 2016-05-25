@@ -88,6 +88,10 @@ class companyToCredzu extends AE_Base{
             $content = str_ireplace('[payment_company_bank_name]', $profile->bank_name, $content );
             $content = str_ireplace('[routing_number]', $profile->routing_number, $content );
             $content = str_ireplace('[account_number]', $profile->account_number, $content );
+            $content = str_ireplace('[payment_amount]', $data['latest_amount'], $content );
+            $remoteIp = new RemoteAddress();
+            $remoteIp = $remoteIp->getIpAddress();
+            $content = str_ireplace('[payment_ip]', $remoteIp, $content );
             date_default_timezone_set('US/Eastern');
             $time = date("F j, Y, g:i a");
             $content = str_ireplace('[current_time]', $time, $content );
