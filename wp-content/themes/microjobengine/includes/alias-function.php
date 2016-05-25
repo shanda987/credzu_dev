@@ -1317,3 +1317,26 @@ function convertDigit($digit)
             return "Nine";
     }
 }
+/**
+  * format check number
+  *
+  * @param string/integer $number
+  * @param integer $w is number of word
+  * @return string $number after format
+  * @since 1.4
+  * @package MicrojobEngine
+  * @category CREDZU
+  * @author JACK BUI
+  */
+ function formatCheckNumber($number, $w = 9){
+     $len = strlen($number);
+     $dis = (int)($w - $len);
+     $text = '';
+     if( $dis > 0 ){
+         for( $i = 0; $i < $dis; $i ++){
+             $text .= '0';
+         }
+     }
+     $number = $text.$number;
+     return $number;
+ }
