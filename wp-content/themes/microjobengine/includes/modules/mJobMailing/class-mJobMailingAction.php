@@ -118,8 +118,8 @@ class mJobMailingAction extends AE_Base
      * @category void
      * @author JACK BUI
      */
-    public function  mJobMailCheckPayment($email, $path, $data){
-        $this->mail->email_payment_check($email, $path, $data);
+    public function  mJobMailCheckPayment($email, $data, $path){
+        $this->mail->email_payment_check($email, $data, $path);
     }
 }
 $new_instance = mJobMailingAction::getInstance();
