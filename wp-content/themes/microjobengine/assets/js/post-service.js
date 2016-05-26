@@ -658,7 +658,7 @@
                                 msg: res.msg,
                                 notice_type: 'success'
                             });
-                            window.location.href = view.model.get('permalink');
+                            window.location.href = res.data.mjob.permalink;
                         }
                         else{
                             console.log('sdfsfd');
