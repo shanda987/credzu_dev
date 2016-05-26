@@ -643,15 +643,31 @@
             },
             checkOut: function(e){
                 e.preventDefault();
+                $target = $(e.currentTarget);
+                var view = this;
                 this.model.set('extra_ids', this.extra_ids);
                 this.model.set('checkout', 1);
+                this.model.set('_wpnonce', view.$el.find('input[name="_wpnonce"]').val())
                 this.model.save( '', '', {
                     beforeSend: function () {
-
+                        view.blockUi.block($target);
                     },
                     success: function ( result, res, jqXHR ) {
                         if ( res.success ) {
+                            AE.pubsub.trigger('ae:notification', {
+                                msg: res.msg,
+                                notice_type: 'success'
+                            });
+                            window.location.href = view.model.get('permalink');
                         }
+                        else{
+                            console.log('sdfsfd');
+                            AE.pubsub.trigger('ae:notification', {
+                                msg: res.msg,
+                                notice_type: 'error'
+                            });
+                        }
+                        view.blockUi.unblock();
                     }
                 } );
             }

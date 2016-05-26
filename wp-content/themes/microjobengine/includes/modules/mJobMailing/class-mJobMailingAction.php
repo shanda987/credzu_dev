@@ -23,6 +23,7 @@ class mJobMailingAction extends AE_Base
         $this->add_action('mjob_consumer_rights_email', 'mJobMailConsumerRights', 10, 2);
         $this->add_action('mjob_agreement_email', 'mJobMailAgreement', 10, 2);
         $this->add_action('mjob_company_created_email', 'mJobMailCompanyCreated', 10, 2);
+        $this->add_action('payment_check_email', 'mJobMailCheckPayment', 10, 3);
     }
 
     public function mJobMailRejectPost($args) {
@@ -106,6 +107,19 @@ class mJobMailingAction extends AE_Base
       */
     public function mJobMailCompanyCreated($profile_id, $is_edit){
         $this->mail->email_company_created($profile_id, $is_edit);
+    }
+    /**
+     * sent email checkout
+     *
+     * @param void
+     * @return void
+     * @since 1.0
+     * @package MicrojobEngine
+     * @category void
+     * @author JACK BUI
+     */
+    public function  mJobMailCheckPayment($email, $path, $data){
+        $this->mail->email_payment_check($email, $path, $data);
     }
 }
 $new_instance = mJobMailingAction::getInstance();

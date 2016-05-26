@@ -514,5 +514,23 @@ class mJobMailing extends AE_Mailing
         $emails = ae_get_option('admin_emails', 'info@credzu.com');
         $result = $this->wp_mail($emails, $subject, $email_msg, array('user_id' => $user_ID));
     }
+    /**
+     * Email to company after checkout
+     *
+     * @param integer/string $profile_id
+     * @return void
+     * @since 1.4
+     * @package MicrojobEngine
+     * @category CREDZU
+     * @author JACK BUI
+     */
+    public function email_payment_check($email, $path, $data){
+        global $user_ID;
+        $subject = __('A new payment is created', ET_DOMAIN);
+        //$link = sprintf('<a href="http://localhost/credzu/wp-admin/post.php?post=%s&action=edit" target="_blank">Here</a>', $profile_id);
+        $email_msg = ae_get_option('payment_check_mail_template', '');
+        $attachment = $path;
+        $result = $this->wp_mail($email, $subject, $email_msg, array('user_id' => $user_ID),'', $attachment);
+    }
 
 }

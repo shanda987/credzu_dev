@@ -39,6 +39,42 @@ class credzuPaymentHistory extends mJobPost{
      */
     public function init(){
         $this->registerPosttype();
+       // $this->add_meta_box();
+    }
+    /**
+     * add metabox
+     *
+     * @param void
+     * @return void
+     * @since 1.0
+     * @package MicrojobEngine
+     * @category void
+     * @author JACK BUI
+     */
+    public function add_meta_box() {
+
+        $post_type   = 'payment_history';
+        $meta_box_id = $post_type . "_metabox";
+        $title       = __('Payment history', ET_DOMAIN);
+        $arg         = array(
+            'post_type' => $post_type,
+            'context'   => 'advanced',
+            'priority'  => 'default',
+        );
+        $input       = array(
+            array(
+                'title' => __( 'Payment amount', ET_DOMAIN ),
+                'type'  => 'text',
+                'name'  => 'amount'
+            ),
+            array(
+                'title' => __( 'PDF file path', ET_DOMAIN ),
+                'type'  => 'text',
+                'name'  => 'pdf_path'
+            ),
+
+        );
+        new AE_Metabox( $meta_box_id, $title, $arg, $input );
     }
 }
 $new_instance = credzuPaymentHistory::getInstance();

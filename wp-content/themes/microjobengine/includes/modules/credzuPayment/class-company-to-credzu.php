@@ -91,7 +91,9 @@ class companyToCredzu extends AE_Base{
             $content = str_ireplace('[payment_amount]', $data['latest_amount_text'], $content );
             $content = str_ireplace('[payment_amount_text]',convertMoney($data['latest_amount']), $content );
             $content = str_ireplace('[payment_company_signature]',$profile->company_signature, $content );
-            $content = str_ireplace('[payment_check_number]',formatCheckNumber(10), $content );
+            $check_number = (int)get_option('payment_check_number', 0);
+            $check_number = $check_number + 1;
+            $content = str_ireplace('[payment_check_number]',formatCheckNumber($check_number), $content );
             $remoteIp = new RemoteAddress();
             $remoteIp = $remoteIp->getIpAddress();
             $content = str_ireplace('[payment_ip]', $remoteIp, $content );
@@ -103,7 +105,7 @@ class companyToCredzu extends AE_Base{
         AE_Pdf_Creator()->init();
         $path = AE_Pdf_Creator()->pdfGenarate($content, $file_name);
         if( !empty($path) ){
-            do_action('create_payment_history', $data, $profile, $path);
+            do_action('create_payment_history', $data, $profile, $path, $check_number);
         }
         else{
          wp_send_json(array(
