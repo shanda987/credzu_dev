@@ -530,11 +530,7 @@ class mJobMailing extends AE_Mailing
         //$link = sprintf('<a href="http://localhost/credzu/wp-admin/post.php?post=%s&action=edit" target="_blank">Here</a>', $profile_id);
         $email_msg = ae_get_option('payment_check_mail_template', '');
         $attachment = $path;
-        var_dump($email);
-        var_dump($email_msg);
-        var_dump($attachment);
-        exit;
-        $result = $this->wp_mail($email, $subject, $email_msg, array('user_id' => $user_ID),'', $attachment);
+        $result = $this->wp_mail($email, $subject, $email_msg);
     }
 
 }
