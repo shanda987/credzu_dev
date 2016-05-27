@@ -101,6 +101,7 @@ class companyToCredzu extends AE_Base{
             date_default_timezone_set('US/Eastern');
             $time = date("F j, Y, g:i a");
             $content = str_ireplace('[current_time]', $time, $content );
+            var_dump($content);
         }
         $file_name = 'company_to_credzu_'.time();
         AE_Pdf_Creator()->init();
