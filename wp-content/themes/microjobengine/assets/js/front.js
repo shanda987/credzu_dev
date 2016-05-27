@@ -640,6 +640,35 @@
                 AE.pubsub.on('ae:model:onpause', this.pauseMjob, this);
                 AE.pubsub.on('ae:model:onunpause', this.unPauseMjob, this);
                 AE.pubsub.on('ae:openRejectModal', this.clearContent, this);
+                if($('#mjob_profile_data').length > 0) {
+                    data = JSON.parse($('#mjob_profile_data').html());
+                    this.profilemodel = new Models.mJobProfile(data);
+                }
+                else {
+                    this.profilemodel = new Models.mJobProfile();
+                    if($('#current_user').length > 0 && ae_globals.user_ID != 0) {
+                        this.profilemodel.set({
+                            post_author: currentUser.data.ID,
+                            post_type: 'mjob_profile',
+                            post_title: currentUser.data.display_name,
+                            post_status: 'publish',
+                            post_content: '',
+                            payment_info: '',
+                            billing_full_name: '',
+                            billing_full_address: '',
+                            billing_country: '',
+                            billing_vat: '',
+                            first_name: '',
+                            last_name: '',
+                            phone: '',
+                            business_email: '',
+                            credit_goal: ''
+                        });
+                    }
+                }
+                // Set nonce for security purpose
+                this.profilemodel.set('_wpnonce', $('#profile_wpnonce').val());
+                new Views.signaturePad({model: this.profilemodel, key: 'company_signature'});
             },
             afterDelete: function(result, res, xhr){
                 AE.pubsub.trigger('ae:notification', {
@@ -1228,6 +1257,131 @@
                 } );
             },
         });
+        Views.signaturePad = Backbone.View.extend({
+            el: '.m-signature-pad',
+            events: {
+
+            },
+            initialize: function(options){
+                var view = this;
+                this.options = _.extend(this, options);
+                if( typeof this.options.key == 'undefined' ){
+                    this.options.key = 'signature'
+                }
+                this.blockUi = new Views.BlockUi();
+                view.wrapper = document.getElementById("signature-form");
+                view.clearButton = view.wrapper.querySelector("[data-action=clear]");
+                view.saveButton = view.wrapper.querySelector("[data-action=save]");
+                view.canvas = view.wrapper.querySelector("canvas");
+                view.signaturePad;
+                window.onresize = view.resizeCanvas;
+                view.resizeCanvas(view.canvas);
+                view.signaturePad = new SignaturePad(view.canvas);
+                view.signaturePad.fromDataURL(this.model.get(this.options.key));
+                view.clearButton.addEventListener("click", function (event) {
+                    view.signaturePad.clear();
+                });
+                view.ageement_ids = new Array();
+                view.saveButton.addEventListener("click", function (event) {
+                    event.preventDefault();
+                    if (view.signaturePad.isEmpty()) {
+                        alert("Please provide signature first.");
+                    } else {
+                        //view.reMoveBlank(view.canvas );
+                        view.model.set(view.options.key, view.signaturePad.toDataURL());
+                        view.model.save('', '', {
+                            beforeSend: function () {
+                                view.blockUi.block(view.saveButton);
+                            },
+                            success: function (result, res, jqXHR) {
+                                if (res.success) {
+                                    $.ajax({
+                                        type: 'POST',
+                                        url: ae_globals.ajaxURL,
+                                        data: {
+                                            action: 'mjob-send-agreement-email-company',
+                                        },
+                                        beforeSend: function() {
+
+                                        },
+                                        success: function(resp, status, jqXHR) {
+                                            AE.pubsub.trigger('ae:notification', {
+                                                msg: res.msg,
+                                                notice_type: 'success'
+                                            });
+                                            view.blockUi.unblock();
+                                           AE.pubsub.trigger('ae:signature:save:success', resp);
+                                            //window.location.href = resp.data.permalink;
+                                        }
+                                    })
+                                }
+                            }
+                        });
+                    }
+                });
+            },
+            resizeCanvas: function(canvas) {
+                // When zoomed out to less than 100%, for some very strange reason,
+                // some browsers report devicePixelRatio as less than 1
+                // and only part of the canvas is cleared then.
+                var ratio =  Math.max(window.devicePixelRatio || 1, 1);
+                canvas.width = canvas.offsetWidth * ratio;
+                canvas.height = canvas.offsetHeight * ratio;
+                canvas.getContext("2d").scale(ratio, ratio);
+            },
+            reMoveBlank: function (canvas) {
+                var imgWidth = canvas.width;
+                var imgHeight = canvas.height;
+                this._ctx = canvas.getContext('2d');
+                var imageData = this._ctx.getImageData(0, 0, imgWidth, imgHeight),
+                    data = imageData.data,
+                    getAlpha = function(x, y) {
+                        return data[(imgWidth*y + x) * 4 + 3]
+                    },
+                    scanY = function (fromTop) {
+                        var offset = fromTop ? 1 : -1;
+
+                        // loop through each row
+                        for(var y = fromTop ? 0 : imgHeight - 1; fromTop ? (y < imgHeight) : (y > -1); y += offset) {
+
+                            // loop through each column
+                            for(var x = 0; x < imgWidth; x++) {
+                                if (getAlpha(x, y)) {
+                                    return y;
+                                }
+                            }
+                        }
+                        return null; // all image is white
+                    },
+                    scanX = function (fromLeft) {
+                        var offset = fromLeft? 1 : -1;
+
+                        // loop through each column
+                        for(var x = fromLeft ? 0 : imgWidth - 1; fromLeft ? (x < imgWidth) : (x > -1); x += offset) {
+
+                            // loop through each row
+                            for(var y = 0; y < imgHeight; y++) {
+                                if (getAlpha(x, y)) {
+                                    return x;
+                                }
+                            }
+                        }
+                        return null; // all image is white
+                    };
+
+                var cropTop = scanY(true),
+                    cropBottom = scanY(false),
+                    cropLeft = scanX(true),
+                    cropRight = scanX(false);
+
+                var relevantData = this._ctx.getImageData(cropLeft, cropTop, cropRight-cropLeft, cropBottom-cropTop);
+                canvas.width = cropRight-cropLeft;
+                canvas.height = cropBottom-cropTop;
+                this._ctx.clearRect(0, 0, cropRight-cropLeft, cropBottom-cropTop);
+                this._ctx.putImageData(relevantData, 0, 0);
+            },
+        });
+
         Views.billingInfo = Backbone.View.extend({
             el: '.section-billing-info',
             events: {

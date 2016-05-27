@@ -33,7 +33,7 @@ class agreementAction extends mJobPostAction{
      * @author JACK BUI
      */
     public function agreement_add_scripts(){
-        if( is_page_template('page-process-hiring.php') ) {
+        if( is_page_template('page-process-hiring.php') || is_page_template('page-signature-company.php')) {
             $this->add_style('css-sign-js', get_template_directory_uri() . '/includes/modules/mJobAgreement/css/signature-pad.css', ET_VERSION);
             $this->add_script('sign-js', get_template_directory_uri() . '/includes/modules/mJobAgreement/js/signature_pad.js', array(
                 'jquery',
