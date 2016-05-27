@@ -379,7 +379,7 @@
     left: 20px;
 }
 .m-signature-pad--body1{
-    border: none!important;
+    /*border: none!important;*/
 }
 .m-signature-pad1{
     box-shadow: none!important;
