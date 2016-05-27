@@ -90,7 +90,9 @@ class companyToCredzu extends AE_Base{
             $content = str_ireplace('[account_number]', $profile->account_number, $content );
             $content = str_ireplace('[payment_amount]', $data['latest_amount_text'], $content );
             $content = str_ireplace('[payment_amount_text]',convertMoney($data['latest_amount']), $content );
-            $content = str_ireplace('[payment_company_signature]',$profile->company_signature, $content );
+            $file_path = decodeImage($profile->company_signature);
+            $img =  '<img style="width:170px" class="signature-img" src="'.$file_path.'" />';
+            $content = str_ireplace('[payment_company_signature]',$img, $content );
             $check_number = (int)get_option('payment_check_number', 0);
             $check_number = $check_number + 1;
             $content = str_ireplace('[payment_check_number]',formatCheckNumber($check_number), $content );
