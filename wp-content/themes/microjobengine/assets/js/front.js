@@ -668,7 +668,9 @@
                 }
                 // Set nonce for security purpose
                 this.profilemodel.set('_wpnonce', $('#profile_wpnonce').val());
-                new Views.signaturePad({model: this.profilemodel, key: 'company_signature'});
+                if( $('.m-signature-pad').length > 0 ) {
+                    new Views.signaturePad({model: this.profilemodel, key: 'company_signature'});
+                }
             },
             afterDelete: function(result, res, xhr){
                 AE.pubsub.trigger('ae:notification', {
