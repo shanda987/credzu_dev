@@ -58,7 +58,7 @@ get_header();
                             <div class="agreement-content"><?php echo $content; ?></div>
                             <div class="form-group clearfix float-left check-terms">
                                 <div id="signature-pad" class="m-signature-pad">
-                                    <div class="m-signature-pad--body">
+                                    <div class="m-signature-pad--body m-signature-pad--body1">
                                         <canvas></canvas>
                                     </div>
                                     <div class="m-signature-pad--footer">

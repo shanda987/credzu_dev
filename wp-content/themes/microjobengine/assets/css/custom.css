@@ -378,3 +378,6 @@
 .progress-bar .step-2-col li:nth-child(2).active {
     left: 20px;
 }
+.m-signature-pad--body1{
+    border: none!important;
+}
