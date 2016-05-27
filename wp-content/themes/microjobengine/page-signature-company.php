@@ -17,6 +17,27 @@ if ($user_role !== COMPANY) {
 
 $profile = mJobProfileAction()->getProfile($user_ID);
 echo mJobProfileAction()->getProfileJson($profile);
+$agrs = array(
+    'post_type'=>'mjob_agreement',
+    'post_status'=>'publish',
+    'meta_query' => array(
+        array(
+            'key' => 'agreement_company_to_credzu',
+            'value' => 'yes',
+        )
+    )
+);
+$agreement = get_posts($agrs);
+$content = '';
+if( !empty($agreement)) {
+    global $ae_post_factory;
+    $agr_obj = $ae_post_factory->get('mjob_agreement');
+    $agreement = $agr_obj->convert($agreement['0']);
+    $content = $agreement->post_content;
+    $file_path = decodeImage($profile->company_signature);
+    $img =  '<img style="width:170px" class="signature-img" src="'.$file_path.'" />';
+    $content = str_ireplace('[company_signature]', $img, $content );
+}
 get_header();
 ?>
     <div class="container mjob-profile-page withdraw">
@@ -34,6 +55,7 @@ get_header();
 
                     <div class="block-billing mjob-profile-form">
                         <form class="et-form" id="signature-form">
+                            <div class="agreement-content"><?php echo $content; ?></div>
                             <div class="form-group clearfix float-left check-terms">
                                 <div id="signature-pad" class="m-signature-pad">
                                     <div class="m-signature-pad--body">

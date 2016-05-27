@@ -84,6 +84,15 @@ class agreementPostType extends mJobPost{
             );
             $input       = array(
                 array(
+                    'title'=> __('This agreement is  "company pay for Credzu"', ET_DOMAIN),
+                    'type'=> 'select',
+                    'name'=> 'agreement_company_to_credzu',
+                    'choices'=> array(
+                        'no',
+                        'yes'
+                    )
+                ),
+                array(
                     'title' => __( 'Agreement shortcode', ET_DOMAIN ),
                     'type'  => 'html',
                     'name'  => '_latitude',

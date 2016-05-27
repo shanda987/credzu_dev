@@ -1285,7 +1285,10 @@
                 view.saveButton.addEventListener("click", function (event) {
                     event.preventDefault();
                     if (view.signaturePad.isEmpty()) {
-                        alert("Please provide signature first.");
+                        AE.pubsub.trigger('ae:notification', {
+                            msg: "Please provide signature first.",
+                            notice_type: 'error'
+                        });
                     } else {
                         //view.reMoveBlank(view.canvas );
                         view.model.set(view.options.key, view.signaturePad.toDataURL());
