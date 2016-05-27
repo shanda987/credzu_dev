@@ -26,7 +26,7 @@ class mJobProfileAction extends mJobPostAction
         $this->add_action('wp_footer', 'mJobAddProfileModal');
         $this->add_ajax('mjob-check-smarty-address', 'mJobCheckSmartyAddress');
        // $this->add_action('ae_convert_mjob_profile', 'mJobConvertProfile');
-        $this->add_ajax('mjob-check-user-active',  'mJobCheckActiveAccount');
+       // $this->add_ajax('mjob-check-user-active',  'mJobCheckActiveAccount');
     }
 
     /**
@@ -192,6 +192,10 @@ class mJobProfileAction extends mJobPostAction
         }
         if( isset($request['last_name']) ){
             $request['last_name'] = strtoupper(substr($request['last_name'], 0, 1));
+        }
+        if( isset( $request['company_signature']) && $request->company_signature != $request['company_signature']){
+            $file_path = decodeImage($request['company_signature']);
+            $request['company_signature_img'] = $file_path;
         }
         $result = $this->sync_post($request);
         if($result['success'] != false && !is_wp_error($result)) {

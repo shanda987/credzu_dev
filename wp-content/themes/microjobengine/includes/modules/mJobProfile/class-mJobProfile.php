@@ -44,6 +44,7 @@ class mJobProfile extends mJobPost{
             'credit_goal',
             'signature',
             'company_signature',
+            'company_signature_img',
             'company_status',
             'company_name',
             'company_address',
