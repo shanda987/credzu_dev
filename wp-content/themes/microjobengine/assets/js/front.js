@@ -240,11 +240,24 @@
             /**
              * init list blog view
              */
-            new ListMjobs({
+            var listmjobs = new ListMjobs({
                 itemView: mjobItem,
                 collection: mjobCollection,
                 el: $(this).find('.list-mjobs')
             });
+            var post_link = '';
+            if( $('.mJob_postlink').length > 0 ) {
+                post_link = JSON.parse($('.mJob_postlink').html());
+            }
+            var newitem = '';
+            newitem += '<li class="col-lg-4 col-md-4 col-sm-4 col-xs-6 mjob-item animation-element animated newitem" nameAnimation="zoomIn">';
+            newitem += '<div class="inner clearfix dashboard-new-listing">';
+            newitem +=  '<a href="'+post_link+'">';
+            newitem += '<span>+</span>';
+            newitem += '<span>Post a Listing</span>';
+            newitem += '</a></div></li>';
+            listmjobs.$el.prepend(newitem);
+            listmjobs.render();
             //post-type-archive-project
             //old block-projects
             /**
@@ -326,6 +339,10 @@
                         } else {
                             $('.list-mjobs').html(ae_globals.no_services);
                         }
+                    }
+                    if( listmjobs.$el.find('.newitem').length <= 0) {
+                        listmjobs.$el.prepend(newitem);
+                        listmjobs.render();
                     }
                 }
             });
