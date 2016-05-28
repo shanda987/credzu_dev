@@ -9158,7 +9158,7 @@ body.archive .block-title {
 }
 
 .status {
-  display: none;
+  /*display: none;*/
   position: absolute;
   right: 0;
   bottom: 0;
