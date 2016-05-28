@@ -4,7 +4,11 @@ global $user_ID;
 //if (!is_super_admin() || $user_role !== COMPANY) {
 //    wp_redirect(home_url()); exit;
 //}
-
+$show = true;
+if( isset($_REQUEST['rod']) && $_REQUEST['rod'] == 1){
+    $show = false;
+    echo '<script type="data/json" class="is_rod" >'.json_encode(1).'</script>';
+}
 get_header();
 
 /**
@@ -42,15 +46,15 @@ $disable_plan = ae_get_option('disable_plan', false);
         // }
 
         // Shows login page if not logged in, dont need it i dont think
-        if(!$user_ID) {
+        if(!$user_ID):
             get_template_part( 'template/post-service', 'step2' );
-        }
-
-        get_template_part( 'template/post-service', 'step3' );
-
-        if(!$disable_plan) {
+        endif;
+        if( $show ):
+            get_template_part( 'template/post-service', 'step3' );
+        endif;
+        if(!$disable_plan):
             get_template_part( 'template/post-service', 'step4' );
-        } ?>
+        edif; ?>
     </div>
 
 </div>

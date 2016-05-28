@@ -18,6 +18,7 @@
                 }, Views.SubmitPost.prototype.events);
             },
             initialize: function(){
+                var view = this;
                 this.blockFormTarget = ".post-job .btn-save";
                 Views.SubmitPost.prototype.initialize.apply(this, arguments);
                 AE.pubsub.on('Upload:Success', this.uploadSuccess, this);
@@ -38,6 +39,9 @@
                 // Init extra
                 this.initExtras();
                 this.extra_ids = new Array();
+                if( view.$el.find('.is_rod').length > 0 ){
+                    view.showStepFour();
+                }
             },
             onAddExtras: function($target){
                 var view = this,

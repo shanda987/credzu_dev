@@ -64,7 +64,7 @@
                     </ul>
                 <# }else if( post_status == 'inactive' && !is_search){ #>
                     <ul>
-                        <li><a href="<?php echo et_get_page_link('post-service');?>?id={{= ID }}" title="<?php _e('Submit', ET_DOMAIN) ?>" data-toggle="tooltip" data-placement="top"><i class="fa fa-play"></i></a></li>
+                        <li><a href="<?php echo et_get_page_link('post-service');?>?id={{= ID }}&rod=1" title="<?php _e('Re-order', ET_DOMAIN) ?>" data-toggle="tooltip" data-placement="top"><i class="fa fa-play"></i></a></li>
                         <li><a href="{{= edit_link}}" target="_blank" data-action="edit" title="<?php _e('Edit', ET_DOMAIN) ?>" rel="tooltip" data-toggle="tooltip" data-placement="top" class=""><i class="fa fa-pencil"></i></a></li>
                         <li><a href="#" data-action="delete" title="<?php _e('Delete', ET_DOMAIN) ?>" data-toggle="tooltip" data-placement="top" class="action"><i class="fa fa-trash-o"></i></a></li>
                     </ul>
