@@ -932,7 +932,10 @@
                             last_name: 'required',
                             phone: 'required',
                              business_email: 'required',
-                            billing_full_address: 'required'
+                            billing_full_address: 'required',
+                            city: 'required',
+                            state: 'required',
+                            zip_code: 'required'
                         },
                         type: 'update-profile-hiring',
                         blockTarget: '.form-confirm-info button'
