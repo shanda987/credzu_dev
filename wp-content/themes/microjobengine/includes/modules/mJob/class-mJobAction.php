@@ -271,7 +271,7 @@ class mJobAction extends mJobPostAction{
                 $result->status_class = 'pause-color';
                 break;
             case 'draft':
-                $result->status_text = __('DRAFT', ET_DOMAIN);
+                $result->status_text = __('INACTIVE', ET_DOMAIN);
                 $result->status_class = 'draft-color';
                 break;
             default:
@@ -353,15 +353,26 @@ class mJobAction extends mJobPostAction{
         if( isset($result->tax_input['skill']) ){
             $result->skill = $result->tax_input['skill'];
         }
-        $package = $ae_post_factory->get('pack');
-        $plan = $package->get($result->et_payment_package);
         $result->plan_price = '';
-        $result->plan_price_text = mJobPriceFormat(0);
+        $result->plan_price_text = '';
         $result->plan_content = '';
-        if( !empty($plan) ) {
-            $result->plan_price = $plan->et_price;
-            $result->plan_price_text = mJobPriceFormat($plan->et_price);
-            $result->plan_content = $plan->post_content;
+        if( isset($result->et_payment_package) && !empty($result->et_payment_package) ) {
+            //$package = $ae_post_factory->get('pack');
+            $options = AE_Options::get_instance();
+            $plan = '';
+            if ($options->pack) {
+                $packages = $options->pack;
+                foreach ($packages as $key => $value) {
+                    if ($value->sku == $result->et_payment_package) {
+                        $plan = $value;
+                    }
+                }
+            }
+            if (!empty($plan)) {
+                $result->plan_price = $plan->et_price;
+                $result->plan_price_text = mJobPriceFormat($plan->et_price);
+                $result->plan_content = $plan->post_content;
+            }
         }
         return $result;
     }

@@ -35,7 +35,7 @@ get_header();
                 <div class="col-lg-9 col-md-9 col-sm-12 col-sx-12">
                     <div class="block-items no-margin">
                         <?php
-                        global $user_ID;
+                        global $user_ID, $wp_query;
                         $args = array(
                             'post_type'=> 'mjob_post',
                             'author'=> $user_ID,
