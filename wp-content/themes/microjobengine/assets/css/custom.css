@@ -384,3 +384,6 @@
 .m-signature-pad1{
     box-shadow: none!important;
 }
+.status-noti{
+    color:red;
+}
