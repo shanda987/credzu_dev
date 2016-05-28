@@ -72,5 +72,5 @@ class credzuPaymentFormat extends mJobPost{
         new AE_Metabox( $meta_box_id, $title, $arg, $input );
     }
 }
-$new_instance = credzuPaymentFormat::getInstance();
-$new_instance->init();
+//$new_instance = credzuPaymentFormat::getInstance();
+//$new_instance->init();
