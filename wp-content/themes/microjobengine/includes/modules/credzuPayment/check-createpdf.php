@@ -26,10 +26,11 @@ function set_width($fee=""){
 	echo $return;
 }
 ///
+	$font_link = get_template_directory_uri() . '/assets/fonts/micrenc.ttf';
 ?>
 <style>
-	@font-face {font-family: MICR Encoding;src: url(css/micrenc.ttf) format("truetype");}
-	.EntezarFont {font-family: MICR Encoding !important;}
+	@font-face {font-family: micrenc;src: url(http://localhost/credzu/wp-content/themes/microjobengine/assets/fonts/micrenc.ttf) format("truetype");}
+	.EntezarFont {font-family: micrenc!important;}
 	body{display: block;margin: 8px;font-size:10pt;font-family: Arial, Helvetica, sans-serif;}
 	h4{margin:0;}
 </style>
@@ -105,7 +106,7 @@ function set_width($fee=""){
 </table>
 <table cellspacing="0" cellpadding="0">
 	<tr>
-		<td align="left" style="font-size: 19pt;font-family: MICR Encoding !important;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; c<?php echo str_pad($check_number, 10, '0', STR_PAD_LEFT);?>c a<?php echo $profile->routing_number;?>a <?php echo $profile->account_number;?>c</td>
+		<td align="left" style="font-size: 19pt;font-family: micrenc!important" class="EntezarFont">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; c<?php echo str_pad($check_number, 10, '0', STR_PAD_LEFT);?>c a<?php echo $profile->routing_number;?>a <?php echo $profile->account_number;?>c</td>
 	</tr>
 </table>
 
@@ -183,7 +184,7 @@ function set_width($fee=""){
 </table>
 <table>
 	<tr>
-		<td align="left" style="font-size: 19pt;font-family: MICR Encoding !important">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; c<?php echo str_pad($check_number, 10, '0', STR_PAD_LEFT);?>c a<?php echo $profile->routing_number?>a <?php echo $profile->account_number;?>c</td>
+		<td align="left" style="font-size: 19pt;font-family: micrenc !important">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; c<?php echo str_pad($check_number, 10, '0', STR_PAD_LEFT);?>c a<?php echo $profile->routing_number?>a <?php echo $profile->account_number;?>c</td>
 	</tr>
 </table>
 
@@ -264,7 +265,7 @@ function set_width($fee=""){
 </table>
 <table>
 	<tr>
-		<td align="left" style="font-size: 19pt;font-family: MICR Encoding !important;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; c<?php echo str_pad($check_number, 10, '0', STR_PAD_LEFT);?>c a<?php echo $profile->routing_number;?>a <?php echo $profile->account_number;?>c</td>
+		<td align="left" style="font-size: 19pt;font-family: micrenc !important;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; c<?php echo str_pad($check_number, 10, '0', STR_PAD_LEFT);?>c a<?php echo $profile->routing_number;?>a <?php echo $profile->account_number;?>c</td>
 	</tr>
 </table>
 

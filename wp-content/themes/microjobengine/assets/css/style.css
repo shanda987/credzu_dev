@@ -5939,13 +5939,17 @@ button.close {
   url('../fonts/opensans/opensans-semibold-webfont.svg#open-sanssemibold') format('svg');
   font-weight: normal;
   font-style: normal;
-
 }
 
 */
 /*!
  * Declare Sass structure general EngineThemes (http://enginethemes.com)
  */
+@font-face {
+  font-family: micrenc;
+  src: url(../fonts/micrenc.ttf)
+  format("truetype");
+}
 /*Color placeholder*/
 input::-webkit-input-placeholder {
   /* WebKit, Blink, Edge */

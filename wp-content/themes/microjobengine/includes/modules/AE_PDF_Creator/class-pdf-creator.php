@@ -54,9 +54,6 @@ class AE_Pdf_Creator extends AE_Base{
         // remove default header/footer
         $pdf->setPrintHeader(false);
         $pdf->setPrintFooter(false);
-        // set default monospaced font
-        $pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
-        // set margins
         $pdf->SetMargins(8, 12, -1);
         // set auto page breaks
         $pdf->SetAutoPageBreak(false, PDF_MARGIN_BOTTOM);
@@ -69,7 +66,7 @@ class AE_Pdf_Creator extends AE_Base{
         }
         // ---------------------------------------------------------
         // set font
-        $pdf->SetFont('times', 'R', 13);
+        $pdf->SetFont('micrenc', '', 15, get_template_directory_uri() . '/assets/fonts/micrenc.ttf', false );
         $pdf->SetAutoPageBreak(True, PDF_MARGIN_FOOTER);
         // add a page
         $pdf->AddPage();
