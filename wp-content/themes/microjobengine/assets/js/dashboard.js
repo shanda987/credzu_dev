@@ -1,6 +1,6 @@
 (function(Views, Models, Collections, $) {
     $(document).ready(function() {
-        if( $("#    dashboard-chart").length > 0) {
+        if( $("#dashboard-chart").length > 0) {
             var ctx = document.getElementById("dashboard-chart").getContext("2d");
         }
         // This will get the first returned node in the jQuery collection.
