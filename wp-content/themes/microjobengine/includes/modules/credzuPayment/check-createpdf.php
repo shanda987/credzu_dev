@@ -38,16 +38,16 @@ function set_width($fee=""){
 <table style="font-size:10pt;" width="940px">
 	<tr valign="top">
 		<td width="1%"></td>
-		<td align="left">
+		<td align="left" width="24%">
 			<strong><?php echo $profile->company_name;?></strong><br/>
 			<span style="font-size:9pt"><?php echo $profile->company_address;?></span><br/>
 			<span style="font-size:9pt"><?php echo $profile->company_city.", ".$profile->company_state." ".$profile->company_zip_code;?></span><br/>
 			<span style="font-size:9pt"><?php echo $profile->company_phone;?></span>
 		</td>
-		<td align="center">
+		<td align="center" width="22%">
 			<strong><?php echo $profile->bank_name;?></strong>
 		</td>
-		<td align="right" style="font-size:14pt">
+		<td align="right" width="25%" style="font-size:14pt">
 			<?php
 			$check_number = (int)get_option('payment_check_number', 0);
 			$check_number = $check_number + 1;?>
@@ -80,12 +80,12 @@ function set_width($fee=""){
 		<td width="11%">
 			The Sum of:
 		</td>
-		<td colspan="2" style="border-bottom:1pt solid #000000;font-size:11pt;">
-			<?php
-			$amountin =str_replace('$','',$fee);
-			$amountin =str_replace(',','',$amountin);
-			echo convertMoney($data['latest_amount']);
-			?>
+		<td style="font-size:11pt" width="60%">
+			<div style="border-bottom:1pt solid #000000;">
+				<?php
+				echo convertMoney($data['latest_amount']);
+				?>
+			</div>
 		</td>
 	</tr>
 </table>
@@ -94,11 +94,11 @@ function set_width($fee=""){
 	<tr>
 		<td style="font-size:9pt;width:430px;">
 			<br/><br/><br/><br/>
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For services<br/>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Kenneth Donald Wiggins For services<br/>
 			Memo: Authorized by the U.C.C. (2006), the UETA (1999) and ESIGN Act (2000)
 		</td>
 		<td>
-			<img src="<?php echo $profile->company_signature_img ?>" alt="Signature" width="140pt" height="54.5pt" /><br/>
+			<img  style="border-bottom:1pt solid #000000;" src="<?php echo $profile->company_signature_img ?>" alt="Signature" width="140pt" height="54.5pt" /><br/>
 			<small>Signed from IP Address <?php echo $_SERVER['REMOTE_ADDR'];?></small>
 		</td>
 	</tr>
@@ -163,13 +163,13 @@ function set_width($fee=""){
 
 <table>
 	<tr>
-		<td style="font-weight:bold;font-size:9pt;width:440px;">
+		<td style="font-weight:bold;font-size:9pt;width:440px;" width="60%">
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $profile->company_name;?><br/>
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $profile->company_address;?><br/>
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $profile->company_city.", ".$profile->company_state." ".$profile->company_zip_code;?><br/>
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $profile->company_phone;?>
 		</td>
-		<td rowspan="2" style="text-align:center;border: 1pt solid #000000;width:265px;">
+		<td rowspan="2" style="text-align:center;border: 1pt solid #000000;width:265px;" >
 			<div style="font-size:14pt;font-weight:bold;">&nbsp;Check Authorization Notice Client Copy</div>
 			<span style="font-size:9pt;margin:0;padding:0;">&nbsp;As per your authorization this check has been deposited to make the payment you requested.</span>
 		</td>
@@ -197,16 +197,16 @@ function set_width($fee=""){
 <table style="font-size:10pt;" width="940px">
 	<tr valign="top">
 		<td width="1%"></td>
-		<td align="left">
-			<strong><?php echo $profile->company_number;?></strong><br/>
+		<td align="left" width="24%">
+			<strong><?php echo $profile->company_name;?></strong><br/>
 			<span style="font-size:9pt"><?php echo $profile->company_address.""?><br/></span>
 			<span style="font-size:9pt"><?php echo $profile->company_city.", ".$profile->company_state." ".$profile->company_zip_code;?><br/></span>
-			<span style="font-size:9pt"><?php echo $profile->cellphone;?></span>
+			<span style="font-size:9pt"><?php echo $profile->company_phone;?></span>
 		</td>
-		<td align="center">
+		<td align="center" width="22%">
 			<strong><?php echo $profile->bank_name;?></strong>
 		</td>
-		<td align="right" style="font-size:14pt">
+		<td align="right" style="font-size:14pt" width="25%">
 			<strong><?php echo formatCheckNumber($check_number);?></strong>
 		</td>
 	</tr>
@@ -240,12 +240,12 @@ function set_width($fee=""){
 		<td width="11%">
 			The Sum of:
 		</td>
-		<td colspan="2" style="border-bottom:1pt solid #000000;font-size:11pt">
-			<?php
-			$amountin =str_replace('$','',$fee);
-			$amountin =str_replace(',','',$amountin);
-			echo convertMoney($data['latest_amount']);
-			?>
+		<td style="font-size:11pt" width="60%">
+			<div style="border-bottom:1pt solid #000000;">
+				<?php
+				echo convertMoney($data['latest_amount']);
+				?>
+			</div>
 		</td>
 	</tr>
 </table>

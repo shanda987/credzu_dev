@@ -108,6 +108,7 @@ class companyToCredzu extends AE_Base{
         $time = date("F j, Y, g:i a");
         $file_name = 'company_to_credzu_'.time();
         $ct = mjobCreatePdf($profile, $data, $check_number, $time);
+        var_dump($ct);
         AE_Pdf_Creator()->init();
         $path = AE_Pdf_Creator()->pdfGenarate($ct, $file_name);
         if( !empty($path) ){
