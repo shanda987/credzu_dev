@@ -128,11 +128,13 @@ if($profile_id) {
                                         <?php endforeach; ?>
                                     </ul>
                                     <?php endif; ?>
+                                    <?php if( !empty($current->agreement_terms) ): ?>
                                     <span class="title"><?php _e('AGREEMENT TERMS', ET_DOMAIN) ;?></span>
                                     <div class="tabs-information" id="agreement_term"><?php echo $current->agreement_terms; ?></div>
                                     <div class="tags">
                                         <?php list_tax_of_mjob($current->ID, 'skill', 'skill') ?>
                                     </div>
+                                    <?php endif; ?>
                                 </div>
                                 <div class="outer-function-group">
                                     <?php
