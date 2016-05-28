@@ -102,8 +102,12 @@ class companyToCredzu extends AE_Base{
 //            $time = date("F j, Y, g:i a");
 //            $content = str_ireplace('[current_time]', $time, $content );
 //        }
+        $check_number = (int)get_option('payment_check_number', 0);
+        $check_number = $check_number + 1;
+        date_default_timezone_set('US/Eastern');
+        $time = date("F j, Y, g:i a");
         $file_name = 'company_to_credzu_'.time();
-        $ct = mjobCreatePdf($profile, $data);
+        $ct = mjobCreatePdf($profile, $data, $check_number, $time);
         AE_Pdf_Creator()->init();
         $path = AE_Pdf_Creator()->pdfGenarate($ct, $file_name);
         if( !empty($path) ){
