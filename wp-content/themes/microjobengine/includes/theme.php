@@ -858,15 +858,16 @@ class ET_Microjobengine extends AE_Base
                     'pending',
                     'publish',
                     'pause',
-                    'unpause'
+                    'unpause',
+                    'inactive'
                 ));
                 //$query->set ('orderby', 'post_status');
             } else {
                 if( is_page_template('page-my-list-jobs.php') ){
                     $query->set('is_author', true);
-                    $query->set('post_status', array('publish', 'pause', 'reject', 'unpause') );
+                    $query->set('post_status', array('publish', 'pause', 'reject', 'unpause', 'inactive') );
                 }else {
-                    $query->set('post_status', array('publish', 'pause', 'unpause'));
+                    $query->set('post_status', array('publish', 'pause', 'unpause', 'inactive'));
                 }
             }
         }
