@@ -256,7 +256,9 @@
             newitem += '<span>+</span>';
             newitem += '<span>Post a Listing</span>';
             newitem += '</a></div></li>';
-            listmjobs.$el.prepend(newitem);
+            if( listmjobs.$el.find('.newitem').length <= 0) {
+                listmjobs.$el.prepend(newitem);
+            }
             listmjobs.render();
             //post-type-archive-project
             //old block-projects

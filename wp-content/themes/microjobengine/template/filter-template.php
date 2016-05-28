@@ -7,12 +7,6 @@
         <option value="archive"><?php _e('Archived', ET_DOMAIN); ?></option>
         <option value="pause"><?php _e('Pause', ET_DOMAIN); ?></option>
         <option value="draft"><?php _e('Draft', ET_DOMAIN); ?></option>
+        <option value="inactive"><?php _e('Inactive', ET_DOMAIN); ?></option>
     </select>
 </div>
-<!--<div class="view-as">-->
-<!--    <ul>-->
-<!--        <span>View as</span>-->
-<!--        <li class="grid"><i class="fa fa-th"></i></li>-->
-<!--        <li class="list"><i class="fa fa-align-justify"></i></li>-->
-<!--    </ul>-->
-<!--</div>-->

@@ -271,6 +271,10 @@ class mJobAction extends mJobPostAction{
                 $result->status_class = 'pause-color';
                 break;
             case 'draft':
+                $result->status_text = __('DRAFT', ET_DOMAIN);
+                $result->status_class = 'draft-color';
+                break;
+            case 'inactive':
                 $result->status_text = __('INACTIVE', ET_DOMAIN);
                 $result->status_class = 'draft-color';
                 break;

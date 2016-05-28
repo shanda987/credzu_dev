@@ -278,6 +278,19 @@ class ET_Microjobengine extends AE_Base
          * when a user dont want employer hide/contact him,
          * he can change his profile to hide, so no one can contact him
          */
+        register_post_status('inactive', array(
+            'label' => __('Inactive', ET_DOMAIN) ,
+            'private' => false,
+            'public' => true,
+            'exclude_from_search' => true,
+            'show_in_admin_all_list' => true,
+            'show_in_admin_status_list' => true,
+            'label_count' => _n_noop('Inactive <span class="count">(%s)</span>', 'Inactive <span class="count">(%s)</span>') ,
+        ));
+        /**
+         * when a user dont want employer hide/contact him,
+         * he can change his profile to hide, so no one can contact him
+         */
         register_post_status('unpause', array(
             'label' => __('Active', ET_DOMAIN) ,
             'private' => false,
