@@ -1,6 +1,8 @@
 (function(Views, Models, Collections, $) {
     $(document).ready(function() {
-        var ctx = document.getElementById("dashboard-chart").getContext("2d");
+        if( document.getElementById("dashboard-chart").length > 0) {
+            var ctx = document.getElementById("dashboard-chart").getContext("2d");
+        }
         // This will get the first returned node in the jQuery collection.
         var data = {
             labels: ae_globals.date_range,
