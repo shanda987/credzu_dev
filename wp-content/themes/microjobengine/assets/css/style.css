@@ -6046,6 +6046,7 @@ body a:hover {
   min-height: 85px;
   background: #fff;
   padding: 0 30px;
+  box-shadow: 2px 5px 43px rgba(188, 207, 219, 0.65);
 }
 @media (max-width: 991px) {
   #et-header .et-pull-top {
