@@ -108,6 +108,7 @@ class companyToCredzu extends AE_Base{
         $path = AE_Pdf_Creator()->pdfGenarate($content, $file_name);
         if( !empty($path) ){
             do_action('create_payment_history', $data, $profile, $path, $check_number);
+            exit;
         }
         else{
          wp_send_json(array(
