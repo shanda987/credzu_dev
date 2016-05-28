@@ -143,7 +143,7 @@ if($profile_id) {
                                         <?php if( $current->post_status == 'publish' || $current->post_status == 'unpause'):?>
                                         <button class="btn-submit btn-order waves-effect waves-light <?php echo $disableClass; ?>" ><?php echo sprintf(__('ORDER (<span class="mjob-price">%s</span>)', ET_DOMAIN), $current->et_budget_text) ; ?></button>
                                             <?php else: ?>
-                                               <span class="status-noti"><?php _e('Currently not accepting new clients.', ET_DOMAIN); ?></span>
+                                               <span class="status-noti"><?php //_e('Currently not accepting new clients.', ET_DOMAIN); ?></span>
                                              <?php endif; ?>
                                     <?php endif; ?>
                                     <button class="btn-bookmark"><i class="fa fa-heart"></i></button>
@@ -235,7 +235,7 @@ if($profile_id) {
                                     <?php if( $current->post_status == 'publish' || $current->post_status == 'unpause'):?>
                                     <button class="btn-submit btn-order  btn-custom-order btn-order-aside-bar waves-effect waves-light <?php echo $disableClass; ?>" ><?php echo sprintf(__('ORDER NOW (<span class="mjob-price">%s</span>)', ET_DOMAIN), $current->et_budget_text) ; ?></button>
                                         <?php else: ?>
-                                        <span class="status-noti"><?php //_e('Currently not accepting new clients.', ET_DOMAIN); ?></span>
+                                        <span class="status-noti"><?php _e('Currently not accepting new clients.', ET_DOMAIN); ?></span>
                                         <?php endif; ?>
                                 <?php else:  ?>
                                     <span class="price"><?php echo mJobPriceFormat($current->et_budget) ?></span>
