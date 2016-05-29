@@ -7,7 +7,6 @@ global $user_ID;
 $show_next = true;
 if( isset($_GET['rod']) && $_GET['rod'] == 1){
     $show_next = false;
-    var_dump($show_next);
     echo '<script type="data/json" class="is_rod" >'.json_encode(1).'</script>';
 }
 if( isset($_GET['id']) ){
@@ -20,7 +19,6 @@ if( isset($_GET['id']) ){
         echo '<script type="data/json" id="mjob_datas" >'.json_encode($mjob).'</script>';
     }
 }
-var_dump($show_next);
 get_header();
 
 /**
