@@ -9,7 +9,7 @@ if( isset($_REQUEST['rod']) && $_REQUEST['rod'] == 1){
     $show = false;
     echo '<script type="data/json" class="is_rod" >'.json_encode(1).'</script>';
 }
-if( isset($_REQUEST['id']) && $_REQUEST['id'] == 1){
+if( isset($_REQUEST['id']) ){
     $show = false;
     global $ae_post_factory;
     $obj = $ae_post_factory->get('mjob_post');

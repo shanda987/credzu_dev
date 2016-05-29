@@ -41,7 +41,6 @@
                 this.extra_ids = new Array();
                 if( $('.is_rod').length > 0 ){
                     if( $('#mjob_datas').length > 0){
-                        console.log('sfsf');
                         view.model = new Models.Mjob(JSON.parse($('#mjob_datas').html()));
                     }
                     console.log(view.model);
