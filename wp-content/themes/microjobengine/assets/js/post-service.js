@@ -43,6 +43,7 @@
                     if( $('#mjob_datas').length > 0){
                         view.model = JSON.parse($('#mjob_datas').html());
                     }
+                    console.log(view.model);
                     view.currentStep = 'post';
                     view.showNextStep();
                 }
