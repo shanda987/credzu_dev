@@ -50,10 +50,14 @@ get_header();
 
             <div class="col-lg-9 col-md-9 col-sm-12 col-sx-12">
                 <div class="block-profile">
-
                     <div class="block-billing mjob-profile-form">
+                        <?php if( empty($profile->company_agreement_link) ): ?>
                         <form class="et-form" id="signature-form">
-                            <div class="agreement-content"><?php echo $content; ?></div>
+                            <div class="agreement-content">
+                                <?php
+                                    echo $content;
+                                ?>
+                            </div>
                             <div class="form-group clearfix float-left check-terms">
                                 <div id="signature-pad" class="m-signature-pad m-signature-pad1">
                                     <div class="m-signature-pad--body m-signature-pad--body1">
@@ -70,7 +74,15 @@ get_header();
                             </div>
                             <input type="hidden" class="input-item" name="_wpnonce" id="profile_wpnonce" value="<?php echo de_create_nonce('ae-mjob_post-sync');?>" />
                         </form>
+                        <?php else: ?>
+                            <div class="dashboard-notification">
+                            <?php $archive_link =  get_post_type_archive_link('mjob_post'); ?>
+                            <p class="cl-items"><?php echo sprintf(__('You can view your agreement <a target="_blank" href="%s"> here</a>', ET_DOMAIN),  $profile->company_agreement_link); ?></p>
+                        </div>
+                        <?php
+                        endif; ?>
                     </div>
+
                 </div>
 
             </div>

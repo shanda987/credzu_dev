@@ -387,3 +387,6 @@
 .status-noti{
     color:red;
 }
+.block-profile{
+    min-height: 665px;
+}

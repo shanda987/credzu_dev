@@ -213,7 +213,8 @@ class agreementAction extends mJobPostAction{
             AE_Pdf_Creator()->init();
             $file_path = AE_Pdf_Creator()->pdfGenarate($content, $file_name);
             $email = $profile->company_email;
-            update_post_meta($profile->ID, 'company_agreement_link', $file_path);
+            $file_path_link = WP_CONTENT_URL.'/et-content/files/pdf/'.$file_name.'.pdf';
+            update_post_meta($profile->ID, 'company_agreement_link', $file_path_link);
             $file_path = array($file_path);
             do_action('credzu_company_agreement_email', $email, $file_path);
         }
