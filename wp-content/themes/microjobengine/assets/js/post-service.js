@@ -40,7 +40,9 @@
                 this.initExtras();
                 this.extra_ids = new Array();
                 if( $('.is_rod').length > 0 ){
-                    console.log(view.model);
+                    if( $('#mjob_datas').length > 0){
+                        view.model = JSON.parse($('#mjob_datas').html());
+                    }
                     view.currentStep = 'post';
                     view.showNextStep();
                 }
