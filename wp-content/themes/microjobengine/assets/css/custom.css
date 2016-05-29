@@ -390,3 +390,7 @@
 .block-profile{
     min-height: 665px;
 }
+.page-template-page-signature-company .clear{
+    margin-right: 20px;
+    cursor: pointer;
+}
