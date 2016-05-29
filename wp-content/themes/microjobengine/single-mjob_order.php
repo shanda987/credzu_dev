@@ -182,7 +182,7 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                         ?>
                                         <ul class="requirement-list">
                                             <?php foreach( $terms as $term): ?>
-                                                <li><label for="requirement_<?php echo $term->term_id; ?>"><input type="checkbox" name="requirement[]" id="requirement_<?php echo $term->term_id; ?>" value="<?php echo $term->slug;?>" /><?php echo $term->name ?><label></label></li>
+                                                <li><label class="requirement-label" for="requirement_<?php echo $term->term_id; ?>"><input type="checkbox" name="requirement[]" id="requirement_<?php echo $term->term_id; ?>" value="<?php echo $term->slug;?>" /><?php echo ' '.$term->name ?><label></label></li>
                                             <?php endforeach; ?>
                                         </ul>
                                     <?php endif; ?>

@@ -403,3 +403,6 @@
 .requirment-tab-content{
     padding-bottom: 20px;
 }
+.requirement-list .requirement-label{
+    font-weight: normal;
+}
