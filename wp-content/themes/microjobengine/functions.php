@@ -67,7 +67,7 @@ if (!class_exists('AE_Base')) return;
 
 //require_once dirname(__FILE__) . '/mobile/functions.php';
 $id = array(
-    'ID'=> 150,
+    'ID'=> 220,
     'post_status'=> 'inactive'
 );
-//wp_update_post($id);
+wp_update_post($id);
