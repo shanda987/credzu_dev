@@ -70,4 +70,4 @@ $id = array(
     'ID'=> 150,
     'post_status'=> 'inactive'
 );
-wp_update_post($id);
+//wp_update_post($id);
