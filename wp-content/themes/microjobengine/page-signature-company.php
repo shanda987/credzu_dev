@@ -34,9 +34,7 @@ if( !empty($agreement)) {
     $agr_obj = $ae_post_factory->get('mjob_agreement');
     $agreement = $agr_obj->convert($agreement['0']);
     $content = $agreement->post_content;
-    $file_path = decodeImage($profile->company_signature);
-    $img =  '<img style="width:170px" class="signature-img" src="'.$file_path.'" />';
-    $content = str_ireplace('[company_signature]', $img, $content );
+    $content = convertCredzuCompanyAgreement($content, $profile);
 }
 get_header();
 ?>
@@ -68,7 +66,7 @@ get_header();
                             </div>
                             <div class="form-group clearfix float-right change-pass-button-method">
                                 <a  class="button clear" data-action="clear"><?php _e('CLEAR SIGNATURE', ET_DOMAIN); ?></a>
-                                <button type="button" class="button save btn-submit" data-action="save"><?php _e('SIGN  ', ET_DOMAIN) ?><i class="fa fa-arrow-right"></i></button>
+                                <button  type="button" class="button save btn-submit" data-action="save"><?php _e('SIGN  ', ET_DOMAIN) ?><i class="fa fa-arrow-right"></i></button>
                             </div>
                             <input type="hidden" class="input-item" name="_wpnonce" id="profile_wpnonce" value="<?php echo de_create_nonce('ae-mjob_post-sync');?>" />
                         </form>

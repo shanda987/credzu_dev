@@ -1316,34 +1316,56 @@
                     } else {
                         //view.reMoveBlank(view.canvas );
                         view.model.set(view.options.key, view.signaturePad.toDataURL());
-                        view.model.save('', '', {
-                            beforeSend: function () {
-                                view.blockUi.block(view.saveButton);
-                            },
-                            success: function (result, res, jqXHR) {
-                                if (res.success) {
-                                    $.ajax({
-                                        type: 'POST',
-                                        url: ae_globals.ajaxURL,
-                                        data: {
-                                            action: 'mjob-send-agreement-email-company',
-                                        },
-                                        beforeSend: function() {
-
-                                        },
-                                        success: function(resp, status, jqXHR) {
-                                            AE.pubsub.trigger('ae:notification', {
-                                                msg: res.msg,
-                                                notice_type: 'success'
-                                            });
-                                            view.blockUi.unblock();
-                                           AE.pubsub.trigger('ae:signature:save:success', resp);
-                                            //window.location.href = resp.data.permalink;
-                                        }
-                                    })
-                                }
+                        var rules = Array(
+                            'first_name',
+                            'last_name',
+                            'company_name',
+                            'company_address',
+                            'company_phone',
+                            'company_email'
+                        );
+                        var flag = true;
+                        for( var i = 0; i< rules.length ; i++ ){
+                            if( view.model.get(rules[i]) == ''){
+                                flag = false;
                             }
-                        });
+                        }
+                        if( flag == true) {
+                            view.model.save('', '', {
+                                beforeSend: function () {
+                                    view.blockUi.block(view.saveButton);
+                                },
+                                success: function (result, res, jqXHR) {
+                                    if (res.success) {
+                                        $.ajax({
+                                            type: 'POST',
+                                            url: ae_globals.ajaxURL,
+                                            data: {
+                                                action: 'mjob-send-agreement-email-company',
+                                            },
+                                            beforeSend: function () {
+
+                                            },
+                                            success: function (resp, status, jqXHR) {
+                                                AE.pubsub.trigger('ae:notification', {
+                                                    msg: res.msg,
+                                                    notice_type: 'success'
+                                                });
+                                                view.blockUi.unblock();
+                                                AE.pubsub.trigger('ae:signature:save:success', resp);
+                                                //window.location.href = resp.data.permalink;
+                                            }
+                                        })
+                                    }
+                                }
+                            });
+                        }
+                        else{
+                            AE.pubsub.trigger('ae:notification', {
+                                msg: 'Please complete your company profile before sign agreement!',
+                                notice_type: 'error'
+                            });
+                        }
                     }
                 });
             },

@@ -1340,3 +1340,26 @@ function convertDigit($digit)
      $number = $text.$number;
      return $number;
  }
+/**
+  * convert shortcode of agreement
+  *
+  * @param string $content
+ * @param object $profile
+  * @return string $content after convert
+  * @since 1.4
+  * @package MicrojobEngine
+  * @category CREDZU
+  * @author JACK BUI
+  */
+ function convertCredzuCompanyAgreement($content, $profile){
+     $file_path = decodeImage($profile->company_signature);
+     $img =  '<img style="width:170px" class="signature-img" src="'.$file_path.'" />';
+     $content = str_ireplace('[company_signature]', $img, $content );
+     $content = str_ireplace('[company_name]', $profile->company_name, $content );
+     $content = str_ireplace('[first_name]', $profile->first_name, $content );
+     $content = str_ireplace('[last_name]', $profile->last_name, $content );
+     $content = str_ireplace('[company_email]', $profile->company_email, $content );
+     $content = str_ireplace('[company_phone]', $profile->company_phone, $content );
+     $content = str_ireplace('[company_address]', $profile->company_address, $content );
+     return $content;
+ }

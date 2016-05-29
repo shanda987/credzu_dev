@@ -24,7 +24,7 @@ class mJobProfileAction extends mJobPostAction
         $this->add_action('ae_insert_user', 'mJobInsertProfile', 10, 2);
         $this->add_action('ae_login_user', 'mJobInsertProfileAfterLogin', 10, 1);
         $this->add_action('wp_footer', 'mJobAddProfileModal');
-        $this->add_ajax('mjob-check-smarty-address', 'mJobCheckSmartyAddress');
+       //$this->add_ajax('mjob-check-smarty-address', 'mJobCheckSmartyAddress');
        // $this->add_action('ae_convert_mjob_profile', 'mJobConvertProfile');
        // $this->add_ajax('mjob-check-user-active',  'mJobCheckActiveAccount');
     }

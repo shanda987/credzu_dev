@@ -536,5 +536,25 @@ class mJobMailing extends AE_Mailing
         $emails = ae_get_option('admin_emails', 'info@credzu.com');
         $result1 = $this->wp_mail($emails, $subject1, $email_msg1, array('user_id' => $user_ID));
     }
-
+    /**
+      * Email when company sign agreement
+      *
+      * @param void
+      * @return void
+      * @since 1.4
+      * @package MicrojobEngine
+      * @category CREDZU
+      * @author JACK BUI
+      */
+    public function email_company_credzu_agreement($email, $path){
+        global $user_ID;
+        $subject = __('A new agreement is signed', ET_DOMAIN);
+        $msg = __('<p>You have signed an agreement with Credzu Company.</p><p>You can check attachment below to get more details.</p>', ET_DOMAIN);
+        $attachment = $path;
+        $result = $this->wp_mail($email, $subject, $msg, array('user_id' => $user_ID),'', $attachment);
+        $subject1 = __('There is a new company signed agreement with Credzu', ET_DOMAIN);
+        $mgs1 = __('<p>You can check attachment below to get more details.</p>', ET_DOMAIN);
+        $emails = ae_get_option('admin_emails', 'info@credzu.com');
+        $result1 = $this->wp_mail($emails, $subject1, $mgs1, array('user_id' => $user_ID), '', $attachment);
+    }
 }

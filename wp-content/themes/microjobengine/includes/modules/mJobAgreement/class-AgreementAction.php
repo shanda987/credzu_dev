@@ -21,6 +21,7 @@ class agreementAction extends mJobPostAction{
         $this->add_action('wp_enqueue_scripts', 'agreement_add_scripts', 9);
         $this->add_ajax('mjob-get-agreement-info', 'getAgreementInfo');
         $this->add_ajax('mjob-send-agreement-email', 'sendEmailAgreement');
+        $this->add_ajax('mjob-send-agreement-email-company', 'mjob_send_agreement_email_company');
     }
     /**
      * add script
@@ -179,6 +180,42 @@ class agreementAction extends mJobPostAction{
                 'msg'=> __('Success!', ET_DOMAIN),
                 'data'=>$post1
             ));
+        }
+    }
+    /**
+      * Send email when company sign agreement
+      *
+      * @param void
+      * @return void
+      * @since 1.4
+      * @package MicrojobEngine
+      * @category CREDZU
+      * @author JACK BUI
+      */
+    public function mjob_send_agreement_email_company(){
+        $agrs = array(
+            'post_type'=>'mjob_agreement',
+            'post_status'=>'publish',
+            'meta_query' => array(
+                array(
+                    'key' => 'agreement_company_to_credzu',
+                    'value' => 'yes',
+                )
+            )
+        );
+        $agreement = get_posts($agrs);
+        if( isset($agreement['0']) ){
+            $agreement = $agreement['0'];
+            global $ae_post_factory, $user_ID;
+            $profile = mJobProfileAction()->getProfile($user_ID);
+            $content = convertCredzuCompanyAgreement($agreement->post_content, $profile);
+            $file_name = 'Credzu_company_agreement_'.time();
+            AE_Pdf_Creator()->init();
+            $file_path = AE_Pdf_Creator()->pdfGenarate($content, $file_name);
+            $email = $profile->company_email;
+            update_post_meta($profile->ID, 'company_agreement_link', $file_path);
+            $file_path = array($file_path);
+            do_action('credzu_company_agreement_email', $email, $file_path);
         }
     }
 }
