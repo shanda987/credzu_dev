@@ -19,6 +19,7 @@ if( isset($_REQUEST['id']) ){
         echo '<script type="data/json" id="mjob_datas" >'.json_encode($mjob).'</script>';
     }
 }
+var_dump($show);
 get_header();
 
 /**
