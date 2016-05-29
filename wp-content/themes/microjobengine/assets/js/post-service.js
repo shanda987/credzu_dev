@@ -40,6 +40,7 @@
                 this.initExtras();
                 this.extra_ids = new Array();
                 if( $('.is_rod').length > 0 ){
+                    console.log(view.model);
                     view.currentStep = 'post';
                     view.showNextStep();
                 }
