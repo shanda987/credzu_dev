@@ -43,9 +43,9 @@
                     if( $('#mjob_datas').length > 0){
                         view.model = new Models.Mjob(JSON.parse($('#mjob_datas').html()));
                     }
-                    console.log(view.model);
                     view.currentStep = 'post';
                     view.showNextStep();
+                    view.setupStep3(view.model);
                 }
             },
             onAddExtras: function($target){
