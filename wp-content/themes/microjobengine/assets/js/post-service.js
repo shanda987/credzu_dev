@@ -667,10 +667,9 @@
                                 msg: res.msg,
                                 notice_type: 'success'
                             });
-                            window.location.href = res.data.mjob.permalink;
+                            window.location.href = res.data.mjob.p_permalink;
                         }
                         else{
-                            console.log('sdfsfd');
                             AE.pubsub.trigger('ae:notification', {
                                 msg: res.msg,
                                 notice_type: 'error'

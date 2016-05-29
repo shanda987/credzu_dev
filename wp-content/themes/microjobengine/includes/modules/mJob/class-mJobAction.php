@@ -378,6 +378,7 @@ class mJobAction extends mJobPostAction{
                 $result->plan_content = $plan->post_content;
             }
         }
+        $result->p_permalink = get_permalink( $result->ID );
         return $result;
     }
 
