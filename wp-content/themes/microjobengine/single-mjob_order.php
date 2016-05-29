@@ -183,16 +183,9 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                         <span class="title"><?php _e('REQUIREMENTS', ET_DOMAIN) ;?></span>
                                         <ul>
                                             <?php foreach( $terms as $term): ?>
-                                                <li><?php echo $term->name ?></li>
+                                                <li><input type="checkbox" name="requirement[]" value="<?php echo $term->slug;?>" /> <?php echo $term->name ?></li>
                                             <?php endforeach; ?>
                                         </ul>
-                                    <?php endif; ?>
-                                    <?php if( !empty($current->agreement_terms) ): ?>
-                                        <span class="title"><?php _e('AGREEMENT TERMS', ET_DOMAIN) ;?></span>
-                                        <div class="tabs-information" id="agreement_term"><?php echo $current->agreement_terms; ?></div>
-                                        <div class="tags">
-                                            <?php list_tax_of_mjob($current->ID, 'skill', 'skill') ?>
-                                        </div>
                                     <?php endif; ?>
                                 </div>
                                 <input type="hidden" class="input-item" name="_wpnonce" id="profile_wpnonce" value="<?php echo de_create_nonce('ae-mjob_post-sync');?>" />
