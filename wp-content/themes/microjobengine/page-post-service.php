@@ -54,7 +54,7 @@ $disable_plan = ae_get_option('disable_plan', false);
         endif;
         if(!$disable_plan):
             get_template_part( 'template/post-service', 'step4' );
-        edif; ?>
+        endif; ?>
     </div>
 
 </div>
