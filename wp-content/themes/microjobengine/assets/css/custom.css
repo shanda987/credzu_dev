@@ -394,3 +394,10 @@
     margin-right: 20px;
     cursor: pointer;
 }
+.requirement-list li{
+    list-style: none;
+    margin-top: 20px;
+}
+.requirment-tab-content{
+    padding-bottom: 20px;
+}
