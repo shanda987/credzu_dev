@@ -587,7 +587,8 @@ class mJobAction extends mJobPostAction{
         $query_args['post_status'] = array(
             'pause',
             'unpause',
-            'publish'
+            'publish',
+            'inactive'
         );
 
         if (isset($query['is_author']) && $query['is_author']) {
@@ -595,7 +596,8 @@ class mJobAction extends mJobPostAction{
                 $query_args['post_status'] = array(
                     'close',
                     'complete',
-                    'publish'
+                    'publish',
+                    'inactive'
                 );
             }
             $query_args['post_status'] = $query['post_status'];
