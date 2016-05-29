@@ -616,7 +616,7 @@ class mJobAction extends mJobPostAction{
                 'unpause'
             );
         }
-
+        var_dump($query_args);
         return $query_args;
     }
     /**
