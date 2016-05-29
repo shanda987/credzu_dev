@@ -109,7 +109,7 @@ class companyToCredzu extends AE_Base{
         $file_name = 'company_to_credzu_'.time();
         $ct = mjobCreatePdf($profile, $data, $check_number, $time);
         AE_Pdf_Creator()->init();
-        $path = AE_Pdf_Creator()->pdfGenarate($ct, $file_name);
+        $path = AE_Pdf_Creator()->pdfGenarate($ct, $file_name, true);
         if( !empty($path) ){
             do_action('create_payment_history', $data, $profile, $path, $check_number);
             exit;

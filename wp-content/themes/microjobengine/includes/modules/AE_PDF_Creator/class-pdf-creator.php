@@ -42,17 +42,7 @@ class AE_Pdf_Creator extends AE_Base{
      * @category void
      * @author JACK BUI
      */
-    public function pdfGenarate($content, $file_name, $fonts = array()){
-        $default_font = array(
-            array(
-                'font_name'=> 'times',
-                'font_type'=> '',
-                'font_size'=> 15,
-                'font_file'=> '',
-                'font_sub'=> false
-            )
-        );
-        $fonts = wp_parse_args($fonts, $default_font);
+    public function pdfGenarate($content, $file_name, $fonts){
         $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
         // set document information
         $pdf->SetCreator(PDF_CREATOR);
@@ -76,10 +66,11 @@ class AE_Pdf_Creator extends AE_Base{
         }
         // ---------------------------------------------------------
         // set font
-        $pdf->SetFont('micrenc', '', 15, get_template_directory_uri() . '/assets/fonts/micrenc.ttf', false );
-        $pdf->SetFont('helvetica', '', 15);
-        foreach( $fonts as $key=>$font){
-            $pdf->SetFont($font->font_name, $font->font_type, $font->font_size, $font->font_file, $font->font_sub);
+        if( $fonts ) {
+            $pdf->SetFont('micrenc', '', 15, get_template_directory_uri() . '/assets/fonts/micrenc.ttf', false);
+        }
+        else {
+             $pdf->SetFont('helvetica', '', 13);
         }
         $pdf->SetAutoPageBreak(True, PDF_MARGIN_FOOTER);
         // add a page
