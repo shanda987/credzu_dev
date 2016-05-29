@@ -5,15 +5,15 @@ global $user_ID;
 //    wp_redirect(home_url()); exit;
 //}
 $show = true;
-if( isset($_REQUEST['rod']) && $_REQUEST['rod'] == 1){
+if( isset($_GET['rod']) && $_GET['rod'] == 1){
     $show = false;
     echo '<script type="data/json" class="is_rod" >'.json_encode(1).'</script>';
 }
-if( isset($_REQUEST['id']) ){
+if( isset($_GET['id']) ){
     $show = false;
     global $ae_post_factory;
     $obj = $ae_post_factory->get('mjob_post');
-    $mjob = get_post($_REQUEST['id']);
+    $mjob = get_post($_GET['id']);
     if( !empty($mjob) ){
         $mjob = $obj->convert($mjob);
         echo '<script type="data/json" id="mjob_datas" >'.json_encode($mjob).'</script>';
