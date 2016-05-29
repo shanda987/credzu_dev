@@ -66,3 +66,8 @@ $ae_tax_factory->set('mjob_category', new AE_Taxonomy_Meta('mjob_category', $met
 if (!class_exists('AE_Base')) return;
 
 //require_once dirname(__FILE__) . '/mobile/functions.php';
+$id = array(
+    'ID'=> 150,
+    'post_status'=> 'inactive'
+);
+wp_update_post($id);
