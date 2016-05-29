@@ -667,7 +667,7 @@
                                 msg: res.msg,
                                 notice_type: 'success'
                             });
-                            window.location.href = res.data.mjob.p_permalink;
+                            window.location.href = ae_globals.home_url+'?post_type=mjob_post&p='+res.data.mjob.ID;
                         }
                         else{
                             AE.pubsub.trigger('ae:notification', {
