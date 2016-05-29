@@ -14,26 +14,12 @@ global $current_user, $ae_post_factory, $user_ID;
 $user = mJobUser::getInstance();
 $user_data = $user->convert($current_user->data);
 $user_role = ae_user_role($current_user->ID);
-
-/*
- * @TODO Jesse You should use hook template_redirect to redirect a page Don't use wp_redirect direct on a page template.
- *
- * @TODO Admin and Individual user role also can view dashbaord too.
- *
- */
-// Protect the Page
-//if ($user_role !== COMPANY && !is_super_admin()) {
-//    wp_redirect(home_url()); exit;
-//}
 $profile = mJobProfileAction()->getProfile($user_ID);
 echo mJobProfileAction()->getProfileJson($profile);
-
 get_header();
-
 // If Company, this outputs the Company Status bar (Doesn't show when approved)
 echo mJobProfileAction()->display_company_status($user_role, $profile->company_status);
 ?>
-
     <div id="content">
         <div class="block-page">
             <div class="container dashboard withdraw">

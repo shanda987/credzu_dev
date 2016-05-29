@@ -75,7 +75,7 @@ get_header();
                             <input type="hidden" class="input-item" name="_wpnonce" id="profile_wpnonce" value="<?php echo de_create_nonce('ae-mjob_post-sync');?>" />
                         </form>
                         <?php else: ?>
-                            <div class="dashboard-notification">
+                            <div class="dashboard-notification agreement-view">
                             <?php $archive_link =  get_post_type_archive_link('mjob_post'); ?>
                             <p class="cl-items"><?php echo sprintf(__('You can view your agreement <a target="_blank" href="%s"> here</a>', ET_DOMAIN),  $profile->company_agreement_link); ?></p>
                         </div>

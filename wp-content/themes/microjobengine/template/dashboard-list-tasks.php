@@ -49,8 +49,7 @@
         <?php
             $absolute_url = full_url( $_SERVER );
             $post_link = et_get_page_link('post-service') . '?return_url=' . $absolute_url;
-
-            $post_link = "creating a listing once approved.";
+            //$post_link = "creating a listing once approved.";
             if ($profile->company_status == COMPANY_STATUS_APPROVED) {
                 $post_link = "<a href='$post_link'>creating a listing</a>";
             }
