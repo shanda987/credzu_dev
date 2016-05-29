@@ -70,10 +70,12 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                         echo '<div class="wrapper-list-conversation"><ul class="list-conversation">';
                             //get_template_part('template/message', 'item');
                         $msg_obj = $ae_post_factory->get('ae_message');
+                        $files = array();
                             while($messages_query->have_posts()):
                                 $messages_query->the_post();
                                 $convert_msg = $msg_obj->convert($post);
                                 $post_data_msg[] = $convert_msg;
+                                $files[] = $convert_msg->files;
                                 get_template_part('template/message', 'item');
                             endwhile;
                             wp_reset_query();
@@ -191,7 +193,9 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                             </div>
                             <div role="tabpanel" class="tab-pane" id="document">
                                 <div id="incomingPaymentsForm">
-                                    Document here
+                                        <?php
+                                        var_dump($files);
+                                        ?>
                                 </div>
                             </div>
                         </div>
