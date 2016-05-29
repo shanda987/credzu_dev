@@ -194,7 +194,6 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                             <div role="tabpanel" class="tab-pane" id="document">
                                 <div id="incomingPaymentsForm">
                                         <?php
-                                        var_dump($files);
                                         ?>
                                 </div>
                             </div>
