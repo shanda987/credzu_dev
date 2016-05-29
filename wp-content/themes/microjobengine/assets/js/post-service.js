@@ -39,10 +39,9 @@
                 // Init extra
                 this.initExtras();
                 this.extra_ids = new Array();
-                if( view.$el.find('.is_rod').length > 0 ){
+                if( $('.is_rod').length > 0 ){
                     view.currentStep = 'post';
                     view.showNextStep();
-                    console.log('vaoo');
                 }
             },
             onAddExtras: function($target){
