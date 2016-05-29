@@ -1353,7 +1353,7 @@
                                                 });
                                                 view.blockUi.unblock();
                                                 AE.pubsub.trigger('ae:signature:save:success', resp);
-                                                //window.location.href = resp.data.permalink;
+                                                window.location.reload(true);
                                             }
                                         })
                                     }
