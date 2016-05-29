@@ -180,7 +180,6 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                     <?php $terms = get_the_terms($current->post_parent, 'mjob_requirement');
                                     if( !empty($terms) && !is_wp_error($terms) ):
                                         ?>
-                                        <span class="title"><?php _e('REQUIREMENTS', ET_DOMAIN) ;?></span>
                                         <ul>
                                             <?php foreach( $terms as $term): ?>
                                                 <li><input type="checkbox" name="requirement[]" value="<?php echo $term->slug;?>" /> <?php echo $term->name ?></li>
