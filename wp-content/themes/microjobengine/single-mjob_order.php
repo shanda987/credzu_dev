@@ -168,16 +168,44 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                             </div>
                         </div>
                 </div>
-                    <div class="box-aside box-aside2">
-                        <div class="order-detail-price">
-                            <div class="order-price">
-                                <p class="title-cate"><?php _e('Requirement here', ET_DOMAIN); ?></p>
-
+                <div class="box-aside box-aside2">
+                    <div class="tabs-information">
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation" class="active"><a href="#requirement" aria-controls="requirement" role="tab" data-toggle="tab"><?php _e('Requirements', ET_DOMAIN); ?></a></li>
+                            <li role="presentation"><a href="#document" aria-controls="document" role="tab" data-toggle="tab"><?php _e('Documents', ET_DOMAIN); ?></a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane active" id="requirement">
+                                <div class="requirment-tab-content">
+                                    <?php $terms = get_the_terms($current->post_parent, 'mjob_requirement');
+                                    if( !empty($terms) && !is_wp_error($terms) ):
+                                        ?>
+                                        <span class="title"><?php _e('REQUIREMENTS', ET_DOMAIN) ;?></span>
+                                        <ul>
+                                            <?php foreach( $terms as $term): ?>
+                                                <li><?php echo $term->name ?></li>
+                                            <?php endforeach; ?>
+                                        </ul>
+                                    <?php endif; ?>
+                                    <?php if( !empty($current->agreement_terms) ): ?>
+                                        <span class="title"><?php _e('AGREEMENT TERMS', ET_DOMAIN) ;?></span>
+                                        <div class="tabs-information" id="agreement_term"><?php echo $current->agreement_terms; ?></div>
+                                        <div class="tags">
+                                            <?php list_tax_of_mjob($current->ID, 'skill', 'skill') ?>
+                                        </div>
+                                    <?php endif; ?>
+                                </div>
+                                <input type="hidden" class="input-item" name="_wpnonce" id="profile_wpnonce" value="<?php echo de_create_nonce('ae-mjob_post-sync');?>" />
                             </div>
-                            <div class="total-order">
-                                <p><i class="fa fa-exclamation-circle" aria-hidden="true"></i><?php _e(' There are tasks you must complete', ET_DOMAIN); ?></p>
+                            <div role="tabpanel" class="tab-pane" id="document">
+                                <div id="incomingPaymentsForm">
+                                    Document here
+                                </div>
                             </div>
                         </div>
+
+                    </div>
+                </div>
             </div>
         </div>
     </div>
