@@ -4,9 +4,10 @@ global $user_ID;
 //if (!is_super_admin() || $user_role !== COMPANY) {
 //    wp_redirect(home_url()); exit;
 //}
-$show = true;
+$show_next = true;
 if( isset($_GET['rod']) && $_GET['rod'] == 1){
-    $show = false;
+    $show_next = false;
+    var_dump($show_next);
     echo '<script type="data/json" class="is_rod" >'.json_encode(1).'</script>';
 }
 if( isset($_GET['id']) ){
@@ -19,7 +20,7 @@ if( isset($_GET['id']) ){
         echo '<script type="data/json" id="mjob_datas" >'.json_encode($mjob).'</script>';
     }
 }
-var_dump($show);
+var_dump($show_next);
 get_header();
 
 /**
@@ -60,7 +61,7 @@ $disable_plan = ae_get_option('disable_plan', false);
         if(!$user_ID):
             get_template_part( 'template/post-service', 'step2' );
         endif;
-        if( $show ):
+        if( $show_next ):
             get_template_part( 'template/post-service', 'step3' );
         endif;
         if(!$disable_plan):
