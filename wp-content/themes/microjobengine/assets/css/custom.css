@@ -407,3 +407,38 @@
 .requirement-list .requirement-label{
     font-weight: normal;
 }
+#requirement_modal .browse_button {
+    background: #c1c2c7;
+    padding: 30px;
+    cursor: pointer;
+}
+#requirement_modal .image-upload .drag-image i {
+    font-size: 120px;
+    color: #838892;
+    margin: 50px 0 20px 0;
+}
+#requirement_modal .image-upload .drag-image {
+    text-align: center;
+    color: #2a394e;
+    margin: 70px 0 100px 0;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+}
+#requirement_modal .browse_button {
+    background: #c1c2c7;
+    padding: 30px;
+    cursor: pointer;
+}
+#requirement_modal .image-upload .drag-image span {
+    display: block;
+}
+#requirement_modal button[disabled] {
+    opacity: .5;
+}
+#requirement_modal .btn-remove {
+    display: none;
+    color: #898a90;
+    padding-left: 20px;
+}
+
+
