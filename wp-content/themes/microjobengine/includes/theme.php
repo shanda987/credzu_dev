@@ -996,7 +996,7 @@ class ET_Microjobengine extends AE_Base
             get_template_part('template-js/modal-delivery', 'order');
         }
         if( is_page_template('page-process-hiring.php') ){
-            get_template_part('template-js/modal', 'agreement');
+            get_template_part('template-js/modal', 'requirement');
         }
         get_template_part('template/modal', 'conversation');
 

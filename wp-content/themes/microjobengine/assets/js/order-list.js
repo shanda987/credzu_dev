@@ -172,7 +172,8 @@
             events: {
                 'change .order-action': 'changeOrderStatus',
                 'click .order-delivery-btn': 'openModalDelivery',
-                'click .mjob-dispute-order': 'showFormDispute'
+                'click .mjob-dispute-order': 'showFormDispute',
+                'click .requirement-item': 'showModalRequirement'
             },
             initialize: function () {
                 var view = this;
@@ -288,6 +289,24 @@
                 $target = $(e.currentTarget);
                 $('.mjob-dispute-order').fadeOut(500);
                 $('.mjob-dispute-form').fadeIn(500);
+            },
+            showModalRequirement: function(e){
+                e.preventDefault();
+                $target = $(e.currentTarget);
+                if( typeof this.modalrequirement === 'undefined' ) {
+                    this.modalrequirement = new Views.ModalRequirement();
+                }
+                this.modalrequirement.onOpen();
+            }
+        });
+        Views.ModalRequirement = Views.Modal_Box.extend({
+            el: '#requirement_modal',
+            initialize: function () {
+                AE.Views.Modal_Box.prototype.initialize.call();
+            },
+            onOpen: function(){
+                var view = this;
+                view.openModal();
             }
         });
         Views.ModalDelivery = Views.Modal_Box.extend({
