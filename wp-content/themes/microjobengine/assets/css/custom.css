@@ -399,6 +399,7 @@
 }
 .requirement-list li{
     list-style: none;
+    margin-bottom: 15px;
 }
 .requirment-tab-content{
     padding-bottom: 20px;
