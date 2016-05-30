@@ -482,6 +482,9 @@ class ET_Microjobengine extends AE_Base
         if( is_singular('payment_format')) {
             wp_redirect(home_url());
         }
+        if( ae_user_role($user_ID) != COMPANY && is_page_template('page-my-listing-jobs.php')){
+            wp_redirect(home_url());
+        }
     }
     /**
      * filter profile link and change it to author posts link
