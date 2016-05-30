@@ -256,7 +256,7 @@
             newitem += '<span>+</span>';
             newitem += '<span>Post a Listing</span>';
             newitem += '</a></div></li>';
-            if( listmjobs.$el.find('.newitem').length <= 0 && $('.page-template-page-my-list-jobs').length > 0) {
+            if( listmjobs.$el.find('.newitem').length <= 0 && $('.page-template-page-my-listing-jobs').length > 0) {
                 listmjobs.$el.prepend(newitem);
             }
             listmjobs.render();
@@ -342,7 +342,7 @@
                             $('.list-mjobs').html(ae_globals.no_services);
                         }
                     }
-                    if( listmjobs.$el.find('.newitem').length <= 0 && $('.page-template-page-my-list-jobs').length > 0) {
+                    if( listmjobs.$el.find('.newitem').length <= 0 && $('.page-template-page-my-listing-jobs').length > 0) {
                         listmjobs.$el.prepend(newitem);
                         listmjobs.render();
                     }
