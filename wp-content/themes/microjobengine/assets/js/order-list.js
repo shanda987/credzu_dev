@@ -296,17 +296,35 @@
                 if( typeof this.modalrequirement === 'undefined' ) {
                     this.modalrequirement = new Views.ModalRequirement();
                 }
-                this.modalrequirement.onOpen();
+                this.modalrequirement.onOpen(this.model);
             }
         });
         Views.ModalRequirement = Views.Modal_Box.extend({
             el: '#requirement_modal',
             initialize: function () {
                 AE.Views.Modal_Box.prototype.initialize.call();
+
             },
-            onOpen: function(){
+            onOpen: function(model){
                 var view = this;
+                this.model = model;
                 view.openModal();
+                view.initCarousel();
+            },
+            initCarousel: function(){
+                var view = this;
+                view.container = $('#upload_avatar_container');
+                view.uploadID = 'upload_avatar';
+                if(typeof view.avatarUploader === 'undefined') {
+                    view.avatarUploader = new Views.File_Uploader({
+                        el: view.container,
+                        uploaderID: view.uploadID,
+                        model: this.model,
+                        carouselTemplate: '#ae_carousel_file_template',
+                        extensions: ae_globals.file_types,
+                        dragdrop: true
+                    })
+                }
             }
         });
         Views.ModalDelivery = Views.Modal_Box.extend({
