@@ -70,7 +70,7 @@ foreach ($existing_meta as $key => $value) {
         <div class="input-group requirement-style">
             <?php ae_tax_dropdown( 'mjob_requirement' ,
                 array(  'attr' => 'multiple data-chosen-width="100%"   data-placeholder="'.__("Choose Client's requirement", ET_DOMAIN).'"',
-                    'class' => 'chosen multi-tax-item tax-item ',
+                    'class' => 'chosen multi-tax-item tax-item required',
                     'hide_empty' => false,
                     'hierarchical' => true ,
                     'id' => 'mjob_requirement' ,
