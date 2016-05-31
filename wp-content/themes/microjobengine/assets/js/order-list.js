@@ -351,10 +351,8 @@
                 var view = this;
                 var arr_files = new Array();
                 arr_files[this.data_id] = view.arr_ids;
-                console.log(this.model.get('requirement_files'));
-                arr_files = $.merge(arr_files, this.model.get('requirement_files'));
                 this.model.set('requirement_files', arr_files);
-               console.log(arr_files);
+                console.log(this.model.get('requirement_files'));
             }
         });
         Views.ModalDelivery = Views.Modal_Box.extend({
