@@ -173,9 +173,9 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                 </div>
                 <div class="box-aside box-aside2">
                     <div class="tabs-information">
-                        <ul class="nav nav-tabs" role="tablist">
-                            <li role="presentation" class="active"><a href="#requirement" aria-controls="requirement" role="tab" data-toggle="tab"><?php _e('Requirements', ET_DOMAIN); ?></a></li>
-                            <li role="presentation"><a href="#document" aria-controls="document" role="tab" data-toggle="tab"><?php _e('Documents', ET_DOMAIN); ?></a></li>
+                        <ul class="nav nav-tabs requirement-tabs" role="tablist">
+                            <li role="presentation" class="active requirement-list-li"><a href="#requirement" aria-controls="requirement" role="tab" data-toggle="tab" class="left-tab-requirement"><?php _e('Requirements', ET_DOMAIN); ?></a></li>
+                            <li role="presentation" class="requirement-list-li"><a href="#document" aria-controls="document" role="tab" data-toggle="tab"><?php _e('Documents', ET_DOMAIN); ?></a></li>
                         </ul>
                         <div class="tab-content">
                             <div role="tabpanel" class="tab-pane active order-detail-price" id="requirement">

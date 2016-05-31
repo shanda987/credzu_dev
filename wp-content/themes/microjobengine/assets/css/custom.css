@@ -440,4 +440,18 @@
     color: #898a90;
     padding-left: 20px;
 }
+.left-tab-requirement{
+    pading-left: 20px!important;
+}
+.requirement-tabs{
+    margin-left: 20px;
+}
+/*.requirement-list-li{*/
+    /*width: 50%;*/
+    /*margin: 0 0!important;*/
+/*}*/
+/*.requirement-list-li a{*/
+    /*text-align: center;*/
+    /*margin-right: 0!important;*/
+/*}*/
 
