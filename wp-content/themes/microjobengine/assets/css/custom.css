@@ -450,12 +450,16 @@
     color: #aaafb2;
     font-family: 'Montserrat', sans-serif;
 }
-/*.requirement-list-li{*/
-    /*width: 50%;*/
-    /*margin: 0 0!important;*/
-/*}*/
-/*.requirement-list-li a{*/
-    /*text-align: center;*/
-    /*margin-right: 0!important;*/
-/*}*/
-
+#requirement_modal .requirement-image-list{
+    text-align: left;
+}
+#requirement_modal .image-upload .image-item{
+    list-style: none;
+    display: inline;
+}
+#requirement_modal .image-upload .image-item .delete-img i{
+    color: #e52e5d;
+}
+#requirement_modal .image-upload .drag-image .image-item i{
+    font-size: 18px!important;
+}

@@ -293,38 +293,68 @@
             showModalRequirement: function(e){
                 e.preventDefault();
                 $target = $(e.currentTarget);
+                var data_id = $target.attr('data-id');
                 if( typeof this.modalrequirement === 'undefined' ) {
                     this.modalrequirement = new Views.ModalRequirement();
                 }
-                this.modalrequirement.onOpen(this.model);
+                this.modalrequirement.onOpen(this.model, data_id);
             }
         });
         Views.ModalRequirement = Views.Modal_Box.extend({
             el: '#requirement_modal',
+            events: {
+                'click .btn-save': 'saveOrderRequirment'
+            },
             initialize: function () {
                 AE.Views.Modal_Box.prototype.initialize.call();
+                AE.pubsub.on('carousels:success:upload', this.showListFile, this);
 
             },
-            onOpen: function(model){
+            onOpen: function(model, data_id){
                 var view = this;
                 this.model = model;
+                this.data_id = data_id;
+                this.arr_ids = new Array();
                 view.openModal();
                 view.initCarousel();
             },
             initCarousel: function(){
                 var view = this;
-                view.container = $('#upload_avatar_container');
-                view.uploadID = 'upload_avatar';
-                if(typeof view.avatarUploader === 'undefined') {
-                    view.avatarUploader = new Views.File_Uploader({
+                view.container = $('#requirement_container');
+                view.uploadID = 'requirement';
+                if(typeof view.requirementUploader === 'undefined') {
+                    view.requirementUploader = new Views.Carousel({
                         el: view.container,
                         uploaderID: view.uploadID,
+                        //multipart_params: {
+                        //    _ajax_nonce: view.$el.find('.et_ajaxnonce').attr('id'),
+                        //    // action: 'et-carousel-upload',
+                        //    imgType: 'requirement',
+                        //    author: view.model.get('post_author'),
+                        //    data: view.uploadID
+                        //},
+                        name_item:'requirement_carousel',
                         model: this.model,
                         carouselTemplate: '#ae_carousel_file_template',
                         extensions: ae_globals.file_types,
-                       // dragdrop: true
+                        dragdrop: true
                     })
                 }
+            },
+            showListFile: function(up, file, res){
+                var view = this;
+                view.$el.find('.btn-save').attr('disabled', false);
+                view.arr_ids.push(res.data.attach_id);
+            },
+            saveOrderRequirment: function(e){
+                e.preventDefault();
+                var view = this;
+                var arr_files = new Array();
+                arr_files[this.data_id] = view.arr_ids;
+                console.log(this.model.get('requirement_files'));
+                arr_files = $.merge(arr_files, this.model.get('requirement_files'));
+                this.model.set('requirement_files', arr_files);
+               console.log(arr_files);
             }
         });
         Views.ModalDelivery = Views.Modal_Box.extend({

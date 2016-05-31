@@ -1710,6 +1710,7 @@ _.templateSettings = {
                         that.carousels.push(res.data.attach_id);
                         //$('.carousel-list').find('#carousels').val(carousel_list);
                         that.model.set('et_carousels', that.carousels);
+                        AE.pubsub.trigger('carousels:success:upload', up, file, res);
                     }
                 },
                 cbAdded: function(up, files) {

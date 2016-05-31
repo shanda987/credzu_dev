@@ -36,6 +36,7 @@ class mJobOrderPosttype extends mJobPost{
             // This will NOT apply to people REBUYING the same listing, there is no 72
             // hour limit with the SAME client.
             'company_status_approved_timestamp',
+            'requirement_files'
         );
         $this->post_type_singular = 'Microjob Order';
         $this->post_type_regular = 'Microjob Orders';
