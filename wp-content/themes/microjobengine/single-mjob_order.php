@@ -167,7 +167,7 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                 </div>
                             </div>
                             <div class="total-order">
-                                <p><i class="fa fa-exclamation-circle" aria-hidden="true"></i><?php _e(' These tasks must be completed by you. Without completing these tasks, your company cannot perform the tasks for which you hired them.', ET_DOMAIN); ?></p>
+                                <p><i class="fa fa-exclamation-circle" aria-hidden="true"></i><?php _e(' Here are the details for your order and company hired', ET_DOMAIN); ?></p>
                             </div>
                         </div>
                 </div>
@@ -178,7 +178,7 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                             <li role="presentation"><a href="#document" aria-controls="document" role="tab" data-toggle="tab"><?php _e('Documents', ET_DOMAIN); ?></a></li>
                         </ul>
                         <div class="tab-content">
-                            <div role="tabpanel" class="tab-pane active" id="requirement">
+                            <div role="tabpanel" class="tab-pane active order-detail-price" id="requirement">
                                 <div class="requirment-tab-content">
                                     <?php $terms = get_the_terms($current->post_parent, 'mjob_requirement');
                                     if( !empty($terms) && !is_wp_error($terms) ):
@@ -190,9 +190,12 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                         </ul>
                                     <?php endif; ?>
                                 </div>
+                                <div class="total-order">
+                                    <p><i class="fa fa-exclamation-circle" aria-hidden="true"></i><?php _e(' These tasks must be completed by you. Without completing these tasks, your company cannot perform the tasks for which you hired them.', ET_DOMAIN); ?></p>
+                                </div>
                                 <input type="hidden" class="input-item" name="_wpnonce" id="profile_wpnonce" value="<?php echo de_create_nonce('ae-mjob_post-sync');?>" />
                             </div>
-                            <div role="tabpanel" class="tab-pane" id="document">
+                            <div role="tabpanel" class="tab-pane " id="document">
                                 <div id="incomingPaymentsForm">
                                         <?php
                                         if( !empty($filess)): ?>
