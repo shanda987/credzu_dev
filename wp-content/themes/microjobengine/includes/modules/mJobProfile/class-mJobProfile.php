@@ -60,6 +60,7 @@ class mJobProfile extends mJobPost{
             'company_year_established',
             'company_amount_of_employees',
             'company_description',
+            'company_welcome_message',
 //            'company_first_name',
             'account_number',
             'routing_number',

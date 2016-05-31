@@ -16,6 +16,7 @@ else{
     $to_user = $current->mjob_author;
    $flag = true;
 }
+$profile = mJobProfileAction()->getProfile($current->mjob_author);
 $current->_wpnonce = de_create_nonce('ae-mjob_post-sync');
 echo '<script type="text/template" id="order_single_data" >'.json_encode($current).'</script>';
 ?>
@@ -72,6 +73,7 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                         $msg_obj = $ae_post_factory->get('ae_message');
                         $filess = array();
                         $post_data_msg = array();
+                        if( $messages_query->have_posts() ):
                             while($messages_query->have_posts()):
                                 $messages_query->the_post();
                                 $convert_msg = $msg_obj->convert($post);
@@ -80,7 +82,15 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                 get_template_part('template/message', 'item');
                             endwhile;
                             wp_reset_query();
+                        else:
+                            if( !empty($profile->company_welcome_message) ):
+                                echo sprintf(__('<p class="text-disputes note-scroll">%s</p>', ET_DOMAIN), $profile->company_welcome_message);
+                            else:
+                                _e('<p class="text-disputes note-scroll">Thanks for trusting us with your credit report. Pursuant to federal law, we have to wait 72 hours for the cancellation period to expire. In the meantime, it is imperative that you get your credit report, billing information and complete profile information completed; we will not be able to begin without this information. If you have any questions, please reply here. We will begin in 72 hours. Thank you!</p>', ET_DOMAIN);
+                            endif;
+                        endif;
                         echo '</ul></div>';
+
 
                         /**
                          * render post data for js

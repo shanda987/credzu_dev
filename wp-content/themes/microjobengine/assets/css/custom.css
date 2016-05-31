@@ -446,6 +446,10 @@
 .requirement-tabs{
     margin-left: 20px;
 }
+.text-disputes{
+    color: #aaafb2;
+    font-family: 'Montserrat', sans-serif;
+}
 /*.requirement-list-li{*/
     /*width: 50%;*/
     /*margin: 0 0!important;*/

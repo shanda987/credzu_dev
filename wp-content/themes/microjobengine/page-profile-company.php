@@ -24,7 +24,7 @@ $company_website = !empty($profile->company_website) ? $profile->company_website
 $company_year_established = !empty($profile->company_year_established) ? $profile->company_year_established : '';
 $company_amount_of_employees = !empty($profile->company_amount_of_employees) ? $profile->company_amount_of_employees : '';
 $company_description = !empty($profile->company_description) ? $profile->company_description : '';
-
+$company_welcome_message = '';
 get_header();
 
 // If Company, this outputs the Company Status bar (Doesn't show when approved)
@@ -105,16 +105,22 @@ echo mJobProfileAction()->display_company_status($user_role, $profile->company_s
                                 <input type="text" name="company_year_established" id="company_website" placeholder="<?php _e('Year Established', ET_DOMAIN); ?>" value="<?php echo $company_year_established; ?>">
                             </div>
                         </div>
-                        <div class="form-group clearfix">
-                            <div class="input-group">
-                                <div class="input-group-addon no-addon"><?php _e('Amount of Employees:', ET_DOMAIN); ?></div>
-                                <input type="text" name="company_amount_of_employees" id="company_amount_of_employees" placeholder="<?php _e('Amount of Employees', ET_DOMAIN); ?>" value="<?php echo $company_amount_of_employees; ?>">
+                            <div class="form-group clearfix">
+                                <div class="input-group">
+                                    <div class="input-group-addon no-addon"><?php _e('Amount of Employees:', ET_DOMAIN); ?></div>
+                                    <input type="text" name="company_amount_of_employees" id="company_amount_of_employees" placeholder="<?php _e('Amount of Employees', ET_DOMAIN); ?>" value="<?php echo $company_amount_of_employees; ?>">
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group clearfix">
+                            <div class="form-group clearfix">
                                 <div class="input-group">
                                     <div class="input-group-addon no-addon"><?php _e('Company Description:', ET_DOMAIN); ?></div>
                                     <textarea name="company_description" id="company_description" placeholder="<?php _e('Company Description', ET_DOMAIN); ?>"><?php echo $company_description; ?></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group clearfix">
+                                <div class="input-group">
+                                    <div class="input-group-addon no-addon"><?php _e('Welcome message:', ET_DOMAIN); ?></div>
+                                    <textarea name="company_welcome_message" id="company_welcome_message" placeholder="<?php _e('Thanks for trusting us with your credit report. Pursuant to federal law, we have to wait 72 hours for the cancellation period to expire. In the meantime, it is imperative that you get your credit report, billing information and complete profile information completed; we will not be able to begin without this information. If you have any questions, please reply here. We will begin in 72 hours. Thank you!', ET_DOMAIN); ?>"><?php echo $company_welcome_message; ?></textarea>
                                 </div>
                             </div>
                             <div class="form-group clearfix float-right change-pass-button-method">
