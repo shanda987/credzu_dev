@@ -166,7 +166,7 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                 </div>
                             </div>
                             <div class="total-order">
-                                <p><i class="fa fa-exclamation-circle" aria-hidden="true"></i><?php _e(' Here are the details for your order and company hired', ET_DOMAIN); ?></p>
+                                <p><i class="fa fa-exclamation-circle" aria-hidden="true"></i><?php _e(' These tasks must be completed by you. Without completing these tasks, your company cannot perform the tasks for which you hired them.', ET_DOMAIN); ?></p>
                             </div>
                         </div>
                 </div>

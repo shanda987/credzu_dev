@@ -322,7 +322,7 @@
                         model: this.model,
                         carouselTemplate: '#ae_carousel_file_template',
                         extensions: ae_globals.file_types,
-                        dragdrop: true
+                       // dragdrop: true
                     })
                 }
             }

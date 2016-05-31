@@ -436,7 +436,7 @@ _.templateSettings = {
                     alert(error.message);
                 }
             };
-            console.log(this.config);
+
             if(typeof this.options.filters !='undefined'){
                 jQuery.extend(true, this.options.filters, this.config.filters);
             }
