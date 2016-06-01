@@ -59,24 +59,33 @@ class mJobOrderAction extends mJobPostAction{
             $request['post_status'] = 'pending';
         }
         if( !isset($request['updateAuthor']) || $request['updateAuthor'] != 1) {
-            if (isset($request['late']) && $request['late'] == '1' ) {
-                    $temp_order = get_post($request['ID']);
-                    if( $temp_order ) {
-                        $temp_order = $order_obj->convert($temp_order);
-                        if( $temp_order->mjob_author == $user_ID ) {
-                            $update_result = $wpdb->query($wpdb->prepare("UPDATE $wpdb->posts as P SET P.post_status = %s WHERE P.ID = %d", 'late', $request['ID']));
-                            $temp_order->post_status = 'late';
-                            $temp_order->status_text = __('LATE', ET_DOMAIN);
-                            $temp_order->status_class = 'late-color';
-                            $temp_order->status_text_color = 'late-text';
-                            wp_send_json(array(
-                                'success' => true,
-                                'msg' => __("Successful update!", ET_DOMAIN),
-                                'data'=> $temp_order
-                            ) );
+            $temp = array();
+            $temp_order = get_post($request['ID']);
+            $temp_order = $order_obj->convert($temp_order);
+            $requirement_files = $temp_order->requirement_files;
+            if( isset($request['requirement_id']) && isset( $request['requirement_files'])){
+                $a = $request['requirement_id'];
+                $temp[$a] = $request['requirement_files'];
+                $requirement_files = wp_parse_args($temp, $requirement_files);
+                $request['requirement_files'] = $requirement_files;
 
-                        }
+            }
+            if (isset($request['late']) && $request['late'] == '1' ) {
+                if( $temp_order ) {
+                    if( $temp_order->mjob_author == $user_ID ) {
+                        $update_result = $wpdb->query($wpdb->prepare("UPDATE $wpdb->posts as P SET P.post_status = %s WHERE P.ID = %d", 'late', $request['ID']));
+                        $temp_order->post_status = 'late';
+                        $temp_order->status_text = __('LATE', ET_DOMAIN);
+                        $temp_order->status_class = 'late-color';
+                        $temp_order->status_text_color = 'late-text';
+                        wp_send_json(array(
+                            'success' => true,
+                            'msg' => __("Successful update!", ET_DOMAIN),
+                            'data'=> $temp_order
+                        ) );
+
                     }
+                }
             } else {
                 if(isset($request['finished']) && $request['finished'] == '1') {
                     AE_WalletAction()->transferWorkingToAvailable($request['seller_id'], $request['ID'], $request['real_amount']);
@@ -275,7 +284,6 @@ class mJobOrderAction extends mJobPostAction{
         if(!isset($result->real_amount) || empty($result->real_amount)) {
             $result->real_amount = mJobRealPrice($result->amount);
         }
-
         return $result;
     }
     /**

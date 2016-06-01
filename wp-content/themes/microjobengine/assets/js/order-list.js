@@ -303,7 +303,7 @@
         Views.ModalRequirement = Views.Modal_Box.extend({
             el: '#requirement_modal',
             events: {
-                'click .btn-save': 'saveOrderRequirment'
+                'click .btn-save-requirement': 'saveOrderRequirment'
             },
             initialize: function () {
                 AE.Views.Modal_Box.prototype.initialize.call();
@@ -316,7 +316,7 @@
                 var view = this;
                 this.model = model;
                 this.data_id = data_id;
-                this.arr_ids = new Array();
+                this.arr_ids = [];
                 view.openModal();
                 view.initCarousel();
             },
@@ -346,46 +346,41 @@
             },
             showListFile: function(up, file, res){
                 var view = this;
-                view.$el.find('.btn-save').attr('disabled', false);
+                view.$el.find('.btn-save-requirement').attr('disabled', false);
                 view.arr_ids.push(res.data.attach_id);
             },
             saveOrderRequirment: function(e){
                 e.preventDefault();
                 var view = this;
-                if( this.model.get('requirement_files') != '' ) {
-                    var arr_files =  this.model.get('requirement_files');
-                }
-                else {
-                    var arr_files = new Array();
-                }
-                arr_files[this.data_id] = view.arr_ids;
-                this.model.set('requirement_files', arr_files);
-                //this.model.save('', '', {
-                //    beforeSend: function () {
-                //        view.blockUi.block($target)
-                //    },
-                //    success: function (result, res, xhr) {
-                //        if (res.success) {
-                //                AE.pubsub.trigger('ae:notification', {
-                //                    msg: res.msg,
-                //                    notice_type: 'success'
-                //                });
-                //            view.closeModal();
-                //        } else {
-                //            AE.pubsub.trigger('ae:notification', {
-                //                msg: res.msg,
-                //                notice_type: 'error'
-                //            });
-                //        }
-                //        view.blockUi.unblock();
-                //
-                //    }
-                //});
+                this.model.set('requirement_files', view.arr_ids);
+                this.model.set('requirement_id', view.data_id);
+                console.log(this.model);
+                this.model.save('', '', {
+                    beforeSend: function () {
+                        view.blockUi.block($target)
+                    },
+                    success: function (result, res, xhr) {
+                        if (res.success) {
+                                AE.pubsub.trigger('ae:notification', {
+                                    msg: res.msg,
+                                    notice_type: 'success'
+                                });
+                            view.closeModal();
+                        } else {
+                            AE.pubsub.trigger('ae:notification', {
+                                msg: res.msg,
+                                notice_type: 'error'
+                            });
+                        }
+                        view.blockUi.unblock();
+
+                    }
+                });
             },
             removeAll: function(model){
                 var view = this;
                 if( view.$el.find('.requirement-image-list .image-item').length <= 0){
-                    view.$el.find('.btn-save').attr('disabled', true);
+                    view.$el.find('.btn-save-requirement').attr('disabled', true);
                 }
             }
         });
