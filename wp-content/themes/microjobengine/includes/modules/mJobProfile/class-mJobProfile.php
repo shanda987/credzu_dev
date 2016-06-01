@@ -48,6 +48,7 @@ class mJobProfile extends mJobPost{
             'company_agreement_link',
             'company_signature_img',
             'company_status',
+            'company_status_message',
             'company_name',
             'company_address',
             'company_address_line2',

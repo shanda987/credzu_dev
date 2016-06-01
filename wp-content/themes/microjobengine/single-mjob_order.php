@@ -155,7 +155,7 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                     </div>
                                     <h4 class="float-center">
                                         <div id="display_name">
-                                            <div class="" data-edit="user" data-id="" data-name="display_name" data-type="input"><?php echo $profile->company_name; ?></div>
+                                            <div class="" data-edit="user" data-id="" data-name="display_name" data-type="input"><?php echo $profile->first_name.' '.$profile->last_name; ?></div>
                                         </div>
                                     </h4>
                                     <div class="line">
@@ -176,7 +176,14 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                             </div>
                             <div class="order-extra list-order">
                                 <p class="title-cate"><?php _e('Status', ET_DOMAIN); ?></p>
-                                <p><?php _e('All disputes have been sent to credit bureaus. Waiting for response', ET_DOMAIN); ?></p>
+                                <p><?php
+                                    if( empty($profile->company_status_message) ):
+                                        _e('All disputes have been sent to credit bureaus. Waiting for response', ET_DOMAIN);
+                                    else:
+                                        echo $profile->company_status_message;
+                                    endif;
+                                        ?>
+                                        </p>
                                 <div class="label-status label-status-order pending-color">
                                     <span><?php _e('ALERT', ET_DOMAIN); ?></span>
                                 </div>

@@ -24,7 +24,8 @@ $company_website = !empty($profile->company_website) ? $profile->company_website
 $company_year_established = !empty($profile->company_year_established) ? $profile->company_year_established : '';
 $company_amount_of_employees = !empty($profile->company_amount_of_employees) ? $profile->company_amount_of_employees : '';
 $company_description = !empty($profile->company_description) ? $profile->company_description : '';
-$company_welcome_message = '';
+$company_welcome_message = !empty($profile->company_welcome_message) ? $profile->company_welcome_message : '';
+$company_status_message = !empty($profile->company_status_message) ? $profile->company_status_message : '';
 get_header();
 
 // If Company, this outputs the Company Status bar (Doesn't show when approved)
@@ -121,6 +122,12 @@ echo mJobProfileAction()->display_company_status($user_role, $profile->company_s
                                 <div class="input-group">
                                     <div class="input-group-addon no-addon"><?php _e('Welcome message:', ET_DOMAIN); ?></div>
                                     <textarea name="company_welcome_message" id="company_welcome_message" placeholder="<?php _e('Thanks for trusting us with your credit report. Pursuant to federal law, we have to wait 72 hours for the cancellation period to expire. In the meantime, it is imperative that you get your credit report, billing information and complete profile information completed; we will not be able to begin without this information. If you have any questions, please reply here. We will begin in 72 hours. Thank you!', ET_DOMAIN); ?>"><?php echo $company_welcome_message; ?></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group clearfix">
+                                <div class="input-group">
+                                    <div class="input-group-addon no-addon"><?php _e('Status message:', ET_DOMAIN); ?></div>
+                                    <textarea name="company_status_message" id="company_status_message" placeholder="<?php _e('All disputes have been sent to credit bureaus. Waiting for response', ET_DOMAIN); ?>"><?php echo $company_status_message; ?></textarea>
                                 </div>
                             </div>
                             <div class="form-group clearfix float-right change-pass-button-method">
