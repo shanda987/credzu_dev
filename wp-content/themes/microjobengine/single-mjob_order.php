@@ -143,14 +143,14 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                         <div class="">
                                             <a href="#" class="">
                                                 <?php
-                                                echo mJobAvatar($user_ID, 75);
+                                                echo mJobAvatar($current->mjob_author, 75);
                                                 ?>
                                             </a>
                                         </div>
                                     </div>
                                     <h4 class="float-center">
                                         <div id="display_name">
-                                            <div class="" data-edit="user" data-id="" data-name="display_name" data-type="input"><?php echo $current_user->display_name; ?></div>
+                                            <div class="" data-edit="user" data-id="" data-name="display_name" data-type="input"><?php echo $profile->company_name; ?></div>
                                         </div>
                                     </h4>
                                     <div class="line">
@@ -158,7 +158,7 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                     </div>
                                     <h4 class="float-center order-mjob-content">
                                         <div >
-                                            <div class="" data-edit="user" data-id="" data-name="display_name" data-type="input"><?php echo $current->post_content; ?></div>
+                                            <div class="" data-edit="user" data-id="" data-name="display_name" data-type="input"><?php echo $profile->company_description; ?></div>
                                         </div>
                                     </h4>
                                 </div>
