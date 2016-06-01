@@ -229,13 +229,21 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                             <div role="tabpanel" class="tab-pane " id="document">
                                 <div id="incomingPaymentsForm">
                                         <?php
-                                        if( !empty($filess)): ?>
-                                            <ul class="requirement-list">
-                                        <?php     foreach( $filess as $files):
+                                        if( !empty($current->requirement_files)): ?>
+                                            <ul class="requirement-list document-list">
+                                        <?php     foreach( $current->requirement_files as $key=> $files):
+                                                    $term = get_term_by('slug', $key, 'mjob_requirement');
                                                     if(!empty($files)):
-                                                        foreach($files as $file): ?>
-                                                <li><a href="<?php echo $file->guid; ?>"><?php echo strtoupper($file->post_title).':'.date('d/m/Y', strtotime($file->post_date))?></a></li>
-                                        <?php
+                                                        $i = 0;
+                                                        $tx = '';
+                                                        foreach($files as $file):
+                                                            $f = get_post($file);
+                                                            if( $i > 0):
+                                                                $tx = '_'.$i;
+                                                            endif;
+                                                            ?>
+                                                <li><a target="_blank" href="<?php echo $f->guid; ?>"><?php echo $term->name.$tx.' : '.date('d/m/Y', strtotime($f->post_date))?></a></li>
+                                        <?php $i++;
                                                         endforeach;
                                                     endif;
                                                         endforeach;?>
