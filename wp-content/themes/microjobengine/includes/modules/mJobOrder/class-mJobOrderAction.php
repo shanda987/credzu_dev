@@ -284,6 +284,7 @@ class mJobOrderAction extends mJobPostAction{
         if(!isset($result->real_amount) || empty($result->real_amount)) {
             $result->real_amount = mJobRealPrice($result->amount);
         }
+        $result->doc_html =  $this->mjob_get_requirement_template($result->requirement_files);
         return $result;
     }
     /**
@@ -583,6 +584,39 @@ class mJobOrderAction extends mJobPostAction{
                 wp_update_post( $my_post );
             }
         }
+    }
+    /**
+      * get document template
+      *
+      * @param void
+      * @return void
+      * @since 1.4
+      * @package MicrojobEngine
+      * @category CREDZU
+      * @author JACK BUI
+      */
+    public function mjob_get_requirement_template($requirement_files){
+        $html = '';
+        if( isset($requirement_files) && !empty($requirement_files) ){
+            foreach( $requirement_files as $key=> $files) {
+                $term = get_term_by('slug', $key, 'mjob_requirement');
+                if (!empty($files)):
+                    $i = 0;
+                    $tx = '';
+                    foreach ($files as $file):
+                        $f = get_post($file);
+                        if ($i > 0):
+                            $tx = '_' . $i;
+                        endif;
+                        $html .= '<li>';
+                        $html .= '<a target="_blank" href="'.$f->guid.'">'.$term->name . $tx . ' : ' . date('d/m/Y', strtotime($f->post_date)).'</a>';
+                        $html .= '</li>';
+                        $i++;
+                    endforeach;
+                endif;
+            }
+        }
+        return $html;
     }
 }
 new mJobOrderAction();

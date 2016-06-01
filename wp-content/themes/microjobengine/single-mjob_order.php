@@ -228,9 +228,10 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                             </div>
                             <div role="tabpanel" class="tab-pane " id="document">
                                 <div id="incomingPaymentsForm">
+                                    <ul class="requirement-list document-list">
                                         <?php
                                         if( !empty($current->requirement_files)): ?>
-                                            <ul class="requirement-list document-list">
+
                                         <?php     foreach( $current->requirement_files as $key=> $files):
                                                     $term = get_term_by('slug', $key, 'mjob_requirement');
                                                     if(!empty($files)):
@@ -247,8 +248,11 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                                         endforeach;
                                                     endif;
                                                         endforeach;?>
-                                                </ul>
-                                        <?php endif; ?>
+                                        <?php
+                                        else:
+                                            _e('There are no document found.', ET_DOMAIN);
+                                        endif; ?>
+                                    </ul>
                                 </div>
                             </div>
                         </div>

@@ -371,6 +371,10 @@
                             view.target.addClass('disabled');
                             view.target.find('i').removeClass('fa-square-o');
                             view.target.find('i').addClass('fa-check-square-o');
+                            if( typeof res.data.doc_html !== 'undefined'){
+                                $('.document-list').html('');
+                                $('.document-list').append(res.data.doc_html);
+                            }
                         } else {
                             AE.pubsub.trigger('ae:notification', {
                                 msg: res.msg,
