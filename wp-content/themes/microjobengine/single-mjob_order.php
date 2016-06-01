@@ -204,7 +204,7 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                                     $class = '';
                                                 endif;
                                                 ?>
-                                                <li><a href="#" class="requirement-item <?php echo $class; ?>" data-id="<?php echo $term->slug; ?>"><?php echo $icon; ?><?php echo ' '.$term->name ?></a></li>
+                                                <li><a href="#" class="requirement-item <?php echo $class; ?>" data-id="<?php echo $term->slug; ?>" data-name="<?php echo $term->name; ?>"><?php echo $icon; ?>  <?php echo ' '.$term->name ?></a></li>
                                             <?php endforeach; ?>
                                         </ul>
                                     <?php endif; ?>

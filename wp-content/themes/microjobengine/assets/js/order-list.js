@@ -294,10 +294,11 @@
                 e.preventDefault();
                 $target = $(e.currentTarget);
                 var data_id = $target.attr('data-id');
+                var data_name = $target.attr('data-name');
                 if( typeof this.modalrequirement === 'undefined' ) {
                     this.modalrequirement = new Views.ModalRequirement();
                 }
-                this.modalrequirement.onOpen(this.model, data_id, $target);
+                this.modalrequirement.onOpen(this.model, data_id, $target, data_name);
             }
         });
         Views.ModalRequirement = Views.Modal_Box.extend({
@@ -312,13 +313,14 @@
                 this.blockUi = new Views.BlockUi();
 
             },
-            onOpen: function(model, data_id, $target){
+            onOpen: function(model, data_id, $target, data_name){
                 var view = this;
                 this.model = model;
                 this.data_id = data_id;
                 this.target = $target;
                 this.arr_ids = [];
                 view.openModal();
+                view.$el.find('.requirement-modal-title').html(data_name);
                 view.initCarousel();
             },
             initCarousel: function(){
