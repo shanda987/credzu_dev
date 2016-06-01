@@ -24,19 +24,21 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
     <div class="block-page">
         <div class="container">
             <div class="row title-top-pages dashboard withdraw no-margin">
-                <p class="block-title">
-                    <?php _e('ORDER DETAILS AND STATUS', ET_DOMAIN); ?>
-                    <span class="user-conversation">with <a href="" class="" target="_blank"><?php echo $current->mjob->post_title; ?></a></span>
-                </p>
-                <p class="btn-back"><?php _e('Communicate with your company below.', ET_DOMAIN); ?></p>
+                <div class="box-shadow-title">
+                    <p class="block-title">
+                        <?php _e('ORDER DETAILS AND STATUS', ET_DOMAIN); ?>
+                        <span class="user-conversation">with <a href="" class="" target="_blank"><?php echo $current->mjob->post_title; ?></a></span>
+                    </p>
+                    <p class="btn-back"><?php _e('Communicate with your company below.', ET_DOMAIN); ?></p>
+                </div>
             </div>
             <div class="row no-margin">
                 <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 conversation-form">
-                    <p class="text-dispute note-scroll"><?php _e('You can scroll up to view all messages', ET_DOMAIN); ?></p>
-                    <div class="conversation-date float-center">
-                        <div class="line"></div>
-                        <span class="date"><?php echo get_the_date(get_option('date_format')); ?></span>
-                    </div>
+<!--                    <p class="text-dispute note-scroll">--><?php //_e('You can scroll up to view all messages', ET_DOMAIN); ?><!--</p>-->
+<!--                    <div class="conversation-date float-center">-->
+<!--                        <div class="line"></div>-->
+<!--                        <span class="date">--><?php //echo get_the_date(get_option('date_format')); ?><!--</span>-->
+<!--                    </div>-->
                         <?php
                             $post_data = array();
                             $args = array(

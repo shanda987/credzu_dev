@@ -475,3 +475,11 @@
     text-transform: none;
     font-weight: 100;
 }
+.mjob_conversation_detail_page .box-shadow-title {
+    background: url(../img/box-line.png) no-repeat;
+    background-size: 66%;
+    width: 100%;
+    height: auto;
+    background-position: left bottom;
+    padding-bottom: 37px;
+}
