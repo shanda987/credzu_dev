@@ -194,8 +194,17 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                     if( !empty($terms) && !is_wp_error($terms) ):
                                         ?>
                                         <ul class="requirement-list">
-                                            <?php foreach( $terms as $term): ?>
-                                                <li><a href="#" class="requirement-item" data-id="<?php echo $term->slug; ?>"> <i class="fa fa-square-o" aria-hidden="true"></i><?php echo ' '.$term->name ?></a></li>
+                                            <?php foreach( $terms as $term):
+                                                if( isset($current->requirement_files[$term->slug]) && !empty($current->requirement_files[$term->slug])):
+                                                    $icon = '<i class="fa fa-check-square-o" aria-hidden="true"></i>';
+                                                    $class = 'disabled';
+
+                                                else:
+                                                    $icon = '<i class="fa fa-square-o" aria-hidden="true"></i>';
+                                                    $class = '';
+                                                endif;
+                                                ?>
+                                                <li><a href="#" class="requirement-item <?php echo $class; ?>" data-id="<?php echo $term->slug; ?>"><?php echo $icon; ?><?php echo ' '.$term->name ?></a></li>
                                             <?php endforeach; ?>
                                         </ul>
                                     <?php endif; ?>

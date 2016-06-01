@@ -463,3 +463,7 @@
 #requirement_modal .image-upload .drag-image .image-item i{
     font-size: 18px!important;
 }
+.disabled{
+    pointer-events: none;
+    cursor: default;
+}

@@ -297,7 +297,7 @@
                 if( typeof this.modalrequirement === 'undefined' ) {
                     this.modalrequirement = new Views.ModalRequirement();
                 }
-                this.modalrequirement.onOpen(this.model, data_id);
+                this.modalrequirement.onOpen(this.model, data_id, $target);
             }
         });
         Views.ModalRequirement = Views.Modal_Box.extend({
@@ -312,10 +312,11 @@
                 this.blockUi = new Views.BlockUi();
 
             },
-            onOpen: function(model, data_id){
+            onOpen: function(model, data_id, $target){
                 var view = this;
                 this.model = model;
                 this.data_id = data_id;
+                this.target = $target;
                 this.arr_ids = [];
                 view.openModal();
                 view.initCarousel();
@@ -354,7 +355,6 @@
                 var view = this;
                 this.model.set('requirement_files', view.arr_ids);
                 this.model.set('requirement_id', view.data_id);
-                console.log(this.model);
                 this.model.save('', '', {
                     beforeSend: function () {
                         view.blockUi.block($target)
@@ -366,6 +366,9 @@
                                     notice_type: 'success'
                                 });
                             view.closeModal();
+                            view.target.addClass('disabled');
+                            view.target.find('i').removeClass('fa-square-o');
+                            view.target.find('i').addClass('fa-check-square-o');
                         } else {
                             AE.pubsub.trigger('ae:notification', {
                                 msg: res.msg,

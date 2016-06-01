@@ -68,7 +68,6 @@ class mJobOrderAction extends mJobPostAction{
                 $temp[$a] = $request['requirement_files'];
                 $requirement_files = wp_parse_args($temp, $requirement_files);
                 $request['requirement_files'] = $requirement_files;
-
             }
             if (isset($request['late']) && $request['late'] == '1' ) {
                 if( $temp_order ) {
