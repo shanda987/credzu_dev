@@ -81,11 +81,11 @@
                     collectionView.$el.prepend(itemView.el);
                 }
             });
-
             // Message block control
             new Views.BlockControl({
                 collection: messageCollection,
                 el: messageContainer,
+
             })
         }
 
@@ -268,7 +268,6 @@
                     collection: this.messageCollection,
                     el: messageContainer.find('.list-conversation'),
                 });
-
                 AE.pubsub.on('ae:form:submit:success', this.sendMessageSuccess, this);
             },
             // Init new model
@@ -312,6 +311,9 @@
             sendMessageSuccess: function(result, resp, jqXHR, type) {
                 if(type == 'conversation-single') {
                     var view = this;
+                    if( $('.list-conversation').find('li').length == 0 ){
+                        $('.list-conversation').html('');
+                    }
                     if(resp.success == true) {
                         view.messageCollection.fetch({
                             data: {

@@ -24,8 +24,11 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
     <div class="block-page">
         <div class="container">
             <div class="row title-top-pages dashboard withdraw no-margin">
-                <p class="block-title"><?php _e('ORDER DETAILS AND STATUS', ET_DOMAIN); ?></p>
-                <a href="<?php echo et_get_page_link('dashboard'); ?>" class="btn-back"><i class="fa fa-angle-left"></i><?php _e('Back to dashboard', ET_DOMAIN); ?></a>
+                <p class="block-title">
+                    <?php _e('ORDER DETAILS AND STATUS', ET_DOMAIN); ?>
+                    <span class="user-conversation">with <a href="" class="" target="_blank"><?php echo $current->mjob->post_title; ?></a></span>
+                </p>
+                <p class="btn-back"><?php _e('Communicate with your company below.', ET_DOMAIN); ?></p>
             </div>
             <div class="row no-margin">
                 <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 conversation-form">

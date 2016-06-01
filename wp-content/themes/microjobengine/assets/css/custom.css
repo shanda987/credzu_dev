@@ -467,3 +467,11 @@
     pointer-events: none;
     cursor: default;
 }
+.user-conversation {
+    display: block;
+    font-size: 11px;
+    color: #aaafb3;
+    font-style: italic;
+    text-transform: none;
+    font-weight: 100;
+}
