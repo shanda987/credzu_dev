@@ -2,7 +2,7 @@
 /**
  * Template Name: Page Profile
  */
-global $wp_query, $ae_post_factory, $post, $current_user, $user_ID, $is_individual;
+global $wp_query, $ae_post_factory, $post, $current_user, $user_ID;
 $user = mJobUser::getInstance();
 $user_data = $user->convert($current_user->data);
 $user_role = ae_user_role($current_user->ID);
@@ -20,10 +20,7 @@ $first_name = !empty($profile->first_name) ? $profile->first_name : '';
 $last_name = !empty($profile->last_name) ? $profile->last_name : '';
 $phone = !empty($profile->phone) ? $profile->phone : '';
 $business_email = !empty($profile->business_email) ? $profile->business_email : $user_data->user_email;
-
-if ( $is_individual ) {
-    $credit_goal = !empty($profile->credit_goal) ? $profile->credit_goal : '';
-}
+$credit_goal = !empty($profile->credit_goal) ? $profile->credit_goal : '';
 
 get_header();
 
@@ -119,14 +116,12 @@ echo mJobProfileAction()->display_company_status($user_role, $profile->company_s
                                 <input type="text" name="zip_code" id="zip_code" placeholder="<?php _e('Zip code', ET_DOMAIN); ?>" value="<?php echo $profile->zip_code; ?>">
                             </div>
                         </div>
-                        <?php if ( $is_individual ): ?>
                         <div class="form-group clearfix">
                                 <div class="input-group">
                                     <div class="input-group-addon no-addon"><?php _e('Credit goals:', ET_DOMAIN); ?></div>
                                     <input type="text" name="credit_goal" id="credit_goal" placeholder="<?php _e('Credit goals', ET_DOMAIN); ?>" value="<?php echo $credit_goal; ?>">
                                 </div>
                             </div>
-                        <?php endif; ?>
                             <div class="form-group clearfix float-right change-pass-button-method">
                                 <button class="btn-submit"><?php _e('Update', ET_DOMAIN); ?></button>
                             </div>

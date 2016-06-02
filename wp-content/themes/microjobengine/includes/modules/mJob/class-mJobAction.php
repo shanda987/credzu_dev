@@ -25,6 +25,8 @@ class mJobAction extends mJobPostAction{
         $this->add_ajax('mjob-get-mjob-infor', 'getMjobPost');
         $this->add_ajax('mjob-get-skill-list', 'getMjobTags');
         $this->add_ajax('mjob-get-breadcum-list', 'getMjobCats');
+        $this->add_action('ae_tax_meta_add_field', 'mjob_add_meta_field');
+        $this->add_action('ae_tax_meta_edit_field', 'mjob_edit_meta_field', 10, 3);
         $this->ruler = array(
             'post_title'=>'required',
             'post_content'=>'required',
@@ -748,5 +750,238 @@ class mJobAction extends mJobPostAction{
         $user_status = get_user_meta($user_id, 'user_status', true);
         return $user_status;
     }
+    /**
+      * add meta field for mjob category
+      *
+      * @param void
+      * @return void
+      * @since 1.4
+      * @package MicrojobEngine
+      * @category CREDZU
+      * @author JACK BUI
+      */
+    public function mjob_add_meta_field($taxonomy){
+        if( $taxonomy == 'mjob_category'):
+            global $featured_tax, $user_ID, $ae_post_factory;
+            $ae_pack = $ae_post_factory->get('pack');
+            $packs = $ae_pack->fetch('pack');
+            $term_id = 0;
+            // Remove image URL
+            $remove_url = add_query_arg( array(
+            'action'   => 'remove-wp-term-images',
+            'term_id'  => $term_id,
+            '_wpnonce' => false,
+            ) );
+            // Get the meta value
+            $value = get_term_meta($term_id, 'mjob_category_image', true);
+            $hidden = empty( $value )
+            ? ' style="display: none;"'
+            : ''; ?>
+            <div class="form-field term-group">
+            <label><?php _e('Pricing plan', ET_DOMAIN) ?></label>
+            <div>
+                <select name="pricing_plan">
+                    <?php if(!empty($packs)):
+                        foreach($packs as $pack):
+                            ?>
+                            <option  value="<?php echo $pack->sku; ?>"><?php echo $pack->post_title; ?></option>
+                        <?php endforeach;
+                    endif; ?>
+                </select>
+            </div>
+            <div class="form-field term-group">
+                <label><?php _e('Taxonomy image', ET_DOMAIN) ?></label>
+                <div>
+                    <img id="ae-tax-images-photo" src="<?php echo esc_url( wp_get_attachment_image_url( $value, 'full' ) ); ?>"<?php echo $hidden; ?> />
+                    <input type="hidden" name="<?php echo $taxonomy; ?>_image" id="<?php echo $taxonomy; ?>_image" value="<?php echo esc_attr( $value ); ?>" />
+                </div>
+
+                <a class="button-secondary ae-tax-images-media">
+                    <?php esc_html_e( 'Choose Image', ET_DOMAIN ); ?>
+                </a>
+
+                <a href="<?php echo esc_url( $remove_url ); ?>" class="button ae-tax-images-remove"<?php echo $hidden; ?>>
+                    <?php esc_html_e( 'Remove', 'wp-user-avatars' ); ?>
+                </a>
+                <div class="clearfix"></div>
+                <br/>
+                <div class="featured-tax">
+                    <input type="checkbox" name="featured-tax" class="left margin-20 margin-top-3" value="true" />
+                    <label for="featured-tax" class="left"><?php _e('Featured taxonomy', ET_DOMAIN); ?></label>
+                </div>
+                <br/>
+                <br/>
+                <p>
+                    <label for="cat_bottom_title"><?php _e('Bottom Title', ET_DOMAIN) ?></label>
+                    <input type="text" name="cat_bottom_title" />
+                </p>
+                <p>
+                    <label for="cat_bottom_block1_title"><?php _e('Bottom block 1 title', ET_DOMAIN) ?></label>
+                    <input type="text" name="cat_bottom_block1_title" />
+                </p>
+                <p>
+                    <label for="cat_bottom_block1_content"><?php _e('Bottom block 1 content', ET_DOMAIN) ?></label>
+                    <textarea name="cat_bottom_block1_content" rows="5"> </textarea>
+                </p>
+                <p>
+                    <label for="cat_bottom_block2_title"><?php _e('Bottom block 2 title', ET_DOMAIN) ?></label>
+                    <input type="text" name="cat_bottom_block2_title" />
+                </p>
+                <p>
+                    <label for="cat_bottom_block2_content"><?php _e('Bottom block 2 content', ET_DOMAIN) ?></label>
+                    <textarea name="cat_bottom_block2_content" rows="5"> </textarea>
+                </p>
+                <p>
+                    <label for="cat_bottom_block3_title"><?php _e('Bottom block 3 title', ET_DOMAIN) ?></label>
+                    <input type="text" name="cat_bottom_block3_title" />
+                </p>
+                <p>
+                    <label for="cat_bottom_block3_content"><?php _e('Bottom block 3 content', ET_DOMAIN) ?></label>
+                    <textarea name="cat_bottom_block3_content" rows="5"> </textarea>
+                </p>
+            </div>
+            <div class="clearfix"></div>
+            <br/>
+                <?php
+                elseif( $taxonomy == 'mjob_requirement'): ?>
+                    <label><?php _e('What will open when click to this item', ET_DOMAIN) ?></label>
+                    <div>
+                        <select name="click_type">
+                            <option value="open-upload-modal"><?php _e('Open upload modal', ET_DOMAIN); ?></option>
+                            <option value="open-contact-info"><?php _e('Open Contact information', ET_DOMAIN); ?></option>
+                            <option value="open-billing-info"><?php _e('Open billing information', ET_DOMAIN); ?></option>
+                        </select>
+                    </div>
+                    <br/>
+            <?php    endif;
+        }
+    /**
+      * edit meta field
+      *
+      * @param void
+      * @return void
+      * @since 1.4
+      * @package MicrojobEngine
+      * @category CREDZU
+      * @author JACK BUI
+      */
+    public function mjob_edit_meta_field($term, $taxonomy, $meta){
+        if( $taxonomy == 'mjob_category'):
+             global $featured_tax, $user_ID, $ae_post_factory;
+        $ae_pack = $ae_post_factory->get('pack');
+        $packs = $ae_pack->fetch('pack');
+        // get current group
+        $check = '';
+        $featured_tax = get_term_meta( $term->term_id, 'featured-tax', true );
+        if( $featured_tax ){
+            $check = 'checked';
+        }
+        $remove_url = add_query_arg( array(
+            'action'   => 'remove-ae-tax-images',
+            'term_id'  => $term->term_id,
+            '_wpnonce' => false,
+        ) );
+        $value = get_term_meta($term->term_id, 'mjob_category_image', true);
+        $hidden = empty( $value )
+            ? ' style="display: none;"'
+            : '';
+        $arr = array();
+        foreach( $meta as $key=>$valu ){
+            $arr[$valu] = get_term_meta($term->term_id, $valu, true);
+        }
+        ?>
+        <tr class="form-field term-group-wrap">
+            <th scope="row"><label for="featured-tax"><?php _e( 'Pricing plan', ET_DOMAIN ); ?></label></th>
+            <td>
+                <select name="pricing_plan">
+                <?php if(!empty($packs)):
+                    foreach($packs as $pack):
+                        $selected = '';
+                        if( $pack->sku == $arr['pricing_plan']):
+                            $selected = 'selected';
+                        endif;
+                    ?>
+                    <option <?php echo $selected; ?> value="<?php echo $pack->sku; ?>"><?php echo $pack->post_title; ?></option>
+                <?php endforeach;
+                    endif; ?>
+                </select>
+            </td>
+        </tr>
+        <tr class="form-field term-group-wrap">
+        <th scope="row"><label for="featured-tax"><?php _e( 'Featured taxonomy', ET_DOMAIN ); ?></label></th>
+        <td><input type="checkbox" name="featured-tax" value="true" <?php echo $check; ?>/> <label for="featured-tax"><?php _e('Featured taxonomy', ET_DOMAIN); ?></label></td>
+        </tr>
+        <tr>
+            <th scope="row"><label for="tax-image"><?php _e( 'taxonomy image', ET_DOMAIN ); ?></label></th>
+            <td>
+                <div>
+                    <img id="ae-tax-images-photo" src="<?php echo esc_url( wp_get_attachment_image_url( $value, 'full' ) ); ?>"<?php echo $hidden; ?> />
+                    <input type="hidden" name="<?php echo $taxonomy; ?>_image" id="<?php echo $taxonomy; ?>_image" value="<?php echo esc_attr( $value ); ?>" />
+                </div>
+
+                <a class="button-secondary ae-tax-images-media">
+                    <?php esc_html_e( 'Choose Image', ET_DOMAIN ); ?>
+                </a>
+
+                <a href="<?php echo esc_url( $remove_url ); ?>" class="button ae-tax-images-remove"<?php echo $hidden; ?>>
+                    <?php esc_html_e( 'Remove', 'wp-user-avatars' ); ?>
+                </a>
+            </td>
+        </tr>
+        <tr class="form-field term-slug-wrap">
+            <th scope="row"><label for="cat_bottom_title"><?php _e('Bottom Title', ET_DOMAIN) ?></label></th>
+            <td><input type="text" name="cat_bottom_title" size="40" value="<?php echo $arr['cat_bottom_title']; ?>"/></td>
+        </tr>
+        <tr class="form-field term-slug-wrap">
+            <th scope="row"><label for="cat_bottom_block1_title"><?php _e('Bottom block 1 title', ET_DOMAIN) ?></label></th>
+            <td><input type="text" name="cat_bottom_block1_title" value="<?php echo $arr['cat_bottom_block1_title']; ?>"/></td>
+        </tr>
+        <tr class="form-field term-slug-wrap">
+            <th scope="row"><label for="cat_bottom_block1_content"><?php _e('Bottom block 1 content', ET_DOMAIN) ?></label></th>
+            <td><textarea name="cat_bottom_block1_content" rows="5"><?php echo $arr['cat_bottom_block1_content']; ?> </textarea></td>
+        </tr>
+        <tr class="form-field term-slug-wrap">
+            <th scope="row"><label for="cat_bottom_block2_title"><?php _e('Bottom block 2 title', ET_DOMAIN) ?></label></th>
+            <td><input type="text" name="cat_bottom_block2_title" value="<?php echo $arr['cat_bottom_block2_title']; ?>" /></td>
+        </tr>
+        <tr class="form-field term-slug-wrap">
+            <th scope="row"><label for="cat_bottom_block2_content"><?php _e('Bottom block 2 content', ET_DOMAIN) ?></label></th>
+            <td><textarea name="cat_bottom_block2_content" rows="5"> <?php echo $arr['cat_bottom_block2_content']; ?></textarea></td>
+        </tr>
+        <tr class="form-field term-slug-wrap">
+            <th scope="row"><label for="cat_bottom_block3_title"><?php _e('Bottom block 3 title', ET_DOMAIN) ?></label></th>
+            <td><input type="text" name="cat_bottom_block3_title" value="<?php echo $arr['cat_bottom_block3_title']; ?>" /></td>
+        </tr>
+        <tr class="form-field term-slug-wrap">
+            <th scope="row"><label for="cat_bottom_block3_content"><?php _e('Bottom block  content', ET_DOMAIN) ?></label></th>
+            <td><textarea name="cat_bottom_block3_content" rows="5"> <?php echo $arr['cat_bottom_block3_content']; ?></textarea></td>
+        </tr>
+        <?php
+         elseif( $taxonomy == 'mjob_requirement'): ?>
+        <tr class="form-field term-group-wrap">
+            <th scope="row"><label for="featured-tax"><?php _e( 'What will open when click to this item', ET_DOMAIN ); ?></label></th>
+            <td>
+                <select name="click_type">
+                    <?php if( $term->click_type == 'open-upload-modal'): ?>
+                    <option selected value="open-upload-modal"><?php _e('Open upload modal', ET_DOMAIN); ?></option>
+                    <?php else: ?>
+                        <option  value="open-upload-modal"><?php _e('Open upload modal', ET_DOMAIN); ?></option>
+                    <?php endif; ?>
+                    <?php if($term->click_type == 'open-contact-info' ):  ?>
+                    <option selected value="open-contact-info"><?php _e('Open Contact information', ET_DOMAIN); ?></option>
+                    <?php else: ?>
+                    <option  value="open-contact-info"><?php _e('Open Contact information', ET_DOMAIN); ?></option>
+                    <?php endif; ?>
+                    <?php if( $term->click_type == 'open-billing-info' ): ?>
+                    <option selected value="open-billing-info"><?php _e('Open billing information', ET_DOMAIN); ?></option>
+                    <?php else: ?>
+                        <option  value="open-billing-info"><?php _e('Open billing information', ET_DOMAIN); ?></option>
+                    <?php endif; ?>
+                </select>
+            </td>
+        </tr>
+       <?php endif;
+    }
+
 }
 new mJobAction();

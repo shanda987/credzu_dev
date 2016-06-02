@@ -16,7 +16,7 @@ else{
     $to_user = $current->mjob_author;
    $flag = true;
 }
-$profile = mJobProfileAction()->getProfile($current->mjob_author);
+$profile = mJobProfileAction()->getProfile($to_user);
 $current->_wpnonce = de_create_nonce('ae-mjob_post-sync');
 echo '<script type="text/template" id="order_single_data" >'.json_encode($current).'</script>';
 ?>
@@ -163,7 +163,17 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                     </div>
                                     <h4 class="float-center order-mjob-content">
                                         <div >
-                                            <div class="" data-edit="user" data-id="" data-name="display_name" data-type="input"><?php echo $profile->company_description; ?></div>
+                                            <div class="" data-edit="user" data-id="" data-name="display_name" data-type="input">
+                                                <?php
+                                                    $to_role = ae_user_role($to_user);
+                                                    if( $to_role == COMPANY):
+                                                    echo $profile->company_description;
+                                                    elseif( $to_role == INDIVIDUAL ):
+                                                        echo $profile->credit_goal;
+                                                    else:
+                                                        _e('User Description here', ET_DOMAIN);
+                                                    endif;
+                                                ?></div>
                                         </div>
                                     </h4>
                                 </div>
