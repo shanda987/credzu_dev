@@ -204,10 +204,16 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                 <div class="requirment-tab-content">
                                     <?php $terms = get_the_terms($current->post_parent, 'mjob_requirement');
                                     if( !empty($terms) && !is_wp_error($terms) ):
+                                        $user_role = ae_user_role($user_ID);
+                                        if( $user_role == INDIVIDUAL):
+                                            $cl1 = 'requirement-item';
+                                        elseif( $user_role == COMPANY):
+                                            $cl1 = 'need-uploads';
+                                        endif;
                                         ?>
                                         <ul class="requirement-list">
                                             <?php foreach( $terms as $term):
-                                                if( isset($current->requirement_files[$term->slug]) && !empty($current->requirement_files[$term->slug])):
+                                                if( empty($current->need_uploads) || !isset($current->need_uploads[$term->slug]) ):
                                                     $icon = '<i class="fa fa-check-square-o" aria-hidden="true"></i>';
                                                     $class = 'disabled';
 
@@ -216,7 +222,7 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                                     $class = '';
                                                 endif;
                                                 ?>
-                                                <li><a href="#" class="requirement-item <?php echo $class; ?>" data-id="<?php echo $term->slug; ?>" data-name="<?php echo $term->name; ?>"><?php echo $icon; ?>  <?php echo ' '.$term->name ?></a></li>
+                                                <li><a href="#" class="<?php echo $cl1.' ';?> <?php echo $class; ?>" data-id="<?php echo $term->slug; ?>" data-name="<?php echo $term->name; ?>"><?php echo $icon; ?>  <?php echo ' '.$term->name ?></a></li>
                                             <?php endforeach; ?>
                                         </ul>
                                     <?php endif; ?>
