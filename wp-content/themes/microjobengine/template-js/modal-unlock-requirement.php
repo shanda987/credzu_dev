@@ -10,11 +10,12 @@
                 <div class="unlock-requirement-modal">
                     <div class="form-group clearfix">
                         <div class="input-group">
-                            <div class="input-group-addon no-addon"><?php _e('Do you want to ask your client to get more information about: <span class="unlock-more"></span>', ET_DOMAIN ) ?></div>
+                            <p class="notice-message"><?php _e('Do you want to ask your client to get more information about: <span class="unlock-more"></span>', ET_DOMAIN ) ?></p>
                         </div>
                     </div>
                     <div class="form-group clearfix float-right change-pass-button-method">
-                        <button class="btn-submit"><?php _e('Save', ET_DOMAIN); ?></button>
+                        <button class="btn-submit btn-ask-requirement"><?php _e('Ask', ET_DOMAIN); ?></button>
+                        <input type="hidden" class="input-item" name="_wpnonce" id="profile_wpnonce" value="<?php echo de_create_nonce('ae-mjob_post-sync');?>" />
                     </div>
                 </div>
             </div>

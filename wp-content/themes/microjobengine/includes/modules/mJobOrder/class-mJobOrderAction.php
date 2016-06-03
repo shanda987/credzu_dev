@@ -76,6 +76,13 @@ class mJobOrderAction extends mJobPostAction{
                 }
                 $request['uploaded'] = wp_parse_args(array($request['need_upload_remove']), array($request['uploaded']));
             }
+            if( isset($request['need_upload_add']) && isset($request['need_uploads'])){
+                $request['need_uploads'] = wp_parse_args(array($request['need_upload_add']), $request['need_uploads']);
+                $sr = array_search($request['need_upload_add'], array($request['uploaded']));
+                if( $sr !== false ){
+                    unset($request['uploaded'][$sr]);
+                }
+            }
             if (isset($request['late']) && $request['late'] == '1' ) {
                 if( $temp_order ) {
                     if( $temp_order->mjob_author == $user_ID ) {

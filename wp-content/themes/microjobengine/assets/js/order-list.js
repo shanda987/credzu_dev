@@ -397,6 +397,7 @@
                 this.model.set('requirement_files', view.arr_ids);
                 this.model.set('requirement_id', view.data_id);
                 view.model.set('need_upload_remove', view.data_id);
+                $target = $(e.currentTarget);
                 this.model.save('', '', {
                     beforeSend: function () {
                         view.blockUi.block($target)
@@ -608,7 +609,7 @@
         Views.ModalUnlockRequirement = Views.Modal_Box.extend({
             el: '#unlock_requirement_modal',
             events: {
-                'click .btn-save-requirement': 'saveOrderRequirment'
+                'click .btn-ask-requirement': 'askRequirment'
             },
             initialize: function () {
                 AE.Views.Modal_Box.prototype.initialize.call();
@@ -622,7 +623,41 @@
                 this.target = $target;
                 this.arr_ids = [];
                 view.openModal();
+                view.$el.find('.unlock-more').html($target.attr('data-name'));
             },
+            askRequirment: function(e){
+                var view = this;
+                this.model.set('need_upload_add', this.data_id);
+                $target = $(e.currentTarget);
+                this.model.save('', '', {
+                    beforeSend: function () {
+                        view.blockUi.block($target)
+                    },
+                    success: function (result, res, xhr) {
+                        if (res.success) {
+                            AE.pubsub.trigger('ae:notification', {
+                                msg: res.msg,
+                                notice_type: 'success'
+                            });
+                            view.closeModal();
+                            view.target.addClass('disabled');
+                            view.target.find('i').removeClass('fa-square-o');
+                            view.target.find('i').addClass('fa-check-square-o');
+                            if( typeof res.data.doc_html !== 'undefined'){
+                                $('.document-list').html('');
+                                $('.document-list').append(res.data.doc_html);
+                            }
+                        } else {
+                            AE.pubsub.trigger('ae:notification', {
+                                msg: res.msg,
+                                notice_type: 'error'
+                            });
+                        }
+                        view.blockUi.unblock();
+
+                    }
+                });
+            }
         });
         Views.ModalDelivery = Views.Modal_Box.extend({
             el: '#delivery',
