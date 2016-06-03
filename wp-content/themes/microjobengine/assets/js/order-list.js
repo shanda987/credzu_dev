@@ -459,6 +459,7 @@
             },
             afterSave: function(result, resp, jqXHR, type){
                 var view = this;
+                console.log(type);
                 if( type == 'update-billing-hiring-modal'){
                     view.orderModel.set('need_upload_remove', view.data_id);
                     this.orderModel.save('', '', {
