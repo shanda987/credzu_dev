@@ -315,7 +315,7 @@
                         this.profileModel = new Models.mJobProfile();
                     }
                     if (typeof this.modalbilinginfo === 'undefined') {
-                        this.modalbilinginfo = new Views.ModaBillingInfo;
+                        this.modalbilinginfo = new Views.ModaBillingInfo();
                     }
                     this.modalbilinginfo.onOpen(this.profileModel,  $target, this.model, data_id);
                 }
