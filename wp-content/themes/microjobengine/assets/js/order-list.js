@@ -490,7 +490,7 @@
                 var view = this;
                 view.$el.find('input.input-item,input[type="text"],input[type="hidden"], textarea,select').each(function() {
                     var $input = $(this);
-                    if( $input.attr('name') != '_wpnonce' ) {
+                    if( $input.attr('name') != '_wpnonce' && $input.attr('name') != 'is_billing'  ) {
                         $input.val(model.get($input.attr('name')));
                     }
                 });
