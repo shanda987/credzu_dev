@@ -8,7 +8,7 @@
             </div>
             <div class="modal-body delivery-order">
                 <div class="form-confirm-billing-modal">
-                    <form class="et-form">
+                    <form class="et-form billing-info-form">
                         <div class="form-group clearfix">
                             <div class="input-group">
                                 <div class="input-group-addon no-addon"></div>

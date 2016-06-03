@@ -489,7 +489,7 @@
 .form-confirm-info-modal{
     margin-bottom: 20px;
 }
-.contact-info-form{
+.contact-info-form, .billing-info-form{
     padding-top: 20px;
     padding-right: 20px;
 }
