@@ -229,13 +229,20 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                                 $term = $obj_tax->convert($term);
                                                 if(($term->click_type == 'open-contact-info' || $term->click_type == 'open-billing-info') &&  empty($current->need_uploads) || !in_array( $term->slug, $current->need_uploads) ):
                                                     $icon = '<i class="fa fa-check-square-o" aria-hidden="true"></i>';
+                                                    $com = '<a href="#" class="resend-requirement"><i class="fa fa-lock" aria-hidden="true"></i></a>';
                                                     $class = 'disabled';
                                                 else:
+                                                    $com = '<a href="#"><i class="fa fa-unlock-alt" aria-hidden="true"></i></a>';
                                                     $icon = '<i class="fa fa-square-o" aria-hidden="true"></i>';
                                                     $class = '';
                                                 endif;
                                                 ?>
-                                                <li><a href="#" data-type="<?php echo $term->click_type; ?>" class="<?php echo $cl1.' ';?> <?php echo $class; ?>" data-id="<?php echo $term->slug; ?>" data-name="<?php echo $term->name; ?>"><?php echo $icon; ?>  <?php echo ' '.$term->name ?></a></li>
+                                                <li>
+                                                    <a href="#" data-type="<?php echo $term->click_type; ?>" class="<?php echo $cl1.' ';?> <?php echo $class; ?>" data-id="<?php echo $term->slug; ?>" data-name="<?php echo $term->name; ?>"><?php echo $icon; ?>  <?php echo ' '.$term->name ?></a>
+                                                    <?php if( ae_user_role($user_ID) == COMPANY):
+                                                        echo  ''.$com;
+                                                    endif; ?>
+                                                </li>
                                             <?php endforeach; ?>
                                         </ul>
                                     <?php endif; ?>
