@@ -77,10 +77,33 @@ class mJobOrderAction extends mJobPostAction{
                 $request['uploaded'] = wp_parse_args(array($request['need_upload_remove']), array($request['uploaded']));
             }
             if( isset($request['need_upload_add']) && isset($request['need_uploads'])){
-                $request['need_uploads'] = wp_parse_args(array($request['need_upload_add']), $request['need_uploads']);
-                $sr = array_search($request['need_upload_add'], array($request['uploaded']));
-                if( $sr !== false ){
-                    unset($request['uploaded'][$sr]);
+                if( $request['mjob_author'] == $user_ID && ae_user_role($user_ID) == COMPANY ) {
+                    $request['need_uploads'] = wp_parse_args(array($request['need_upload_add']), $request['need_uploads']);
+                    $sr = array_search($request['need_upload_add'], (array)$request['uploaded']);
+                    if ($sr !== false) {
+                        unset($request['uploaded'][$sr]);
+                    }
+                    $request['need_uploads'] = array_values(array_unique($request['need_uploads']));
+                    $request['uploaded'] = array_values(array_unique($request['uploaded']));
+                    $request['need_uploads'] = serialize($request['need_uploads']);
+                    $request['uploaded'] = serialize($request['uploaded']);
+                    $re1 = $wpdb->query($wpdb->prepare("UPDATE $wpdb->postmeta  as mt SET mt.meta_value = %s WHERE mt.post_id = %s AND mt.meta_key=%s", $request['need_uploads'], $request['ID'], 'need_uploads'));
+                    $re2 = $wpdb->query($wpdb->prepare("UPDATE $wpdb->postmeta  as mt SET mt.meta_value = %s WHERE mt.post_id = %s AND mt.meta_key=%s", $request['uploaded'], $request['ID'], 'uploaded'));
+                    if (!is_wp_error($re1) && !is_wp_error($re2)) {
+                        $ood = get_post($request['ID']);
+                        $ood = $order_obj->convert($ood);
+                        $response = array(
+                            'success' => true,
+                            'msg' => __('Successful!', ET_DOMAIN),
+                            'data' => $ood
+                        );
+                    } else {
+                        $response = array(
+                            'success' => false,
+                            'msg' => __('Failed!', ET_DOMAIN),
+                        );
+                    }
+                    wp_send_json($response);
                 }
             }
             if (isset($request['late']) && $request['late'] == '1' ) {
@@ -299,6 +322,16 @@ class mJobOrderAction extends mJobPostAction{
             $result->real_amount = mJobRealPrice($result->amount);
         }
         $result->doc_html =  $this->mjob_get_requirement_template($result->requirement_files);
+        if( empty($result->need_uploads)){
+            add_post_meta($result->ID, 'need_uploads', ' ');
+        }
+        if(empty($result->uploaded) ){
+            add_post_meta($result->ID, 'uploaded', ' ');
+        }
+//        echo '<pre>';
+//        var_dump($result->need_uploads);
+//        var_dump($result->uploaded);
+//        exit;
 //        update_post_meta($result->ID, 'need_uploads', array('billing-information', 'contact-information'));
         return $result;
     }

@@ -640,13 +640,10 @@
                                 notice_type: 'success'
                             });
                             view.closeModal();
-                            view.target.addClass('disabled');
-                            view.target.find('i').removeClass('fa-square-o');
-                            view.target.find('i').addClass('fa-check-square-o');
-                            if( typeof res.data.doc_html !== 'undefined'){
-                                $('.document-list').html('');
-                                $('.document-list').append(res.data.doc_html);
-                            }
+                            view.target.parent().addClass('disabled');
+                            view.target.parent().find('.fa-check-square-o').addClass('fa-square-o');
+                            view.target.parent().find('.fa-check-square-o').removeClass('fa-check-square-o');
+                            view.target.find('i').remove();
                         } else {
                             AE.pubsub.trigger('ae:notification', {
                                 msg: res.msg,
