@@ -427,6 +427,7 @@
                 'change select[name="use_holder_account"]': 'selectAccount'
             },
             initialize: function () {
+                AE.pubsub.on('ae:form:submit:success', this.afterSave, this);
             },
             onOpen: function(model, $target, orderModel, data_id){
                 var view = this;
