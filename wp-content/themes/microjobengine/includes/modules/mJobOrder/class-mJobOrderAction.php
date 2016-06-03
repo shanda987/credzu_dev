@@ -291,7 +291,7 @@ class mJobOrderAction extends mJobPostAction{
             $result->real_amount = mJobRealPrice($result->amount);
         }
         $result->doc_html =  $this->mjob_get_requirement_template($result->requirement_files);
-        update_post_meta($result->ID, 'need_uploads', array('billing-information', 'contact-information'));
+//        update_post_meta($result->ID, 'need_uploads', array('billing-information', 'contact-information'));
         return $result;
     }
     /**
