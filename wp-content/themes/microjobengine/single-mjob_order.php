@@ -1,6 +1,7 @@
 <?php
 get_header();
-global $wp_query, $ae_post_factory, $post, $user_ID, $current_user;
+global $wp_query, $ae_post_factory, $post, $user_ID, $current_user, $ae_tax_factory;
+$obj_tax = $ae_tax_factory->get('mjob_requirement');
 $post_object    = $ae_post_factory->get( 'mjob_order' );
 $current        = $post_object->convert($post);
 $user = mJobUser::getInstance();
@@ -223,16 +224,16 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                         ?>
                                         <ul class="requirement-list">
                                             <?php foreach( $terms as $term):
+                                                $term = $obj_tax->convert($term);
                                                 if( empty($current->need_uploads) || !isset($current->need_uploads[$term->slug]) ):
                                                     $icon = '<i class="fa fa-check-square-o" aria-hidden="true"></i>';
                                                     $class = 'disabled';
-
                                                 else:
                                                     $icon = '<i class="fa fa-square-o" aria-hidden="true"></i>';
                                                     $class = '';
                                                 endif;
                                                 ?>
-                                                <li><a href="#" class="<?php echo $cl1.' ';?> <?php echo $class; ?>" data-id="<?php echo $term->slug; ?>" data-name="<?php echo $term->name; ?>"><?php echo $icon; ?>  <?php echo ' '.$term->name ?></a></li>
+                                                <li><a href="#" data-type="<?php echo $term->click_type; ?>" class="<?php echo $cl1.' ';?> <?php echo $class; ?>" data-id="<?php echo $term->slug; ?>" data-name="<?php echo $term->name; ?>"><?php echo $icon; ?>  <?php echo ' '.$term->name ?></a></li>
                                             <?php endforeach; ?>
                                         </ul>
                                     <?php endif; ?>
