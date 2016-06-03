@@ -493,7 +493,7 @@
     padding-top: 20px;
     padding-right: 20px;
 }
-.contact-info-form button{
+.contact-info-form button, .form-confirm-billing-modal button{
     margin-bottom: 20px;
 }
 .hiring-process-select{
