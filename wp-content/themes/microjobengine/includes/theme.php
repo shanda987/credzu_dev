@@ -1023,6 +1023,7 @@ class ET_Microjobengine extends AE_Base
         if( is_singular('mjob_order')){
             get_template_part('template-js/modal-contact', 'information');
             get_template_part('template-js/modal-billing', 'information');
+            get_template_part('template-js/modal-unlock', 'requirement');
         }
     }
     /**

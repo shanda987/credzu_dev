@@ -173,7 +173,8 @@
                 'change .order-action': 'changeOrderStatus',
                 'click .order-delivery-btn': 'openModalDelivery',
                 'click .mjob-dispute-order': 'showFormDispute',
-                'click .requirement-item': 'showModalRequirement'
+                'click .requirement-item': 'showModalRequirement',
+                'click .resend-requirement': 'showModalUnlockRequirement'
             },
             initialize: function () {
                 var view = this;
@@ -289,6 +290,17 @@
                 $target = $(e.currentTarget);
                 $('.mjob-dispute-order').fadeOut(500);
                 $('.mjob-dispute-form').fadeIn(500);
+            },
+            showModalUnlockRequirement: function(e){
+                e.preventDefault();
+                $target = $(e.currentTarget);
+                var data_id = $target.attr('data-id');
+                var type = $target.attr('data-type');
+                var data_name = $target.attr('data-name');
+                if (typeof this.modalunlockrequirement === 'undefined') {
+                    this.modalrequirement = new Views.ModalRequirement();
+                }
+                this.modalunlockrequirement.onOpen(this.model, data_id, $target, data_name);
             },
             showModalRequirement: function(e){
                 e.preventDefault();
@@ -592,6 +604,25 @@
                     }
                 });
             }
+        });
+        Views.ModalUnlockRequirement = Views.Modal_Box.extend({
+            el: '#unlock_requirement_modal',
+            events: {
+                'click .btn-save-requirement': 'saveOrderRequirment'
+            },
+            initialize: function () {
+                AE.Views.Modal_Box.prototype.initialize.call();
+                this.blockUi = new Views.BlockUi();
+
+            },
+            onOpen: function (model, data_id, $target, data_name) {
+                var view = this;
+                this.model = model;
+                this.data_id = data_id;
+                this.target = $target;
+                this.arr_ids = [];
+                view.openModal();
+            },
         });
         Views.ModalDelivery = Views.Modal_Box.extend({
             el: '#delivery',
