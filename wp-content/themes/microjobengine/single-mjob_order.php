@@ -226,16 +226,31 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                         ?>
                                         <ul class="requirement-list">
                                             <?php foreach( $terms as $term):
+                                                $f = false;
                                                 $term = $obj_tax->convert($term);
-                                                var_dump($term->click_type);
-                                                if(($term->click_type == 'open-contact-info' || $term->click_type == 'open-billing-info') &&  empty($current->need_uploads) || !in_array( $term->slug, $current->need_uploads) ):
-                                                    $icon = '<i class="fa fa-check-square-o" aria-hidden="true"></i>';
-                                                    $com = '<a href="#" class="resend-requirement"><i class="fa fa-lock" aria-hidden="true"></i></a>';
-                                                    $class = 'disabled';
+                                                if( $term->click_type == 'open-contact-info' || $term->click_type == 'open-billing-info'):
+                                                    $f = true;
+                                                endif;
+                                                if( $f ):
+                                                    if( empty($current->need_uploads) || !in_array( $term->slug, $current->need_uploads )):
+                                                        $icon = '<i class="fa fa-check-square-o" aria-hidden="true"></i>';
+                                                        $com = '<a href="#" class="resend-requirement"><i class="fa fa-lock" aria-hidden="true"></i></a>';
+                                                        $class = 'disabled';
+                                                    else:
+                                                        $com = '<a href="#"><i class="fa fa-unlock-alt" aria-hidden="true"></i></a>';
+                                                        $icon = '<i class="fa fa-square-o" aria-hidden="true"></i>';
+                                                        $class = '';
+                                                    endif;
                                                 else:
-                                                    $com = '<a href="#"><i class="fa fa-unlock-alt" aria-hidden="true"></i></a>';
-                                                    $icon = '<i class="fa fa-square-o" aria-hidden="true"></i>';
-                                                    $class = '';
+                                                    if( in_array($term->slug, (array)$current->uploaded) ):
+                                                        $icon = '<i class="fa fa-check-square-o" aria-hidden="true"></i>';
+                                                        $com = '<a href="#" class="resend-requirement"><i class="fa fa-lock" aria-hidden="true"></i></a>';
+                                                        $class = 'disabled';
+                                                    else:
+                                                        $com = '<a href="#"><i class="fa fa-unlock-alt" aria-hidden="true"></i></a>';
+                                                        $icon = '<i class="fa fa-square-o" aria-hidden="true"></i>';
+                                                        $class = '';
+                                                    endif;
                                                 endif;
                                                 ?>
                                                 <li>

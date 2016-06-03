@@ -37,7 +37,8 @@ class mJobOrderPosttype extends mJobPost{
             // hour limit with the SAME client.
             'company_status_approved_timestamp',
             'requirement_files',
-            'need_uploads'
+            'need_uploads',
+            'uploaded'
         );
         $this->post_type_singular = 'Microjob Order';
         $this->post_type_regular = 'Microjob Orders';

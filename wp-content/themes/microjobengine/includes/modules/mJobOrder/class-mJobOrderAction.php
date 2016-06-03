@@ -74,6 +74,7 @@ class mJobOrderAction extends mJobPostAction{
                 if( $se !== false ){
                     unset($request['need_uploads'][$se]);
                 }
+                $request['uploaded'] = wp_parse_args(array($request['need_upload_remove']), array($request['uploaded']));
             }
             if (isset($request['late']) && $request['late'] == '1' ) {
                 if( $temp_order ) {

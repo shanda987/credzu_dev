@@ -384,6 +384,7 @@
                 var view = this;
                 this.model.set('requirement_files', view.arr_ids);
                 this.model.set('requirement_id', view.data_id);
+                view.model.set('need_upload_remove', view.data_id);
                 this.model.save('', '', {
                     beforeSend: function () {
                         view.blockUi.block($target)
