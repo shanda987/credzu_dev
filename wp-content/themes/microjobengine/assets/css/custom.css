@@ -486,3 +486,13 @@
 .document-list {
     padding-bottom: 20px;
 }
+.form-confirm-info-modal{
+    margin-bottom: 20px;
+}
+.contact-info-form{
+    padding-top: 20px;
+    padding-right: 20px;
+}
+.contact-info-form button{
+    margin-bottom: 20px;
+}

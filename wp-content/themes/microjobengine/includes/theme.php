@@ -748,7 +748,7 @@ class ET_Microjobengine extends AE_Base
                 'front'), ET_VERSION, true);
 
         }
-        if( is_page_template('page-process-hiring.php') ){
+        if( is_page_template('page-process-hiring.php') || is_singular('mjob_order')){
             $this->add_script('mask-js', get_template_directory_uri() . '/assets/js/jquery.maskedinput.min.js', array(
                 'jquery',
                 'underscore',
@@ -1019,6 +1019,10 @@ class ET_Microjobengine extends AE_Base
 
         if(is_singular('mjob_post') || is_page_template('page-order.php') || is_page_template('page-process-payment.php')) {
             get_template_part('template-js/review', 'item');
+        }
+        if( is_singular('mjob_order')){
+            get_template_part('template-js/modal-contact', 'information');
+            get_template_part('template-js/modal-billing', 'information');
         }
     }
     /**

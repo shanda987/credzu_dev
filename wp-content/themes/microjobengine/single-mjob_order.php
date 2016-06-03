@@ -18,6 +18,8 @@ else{
    $flag = true;
 }
 $profile = mJobProfileAction()->getProfile($to_user);
+$profile_individual = mJobProfileAction()->getProfile($user_ID);
+echo mJobProfileAction()->getProfileJson($profile_individual);
 $current->_wpnonce = de_create_nonce('ae-mjob_post-sync');
 echo '<script type="text/template" id="order_single_data" >'.json_encode($current).'</script>';
 ?>
@@ -225,7 +227,7 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                         <ul class="requirement-list">
                                             <?php foreach( $terms as $term):
                                                 $term = $obj_tax->convert($term);
-                                                if( empty($current->need_uploads) || !isset($current->need_uploads[$term->slug]) ):
+                                                if( empty($current->need_uploads) || !in_array( $term->slug, $current->need_uploads) ):
                                                     $icon = '<i class="fa fa-check-square-o" aria-hidden="true"></i>';
                                                     $class = 'disabled';
                                                 else:

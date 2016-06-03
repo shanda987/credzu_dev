@@ -69,6 +69,12 @@ class mJobOrderAction extends mJobPostAction{
                 $requirement_files = wp_parse_args($temp, $requirement_files);
                 $request['requirement_files'] = $requirement_files;
             }
+            if(isset($request['need_upload_remove']) && isset($request['need_uploads'])){
+                $se = array_search($request['need_upload_remove'], $request['need_uploads']);
+                if( $se !== false ){
+                    unset($request['need_uploads'][$se]);
+                }
+            }
             if (isset($request['late']) && $request['late'] == '1' ) {
                 if( $temp_order ) {
                     if( $temp_order->mjob_author == $user_ID ) {
@@ -285,6 +291,7 @@ class mJobOrderAction extends mJobPostAction{
             $result->real_amount = mJobRealPrice($result->amount);
         }
         $result->doc_html =  $this->mjob_get_requirement_template($result->requirement_files);
+//        update_post_meta($result->ID, 'need_uploads', array('billing-information'));
         return $result;
     }
     /**

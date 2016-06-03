@@ -294,11 +294,38 @@
                 e.preventDefault();
                 $target = $(e.currentTarget);
                 var data_id = $target.attr('data-id');
-                var data_name = $target.attr('data-name');
-                if( typeof this.modalrequirement === 'undefined' ) {
-                    this.modalrequirement = new Views.ModalRequirement();
+                var type = $target.attr('data-type');
+                if( type == 'open-billing-info'){
+                    if( $('#mjob_profile_data').length > 0 ){
+                        this.profileModel = new Models.mJobProfile(JSON.parse($('#mjob_profile_data').html()));
+                    }
+                    else{
+                        this.profileModel = new Models.mJobProfile();
+                    }
+                    if (typeof this.modalcontactinfo === 'undefined') {
+                        this.modalcontactinfo = new Views.ModaContactInfo();
+                    }
+                    this.modalcontactinfo.onOpen(this.profileModel, $target, this.model, data_id);
                 }
-                this.modalrequirement.onOpen(this.model, data_id, $target, data_name);
+                else if( type == 'open-contact-info'){
+                    if( $('#mjob_profile_data').length > 0 ){
+                        this.profileModel = new Models.mJobProfile(JSON.parse($('#mjob_profile_data').html()));
+                    }
+                    else{
+                        this.profileModel = new Models.mJobProfile();
+                    }
+                    if (typeof this.modalbilinginfo === 'undefined') {
+                        this.modalbilinginfo = new Views.ModaContactInfo();
+                    }
+                    this.modalbilinginfo.onOpen(this.profileModel);
+                }
+                else {
+                    var data_name = $target.attr('data-name');
+                    if (typeof this.modalrequirement === 'undefined') {
+                        this.modalrequirement = new Views.ModalRequirement();
+                    }
+                    this.modalrequirement.onOpen(this.model, data_id, $target, data_name);
+                }
             }
         });
         Views.ModalRequirement = Views.Modal_Box.extend({
@@ -391,6 +418,90 @@
                 if( view.$el.find('.requirement-image-list .image-item').length <= 0){
                     view.$el.find('.btn-save-requirement').attr('disabled', true);
                 }
+            }
+        });
+        Views.ModaBillingInfo = Views.Modal_Box.extend({
+            el: '#billing_info_modal',
+            events: {},
+            initialize: function () {
+            },
+            onOpen: function(model){
+                var view = this;
+                this.model = model;
+                view.openModal();
+            },
+        });
+        Views.ModaContactInfo = Views.Modal_Box.extend({
+            el: '#contact_info_modal',
+            events: {},
+            initialize: function () {
+                AE.pubsub.on('ae:form:submit:success', this.afterSave, this);
+            },
+            onOpen: function(model, $target, orderModel, data_id){
+                var view = this;
+                this.model = model;
+                view.openModal();
+                view.setupFields(this.model);
+                view.orderModel = orderModel;
+                view.target  = $target;
+                view.data_id = data_id;
+                this.model.set('_wpnonce', $('#profile_wpnonce').val());
+                if(typeof this.profileFormModal === "undefined") {
+                    this.profileFormModal = new Views.AE_Form({
+                        el: '.form-confirm-info-modal', // Wrapper of form
+                        model: this.model,
+                        rules: {
+                            first_name: 'required',
+                            last_name: 'required',
+                            phone: 'required',
+                            business_email: 'required',
+                            billing_full_address: 'required',
+                            city: 'required',
+                            state: 'required',
+                            zip_code: 'required'
+                        },
+                        type: 'update-profile-contact-modal',
+                        blockTarget: '.form-confirm-info-modal button'
+                    });
+                }
+            },
+            afterSave: function(result, resp, jqXHR, type){
+                var view = this;
+                if( type == 'update-profile-contact-modal'){
+                    view.orderModel.set('need_upload_remove', view.data_id);
+                    this.orderModel.save('', '', {
+                        beforeSend: function () {
+
+                        },
+                        success: function (result, res, xhr) {
+                            if (res.success) {
+                                AE.pubsub.trigger('ae:notification', {
+                                    msg: res.msg,
+                                    notice_type: 'success'
+                                });
+                                view.closeModal();
+                                view.target.addClass('disabled');
+                                view.target.find('i').removeClass('fa-square-o');
+                                view.target.find('i').addClass('fa-check-square-o');
+                            } else {
+                                AE.pubsub.trigger('ae:notification', {
+                                    msg: res.msg,
+                                    notice_type: 'error'
+                                });
+                            }
+
+                        }
+                    });
+                }
+            },
+            setupFields: function(model){
+                var view = this;
+                view.$el.find('input.input-item,input[type="text"],input[type="hidden"], textarea,select').each(function() {
+                    var $input = $(this);
+                    if( $input.attr('name') != '_wpnonce' ) {
+                        $input.val(model.get($input.attr('name')));
+                    }
+                });
             }
         });
         Views.ModalDelivery = Views.Modal_Box.extend({

@@ -92,13 +92,12 @@ if( isset($_GET['jid']) && !empty($_GET['jid'] ) ){
                 <input type="text" name="zip_code" id="zip_code" placeholder="<?php _e('Zip code', ET_DOMAIN); ?>" value="<?php echo $profile->zip_code; ?>">
             </div>
         </div>
-
-<!--        <div class="form-group clearfix">-->
-<!--            <div class="input-group">-->
-<!--                <div class="input-group-addon no-addon"></div>-->
-<!--                <input type="text" name="credit_goal" id="credit_goal" placeholder="--><?php //_e('Credit goals', ET_DOMAIN); ?><!--" value="--><?php //echo $credit_goal; ?><!--">-->
-<!--            </div>-->
-<!--        </div>-->
+        <div class="form-group clearfix">
+            <div class="input-group">
+                <div class="input-group-addon no-addon"></div>
+                <input type="text" name="credit_goal" id="credit_goal" placeholder="<?php _e('Credit goals', ET_DOMAIN); ?>" value="<?php echo $credit_goal; ?>">
+            </div>
+        </div>
         <div class="form-group clearfix float-right change-pass-button-method">
             <a href="<?php echo $link ?>"  class="button  mjob-process-hiring-back" ><i class="fa fa-arrow-left"></i> <?php _e('BACK', ET_DOMAIN); ?></a>
             <button class="btn-submit"><?php _e('Save', ET_DOMAIN); ?></button>
