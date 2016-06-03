@@ -298,7 +298,7 @@
                 var type = $target.attr('data-type');
                 var data_name = $target.attr('data-name');
                 if (typeof this.modalunlockrequirement === 'undefined') {
-                    this.modalrequirement = new Views.ModalRequirement();
+                    this.modalrequirement = new Views.ModalUnlockRequirement();
                 }
                 this.modalunlockrequirement.onOpen(this.model, data_id, $target, data_name);
             },
