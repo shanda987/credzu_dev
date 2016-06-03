@@ -227,7 +227,7 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                         <ul class="requirement-list">
                                             <?php foreach( $terms as $term):
                                                 $term = $obj_tax->convert($term);
-                                                if( empty($current->need_uploads) || !in_array( $term->slug, $current->need_uploads) ):
+                                                if(($term->click_type != 'open-contact-info' && $term->click_type != 'open-billing-info') &&  empty($current->need_uploads) || !in_array( $term->slug, $current->need_uploads) ):
                                                     $icon = '<i class="fa fa-check-square-o" aria-hidden="true"></i>';
                                                     $class = 'disabled';
                                                 else:
