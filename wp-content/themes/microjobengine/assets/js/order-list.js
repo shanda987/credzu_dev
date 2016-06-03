@@ -295,7 +295,7 @@
                 $target = $(e.currentTarget);
                 var data_id = $target.attr('data-id');
                 var type = $target.attr('data-type');
-                if( type == 'open-billing-info'){
+                if( type == 'open-contact-info'){
                     if( $('#mjob_profile_data').length > 0 ){
                         this.profileModel = new Models.mJobProfile(JSON.parse($('#mjob_profile_data').html()));
                     }
@@ -307,7 +307,7 @@
                     }
                     this.modalcontactinfo.onOpen(this.profileModel, $target, this.model, data_id);
                 }
-                else if( type == 'open-contact-info'){
+                else if( type == 'open-billing-info'){
                     if( $('#mjob_profile_data').length > 0 ){
                         this.profileModel = new Models.mJobProfile(JSON.parse($('#mjob_profile_data').html()));
                     }
@@ -315,9 +315,9 @@
                         this.profileModel = new Models.mJobProfile();
                     }
                     if (typeof this.modalbilinginfo === 'undefined') {
-                        this.modalbilinginfo = new Views.ModaContactInfo();
+                        this.modalbilinginfo = new Views.ModaBillingInfo;
                     }
-                    this.modalbilinginfo.onOpen(this.profileModel);
+                    this.modalbilinginfo.onOpen(this.profileModel,  $target, this.model, data_id);
                 }
                 else {
                     var data_name = $target.attr('data-name');
@@ -422,14 +422,100 @@
         });
         Views.ModaBillingInfo = Views.Modal_Box.extend({
             el: '#billing_info_modal',
-            events: {},
+            events: {
+                'change select[name="use_billing_address"]': 'selectBilling',
+                'change select[name="use_holder_account"]': 'selectAccount'
+            },
             initialize: function () {
             },
-            onOpen: function(model){
+            onOpen: function(model, $target, orderModel, data_id){
                 var view = this;
                 this.model = model;
                 view.openModal();
+                view.setupFields(this.model);
+                view.orderModel = orderModel;
+                view.target  = $target;
+                view.data_id = data_id;
+                this.model.set('_wpnonce', $('#profile_wpnonce').val());
+                var rules = {};
+                use_address = this.model.get('use_billing_address');
+                if( use_address == 'no') {
+                    var rules = {
+                        billing_other_address: 'required',
+                        billing_city: 'required',
+                        billing_state: 'required',
+                        billing_zip_code: 'required'
+                    }
+                }
+                if(typeof this.billingFormModal === "undefined") {
+                    this.bilingFormModal = new Views.AE_Form({
+                        el: '.form-confirm-billing-modal', // Wrapper of for
+                        model: this.model,
+                        rules: rules,
+                        type: 'update-billing-hiring-modal',
+                        blockTarget: '.form-confirm-billing-modal button'
+                    });
+                }
             },
+            afterSave: function(result, resp, jqXHR, type){
+                var view = this;
+                if( type == 'update-billing-hiring-modal'){
+                    view.orderModel.set('need_upload_remove', view.data_id);
+                    this.orderModel.save('', '', {
+                        beforeSend: function () {
+
+                        },
+                        success: function (result, res, xhr) {
+                            if (res.success) {
+                                AE.pubsub.trigger('ae:notification', {
+                                    msg: res.msg,
+                                    notice_type: 'success'
+                                });
+                                view.closeModal();
+                                view.target.addClass('disabled');
+                                view.target.find('i').removeClass('fa-square-o');
+                                view.target.find('i').addClass('fa-check-square-o');
+                            } else {
+                                AE.pubsub.trigger('ae:notification', {
+                                    msg: res.msg,
+                                    notice_type: 'error'
+                                });
+                            }
+
+                        }
+                    });
+                }
+            },
+            setupFields: function(model){
+                var view = this;
+                view.$el.find('input.input-item,input[type="text"],input[type="hidden"], textarea,select').each(function() {
+                    var $input = $(this);
+                    if( $input.attr('name') != '_wpnonce' ) {
+                        $input.val(model.get($input.attr('name')));
+                    }
+                });
+            },
+            selectBilling: function(event){
+                event.preventDefault();
+                $target = $(event.currentTarget);
+                if( $target.val() == 'no' ){
+                    $('.billing-order-address').show();
+                }
+                else{
+                    $('.billing-order-address').hide();
+                }
+            },
+            selectAccount: function(event){
+                event.preventDefault();
+                $target = $(event.currentTarget);
+                if( $target.val() == 'no' ){
+                    $('.account-holder').show();
+                }
+                else{
+                    $('.account-holder').hide();
+                }
+            },
+
         });
         Views.ModaContactInfo = Views.Modal_Box.extend({
             el: '#contact_info_modal',

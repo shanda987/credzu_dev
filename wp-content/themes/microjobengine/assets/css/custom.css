@@ -496,3 +496,14 @@
 .contact-info-form button{
     margin-bottom: 20px;
 }
+.hiring-process-select{
+    height: 35px;
+    line-height: 30px;
+    background: none;
+    box-shadow: none;
+    border-radius: 0;
+    border: none;
+    border-bottom: 1px solid #dfe0e5;
+    padding-left: 0;
+    width: 40%;
+}
