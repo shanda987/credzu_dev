@@ -285,7 +285,7 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                                                 $tx = '_'.$i;
                                                             endif;
                                                             ?>
-                                                <li><a data-href="<?php echo $f->guid; ?>" href="#" data-name="<?php echo $term->name.$tx.' : '.date('d/m/Y', strtotime($f->post_date))?>" class="show-requirement-doc"><?php echo $term->name.$tx.' : '.date('d/m/Y', strtotime($f->post_date))?></a></li>
+                                                <li><a data-href="<?php echo $f->guid; ?>" href="<?php echo et_get_page_link('simple-download').'?id='.$f->ID ?>" data-name="<?php echo $term->name.$tx.' : '.date('d/m/Y', strtotime($f->post_date))?>" class="show-requirement-docs"><?php echo $term->name.$tx.' : '.date('d/m/Y', strtotime($f->post_date))?></a></li>
                                         <?php $i++;
                                                         endforeach;
                                                     endif;
