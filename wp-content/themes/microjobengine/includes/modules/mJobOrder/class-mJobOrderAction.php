@@ -656,8 +656,11 @@ class mJobOrderAction extends mJobPostAction{
                         if ($i > 0):
                             $tx = '_' . $i;
                         endif;
-                        $html .= '<li>';
-                        $html .= '<a data-href="'.$f->guid.'" href="#" data-name="'.$term->name.$tx.' : '.date('d/m/Y', strtotime($f->post_date)).'" class="show-requirement-doc">'.$term->name . $tx . ' : ' . date('d/m/Y', strtotime($f->post_date)).'</a>';
+                        $html .= '<li class="col-lg-6 col-md-6 col-xs-12 item-requirement">';
+                        $html .= '<a  href="'.et_get_page_link('simple-download').'?id='.$f->ID.'" data-name="'.$term->name.$tx.' : '.date('d/m/Y', strtotime($f->post_date)).'" class="show-requirement-docs">';
+                        $html .= '<div class="doc-icon"> <i class="fa fa-file-pdf-o" aria-hidden="true"></i></div>';
+                        $html .= '<div class="doc-name">'.$term->name.$tx.'</div>';
+                        $html .= '<div class="doc-time">'.date('d/m/Y', strtotime($f->post_date)).'</div>';
                         $html .= '</li>';
                         $i++;
                     endforeach;
