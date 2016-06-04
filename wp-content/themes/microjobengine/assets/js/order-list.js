@@ -174,7 +174,8 @@
                 'click .order-delivery-btn': 'openModalDelivery',
                 'click .mjob-dispute-order': 'showFormDispute',
                 'click .requirement-item': 'showModalRequirement',
-                'click .resend-requirement': 'showModalUnlockRequirement'
+                'click .resend-requirement': 'showModalUnlockRequirement',
+                'click .show-requirement-doc': 'showRequirementContent'
             },
             initialize: function () {
                 var view = this;
@@ -302,6 +303,16 @@
                 }
                 this.modalunlockrequirement.onOpen(this.model, data_id, $target, data_name);
             },
+            showRequirementContent: function(e){
+                e.preventDefault();
+                $target = $(e.currentTarget);
+                var data_href = $target.attr('data-href');
+                var name = $target.attr('data-name');
+                if (typeof this.modalrequirementcontent === 'undefined') {
+                    this.modalrequirementcontent = new Views.ModalRequirementContent();
+                }
+                this.modalrequirementcontent.onOpen(this.model, data_href, $target, name);
+            },
             showModalRequirement: function(e){
                 e.preventDefault();
                 $target = $(e.currentTarget);
@@ -339,6 +350,24 @@
                     this.modalrequirement.onOpen(this.model, data_id, $target, data_name);
                 }
             }
+        });
+        Views.ModalRequirementContent = Views.Modal_Box.extend({
+            el: '#show_requirement_modal',
+            events: {
+            },
+            initialize: function () {
+                AE.Views.Modal_Box.prototype.initialize.call();
+            },
+            onOpen: function (model, data_href, $target, name) {
+                var view = this;
+                this.model = model;
+                this.data_href = data_href;
+                this.target = $target;
+                this.name = name;
+                view.openModal();
+                $('#modal-show-requirement-title').html(name);
+                $('.show-requirement-iframe').attr('src', this.data_href);
+            },
         });
         Views.ModalRequirement = Views.Modal_Box.extend({
             el: '#requirement_modal',

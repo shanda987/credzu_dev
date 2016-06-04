@@ -485,6 +485,14 @@ class ET_Microjobengine extends AE_Base
         if( (ae_user_role($user_ID) != COMPANY && !is_super_admin()) && is_page_template('page-my-listing-jobs.php')){
             wp_redirect(home_url());
         }
+        if( is_singular('mjob_order') ){
+            global $post, $ae_post_factory;
+            $order_obj = $ae_post_factory->get('mjob_order');
+            $post = $order_obj->convert($post);
+            if( $user_ID != $post->post_author && $post->mjob_author != $user_ID && !is_super_admin()){
+                wp_redirect(home_url());
+            }
+        }
     }
     /**
      * filter profile link and change it to author posts link
@@ -1024,6 +1032,7 @@ class ET_Microjobengine extends AE_Base
             get_template_part('template-js/modal-contact', 'information');
             get_template_part('template-js/modal-billing', 'information');
             get_template_part('template-js/modal-unlock', 'requirement');
+            get_template_part('template-js/modal-show', 'requirement');
         }
     }
     /**

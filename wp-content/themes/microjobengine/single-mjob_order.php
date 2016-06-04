@@ -285,7 +285,7 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                                                 $tx = '_'.$i;
                                                             endif;
                                                             ?>
-                                                <li><a target="_blank" href="<?php echo $f->guid; ?>"><?php echo $term->name.$tx.' : '.date('d/m/Y', strtotime($f->post_date))?></a></li>
+                                                <li><a data-href="<?php echo $f->guid; ?>" href="#" data-name="<?php echo $term->name.$tx.' : '.date('d/m/Y', strtotime($f->post_date))?>" class="show-requirement-doc"><?php echo $term->name.$tx.' : '.date('d/m/Y', strtotime($f->post_date))?></a></li>
                                         <?php $i++;
                                                         endforeach;
                                                     endif;

@@ -657,7 +657,7 @@ class mJobOrderAction extends mJobPostAction{
                             $tx = '_' . $i;
                         endif;
                         $html .= '<li>';
-                        $html .= '<a target="_blank" href="'.$f->guid.'">'.$term->name . $tx . ' : ' . date('d/m/Y', strtotime($f->post_date)).'</a>';
+                        $html .= '<a data-href="'.$f->guid.'" href="#" data-name="'.$term->name.$tx.' : '.date('d/m/Y', strtotime($f->post_date)).'" class="show-requirement-doc">'.$term->name . $tx . ' : ' . date('d/m/Y', strtotime($f->post_date)).'</a>';
                         $html .= '</li>';
                         $i++;
                     endforeach;
