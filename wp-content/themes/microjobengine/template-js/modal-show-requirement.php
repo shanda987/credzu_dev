@@ -11,10 +11,9 @@
                     <iframe class="show-requirement-iframe-style show-requirement-iframe" width="500px" src="">
 
                     </iframe>
-                    <div class="form-group clearfix">
-                        <div class="input-group">
-                            <p class="notice-message"><?php _e('message here: <span class="unlock-more"></span>', ET_DOMAIN ) ?></p>
-                        </div>
+                    <div class="form-group clearfix float-right change-pass-button-method button">
+                        <a class="btn-submit btn-download" href="#"><?php _e('Download', ET_DOMAIN); ?></a>
+                        <button class="btn-submit btn-close"><?php _e('Close', ET_DOMAIN); ?></button>
                     </div>
                 </div>
             </div>

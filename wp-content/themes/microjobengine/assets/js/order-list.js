@@ -354,9 +354,14 @@
         Views.ModalRequirementContent = Views.Modal_Box.extend({
             el: '#show_requirement_modal',
             events: {
+                'click .btn-close': 'closeModalR'
             },
             initialize: function () {
                 AE.Views.Modal_Box.prototype.initialize.call();
+            },
+            closeModalR: function(e){
+                e.preventDefault();
+                this.closeModal();
             },
             onOpen: function (model, data_href, $target, name) {
                 var view = this;
