@@ -171,6 +171,8 @@ class ET_GoogleAuth extends ET_SocialAuth
                         'last_name'=> $userinfor->family_name,
                         'full'=>$userinfor
                     );
+                    var_dump($params);
+                    exit;
                     //remove avatar if cant fetch avatar
                     foreach ( $params as $key => $param ) {
                         if ( $param == false ){
