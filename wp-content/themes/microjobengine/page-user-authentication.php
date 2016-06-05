@@ -17,7 +17,6 @@ the_post();
 ?>
     <div class="container">
         <div class="block-pages post-job page-sign-in page-user-authentication">
-            <p class="title-pages float-center"><?php _e('AUTHENTICATION', ET_DOMAIN); ?></p>
             <?php
 //            mJobAuthFormOnPage('dashboard');
             mJobSignUpFormStepOne('');

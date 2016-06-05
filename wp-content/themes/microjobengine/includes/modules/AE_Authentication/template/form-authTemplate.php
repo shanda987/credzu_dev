@@ -15,7 +15,6 @@ if(!function_exists('mJobSignUpFormStepOne')) {
         ?>
         <form id="signUpFormStep1" class="form-authentication et-form">
             <div class="inner-form">
-                <div class="note-paragraph"><?php echo $intro ?></div>
                 <div class="form-group clearfix insert-email">
                     <div class="input-group">
                         <div class="input-group-addon"><i class="fa fa-user"></i></div>
