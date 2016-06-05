@@ -562,6 +562,10 @@
 #signUpFormStep1 .check-user-email{
     width: 100%!important;
 }
-#signInForm{
+#signInForm, #signUpForm{
     display: none;
+}
+.confirm-pass-label{
+    margin-left: 10px;
+    width: 98% !important;
 }

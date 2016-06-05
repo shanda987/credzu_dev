@@ -193,7 +193,11 @@
                     this.model.save('', '', {
                         success: function (result, resp, jqXHR) {
                             if( resp.success ) {
-                                console.log('showSignup');
+                                view.$el.find('#signUpForm').show();
+                                view.$el.find('#user_email').val(resp.user_email);
+                                console.log(view.$el.find('#user_login').length);
+                                view.$el.find('#user_login').val('sdfsdf');
+                                view.$el.find('#signUpFormStep1').hide();
                             }
                             else {
                                 view.$el.find('#signInForm').show();
@@ -212,6 +216,41 @@
                             window.location.href = resp.data.redirect_url;
                         } else {
                             window.location.reload();
+                        }
+                    } else {
+                        AE.pubsub.trigger('ae:notification', {
+                            msg: resp.msg,
+                            notice_type: 'error'
+                        });
+                    }
+                }
+                else if( type == 'signUp' ){
+                    view.registerSuccess(result, resp, jqXHR, type);
+                }
+            },
+            registerSuccess: function(result, resp, jqXHR, type) {
+                if(type == 'signUp') {
+                    var view = this;
+                    if(resp.success == true) {
+                        if(ae_globals.user_confirm == "1") {
+                            AE.pubsub.trigger('ae:notification', {
+                                msg: resp.msg,
+                                notice_type: 'success'
+                            });
+
+                            setTimeout(function() {
+                                if(typeof resp.data.redirect_url !== 'undefined') {
+                                    window.location.href = resp.data.redirect_url;
+                                } else {
+                                    window.location.reload();
+                                }
+                            }, 4000);
+                        } else {
+                            if(typeof resp.data.redirect_url !== 'undefined') {
+                                window.location.href = resp.data.redirect_url;
+                            } else {
+                                window.location.reload();
+                            }
                         }
                     } else {
                         AE.pubsub.trigger('ae:notification', {

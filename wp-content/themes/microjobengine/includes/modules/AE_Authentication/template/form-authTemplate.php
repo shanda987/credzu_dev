@@ -95,13 +95,6 @@ if(!function_exists('mJobSignUpForm')) {
                 }
                 ?>
                 <div class="btn-back-sign">
-                    <?php
-                    if($is_page == true) {
-                        ?>
-                        <a href="#" class="focus-signin-form"><i class="fa fa-angle-left"></i><?php _e('Back to sign in', ET_DOMAIN); ?></a>
-                        <?php
-                    }
-                    ?>
                 </div>
                 <div class="inner-form">
                     <?php if( $role): ?>
@@ -120,8 +113,10 @@ if(!function_exists('mJobSignUpForm')) {
                             ?>
                             <div class="form-group clearfix">
                                 <div class="input-group">
-                                    <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
+                                    <div class="input-group-addon"><i class="fa fa-user"></i></div>
                                     <input type="text" name="user_email" id="user_email" class="form-control" placeholder="Email">
+                                    <p><label><?php _e('Email Address', ET_DOMAIN); ?></label></p>
+                                    <p><?php _e("We din't recognize this email. No worries! You can create an account below", ET_DOMAIN); ?></p>
                                 </div>
                             </div>
                             <?php
@@ -130,19 +125,29 @@ if(!function_exists('mJobSignUpForm')) {
                     <div class="form-group clearfix">
                         <div class="input-group">
                             <div class="input-group-addon"><i class="fa fa-user"></i></div>
-                            <input type="text" name="user_login" id="user_login" class="form-control" placeholder="User name">
+                            <input type="text" name="first_name" id="first_name" class="form-control" placeholder="<?php _e('First name', ET_DOMAIN)?>">
+                            <p><label><?php _e('First Name', ET_DOMAIN); ?></label></p>
+                        </div>
+                    </div>
+                    <div class="form-group clearfix">
+                        <div class="input-group">
+                            <div class="input-group-addon"></div>
+                            <input type="text" name="last_name" id="last_name" class="form-control confirm-pass-label" placeholder="<?php _e('Last name', ET_DOMAIN)?>">
+                            <p class="confirm-pass-label"><label><?php _e('Last Name', ET_DOMAIN); ?></label></p>
                         </div>
                     </div>
                     <div class="form-group clearfix">
                         <div class="input-group">
                             <div class="input-group-addon"><i class="fa fa-lock"></i></div>
                             <input type="password" name="user_pass" id="user_pass" class="form-control" placeholder="Enter your password">
+                            <p><label><?php _e('Create Password', ET_DOMAIN); ?></label></p>
                         </div>
                     </div>
-                    <div class="form-group margin-bot-15 clearfix">
+                    <div class="form-group clearfix">
                         <div class="input-group">
                             <div class="input-group-addon"></div>
                             <input type="password" name="repeat_pass" id="repeat_pass" class="form-control repeat_pass" placeholder="Confirm your password">
+                            <p class="confirm-pass-label"><label><?php _e('Confirm Password', ET_DOMAIN); ?></label></p>
                         </div>
                     </div>
                     <div class="form-group clearfix float-left check-terms">
@@ -154,19 +159,9 @@ if(!function_exists('mJobSignUpForm')) {
                         </div>
                     </div>
                     <div class="form-group float-right">
-                        <button class="btn-submit waves-effect waves-light"><?php _e('JOIN', ET_DOMAIN); ?></button>
+                        <input type="hidden" name="user_login" id="user_login" value="<?php echo 'user_name_'.time()?>"/>
+                        <button class="btn-submit waves-effect waves-light"><?php _e('CREATE ACCOUNT', ET_DOMAIN); ?></button>
                     </div>
-
-                    <?php if($is_page == true && !is_page_template('page-process-payment.php')) : ?>
-                    <div class="clearfix float-right social">
-                        <?php
-                        if( function_exists('ae_render_social_button')){
-                            $before_string = __("Or sign up with:", ET_DOMAIN);
-                            ae_render_social_button( array(), array(), $before_string );
-                        }
-                        ?>
-                    </div>
-                    <?php endif; ?>
                 </div>
             </form>
         </div>

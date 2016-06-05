@@ -22,6 +22,7 @@ the_post();
 //            mJobAuthFormOnPage('dashboard');
             mJobSignUpFormStepOne('');
             mJobSignInForm(true, 'dashboard');
+            mJobSignUpForm('', true, 'dashboard');
             ?>
         </div>
     </div>

@@ -46,6 +46,7 @@ class mJobUserAction extends AE_UserAction
         // Add template
         $this->add_action('wp_footer', 'mJobAuthenticationTemplate');
         $this->add_filter('ae_register_email_template_select', 'mJobFilterEmailRegister', 10, 2);
+        $this->add_filter('ae_pre_insert_user', 'filterUserInfo');
     }
 
     /**
@@ -76,13 +77,11 @@ class mJobUserAction extends AE_UserAction
                     $result = $this->validateEmail($request['check_user_email']);
                     wp_send_json($result);
                     break;
-
                 case 'update_payment_method':
                     $payment_info = get_user_meta($current_user->ID, 'payment_info', true);
                     if(empty($payment_info)) {
                         $payment_info = array();
                     }
-
                     if(isset($request['paypal_email'])) {
                         $payment_info['paypal'] = $request['paypal_email'];
                         update_user_meta($current_user->ID, 'payment_info', $payment_info);
@@ -140,7 +139,8 @@ class mJobUserAction extends AE_UserAction
             );
         }
         return array(
-            'success' => true
+            'success' => true,
+            'user_email'=>$email
         );
     }
 
@@ -485,6 +485,20 @@ class mJobUserAction extends AE_UserAction
             }
         }
         return $message;
+    }
+    /**
+     * filter user data
+     *
+     * @param void
+     * @return void
+     * @since 1.0
+     * @package MicrojobEngine
+     * @category void
+     * @author JACK BUI
+     */
+    public function filterUserInfo($user_data){
+        $user_data['role'] = INDIVIDUAL;
+        return $user_data;
     }
 }
 
