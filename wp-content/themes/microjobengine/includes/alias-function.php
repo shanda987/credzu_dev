@@ -185,9 +185,9 @@ if(!function_exists('mJobShowAuthenticationLink')) {
             <div class="link-account">
                 <ul class="login-list-icon">
                     <li><a href="#" ><?php _e('Login with:', ET_DOMAIN); ?></a></li>
-                    <li><a href="#" class="login-facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                    <li><a href="#" class="login-google"><i class="fa fa-google-plus" aria-hidden="true"></i></i></a></li>
-                    <li><a href="#" class="login-twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                    <li><a href="#" class="login-facebook facebook_auth_btn"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                    <li><a href="#" class="login-google gplus_login_btn gplus"><i class="fa fa-google-plus" aria-hidden="true"></i></i></a></li>
+                    <li><a href="<?php echo add_query_arg('action', 'twitterauth', home_url()) ?>" class="login-twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
                     <li><a href="<?php echo et_get_page_link('user-authentication') ?>" class=""><i class="fa fa-envelope"></i></a></li>
                 </ul>
             </div>
