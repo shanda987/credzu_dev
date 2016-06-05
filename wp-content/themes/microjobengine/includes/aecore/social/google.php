@@ -42,7 +42,7 @@ class ET_GoogleAuth extends ET_SocialAuth
             $this->state = md5(uniqid());
             $redirect_uri = home_url('?action=gplus_auth_callback');
             $link = $this->gplus_base_url.'?';
-            $link .= 'scope=https://www.googleapis.com/auth/plus.profile.emails.read  https://www.googleapis.com/auth/plus.login&';
+            $link .= 'scope=https://www.googleapis.com/auth/plus.profile.emails.read https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/plus.login&';
             $link .= 'state='.$this->state.'&';
             $link .= 'redirect_uri='.$redirect_uri.'&';
             $link .= 'client_id='.$this->gplus_client_id.'&';
@@ -87,7 +87,7 @@ class ET_GoogleAuth extends ET_SocialAuth
                         'client_secret' => $this->gplus_secret_key
                         )
                     );
-                $remote_post = wp_remote_post( $this->gplus_exchange_url, $args );                     
+                $remote_post = wp_remote_post( $this->gplus_exchange_url, $args );
                 if( isset( $remote_post ['body'] ) ){                    
                     $data = json_decode( $remote_post ['body'] );
                     if( isset($data->refresh_token) ){
@@ -148,7 +148,6 @@ class ET_GoogleAuth extends ET_SocialAuth
                      * @since MicrojobEngine 1.0
                      */
                     do_action('ae_google_connect_social', $userinfor->id);
-
                     // avatar
                     $ava_response = isset($userinfor->picture) ? $userinfor->picture : '';
                     $sizes = get_intermediate_image_sizes();
@@ -167,7 +166,11 @@ class ET_GoogleAuth extends ET_SocialAuth
                     $params = array(
                         'user_login' => $username,
                         'user_email' => isset( $userinfor->email ) ? $userinfor->email : false,
-                        'et_avatar' => $avatars
+                        'et_avatar' => $avatars,
+                        'avatar'=> $avatars,
+                        'first_name'=> $userinfor->given_name,
+                        'last_name'=> $userinfor->family_name,
+                        'full'=>$userinfor
                     );
                     //remove avatar if cant fetch avatar
                     foreach ( $params as $key => $param ) {

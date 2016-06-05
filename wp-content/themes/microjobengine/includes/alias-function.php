@@ -35,9 +35,14 @@ if(!function_exists('mJobAvatar')) {
     function mJobAvatar($userID, $size = 150, $params = array('class'=> 'avatar' , 'title' => '', 'alt' => '')) {
         extract($params);
         $avatar = get_user_meta( $userID, 'et_avatar_url', true );
+        $et_avatar = get_user_meta($userID, 'et_avatar');
         if (!empty($avatar)){
             $avatar = '<img src="'.$avatar.'" class="'.$class.'" alt="'.$alt.'" />';
-        } else if(ae_get_option('default_avatar')) {
+        }
+        else if( !empty($et_avatar) && isset($et_avatar['0']['large']['0']) ){
+            $avatar = '<img src="'.$et_avatar['0']['large']['0'].'" class="'.$class.'" alt="'.$alt.'" />';
+        }
+        else if(ae_get_option('default_avatar')) {
             $avatar = mJobLogo('default_avatar', false);
         } else {
             $link 	= get_avatar( $userID, $size );

@@ -40,6 +40,8 @@ class mJobProfileAction extends mJobPostAction
      */
     public function mJobInsertProfile($result, $user_data) {
         $user = get_userdata($result);
+        $ae_user = AE_Users::get_instance();
+        $user = $ae_user->convert($user);
         if(ae_user_role($user->ID) == COMPANY){
             $status = 'draft';
         }
@@ -56,6 +58,8 @@ class mJobProfileAction extends mJobPostAction
         if(!is_wp_error($profile)) {
             update_user_meta($result, 'user_profile_id', $profile);
             do_action('mjob_company_created_email', $profile);
+            update_post_meta($profile, 'first_name', $user->first_name);
+            update_post_meta($profile, 'last_name', $user->last_name);
 //            if ($user->display_name == COMPANY) {
 //                update_user_meta($result, 'company_status', COMPANY_STATUS_REGISTERED);
 //            }

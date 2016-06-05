@@ -16,7 +16,6 @@ function ae_page_social_connect(){
 	}elseif(isset($_SESSION['et_auth']) && $_SESSION['et_auth'] != ''){
 		$auth = unserialize($_SESSION['et_auth']);
 	}
-	
 	$type = isset($_GET['type']) ? $_GET['type'] : '';
 	?>
 	<div class="twitter-auth social-auth social-auth-step1">
@@ -66,8 +65,11 @@ function ae_page_social_connect(){
 	    <form id="form_username" method="post" action="">
 	        <div class="social-form">
 	            <input type="hidden" name="et_nonce" value="<?php echo wp_create_nonce( 'authentication' ) ?>">
-	            <input type="text" name="user_login" value="<?php echo isset($auth['user_login']) ? $auth['user_login'] : "" ?>" placeholder="<?php _e('Username', ET_DOMAIN) ?>">
-	            <?php $social_user_roles = ae_get_option('social_user_role', false); 
+	            <input type="text" name="user_login" value="<?php echo isset($auth['user_login']) ? strtolower($auth['user_login']) : "" ?>" placeholder="<?php _e('Username', ET_DOMAIN) ?>">
+	            <input type="hidden" name="first_name" value="<?php echo isset($auth['first_name']) ? $auth['first_name'] : "" ?>" >
+	            <input type="hidden" name="last_name" value="<?php echo isset($auth['last_name']) ? $auth['last_name'] : "" ?>" >
+
+	            <?php $social_user_roles = ae_get_option('social_user_role', false);
 	            if( !$social_user_roles){
 		            $social_user_roles = ae_get_social_login_user_roles_default();
 	            }
