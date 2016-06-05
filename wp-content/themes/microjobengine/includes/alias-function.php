@@ -136,11 +136,6 @@ if(!function_exists('mJobShowUserHeader')) {
                 <a class="btn-basic" href="<?php echo $post_link; ?>"><?php _e('Post a Listing', ET_DOMAIN); ?>
                     <div class="plus-circle"><i class="fa fa-plus"></i></div>
                 </a>
-                <?php //else: ?>
-<!--                <a class="btn-basic disabled" href="#" onclick="return false;" data-toggle="tooltip" data-placement="bottom" title="You must have an Active account to post a listing">--><?php //_e('Post a Listing', ET_DOMAIN); ?>
-<!--                    <div class="plus-circle"><i class="fa fa-plus"></i></div>-->
-<!--                </a>-->
-                <?php //endif;?>
             </div>
             <?php endif; ?>
             <div class="user-account">
@@ -188,10 +183,12 @@ if(!function_exists('mJobShowAuthenticationLink')) {
 //            $sign_up_class = "signup-link focus-signup-form";
             ?>
             <div class="link-account">
-                <ul>
-                    <li><a href="" class="<?php echo $sign_in_class; ?>"><?php _e('Signin', ET_DOMAIN); ?></a></li>
-                    <li><span><?php _e('or', ET_DOMAIN); ?></span></li>
-                    <li><a href="" class="<?php echo $sign_up_class; ?>"><?php _e('Join us', ET_DOMAIN); ?></a></li>
+                <ul class="login-list-icon">
+                    <li><a href="#" ><?php _e('Login with:', ET_DOMAIN); ?></a></li>
+                    <li><a href="#" class="login-facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                    <li><a href="#" class="login-google"><i class="fa fa-google-plus" aria-hidden="true"></i></i></a></li>
+                    <li><a href="#" class="login-twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                    <li><a href="<?php echo et_get_page_link('user-authentication') ?>" class=""><i class="fa fa-envelope"></i></a></li>
                 </ul>
             </div>
             <?php

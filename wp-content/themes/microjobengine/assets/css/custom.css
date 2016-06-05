@@ -544,3 +544,18 @@
 .document-list .item-requirement{
     text-align: center;
 }
+.login-list-icon li{
+    margin-right: 15px;
+}
+.login-list-icon li:last-child{
+    margin-right: 0;
+}
+.login-list-icon .login-facebook i{
+    color:  #3b5998;
+}
+.login-list-icon .login-google i{
+    color: #ea4335
+}
+.login-list-icon .login-twitter i{
+    color: #68c5ef
+}
