@@ -59,6 +59,7 @@ global $current_user;
 				</div>
 			</div>
 		</div>
+		<?php if( !is_page_template('page-user-authentication.php')): ?>
 		<div class="et-pull-bottom" id="et-nav">
 			<div class="navbar navbar-default megamenu">
 				<div class="navbar-header">
@@ -88,6 +89,7 @@ global $current_user;
 				</div>
 			</div>
 		</div>
+		<?php endif; ?>
 	</header><!--End Header-->
 <?php
 global $user_ID;

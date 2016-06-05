@@ -73,7 +73,7 @@ class mJobUserAction extends AE_UserAction
         if(isset($request['do_action']) && !empty($request['do_action'])) {
             switch ($request['do_action']) {
                 case 'check_email':
-                    $result = $this->validateEmail($request['user_email']);
+                    $result = $this->validateEmail($request['check_user_email']);
                     wp_send_json($result);
                     break;
 
@@ -135,7 +135,8 @@ class mJobUserAction extends AE_UserAction
         if(email_exists($email)) {
             return array(
                 'success' => false,
-                'msg' => __('This email is already used on this site. Please enter a new email.', ET_DOMAIN)
+                'msg' => __('This email is already used on this site. Please enter a new email.', ET_DOMAIN),
+                'user_email'=>$email
             );
         }
         return array(

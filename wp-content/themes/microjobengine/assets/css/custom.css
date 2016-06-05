@@ -559,3 +559,9 @@
 .login-list-icon .login-twitter i{
     color: #68c5ef
 }
+#signUpFormStep1 .check-user-email{
+    width: 100%!important;
+}
+#signInForm{
+    display: none;
+}

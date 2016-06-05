@@ -18,18 +18,10 @@ if(!function_exists('mJobSignUpFormStepOne')) {
                 <div class="note-paragraph"><?php echo $intro ?></div>
                 <div class="form-group clearfix insert-email">
                     <div class="input-group">
-                        <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
-                        <button class="btn-submit btn-continue waves-effect waves-light"><?php _e('CONTINUE', ET_DOMAIN); ?><i class="fa fa-angle-right"></i></button>
-                        <input type="text" name="user_email" id="user_email" class="form-control" placeholder="<?php _e('Enter your email here', ET_DOMAIN); ?>">
+                        <div class="input-group-addon"><i class="fa fa-user"></i></div>
+                        <input type="email"  name="check_user_email" id="check_user_email" class="form-control check-user-email" placeholder="<?php _e('Enter your email here', ET_DOMAIN); ?>">
+                        <p><label><?php _e('Email address', ET_DOMAIN); ?></label></p>
                     </div>
-                </div>
-                <div class="form-group no-margin social">
-                    <?php
-                    if( function_exists('ae_render_social_button')){
-                        $before_string = __("Or join us with:", ET_DOMAIN);
-                        ae_render_social_button(array(), array(), $before_string);
-                    }
-                    ?>
                 </div>
             </div>
         </form>
@@ -215,45 +207,21 @@ if(!function_exists('mJobSignInForm')) {
                         <div class="input-group">
                             <div class="input-group-addon"><i class="fa fa-user"></i></div>
                             <input type="text" name="user_login" id="user_login" class="form-control" placeholder="Username or Email">
+                            <p><label><?php _e('Email address', ET_DOMAIN); ?></label></p>
                         </div>
                     </div>
                     <div class="form-group clearfix">
                         <div class="input-group">
                             <div class="input-group-addon"><i class="fa fa-lock"></i></div>
                             <input type="password" name="user_pass" id="user_pass" class="form-control" placeholder="Password">
+                            <p><label><?php _e('Password', ET_DOMAIN); ?></label></p>
                         </div>
                     </div>
                     <div class="row clearfix">
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 float-left">
-                            <a href="javascript:void(0)" class="open-forgot-modal"><?php _e('Forgot your password?', ET_DOMAIN); ?></a>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 float-right sign-in-button">
-                            <button class="btn-submit waves-effect waves-light"><?php _e('SIGN IN', ET_DOMAIN); ?></button>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 float-right sign-in-button">
+                            <button class="btn-submit waves-effect waves-light"><?php _e('Login', ET_DOMAIN); ?></button>
                         </div>
                     </div>
-                    <div class="clearfix float-right social">
-                        <?php
-                        if(!is_page_template('page-process-payment.php')) {
-                            if( function_exists('ae_render_social_button')){
-                                $before_string = __("Or sign in with:", ET_DOMAIN);
-                                ae_render_social_button( array(), array(), $before_string );
-                            }
-                        }
-                        ?>
-                    </div>
-                </div>
-                <div class="form-group float-center not-member">
-                    <?php
-                    if($is_page == true) {
-                        ?>
-                        <span><?php _e('Not a member yet?', ET_DOMAIN); ?></span> <a href="#" class="focus-signup-form"><?php _e('Join us!', ET_DOMAIN); ?></a>
-                        <?php
-                    } else  {
-                        ?>
-                        <span><?php _e('Not a member yet?', ET_DOMAIN); ?></span> <a href="#" class="open-signup-modal"><?php _e('Join us!', ET_DOMAIN); ?></a>
-                        <?php
-                    }
-                    ?>
                 </div>
             </form>
         </div>

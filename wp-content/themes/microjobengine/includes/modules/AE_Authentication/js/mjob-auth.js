@@ -174,7 +174,55 @@
                 view.closeModal();
             }
         });
-
+        Views.UserAuthenticationPage = Backbone.View.extend({
+            el: '.page-user-authentication',
+            events:{
+                'keypress .check-user-email': 'checkEmail'
+            },
+            initialize: function() {
+                AE.pubsub.on('ae:form:submit:success', this.authSuccess, this);
+            },
+            checkEmail: function(e){
+                var view  = this;
+                if(e.keyCode == 13 ){
+                    e.preventDefault();
+                    view.model = new Models.mJobUser({
+                        check_user_email: $(event.currentTarget).find('#check_user_email').val(),
+                        do_action: 'check_email'
+                    });
+                    this.model.save('', '', {
+                        success: function (result, resp, jqXHR) {
+                            if( resp.success ) {
+                                console.log('showSignup');
+                            }
+                            else {
+                                view.$el.find('#signInForm').show();
+                                view.$el.find('#user_login').val(resp.user_email);
+                                view.$el.find('#signUpFormStep1').hide();
+                            }
+                        }
+                    });
+                }
+            },
+            authSuccess: function(result, resp, jqXHR, type) {
+                var view = this;
+                if(type == 'signIn') {
+                    if(resp.success == true) {
+                        if(typeof resp.data.redirect_url !== 'undefined') {
+                            window.location.href = resp.data.redirect_url;
+                        } else {
+                            window.location.reload();
+                        }
+                    } else {
+                        AE.pubsub.trigger('ae:notification', {
+                            msg: resp.msg,
+                            notice_type: 'error'
+                        });
+                    }
+                }
+            },
+        });
+        new Views.UserAuthenticationPage();
         /**
          * MODAL FORGOT PASSWORD
          */

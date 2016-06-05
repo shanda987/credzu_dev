@@ -20,19 +20,10 @@ if(!function_exists('mJobSignUpFormStepOne')) {
                     <div class="input-group">
                         <button class="btn-submit waves-effect waves-light">Client</button>
                         <button class="btn-submit waves-effect waves-light">Company</button>
-
-                        <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
-                        <button class="btn-submit btn-continue waves-effect waves-light"><?php _e('CONTINUE', ET_DOMAIN); ?><i class="fa fa-angle-right"></i></button>
+                        <div class="input-group-addon"><i class="fa fa-user"></i></div>
                         <input type="text" name="user_email" id="user_email" class="form-control" placeholder="<?php _e('Enter your email here', ET_DOMAIN); ?>">
+                        <label><?php _e('Email address', ET_DOMAIN); ?></label>
                     </div>
-                </div>
-                <div class="form-group no-margin social">
-                    <?php
-                    if( function_exists('ae_render_social_button')){
-                        $before_string = __("Or join us with:", ET_DOMAIN);
-                        ae_render_social_button(array(), array(), $before_string);
-                    }
-                    ?>
                 </div>
             </div>
         </form>
