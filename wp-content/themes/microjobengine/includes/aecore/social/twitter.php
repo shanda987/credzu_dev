@@ -60,7 +60,8 @@ class ET_TwitterAuth extends ET_SocialAuth
             
             // create connection
             $connection = new TwitterOAuth($this->consumer_key, $this->consumer_secret);
-            
+            var_dump($connection);
+            exit;
             // request token
             $request_token = $connection->getRequestToken($this->oath_callback);
             
@@ -90,7 +91,7 @@ class ET_TwitterAuth extends ET_SocialAuth
                         break;
 
                     default:
-                        _e("Conection with twitter Failed", ET_DOMAIN);
+                        _e("Connection with twitter Failed", ET_DOMAIN);
                         exit;
                         break;
                 }
