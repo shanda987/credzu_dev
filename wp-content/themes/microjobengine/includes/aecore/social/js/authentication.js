@@ -39,9 +39,9 @@ AE.Views.SocialAuth = Backbone.View.extend({
             },
 			success:function(resp){
 				if( resp.success ){
-					if( $('#form_auth').length > 0) {
+					//if( $('#form_auth').length > 0) {
 						this.getCookie();
-					}
+					//}
 					//window.location.href = resp.redirect;
 				}
 				else{
