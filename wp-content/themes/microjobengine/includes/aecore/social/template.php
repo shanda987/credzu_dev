@@ -223,6 +223,7 @@ function ae_render_social_button( $icon_classes = array(), $button_classes = arr
 			 ajaxurl = '<?php admin_url('admin-ajax.php') ?>';
 			 jQuery.post(ajaxurl, data, function(response) {
 				 console.log('vaooooooo');
+				 console.log(response);
 				 alert('Got this from the server: ' + response);
 			 });
 		 });
