@@ -115,14 +115,14 @@ class ET_GoogleAuth extends ET_SocialAuth
                     _e( 'Error to connect to Google Server!', ET_DOMAIN );
                     exit();                    
                 }
-                var_dump($data);
-                exit;
                 /**
                  * Get user information
                  */  
                 if( isset( $data->access_token ) ){
                     $userinfor = wp_remote_get( $this->gplus_token_info_url.'?access_token='.$data->access_token );
                     $userinfor = json_decode($userinfor['body']);
+                    var_dump($userinfor);
+                    exit;
                 }
                 else{                   
                     _e( 'Error to connect to Google', ET_DOMAIN );
