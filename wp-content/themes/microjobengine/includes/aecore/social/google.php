@@ -171,8 +171,6 @@ class ET_GoogleAuth extends ET_SocialAuth
                         'last_name'=> $userinfor->family_name,
                         'full'=>$userinfor
                     );
-                    var_dump($params);
-                    exit;
                     //remove avatar if cant fetch avatar
                     foreach ( $params as $key => $param ) {
                         if ( $param == false ){
@@ -182,7 +180,8 @@ class ET_GoogleAuth extends ET_SocialAuth
                     $_SESSION['et_auth'] = serialize($params);
                     $_SESSION['et_social_id'] = $userinfor->id;
                     $_SESSION['et_auth_type'] = 'google';
-
+                    var_dump($_SESSION);
+                    exit;
                     et_write_session('et_auth', serialize($params));
                     et_write_session('et_social_id', $userinfor->id);
                     et_write_session('et_auth_type', 'google');
