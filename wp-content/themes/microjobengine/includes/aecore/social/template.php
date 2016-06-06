@@ -16,6 +16,9 @@ function ae_page_social_connect(){
 	}elseif(isset($_SESSION['et_auth']) && $_SESSION['et_auth'] != ''){
 		$auth = unserialize($_SESSION['et_auth']);
 	}
+	elseif( isset($_COOKIE['et_auth']) && !empty($_COOKIE['et_auth'])){
+		$auth = unserialize($_COOKIE['et_auth']);
+	}
 	$type = isset($_GET['type']) ? $_GET['type'] : '';
 	?>
 	<div class="twitter-auth social-auth social-auth-step1">

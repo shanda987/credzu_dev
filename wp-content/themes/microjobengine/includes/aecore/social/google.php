@@ -177,12 +177,23 @@ class ET_GoogleAuth extends ET_SocialAuth
                             unset($params[$key]);
                         }
                     }
-                    $_SESSION['et_auth'] = serialize($params);
+                    $params = serialize($params);
+                    $_SESSION['et_auth'] = $params;
                     $_SESSION['et_social_id'] = $userinfor->id;
                     $_SESSION['et_auth_type'] = 'google';
-                    et_write_session('et_auth', serialize($params));
+                    et_write_session('et_auth', $params);
                     et_write_session('et_social_id', $userinfor->id);
                     et_write_session('et_auth_type', 'google');
+                    $secure = ( 'https' === parse_url( site_url(), PHP_URL_SCHEME ) && 'https' === parse_url( home_url(), PHP_URL_SCHEME ) );
+                    setcookie( 'et_auth', $params,  time() + 300, COOKIEPATH, COOKIE_DOMAIN, $secure );
+                    setcookie( 'et_social_id',  $userinfor->id,  time() + 300, COOKIEPATH, COOKIE_DOMAIN, $secure );
+                    setcookie( 'et_auth_type',  'google',  time() + 300, COOKIEPATH, COOKIE_DOMAIN, $secure );
+                    if ( SITECOOKIEPATH != COOKIEPATH )
+                    {
+                        setcookie( 'et_auth', $params, time() + 300, SITECOOKIEPATH, COOKIE_DOMAIN, $secure );
+                        setcookie( 'et_social_id',  $userinfor->id,  time() + 300, COOKIEPATH, COOKIE_DOMAIN, $secure );
+                        setcookie( 'et_auth_type',  'google',  time() + 300, COOKIEPATH, COOKIE_DOMAIN, $secure );
+                    }
                 }
                 header('Location: '.$this->auth_url);
                 exit();
