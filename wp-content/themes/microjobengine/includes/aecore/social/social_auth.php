@@ -16,6 +16,7 @@ abstract class ET_SocialAuth extends AE_Base
         $this->add_action('template_redirect', 'social_redirect');
         $this->add_ajax('et_authentication_' . $type, 'authenticate_user');
         $this->add_ajax('et_confirm_username_' . $type, 'confirm_username');
+        $this->add_ajax('ae-get-current-cookie', 'returnCurrentCookie');
     }
     public function enqueue_scripts() {
         $this->add_script('et-authentication', ae_get_url() . '/social/js/authentication.js', array(
@@ -279,6 +280,19 @@ abstract class ET_SocialAuth extends AE_Base
             );
         }
         wp_send_json($resp);
+    }
+    /**
+      * Description
+      *
+      * @param void
+      * @return void
+      * @since 1.4
+      * @package MicrojobEngine
+      * @category CREDZU
+      * @author JACK BUI
+      */
+    public function returnCurrentCookie(){
+        return $_COOKIE;
     }
 }
 ?>
