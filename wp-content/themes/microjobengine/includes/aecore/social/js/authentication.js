@@ -9,7 +9,9 @@ AE.Views.SocialAuth = Backbone.View.extend({
 	},
 	initialize: function(){
 		this.blockUi = new AE.Views.BlockUi();
-		this.getCookie();
+		if( $('#form_auth').length > 0) {
+			this.getCookie();
+		}
 	},
 	getCookie: function(){
 		var view = this;
