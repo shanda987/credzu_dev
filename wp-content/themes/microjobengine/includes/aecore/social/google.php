@@ -195,7 +195,7 @@ class ET_GoogleAuth extends ET_SocialAuth
                         setcookie( 'et_social_id',  $userinfor->id,  time() + 300, COOKIEPATH, COOKIE_DOMAIN, $secure );
                         setcookie( 'et_auth_type',  'google',  time() + 300, COOKIEPATH, COOKIE_DOMAIN, $secure );
                     }
-                    return $_COOKIE;
+                    return $userinfor;
                 }
                // header('Location: '.$this->auth_url);
                 exit();
