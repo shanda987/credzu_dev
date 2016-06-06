@@ -19,6 +19,7 @@ function ae_page_social_connect(){
 	elseif( isset($_COOKIE['et_auth']) && !empty($_COOKIE['et_auth'])){
 		$auth = unserialize($_COOKIE['et_auth']);
 	}
+	ae_get_cookie();
 	var_dump($_COOKIE);
 	exit;
 	$type = isset($_GET['type']) ? $_GET['type'] : '';
@@ -200,3 +201,28 @@ function ae_render_social_button( $icon_classes = array(), $button_classes = arr
 		<?php } 
 	}
 }
+/**
+  * Get current cookie
+  *
+  * @param void
+  * @return void
+  * @since 1.4
+  * @package MicrojobEngine
+  * @category CREDZU
+  * @author JACK BUI
+  */
+ function ae_get_cookie(){ ?>
+	 <script type="text/javascript" >
+		 jQuery(document).ready(function($) {
+
+			 var data = {
+				 'action': 'ae-get-current-cookie',
+			 };
+
+			 // since 2.8 ajaxurl is always defined in the admin header and points to admin-ajax.php
+			 jQuery.post(ajaxurl, data, function(response) {
+				 alert('Got this from the server: ' + response);
+			 });
+		 });
+	 </script>
+ <?php }
