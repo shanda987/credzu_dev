@@ -184,6 +184,7 @@ class ET_GoogleAuth extends ET_SocialAuth
                     et_write_session('et_social_id', $userinfor->id);
                     et_write_session('et_auth_type', 'google');
                     var_dump($_SESSION);
+                    exit;
                 }
                 header('Location: '.$this->auth_url);
                 exit();
