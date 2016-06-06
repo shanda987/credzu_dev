@@ -177,7 +177,9 @@
         Views.UserAuthenticationPage = Backbone.View.extend({
             el: '.page-user-authentication',
             events:{
-                'keypress .check-user-email': 'checkEmail'
+                'keypress .check-user-email': 'checkEmail',
+                'change #user_email': 'checkEmailValid',
+                'change #user_login': 'checkEmailValidLogin'
             },
             initialize: function() {
                 AE.pubsub.on('ae:form:submit:success', this.authSuccess, this);
@@ -195,7 +197,6 @@
                             if( resp.success ) {
                                 view.$el.find('#signUpForm').show();
                                 view.$el.find('#user_email').val(resp.user_email);
-                                console.log(view.$el.find('#user_login').length);
                                 view.$el.find('#user_login').val('sdfsdf');
                                 view.$el.find('#signUpFormStep1').hide();
                             }
@@ -207,6 +208,50 @@
                         }
                     });
                 }
+            },
+            checkEmailValid: function(e){
+                var view = this;
+                e.preventDefault();
+                view.model = new Models.mJobUser({
+                    check_user_email: $(event.currentTarget).find('#user_email').val(),
+                    do_action: 'check_email'
+                });
+                this.model.save('', '', {
+                    success: function (result, resp, jqXHR) {
+                        if( !resp.success ) {
+                            view.$el.find('#signInForm').show();
+                            view.$el.find('#user_login').val(resp.user_email);
+                            if(view.$el.find('#signUpFormStep1').length > 0 ) {
+                                view.$el.find('#signUpFormStep1').hide();
+                            }
+                            if( view.$el.find('#signUpForm').length > 0 ){
+                                view.$el.find('#signUpForm').hide();
+                            }
+                        }
+                    }
+                });
+            },
+            checkEmailValidLogin: function(e){
+                var view = this;
+                e.preventDefault();
+                view.model = new Models.mJobUser({
+                    check_user_email: $(event.currentTarget).find('#user_login').val(),
+                    do_action: 'check_email'
+                });
+                this.model.save('', '', {
+                    success: function (result, resp, jqXHR) {
+                        if( resp.success ) {
+                            view.$el.find('#signUpForm').show();
+                            view.$el.find('#user_email').val(resp.user_email);
+                            if(view.$el.find('#signUpFormStep1').length > 0 ) {
+                                view.$el.find('#signUpFormStep1').hide();
+                            }
+                            if( view.$el.find('#signInForm').length > 0 ){
+                                view.$el.find('#signInForm').hide();
+                            }
+                        }
+                    }
+                });
             },
             authSuccess: function(result, resp, jqXHR, type) {
                 var view = this;
