@@ -89,6 +89,8 @@ class ET_GoogleAuth extends ET_SocialAuth
                         )
                     );
                 $remote_post = wp_remote_post( $this->gplus_exchange_url, $args );
+                var_dump($remote_post);
+                exit;
                 if( isset( $remote_post ['body'] ) ){                    
                     $data = json_decode( $remote_post ['body'] );
                     if( isset($data->refresh_token) ){
