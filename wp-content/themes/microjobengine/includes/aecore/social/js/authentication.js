@@ -9,6 +9,10 @@ AE.Views.SocialAuth = Backbone.View.extend({
 	},
 	initialize: function(){
 		this.blockUi = new AE.Views.BlockUi();
+		if( $('#form_auth').length > 0) {
+			Cookies.set('name', 'valuessssssss');
+		view.getCookie();
+		}
 	},
 	getCookie: function(){
 		var view = this;
@@ -39,10 +43,8 @@ AE.Views.SocialAuth = Backbone.View.extend({
             },
 			success:function(resp){
 				if( resp.success ){
-					//if( $('#form_auth').length > 0) {
-						view.getCookie();
-					//}
-					//window.location.href = resp.redirect;
+
+					window.location.href = resp.redirect;
 				}
 				else{
 					AE.pubsub.trigger('ae:notification', {

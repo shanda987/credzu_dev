@@ -673,7 +673,8 @@ class ET_Microjobengine extends AE_Base
          * bootstrap slider for search form
          */
         $this->add_existed_script('slider-bt');
-
+        $this->add_script('cookie-js', get_template_directory_uri() . '/assets/js/js.cookie.js', array(
+            'jquery'), ET_VERSION, true);
         // Notification lib
         $this->add_script('toastr-js', get_template_directory_uri() . '/assets/js/lib/toastr.min.js', array(
             'jquery',
