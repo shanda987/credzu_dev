@@ -20,6 +20,9 @@ function ae_page_social_connect(){
 		$auth = unserialize($_COOKIE['et_auth']);
 	}
 	$type = isset($_GET['type']) ? $_GET['type'] : '';
+	global $userinfor;
+	var_dump($userinfor);
+	exit;
 	?>
 	<div class="twitter-auth social-auth social-auth-step1">
 	<?php

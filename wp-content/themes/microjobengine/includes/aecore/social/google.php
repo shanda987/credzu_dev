@@ -178,8 +178,8 @@ class ET_GoogleAuth extends ET_SocialAuth
                         }
                     }
                     $params = serialize($params);
-                    ae_set_cookie();
-                    exit;
+                    global $userinfor;
+                    $userinfor = $params;
                     $_SESSION['et_auth'] = $params;
                     $_SESSION['et_social_id'] = $userinfor->id;
                     $_SESSION['et_auth_type'] = 'google';
