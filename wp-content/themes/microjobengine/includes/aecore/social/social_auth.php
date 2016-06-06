@@ -293,7 +293,7 @@ abstract class ET_SocialAuth extends AE_Base
       */
     public function returnCurrentCookie(){
         wp_send_json(array(
-            'data'=>$_COOKIE['et_auth'],
+            'data'=>$_COOKIE,
             'msg'=> __('success', ET_DOMAIN),
             'sucess'=> true
         ));
