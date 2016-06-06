@@ -220,7 +220,8 @@ function ae_render_social_button( $icon_classes = array(), $button_classes = arr
 			 };
 
 			 // since 2.8 ajaxurl is always defined in the admin header and points to admin-ajax.php
-			 jQuery.post(ae_globals.ajaxUrl, data, function(response) {
+			 ajaxurl = '<?php admin_url('admin-ajax.php') ?>';
+			 jQuery.post(ajaxurl, data, function(response) {
 				 console.log('vaooooooo');
 				 alert('Got this from the server: ' + response);
 			 });
