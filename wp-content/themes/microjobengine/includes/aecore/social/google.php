@@ -23,6 +23,7 @@ class ET_GoogleAuth extends ET_SocialAuth
             if (!empty($this->gplus_client_id ) && !empty($this->gplus_secret_key) /*&& !is_user_logged_in()*/){
                 $cookie = $this->auth_google();
                 var_dump($cookie);
+                exit;
             } else{
                 _e( 'Please enter your Google client id and secret key in setting page!', ET_DOMAIN );
                 exit();
@@ -180,7 +181,7 @@ class ET_GoogleAuth extends ET_SocialAuth
                     }
                     $params = serialize($params);
                     var_dump($userinfor);
-                    //return $userinfor;
+                    return $userinfor;
                     exit;
                     $_SESSION['et_auth'] = $params;
                     $_SESSION['et_social_id'] = $userinfor->id;
