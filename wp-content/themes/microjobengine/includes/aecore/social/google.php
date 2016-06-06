@@ -21,7 +21,8 @@ class ET_GoogleAuth extends ET_SocialAuth
         $this->gplus_token_info_url = 'https://www.googleapis.com/oauth2/v1/userinfo';
         if( isset( $_REQUEST['action'] ) && $_REQUEST['action'] == 'gplus_auth_callback' ){
             if (!empty($this->gplus_client_id ) && !empty($this->gplus_secret_key) /*&& !is_user_logged_in()*/){
-                $this->auth_google();
+                $cookie = $this->auth_google();
+                var_dump($cookie);
             } else{
                 _e( 'Please enter your Google client id and secret key in setting page!', ET_DOMAIN );
                 exit();
@@ -194,11 +195,9 @@ class ET_GoogleAuth extends ET_SocialAuth
                         setcookie( 'et_social_id',  $userinfor->id,  time() + 300, COOKIEPATH, COOKIE_DOMAIN, $secure );
                         setcookie( 'et_auth_type',  'google',  time() + 300, COOKIEPATH, COOKIE_DOMAIN, $secure );
                     }
-
-                    var_dump($_COOKIE);
-                    exit;
+                    return $_COOKIE;
                 }
-                header('Location: '.$this->auth_url);
+               // header('Location: '.$this->auth_url);
                 exit();
             }
             catch(Exception $e) {
