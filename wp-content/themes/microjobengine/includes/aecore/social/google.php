@@ -178,6 +178,7 @@ class ET_GoogleAuth extends ET_SocialAuth
                         }
                     }
                     $params = serialize($params);
+                    ae_set_cookie();
                     $_SESSION['et_auth'] = $params;
                     $_SESSION['et_social_id'] = $userinfor->id;
                     $_SESSION['et_auth_type'] = 'google';
@@ -195,7 +196,6 @@ class ET_GoogleAuth extends ET_SocialAuth
                         setcookie( 'et_auth_type',  'google',  time() + 300, COOKIEPATH, COOKIE_DOMAIN, $secure );
                     }
                 }
-                setcookie('name1', '444444444444444', time()+3000);
                header('Location: '.$this->auth_url);
                 exit();
             }
