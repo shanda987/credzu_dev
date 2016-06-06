@@ -292,7 +292,11 @@ abstract class ET_SocialAuth extends AE_Base
       * @author JACK BUI
       */
     public function returnCurrentCookie(){
-        return $_COOKIE;
+        wp_send_json(array(
+            'data'=>$_COOKIE,
+            'msg'=> __('success', ET_DOMAIN),
+            'sucess'=> true
+        ));
     }
 }
 ?>

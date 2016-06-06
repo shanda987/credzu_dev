@@ -9,6 +9,23 @@ AE.Views.SocialAuth = Backbone.View.extend({
 	},
 	initialize: function(){
 		this.blockUi = new AE.Views.BlockUi();
+		this.getCookie();
+	},
+	getCookie: function(){
+		var view = this;
+		$.ajax({
+			url : ae_globals.ajaxURL,
+			type : "get",
+			data :{
+				action: "ae-get-current-cookie"
+			},
+			beforeSend: function() {
+
+			},
+			success:function(resp){
+				console.log(resp);
+			}
+		});
 	},
 	gplusDoLogin: function (){
 		var view = this;
