@@ -116,7 +116,7 @@ if(!function_exists('mJobSignUpForm')) {
                                     <div class="input-group-addon"><i class="fa fa-user"></i></div>
                                     <input type="text" name="user_email" id="user_email" class="form-control" placeholder="Email">
                                     <p><label><?php _e('Email Address', ET_DOMAIN); ?></label></p>
-                                    <p><?php _e("We din't recognize this email. No worries! You can create an account below", ET_DOMAIN); ?></p>
+                                    <p>We din't recognize this email. <i>Double check to make sure you typed it correctly.</i> Otherwise, you can create an account below.</p>
                                 </div>
                             </div>
                             <?php
