@@ -8,6 +8,7 @@ function ae_page_social_connect(){
 	    ob_start();
 	    @session_start();
 	}
+	var_dump($_SESSION);
 	$labels = $et_data['auth_labels'];
 
 	$et_session = et_read_session();
