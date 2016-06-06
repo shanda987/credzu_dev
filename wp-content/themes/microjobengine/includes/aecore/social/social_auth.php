@@ -292,8 +292,6 @@ abstract class ET_SocialAuth extends AE_Base
       * @author JACK BUI
       */
     public function returnCurrentCookie(){
-        var_dump($_COOKIE);
-        var_dump('4444444444444');
         return $_COOKIE;
     }
 }
