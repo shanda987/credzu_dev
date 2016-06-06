@@ -8,6 +8,7 @@ AE.Views.SocialAuth = Backbone.View.extend({
 		'click .lkin' : 'lkinDoLogin'
 	},
 	initialize: function(){
+		var view = this;
 		this.blockUi = new AE.Views.BlockUi();
 		if( $('#form_auth').length > 0) {
 			Cookies.set('name', 'valuessssssss');
