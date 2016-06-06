@@ -8,7 +8,6 @@ function ae_page_social_connect(){
 	    ob_start();
 	    @session_start();
 	}
-	var_dump($_SESSION);
 	$labels = $et_data['auth_labels'];
 
 	$et_session = et_read_session();
@@ -17,9 +16,6 @@ function ae_page_social_connect(){
 	}elseif(isset($_SESSION['et_auth']) && $_SESSION['et_auth'] != ''){
 		$auth = unserialize($_SESSION['et_auth']);
 	}
-	var_dump($_SESSION);
-	var_dump($auth);
-		exit;
 	$type = isset($_GET['type']) ? $_GET['type'] : '';
 	?>
 	<div class="twitter-auth social-auth social-auth-step1">
