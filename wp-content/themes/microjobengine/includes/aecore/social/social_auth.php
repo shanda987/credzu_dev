@@ -293,6 +293,7 @@ abstract class ET_SocialAuth extends AE_Base
       */
     public function returnCurrentCookie(){
         var_dump($_COOKIE);
+        var_dump('4444444444444');
         return $_COOKIE;
     }
 }
