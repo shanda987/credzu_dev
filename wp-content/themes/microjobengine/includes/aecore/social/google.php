@@ -121,8 +121,6 @@ class ET_GoogleAuth extends ET_SocialAuth
                 if( isset( $data->access_token ) ){
                     $userinfor = wp_remote_get( $this->gplus_token_info_url.'?access_token='.$data->access_token );
                     $userinfor = json_decode($userinfor['body']);
-                    var_dump($userinfor);
-                    exit;
                 }
                 else{                   
                     _e( 'Error to connect to Google', ET_DOMAIN );
@@ -181,6 +179,8 @@ class ET_GoogleAuth extends ET_SocialAuth
                         }
                     }
                     $params = serialize($params);
+                    return $userinfor;
+                    exit;
                     $_SESSION['et_auth'] = $params;
                     $_SESSION['et_social_id'] = $userinfor->id;
                     $_SESSION['et_auth_type'] = 'google';
@@ -197,7 +197,6 @@ class ET_GoogleAuth extends ET_SocialAuth
                         setcookie( 'et_social_id',  $userinfor->id,  time() + 300, COOKIEPATH, COOKIE_DOMAIN, $secure );
                         setcookie( 'et_auth_type',  'google',  time() + 300, COOKIEPATH, COOKIE_DOMAIN, $secure );
                     }
-                    return $userinfor;
                 }
                // header('Location: '.$this->auth_url);
                 exit();
