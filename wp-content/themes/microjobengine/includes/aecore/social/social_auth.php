@@ -249,7 +249,7 @@ abstract class ET_SocialAuth extends AE_Base
                 $auth_info['user_login'] = $username;
                 // create user
                 $ae_user = AE_Users::get_instance();
-                $result = $ae_user->insert($auth_info);
+                $result = $ae_user->insert($data);
                 if (is_wp_error($result)) throw new Exception($result->get_error_message());
                 else if (empty($social_id)) {
                     throw new Exception(__("Can't find Social ID", ET_DOMAIN));
