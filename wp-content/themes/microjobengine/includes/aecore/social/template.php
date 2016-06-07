@@ -74,31 +74,12 @@ function ae_page_social_connect(){
 	            <input type="submit" value="<?php _e('Submit', ET_DOMAIN);?>">
 	        </div>
 	    </form>
-	</div>
-	<div class="social-auth social-auth-step2">
-	    <p class="text-page-not social-big"><?php echo $labels['title'] ?></p>
-	    <p class="social-small"><?php _e('Please provide a username to continue',ET_DOMAIN);?></p>
-	    <form id="form_username" method="post" action="">
-	        <div class="social-form">
-	            <input type="hidden" name="et_nonce" value="<?php echo wp_create_nonce( 'authentication' ) ?>">
-	            <input type="text" name="user_login" value="<?php echo isset($auth['user_login']) ? strtolower($auth['user_login']) : "" ?>" placeholder="<?php _e('Username', ET_DOMAIN) ?>">
-	            <input type="hidden" name="first_name" value="<?php echo isset($auth['first_name']) ? $auth['first_name'] : "" ?>" >
-	            <input type="hidden" name="last_name" value="<?php echo isset($auth['last_name']) ? $auth['last_name'] : "" ?>" >
-
-	            <?php $social_user_roles = ae_get_option('social_user_role', false);
-	            if( !$social_user_roles){
-		            $social_user_roles = ae_get_social_login_user_roles_default();
-	            }
-	            if( $social_user_roles && count( $social_user_roles ) >= 1 ){?>
-	            	  <select name="user_role" class="sc_user_role">
-	            	  	<?php foreach ($social_user_roles as $key => $value) { ?>
-		            	<option value="<?php echo $value ?>"><?php echo $value; ?></option>
-		           		<?php } ?>
-	            	  </select>
-	            <?php } ?>
-	            <input type="submit" value="<?php _e('Submit', ET_DOMAIN);?>">
-	        </div>
-	    </form>
+		<div class="form_step2_auth">
+			<input type="hidden" name="et_nonce" value="<?php echo wp_create_nonce( 'authentication' ) ?>">
+			<input type="hidden" name="user_login" value="<?php echo 'user_name_'.time() ?>" placeholder="<?php _e('Username', ET_DOMAIN) ?>">
+			<input type="hidden" name="first_name" value="<?php echo isset($auth['first_name']) ? $auth['first_name'] : "" ?>" >
+			<input type="hidden" name="last_name" value="<?php echo isset($auth['last_name']) ? $auth['last_name'] : "" ?>" >
+		</div>
 	</div>
 <?php
 }
