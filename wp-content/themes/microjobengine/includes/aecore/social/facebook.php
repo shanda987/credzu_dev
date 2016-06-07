@@ -191,6 +191,17 @@ class ET_FaceAuth extends ET_SocialAuth
 
                 $return['params'] = $params;
                 $return['redirect_url'] = $this->auth_url;
+                echo '<pre>';
+                var_dump($data);
+                exit;
+                $params = array(
+                    'user_login' => $username,
+                    'user_email' => isset($data['email']) ? $data['email'] : false,
+                    'description' => isset($data['bio']) ? $data['bio'] : false,
+                    'user_location' => isset($data['location']) ? $data['location']['name'] : false,
+                    'et_avatar' => $avatars,
+                    'et_social_id'=>$data['id']
+                );
             }
             $resp = array(
                 'success'   => true,
