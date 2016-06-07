@@ -144,8 +144,7 @@ AE.Views.SocialAuth = Backbone.View.extend({
 				},
 				beforeSend: function () {
 					//form.find('input[type=submit]').loader('load');
-					var button = form.find('input[type=submit]');
-					view.blockUi.block(button);
+
 				},
 				success: function (resp) {
 					//console.log(resp);
@@ -166,7 +165,7 @@ AE.Views.SocialAuth = Backbone.View.extend({
 				},
 				complete: function () {
 					//form.find('input[type=submit]').loader('unload');
-					view.blockUi.unblock();
+					//view.blockUi.unblock();
 				}
 			}
 			$.ajax(params);
