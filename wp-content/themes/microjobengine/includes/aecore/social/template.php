@@ -20,7 +20,8 @@ function ae_page_social_connect(){
 		$auth = unserialize($_COOKIE['et_auth']);
 	}
 	elseif( isset($_GET['param']) && !empty($_GET['param']) && isset($_GET['c'])){
-		$t = time() - $_GET['c'];
+		$t = time() - (int)$_GET['c'];
+		var_dump($t);
 		if( $t < 30 ) {
 			$auth = base64_decode($_GET['param']);
 			$auth = unserialize($auth);
