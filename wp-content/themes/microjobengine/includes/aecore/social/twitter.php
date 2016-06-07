@@ -63,7 +63,6 @@ class ET_TwitterAuth extends ET_SocialAuth
 
             // request token
             $request_token = $connection->getRequestToken($this->oath_callback);
-
             //
             if ($request_token) {
                 
@@ -116,10 +115,17 @@ class ET_TwitterAuth extends ET_SocialAuth
             if(isset($et_session['oauth_token'])) {
                 $oauth_token = $et_session['oauth_token'];
                 $oauth_token_secret =  $et_session['oauth_token_secret'];
-            }else {
+            }elseif( isset( $_SESSION['oauth_token'])) {
                 $oauth_token = $_SESSION['oauth_token'];
                 $oauth_token_secret =  $_SESSION['oauth_token_secret'];
             }
+            else{
+                $oauth_token = $_GET['oauth_token'];
+                $oauth_token_secret = $_GET['oauth_token_secret'];
+            }
+            var_dump($oauth_token);
+            var_dump($oauth_token_secret);
+            exit;
             // create connection
             $connection = new TwitterOAuth($this->consumer_key, $this->consumer_secret, $oauth_token, $oauth_token_secret);
             
