@@ -132,9 +132,9 @@ AE.Views.SocialAuth = Backbone.View.extend({
 		$.ajax(params);
 	},
 	
-	confirm_username: function(data){
+	confirm_username: function(dt){
 		var view = this;
-		view.data = data;
+		view.dt = dt;
 		console.log(view.data)
 		if( $('#social_type').length > 0 ) {
 			var params1 = {
@@ -142,7 +142,7 @@ AE.Views.SocialAuth = Backbone.View.extend({
 				type: 'post',
 				data: {
 					action: 'et_confirm_username_'+JSON.parse($('#social_type').html()),
-					content: view.data
+					content: view.dt
 				},
 				beforeSend: function () {
 					//form.find('input[type=submit]').loader('load');
@@ -170,6 +170,7 @@ AE.Views.SocialAuth = Backbone.View.extend({
 					//view.blockUi.unblock();
 				}
 			}
+			console.log(params1);
 			$.ajax(params1);
 		}
 	}
