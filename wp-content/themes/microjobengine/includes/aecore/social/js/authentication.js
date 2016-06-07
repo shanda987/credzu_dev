@@ -86,7 +86,7 @@ AE.Views.SocialAuth = Backbone.View.extend({
 			url: 	ae_globals.ajaxURL,
 			type: 	'post',
 			data: {
-				action: JSON.parse($('#social_type').html()),
+				action: 'et_authentication_'+JSON.parse($('#social_type').html()),
 				content: form.serializeObject()
 			},
 			beforeSend: function(){
@@ -138,7 +138,7 @@ AE.Views.SocialAuth = Backbone.View.extend({
 				url: ae_globals.ajaxURL,
 				type: 'post',
 				data: {
-					action: JSON.parse($('#social_type').html()),
+					action: 'et_confirm_username_'+JSON.parse($('#social_type').html()),
 					content: form.serializeObject()
 				},
 				beforeSend: function () {
