@@ -140,7 +140,6 @@ class ET_GoogleAuth extends ET_SocialAuth
                         'upload_img' => wp_create_nonce('et_upload_images') ,
                     );
                     $redirect_url = apply_filters('ae_social_redirect_link', home_url());
-                    header('Location: '.$redirect_url);
                     exit();
                 } else {
                     /**
@@ -178,8 +177,6 @@ class ET_GoogleAuth extends ET_SocialAuth
                         }
                     }
                     $params = serialize($params);
-                    global $userinfor;
-                    $userinfor = $params;
                     $_SESSION['et_auth'] = $params;
                     $_SESSION['et_social_id'] = $userinfor->id;
                     $_SESSION['et_auth_type'] = 'google';
@@ -197,7 +194,9 @@ class ET_GoogleAuth extends ET_SocialAuth
                         setcookie( 'et_auth_type',  'google',  time() + 300, COOKIEPATH, COOKIE_DOMAIN, $secure );
                     }
                 }
-               header('Location: '.$this->auth_url);
+                //ae_redirect_js($this->auth_url);
+                $params = base64_encode($params);
+                header('Location: '.$this->auth_url.'&param='.$params);
                 exit();
             }
             catch(Exception $e) {

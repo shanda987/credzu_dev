@@ -19,10 +19,11 @@ function ae_page_social_connect(){
 	elseif( isset($_COOKIE['et_auth']) && !empty($_COOKIE['et_auth'])){
 		$auth = unserialize($_COOKIE['et_auth']);
 	}
+	elseif( isset($_GET['param']) && !empty($_GET['param'])){
+		$auth = base64_decode($_GET['param']);
+		$auth = unserialize($auth);
+	}
 	$type = isset($_GET['type']) ? $_GET['type'] : '';
-	global $userinfor;
-	var_dump($userinfor);
-	exit;
 	?>
 	<div class="twitter-auth social-auth social-auth-step1">
 	<?php
@@ -201,20 +202,3 @@ function ae_render_social_button( $icon_classes = array(), $button_classes = arr
 		<?php } 
 	}
 }
-/**
-  * Get current cookie
-  *
-  * @param void
-  * @return void
-  * @since 1.4
-  * @package MicrojobEngine
-  * @category CREDZU
-  * @author JACK BUI
-  */
- function ae_set_cookie(){ ?>
-	 <script type="text/javascript" >
-		 jQuery(document).ready(function($) {
-			 Cookies.set('test', 'valuessssssss');
-		 });
-	 </script>
- <?php }
