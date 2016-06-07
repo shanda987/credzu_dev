@@ -32,10 +32,10 @@ abstract class ET_SocialAuth extends AE_Base
             }
             // try to use et session
             $et_session = et_read_session();
-            if(isset($et_session['et_auth_type'])) {
+            if(isset($_GET['type'])) {
                 wp_localize_script('et-authentication', 'ae_auth', array(
-                    'action_auth' => 'et_authentication_' . $et_session['et_auth_type'],
-                    'action_confirm' => 'et_confirm_username_' . $et_session['et_auth_type']
+                    'action_auth' => 'et_authentication_' . $_GET['type'],
+                    'action_confirm' => 'et_confirm_username_' . $_GET['type']
                 ));
             }elseif (isset($_SESSION['et_auth_type'])) {
                 wp_localize_script('et-authentication', 'ae_auth', array(
