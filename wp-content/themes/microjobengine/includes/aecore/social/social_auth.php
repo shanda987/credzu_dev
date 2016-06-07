@@ -154,9 +154,10 @@ abstract class ET_SocialAuth extends AE_Base
                 $_SESSION['et_auth'] = serialize($auth_info);
                 if (isset($auth_info['user_login'])) {
                     $auth_info['user_login'] = str_replace(' ', '', sanitize_user($auth_info['user_login']));
-                    $ae_user = get_user_by('login', $auth_info['user_login']);
+                    $user = get_user_by('login', $auth_info['user_login']);
                     $ae_user = AE_Users::get_instance();
-                    if (!$ae_user) {
+                    if (!$user) {
+                        $user = $ae_user->convert($user);
                         $result = $ae_user->insert($auth_info);
                         if ($result == false || is_wp_error($result)) throw new Exception(__("Can not authenticate user", ET_DOMAIN));
                         else if (empty($_SESSION['et_social_id'])) {
@@ -169,7 +170,7 @@ abstract class ET_SocialAuth extends AE_Base
                         }
                         $return = array(
                             'status' => 'linked',
-                            'user' => $ae_user,
+                            'user' => $user,
                             'redirect_url' => home_url()
                         );
                     } else {
