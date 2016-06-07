@@ -150,7 +150,7 @@ abstract class ET_SocialAuth extends AE_Base
                 $auth_info = wp_parse_args(array(
                     'user_email' => $email,
                     'user_pass' => $pass
-                ) , $auth_info);
+                ) , $data);
                 $_SESSION['et_auth'] = serialize($auth_info);
                 if (isset($auth_info['user_login'])) {
                     $auth_info['user_login'] = str_replace(' ', '', sanitize_user($auth_info['user_login']));

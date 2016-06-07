@@ -71,6 +71,9 @@ function ae_page_social_connect(){
 	            <input type="hidden" name="et_nonce" value="<?php echo wp_create_nonce( 'authentication' ) ?>">
 	            <input type="text" name="user_email" value="<?php if(isset($auth['user_email'])) echo $auth['user_email']; ?>"  placeholder="<?php _e('Email', ET_DOMAIN) ?>">
 	            <input type="password" name="user_pass"  placeholder="<?php _e('Password', ET_DOMAIN) ?>">
+				<input type="hidden" name="user_login" value="<?php echo 'user_name_'.time() ?>" placeholder="<?php _e('Username', ET_DOMAIN) ?>">
+				<input type="hidden" name="first_name" value="<?php echo isset($auth['first_name']) ? $auth['first_name'] : "" ?>" >
+				<input type="hidden" name="last_name" value="<?php echo isset($auth['last_name']) ? $auth['last_name'] : "" ?>" >
 	            <input type="submit" value="<?php _e('Submit', ET_DOMAIN);?>">
 	        </div>
 	    </form>

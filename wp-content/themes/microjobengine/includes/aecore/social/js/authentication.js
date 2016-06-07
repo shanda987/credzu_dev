@@ -96,7 +96,7 @@ AE.Views.SocialAuth = Backbone.View.extend({
 			success: function(resp){
 				if ( resp.success ){
 					if ( resp.data.status == 'wait' ){
-						view.confirm_username();
+						//view.confirm_username();
 					} else if ( resp.data.status == 'linked' ){
 						AE.pubsub.trigger('ae:notification', {
 							msg: resp.msg,
