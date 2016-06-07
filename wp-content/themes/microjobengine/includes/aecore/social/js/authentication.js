@@ -86,7 +86,7 @@ AE.Views.SocialAuth = Backbone.View.extend({
 			url: 	ae_globals.ajaxURL,
 			type: 	'post',
 			data: {
-				action: ae_auth.action_auth,
+				action: 'et_authentication_google',
 				content: form.serializeObject()
 			},
 			beforeSend: function(){
