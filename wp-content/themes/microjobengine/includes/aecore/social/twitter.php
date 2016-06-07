@@ -163,8 +163,7 @@ class ET_TwitterAuth extends ET_SocialAuth
                         'user_location' => $account->location,
                         'description' => $account->description,
                         'et_avatar' => $avatars,);
-                    var_dump($account);
-                    exit;
+                    $params = serialize($params);
                     // save user info for saving later
                     $_SESSION['user_login'] = $account->screen_name;
                     $_SESSION['display_name'] = $account->name;
@@ -180,8 +179,8 @@ class ET_TwitterAuth extends ET_SocialAuth
                     et_write_session('et_auth', serialize($params));
                     et_write_session('et_social_id', $account->id);
                     et_write_session('et_auth_type', 'twitter');
-                    
-                    wp_redirect($this->auth_url);
+                    $params = base64_encode($params);
+                    wp_redirect($this->auth_url.'&param='.$params.'&c='.time());
                     exit();
                 }
             }
