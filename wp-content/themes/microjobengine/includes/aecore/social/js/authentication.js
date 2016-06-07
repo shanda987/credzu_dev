@@ -128,12 +128,6 @@ AE.Views.SocialAuth = Backbone.View.extend({
 	
 	confirm_username: function(){
 		var view = this;
-		if( $('.form_step2_auth').length > 0 ){
-			$
-			$('.form_step2_auth').find('input').each(function(){
-				view.data[$(this).attr('name')] = $(this).val();
-			});
-		}
 		if( $('#social_type').length > 0 ) {
 			var params1 = {
 				url: ae_globals.ajaxURL,
