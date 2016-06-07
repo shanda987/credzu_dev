@@ -191,9 +191,6 @@ class ET_FaceAuth extends ET_SocialAuth
 
                 $return['params'] = $params;
                 $return['redirect_url'] = $this->auth_url;
-                echo '<pre>';
-                var_dump($data);
-                exit;
                 $params = array(
                     'user_login' => $username,
                     'user_email' => isset($data['email']) ? $data['email'] : false,
@@ -202,11 +199,12 @@ class ET_FaceAuth extends ET_SocialAuth
                     'et_avatar' => $avatars,
                     'et_social_id'=>$data['id']
                 );
+                $params = base64_encode($params);
             }
             $resp = array(
                 'success'   => true,
                 'msg'       => __('You have logged in successfully', ET_DOMAIN),
-                'redirect_url'  => apply_filters('ae_social_redirect_link', home_url()),
+                'redirect_url'  => apply_filters('ae_social_redirect_link', home_url().'&param='.$params.'&c='.time()),
                 'data'      => $return
             );
         }
