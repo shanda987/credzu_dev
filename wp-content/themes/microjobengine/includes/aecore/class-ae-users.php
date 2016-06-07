@@ -328,9 +328,9 @@ class AE_Users
             unset($user_data['ID']);
         }
 
-        if (!$user_data['user_login'] || !preg_match('/^[\w\W]{4,20}$/', $user_data['user_login'])) {
-            return new WP_Error('username_length_invalid', __("Username must have 4 to 20 characters.", ET_DOMAIN));
-        }else if(!$user_data['user_login'] || !preg_match('/^[a-z\d_]{4,20}$/', $user_data['user_login'])) {
+        if (!$user_data['user_login'] || !preg_match('/^[\w\W]{4,50}$/', $user_data['user_login'])) {
+            return new WP_Error('username_length_invalid', __("Username must have 4 to 50 characters.", ET_DOMAIN));
+        }else if(!$user_data['user_login'] || !preg_match('/^[a-z\d_]{4,50}$/', $user_data['user_login'])) {
             return new WP_Error('username_format_invalid', __("Username only lowercase letters (a-z) and numbers are allowed.", ET_DOMAIN));
         }
         if (!isset($user_data['user_email']) || !$user_data['user_email'] || $user_data['user_email'] == '' || !is_email($user_data['user_email']) ) {
