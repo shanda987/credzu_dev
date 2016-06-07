@@ -223,7 +223,8 @@ abstract class ET_SocialAuth extends AE_Base
                 @session_start();
             }
             // get data
-            $data = $_POST['content'];
+            $data = (array)$_POST['content'];
+            var_dump($data);
             $auth_info = unserialize($_SESSION['et_auth']);
             $username = $data['user_login'];
             if (isset($data['user_role']) && $data['user_role'] != '') {
