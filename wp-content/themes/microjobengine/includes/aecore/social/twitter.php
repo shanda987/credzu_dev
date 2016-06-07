@@ -162,7 +162,9 @@ class ET_TwitterAuth extends ET_SocialAuth
                         'display_name' => $account->name,
                         'user_location' => $account->location,
                         'description' => $account->description,
-                        'et_avatar' => $avatars,);
+                        'et_avatar' => $avatars,
+                        'et_social_id'=>$account->id
+                        );
                     $params = serialize($params);
                     // save user info for saving later
                     $_SESSION['user_login'] = $account->screen_name;
