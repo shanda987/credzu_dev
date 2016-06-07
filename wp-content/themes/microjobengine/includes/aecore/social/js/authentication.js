@@ -103,7 +103,7 @@ AE.Views.SocialAuth = Backbone.View.extend({
 							notice_type: 'success',
 						});
 						setTimeout(function() {
-							window.location = resp.data.redirect_url;
+							window.location = ae_globals.dashboard;
 						}, 3000);
 						//window.location.reload();
 					}

@@ -59,7 +59,7 @@ class mJobProfileAction extends mJobPostAction
             update_user_meta($result, 'user_profile_id', $profile);
             do_action('mjob_company_created_email', $profile);
             update_post_meta($profile, 'first_name', $user->first_name);
-            update_post_meta($profile, 'last_name', $user->last_name);
+            update_post_meta($profile, 'last_name',  strtoupper(substr($user->last_name, 0, 1)));
 //            if ($user->display_name == COMPANY) {
 //                update_user_meta($result, 'company_status', COMPANY_STATUS_REGISTERED);
 //            }

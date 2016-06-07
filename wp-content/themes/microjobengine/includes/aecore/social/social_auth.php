@@ -157,20 +157,19 @@ abstract class ET_SocialAuth extends AE_Base
                     $user = get_user_by('login', $auth_info['user_login']);
                     $ae_user = AE_Users::get_instance();
                     if (!$user) {
-                        $user = $ae_user->convert($user);
                         $result = $ae_user->insert($auth_info);
                         if ($result == false || is_wp_error($result)) throw new Exception(__("Can not authenticate user", ET_DOMAIN));
                         else if (empty($_SESSION['et_social_id'])) {
                             throw new Exception(__("Can't find Social ID", ET_DOMAIN));
                         } else {
-                            update_user_meta($result, $this->social_option, $_SESSION['et_social_id']);
+                            update_user_meta($result->ID, $this->social_option, $_SESSION['et_social_id']);
                             do_action('et_after_register', $result);
-                            wp_set_auth_cookie($result, 1);
+                            wp_set_auth_cookie($result->ID, 1);
                             unset($_SESSION['et_auth']);
                         }
                         $return = array(
                             'status' => 'linked',
-                            'user' => $user,
+                            'user' => $result,
                             'redirect_url' => home_url()
                         );
                     } else {
