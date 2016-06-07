@@ -19,9 +19,16 @@ function ae_page_social_connect(){
 	elseif( isset($_COOKIE['et_auth']) && !empty($_COOKIE['et_auth'])){
 		$auth = unserialize($_COOKIE['et_auth']);
 	}
-	elseif( isset($_GET['param']) && !empty($_GET['param'])){
-		$auth = base64_decode($_GET['param']);
-		$auth = unserialize($auth);
+	elseif( isset($_GET['param']) && !empty($_GET['param']) && isset($_GET['c'])){
+		$t = time() - $_GET['c'];
+		if( $t < 30 ) {
+			$auth = base64_decode($_GET['param']);
+			$auth = unserialize($auth);
+		}else{
+			_e('Section expired', ET_DOMAIN);
+			wp_redirect(home_url());
+			exit;
+		}
 	}
 	$type = isset($_GET['type']) ? $_GET['type'] : '';
 	?>

@@ -196,7 +196,7 @@ class ET_GoogleAuth extends ET_SocialAuth
                 }
                 //ae_redirect_js($this->auth_url);
                 $params = base64_encode($params);
-                header('Location: '.$this->auth_url.'&param='.$params);
+                header('Location: '.$this->auth_url.'&param='.$params.'&c='.time());
                 exit();
             }
             catch(Exception $e) {
