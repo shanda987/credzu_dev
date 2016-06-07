@@ -75,11 +75,11 @@ function ae_page_social_connect(){
 				<input type="hidden" name="first_name" value="<?php echo isset($auth['first_name']) ? $auth['first_name'] : "" ?>" >
 				<input type="hidden" name="last_name" value="<?php echo isset($auth['last_name']) ? $auth['last_name'] : "" ?>" >
 				<input type="hidden" name="et_social_id" value="<?php echo isset($auth['et_social_id']) ? $auth['et_social_id'] : "" ?>" >
-	            <input type="submit" value="<?php _e('Submit', ET_DOMAIN);?>">
+	            <input type="submit" class="btn-submit" value="<?php _e('Submit', ET_DOMAIN);?>">
 	        </div>
 	    </form>
 		<div class="form_step2_auth">
-			
+
 		</div>
 	</div>
 <?php
