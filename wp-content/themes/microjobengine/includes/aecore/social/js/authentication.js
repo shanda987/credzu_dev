@@ -81,10 +81,10 @@ AE.Views.SocialAuth = Backbone.View.extend({
 		event.preventDefault();
 		var form = $(event.currentTarget);
 		var view = this;
-		var data = new Array();
+		view.data = new Array();
 		if( $('.form_step2_auth').length > 0 ){
 			$('.form_step2_auth').find('input').each(function(){
-				data[$(this).attr('name')] = $(this).val();
+				view.data[$(this).attr('name')] = $(this).val();
 			});
 		}
 		var params = {
@@ -102,8 +102,7 @@ AE.Views.SocialAuth = Backbone.View.extend({
 			success: function(resp){
 				if ( resp.success ){
 					if ( resp.data.status == 'wait' ){
-						console.log(data);
-						view.confirm_username(data);
+						view.confirm_username(view.data);
 					} else if ( resp.data.status == 'linked' ){
 						AE.pubsub.trigger('ae:notification', {
 							msg: resp.msg,
@@ -127,7 +126,7 @@ AE.Views.SocialAuth = Backbone.View.extend({
 				}
 			}, 
 			complete: function(){
-				view.blockUi.unblock();
+				//view.blockUi.unblock();
 			}
 		}
 		$.ajax(params);
@@ -136,8 +135,9 @@ AE.Views.SocialAuth = Backbone.View.extend({
 	confirm_username: function(data){
 		var view = this;
 		view.data = data;
+		console.log(view.data)
 		if( $('#social_type').length > 0 ) {
-			var params = {
+			var params1 = {
 				url: ae_globals.ajaxURL,
 				type: 'post',
 				data: {
@@ -170,7 +170,7 @@ AE.Views.SocialAuth = Backbone.View.extend({
 					//view.blockUi.unblock();
 				}
 			}
-			$.ajax(params);
+			$.ajax(params1);
 		}
 	}
 });
