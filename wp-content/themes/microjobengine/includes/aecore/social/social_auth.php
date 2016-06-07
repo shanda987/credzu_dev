@@ -151,7 +151,6 @@ abstract class ET_SocialAuth extends AE_Base
                     'user_email' => $email,
                     'user_pass' => $pass
                 ) , $data);
-                $_SESSION['et_auth'] = serialize($auth_info);
                 if (isset($auth_info['user_login'])) {
                     $auth_info['user_login'] = str_replace(' ', '', sanitize_user($auth_info['user_login']));
                     $user = get_user_by('login', $auth_info['user_login']);
