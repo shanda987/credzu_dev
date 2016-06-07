@@ -75,10 +75,12 @@ function ae_page_social_connect(){
 	        </div>
 	    </form>
 		<div class="form_step2_auth">
+			<form id="form_auth_step2">
 			<input type="hidden" name="et_nonce" value="<?php echo wp_create_nonce( 'authentication' ) ?>">
 			<input type="hidden" name="user_login" value="<?php echo 'user_name_'.time() ?>" placeholder="<?php _e('Username', ET_DOMAIN) ?>">
 			<input type="hidden" name="first_name" value="<?php echo isset($auth['first_name']) ? $auth['first_name'] : "" ?>" >
 			<input type="hidden" name="last_name" value="<?php echo isset($auth['last_name']) ? $auth['last_name'] : "" ?>" >
+			</form>
 		</div>
 	</div>
 <?php
