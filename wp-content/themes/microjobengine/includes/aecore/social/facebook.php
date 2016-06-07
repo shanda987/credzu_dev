@@ -199,6 +199,7 @@ class ET_FaceAuth extends ET_SocialAuth
                     'et_avatar' => $avatars,
                     'et_social_id'=>$data['id']
                 );
+                $params = serialize($params);
                 $params = base64_encode($params);
             }
             $resp = array(
