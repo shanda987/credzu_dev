@@ -133,7 +133,7 @@ window.fbAsyncInit = function() {
 					alert('User cancelled login or did not fully authorize.');
 				}
 			}, {
-				scope: 'email,user_about_me'
+				scope: 'email,user_about_me,public_profile'
 			});
 		}
 	});
