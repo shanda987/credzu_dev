@@ -190,7 +190,6 @@ class ET_FaceAuth extends ET_SocialAuth
                 et_write_session('et_auth_type', 'facebook');
 
                 $return['params'] = $params;
-                $return['redirect_url'] = $this->auth_url.'&param='.$params.'&c='.time();
                 $params = array(
                     'user_login' => $username,
                     'user_email' => isset($data['email']) ? $data['email'] : false,
@@ -201,6 +200,7 @@ class ET_FaceAuth extends ET_SocialAuth
                 );
                 $params = serialize($params);
                 $params = base64_encode($params);
+                $return['redirect_url'] = $this->auth_url.'&param='.$params.'&c='.time();
             }
             $resp = array(
                 'success'   => true,
