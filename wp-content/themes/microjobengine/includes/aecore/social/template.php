@@ -31,7 +31,9 @@ function ae_page_social_connect(){
 		}
 	}
 	$type = isset($_GET['type']) ? $_GET['type'] : '';
+	echo '<script type="text/template" id="social_type" >'.json_encode($type).'</script>';
 	?>
+
 	<div class="twitter-auth social-auth social-auth-step1">
 	<?php
 	if($type == 'facebook'){ ?>

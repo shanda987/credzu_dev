@@ -86,7 +86,7 @@ AE.Views.SocialAuth = Backbone.View.extend({
 			url: 	ae_globals.ajaxURL,
 			type: 	'post',
 			data: {
-				action: 'et_authentication_google',
+				action: JSON.parse($('#social_type').html()),
 				content: form.serializeObject()
 			},
 			beforeSend: function(){
@@ -133,42 +133,43 @@ AE.Views.SocialAuth = Backbone.View.extend({
 		event.preventDefault();
 		var form = $(event.currentTarget);
 		var view = this;
-
-		var params = {
-			url: 	ae_globals.ajaxURL,
-			type: 	'post',
-			data: {
-				action: ae_auth.action_confirm,
-				content: form.serializeObject()
-			},
-			beforeSend: function(){
-				//form.find('input[type=submit]').loader('load');
-				var button = form.find('input[type=submit]');
-				view.blockUi.block(button);
-			}, 
-			success: function(resp){
-				//console.log(resp);
-				if ( resp.success == true ){
-					AE.pubsub.trigger('ae:notification', {
-						msg: resp.msg,
-						notice_type: 'success'
-					});
-					setTimeout(function() {
-						window.location = resp.data.redirect_url;
-					}, 3000);
-				} else {
-					AE.pubsub.trigger('ae:notification', {
-						msg: resp.msg,
-						notice_type: 'error'
-					});
+		if( $('#social_type').length > 0 ) {
+			var params = {
+				url: ae_globals.ajaxURL,
+				type: 'post',
+				data: {
+					action: JSON.parse($('#social_type').html()),
+					content: form.serializeObject()
+				},
+				beforeSend: function () {
+					//form.find('input[type=submit]').loader('load');
+					var button = form.find('input[type=submit]');
+					view.blockUi.block(button);
+				},
+				success: function (resp) {
+					//console.log(resp);
+					if (resp.success == true) {
+						AE.pubsub.trigger('ae:notification', {
+							msg: resp.msg,
+							notice_type: 'success'
+						});
+						setTimeout(function () {
+							window.location = resp.data.redirect_url;
+						}, 3000);
+					} else {
+						AE.pubsub.trigger('ae:notification', {
+							msg: resp.msg,
+							notice_type: 'error'
+						});
+					}
+				},
+				complete: function () {
+					//form.find('input[type=submit]').loader('unload');
+					view.blockUi.unblock();
 				}
-			}, 
-			complete: function(){
-				//form.find('input[type=submit]').loader('unload');
-				view.blockUi.unblock();
 			}
+			$.ajax(params);
 		}
-		$.ajax(params);
 	}
 });
 
