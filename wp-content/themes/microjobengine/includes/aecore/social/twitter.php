@@ -122,7 +122,7 @@ class ET_TwitterAuth extends ET_SocialAuth
             }
             else{
                 $oauth_token = $_GET['oauth_token'];
-                $oauth_token_secret = get_option($_GET['oauth_token']);
+                $oauth_token_secret = get_option($oauth_token);
                 delete_option($_GET['oauth_token']);
             }
             var_dump($oauth_token);
