@@ -129,6 +129,7 @@ class ET_GoogleAuth extends ET_SocialAuth
                     _e( 'Error to connect to Google Server!', ET_DOMAIN );
                     exit();
                 }
+                var_dump($userinfor->id);
                 var_dump($this->get_user( $userinfor->id ));
                 exit;
                 // if user is already authenticated before
