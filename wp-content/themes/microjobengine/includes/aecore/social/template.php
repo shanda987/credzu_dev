@@ -77,6 +77,7 @@ function ae_page_social_connect(){
 				<input type="hidden" name="last_name" value="<?php echo isset($auth['last_name']) ? $auth['last_name'] : "" ?>" >
 				<input type="hidden" name="et_social_id" value="<?php echo isset($auth['et_social_id']) ? $auth['et_social_id'] : "" ?>" >
 				<input type="hidden" name="display_name" value="<?php echo isset($auth['display_name']) ? $auth['display_name'] : "" ?>" >
+				<input type="hidden" name="et_avatar" value="<?php echo isset($auth['et_avatar']) ? $auth['et_avatar'] : "" ?>" >
 	            <input type="submit" class="btn-submit" value="<?php _e('Submit', ET_DOMAIN);?>">
 	        </div>
 	    </form>

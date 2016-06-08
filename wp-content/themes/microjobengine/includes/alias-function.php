@@ -36,8 +36,6 @@ if(!function_exists('mJobAvatar')) {
         extract($params);
         $avatar = get_user_meta( $userID, 'et_avatar_url', true );
         $et_avatar = get_user_meta($userID, 'et_avatar');
-        var_dump($avatar);
-        var_dump($et_avatar);
         if (!empty($avatar)){
             $avatar = '<img src="'.$avatar.'" class="'.$class.'" alt="'.$alt.'" />';
         }
