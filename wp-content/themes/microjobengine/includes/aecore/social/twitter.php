@@ -141,7 +141,7 @@ class ET_TwitterAuth extends ET_SocialAuth
 //                    $users = get_users(array('meta_key' => 'et_twitter_id', 'meta_value' => $account->id));
                     $users = $this->get_user( $account->id );
                     if (!empty($users) ) {
-                        $ae_user = $users[0];
+                        //$ae_user = $users[0];
                         $result = $this->logged_user_in( $account->id );
                         //wp_redirect(apply_filters('ae_social_redirect_link', home_url()));
                         wp_redirect(et_get_page_link('dashboard'));
