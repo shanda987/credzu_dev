@@ -188,7 +188,8 @@ class ET_FaceAuth extends ET_SocialAuth
                 et_write_session('et_auth', serialize($params));
                 et_write_session('et_social_id', $data['id']);
                 et_write_session('et_auth_type', 'facebook');
-
+                var_dump($avatars);
+                exit;
                 $return['params'] = $params;
                 $params = array(
                     'user_login' => $username,
