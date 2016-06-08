@@ -129,8 +129,7 @@ class ET_GoogleAuth extends ET_SocialAuth
                     _e( 'Error to connect to Google Server!', ET_DOMAIN );
                     exit();
                 }
-                var_dump($this->get_user($userinfor->id));
-                exit;
+
                 // if user is already authenticated before
                 if ( $this->get_user( $userinfor->id ) ) {
                     $user = $this->get_user( $userinfor->id );
@@ -142,6 +141,7 @@ class ET_GoogleAuth extends ET_SocialAuth
                         'upload_img' => wp_create_nonce('et_upload_images') ,
                     );
                     $redirect_url = apply_filters('ae_social_redirect_link', home_url());
+                    wp_redirect(et_get_page_link('dashboard'));
                     exit();
                 } else {
                     /**
