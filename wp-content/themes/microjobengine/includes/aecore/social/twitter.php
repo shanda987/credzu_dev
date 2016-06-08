@@ -145,7 +145,7 @@ class ET_TwitterAuth extends ET_SocialAuth
                         $result = $this->logged_user_in( $account->id );
                         //wp_redirect(apply_filters('ae_social_redirect_link', home_url()));
                         wp_redirect( et_get_page_link('dashboard') );
-                        exit;
+                        exit('111');
                     }
                     /**
                      * Hook action connect social
