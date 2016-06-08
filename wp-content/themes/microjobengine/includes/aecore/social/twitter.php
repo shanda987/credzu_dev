@@ -193,9 +193,9 @@ class ET_TwitterAuth extends ET_SocialAuth
                     wp_redirect($this->auth_url.'&param='.$params.'&c='.time());
                     exit();
                 }
-                wp_redirect(home_url());
+              //  wp_redirect(home_url());
             }
-            wp_redirect(home_url());
+            //wp_redirect(home_url());
             exit();
         }
         
