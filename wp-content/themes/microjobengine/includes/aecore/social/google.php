@@ -130,6 +130,8 @@ class ET_GoogleAuth extends ET_SocialAuth
                     exit();
                 }
                 // if user is already authenticated before
+                var_dump($userinfor);
+                exit();
                 if ( $this->get_user( $userinfor->id ) ) {
                     $user = $this->get_user( $userinfor->id );
                     $result = $this->logged_user_in( $userinfor->id );
