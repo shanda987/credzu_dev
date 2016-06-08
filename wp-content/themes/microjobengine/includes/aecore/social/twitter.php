@@ -125,15 +125,10 @@ class ET_TwitterAuth extends ET_SocialAuth
                 $oauth_token_secret = get_option($_GET['oauth_token']);
                 delete_option($_GET['oauth_token']);
             }
-            var_dump($oauth_token);
-            var_dump(get_option('testsss'));
-            var_dump($oauth_token_secret);
             // create connection
             $connection = new TwitterOAuth($this->consumer_key, $this->consumer_secret, $oauth_token, $oauth_token_secret);
             // request access token
             $access_token = $connection->getAccessToken($_REQUEST['oauth_verifier']);
-            var_dump($access_token);
-            exit;
             //
             if ($access_token && isset($access_token['oauth_token'])) {
                 
