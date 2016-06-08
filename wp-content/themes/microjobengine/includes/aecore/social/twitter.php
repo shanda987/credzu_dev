@@ -133,7 +133,6 @@ class ET_TwitterAuth extends ET_SocialAuth
             // request access token
             $access_token = $connection->getAccessToken($_REQUEST['oauth_verifier']);
             var_dump($access_token);
-            exit;
             //
             if ($access_token && isset($access_token['oauth_token'])) {
                 
