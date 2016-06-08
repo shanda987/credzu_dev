@@ -31,6 +31,7 @@ function ae_page_social_connect(){
 			exit;
 		}
 	}
+	var_dump($auth);
 	$type = isset($_GET['type']) ? $_GET['type'] : '';
 	echo '<script type="text/template" id="social_type" >'.json_encode($type).'</script>';
 	?>
