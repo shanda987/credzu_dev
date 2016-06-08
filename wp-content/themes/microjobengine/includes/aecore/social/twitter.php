@@ -72,7 +72,7 @@ class ET_TwitterAuth extends ET_SocialAuth
                     $token = $request_token['oauth_token'];
                     $_SESSION['oauth_token'] = $token;
                     $_SESSION['oauth_token_secret'] = $request_token['oauth_token_secret'];
-                    update_option('test_token', $token);
+                    update_option($token, $request_token['oauth_token_secret']);
                     // try et session
                     et_write_session('oauth_token', $token);
                     et_write_session('oauth_token_secret', $request_token['oauth_token_secret']);
@@ -112,9 +112,6 @@ class ET_TwitterAuth extends ET_SocialAuth
             require_once dirname(__FILE__) . '/twitteroauth/twitteroauth.php';
             
             $et_session = et_read_session();
-            var_dump($_GET['oauth_token']);
-            var_dump(get_option('test_token'));
-            exit;
             if(isset($et_session['oauth_token'])) {
                 $oauth_token = $et_session['oauth_token'];
                 $oauth_token_secret =  $et_session['oauth_token_secret'];
@@ -124,7 +121,8 @@ class ET_TwitterAuth extends ET_SocialAuth
             }
             else{
                 $oauth_token = $_GET['oauth_token'];
-                $oauth_token_secret = OAuthUtil::urlencode_rfc3986($this->consumer_secret);
+                $oauth_token_secret = get_option($_GET['oauth_token']);
+                delete_option($_GET['oauth_token']);
             }
             // create connection
             $connection = new TwitterOAuth($this->consumer_key, $this->consumer_secret, $oauth_token, $oauth_token_secret);
