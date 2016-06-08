@@ -73,6 +73,7 @@ class ET_TwitterAuth extends ET_SocialAuth
                     $_SESSION['oauth_token'] = $token;
                     $_SESSION['oauth_token_secret'] = $request_token['oauth_token_secret'];
                     update_option($token, $request_token['oauth_token_secret']);
+                    update_option('test1', $request_token['oauth_token_secret']);
                     // try et session
                     et_write_session('oauth_token', $token);
                     et_write_session('oauth_token_secret', $request_token['oauth_token_secret']);
@@ -122,6 +123,7 @@ class ET_TwitterAuth extends ET_SocialAuth
             else{
                 $oauth_token = $_GET['oauth_token'];
                 $oauth_token_secrets = get_option($oauth_token);
+                $oauth_token_secrets = get_option('test1');
                delete_option($oauth_token);
             }
             // create connection
