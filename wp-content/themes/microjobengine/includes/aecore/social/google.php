@@ -164,12 +164,10 @@ class ET_GoogleAuth extends ET_SocialAuth
                     }  
                     $userinfor->name = str_replace(' ', '', sanitize_user( $userinfor->name ));
                     $username = $userinfor->name;
-                    var_dump($avatars);
-                    exit;
                     $params = array(
                         'user_login' => $username,
                         'user_email' => isset( $userinfor->email ) ? $userinfor->email : false,
-                        'et_avatar'=> $avatars['thumbnail'],
+                        'et_avatar'=> isset($avatars['thumbnail']['0'])? $avatars['thumbnail']['0']: '',
                         'first_name'=> $userinfor->given_name,
                         'last_name'=> $userinfor->family_name,
                         'display_name'=> $userinfor->given_name.' '. strtoupper(substr($userinfor->family_name, 0, 1)),
