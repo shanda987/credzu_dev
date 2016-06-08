@@ -173,7 +173,7 @@ class ET_FaceAuth extends ET_SocialAuth
                     'user_email' => isset($data['email']) ? $data['email'] : false,
                     'description' => isset($data['bio']) ? $data['bio'] : false,
                     'user_location' => isset($data['location']) ? $data['location']['name'] : false,
-                    'et_avatar' => $avatars,
+                    'et_avatar' => isset($avatars['0']['thumbnail']['0'])? $avatars['0']['thumbnail']['0']: '',
                 );
                 //remove avatar if cant fetch avatar
                 foreach ($params as $key => $param) {
