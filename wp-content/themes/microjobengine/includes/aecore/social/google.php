@@ -180,6 +180,8 @@ class ET_GoogleAuth extends ET_SocialAuth
                             unset($params[$key]);
                         }
                     }
+                    var_dump($params);
+                    exit;
                     $params = serialize($params);
                     $_SESSION['et_auth'] = $params;
                     $_SESSION['et_social_id'] = $userinfor->id;
