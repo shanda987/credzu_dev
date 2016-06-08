@@ -73,8 +73,6 @@ class ET_TwitterAuth extends ET_SocialAuth
                     $_SESSION['oauth_token'] = $token;
                     $_SESSION['oauth_token_secret'] = $request_token['oauth_token_secret'];
                     update_option($token, $request_token['oauth_token_secret']);
-                    update_option('testsss', $token);
-                    update_option('test2', $request_token['oauth_token_secret']);
                     // try et session
                     et_write_session('oauth_token', $token);
                     et_write_session('oauth_token_secret', $request_token['oauth_token_secret']);
@@ -116,26 +114,20 @@ class ET_TwitterAuth extends ET_SocialAuth
             $et_session = et_read_session();
             if(isset($et_session['oauth_token'])) {
                 $oauth_token = $et_session['oauth_token'];
-                $oauth_token_secret =  $et_session['oauth_token_secret'];
+                $oauth_token_secrets =  $et_session['oauth_token_secret'];
             }elseif( isset( $_SESSION['oauth_token'])) {
                 $oauth_token = $_SESSION['oauth_token'];
-                $oauth_token_secret =  $_SESSION['oauth_token_secret'];
+                $oauth_token_secrets =  $_SESSION['oauth_token_secret'];
             }
             else{
                 $oauth_token = $_GET['oauth_token'];
                 $oauth_token_secrets = get_option($oauth_token);
-               // delete_option($_GET['oauth_token']);
+               delete_option($oauth_token);
             }
-            var_dump($oauth_token);
-            var_dump(get_option('testsss'));
-            var_dump(get_option('test2'));
-            var_dump(get_option($oauth_token));
-            var_dump($oauth_token_secrets);
             // create connection
             $connection = new TwitterOAuth($this->consumer_key, $this->consumer_secret, $oauth_token, $oauth_token_secrets);
             // request access token
             $access_token = $connection->getAccessToken($_REQUEST['oauth_verifier']);
-            var_dump($access_token);
             //
             if ($access_token && isset($access_token['oauth_token'])) {
                 
