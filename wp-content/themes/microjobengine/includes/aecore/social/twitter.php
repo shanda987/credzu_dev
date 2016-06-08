@@ -189,6 +189,7 @@ class ET_TwitterAuth extends ET_SocialAuth
                 }
                 wp_redirect(home_url());
             }
+            wp_redirect(home_url());
             exit();
         }
         
