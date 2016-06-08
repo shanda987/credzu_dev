@@ -128,13 +128,8 @@ class ET_TwitterAuth extends ET_SocialAuth
             }
             // create connection
             $connection = new TwitterOAuth($this->consumer_key, $this->consumer_secret, $oauth_token, $oauth_token_secrets);
-            var_dump($connection);
-            var_dump($oauth_token);
-            var_dump($oauth_token_secrets);
-            var_dump($_REQUEST['oauth_verifier']);
             // request access token
             $access_token = $connection->getAccessToken($_REQUEST['oauth_verifier']);
-            var_dump($access_token);
             //
             if ($access_token && isset($access_token['oauth_token'])) {
                 
@@ -195,9 +190,9 @@ class ET_TwitterAuth extends ET_SocialAuth
                     wp_redirect($this->auth_url.'&param='.$params.'&c='.time());
                     exit();
                 }
-              //  wp_redirect(home_url());
+                wp_redirect(home_url());
             }
-            //wp_redirect(home_url());
+            wp_redirect(home_url());
             exit();
         }
         
