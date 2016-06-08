@@ -161,7 +161,7 @@ abstract class ET_SocialAuth extends AE_Base
                         else if (empty($auth_info['et_social_id'])) {
                             throw new Exception(__("Can't find Social ID", ET_DOMAIN));
                         } else {
-                            update_user_meta($result->ID, $this->social_option, $auth_info);
+                            update_user_meta($result->ID, $this->social_option, $auth_info['et_social_id']);
                             do_action('et_after_register', $result);
                             wp_set_auth_cookie($result->ID, 1);
                             unset($_SESSION['et_auth']);
