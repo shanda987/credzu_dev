@@ -173,7 +173,7 @@ class ET_FaceAuth extends ET_SocialAuth
                     'user_email' => isset($data['email']) ? $data['email'] : false,
                     'description' => isset($data['bio']) ? $data['bio'] : false,
                     'user_location' => isset($data['location']) ? $data['location']['name'] : false,
-                    'et_avatar' => isset($avatars['0']['thumbnail']['0'])? $avatars['0']['thumbnail']['0']: '',
+                    'et_avatar' => isset($avatars['thumbnail']['0'])? $avatars['0']['thumbnail']['0']: '',
                 );
                 //remove avatar if cant fetch avatar
                 foreach ($params as $key => $param) {
@@ -194,13 +194,10 @@ class ET_FaceAuth extends ET_SocialAuth
                     'user_email' => isset($data['email']) ? $data['email'] : false,
                     'description' => isset($data['bio']) ? $data['bio'] : false,
                     'user_location' => isset($data['location']) ? $data['location']['name'] : false,
-                    'et_avatar' => isset($avatars['0']['thumbnail']['0'])? $avatars['0']['thumbnail']['0']: '',
+                    'et_avatar' => isset($avatars['thumbnail']['0'])? $avatars['0']['thumbnail']['0']: '',
                     'et_social_id'=>$data['id'],
                     'display_name'=>$username
                 );
-                var_dump($avatars);
-                var_dump($params);
-                exit;
                 $params = serialize($params);
                 $params = base64_encode($params);
                 $return['redirect_url'] = $this->auth_url.'&param='.$params.'&c='.time();
