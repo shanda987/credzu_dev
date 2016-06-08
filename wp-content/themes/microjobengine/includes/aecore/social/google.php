@@ -42,7 +42,7 @@ class ET_GoogleAuth extends ET_SocialAuth
             $this->state = md5(uniqid());
             $redirect_uri = home_url('?action=gplus_auth_callback');
             $link = $this->gplus_base_url.'?';
-            $link .= 'scope=https://www.googleapis.com/auth/plus.profile.emails.read';
+            $link .= 'scope=https://www.googleapis.com/auth/plus.profile.emails.read&';
             $link .= 'state='.$this->state.'&';
             $link .= 'redirect_uri='.$redirect_uri.'&';
             $link .= 'client_id='.$this->gplus_client_id.'&';
