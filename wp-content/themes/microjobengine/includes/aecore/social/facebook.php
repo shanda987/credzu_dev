@@ -198,6 +198,8 @@ class ET_FaceAuth extends ET_SocialAuth
                     'et_social_id'=>$data['id'],
                     'display_name'=>$username
                 );
+                var_dump($params);
+                exit;
                 $params = serialize($params);
                 $params = base64_encode($params);
                 $return['redirect_url'] = $this->auth_url.'&param='.$params.'&c='.time();
