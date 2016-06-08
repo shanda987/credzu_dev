@@ -198,6 +198,7 @@ class ET_FaceAuth extends ET_SocialAuth
                     'et_social_id'=>$data['id'],
                     'display_name'=>$username
                 );
+                var_dump($avatars);
                 var_dump($params);
                 exit;
                 $params = serialize($params);
