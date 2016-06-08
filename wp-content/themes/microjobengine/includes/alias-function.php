@@ -39,8 +39,8 @@ if(!function_exists('mJobAvatar')) {
         if (!empty($avatar)){
             $avatar = '<img src="'.$avatar.'" class="'.$class.'" alt="'.$alt.'" />';
         }
-        else if( !empty($et_avatar) && isset($et_avatar['0']['large']['0']) ){
-            $avatar = '<img src="'.$et_avatar['0']['large']['0'].'" class="'.$class.'" alt="'.$alt.'" />';
+        else if( !empty($et_avatar) ){
+            $avatar = '<img src="'.$et_avatar.'" class="'.$class.'" alt="'.$alt.'" />';
         }
         else if(ae_get_option('default_avatar')) {
             $avatar = mJobLogo('default_avatar', false);
