@@ -139,7 +139,7 @@ class ET_TwitterAuth extends ET_SocialAuth
                     
                     // find
 //                    $users = get_users(array('meta_key' => 'et_twitter_id', 'meta_value' => $account->id));
-                    $users = $this->get_user( $account->id )
+                    $users = $this->get_user( $account->id );
                     if (!empty($users) && is_array($users)) {
                         $ae_user = $users[0];
                         wp_set_auth_cookie($ae_user->ID, 1);
