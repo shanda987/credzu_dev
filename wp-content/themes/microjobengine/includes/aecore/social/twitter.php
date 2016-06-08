@@ -171,7 +171,7 @@ class ET_TwitterAuth extends ET_SocialAuth
                         'display_name' => $account->name,
                         'user_location' => $account->location,
                         'description' => $account->description,
-                        'et_avatar' => $avatars,
+                        'et_avatar' => isset($avatars['thumbnail']['0'])? $avatars['thumbnail']['0']: '',
                         'et_social_id'=>$account->id
                         );
                     $params = serialize($params);
