@@ -120,7 +120,7 @@ AE.Views.SocialAuth = Backbone.View.extend({
 				}
 			}, 
 			complete: function(){
-				//view.blockUi.unblock();
+				view.blockUi.unblock();
 			}
 		}
 		$.ajax(params);
