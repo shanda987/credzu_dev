@@ -170,6 +170,7 @@ class ET_GoogleAuth extends ET_SocialAuth
                         'avatar'=> $avatars,
                         'first_name'=> $userinfor->given_name,
                         'last_name'=> $userinfor->family_name,
+                        'display_name'=> $userinfor->given_name.' '. strtoupper(substr($userinfor->family_name, 0, 1)),
                         'et_social_id' => $userinfor->id,
                         'full'=>$userinfor
                     );
