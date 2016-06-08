@@ -178,18 +178,19 @@
             el: '.page-user-authentication',
             events:{
                 'keypress .check-user-email': 'checkEmail',
-                'change #user_email': 'checkEmailValid',
-                'change #user_login': 'checkEmailValidLogin'
+                'keyup #user_email': 'checkEmailValid',
+                'keyup #user_login': 'checkEmailValidLogin'
             },
             initialize: function() {
                 AE.pubsub.on('ae:form:submit:success', this.authSuccess, this);
             },
             checkEmail: function(e){
                 var view  = this;
-                if(e.keyCode == 13 ){
+                var reg = /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/;
+                if(reg.test($('#check_user_email').val()) === true){
                     e.preventDefault();
                     view.model = new Models.mJobUser({
-                        check_user_email: $(event.currentTarget).find('#check_user_email').val(),
+                        check_user_email: $('#check_user_email').val(),
                         do_action: 'check_email'
                     });
                     this.model.save('', '', {
@@ -197,13 +198,14 @@
                             if( resp.success ) {
                                 view.$el.find('#signUpForm').show();
                                 view.$el.find('#user_email').val(resp.user_email);
+                                view.$el.find('#user_email').focus();
                                 view.$el.find('#user_login').val('sdfsdf');
                                 view.$el.find('#signUpFormStep1').hide();
                             }
                             else {
-                                view.$el.find('#signInForm').show();
-                                view.$el.find('#user_login').val(resp.user_email);
-                                view.$el.find('#signUpFormStep1').hide();
+                                    view.$el.find('#signInForm').show();
+                                    view.$el.find('#user_login').val(resp.user_email);
+                                    view.$el.find('#signUpFormStep1').hide();
                             }
                         }
                     });
@@ -216,20 +218,26 @@
                     check_user_email: $(event.currentTarget).find('#user_email').val(),
                     do_action: 'check_email'
                 });
-                this.model.save('', '', {
-                    success: function (result, resp, jqXHR) {
-                        if( !resp.success ) {
-                            view.$el.find('#signInForm').show();
-                            view.$el.find('#user_login').val(resp.user_email);
-                            if(view.$el.find('#signUpFormStep1').length > 0 ) {
-                                view.$el.find('#signUpFormStep1').hide();
-                            }
-                            if( view.$el.find('#signUpForm').length > 0 ){
-                                view.$el.find('#signUpForm').hide();
+                var reg = /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/;
+                if(reg.test($('#check_user_email').val()) === true) {
+                    this.model.save('', '', {
+                        success: function (result, resp, jqXHR) {
+                            if (!resp.success) {
+                                if( resp.show == 1) {
+                                    view.$el.find('#signInForm').show();
+                                    view.$el.find('#user_login').val(resp.user_email);
+                                    view.$el.find('#user_login').focus();
+                                    if (view.$el.find('#signUpFormStep1').length > 0) {
+                                        view.$el.find('#signUpFormStep1').hide();
+                                    }
+                                    if (view.$el.find('#signUpForm').length > 0) {
+                                        view.$el.find('#signUpForm').hide();
+                                    }
+                                }
                             }
                         }
-                    }
-                });
+                    });
+                }
             },
             checkEmailValidLogin: function(e){
                 var view = this;
@@ -238,20 +246,26 @@
                     check_user_email: $(event.currentTarget).find('#user_login').val(),
                     do_action: 'check_email'
                 });
-                this.model.save('', '', {
-                    success: function (result, resp, jqXHR) {
-                        if( resp.success ) {
-                            view.$el.find('#signUpForm').show();
-                            view.$el.find('#user_email').val(resp.user_email);
-                            if(view.$el.find('#signUpFormStep1').length > 0 ) {
-                                view.$el.find('#signUpFormStep1').hide();
-                            }
-                            if( view.$el.find('#signInForm').length > 0 ){
-                                view.$el.find('#signInForm').hide();
+                var reg = /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/;
+                if(reg.test($('#check_user_email').val()) === true) {
+                    this.model.save('', '', {
+                        success: function (result, resp, jqXHR) {
+                            if (resp.success) {
+                                if( resp.show == 1) {
+                                    view.$el.find('#signUpForm').show();
+                                    view.$el.find('#user_email').val(resp.user_email);
+                                    view.$el.find('#user_email').focus();
+                                    if (view.$el.find('#signUpFormStep1').length > 0) {
+                                        view.$el.find('#signUpFormStep1').hide();
+                                    }
+                                    if (view.$el.find('#signInForm').length > 0) {
+                                        view.$el.find('#signInForm').hide();
+                                    }
+                                }
                             }
                         }
-                    }
-                });
+                    });
+                }
             },
             authSuccess: function(result, resp, jqXHR, type) {
                 var view = this;

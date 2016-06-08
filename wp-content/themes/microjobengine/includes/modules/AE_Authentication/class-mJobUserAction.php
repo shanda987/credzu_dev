@@ -120,14 +120,16 @@ class mJobUserAction extends AE_UserAction
         if(empty($email)) {
             return array(
                 'success' => false,
-                'msg' => __('Email field is empty.', ET_DOMAIN)
+                'msg' => __('Email field is empty.', ET_DOMAIN),
+                'show'=> 0
             );
         }
         // Check email valid
         if(!is_email($email)) {
             return array(
                 'success' => false,
-                'msg' => __('Email field is invalid.', ET_DOMAIN)
+                'msg' => __('Email field is invalid.', ET_DOMAIN),
+                'show'=> 0
             );
         }
         // Check email exist
@@ -135,12 +137,14 @@ class mJobUserAction extends AE_UserAction
             return array(
                 'success' => false,
                 'msg' => __('This email is already used on this site. Please enter a new email.', ET_DOMAIN),
-                'user_email'=>$email
+                'user_email'=>$email,
+                'show'=> 1
             );
         }
         return array(
             'success' => true,
-            'user_email'=>$email
+            'user_email'=>$email,
+            'show'=> 1
         );
     }
 
