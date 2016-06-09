@@ -569,3 +569,21 @@
     margin-left: 10px;
     width: 98% !important;
 }
+.profile-page-role .checkbox{
+    display: inline-block!important;
+    margin-right: 50px!important;
+    /*float: left!important;*/
+}
+.profile-page-role .checkbox input[type="radio"]{
+    left: 6px;
+    top: 15px
+}
+.profile-type-css{
+    margin-bottom: 0!important;
+}
+.block-connect-social-css{
+    /*margin-top: 12px!important;*/
+}
+.title-connect-social{
+    margin-bottom: 20px!important;
+}
