@@ -217,58 +217,60 @@
             },
             checkEmailValid: function(e){
                 var view = this;
-                e.preventDefault();
-                view.model = new Models.mJobUser({
-                    check_user_email: $(event.currentTarget).find('#user_email').val(),
-                    do_action: 'check_email'
-                });
-                var reg = /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/;
-                if(reg.test($('#check_user_email').val()) === true) {
-                    this.model.save('', '', {
-                        success: function (result, resp, jqXHR) {
-                            if (!resp.success) {
-                                if( resp.show == 1) {
-                                    view.$el.find('#signInForm').show();
-                                    view.$el.find('#user_login').val(resp.user_email);
-                                    view.$el.find('#user_login').focus();
-                                    if (view.$el.find('#signUpFormStep1').length > 0) {
-                                        view.$el.find('#signUpFormStep1').hide();
-                                    }
-                                    if (view.$el.find('#signUpForm').length > 0) {
-                                        view.$el.find('#signUpForm').hide();
+                if(e.keyCode != 37 && e.keyCode != 39 ) {
+                    view.model = new Models.mJobUser({
+                        check_user_email: $(event.currentTarget).find('#user_email').val(),
+                        do_action: 'check_email'
+                    });
+                    var reg = /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/;
+                    if (reg.test($('#user_email').val()) === true) {
+                        this.model.save('', '', {
+                            success: function (result, resp, jqXHR) {
+                                if (!resp.success) {
+                                    if (resp.show == 1) {
+                                        view.$el.find('#signInForm').show();
+                                        view.$el.find('#user_login').val(resp.user_email);
+                                        view.$el.find('#user_login').focus();
+                                        if (view.$el.find('#signUpFormStep1').length > 0) {
+                                            view.$el.find('#signUpFormStep1').hide();
+                                        }
+                                        if (view.$el.find('#signUpForm').length > 0) {
+                                            view.$el.find('#signUpForm').hide();
+                                        }
                                     }
                                 }
                             }
-                        }
-                    });
+                        });
+                    }
                 }
             },
             checkEmailValidLogin: function(e){
                 var view = this;
-                e.preventDefault();
-                view.model = new Models.mJobUser({
-                    check_user_email: $(event.currentTarget).find('#user_login').val(),
-                    do_action: 'check_email'
-                });
-                var reg = /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/;
-                if(reg.test($('#check_user_email').val()) === true) {
-                    this.model.save('', '', {
-                        success: function (result, resp, jqXHR) {
-                            if (resp.success) {
-                                if( resp.show == 1) {
-                                    view.$el.find('#signUpForm').show();
-                                    view.$el.find('#user_email').val(resp.user_email);
-                                    view.$el.find('#user_email').focus();
-                                    if (view.$el.find('#signUpFormStep1').length > 0) {
-                                        view.$el.find('#signUpFormStep1').hide();
-                                    }
-                                    if (view.$el.find('#signInForm').length > 0) {
-                                        view.$el.find('#signInForm').hide();
+                if(e.keyCode != 37 && e.keyCode != 39 ) {
+                    view.model = new Models.mJobUser({
+                        check_user_email: $(event.currentTarget).find('#user_login').val(),
+                        do_action: 'check_email'
+                    });
+                    var reg = /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/;
+                    if (reg.test($('#user_login').val()) === true) {
+                        this.model.save('', '', {
+                            success: function (result, resp, jqXHR) {
+                                if (resp.success) {
+                                    if (resp.show == 1) {
+                                        view.$el.find('#signUpForm').show();
+                                        view.$el.find('#user_email').val(resp.user_email);
+                                        view.$el.find('#user_email').focus();
+                                        if (view.$el.find('#signUpFormStep1').length > 0) {
+                                            view.$el.find('#signUpFormStep1').hide();
+                                        }
+                                        if (view.$el.find('#signInForm').length > 0) {
+                                            view.$el.find('#signInForm').hide();
+                                        }
                                     }
                                 }
                             }
-                        }
-                    });
+                        });
+                    }
                 }
             },
             authSuccess: function(result, resp, jqXHR, type) {
