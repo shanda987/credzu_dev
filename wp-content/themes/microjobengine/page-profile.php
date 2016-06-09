@@ -21,7 +21,14 @@ $last_name = !empty($profile->last_name) ? $profile->last_name : '';
 $phone = !empty($profile->phone) ? $profile->phone : '';
 $business_email = !empty($profile->business_email) ? $profile->business_email : $user_data->user_email;
 $credit_goal = !empty($profile->credit_goal) ? $profile->credit_goal : '';
-
+if( $user_role == COMPANY){
+    $check1 = '';
+    $check2 = 'checked';
+}
+else{
+    $check1 = 'checked';
+    $check2 = '';
+}
 get_header();
 
 // If Company, this outputs the Company Status bar (Doesn't show when approved)
@@ -122,23 +129,25 @@ echo mJobProfileAction()->display_company_status($user_role, $profile->company_s
                                     <input type="text" name="credit_goal" id="credit_goal" placeholder="<?php _e('Credit goals', ET_DOMAIN); ?>" value="<?php echo $credit_goal; ?>">
                                 </div>
                             </div>
+                            <?php if( $user_role == INDIVIDUAL): ?>
                             <div class="form-group profile-type-css clearfix">
                                 <p class="title"><?php _e('PROFILE TYPE', ET_DOMAIN); ?></p>
                             </div>
                             <div class="form-group check-payment profile-page-role clearfix profile-type-css">
                                 <div class="checkbox">
                                     <label for="role_client">
-                                        <input type="radio" name="role" id="role_client" value="<?php echo INDIVIDUAL?>" checked>
+                                        <input type="radio" name="role" id="role_client" value="<?php echo INDIVIDUAL?>" <?php echo $check1; ?>>
                                         <span><?php _e(' Client(Buyer)', ET_DOMAIN); ?></span>
                                     </label>
                                 </div>
                                 <div class="checkbox">
                                     <label for="role_company">
-                                        <input type="radio" name="role" id="role_company" value="<?php echo COMPANY; ?>">
+                                        <input type="radio" name="role" id="role_company" value="<?php echo COMPANY; ?>" <?php echo $check2; ?>>
                                         <span><?php _e(' Company(Provider)', ET_DOMAIN); ?></span>
                                     </label>
                                 </div>
                             </div>
+                            <?php endif; ?>
                             <div class="block-connect-social block-connect-social-css form-group clearfix">
                                 <p class="title title-connect-social"><?php _e('CONNECT TO SOCIALS', ET_DOMAIN); ?></p>
                                 <?php

@@ -1035,6 +1035,9 @@ class ET_Microjobengine extends AE_Base
             get_template_part('template-js/modal-unlock', 'requirement');
             get_template_part('template-js/modal-show', 'requirement');
         }
+        if( is_page_template('page-profile.php')){
+            get_template_part('template-js/modal-change', 'role');
+        }
     }
     /**
      * add more global variable

@@ -587,3 +587,19 @@
 .title-connect-social{
     margin-bottom: 20px!important;
 }
+.profile-page-role .checkbox span{
+    font-weight: bold;
+    color: #000;
+}
+#change_user_role_modal .notice-message{
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    color: #898a90;
+}
+#change_user_role_modal .role-back-return-css{
+    margin-right: 20px;
+}
+#change_user_role_modal .notice-message .note-action {
+    font-weight: bold;
+}

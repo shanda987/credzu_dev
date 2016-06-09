@@ -133,6 +133,7 @@ echo mJobProfileAction()->display_company_status($user_role, $profile->company_s
                             <div class="form-group clearfix float-right change-pass-button-method">
                                 <button class="btn-submit"><?php _e('Update', ET_DOMAIN); ?></button>
                             </div>
+
                         </form>
                     </div>
                 </div>

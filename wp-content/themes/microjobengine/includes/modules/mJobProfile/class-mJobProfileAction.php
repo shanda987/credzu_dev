@@ -24,6 +24,7 @@ class mJobProfileAction extends mJobPostAction
         $this->add_action('ae_insert_user', 'mJobInsertProfile', 10, 2);
         $this->add_action('ae_login_user', 'mJobInsertProfileAfterLogin', 10, 1);
         $this->add_action('wp_footer', 'mJobAddProfileModal');
+        $this->add_ajax('mjob-change-user-role', 'changeUserRole');
        //$this->add_ajax('mjob-check-smarty-address', 'mJobCheckSmartyAddress');
        // $this->add_action('ae_convert_mjob_profile', 'mJobConvertProfile');
        // $this->add_ajax('mjob-check-user-active',  'mJobCheckActiveAccount');
@@ -625,6 +626,43 @@ class mJobProfileAction extends mJobPostAction
         );
         $posts = get_posts($args);
         return $posts;
+    }
+    /**
+      * change user role
+      *
+      * @param void
+      * @return void
+      * @since 1.4
+      * @package MicrojobEngine
+      * @category CREDZU
+      * @author JACK BUI
+      */
+    public function changeUserRole(){
+        global $user_ID;
+        if( !$user_ID ){
+            wp_send_json(array(
+                'success'=> false,
+                'msg'=> __('Please login in before change to Company role!', ET_DOMAIN)
+            ));
+        }
+        else{
+            $result = wp_update_user( array(
+                'ID'=> $user_ID,
+                'role'=> COMPANY
+            ) );
+            if( $result && !is_wp_error($result)){
+                wp_send_json(array(
+                    'success'=> true,
+                    'msg'=> __('Change to company role success!', ET_DOMAIN)
+                ));
+            }
+            else{
+                wp_send_json(array(
+                    'success'=> false,
+                    'msg'=> __('Please login in before change to Company role!', ET_DOMAIN)
+                ));
+            }
+        }
     }
 }
 $new_instance = mJobProfileAction::getInstance();

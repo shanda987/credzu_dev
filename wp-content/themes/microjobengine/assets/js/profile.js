@@ -210,7 +210,60 @@
                 view.container.find('.preview-image').remove();
             }
         });
+        Views.ModalChangeUserRole = Views.Modal_Box.extend({
+            el: '#change_user_role_modal',
+            events: {
+                'click .btn-change-user-role': 'changeToCompany',
+                'click .role-back-return': 'closeConfirmModal'
+            },
+            initialize: function () {
+                AE.Views.Modal_Box.prototype.initialize.call();
+                this.blockUi = new Views.BlockUi();
 
+            },
+            onOpen: function (model, $target) {
+                var view = this;
+                this.model = model;
+                this.target = $target;
+                view.openModal();
+            },
+            closeConfirmModal: function(e){
+                e.preventDefault();
+                this.closeModal();
+            },
+            changeToCompany: function(e){
+                var view = this;
+                e.preventDefault();
+                $target  = $(e.currentTarget);
+                var gdata = {
+                    action: 'mjob-change-user-role'
+                };
+                $.ajax({
+                    url: ae_globals.ajaxURL,
+                    type: 'post',
+                    data: gdata,
+                    beforeSend: function () {
+                        view.blockUi.block($target);
+                    },
+                    success: function (resp) {
+                        if (resp.success) {
+                            AE.pubsub.trigger('ae:notification', {
+                                notice_type: 'success',
+                                msg: resp.msg
+                            });
+                            window.location.reload(true);
+                        }
+                        else{
+                            AE.pubsub.trigger('ae:notification', {
+                                notice_type: 'error',
+                                msg: resp.msg
+                            })
+                        }
+                        view.blockUi.unBlock();
+                    }
+                });
+            }
+        });
         /**
          * VIEWS FOR PROFILE
          */
@@ -227,7 +280,8 @@
                 'keypress .textarea.editable': 'enterChangeTextarea',
                 'keypress input[name="first_name"]': 'characterOnly',
                 'keypress input[name="last_name"]': 'characterOnly',
-                'focusout input[name="billing_full_address"]': 'checkSmarty'
+                'focusout input[name="billing_full_address"]': 'checkSmarty',
+                'click .profile-page-role #role_company': 'changeUserRole'
             },
             initialize: function () {
                 // Resize textarea
@@ -568,6 +622,14 @@
                         }
                     }
                 });
+            },
+            changeUserRole: function(e){
+                e.preventDefault();
+                $target = $(e.currentTarget);
+                if (typeof this.changeUserRoleModal === 'undefined') {
+                    this.changeUserRoleModal = new Views.ModalChangeUserRole();
+                }
+                this.changeUserRoleModal.onOpen(this.model, $target);
             }
         });
         new Views.Profile();
