@@ -57,7 +57,7 @@
             _e("The bad news?<br>
                Currently, you do not have any clients<br>
                The good news?<br>
-               You can get clients by $post_link.
+               You can get clients by creating a listing once aproved.
             ", ET_DOMAIN); ?>
         </p>
     <?php } ?>
