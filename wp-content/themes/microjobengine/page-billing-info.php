@@ -8,7 +8,7 @@ get_header();
     <div class="container mjob-profile-page withdraw section-billing-info">
         <div class="title-top-pages">
             <p class="block-title"><?php _e('MY BILLING INFORMATION', ET_DOMAIN); ?></p>
-            <p class="btn-back"><?php _e('Complete your billing information', ET_DOMAIN); ?></p>
+            <p class="btn-back"><?php _e("The only payment method available is an account and routing number from  a valid checking account. ACH-like virtual checks will be created with the information provided below. The payment will be made directly to the company you've hired", ET_DOMAIN); ?></p>
         </div>
         <div class="row profile">
             <div class="col-lg-3 col-md-3 col-sm-12 col-sx-12 block-items-detail profile">

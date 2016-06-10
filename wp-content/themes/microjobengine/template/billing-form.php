@@ -8,23 +8,18 @@ $profile = mJobProfileAction()->getProfile($user_ID);
 echo mJobProfileAction()->getProfileJson($profile);
 
 ?>
-
-<p>
-The billing information below will be used to generate payments from you/your company to Credzu, LLC for the purpose of paying for the listings you create on Credzu.com
-</p>
-
 <div class="form-confirm-billing-profile">
     <form class="et-form">
         <div class="form-group clearfix">
             <div class="input-group">
                 <div class="input-group-addon no-addon"><?php _e('Routing number:', ET_DOMAIN); ?></div>
-                <input type="text" name="routing_number" id="routing_number" placeholder="<?php _e('Routing number', ET_DOMAIN); ?>" value="<?php echo $profile->routing_number; ?>">
+                <input type="password" name="routing_number" id="routing_number" placeholder="<?php _e('Routing number', ET_DOMAIN); ?>" value="<?php echo $profile->routing_number; ?>">
             </div>
         </div>
         <div class="form-group clearfix">
             <div class="input-group">
                 <div class="input-group-addon no-addon"><?php _e('Account Number:', ET_DOMAIN); ?></div>
-                <input type="text" name="account_number" id="account_number" placeholder="<?php _e('Account Number', ET_DOMAIN); ?>" value="<?php echo $profile->account_number; ?>">
+                <input type="password" name="account_number" id="account_number" placeholder="<?php _e('Account Number', ET_DOMAIN); ?>" value="<?php echo $profile->account_number; ?>">
             </div>
         </div>
         <div class="form-group clearfix">
@@ -39,31 +34,31 @@ The billing information below will be used to generate payments from you/your co
         <div class="form-group clearfix billing-order-address">
             <div class="input-group">
                 <div class="input-group-addon no-addon"><?php _e('Address line 1', ET_DOMAIN); ?></div>
-                <input type="text" name="billing_other_address" id="billing_other_address" placeholder="<?php _e('Address', ET_DOMAIN); ?>" value="<?php echo $profile->billing_other_address; ?>">
+                <input type="text" name="billing_other_address" id="billing_other_address" placeholder="<?php _e('e.g., 3837 Adam Street', ET_DOMAIN); ?>" value="<?php echo $profile->billing_other_address; ?>">
             </div>
         </div>
         <div class="form-group clearfix billing-order-address">
             <div class="input-group">
                 <div class="input-group-addon no-addon"><?php _e('Address Line 2', ET_DOMAIN); ?></div>
-                <input type="text" name="billing_address_line2" id="address_line2" placeholder="<?php _e('Address Line 2', ET_DOMAIN); ?>" value="<?php echo $profile->billing_address_line2; ?>">
+                <input type="text" name="billing_address_line2" id="address_line2" placeholder="<?php _e('e.g., Unit 335', ET_DOMAIN); ?>" value="<?php echo $profile->billing_address_line2; ?>">
             </div>
         </div>
         <div class="form-group clearfix billing-order-address">
             <div class="input-group">
                 <div class="input-group-addon no-addon"><?php _e('City', ET_DOMAIN); ?></div>
-                <input type="text" name="billing_city" id="city" placeholder="<?php _e('City', ET_DOMAIN); ?>" value="<?php echo $profile->billing_city; ?>">
+                <input type="text" name="billing_city" id="city" placeholder="<?php _e('e.g., Cape Canaveral', ET_DOMAIN); ?>" value="<?php echo $profile->billing_city; ?>">
             </div>
         </div>
         <div class="form-group clearfix billing-order-address">
             <div class="input-group">
                 <div class="input-group-addon no-addon"><?php _e('State', ET_DOMAIN); ?></div>
-                <input type="text" name="billing_state" id="state" placeholder="<?php _e('State', ET_DOMAIN); ?>" value="<?php echo $profile->billing_state; ?>">
+                <input type="text" name="billing_state" id="state" placeholder="<?php _e('e.g., Florida', ET_DOMAIN); ?>" value="<?php echo $profile->billing_state; ?>">
             </div>
         </div>
         <div class="form-group clearfix billing-order-address">
             <div class="input-group">
                 <div class="input-group-addon no-addon"><?php _e('Zip code', ET_DOMAIN); ?></div>
-                <input type="text" name="billing_zip_code" id="zip_code" placeholder="<?php _e('Zip code', ET_DOMAIN); ?>" value="<?php echo $profile->billing_zip_code; ?>">
+                <input type="text" name="billing_zip_code" id="zip_code" placeholder="<?php _e('e.g., 12345', ET_DOMAIN); ?>" value="<?php echo $profile->billing_zip_code; ?>">
             </div>
         </div>
         <div class="form-group clearfix">
@@ -78,7 +73,7 @@ The billing information below will be used to generate payments from you/your co
         <div class="form-group clearfix account-holder">
             <div class="input-group">
                 <div class="input-group-addon no-addon"><?php _e('Account holder:', ET_DOMAIN); ?></div>
-                <input type="account_holder" name="account_holder" id="account_holder" placeholder="<?php _e('Account holder', ET_DOMAIN); ?>" value="<?php echo $profile->account_holder; ?>" >
+                <input type="account_holder" name="account_holder" id="account_holder" placeholder="<?php _e('e.g., John Smith', ET_DOMAIN); ?>" value="<?php echo $profile->account_holder; ?>" >
             </div>
         </div>
         <div class="form-group clearfix float-right change-pass-button-method">

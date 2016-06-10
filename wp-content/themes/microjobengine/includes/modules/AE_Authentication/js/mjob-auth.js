@@ -187,9 +187,11 @@
             },
             checkEmail: function(e){
                 var view  = this;
+                if(e.keyCode == 13 ){
+                    e.preventDefault();
+                }
                 var reg = /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/;
                 if(reg.test($('#check_user_email').val()) === true){
-                    console.log('vaooo');
                     setTimeout(function(){
                         view.model = new Models.mJobUser({
                             check_user_email: $('#check_user_email').val(),
