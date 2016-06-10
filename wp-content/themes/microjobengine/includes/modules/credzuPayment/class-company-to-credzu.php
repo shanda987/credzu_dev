@@ -111,6 +111,9 @@ class companyToCredzu extends AE_Base{
         AE_Pdf_Creator()->init();
         $path = AE_Pdf_Creator()->pdfGenarate($ct, $file_name, true);
         if( !empty($path) ){
+            if(isset($data['is_featured']) ){
+                update_post_meta($data['ID'], 'is_featured', $data['is_featured']);
+            }
             do_action('create_payment_history', $data, $profile, $path, $check_number);
             exit;
         }

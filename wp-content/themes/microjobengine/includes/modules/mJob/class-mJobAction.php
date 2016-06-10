@@ -101,7 +101,7 @@ class mJobAction extends mJobPostAction{
         global $ae_post_factory;
         $obj = $ae_post_factory->get('mjob_extra');
         $arr_extras = array();
-        $is_featured = false;
+        $is_featured = 0;
         if( isset($request['checkout']) && $request['checkout'] == 1){
             if( !mJobProfileAction()->isCompanyActive()){
                 wp_send_json(array(
@@ -124,8 +124,8 @@ class mJobAction extends mJobPostAction{
                     if( !empty($p) ){
                         $p = $obj->convert($p);
                         $latest_amount += $p->et_budget;
-                        if( $p->is_featured == array('featured')){
-                            $is_featured = true;
+                        if( in_array('featured', $p->is_featured) ){
+                            $is_featured = 1;
                         }
                         array_push($arr_extras, $p);
                     }

@@ -603,3 +603,6 @@
 #change_user_role_modal .notice-message .note-action {
     font-weight: bold;
 }
+.featured-active{
+    display: block;
+}
