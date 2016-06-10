@@ -166,7 +166,8 @@
                                 msg: resp.msg
                             })
                         }
-
+                    },
+                    complete: function(){
                         view.blockUi.unblock();
                     }
                 })
