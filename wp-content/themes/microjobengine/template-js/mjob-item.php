@@ -1,14 +1,18 @@
 <script type="text/template" id="mjob-item-loop">
     <div class="inner clearfix">
+        <# if( !ae_globals.is_admin && ae_globals.user_ID != post_author && is_featured == 1 ){ #>
+        <div class="ribbon-featured"><span><?php _e('Featured', ET_DOMAIN); ?></span></div>
+        <# } #>
         <div class="vote">
             <div class="rate-it star" data-score="{{= rating_score }}"></div>
             <span class="total-review">({{= mjob_total_reviews }})</span>
         </div>
-
         <?php if(!is_search()) : ?>
+        <# if( is_featured != 1){ #>
         <div class="bookmark">
             <p class="marks {{= status_class }}">{{= status_text }}</p>
         </div>
+        <# } #>
         <?php else: ?>
             <# if(et_featured == 1) { #>
                 <div class="bookmark">

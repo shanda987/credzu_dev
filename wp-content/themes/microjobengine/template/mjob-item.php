@@ -5,6 +5,7 @@ $current        = $post_object->current_post;
 ?>
 <li class="col-lg-4 col-md-4 col-sm-4 col-xs-6 mjob-item animation-element animated" nameAnimation="zoomIn">
     <div class="inner clearfix">
+        <div class="ribbon-featured"><span><?php _e('Featured', ET_DOMAIN); ?></span></div>
         <div class="vote">
             <div class="rate-it star" data-score="<?php echo $current->rating_score; ?>"></div>
             <span class="total-review"><?php printf('(%s)', $current->mjob_total_reviews); ?></span>
