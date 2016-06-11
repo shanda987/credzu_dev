@@ -1,3 +1,7 @@
+<?php global $post, $ae_post_factory;
+$mjob_obj = $ae_post_factory->get('mjob_post');
+$post = $mjob_obj->convert($post);
+?>
 <div class="modal fade" id="hire_signup_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -21,7 +25,7 @@
                             <li><a href="#" class="login-facebook facebook_auth_btn"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
                             <li><a href="#" class="login-google gplus_login_btn gplus"><i class="fa fa-google-plus" aria-hidden="true"></i></i></a></li>
                             <li><a href="<?php echo add_query_arg('action', 'twitterauth', home_url()) ?>" class="login-twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                            <li><a class="signup-by-email" href="<?php echo et_get_page_link('user-authentication') ?>" class=""><i class="fa fa-envelope"></i></a></li>
+                            <li><a class="signup-by-email" href="<?php echo et_get_page_link('user-authentication').'?r_url='.$post->permalink; ?>" class=""><i class="fa fa-envelope"></i></a></li>
                         </ul>
                     </div>
                 </div>

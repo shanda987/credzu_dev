@@ -16,7 +16,7 @@ get_header();
 the_post();
 $r_url = 'dashboard';
 if( isset($_GET['r_url']) && !empty($_GET['r_url']) ):
-    $r_url = urlencode($_GET['r_url']);
+    $r_url = $_GET['r_url'];
 endif;
 ?>
     <div class="container">

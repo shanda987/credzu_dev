@@ -302,7 +302,6 @@
             onOpen: function (model) {
                 var view = this;
                 this.model = model;
-                view.$el.find('.signup-by-email').attr('href', ae_globals.hiresingup +'?r_url='+this.model.get('permalink'));
                 this.openModal();
             }
         });
