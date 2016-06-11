@@ -51,7 +51,8 @@ class AE_AE_Message_Posttype extends mJobPost
             'receiver_unread',
             'sender_unread',
             'type',
-            'level'
+            'level',
+            'action_type'
         );
         $this->post_type_singular = 'Message';
         $this->post_type_regular = 'Messages';

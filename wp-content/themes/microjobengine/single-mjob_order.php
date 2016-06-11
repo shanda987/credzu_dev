@@ -240,7 +240,7 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                                     $f = true;
                                                 endif;
                                                 if( $f ):
-                                                    if( empty($current->need_uploads) || !in_array( $term->slug, $current->need_uploads )):
+                                                    if( empty($current->need_uploads) || !in_array( $term->slug, (array)$current->need_uploads )):
                                                         $icon = '<i class="fa fa-check-square-o" aria-hidden="true"></i>';
                                                         $com = '   <a data-type="'.$term->check_type.'" data-id="'.$term->slug.'" data-name="'.$term->name.'" href="#" class="resend-requirement-style resend-requirement" title="'.__('unlock', ET_DOMAIN).'"><i class="fa fa-refresh" aria-hidden="true"></i></a>';
                                                         $class = 'disabled';

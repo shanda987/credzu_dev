@@ -66,12 +66,21 @@ class mJobOrderAction extends mJobPostAction{
             if( isset($request['requirement_id']) && isset( $request['requirement_files'])){
                 $a = $request['requirement_id'];
                 $temp[$a] = $request['requirement_files'];
+                $term = get_term_by('slug', $a, 'mjob_requirement');
+                if( $term && !is_wp_error($term)){
+                    $msg = $term->name;
+                }
+                else {
+                    $msg = __('new file', ET_DOAMAIN);
+                }
                 $requirement_files = wp_parse_args($temp, $requirement_files);
                 $request['requirement_files'] = $requirement_files;
+
+                $msg_id = mJobAddOrderChangeLog($request['ID'], $user_ID, 'upload_document', $msg);
             }
             if(isset($request['need_upload_remove']) && isset($request['need_uploads'])){
                 $se = array_search($request['need_upload_remove'], $request['need_uploads']);
-                if( $se !== false ){
+                if( $se !== false && NULL != $se){
                     unset($request['need_uploads'][$se]);
                 }
                 $request['uploaded'] = wp_parse_args(array($request['need_upload_remove']), array($request['uploaded']));
@@ -555,7 +564,6 @@ class mJobOrderAction extends mJobPostAction{
                         update_post_meta($post->ID, 'paid', true);
                     }
                 }
-
                 $mail = mJobMailing::getInstance();
                 $mail->mJobNewOrder($post);
             }

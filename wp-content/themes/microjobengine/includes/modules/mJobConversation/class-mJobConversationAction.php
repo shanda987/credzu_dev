@@ -299,7 +299,58 @@ class mJobConversationAction extends mJobPostAction
         $output .= '</ul>';
         $result->message_attachment = $output;
         $result->message_class = mJobGetMessageClass($result->post_author);
+        /**
+         * Convert change log
+         */
+        $result->changelog = "";
+        $author_url = get_author_posts_url($result->post_author);
+        $author_name = get_the_author_meta('display_name', $result->post_author);
+        $author_link = sprintf('<a href="%s" target="_blank">%s</a>', $author_url, $author_name);
+        $changelog_time = get_the_time(get_option('date_format') . ' ' . get_option('time_format'));
+        switch($result->action_type) {
+            case 'dispute':
+                $result->changelog = sprintf(__('%s sent a dispute for this order - %s.'), $author_link, $changelog_time);
+                break;
+            case 'late':
+                $result->changelog = sprintf(__('%s marked this order as Late - %s.'), $author_link, $changelog_time);
+                break;
+            case 'admin_decide':
+                $winner_id = get_post_meta($result->ID, 'winner', true);
+                if(!empty($winner_id)) {
+                    $author_url = get_author_posts_url($winner_id);
+                    $author_name = get_the_author_meta('display_name', $winner_id);
+                    $author_link = sprintf('<a href="%s" target="_blank">%s</a>', $author_url, $author_name);
+                }
+                $result->changelog = sprintf(__("The dispute was decided in %s's favor - %s. This Order was marked as Resolved. Its fund was returned to %s's Available fund.", ET_DOMAIN), $author_link, $changelog_time, $author_link);
+                break;
+            case 'resolve':
+                $result->changelog = sprintf(__("This order was marked as Resolved as well - %s."), $changelog_time);
+                break;
+            case 'start_work':
+                $result->changelog = sprintf(__("%s started working on this order - %s."), $author_link, $changelog_time);
+                break;
+            case 'delivery':
+                $auto_finish_duration = ae_get_option('mjob_order_finish_duration', 7);
+                $deliver_time = get_the_time("m/d/Y g:i a");
+                $deliver_timestamp = strtotime($deliver_time);
+                $date_finish_timestamp = strtotime("+" . $auto_finish_duration . "day", $deliver_timestamp);
+                $date_finish = date(get_option('date_format') . ' ' . get_option('time_format'), $date_finish_timestamp);
 
+                $result->changelog = sprintf(__("%s delivered the work - %s <br><br> The Order will be marked as Finished at %s if no dispute is sent."), $author_link, $changelog_time, $date_finish);
+                break;
+            case 'accept':
+                $result->changelog = sprintf(__("%s accepted the delivery of this order - %s."), $author_link, $changelog_time);
+                break;
+            case 'auto_finish':
+                $result->changelog = sprintf(__("The Order was marked as Finished at %s due to no further actions from both sides."), $changelog_time);
+                break;
+            case 'finish_countdown':
+                $result->changelog = sprintf(__("This order was expected to be delivered at %s."),  $changelog_time);
+                break;
+            case 'upload_document':
+                $result->changelog = sprintf(__("%s uploaded a %s"), $author_link, $result->post_content);
+                break;
+        }
         return $result;
     }
 

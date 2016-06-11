@@ -621,3 +621,22 @@
 #hire_signup_modal .login-list-icon li i{
     font-size: 30px;
 }
+.changelog-item {
+    text-align: center;
+    position: relative;
+}
+.changelog-item .changelog-text {
+    color: #90969b;
+    font-style: italic;
+    margin: 0 90px;
+}
+.changelog-item .changelog-text a {
+    color: #10a2ef;
+    font-weight: bold;
+}
+.changelog-item .message-time {
+    position: absolute;
+    right: 0;
+    top: 2px;
+    margin-top: 0;
+}

@@ -1365,3 +1365,42 @@ function convertDigit($digit)
      $content = str_ireplace('[company_address]', $profile->company_address, $content );
      return $content;
  }
+/**
+ * Add change log for order actions
+ * @param int $order_id
+ * @param int $user_id
+ * @param string $log
+ * @return int $post_id
+ * @since 1.0.5
+ * @package MicrojobEngine
+ * @category File Functions
+ * @author Tat Thien
+ */
+function mJobAddOrderChangeLog($order_id, $user_id, $action, $log = "", $post_date = null) {
+    $log_content = !empty($log) ? $log : $action;
+    $array_post = array(
+        'post_title' => sprintf(__('Log for order %s', ET_DOMAIN), $order_id),
+        'post_content' => $log_content,
+        'post_author' => $user_id,
+        'post_type' => 'ae_message',
+        'post_parent' => $order_id,
+        'post_status' => 'publish',
+    );
+    if(isset($post_date))
+        $array_post['post_date'] = $post_date;
+
+    $post_id = wp_insert_post($array_post);
+    if(!is_wp_error($post_id)) {
+        global $ae_post_factory;
+        $post_obj = $ae_post_factory->get('mjob_order');
+        $post = get_post($order_id);
+        $post = $post_obj->convert($post);
+        update_post_meta($post_id, 'type', 'changelog');
+        update_post_meta($post_id, 'action_type', $action);
+        update_post_meta($post_id, 'parent_conversation_id', $order_id);
+        update_post_meta($post_id, 'to_user', $post->mjob_author);
+        update_post_meta($post_id, 'from_user', $post->post_author);
+    }
+
+    return $post_id;
+}
