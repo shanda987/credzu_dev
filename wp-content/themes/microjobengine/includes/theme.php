@@ -1035,6 +1035,9 @@ class ET_Microjobengine extends AE_Base
             get_template_part('template-js/modal-unlock', 'requirement');
             get_template_part('template-js/modal-show', 'requirement');
         }
+        if( is_singular('mjob_post')){
+            get_template_part('template-js/modal-signup', 'hire');
+        }
         if( is_page_template('page-profile.php')){
             get_template_part('template-js/modal-change', 'role');
         }
@@ -1118,6 +1121,7 @@ class ET_Microjobengine extends AE_Base
         $vars['process_hiring_step3'] = __('REVIEW AND SIGN AGREEMENTS', ET_DOMAIN);
         $vars['home_url'] = home_url();
         $vars['dashboard'] = et_get_page_link('dashboard');
+        $vars['hiresingup'] = et_get_page_link('user-authentication');
         return $vars;
     }
     /**

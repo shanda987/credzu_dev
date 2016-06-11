@@ -48,7 +48,8 @@
                 //'click .mjob-order-action': 'mJobOrderAction',
                 'click .mjob-order-action': 'showConfirmForm',
                 'click .edit-mjob-action': 'openEditForm',
-                'click .mjob-order-disable': 'disableNotification'
+                'click .mjob-order-disable': 'disableNotification',
+                'click .hireSignup': 'showHireSignUpModal'
             },
             initialize: function (options) {
                 var view = this;
@@ -279,6 +280,30 @@
                 e.preventDefault();
                 var view = this;
                 window.location.href = ae_globals.process_hiring+'?jid='+ this.model.get('ID');
+            },
+            showHireSignUpModal: function(e){
+                e.preventDefault();
+                if( typeof this.modalhiresignup  === 'undefined' ){
+                    this.modalhiresignup = new Views.ModalHireSignUp();
+                }
+                this.modalhiresignup.onOpen(this.model);
+            }
+        });
+        /*
+         * Modal sign up on hire page
+         */
+        Views.ModalHireSignUp = Views.Modal_Box.extend({
+            el: '#hire_signup_modal',
+            events: {
+            },
+            initialize: function () {
+                AE.Views.Modal_Box.prototype.initialize.call();
+            },
+            onOpen: function (model) {
+                var view = this;
+                this.model = model;
+                view.$el.find('.signup-by-email').attr('href', ae_globals.hiresingup +'?r_url='+this.model.get('permalink'));
+                this.openModal();
             }
         });
         /**

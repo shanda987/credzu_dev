@@ -591,7 +591,7 @@
     font-weight: bold;
     color: #000;
 }
-#change_user_role_modal .notice-message{
+#change_user_role_modal .notice-message, #hire_signup_modal .notice-message{
     text-align: center;
     margin-top: 40px;
     margin-bottom: 40px;
@@ -600,9 +600,24 @@
 #change_user_role_modal .role-back-return-css{
     margin-right: 20px;
 }
-#change_user_role_modal .notice-message .note-action {
+#change_user_role_modal .notice-message .note-action, #hire_signup_modal .notice-message .note-action {
     font-weight: bold;
 }
 .featured-active{
     display: block;
+}
+#hire_signup_modal .login-list-icon{
+    text-align: center;
+    margin-bottom: 53px;
+    padding: 0;
+}
+#hire_signup_modal .login-list-icon li{
+    display: inline-block;
+    margin-right: 92px;
+}
+#hire_signup_modal .login-list-icon li:last-child{
+    margin-right: 0;
+}
+#hire_signup_modal .login-list-icon li i{
+    font-size: 30px;
 }

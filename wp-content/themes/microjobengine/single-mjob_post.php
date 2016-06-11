@@ -236,7 +236,9 @@ if($profile_id) {
                                     <button class="btn-submit btn-order  btn-custom-order btn-order-aside-bar waves-effect waves-light <?php echo $disableClass; ?>" ><?php echo sprintf(__('ORDER NOW (<span class="mjob-price">%s</span>)', ET_DOMAIN), $current->et_budget_text) ; ?></button>
                                         <?php else: ?>
                                         <span class="status-noti"><?php _e('Currently not accepting new clients.', ET_DOMAIN); ?></span>
-                                        <?php endif; ?>
+                                    <?php endif; ?>
+                                <?php elseif( !$user_ID): ?>
+                                    <button class="btn-submit btn-order  btn-custom-order btn-order-aside-bar waves-effect waves-light hireSignup" ><?php echo sprintf(__('ORDER NOW (<span class="mjob-price">%s</span>)', ET_DOMAIN), $current->et_budget_text) ; ?></button>
                                 <?php else:  ?>
                                     <span class="price"><?php echo mJobPriceFormat($current->et_budget) ?></span>
                                 <?php endif; ?>

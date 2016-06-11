@@ -14,6 +14,10 @@ if(!empty($current_user->ID)) {
 global $post;
 get_header();
 the_post();
+$r_url = 'dashboard';
+if( isset($_GET['r_url']) && !empty($_GET['r_url']) ):
+    $r_url = urlencode($_GET['r_url']);
+endif;
 ?>
     <div class="container">
         <div class="block-pages post-job page-sign-in page-user-authentication">
@@ -21,8 +25,8 @@ the_post();
             <?php
 //            mJobAuthFormOnPage('dashboard');
             mJobSignUpFormStepOne('');
-            mJobSignInForm(true, 'dashboard');
-            mJobSignUpForm('', true, 'dashboard');
+            mJobSignInForm(true, $r_url);
+            mJobSignUpForm('', true, $r_url);
             ?>
         </div>
     </div>
