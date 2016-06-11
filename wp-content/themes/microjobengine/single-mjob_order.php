@@ -30,7 +30,6 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                 <div class="box-shadow-title">
                     <p class="block-title">
                         <?php _e('ORDER DETAILS AND STATUS', ET_DOMAIN); ?>
-                        <span class="user-conversation">with <a href="" class="" target="_blank"><?php echo $current->mjob->post_title; ?></a></span>
                     </p>
                     <p class="btn-back"><?php _e('Communicate with your company below.', ET_DOMAIN); ?></p>
                 </div>
@@ -170,7 +169,7 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                                 <?php
                                                     $to_role = ae_user_role($to_user);
                                                     if( $to_role == COMPANY):
-                                                    echo $profile->company_description;
+                                                    echo $current->mjob->post_title;
                                                     elseif( $to_role == INDIVIDUAL ):
                                                         echo $profile->credit_goal;
                                                     else:
