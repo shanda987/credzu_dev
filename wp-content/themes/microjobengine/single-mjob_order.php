@@ -197,7 +197,7 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                     $t1 = strtotime($current->post_date);
                                     $t2 = time();
                                     $t = $t2 - $t1;
-                                     if( $t >= 3 ): ?>
+                                     if( $t >= 259200 ): ?>
                                          <p><?php _e("Good news! The cancellation period has expired and the services will begin shortly, if they haven't begun already. Once the correspondence is prepared, you will be notified ", ET_DOMAIN); ?></p>
                                          <div class="label-status label-status-order active-color">
                                              <span><?php _e('PROCESSING', ET_DOMAIN); ?></span>
