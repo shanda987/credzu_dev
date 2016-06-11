@@ -350,6 +350,9 @@ class mJobConversationAction extends mJobPostAction
             case 'upload_document':
                 $result->changelog = sprintf(__("%s uploaded a %s"), $author_link, $result->post_content);
                 break;
+            case 'update_profile':
+                $result->changelog = sprintf(__("%s updated %s"), $author_link, $result->post_content);
+                break;
         }
         return $result;
     }

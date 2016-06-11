@@ -72,6 +72,7 @@
                         <div class="form-group clearfix float-right change-pass-button-method">
                             <button class="btn-submit"><?php _e('Save', ET_DOMAIN); ?></button>
                         </div>
+                        <input type="hidden" class="input-item" name="mjob_order_id" id="mjob_order_id" value=""/>
                         <input type="hidden" class="input-item" name="_wpnonce" id="profile_wpnonce" value="<?php echo de_create_nonce('ae-mjob_post-sync');?>" />
                     </form>
                 </div>

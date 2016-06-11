@@ -505,6 +505,9 @@
                         blockTarget: '.form-confirm-billing-modal button'
                     });
                 }
+                if( view.$el.find('#mjob_order_id').length > 0){
+                    view.$el.find('#mjob_order_id').val(this.orderModel.get('ID'));
+                }
             },
             afterSave: function(result, resp, jqXHR, type){
                 var view = this;
@@ -599,6 +602,9 @@
                         type: 'update-profile-contact-modal',
                         blockTarget: '.form-confirm-info-modal button'
                     });
+                }
+                if( view.$el.find('#mjob_order_id').length > 0){
+                    view.$el.find('#mjob_order_id').val(this.orderModel.get('ID'));
                 }
             },
             afterSave: function(result, resp, jqXHR, type){
