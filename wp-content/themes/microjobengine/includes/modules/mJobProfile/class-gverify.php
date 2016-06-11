@@ -116,6 +116,8 @@ class AE_GVerify extends AE_Base{
     public function verifyPayment($routing_no = '', $account_no = '', $verify_field = array() )
     {
         $this->soapClient->__setSoapHeaders(array($this->soapHeader));
+        var_dump($this->soapClient);
+        exit;
         $check = array(
             "RoutingNumber" => $routing_no,
             "AccountNumber" => $account_no);
