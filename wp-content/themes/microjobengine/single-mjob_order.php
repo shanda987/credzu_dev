@@ -188,18 +188,26 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                             </div>
                             <div class="order-extra list-order">
                                 <p class="title-cate"><?php _e('Status', ET_DOMAIN); ?></p>
-                                <p><?php
-                                    if( empty($profile->company_status_message) ):
-                                        var_dump(strtotime($current->post_date));
-                                        _e('Pursuant to Federal and State law, your company cannot begin credit repair services until the 72 hours cancellation period has ended. Which began at the moment you signed your agreement with the company', ET_DOMAIN);
-                                    else:
-                                        echo $profile->company_status_message;
-                                    endif;
-                                        ?>
-                                        </p>
-                                <div class="label-status label-status-order pending-color">
-                                    <span><?php _e('Pending', ET_DOMAIN); ?></span>
-                                </div>
+                                <?php
+//                                    if( empty($profile->company_status_message) ):
+//                                        _e('Pursuant to Federal and State law, your company cannot begin credit repair services until the 72 hours cancellation period has ended. Which began at the moment you signed your agreement with the company', ET_DOMAIN);
+//                                    else:
+//                                        echo $profile->company_status_message;
+//                                    endif;
+                                    $t1 = strtotime($current->post_date);
+                                    $t2 = time();
+                                    $t = $t2 - $t1;
+                                     if( $t >= 3 ): ?>
+                                         <p><?php _e("Good news! The cancellation period has expired and the services will begin shortly, if they haven't begun already. Once the correspondence is prepared, you will be notified ", ET_DOMAIN); ?></p>
+                                         <div class="label-status label-status-order active-color">
+                                             <span><?php _e('PROCESSING', ET_DOMAIN); ?></span>
+                                         </div>
+                                <?php else: ?>
+                                    <p><?php _e('Pursuant to Federal and State law, your company cannot begin credit repair services until the 72 hours cancellation period has ended. Which began at the moment you signed your agreement with the company', ET_DOMAIN); ?></p>
+                                     <div class="label-status label-status-order pending-color">
+                                         <span><?php _e('PENDING', ET_DOMAIN); ?></span>
+                                     </div>
+                                <?php      endif; ?>
                             </div>
                             <div class="total-order">
                                 <p><i class="fa fa-exclamation-circle" aria-hidden="true"></i><?php _e(' Here are the details for your order and company hired', ET_DOMAIN); ?></p>
