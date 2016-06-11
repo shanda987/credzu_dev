@@ -190,14 +190,15 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                 <p class="title-cate"><?php _e('Status', ET_DOMAIN); ?></p>
                                 <p><?php
                                     if( empty($profile->company_status_message) ):
-                                        _e('All disputes have been sent to credit bureaus. Waiting for response', ET_DOMAIN);
+//                                        _e('All disputes have been sent to credit bureaus. Waiting for response', ET_DOMAIN);
+                                        _e('Pursuant to Federal and State law, your company cannot begin credit repair services until the 72 hours cancellation period has ended. Which began at the moment you signed your agreement with the company', ET_DOMAIN);
                                     else:
                                         echo $profile->company_status_message;
                                     endif;
                                         ?>
                                         </p>
                                 <div class="label-status label-status-order pending-color">
-                                    <span><?php _e('ALERT', ET_DOMAIN); ?></span>
+                                    <span><?php _e('Pending', ET_DOMAIN); ?></span>
                                 </div>
                             </div>
                             <div class="total-order">
