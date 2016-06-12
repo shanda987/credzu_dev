@@ -278,6 +278,9 @@ function mjobCreateClientToCompanyPdf($profile, $data){
 	ob_start();
 	global $wpdb, $user_ID;
 	$company = mJobProfileAction()->getProfile($user_ID);
+	var_dump($profile);
+		var_dump($data);
+	exit;
 	$fee = $data->amount;
 //--get width
 	function set_width($fee=""){
