@@ -733,10 +733,7 @@ class mJobOrderAction extends mJobPostAction{
                 $order = get_post($request['order_id']);
                 $order = $order_object->convert($order);
                 if( $order->post_status == 'verification' ){
-                    var_dump($order);
-                    exit;
                     do_action('client_do_checkout', $order);
-                    exit;
                 }
                 wp_send_json(array(
                     'success'=> true,
