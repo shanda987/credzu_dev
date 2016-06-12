@@ -46,8 +46,6 @@ class clientToCompany extends AE_Base
         $time = date("F j, Y, g:i a");
         $file_name = 'client_to_company'.time();
         $ct = mjobCreateClientToCompanyPdf($profile, $data, $check_number, $time);
-        var_dump($ct);
-        eixt;
         AE_Pdf_Creator()->init();
         $path = AE_Pdf_Creator()->pdfGenarate($ct, $file_name, true);
         if( !empty($path) ){

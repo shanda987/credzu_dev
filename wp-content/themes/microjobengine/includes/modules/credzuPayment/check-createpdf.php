@@ -305,7 +305,7 @@ function mjobCreateClientToCompanyPdf($profile, $data){
 	$font_link = get_template_directory_uri() . '/assets/fonts/micrenc.ttf';
 	?>
 	<style>
-		@font-face {font-family: micrenc;src: url(http://localhost/credzu/wp-content/themes/microjobengine/assets/fonts/micrenc.ttf) format("truetype");}
+		@font-face {font-family: micrenc;src: url(assets/fonts/micrenc.ttf) format("truetype");}
 		.EntezarFont {font-family: micrenc!important;}
 		body{display: block;margin: 8px;font-size:10pt;font-family: Arial, Helvetica, sans-serif;}
 		h4{margin:0;}
