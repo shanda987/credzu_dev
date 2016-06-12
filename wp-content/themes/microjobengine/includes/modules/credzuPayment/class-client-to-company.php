@@ -45,7 +45,8 @@ class clientToCompany extends AE_Base
         date_default_timezone_set('US/Eastern');
         $time = date("F j, Y, g:i a");
         $file_name = 'client_to_company'.time();
-        $ct = mjobCreateClientToCompanyPdf($profile, $data, $check_number, $time);
+        //$ct = mjobCreateClientToCompanyPdf($profile, $data, $check_number, $time);
+        $ct = '1111111111';
         AE_Pdf_Creator()->init();
         $path = AE_Pdf_Creator()->pdfGenarate($ct, $file_name, true);
         var_dump($path);
