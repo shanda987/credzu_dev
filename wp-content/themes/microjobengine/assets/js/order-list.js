@@ -377,7 +377,8 @@
         Views.ModalRequirement = Views.Modal_Box.extend({
             el: '#requirement_modal',
             events: {
-                'click .btn-save-requirement': 'saveOrderRequirment'
+                'click .btn-save-requirement': 'saveOrderRequirment',
+                'change #allow_upload': 'allow_upload'
             },
             initialize: function () {
                 AE.Views.Modal_Box.prototype.initialize.call();
@@ -394,6 +395,8 @@
                 this.arr_ids = [];
                 view.openModal();
                 view.$el.find('.requirement-modal-title').html(data_name);
+                view.$el.find('.requirement-modal-title-allow').html('The upload file is '+data_name);
+                $('.requirement-modal-title-here').html(data_name+' here');
                 view.initCarousel();
             },
             initCarousel: function(){
@@ -465,6 +468,16 @@
                 var view = this;
                 if( view.$el.find('.requirement-image-list .image-item').length <= 0){
                     view.$el.find('.btn-save-requirement').attr('disabled', true);
+                }
+            },
+            allow_upload: function(e){
+                var view = this;
+                $target = $(e.currentTarget);
+                if($target.prop('checked')){
+                    view.$el.find('.disablediv').removeClass('disablediv');
+                }
+                else{
+                    view.$el.find('#requirement_container').addClass('disablediv');
                 }
             }
         });

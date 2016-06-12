@@ -640,3 +640,7 @@
     top: 2px;
     margin-top: 0;
 }
+.disablediv{
+    pointer-events: none;
+    opacity: 0.5;
+}
