@@ -729,6 +729,8 @@ class mJobOrderAction extends mJobPostAction{
         $request = $_REQUEST;
         if( isset($request['order_id']) && !empty($request['order_id'])){
             $result = $this->updateOrderStatus($request['order_id'], 'verification');
+            var_dump($result);
+            exit;
             if( $result && !is_wp_error($result)){
                 $order = get_post($request['order_id']);
                 $order = $order_object->convert($order);
