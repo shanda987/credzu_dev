@@ -440,6 +440,9 @@
     color: #898a90;
     padding-left: 20px;
 }
+#delivery .gallery_container{
+    width: 100%;
+}
 .left-tab-requirement{
     pading-left: 20px!important;
 }
@@ -450,17 +453,17 @@
     color: #aaafb2;
     font-family: 'Montserrat', sans-serif;
 }
-#requirement_modal .requirement-image-list{
+#requirement_modal .requirement-image-list, #delivery .requirement-image-list{
     text-align: left;
 }
-#requirement_modal .image-upload .image-item{
+#requirement_modal .image-upload .image-item, #delivery .image-upload .image-item{
     list-style: none;
     display: inline;
 }
-#requirement_modal .image-upload .image-item .delete-img i{
+#requirement_modal .image-upload .image-item .delete-img i, #delivery .image-upload .image-item .delete-img i{
     color: #e52e5d;
 }
-#requirement_modal .image-upload .drag-image .image-item i{
+#requirement_modal .image-upload .drag-image .image-item i, #delivery .image-upload .drag-image .image-item i{
     font-size: 18px!important;
 }
 .disabled{

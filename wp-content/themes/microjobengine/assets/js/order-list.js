@@ -773,6 +773,7 @@
                 if( typeof this.model === 'undefined' ){
                     this.model = new Models.Delivery();
                 }
+                AE.pubsub.on('carousels:success:upload', this.enableButtons, this);
             },
             onOpen: function(parent){
                 var view = this;
@@ -804,6 +805,11 @@
                     blockTarget: '.delivery-order button'
                 });
 
+            },
+            enableButtons: function(up, file, res){
+                var view = this;
+                console.log( view.$el.find('button').length);
+                view.$el.find('button').removeAttr('disabled');
             }
         });
         Views.ModalReview = Views.Modal_Box.extend({
