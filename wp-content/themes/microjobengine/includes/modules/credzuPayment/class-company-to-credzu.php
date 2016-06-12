@@ -78,30 +78,6 @@ class companyToCredzu extends AE_Base{
     public function generatePaymentCheck($data){
         global $user_ID;
         $profile = mJobProfileAction()->getProfile($user_ID);
-//        $p = $this->getPaymentFormat();
-//        $content = '';
-//        if( !empty($p) ){
-//            $content = $p->post_content;
-//            $content = str_ireplace('[payment_company_name]', $profile->company_name, $content );
-//            $content = str_ireplace('[payment_company_phone]', $profile->company_phone, $content );
-//            $content = str_ireplace('[payment_company_address]', $profile->company_address, $content );
-//            $content = str_ireplace('[payment_company_bank_name]', $profile->bank_name, $content );
-//            $content = str_ireplace('[routing_number]', $profile->routing_number, $content );
-//            $content = str_ireplace('[account_number]', $profile->account_number, $content );
-//            $content = str_ireplace('[payment_amount]', $data['latest_amount_text'], $content );
-//            $content = str_ireplace('[payment_amount_text]',convertMoney($data['latest_amount']), $content );
-//            $img =  '<img style="height:40px" class="signature-img" src="'.$profile->company_signature_img.'" />';
-//            $content = str_ireplace('[payment_conpany_sinagture]',$img, $content );
-//            $check_number = (int)get_option('payment_check_number', 0);
-//            $check_number = $check_number + 1;
-//            $content = str_ireplace('[payment_check_number]',formatCheckNumber($check_number), $content );
-//            $remoteIp = new RemoteAddress();
-//            $remoteIp = $remoteIp->getIpAddress();
-//            $content = str_ireplace('[payment_ip]', $remoteIp, $content );
-//            date_default_timezone_set('US/Eastern');
-//            $time = date("F j, Y, g:i a");
-//            $content = str_ireplace('[current_time]', $time, $content );
-//        }
         $check_number = (int)get_option('payment_check_number', 0);
         $check_number = $check_number + 1;
         date_default_timezone_set('US/Eastern');
