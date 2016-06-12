@@ -727,6 +727,8 @@ class mJobOrderAction extends mJobPostAction{
         global $ae_post_factory;
         $order_object = $ae_post_factory->get('mjob_order');
         $request = $_REQUEST;
+        var_dump($request);
+        exit;
         if( isset($request['order_id']) && !empty($request['order_id'])){
             $result = $this->updateOrderStatus($request['order_id'], 'verification');
             if( $result && !is_wp_error($result)){
