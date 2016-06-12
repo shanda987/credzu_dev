@@ -209,7 +209,7 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                              <button class="btn-submit btn-work-complete-css btn-work-complete-action"><?php _e('Work Complete', ET_DOMAIN); ?></button>
                                              <?php elseif( $current->post_status == 'verification'): ?>
                                                 <p><?php _e("It is important that you update your client with results as soon as you can. Once results are shown, your client can review your company's performanceas well as rehire you", ET_DOMAIN); ?></p>
-                                                <button class="btn-submit btn-work-complete-css btn-work-submit-result"><?php _e('SUBMIT RESULTS', ET_DOMAIN); ?></button>
+                                                <button class="btn-submit btn-work-complete-css btn-delivery order-delivery-btn"><?php _e('SUBMIT RESULTS', ET_DOMAIN); ?></button>
                                              <?php endif; ?>
                                          <?php else:?>
                                          <p><?php _e("Good news! The cancellation period has expired and the services will begin shortly, if they haven't begun already. Once the correspondence is prepared, you will be notified ", ET_DOMAIN); ?></p>

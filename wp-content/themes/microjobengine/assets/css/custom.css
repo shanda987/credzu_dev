@@ -407,35 +407,35 @@
 .requirement-list .requirement-label{
     font-weight: normal;
 }
-#requirement_modal .browse_button {
+#requirement_modal .browse_button, #delivery .browse_button {
     background: #c1c2c7;
     padding: 30px;
     cursor: pointer;
 }
-#requirement_modal .image-upload .drag-image i {
+#requirement_modal .image-upload .drag-image i, #delivery .image-upload .drag-image i {
     font-size: 120px;
     color: #838892;
     margin: 50px 0 20px 0;
 }
-#requirement_modal .image-upload .drag-image {
+#requirement_modal .image-upload .drag-image, #delivery .image-upload .drag-image {
     text-align: center;
     color: #2a394e;
     margin: 70px 0 100px 0;
     font-family: 'Montserrat', sans-serif;
     font-size: 18px;
 }
-#requirement_modal .browse_button {
+#requirement_modal .browse_button, #delivery .browse_button  {
     background: #c1c2c7;
     padding: 30px;
     cursor: pointer;
 }
-#requirement_modal .image-upload .drag-image span {
+#requirement_modal .image-upload .drag-image span, #delivery .image-upload .drag-image span {
     display: block;
 }
-#requirement_modal button[disabled] {
+#requirement_modal button[disabled], #delivery button[disabled] {
     opacity: .5;
 }
-#requirement_modal .btn-remove {
+#requirement_modal .btn-remove, #delivery .btn-remove  {
     display: none;
     color: #898a90;
     padding-left: 20px;
@@ -591,7 +591,7 @@
     font-weight: bold;
     color: #000;
 }
-#change_user_role_modal .notice-message, #hire_signup_modal .notice-message, #work_complete_modal .notice-message{
+#change_user_role_modal .notice-message, #hire_signup_modal .notice-message, #work_complete_modal .notice-message, #delivery .notice-message{
     text-align: center;
     margin-top: 40px;
     margin-bottom: 40px;
@@ -600,7 +600,7 @@
 #change_user_role_modal .role-back-return-css{
     margin-right: 20px;
 }
-#change_user_role_modal .notice-message .note-action, #hire_signup_modal .notice-message .note-action, #work_complete_modal .notice-message .note-action {
+#change_user_role_modal .notice-message .note-action, #hire_signup_modal .notice-message .note-action, #work_complete_modal .notice-message .note-action, #delivery .notice-message .note-action {
     font-weight: bold;
 }
 .featured-active{

@@ -787,7 +787,7 @@
                     view.carousels = new Views.Carousel({
                         el: $('.gallery_container'),
                         name_item:'et_carousel',
-                        uploaderID:'carousel',
+                        uploaderID:'carousel_deliver',
                         model: view.model,
                         extensions: ae_globals.file_types,
                         carouselTemplate: '#ae_carousel_file_template'
