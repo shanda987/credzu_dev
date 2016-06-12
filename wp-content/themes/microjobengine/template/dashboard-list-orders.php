@@ -17,7 +17,9 @@ if( is_page_template('page-dashboard.php') ){
             'delivery',
             'disputing',
             'disputed',
-            'finished'
+            'finished',
+            'processing',
+            'verification'
             ),
         'author' => $user_ID,
         'orderby'=> 'date',

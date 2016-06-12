@@ -591,7 +591,7 @@
     font-weight: bold;
     color: #000;
 }
-#change_user_role_modal .notice-message, #hire_signup_modal .notice-message{
+#change_user_role_modal .notice-message, #hire_signup_modal .notice-message, #work_complete_modal .notice-message{
     text-align: center;
     margin-top: 40px;
     margin-bottom: 40px;
@@ -600,7 +600,7 @@
 #change_user_role_modal .role-back-return-css{
     margin-right: 20px;
 }
-#change_user_role_modal .notice-message .note-action, #hire_signup_modal .notice-message .note-action {
+#change_user_role_modal .notice-message .note-action, #hire_signup_modal .notice-message .note-action, #work_complete_modal .notice-message .note-action {
     font-weight: bold;
 }
 .featured-active{
@@ -643,4 +643,8 @@
 .disablediv{
     pointer-events: none;
     opacity: 0.5;
+}
+.btn-work-complete-css{
+    margin-top: 20px;
+    margin-left: 15px;
 }

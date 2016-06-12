@@ -25,6 +25,7 @@ class mJobOrderAction extends mJobPostAction{
         $this->add_action(  'transition_post_status',  'mjob_updated_order', 10, 3 );
         $this->add_action('ae_after_message', 'updateStatus');
         $this->add_filter('mjob_check_pending_account', 'checkPendingAccountOrder', 10, 2);
+        $this->add_ajax('mjob-work-complete-confirm', 'mjobWorkCompleteConfirm');
         $this->ruler = array(
         );
 
@@ -289,6 +290,16 @@ class mJobOrderAction extends mJobPostAction{
                 $result->status_text = __('PENDING', ET_DOMAIN);
                 $result->status_class = 'pending-color';
                 $result->status_text_color = 'pending-text';
+                break;
+            case 'processing':
+                $result->status_text = __('PROCESSING', ET_DOMAIN);
+                $result->status_class = 'active-color';
+                $result->status_text_color = 'active-text';
+                break;
+            case 'verification':
+                $result->status_text = __('VERIFICATION', ET_DOMAIN);
+                $result->status_class = 'finished-color';
+                $result->status_text_color = 'finished-text';
                 break;
             case 'late':
                 $result->status_text = __('LATE', ET_DOMAIN);
@@ -676,6 +687,60 @@ class mJobOrderAction extends mJobPostAction{
             }
         }
         return $html;
+    }
+    /**
+      * update order status
+      *
+      * @param object $order
+      * @return void
+      * @since 1.4
+      * @package MicrojobEngine
+      * @category CREDZU
+      * @author JACK BUI
+      */
+    public function updateOrderStatus($order_id, $new_status = ''){
+        global $wpdb, $ae_post_factory;
+        $order_obj = $ae_post_factory->get('mjob_order');
+        $order = get_post($order_id);
+        $order = $order_obj->convert($order);
+        if( !empty($order)){
+            if( empty($new_status) ){
+                $new_status = $order->post_status;
+            }
+            $update_result = $wpdb->query($wpdb->prepare("UPDATE $wpdb->posts as P SET P.post_status = %s WHERE P.ID = %d", $new_status, $order->ID));
+            return $update_result;
+        }
+        return false;
+    }
+    /**
+      * confirm work complete
+      *
+      * @param void
+      * @return void
+      * @since 1.4
+      * @package MicrojobEngine
+      * @category CREDZU
+      * @author JACK BUI
+      */
+    public function mjobWorkCompleteConfirm(){
+        $request = $_REQUEST;
+        if( isset($request['order_id']) && !empty($request['order_id'])){
+            $result = $this->updateOrderStatus($request['order_id'], 'verification');
+            if( $result && !is_wp_error($result)){
+                wp_send_json(array(
+                    'success'=> true,
+                    'msg'=> __('Confirm success!', ET_DOMAIN)
+                ));
+            }
+            wp_send_json(array(
+                'success'=> false,
+                'msg'=> __('Failed!', ET_DOMAIN)
+            ));
+        }
+        wp_send_json(array(
+            'success'=> false,
+            'msg'=> __('Failed!', ET_DOMAIN)
+        ));
     }
 }
 new mJobOrderAction();

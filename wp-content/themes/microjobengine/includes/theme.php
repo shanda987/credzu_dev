@@ -331,6 +331,24 @@ class ET_Microjobengine extends AE_Base
             'show_in_admin_status_list' => true,
             'label_count' => _n_noop('Finished <span class="count">(%s)</span>', 'Finished <span class="count">(%s)</span>') ,
         ));
+        register_post_status('processing', array(
+            'label' => __('Processing', ET_DOMAIN) ,
+            'private'=> false,
+            'public' => true,
+            'exclude_from_search' => true,
+            'show_in_admin_all_list' => true,
+            'show_in_admin_status_list' => true,
+            'label_count' => _n_noop('Processing <span class="count">(%s)</span>', 'Processing <span class="count">(%s)</span>') ,
+        ));
+        register_post_status('verification', array(
+            'label' => __('Verification', ET_DOMAIN) ,
+            'private'=> false,
+            'public' => true,
+            'exclude_from_search' => true,
+            'show_in_admin_all_list' => true,
+            'show_in_admin_status_list' => true,
+            'label_count' => _n_noop('Verification <span class="count">(%s)</span>', 'Verification <span class="count">(%s)</span>') ,
+        ));
         /**
          * set up social login
          */
@@ -1034,6 +1052,7 @@ class ET_Microjobengine extends AE_Base
             get_template_part('template-js/modal-billing', 'information');
             get_template_part('template-js/modal-unlock', 'requirement');
             get_template_part('template-js/modal-show', 'requirement');
+            get_template_part('template-js/modal-work', 'complete');
         }
         if( is_singular('mjob_post')){
             get_template_part('template-js/modal-signup', 'hire');

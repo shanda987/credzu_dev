@@ -197,10 +197,25 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                     $t1 = strtotime($current->post_date);
                                     $t2 = time();
                                     $t = $t2 - $t1;
-                                     if( $t >= 259200 ): ?>
+                                    $user_role = ae_user_role($user_ID);
+                                     if( $t >= 259 ):
+                                         if( $current->post_status == 'publish' ) {
+                                             mJobOrderAction()->updateOrderStatus($current->ID, 'processing');
+                                         }
+                                         ?>
+                                         <?php if( $user_role == COMPANY): ?>
+                                            <?php if( $current->post_status == 'processing' ): ?>
+                                             <p><?php _e('Once you have completed the service, click "Completed" below after  which a payment from your client be generated and your client will be informed to wait for results', ET_DOMAIN); ?></p>
+                                             <button class="btn-submit btn-work-complete-css btn-work-complete-action"><?php _e('Work Complete', ET_DOMAIN); ?></button>
+                                             <?php elseif( $current->post_status == 'verification'): ?>
+                                                <p><?php _e("It is important that you update your client with results as soon as you can. Once results are shown, your client can review your company's performanceas well as rehire you", ET_DOMAIN); ?></p>
+                                                <button class="btn-submit btn-work-complete-css btn-work-submit-result"><?php _e('SUBMIT RESULTS', ET_DOMAIN); ?></button>
+                                             <?php endif; ?>
+                                         <?php else:?>
                                          <p><?php _e("Good news! The cancellation period has expired and the services will begin shortly, if they haven't begun already. Once the correspondence is prepared, you will be notified ", ET_DOMAIN); ?></p>
-                                         <div class="label-status label-status-order active-color">
-                                             <span><?php _e('PROCESSING', ET_DOMAIN); ?></span>
+                                         <?php endif ?>
+                                         <div class="label-status label-status-order <?php echo $current->status_class; ?>">
+                                             <span><?php echo $current->status_text; ?></span>
                                          </div>
                                 <?php else: ?>
                                     <p><?php _e('Pursuant to Federal and State law, your company cannot begin credit repair services until the 72 hours cancellation period has ended. Which began at the moment you signed your agreement with the company', ET_DOMAIN); ?></p>

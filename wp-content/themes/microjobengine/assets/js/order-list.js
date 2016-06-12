@@ -175,7 +175,8 @@
                 'click .mjob-dispute-order': 'showFormDispute',
                 'click .requirement-item': 'showModalRequirement',
                 'click .resend-requirement': 'showModalUnlockRequirement',
-                'click .show-requirement-doc': 'showRequirementContent'
+                'click .show-requirement-doc': 'showRequirementContent',
+                'click .btn-work-complete-action': 'showWorkComplete'
             },
             initialize: function () {
                 var view = this;
@@ -349,6 +350,13 @@
                     }
                     this.modalrequirement.onOpen(this.model, data_id, $target, data_name);
                 }
+            },
+            showWorkComplete: function(e){
+                e.preventDefault();
+                if (typeof this.modalworkcomplete === 'undefined') {
+                    this.modalworkcomplete = new Views.ModalWordComplete();
+                }
+                this.modalworkcomplete.onOpen(this.model);
             }
         });
         Views.ModalRequirementContent = Views.Modal_Box.extend({
@@ -705,6 +713,55 @@
                         }
                         view.blockUi.unblock();
 
+                    }
+                });
+            }
+        });
+        Views.ModalWordComplete = Views.Modal_Box.extend({
+            el: '#work_complete_modal',
+            events: {
+                'click .btn-work-complete-submit': 'workComplete'
+            },
+            initialize: function () {
+                AE.Views.Modal_Box.prototype.initialize.call();
+                this.blockUi = new Views.BlockUi();
+
+            },
+            onOpen: function (model) {
+                var view = this;
+                this.model = model;
+                view.openModal();
+            },
+            workComplete: function(e){
+                e.preventDefault();
+                var view = this;
+                $target = $(e.currentTarget);
+                view.data ={
+                    action: 'mjob-work-complete-confirm',
+                    'order_id': view.model.get('ID')
+                };
+                $.ajax({
+                    url: ae_globals.ajaxURL,
+                    type: 'post',
+                    data: view.data,
+                    beforeSend: function() {
+                        view.blockUi.block($target);
+                    },
+                    success: function(res) {
+                        view.blockUi.unblock();
+                        if (res.success) {
+                            AE.pubsub.trigger('ae:notification', {
+                                msg: res.msg,
+                                notice_type: 'success'
+                            });
+                            view.closeModal();
+                            window.location.reload(true);
+                        } else {
+                            AE.pubsub.trigger('ae:notification', {
+                                msg: res.msg,
+                                notice_type: 'error'
+                            });
+                        }
                     }
                 });
             }

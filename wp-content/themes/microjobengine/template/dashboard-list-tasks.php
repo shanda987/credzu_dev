@@ -17,7 +17,9 @@
             'disputed',
             'disputing',
             'late',
-            'finished'
+            'finished',
+            'processing',
+            'verification'
         ),
         'meta_key' => 'seller_id',
         'meta_value' => array($user_ID),
