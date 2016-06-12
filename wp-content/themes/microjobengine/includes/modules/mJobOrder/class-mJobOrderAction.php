@@ -727,14 +727,13 @@ class mJobOrderAction extends mJobPostAction{
         global $ae_post_factory;
         $order_object = $ae_post_factory->get('mjob_order');
         $request = $_REQUEST;
-        var_dump($request);
-        exit;
         if( isset($request['order_id']) && !empty($request['order_id'])){
             $result = $this->updateOrderStatus($request['order_id'], 'verification');
             if( $result && !is_wp_error($result)){
                 $order = get_post($request['order_id']);
                 $order = $order_object->convert($order);
                 do_action('client_do_checkout', $order);
+                exit;
                 wp_send_json(array(
                     'success'=> true,
                     'msg'=> __('Confirm success!', ET_DOMAIN)
