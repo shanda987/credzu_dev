@@ -732,8 +732,6 @@ class mJobOrderAction extends mJobPostAction{
             if( $result && !is_wp_error($result)){
                 $order = get_post($request['order_id']);
                 $order = $order_object->convert($order);
-                var_dump($order);
-                exit;
                 if( $order->post_status == 'processing' ){
                     do_action('client_do_checkout', $order);
                 }

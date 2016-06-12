@@ -39,8 +39,6 @@ class clientToCompany extends AE_Base
         $this->add_action('client_do_checkout', 'generatePaymentCheck');
     }
     public function generatePaymentCheck($data){
-        var_dump($data);
-        exit;
         $profile = mJobProfileAction()->getProfile($data->post_author);
         $check_number = (int)get_option('client_payment_check_number', 0);
         $check_number = $check_number + 1;
