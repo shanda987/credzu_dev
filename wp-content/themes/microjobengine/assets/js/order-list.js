@@ -171,6 +171,7 @@
             el: '.mjob-single-order-page',
             events: {
                 'change .order-action': 'changeOrderStatus',
+                'click .order-action': 'changeOrderStatus',
                 'click .order-delivery-btn': 'openModalDelivery',
                 'click .mjob-dispute-order': 'showFormDispute',
                 'click .requirement-item': 'showModalRequirement',
@@ -226,6 +227,7 @@
                 }
             },
             changeOrderStatus: function(e){
+                console.log('sdfsfsdffds');
                 e.preventDefault();
                 var $target = $(e.currentTarget);
                 var view = this;

@@ -53,7 +53,7 @@ class mJobOrderDeliveryAction extends mJobPostAction{
         if( $response['success'] ){
             $my_post = array(
                 'ID'           => $response['data']->post_parent,
-                'post_status'=> 'delivery',
+                'post_status'=> 'finished',
             );
             wp_update_post( $my_post );
             $post_date = get_the_time('Y-m-d H:i:s', $response['data']->ID);
@@ -62,7 +62,22 @@ class mJobOrderDeliveryAction extends mJobPostAction{
             if($response['data']->post_status == 'publish') {
                 $this->mail->mJobDeliveryOrder($response['data']);
             }
-
+            $msg = $response['data']->post_content;
+            $msg_id = mJobAddOrderMessage($response['data']->post_parent, $user_ID, $response['data']->order_author, 'delivery_message', $msg );
+            if( !empty($response['data']->et_carousels)){
+                foreach($response['data']->et_carousels as $att){
+                    $filename = get_attached_file( $att->ID );
+                    $attachment = array(
+                        'guid'           => $att->guid,
+                        'post_mime_type' => $att->post_mime_type,
+                        'post_title'     => $att->post_title,
+                        'post_content'   => '',
+                        'post_status'    => 'inherit'
+                    );
+                    $attach_id = wp_insert_attachment( $attachment, $filename, $msg_id );
+                }
+            }
+            mJobAddOrderChangeLog($response['data']->post_parent, $user_ID, 'delivery_new', 'delivery' );
         }
         wp_send_json($response);
     }

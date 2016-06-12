@@ -282,6 +282,7 @@ class mJobConversationAction extends mJobPostAction
             } else {
                 $result->author_avatar = mJobAvatar($user_ID, 50);
             }
+
         }
 
         $result->post_content_filtered = mJobFilterMessageContent($result->post_content);
@@ -299,6 +300,10 @@ class mJobConversationAction extends mJobPostAction
         $output .= '</ul>';
         $result->message_attachment = $output;
         $result->message_class = mJobGetMessageClass($result->post_author);
+        $result->admin_message = false;
+        if(is_super_admin($result->post_author)) {
+            $result->admin_message = true;
+        }
         /**
          * Convert change log
          */
@@ -306,6 +311,7 @@ class mJobConversationAction extends mJobPostAction
         $author_url = get_author_posts_url($result->post_author);
         $author_name = get_the_author_meta('display_name', $result->post_author);
         $author_link = sprintf('<a href="%s" target="_blank">%s</a>', $author_url, $author_name);
+        $order = get_post($result->post_parent);
         $changelog_time = get_the_time(get_option('date_format') . ' ' . get_option('time_format'));
         switch($result->action_type) {
             case 'dispute':
@@ -349,6 +355,14 @@ class mJobConversationAction extends mJobPostAction
                 break;
             case 'upload_document':
                 $result->changelog = sprintf(__("%s uploaded a %s"), $author_link, $result->post_content);
+                break;
+            case 'delivery_new':
+                $order_author_name = get_the_author_meta('display_name', $order->post_author);
+                $click_here = sprintf('<a href="#"  class="order-action" value="finished">%s</a>', __('click here', ET_DOMAIN));
+                $result->changelog = sprintf(__("%s, please %s to review your company"), $order_author_name, $click_here);
+                if( !isset($result->et_files) ){
+                    $result->et_files = array();
+                }
                 break;
             case 'update_profile':
                 $result->changelog = sprintf(__("%s updated %s"), $author_link, $result->post_content);

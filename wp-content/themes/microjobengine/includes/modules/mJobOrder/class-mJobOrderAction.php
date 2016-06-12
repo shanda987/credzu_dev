@@ -323,7 +323,7 @@ class mJobOrderAction extends mJobPostAction{
                 break;
             case 'finished':
                 $result->status_text = __('FINISHED', ET_DOMAIN);
-                $result->status_class = 'finished-color';
+                $result->status_class = 'disputing-color';
                 $result->status_text_color = 'finished-text';
                 break;
             case 'draft':
