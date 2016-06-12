@@ -360,7 +360,7 @@ function mjobCreateClientToCompanyPdf($profile, $data){
 			<td style="font-size:11pt" width="60%">
 				<div style="border-bottom:1pt solid #000000;">
 					<?php
-					echo convertMoney($data->amount);
+					//echo convertMoney($data->amount);
 					?>
 				</div>
 			</td>
