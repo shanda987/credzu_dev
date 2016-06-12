@@ -26,6 +26,7 @@ class mJobOrderAction extends mJobPostAction{
         $this->add_action('ae_after_message', 'updateStatus');
         $this->add_filter('mjob_check_pending_account', 'checkPendingAccountOrder', 10, 2);
         $this->add_ajax('mjob-work-complete-confirm', 'mjobWorkCompleteConfirm');
+        $this->add_ajax('mjob-reorder', 'mjobReorder');
         $this->ruler = array(
         );
 
@@ -307,8 +308,8 @@ class mJobOrderAction extends mJobPostAction{
                 $result->status_text_color = 'late-text';
                 break;
             case 'delivery':
-                $result->status_text = __('DELIVERED', ET_DOMAIN);
-                $result->status_class = 'delivered-color';
+                $result->status_text = __('FINISHED', ET_DOMAIN);
+                $result->status_class = 'disputing-color';
                 $result->status_text_color = 'delivered-text';
                 break;
             case 'disputed':
@@ -726,6 +727,36 @@ class mJobOrderAction extends mJobPostAction{
         $request = $_REQUEST;
         if( isset($request['order_id']) && !empty($request['order_id'])){
             $result = $this->updateOrderStatus($request['order_id'], 'verification');
+            if( $result && !is_wp_error($result)){
+                wp_send_json(array(
+                    'success'=> true,
+                    'msg'=> __('Confirm success!', ET_DOMAIN)
+                ));
+            }
+            wp_send_json(array(
+                'success'=> false,
+                'msg'=> __('Failed!', ET_DOMAIN)
+            ));
+        }
+        wp_send_json(array(
+            'success'=> false,
+            'msg'=> __('Failed!', ET_DOMAIN)
+        ));
+    }
+    /**
+      * reorder
+      *
+      * @param void
+      * @return void
+      * @since 1.4
+      * @package MicrojobEngine
+      * @category CREDZU
+      * @author JACK BUI
+      */
+    public function mjobReorder(){
+        $request = $_REQUEST;
+        if( isset($request['order_id']) && !empty($request['order_id'])){
+            $result = $this->updateOrderStatus($request['order_id'], 'processing');
             if( $result && !is_wp_error($result)){
                 wp_send_json(array(
                     'success'=> true,

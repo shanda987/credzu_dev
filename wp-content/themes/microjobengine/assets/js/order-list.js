@@ -768,6 +768,55 @@
                 });
             }
         });
+        Views.ModalReorder = Views.Modal_Box.extend({
+            el: '#reorder_modal',
+            events: {
+                'click .btn-reorder': 'reOrder'
+            },
+            initialize: function () {
+                AE.Views.Modal_Box.prototype.initialize.call();
+                this.blockUi = new Views.BlockUi();
+
+            },
+            onOpen: function (model) {
+                var view = this;
+                this.model = model;
+                view.openModal();
+            },
+            reOrder: function(e){
+                e.preventDefault();
+                var view = this;
+                $target = $(e.currentTarget);
+                view.data ={
+                    action: 'mjob-reorder',
+                    'order_id': view.model.get('ID')
+                };
+                $.ajax({
+                    url: ae_globals.ajaxURL,
+                    type: 'post',
+                    data: view.data,
+                    beforeSend: function() {
+                        view.blockUi.block($target);
+                    },
+                    success: function(res) {
+                        view.blockUi.unblock();
+                        if (res.success) {
+                            AE.pubsub.trigger('ae:notification', {
+                                msg: res.msg,
+                                notice_type: 'success'
+                            });
+                            view.closeModal();
+                            window.location.reload(true);
+                        } else {
+                            AE.pubsub.trigger('ae:notification', {
+                                msg: res.msg,
+                                notice_type: 'error'
+                            });
+                        }
+                    }
+                });
+            }
+        });
         Views.ModalDelivery = Views.Modal_Box.extend({
             el: '#delivery',
             initialize: function() {
@@ -904,6 +953,10 @@
                                     msg: res.msg,
                                     notice_type: 'success'
                                 });
+                                if (typeof this.modalreorder === 'undefined') {
+                                    this.modalreorder = new Views.ModalReorder();
+                                }
+                                this.modalreorder.onOpen(view.model);
                             }
                             view.closeModal();
                             $('.order_status').html(res.data.status_text);

@@ -4,7 +4,7 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><img
                             src="<?php echo get_template_directory_uri() ?>/assets/img/icon-close.png" alt=""></span></button>
-                <h4 class="modal-title" id="myModalLabelForgot"><?php _e('Word is complete?;', ET_DOMAIN); ?></h4>
+                <h4 class="modal-title" id="myModalLabelForgot"><?php _e('Word is complete?', ET_DOMAIN); ?></h4>
             </div>
             <div class="modal-body delivery-order">
                 <div class="unlock-requirement-modal">

@@ -53,7 +53,7 @@ class mJobOrderDeliveryAction extends mJobPostAction{
         if( $response['success'] ){
             $my_post = array(
                 'ID'           => $response['data']->post_parent,
-                'post_status'=> 'finished',
+                'post_status'=> 'delivery',
             );
             wp_update_post( $my_post );
             $post_date = get_the_time('Y-m-d H:i:s', $response['data']->ID);
@@ -133,18 +133,18 @@ class mJobOrderDeliveryAction extends mJobPostAction{
         if( isset($data['post_parent']) ){
             $order = get_post($data['post_parent']);
             if( $order ){
-                $args = array(
-                    'post_type'=> 'order_delivery',
-                    'post_parent'=> $data['post_parent']
-                );
-                $q = new WP_Query($args);
-                if( $q->found_posts == 0 ){
+//                $args = array(
+//                    'post_type'=> 'order_delivery',
+//                    'post_parent'=> $data['post_parent']
+//                );
+//                $q = new WP_Query($args);
+//                if( $q->found_posts == 0 ){
                     return array(
                         'success'=> true,
                         'msg'=> __('Success!', ET_DOMAIN),
                         'order_title'=> $order->post_title
                     );
-                }
+//                }
             }
         }
         return $result;

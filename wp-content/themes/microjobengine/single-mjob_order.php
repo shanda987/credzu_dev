@@ -212,7 +212,7 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                              <?php elseif( $current->post_status == 'verification'): ?>
                                                 <p><?php _e("It is important that you update your client with results as soon as you can. Once results are shown, your client can review your company's performanceas well as rehire you", ET_DOMAIN); ?></p>
                                                 <button data-id="<?php echo $current->ID; ?>" class="btn-submit btn-work-complete-css btn-delivery order-delivery-btn"><?php _e('SUBMIT RESULTS', ET_DOMAIN); ?></button>
-                                             <?php elseif($current->post_status == 'finished'): ?>
+                                             <?php elseif($current->post_status == 'finished' || $current->post_status == 'delivery'): ?>
                                              <p><?php _e("This job has ended, so you will need to engourage your client to re-hire you if you want to continue. Upon re-hiring, you can continue services and new payment will be generated once you complete the next cycle of services.", ET_DOMAIN); ?></p>
                                              <?php else: ?>
                                              <p><?php _e('Once you have completed the service, click "Completed" below after  which a payment from your client be generated and your client will be informed to wait for results', ET_DOMAIN); ?></p>
@@ -223,9 +223,9 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                              <p><?php _e("Good news! The cancellation period has expired and the services will begin shortly, if they haven't begun already. Once the correspondence is prepared, you will be notified ", ET_DOMAIN); ?></p>
                                              <?php elseif( $current->post_status == 'verification'): ?>
                                              <p><?php _e("Good news! The service is complete, your payment is due and you are not waiting for result. Please forward all correspondence you receive from any creditor or credit bureau so that results can be verified.", ET_DOMAIN); ?></p>
-                                             <?php elseif($current->post_status == 'finished'): ?>
+                                             <?php elseif($current->post_status == 'finished' || $current->post_status == 'delivery'): ?>
                                                  <p><?php _e("Your company completed the work and the results are reported in the message area. No further work will be performed, unless you would like to re-hire the company to continue.", ET_DOMAIN); ?></p>
-                                             <button data-id="<?php echo $current->ID; ?>" class="btn-submit btn-continue-service-css  btn-continue-service-btn margin-top-20"><?php _e('CONTINUE SERVICES', ET_DOMAIN); ?></button>
+                                             <button data-id="<?php echo $current->ID; ?>" class="btn-submit btn-continue-service-css  btn-continue-service-btn margin-top-20 order-action" class="order-action" value="finished"><?php _e('CONTINUE SERVICES', ET_DOMAIN); ?></button>
                                              <?php else: ?>
                                                 <p><?php _e("Good news! The cancellation period has expired and the services will begin shortly, if they haven't begun already. Once the correspondence is prepared, you will be notified ", ET_DOMAIN); ?></p>
                                              <?php endif; ?>

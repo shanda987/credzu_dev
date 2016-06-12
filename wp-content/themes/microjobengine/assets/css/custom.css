@@ -654,3 +654,18 @@
 .margin-top-20{
     margin-top: 20px;
 }
+#reorder_modal .block-items-detail .package-statistic .text-content{
+    border-bottom: none!important;
+    margin-top: 0!important;
+}
+#reorder_modal .block-items-detail .package-statistic .text-content ul li{
+    border: none!important;
+    margin-bottom: 0!important;
+    padding-bottom: 5px!important;
+}
+#reorder_modal .block-items-detail .package-statistic{
+    padding: 0 95px 0 95px!important;
+}
+#reorder_modal .block-items-detail .personal-profile{
+    padding-bottom: 0!important;
+}

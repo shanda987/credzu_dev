@@ -1025,18 +1025,12 @@ class ET_Microjobengine extends AE_Base
             get_template_part('template-js/task', 'item');
             get_template_part('template-js/modal-delivery', 'order');
         }
-        if( is_singular('mjob_order') ){
-            get_template_part('template-js/modal', 'requirement');
-        }
         get_template_part('template/modal', 'conversation');
 
         /**
          * Include history item
          */
         get_template_part('template-js/history', 'item');
-        if( is_singular('mjob_order')){
-            get_template_part('template-js/modal', 'review');
-        }
         /**
          * Include conversation item
          */
@@ -1048,11 +1042,14 @@ class ET_Microjobengine extends AE_Base
             get_template_part('template-js/review', 'item');
         }
         if( is_singular('mjob_order')){
+            get_template_part('template-js/modal', 'review');
+            get_template_part('template-js/modal', 'requirement');
             get_template_part('template-js/modal-contact', 'information');
             get_template_part('template-js/modal-billing', 'information');
             get_template_part('template-js/modal-unlock', 'requirement');
             get_template_part('template-js/modal-show', 'requirement');
             get_template_part('template-js/modal-work', 'complete');
+            get_template_part('template-js/modal', 'reorder');
         }
         if( is_singular('mjob_post')){
             get_template_part('template-js/modal-signup', 'hire');
