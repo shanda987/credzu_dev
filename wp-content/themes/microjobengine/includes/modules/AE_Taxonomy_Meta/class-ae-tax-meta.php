@@ -205,7 +205,7 @@ class AE_Taxonomy_Meta extends AE_Base{
             $val = get_term_meta($term->term_id, $value, true);
             $term->$value = $val;
         }
-        return $term;
+        return apply_filters('jb_convert_'.$term->taxonomy, $term);
     }
 
 }

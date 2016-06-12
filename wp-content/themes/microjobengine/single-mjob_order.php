@@ -284,6 +284,9 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
 
                                         <?php     foreach( $current->requirement_files as $key=> $files):
                                                     $term = get_term_by('slug', $key, 'mjob_requirement');
+                                                    global $ae_tax_factory;
+                                                    $term_obj = $ae_tax_factory->get('mjob_requirement');
+                                                    $term = $term_obj->convert($term);
                                                     if(!empty($files)):
                                                         $i = 0;
                                                         $tx = '';
@@ -296,7 +299,7 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                                 <li class="col-lg-6 col-md-6 col-xs-12 item-requirement">
                                                     <a  href="<?php echo et_get_page_link('simple-download').'?id='.$f->ID ?>" data-name="<?php echo $term->name.$tx.' : '.date('d/m/Y', strtotime($f->post_date))?>" class="show-requirement-docs">
                                                         <div class="doc-icon"> <i class="fa fa-file-pdf-o" aria-hidden="true"></i></div>
-                                                        <div class="doc-name"><?php echo $term->name.$tx?></div>
+                                                        <div class="doc-name"><?php echo $term->requirement_short_name.$tx?></div>
                                                         <div class="doc-time"><?php echo date('d/m/Y', strtotime($f->post_date))?></div>
 
                                                     </a></li>

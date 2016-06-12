@@ -63,7 +63,7 @@ $meta  = array(
     'pricing_plan'
 );
 $ae_tax_factory->set('mjob_category', new AE_Taxonomy_Meta('mjob_category', $meta) );
-$meta1 = array('click_type');
+$meta1 = array('click_type', 'requirement_short_name');
 $ae_tax_factory->set('mjob_requirement', new AE_Taxonomy_Meta('mjob_requirement', $meta1));
 if (!class_exists('AE_Base')) return;
 

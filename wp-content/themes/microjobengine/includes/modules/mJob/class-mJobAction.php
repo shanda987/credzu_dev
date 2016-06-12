@@ -27,6 +27,7 @@ class mJobAction extends mJobPostAction{
         $this->add_ajax('mjob-get-breadcum-list', 'getMjobCats');
         $this->add_action('ae_tax_meta_add_field', 'mjob_add_meta_field');
         $this->add_action('ae_tax_meta_edit_field', 'mjob_edit_meta_field', 10, 3);
+        $this->add_filter('jb_convert_mjob_requirement', 'filterTaxInfo');
         $this->ruler = array(
             'post_title'=>'required',
             'post_content'=>'required',
@@ -984,8 +985,30 @@ class mJobAction extends mJobPostAction{
                     </select>
                 </td>
             </tr>
+            <tr class="form-field term-group-wrap">
+                <th scope="row"><label for="featured-tax"><?php _e( 'Short name', ET_DOMAIN ); ?></label></th>
+                <td>
+                    <input type="text" name="requirement_short_name" id="requirement_short_name" value="<?php echo $term->requirement_short_name; ?>" />
+                </td>
+            </tr>
            <?php endif;
     }
+    /**
+      * filter tax information
+      *
+      * @param void
+      * @return void
+      * @since 1.4
+      * @package MicrojobEngine
+      * @category CREDZU
+      * @author JACK BUI
+      */
+      public function filterTaxInfo($result){
+        if( empty($result->requirement_short_name)){
+            $result->requirement_short_name = $result->name;
+        }
+        return $result;
+      }
 
 }
 new mJobAction();
