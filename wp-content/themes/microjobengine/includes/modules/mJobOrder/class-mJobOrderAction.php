@@ -728,7 +728,7 @@ class mJobOrderAction extends mJobPostAction{
         $order_object = $ae_post_factory->get('mjob_order');
         $request = $_REQUEST;
         if( isset($request['order_id']) && !empty($request['order_id'])){
-            //$result = $this->updateOrderStatus($request['order_id'], 'verification');
+            $result = $this->updateOrderStatus($request['order_id'], 'processing');
             if( $result && !is_wp_error($result)){
                 $order = get_post($request['order_id']);
                 $order = $order_object->convert($order);
