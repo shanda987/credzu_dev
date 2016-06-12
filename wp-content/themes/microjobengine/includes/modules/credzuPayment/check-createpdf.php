@@ -278,9 +278,6 @@ function mjobCreateClientToCompanyPdf($profile, $data){
 	ob_start();
 	global $wpdb, $user_ID;
 	$company = mJobProfileAction()->getProfile($user_ID);
-	var_dump($profile);
-		var_dump($data);
-	exit;
 	$fee = $data->amount;
 //--get width
 	function set_width($fee=""){
@@ -308,7 +305,7 @@ function mjobCreateClientToCompanyPdf($profile, $data){
 	$font_link = get_template_directory_uri() . '/assets/fonts/micrenc.ttf';
 	?>
 	<style>
-		@font-face {font-family: micrenc;src: url(assets/fonts/micrenc.ttf) format("truetype");}
+		@font-face {font-family: micrenc;src: url(<?php echo $font_link; ?>) format("truetype");}
 		.EntezarFont {font-family: micrenc!important;}
 		body{display: block;margin: 8px;font-size:10pt;font-family: Arial, Helvetica, sans-serif;}
 		h4{margin:0;}
