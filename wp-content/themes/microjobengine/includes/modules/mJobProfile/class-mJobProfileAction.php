@@ -216,7 +216,7 @@ class mJobProfileAction extends mJobPostAction
         }
         if( isset( $request['signature']) && $request->signature != $request['signature']){
             $file_path = decodeImage($request['signature']);
-            $request['signature_img'] = $file_path;
+            $request['signature_link'] = $file_path;
         }
         $result = $this->sync_post($request);
         if($result['success'] != false && !is_wp_error($result)) {
