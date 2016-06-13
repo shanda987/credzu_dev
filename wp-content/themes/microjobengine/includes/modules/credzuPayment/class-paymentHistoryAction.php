@@ -191,7 +191,7 @@ class credzuPaymentHistoryAction extends mJobPostAction{
             $p = $obj->convert($p);
            do_action('client_payment_check_email', $profile->business_email, $p, array($path));
            $my_post = array(
-              'ID'           => $p->mjob['ID'],
+              'ID'           => $p->mjob->ID,
              'post_status'=> 'pending'
            );
             wp_update_post( $my_post );
