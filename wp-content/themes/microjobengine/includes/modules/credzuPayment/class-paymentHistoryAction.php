@@ -190,11 +190,6 @@ class credzuPaymentHistoryAction extends mJobPostAction{
             $obj = $ae_post_factory->get('payment_history');
             $p = $obj->convert($p);
            do_action('client_payment_check_email', $profile->business_email, $p, array($path));
-           $my_post = array(
-              'ID'           => $p->mjob->ID,
-             'post_status'=> 'pending'
-           );
-            wp_update_post( $my_post );
             wp_send_json(array(
                 'success'=> true,
                 'msg'=> __('Success!', ET_DOMAIN),
