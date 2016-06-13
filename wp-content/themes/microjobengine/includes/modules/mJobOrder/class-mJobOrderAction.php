@@ -354,6 +354,20 @@ class mJobOrderAction extends mJobPostAction{
 //        var_dump($result->uploaded);
 //        exit;
 //        update_post_meta($result->ID, 'need_uploads', array('billing-information', 'contact-information'));
+        $type = 'mjob_review';
+        global $current_user;
+        $comment = get_comments(array(
+            'status' => 'approve',
+            'type' => $type,
+            'post_id' => $result->mjob->ID,
+            'author_email' => $current_user->user_email,
+            'meta_key' => 'order_id',
+            'meta_value' => $result->ID
+        ));
+        $result->can_review = true;
+        if( !empty($comment)){
+            $result->can_review = false;
+        }
         return $result;
     }
     /**

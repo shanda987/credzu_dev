@@ -225,7 +225,11 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                              <p><?php _e("Good news! The service is complete, your payment is due and you are not waiting for result. Please forward all correspondence you receive from any creditor or credit bureau so that results can be verified.", ET_DOMAIN); ?></p>
                                              <?php elseif($current->post_status == 'finished' || $current->post_status == 'delivery'): ?>
                                                  <p><?php _e("Your company completed the work and the results are reported in the message area. No further work will be performed, unless you would like to re-hire the company to continue.", ET_DOMAIN); ?></p>
-                                             <button data-id="<?php echo $current->ID; ?>" class="btn-submit btn-continue-service-css  btn-continue-service-btn margin-top-20 order-action" class="order-action" value="finished"><?php _e('CONTINUE SERVICES', ET_DOMAIN); ?></button>
+                                             <?php if( $current->can_review): ?>
+                                                <button data-id="<?php echo $current->ID; ?>" class="btn-submit btn-continue-service-css  btn-continue-service-btn margin-top-20 order-action"  value="finished"><?php _e('CONTINUE SERVICES', ET_DOMAIN); ?></button>
+                                             <?php else: ?>
+                                                 <button data-id="<?php echo $current->ID; ?>" class="btn-submit btn-continue-service-css  btn-continue-service-btn margin-top-20" ><?php _e('CONTINUE SERVICES', ET_DOMAIN); ?></button>
+                                             <?php endif; ?>
                                              <?php else: ?>
                                                 <p><?php _e("Good news! The cancellation period has expired and the services will begin shortly, if they haven't begun already. Once the correspondence is prepared, you will be notified ", ET_DOMAIN); ?></p>
                                              <?php endif; ?>
