@@ -173,7 +173,7 @@ class credzuPaymentHistoryAction extends mJobPostAction{
       */
     public function create_client_payment_history($data, $profile, $path, $payment_check){
         $args = array(
-            'post_title'=> sprintf(__('Payment for post: "%s"', ET_DOMAIN), $data['post_title']),
+            'post_title'=> sprintf(__('Payment for post: "%s"', ET_DOMAIN), $data->post_title),
             'post_type'=>'payment_history',
             'post_status'=> 'pending'
         );
