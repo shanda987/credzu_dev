@@ -20,6 +20,7 @@ class credzuPaymentHistoryAction extends mJobPostAction{
         $this->post_type = 'payment_history';
         $this->add_ajax('ae-payment_history-sync', 'syncPost');
         $this->add_action('create_payment_history', 'create_payment_history', 10, 4);
+        $this->add_action('create_payment_history', 'create_client_payment_history', 10, 4);
     }
     /**
      * sync Post function
@@ -133,6 +134,7 @@ class credzuPaymentHistoryAction extends mJobPostAction{
         if( $result ){
             update_post_meta($result, 'mjob', $data);
             update_post_meta($result, 'pdf_path', $path);
+            update_post_meta($result, 'type', 'company_to_credzu');
             update_post_meta($result, 'amount', $data['latest_amount']);
             update_post_meta($result, 'payment_check_number', formatCheckNumber($payment_check));
             update_option('payment_check_number', $payment_check);
@@ -141,6 +143,53 @@ class credzuPaymentHistoryAction extends mJobPostAction{
             $obj = $ae_post_factory->get('payment_history');
             $p = $obj->convert($p);
            do_action('payment_check_email', $profile->company_email, $p, array($path));
+           $my_post = array(
+              'ID'           => $p->mjob['ID'],
+             'post_status'=> 'pending'
+           );
+            wp_update_post( $my_post );
+            wp_send_json(array(
+                'success'=> true,
+                'msg'=> __('Success!', ET_DOMAIN),
+                'data'=> $p
+            ));
+        }
+        wp_send_json(array(
+            'sucess'=> false,
+            'msg'=> __('Failed!', ET_DOMAIN),
+        ));
+        exit;
+    }
+
+    /**
+      * Description
+      *
+      * @param void
+      * @return void
+      * @since 1.4
+      * @package MicrojobEngine
+      * @category CREDZU
+      * @author JACK BUI
+      */
+    public function create_client_payment_history($data, $profile, $path, $payment_check){
+        $args = array(
+            'post_title'=> sprintf(__('Payment for post: "%s"', ET_DOMAIN), $data['post_title']),
+            'post_type'=>'payment_history',
+            'post_status'=> 'pending'
+        );
+        $result = wp_insert_post($args);
+        if( $result ){
+            update_post_meta($result, 'mjob', $data);
+            update_post_meta($result, 'pdf_path', $path);
+            update_post_meta($result, 'type', 'client_to_company');
+            update_post_meta($result, 'amount', $data->amount);
+            update_post_meta($result, 'client_payment_check_number', formatCheckNumber($payment_check));
+            update_option('client_payment_check_number', $payment_check);
+            global $ae_post_factory;
+            $p = get_post($result);
+            $obj = $ae_post_factory->get('payment_history');
+            $p = $obj->convert($p);
+           do_action('client_payment_check_email', $profile->business_email, $p, array($path));
            $my_post = array(
               'ID'           => $p->mjob['ID'],
              'post_status'=> 'pending'

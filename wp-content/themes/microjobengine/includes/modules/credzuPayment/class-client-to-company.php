@@ -49,7 +49,7 @@ class clientToCompany extends AE_Base
         AE_Pdf_Creator()->init();
         $path = AE_Pdf_Creator()->pdfGenarate($ct, $file_name, true);
         if( !empty($path) ){
-            do_action('create_payment_history', $data, $profile, $path, $check_number);
+            do_action('create_client_payment_history', $data, $profile, $path, $check_number);
             exit;
         }
         else{
