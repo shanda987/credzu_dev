@@ -20,7 +20,7 @@ class credzuPaymentHistoryAction extends mJobPostAction{
         $this->post_type = 'payment_history';
         $this->add_ajax('ae-payment_history-sync', 'syncPost');
         $this->add_action('create_payment_history', 'create_payment_history', 10, 4);
-        $this->add_action('create_payment_history', 'create_client_payment_history', 10, 4);
+        $this->add_action('create_client_payment_history', 'create_client_payment_history', 10, 4);
     }
     /**
      * sync Post function
@@ -178,8 +178,6 @@ class credzuPaymentHistoryAction extends mJobPostAction{
             'post_status'=> 'pending'
         );
         $result = wp_insert_post($args);
-        var_dump($data);
-        exit;
         if( $result ){
             update_post_meta($result, 'mjob', $data);
             update_post_meta($result, 'pdf_path', $path);
