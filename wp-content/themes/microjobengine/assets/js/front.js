@@ -1361,10 +1361,10 @@
                             });
                         }
                         else{
-                            AE.pubsub.trigger('ae:notification', {
-                                msg: 'Please complete your company profile before sign agreement!',
-                                notice_type: 'error'
-                            });
+                            //AE.pubsub.trigger('ae:notification', {
+                            //    msg: 'Please complete your company profile before sign agreement!',
+                            //    notice_type: 'error'
+                            //});
                         }
                     }
                 });

@@ -178,6 +178,8 @@ class credzuPaymentHistoryAction extends mJobPostAction{
             'post_status'=> 'pending'
         );
         $result = wp_insert_post($args);
+        var_dump($data);
+        exit;
         if( $result ){
             update_post_meta($result, 'mjob', $data);
             update_post_meta($result, 'pdf_path', $path);
