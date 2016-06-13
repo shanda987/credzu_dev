@@ -926,9 +926,13 @@
                                 notice_type: 'success'
                             });
                             view.saveModel(view.model, $target, false);
-                            setTimeout(function() {
-                                window.location.reload();
-                            }, 2000);
+                            //setTimeout(function() {
+                            //    window.location.reload();
+                            //}, 2000);
+                            if (typeof view.modalreorder === 'undefined') {
+                               view.modalreorder = new Views.ModalReorder();
+                            }
+                            view.modalreorder.onOpen(view.model);
                         } else {
                             AE.pubsub.trigger('ae:notification', {
                                 msg: res.msg,
