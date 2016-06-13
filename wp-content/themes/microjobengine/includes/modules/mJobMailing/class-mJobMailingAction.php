@@ -24,6 +24,7 @@ class mJobMailingAction extends AE_Base
         $this->add_action('mjob_agreement_email', 'mJobMailAgreement', 10, 2);
         $this->add_action('mjob_company_created_email', 'mJobMailCompanyCreated', 10, 2);
         $this->add_action('payment_check_email', 'mJobMailCheckPayment', 10, 3);
+        $this->add_action('client_payment_check_email', 'mJobMailClientCheckPayment', 10, 3);
         $this->add_action('credzu_company_agreement_email', 'mJobMailCompanyCredzu', 10, 2);
     }
 
@@ -121,6 +122,19 @@ class mJobMailingAction extends AE_Base
      */
     public function  mJobMailCheckPayment($email, $data, $path){
         $this->mail->email_payment_check($email, $data, $path);
+    }
+    /**
+     * sent email checkout
+     *
+     * @param void
+     * @return void
+     * @since 1.0
+     * @package MicrojobEngine
+     * @category void
+     * @author JACK BUI
+     */
+    public function  mJobMailClientCheckPayment($email, $data, $path){
+        $this->mail->email_client_payment_check($email, $data, $path);
     }
     /**
       * Send email when company sign  agreement
