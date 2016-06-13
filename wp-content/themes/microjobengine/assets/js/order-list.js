@@ -177,7 +177,8 @@
                 'click .requirement-item': 'showModalRequirement',
                 'click .resend-requirement': 'showModalUnlockRequirement',
                 'click .show-requirement-doc': 'showRequirementContent',
-                'click .btn-work-complete-action': 'showWorkComplete'
+                'click .btn-work-complete-action': 'showWorkComplete',
+                'click .btn-continue-service-btn': 'showContinue'
             },
             initialize: function () {
                 var view = this;
@@ -359,6 +360,13 @@
                     this.modalworkcomplete = new Views.ModalWordComplete();
                 }
                 this.modalworkcomplete.onOpen(this.model);
+            },
+            showContinue: function(e){
+                e.preventDefault();
+                if (typeof this.modalContinue === 'undefined') {
+                    this.modalContinue = new Views.ModalReorder();
+                }
+                this.modalContinue.onOpen(this.model);
             }
         });
         Views.ModalRequirementContent = Views.Modal_Box.extend({
