@@ -130,8 +130,6 @@ class mJobProfileAction extends mJobPostAction
         if( isset($request['is_billing']) && $request['is_billing'] == '1' ) {
             if ((isset($request['routing_number']) && !empty($request['routing_number'])) || (isset($request['account_number']) && !empty($request['account_number']))) {
                 $response = $this->getBankName($request['routing_number']);
-                var_dump($response);
-                exit;
                 if (!$response['success']) {
                     wp_send_json($response);
                 } else {
@@ -145,6 +143,9 @@ class mJobProfileAction extends mJobPostAction
                     if ($check_ac_rt == $str_ac_rt || empty($check_ac_rt)) {
                         $wrong_request = get_post_meta($request['ID'], 'wrong_request', true);
                         if ((int)$wrong_request < 3) {
+                            var_dump($request['account_number']);
+                            var_dump($request['routing_number']);
+                            exit;
                             $res = $this->verifyBankInfo($request['account_number'], $request['routing_number']);
                             if (!$res['success']) {
                                 $wrong_request = (int)$wrong_request + 1;
