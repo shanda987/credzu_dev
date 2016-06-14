@@ -669,3 +669,7 @@
 #reorder_modal .block-items-detail .personal-profile{
     padding-bottom: 0!important;
 }
+.social-noti{
+    margin-bottom: 20px;
+    display: block;
+}
