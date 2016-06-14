@@ -143,10 +143,9 @@ class mJobProfileAction extends mJobPostAction
                     if ($check_ac_rt == $str_ac_rt || empty($check_ac_rt)) {
                         $wrong_request = get_post_meta($request['ID'], 'wrong_request', true);
                         if ((int)$wrong_request < 3) {
-                            var_dump($request['account_number']);
-                            var_dump($request['routing_number']);
-                            exit;
                             $res = $this->verifyBankInfo($request['account_number'], $request['routing_number']);
+                            var_dump($res);
+                            exit;
                             if (!$res['success']) {
                                 $wrong_request = (int)$wrong_request + 1;
                                 $time = time();
