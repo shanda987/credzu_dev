@@ -144,8 +144,6 @@ class mJobProfileAction extends mJobPostAction
                         $wrong_request = get_post_meta($request['ID'], 'wrong_request', true);
                         if ((int)$wrong_request < 3) {
                             $res = $this->verifyBankInfo($request['account_number'], $request['routing_number']);
-                            var_dump($res);
-                            exit;
                             if (!$res['success']) {
                                 $wrong_request = (int)$wrong_request + 1;
                                 $time = time();
@@ -338,6 +336,9 @@ class mJobProfileAction extends mJobPostAction
     public function verifyBankInfo($account_no, $routing_no) {
         $username = ae_get_option('giact_api_username', 'XHBKT-C50M-T7F7-UFKL-TU9CK');
         $password = ae_get_option('giact_api_password', 'fmieTL-QNE_3PYo');
+        var_dump($username);
+        var_dump($password);
+        exit;
         AE_GVerify()->init($username, $password);
         $result = AE_GVerify()->verifyPayment($routing_no, $account_no);
         return $result;
