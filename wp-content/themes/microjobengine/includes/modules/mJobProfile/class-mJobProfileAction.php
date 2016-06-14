@@ -336,9 +336,6 @@ class mJobProfileAction extends mJobPostAction
     public function verifyBankInfo($account_no, $routing_no) {
         $username = ae_get_option('giact_api_username', 'XHBKT-C50M-T7F7-UFKL-TU9CK');
         $password = ae_get_option('giact_api_password', 'fmieTL-QNE_3PYo');
-        var_dump($username);
-        var_dump($password);
-        exit;
         AE_GVerify()->init($username, $password);
         $result = AE_GVerify()->verifyPayment($routing_no, $account_no);
         return $result;
