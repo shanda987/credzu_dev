@@ -36,7 +36,11 @@ echo mJobProfileAction()->display_company_status($user_role, $profile->company_s
 ?>
     <div class="container mjob-profile-page withdraw">
         <div class="title-top-pages">
+            <?php if( $user_role == COMPANY ): ?>
+            <p class="block-title"><?php _e('MY PERSONAL PROFILE', ET_DOMAIN); ?></p>
+            <? else: ?>
             <p class="block-title"><?php _e('MY PROFILE', ET_DOMAIN); ?></p>
+            <?php endif; ?>
             <p class="btn-back"><?php _e('Complete your profile page', ET_DOMAIN); ?></p>
         </div>
         <div class="row profile">
