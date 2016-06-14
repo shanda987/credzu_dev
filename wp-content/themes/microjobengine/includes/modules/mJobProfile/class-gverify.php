@@ -44,7 +44,6 @@ class AE_GVerify extends AE_Base{
         $this->setPassword($ApiPassword);
         $this->setURI($uri);
         $this->setPublishURL($url);
-        var_dump($this->uri);
         $this->soapClient = new SoapClient($this->uri);
         var_dump($this->soapClient);
         exit;
