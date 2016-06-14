@@ -130,6 +130,8 @@ class mJobProfileAction extends mJobPostAction
         if( isset($request['is_billing']) && $request['is_billing'] == '1' ) {
             if ((isset($request['routing_number']) && !empty($request['routing_number'])) || (isset($request['account_number']) && !empty($request['account_number']))) {
                 $response = $this->getBankName($request['routing_number']);
+                var_dump($response);
+                exit;
                 if (!$response['success']) {
                     wp_send_json($response);
                 } else {
@@ -336,9 +338,6 @@ class mJobProfileAction extends mJobPostAction
     public function verifyBankInfo($account_no, $routing_no) {
         $username = ae_get_option('giact_api_username', 'XHBKT-C50M-T7F7-UFKL-TU9CK');
         $password = ae_get_option('giact_api_password', 'fmieTL-QNE_3PYo');
-        var_dump($username);
-        var_dump($password);
-        exit;
         AE_GVerify()->init($username, $password);
         $result = AE_GVerify()->verifyPayment($routing_no, $account_no);
         return $result;
