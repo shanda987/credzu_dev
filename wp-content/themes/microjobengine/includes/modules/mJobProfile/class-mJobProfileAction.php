@@ -121,13 +121,12 @@ class mJobProfileAction extends mJobPostAction
             ));
         }
         // Check active user
-//        if(!mJobUserActivate($current_user->ID)) {
-//            wp_send_json(array(
-//                'success' => false,
-//                'msg' => __('Your account is pending. You have to activate your account to continue this step.', ET_DOMAIN)
-//            ));
-//        }
-        exit('here');
+        if(!mJobUserActivate($current_user->ID)) {
+            wp_send_json(array(
+                'success' => false,
+                'msg' => __('Your account is pending. You have to activate your account to continue this step.', ET_DOMAIN)
+            ));
+        }
         if( isset($request['is_billing']) && $request['is_billing'] == '1' ) {
             if ((isset($request['routing_number']) && !empty($request['routing_number'])) || (isset($request['account_number']) && !empty($request['account_number']))) {
                 $response = $this->getBankName($request['routing_number']);
