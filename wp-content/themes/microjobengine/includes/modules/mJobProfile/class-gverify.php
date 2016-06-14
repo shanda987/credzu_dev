@@ -44,6 +44,9 @@ class AE_GVerify extends AE_Base{
         $this->setPassword($ApiPassword);
         $this->setURI($uri);
         $this->setPublishURL($url);
+        $r = wp_remote_get($this->uri);
+        var_dump($r);
+        exit;
         $this->soapClient = new SoapClient($this->uri);
         $params = array(
             'ApiUsername'    =>    $this->ApiUsername,
