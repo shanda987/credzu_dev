@@ -128,12 +128,14 @@ echo mJobProfileAction()->display_company_status($user_role, $profile->company_s
                                 <input type="text" name="zip_code" id="zip_code" placeholder="<?php _e('Zip code', ET_DOMAIN); ?>" value="<?php echo $profile->zip_code; ?>">
                             </div>
                         </div>
+                            <?php if( $user_role == INDIVIDUAL): ?>
                             <div class="form-group clearfix">
                                 <div class="input-group">
                                     <div class="input-group-addon no-addon"><?php _e('Credit goals:', ET_DOMAIN); ?></div>
                                     <input type="text" name="credit_goal" id="credit_goal" placeholder="<?php _e('Credit goals', ET_DOMAIN); ?>" value="<?php echo $credit_goal; ?>">
                                 </div>
                             </div>
+                            <?php endif; ?>
                             <?php if( $user_role == INDIVIDUAL): ?>
                             <div class="form-group profile-type-css clearfix">
                                 <p class="title"><?php _e('PROFILE TYPE', ET_DOMAIN); ?></p>
