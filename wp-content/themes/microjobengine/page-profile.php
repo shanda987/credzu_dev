@@ -156,9 +156,9 @@ echo mJobProfileAction()->display_company_status($user_role, $profile->company_s
                             </div>
                             <?php endif; ?>
                             <div class="block-connect-social block-connect-social-css form-group clearfix">
-                                <p class="title title-connect-social"><?php _e('CONNECT TO SOCIALS', ET_DOMAIN); ?><br/>
-                                    <span><?php _e('This is not required, but to avoid possible confusion, you can link all of your accounts.', ET_DOMAIN) ?></span>
+                                <p class="title title-connect-social"><?php _e('CONNECT TO SOCIALS', ET_DOMAIN); ?>
                                 </p>
+                                <br/><span><?php _e('This is not required, but to avoid possible confusion, you can link all of your accounts.', ET_DOMAIN) ?></span>
                                 <?php
                                 ae_render_connect_social_button();
                                 ?>
