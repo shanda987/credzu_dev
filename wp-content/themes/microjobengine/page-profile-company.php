@@ -115,7 +115,7 @@ echo mJobProfileAction()->display_company_status($user_role, $profile->company_s
                             <div class="form-group clearfix">
                                 <div class="input-group">
                                     <div class="input-group-addon no-addon"><?php _e('Company Description:', ET_DOMAIN); ?></div>
-                                    <textarea name="company_description" id="company_description" placeholder="<?php _e('Company Description', ET_DOMAIN); ?>"><?php echo $company_description; ?></textarea>
+                                    <textarea name="company_description" id="company_description" maxlength="500" placeholder="<?php _e('Company Description', ET_DOMAIN); ?>"><?php echo $company_description; ?></textarea>
                                 </div>
                             </div>
                             <div class="form-group clearfix float-right change-pass-button-method">
