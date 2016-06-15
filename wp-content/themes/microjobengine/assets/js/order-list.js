@@ -261,6 +261,7 @@
                 else if( $target.attr('value') == 'finished' ){
                     var view = this;
                     if( typeof view.reviewModal  === 'undefined' ){
+                        console.log('vaooo');
                         view.reviewModal = new Views.ModalReview();
                     }
                     view.reviewModal.onOpen(view.model);
