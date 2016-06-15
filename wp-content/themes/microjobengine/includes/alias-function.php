@@ -1354,12 +1354,17 @@ function convertDigit($digit)
   * @author JACK BUI
   */
  function convertCredzuCompanyAgreement($content, $profile){
-     $file_path = decodeImage($profile->company_signature);
-     $img =  '<img style="width:170px" class="signature-img" src="'.$file_path.'" />';
+     if( !empty($profile->company_signature)) {
+         $file_path = decodeImage($profile->company_signature);
+         $img = '<img style="width:170px" class="signature-img" src="' . $file_path . '" />';
+     }
+     else{
+         $img = '';
+     }
      $content = str_ireplace('[company_signature]', $img, $content );
      $content = str_ireplace('[company_name]', $profile->company_name, $content );
      $content = str_ireplace('[first_name]', $profile->first_name, $content );
-     $content = str_ireplace('[last_name]', $profile->last_name, $content );
+     $content = str_ireplace('[last_name]', $profile->last_name_full, $content );
      $content = str_ireplace('[company_email]', $profile->company_email, $content );
      $content = str_ireplace('[company_phone]', $profile->company_phone, $content );
      $content = str_ireplace('[company_address]', $profile->company_address, $content );

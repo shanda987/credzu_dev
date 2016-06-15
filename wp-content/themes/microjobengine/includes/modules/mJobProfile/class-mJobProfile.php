@@ -130,6 +130,7 @@ class mJobProfile extends mJobPost{
     public function convert( $post_data, $thumbnail = 'thumbnail', $excerpt = TRUE, $singular = FALSE ) {
         $data = parent::convert($post_data, $thumbnail, $excerpt, $singular);
         $data->post_content = $data->unfiltered_content;
+        $data->last_name = strtoupper(substr($data->last_name, 0, 1));
         return $data;
     }
 }

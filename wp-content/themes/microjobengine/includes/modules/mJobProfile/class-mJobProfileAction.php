@@ -26,7 +26,7 @@ class mJobProfileAction extends mJobPostAction
         $this->add_action('wp_footer', 'mJobAddProfileModal');
         $this->add_ajax('mjob-change-user-role', 'changeUserRole');
        //$this->add_ajax('mjob-check-smarty-address', 'mJobCheckSmartyAddress');
-       // $this->add_action('ae_convert_mjob_profile', 'mJobConvertProfile');
+       $this->add_action('ae_convert_mjob_profile', 'mJobConvertProfiles');
        // $this->add_ajax('mjob-check-user-active',  'mJobCheckActiveAccount');
     }
 
@@ -207,9 +207,9 @@ class mJobProfileAction extends mJobPostAction
             }
             $request['post_status'] = 'draft';
         }
-        if( isset($request['last_name']) ){
-            $request['last_name'] = strtoupper(substr($request['last_name'], 0, 1));
-        }
+//        if( isset($request['last_name']) ){
+//            $request['last_name'] = strtoupper(substr($request['last_name'], 0, 1));
+//        }
         if( isset( $request['company_signature']) && $request->company_signature != $request['company_signature']){
             $file_path = decodeImage($request['company_signature']);
             $request['company_signature_img'] = $file_path;
@@ -378,21 +378,9 @@ class mJobProfileAction extends mJobPostAction
     }
 
 
-    public function mJobConvertProfile($result) {
-        $user = get_userdata($result->post_author);
-        $result->post_content= !empty($result->post_content) ? $result->post_content : __('There is no content', ET_DOMAIN);
-        $result->payment_info = !empty($result->payment_info) ? $result->payment_info : __('There is no content', ET_DOMAIN);
-        $result->billing_full_name = !empty($result->billing_full_name) ? $result->billing_full_name : __('There is no content', ET_DOMAIN);
-        $result->billing_full_address = !empty($result->billing_full_address) ? $result->billing_full_address : '';
-        $result->billing_country = !empty($result->billing_country) ? $result->billing_country : __('There is no content', ET_DOMAIN);
-        $result->billing_vat = !empty($result->billing_vat) ? $result->billing_vat : __('There is no content', ET_DOMAIN);
-        $result->first_name = !empty($result->first_name) ? $result->first_name : '';
-        $result->last_name = !empty($result->last_name) ? $result->last_name : '';
-        $result->phone = !empty($result->phone) ? $result->phone : '';
-        $result->business_email = !empty($result->business_email) ? $result->business_email : $user->user_email;
-        $result->credit_goal = !empty($result->credit_goal) ? $result->credit_goal : __('Credit_goals', ET_DOMAIN);
-        $result->company_status = get_user_meta($user->ID,'user_status', true);
-        var_dump($result);
+    public function mJobConvertProfiles($result) {
+        $result->last_name_full = $result->last_name;
+        $result->last_name = strtoupper(substr($result->last_name, 0, 1));
         return $result;
     }
 
