@@ -1057,7 +1057,7 @@ class ET_Microjobengine extends AE_Base
         if( is_page_template('page-profile.php')){
             get_template_part('template-js/modal-change', 'role');
         }
-        if( is_template('page-process-hiring.php') ){
+        if( is_page_template('page-process-hiring.php') ){
             get_template_part('template-js/modal', 'agreement');
         }
     }
