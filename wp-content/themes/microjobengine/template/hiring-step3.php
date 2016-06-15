@@ -37,10 +37,17 @@ if( isset($_GET['jid']) && !empty($_GET['jid'] ) ){
     <form class="et-form post-job" id="signature-form">
         <input type="hidden" name="mjob_id" id="mjob_id" value="<?php echo $mjob->ID ?>" />
         <?php if( !empty($agreements) ):
+            $c = count($agreements);
+            $c = $c - 1;
+            $i = 0;
+            $cl = '';
             foreach( $agreements as $key=>$value):
+                if( $i == $c ):
+                    $cl = 'check-terms-last';
+                endif;
                 echo '<script type="text/json" id="agreement_data_'.$value->ID.'" >'.json_encode($value).'</script>';
             ?>
-                <div class="form-group clearfix float-left check-terms">
+                <div class="form-group clearfix float-left check-terms <?php echo $cl;?>">
                     <div class="checkbox">
                         <label>
                             <input type="checkbox" data-id="<?php echo $value->ID ?>" name="read_and_understand_<?php echo $value->ID; ?>" id="read_and_understand_<?php echo $value->ID; ?>"><span class="text-choosen"><?php _e('I read and understand the', ET_DOMAIN); ?>
@@ -49,6 +56,7 @@ if( isset($_GET['jid']) && !empty($_GET['jid'] ) ){
                     </div>
                 </div>
         <?php
+                $i++;
             endforeach;
         endif; ?>
         <div class="form-group clearfix float-left check-terms">
