@@ -93,11 +93,11 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                             endwhile;
                             wp_reset_query();
                         else:
-                            if( !empty($profile->company_welcome_message) ):
-                                echo sprintf(__('<p class="text-disputes note-scroll">%s</p>', ET_DOMAIN), $profile->company_welcome_message);
-                            else:
-                                _e('<p class="text-disputes note-scroll">Thanks for trusting us with your credit report. Pursuant to federal law, we have to wait 72 hours for the cancellation period to expire. In the meantime, it is imperative that you get your credit report, billing information and complete profile information completed; we will not be able to begin without this information. If you have any questions, please reply here. We will begin in 72 hours. Thank you!</p>', ET_DOMAIN);
-                            endif;
+//                            if( !empty($profile->company_welcome_message) ):
+//                                echo sprintf(__('<p class="text-disputes note-scroll">%s</p>', ET_DOMAIN), $profile->company_welcome_message);
+//                            else:
+                                _e('<p class="text-disputes note-scroll">Thank you for hiring and trusting us! Under the law, there is a 72 hour waiting period before we can begin work. Once that expires, we will begin. In the meantime, if you have any questions, comments or concerns, message us here. Also, this is a perfect time for you to get all your documents together (if you haven\'t done so already).</p>', ET_DOMAIN);
+//                            endif;
                         endif;
                         echo '</ul></div>';
 
