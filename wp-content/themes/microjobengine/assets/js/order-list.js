@@ -228,7 +228,6 @@
                 }
             },
             changeOrderStatus: function(e){
-                console.log('sdfsfsdffds');
                 e.preventDefault();
                 var $target = $(e.currentTarget);
                 var view = this;
