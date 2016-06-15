@@ -7,7 +7,8 @@
                 <h4 class="modal-title" id="myModalLabelForgot"><?php _e('Provide Results', ET_DOMAIN) ?></h4>
             </div>
             <div class="modal-body delivery-order">
-                <div class="form-delivery-order inner-form">
+                <div class="form-delivery-order                         <div id="gallery_container" class="image-upload attachment-file attachment-file gallery_container inner-form" style="margin-bottom: 30px;">
+                ">
                     <p class="notice-message">
                         <span class="note-action"><?php _e('Confirm your job is done.', ET_DOMAIN); ?></span><br/>
                         <?php _e('By confirming that you have completed the work ou agreed to perform for your client. a payment from your client will be generated and they will informed. Please communicate with your client so they understand the difference between performing work and obtaining results.', ET_DOMAIN ) ?>
