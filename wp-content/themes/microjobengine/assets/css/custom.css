@@ -442,6 +442,8 @@
 }
 #delivery .gallery_container{
     width: 100%;
+    padding-left: 0;
+    padding-right: 0;
 }
 .left-tab-requirement{
     pading-left: 20px!important;
