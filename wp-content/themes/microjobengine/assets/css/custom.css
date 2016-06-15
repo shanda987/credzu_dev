@@ -673,6 +673,13 @@
     margin-bottom: 20px;
     display: block;
 }
+.page-template-page-process-hiring .check-terms .checkbox {
+    margin-top: 0;
+    margin-bottom: 0;
+}
 .page-template-page-process-hiring .check-terms{
     margin-bottom: 0!important;
+}
+.page-template-page-process-hiring .check-terms:last-child{
+    margin-bottom: 20px!important;
 }
