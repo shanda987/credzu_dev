@@ -283,8 +283,8 @@ class mJobOrderAction extends mJobPostAction{
         }
         switch($result->post_status){
             case 'publish':
-                $result->status_text = __('ACTIVE', ET_DOMAIN);
-                $result->status_class = 'active-color';
+                $result->status_text = __('PENDING', ET_DOMAIN);
+                $result->status_class = 'pending-color';
                 $result->status_text_color = 'active-text';
                 break;
             case 'pending':
