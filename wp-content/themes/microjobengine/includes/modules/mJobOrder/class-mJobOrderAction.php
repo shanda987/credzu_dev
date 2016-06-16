@@ -727,18 +727,13 @@ class mJobOrderAction extends mJobPostAction{
             $old_status = $order->status_text;
             $update_result = $wpdb->query($wpdb->prepare("UPDATE $wpdb->posts as P SET P.post_status = %s WHERE P.ID = %d", $new_status, $order->ID));
             if( $new_status != 'verification' || $new_status != 'finished' || $new_status != 'processing'){
-                if( $new_status == 'delivery' ){
-                    $new_status = 'FINISHED';
-                }
-                else if( $new_status == 'delivery' ){
-                    $new_status = 'FINISHED';
-                }
-                else if( $new_status == 'processing'){
-                    $new_status = 'processing';
-                }
-                else{
-                    $new_status = 'pending';
-                }
+                $new_status = 'pending';
+            }
+            if( $new_status == 'verification'){
+                $new_status = 'virification';
+            }
+            if( $new_status == 'delivery'){
+                $new_status = 'FINISHED';
             }
             $new_status = strtoupper($new_status);
             //if( $old_status != $new_status ) {
