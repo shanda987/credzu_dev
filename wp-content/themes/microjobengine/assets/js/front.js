@@ -1091,8 +1091,6 @@
                                                     notice_type: 'success'
                                                 });
                                                 view.blockUi.unblock();
-                                                console.log('vaoo');
-                                                return false;
                                                 view.saveOrder();
                                                 //window.location.href = resp.data.permalink;
                                             }
