@@ -724,11 +724,11 @@ class mJobOrderAction extends mJobPostAction{
             if( empty($new_status) ){
                 $new_status = $order->post_status;
             }
-            $old_status = $order->status_text;
+            $old_status = $order->post_status;
             $update_result = $wpdb->query($wpdb->prepare("UPDATE $wpdb->posts as P SET P.post_status = %s WHERE P.ID = %d", $new_status, $order->ID));
             $order = get_post($order_id);
             $order = $order_obj->convert($order);
-            $new_status = $order->status_text;
+            $new_status = $order->post_status;
             //if( $old_status != $new_status ) {
                 do_action('changing_order_status_email', $profile1->company_email, $profile->business_email, $old_status, $new_status);
             //}
