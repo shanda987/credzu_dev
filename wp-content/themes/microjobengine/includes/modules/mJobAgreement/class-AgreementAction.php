@@ -141,6 +141,7 @@ class agreementAction extends mJobPostAction{
                 }
             }
         }
+        var_dump($company_name);
         if( isset($request['aid']) && !empty($request['aid']) ){
             $arr_path = array();
             foreach($request['aid'] as $key=>$value){
