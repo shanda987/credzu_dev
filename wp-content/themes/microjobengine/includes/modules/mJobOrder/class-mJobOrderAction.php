@@ -734,6 +734,9 @@ class mJobOrderAction extends mJobPostAction{
                     $new_status = 'FINISHED';
                 }
                 else if( $new_status == 'processing'){
+                    $new_status = 'processing';
+                }
+                else{
                     $new_status = 'pending';
                 }
             }
