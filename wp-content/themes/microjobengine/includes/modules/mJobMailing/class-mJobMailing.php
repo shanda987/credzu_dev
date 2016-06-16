@@ -593,8 +593,10 @@ class mJobMailing extends AE_Mailing
     public function email_changing_order_status($company_email, $client_email, $old_status, $new_status){
         global $user_ID;
         $subject = ae_get_option('mjob_order_changing_status_subject', __('Your order status is changed', ET_DOMAIN));
+        $subject = strip_tags($subject);
         $msg = ae_get_option('mjob_order_changing_status_content', __('Your order status is changed', ET_DOMAIN));
         $subject1 = ae_get_option('mjob_order_changing_status_subject_company', __('Your order status is changed', ET_DOMAIN));
+        $subject1 = strip_tags($subject1);
         $msg = str_ireplace('[old_status]', $old_status, $msg);
         $msg = str_ireplace('[new_status]', $new_status, $msg);
         $this->wp_mail($client_email, $subject, $msg, array('user_id' => $user_ID));
