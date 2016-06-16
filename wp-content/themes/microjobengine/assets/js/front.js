@@ -1022,6 +1022,9 @@
                     $('.account-holder').show();
                 }
                 this.showStepTwo();
+                $('html, body').animate({
+                    scrollTop: $("html, body").offset().top
+                }, 1000);
 
             },
             showStep3: function(){
