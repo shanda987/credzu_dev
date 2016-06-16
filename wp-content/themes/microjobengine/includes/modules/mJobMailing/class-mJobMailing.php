@@ -174,19 +174,14 @@ class mJobMailing extends AE_Mailing
      * @author Tat Thien
      */
     public function mJobDeliveryOrder($order_delivery) {
+        global $ae_post_factory;
         $message = ae_get_option('delivery_order');
         $mjob_order = get_post($order_delivery->post_parent);
-        $mjob = get_post($mjob_order->post_parent);
-        $user = get_userdata($mjob_order->post_author);
-        $message = $this->mJobFilterOrderPlaceholder($message, $mjob_order);
-        $message = str_ireplace('[note]', $order_delivery->post_content, $message);
-
-        $subject = __('Your order has been delivered', ET_DOMAIN);
-
-        $this->wp_mail($user->user_email, $subject, $message, array(
-            'post' => $mjob,
-            'user_id' => $mjob_order->post_author
-        ));
+        $order_obj = $ae_post_factory->get('mjob_order');
+        $mjob_order = $order_obj->convert($mjob_order);
+        $profile = mJobProfileAction()->getProfile($mjob_order->post_author);
+        $profile1 = mJobProfileAction()->getProfile($mjob_order->mjob_author);
+        $this->email_changing_order_status($profile->business_email, $profile1->company_email, 'VERIFICATION', 'FINISHED');
     }
 
     /**
