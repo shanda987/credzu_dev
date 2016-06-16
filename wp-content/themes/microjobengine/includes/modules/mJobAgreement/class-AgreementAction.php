@@ -121,7 +121,6 @@ class agreementAction extends mJobPostAction{
      * @author JACK BUI
      */
     public function sendEmailAgreement(){
-        exit('sfdsfdsfs');
         global $ae_post_factory, $user_ID;
         $profile = mJobProfileAction()->getProfile($user_ID);
         $mjob_obj = $ae_post_factory->get('mjob_post');
