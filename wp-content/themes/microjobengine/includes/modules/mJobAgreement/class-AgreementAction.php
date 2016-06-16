@@ -159,7 +159,7 @@ class agreementAction extends mJobPostAction{
                     $file_name = 'Consumer_Right_Statement_'.time();
                     $file_path = AE_Pdf_Creator()->pdfGenarate($content, $file_name);
                     update_post_meta($profile->ID, 'consumer_right_statement', $file_path);
-                    $file_path = array($file_path);
+                    //$file_path = array($file_path);
                     array_push($arr_path, $file_path );
                    // do_action('mjob_consumer_rights_email', $emails, $file_path);
                 }
