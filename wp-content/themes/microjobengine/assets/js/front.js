@@ -1050,6 +1050,9 @@
                 });
                 view.initValidator(view.target_form, view.field_to_check);
                 view.setupOrder();
+                $('html, body').animate({
+                    scrollTop: $("html, body").offset().top
+                }, 1000);
                 view.saveButton.addEventListener("click", function (event) {
                     event.preventDefault();
                     if( view.target_form.valid() ){
