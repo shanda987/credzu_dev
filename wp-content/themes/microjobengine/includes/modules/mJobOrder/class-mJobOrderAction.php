@@ -729,11 +729,9 @@ class mJobOrderAction extends mJobPostAction{
             $order = get_post($order_id);
             $order = $order_obj->convert($order);
             $new_status = $order->status_text;
-            var_dump($old_status);
-            var_dump($new_status);
-            if( $old_status != $new_status ) {
+            //if( $old_status != $new_status ) {
                 do_action('changing_order_status_email', $profile1->company_email, $profile->business_email, $old_status, $new_status);
-            }
+            //}
             return $update_result;
         }
         return false;
