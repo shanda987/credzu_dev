@@ -1275,7 +1275,7 @@
                     success: function ( result, res, jqXHR ) {
                         if (res.success ) {
                             if( typeof res.data != 'undefined' ){
-                                window.location.href = res.data.permalink;
+                               // window.location.href = res.data.permalink;
                             }
                         } else {
                             AE.pubsub.trigger('ae:notification', {
