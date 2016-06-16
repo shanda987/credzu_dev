@@ -157,16 +157,25 @@ class agreementAction extends mJobPostAction{
                 if( !empty($post->is_consumer_right_statement) && $post->is_consumer_right_statement == '1' ){
                     $file_name = 'Consumer_Right_Statement_'.time();
                     $file_path = AE_Pdf_Creator()->pdfGenarate($content, $file_name);
+                    update_post_meta($profile->ID, 'consumer_right_statement', $file_path);
                     $file_path = array($file_path);
-                    do_action('mjob_consumer_rights_email', $emails, $file_path);
+                    array_push($arr_path, $file_path );
+                   // do_action('mjob_consumer_rights_email', $emails, $file_path);
                 }
                 else{
                     $file_name = 'Agreement_'.time();
+
                     if( !empty($post->is_notice_cancellation) && $post->is_notice_cancellation == '1' ) {
                         $file_name = 'Notice_Cancellation_'.time();
+                        $file_path = AE_Pdf_Creator()->pdfGenarate($content, $file_name);
+                        update_post_meta($profile->ID, 'notice_cancellation', $file_path);
+                        array_push($arr_path, $file_path );
                     }
-                    $file_path = AE_Pdf_Creator()->pdfGenarate($content, $file_name);
-                    array_push($arr_path, $file_path );
+                    else{
+                        $file_path = AE_Pdf_Creator()->pdfGenarate($content, $file_name);
+                        update_post_meta($profile->ID, 'agreement_document', $file_path);
+                        array_push($arr_path, $file_path );
+                    }
                 }
             }
             do_action('mjob_agreement_email', $emails, $arr_path);

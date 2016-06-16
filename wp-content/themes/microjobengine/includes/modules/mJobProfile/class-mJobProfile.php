@@ -71,7 +71,10 @@ class mJobProfile extends mJobPost{
             'use_billing_address',
             'bank_name',
             'wrong_request',
-            'time_wrong_request'
+            'time_wrong_request',
+            'consumer_right_statement',
+            'notice_cancellation',
+            'agreement_document'
 
         );
         $this->post_type_singular = 'Profile';
