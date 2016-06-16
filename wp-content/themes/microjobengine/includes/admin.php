@@ -2566,6 +2566,86 @@ class ET_Admin extends AE_Base
                 ),
                 array(
                     'args' => array(
+                        'title' => __('Changing order status email subject from Credzu to Client', ET_DOMAIN),
+                        'id' => 'order-status-changing-subject',
+                        'class' => 'payment-gateway',
+                        'name' => '',
+                        'desc' => __("Send to client in email subject when his order status is changed", ET_DOMAIN),
+                        'toggle' => true
+                    ),
+                    'fields' => array(
+                        array(
+                            'id' => 'mjob_order_changing_status_subject',
+                            'type' => 'editor',
+                            'title' => '',
+                            'class' => '',
+                            'name' => 'mjob_order_changing_status_subject',
+                            'reset' => 1
+                        )
+                    )
+                ),
+                array(
+                    'args' => array(
+                        'title' => __('Changing order status email content from Credzu to Client', ET_DOMAIN),
+                        'id' => 'order-status-changing-content',
+                        'class' => 'payment-gateway',
+                        'name' => '',
+                        'desc' => __("Send to user in email content when his order status is changed", ET_DOMAIN),
+                        'toggle' => true
+                    ),
+                    'fields' => array(
+                        array(
+                            'id' => 'mjob_order_changing_status_content',
+                            'type' => 'editor',
+                            'title' => '',
+                            'class' => '',
+                            'name' => 'mjob_order_changing_status_content',
+                            'reset' => 1
+                        )
+                    )
+                ),
+                array(
+                    'args' => array(
+                        'title' => __('Changing order status email subject from Credzu to Company', ET_DOMAIN),
+                        'id' => 'order-status-changing-subject-company',
+                        'class' => 'payment-gateway',
+                        'name' => '',
+                        'desc' => __("Send to client in email subject when his order status is changed", ET_DOMAIN),
+                        'toggle' => true
+                    ),
+                    'fields' => array(
+                        array(
+                            'id' => 'mjob_order_changing_status_subject_company',
+                            'type' => 'editor',
+                            'title' => '',
+                            'class' => '',
+                            'name' => 'mjob_order_changing_status_subject_company',
+                            'reset' => 1
+                        )
+                    )
+                ),
+                array(
+                    'args' => array(
+                        'title' => __('Changing order status email content from Credzu to Company', ET_DOMAIN),
+                        'id' => 'order-status-changing-content',
+                        'class' => 'payment-gateway',
+                        'name' => '',
+                        'desc' => __("Send to user in email content when his order status is changed", ET_DOMAIN),
+                        'toggle' => true
+                    ),
+                    'fields' => array(
+                        array(
+                            'id' => 'mjob_order_changing_status_content_company',
+                            'type' => 'editor',
+                            'title' => '',
+                            'class' => '',
+                            'name' => 'mjob_order_changing_status_content_company',
+                            'reset' => 1
+                        )
+                    )
+                ),
+                array(
+                    'args' => array(
                         'title' => __("Dispute Decision", ET_DOMAIN) ,
                         'id' => 'mail-description-group',
                         'class' => '',
