@@ -128,6 +128,7 @@ class agreementAction extends mJobPostAction{
         $request = $_REQUEST;
         $email1 = '';
         $post1 = '';
+        $profile1 = '';
         if( isset($request['jid']) && !empty($request['jid']) ){
             $post1 = get_post($request['jid']);
             $post1 = $mjob_obj->convert($post1);
@@ -179,15 +180,9 @@ class agreementAction extends mJobPostAction{
                 }
             }
             $company_name = '';
-            if( isset($post1->post_author) ){
-                $company_name = mJobProfileAction()->getProfile($post1->post_author);
-                if( isset($company_name->company_name) ) {
-                    $company_name = $company_name->company_name;
-                }
+            if( isset($profile1->company_name) ){
+                $company_name = $profile1->company_name;
             }
-            var_dump($company_name);
-                var_dump($arr_path);
-            exit;
             do_action('mjob_agreement_email', $emails, $arr_path, $company_name);
             $my_posts = array(
                 'ID'=> $post1->ID,
