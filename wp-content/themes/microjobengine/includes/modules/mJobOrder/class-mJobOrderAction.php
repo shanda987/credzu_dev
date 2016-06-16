@@ -722,9 +722,9 @@ class mJobOrderAction extends mJobPostAction{
         $profile1 = mJobProfileAction()->getProfile($order->mjob_author);
         if( !empty($order)){
             if( empty($new_status) ){
-                $new_status = $order->status_text;
+                $new_status = $order->post_status;
             }
-            $old_status = $order->post_status;
+            $old_status = $order->status_text;
             $update_result = $wpdb->query($wpdb->prepare("UPDATE $wpdb->posts as P SET P.post_status = %s WHERE P.ID = %d", $new_status, $order->ID));
             if( $new_status != 'verification' || $new_status != 'finished' || $new_status != 'processing'){
                 $new_status = 'pending';
