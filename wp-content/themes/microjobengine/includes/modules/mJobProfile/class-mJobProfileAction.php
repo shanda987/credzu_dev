@@ -60,7 +60,7 @@ class mJobProfileAction extends mJobPostAction
             update_user_meta($result, 'user_profile_id', $profile);
             do_action('mjob_company_created_email', $profile);
             update_post_meta($profile, 'first_name', $user->first_name);
-            update_post_meta($profile, 'last_name',  strtoupper(substr($user->last_name, 0, 1)));
+            update_post_meta($profile, 'last_name',  $user->last_name, 0, 1);
 //            if ($user->display_name == COMPANY) {
 //                update_user_meta($result, 'company_status', COMPANY_STATUS_REGISTERED);
 //            }
@@ -379,11 +379,9 @@ class mJobProfileAction extends mJobPostAction
 
 
     public function mJobConvertProfiles($result) {
-        $result->last_name_full = $result->last_name;
-        $result->last_name = strtoupper(substr($result->last_name, 0, 1));
+        $result->last_name_initial = strtoupper(substr($result->last_name, 0, 1));
         return $result;
     }
-
     public function mJobAddProfileModal() {
         ?>
         <div class="modal fade" id="uploadAvatar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel1">
