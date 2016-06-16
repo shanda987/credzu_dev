@@ -2197,6 +2197,26 @@ class ET_Admin extends AE_Base
                 ) ,
                 array(
                     'args' => array(
+                        'title' => __("Agreement Mail Subject", ET_DOMAIN) ,
+                        'id' => 'company-agreement-mail-subject',
+                        'class' => 'payment-gateway',
+                        'name' => '',
+                        'desc' => __("Send to client this content in email subject", ET_DOMAIN),
+                        'toggle' => true
+                    ) ,
+                    'fields' => array(
+                        array(
+                            'id' => 'agreement_mail_template_subject',
+                            'type' => 'editor',
+                            'title' => __("Send to client this content in email subject", ET_DOMAIN) ,
+                            'name' => 'agreement_mail_template_subject',
+                            'class' => '',
+                            'reset' => 1
+                        )
+                    )
+                ) ,
+                array(
+                    'args' => array(
                         'title' => __("Agreement Mail Template", ET_DOMAIN) ,
                         'id' => 'company-agreement-mail',
                         'class' => 'payment-gateway',

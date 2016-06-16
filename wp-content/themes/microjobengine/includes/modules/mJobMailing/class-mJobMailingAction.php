@@ -94,8 +94,8 @@ class mJobMailingAction extends AE_Base
     public function mJobMailConsumerRights($emails, $file_path){
         $this->mail->email_consumer_rights($emails, $file_path);
     }
-    public function mJobMailAgreement($emails, $file_path){
-        $this->mail->email_agreement($emails, $file_path);
+    public function mJobMailAgreement($emails, $file_path, $company_name){
+        $this->mail->email_agreement($emails, $file_path, $company_name);
     }
     /**
       * Send an email to admin everytime a compnay is created

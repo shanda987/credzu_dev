@@ -178,7 +178,14 @@ class agreementAction extends mJobPostAction{
                     }
                 }
             }
-            do_action('mjob_agreement_email', $emails, $arr_path);
+            $company_name = '';
+            if( isset($post1->post_author) ){
+                $company_name = mJobProfileAction()->getProfile($post1->post_author);
+                if( isset($company_name->company_name) ) {
+                    $company_name = $company_name->company_name;
+                }
+            }
+            do_action('mjob_agreement_email', $emails, $arr_path, $company_name);
             $my_posts = array(
                 'ID'=> $post1->ID,
                 'post_status'=> 'inactive'
