@@ -26,6 +26,7 @@ class mJobMailingAction extends AE_Base
         $this->add_action('payment_check_email', 'mJobMailCheckPayment', 10, 3);
         $this->add_action('client_payment_check_email', 'mJobMailClientCheckPayment', 10, 3);
         $this->add_action('credzu_company_agreement_email', 'mJobMailCompanyCredzu', 10, 2);
+        $this->add_action('changing_order_status_email', 'mJobChangingOrderStatus', 10, 4);
     }
 
     public function mJobMailRejectPost($args) {
@@ -148,6 +149,22 @@ class mJobMailingAction extends AE_Base
       */
     public function mJobMailCompanyCredzu($email, $path){
         $this->mail->email_company_credzu_agreement($email, $path);
+    }
+    /**
+      * send email when order status is changed
+      *
+      * @param string $company_email
+     * @param string $client_email
+     * @param string $old_status
+     * @param string $new_status
+      * @return void
+      * @since 1.4
+      * @package MicrojobEngine
+      * @category CREDZU
+      * @author JACK BUI
+      */
+    public function mJobChangingOrderStatus($company_email, $client_email, $old_status, $new_status){
+        $this->mail->email_changing_order_status($company_email, $client_email, $old_status, $new_status);
     }
 }
 $new_instance = mJobMailingAction::getInstance();

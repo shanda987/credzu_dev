@@ -718,11 +718,18 @@ class mJobOrderAction extends mJobPostAction{
         $order_obj = $ae_post_factory->get('mjob_order');
         $order = get_post($order_id);
         $order = $order_obj->convert($order);
+        $profile = mJobProfileAction()->getProfile($order->post_author);
+        $profile1 = mJobProfileAction()->getProfile($order->mjob_author);
         if( !empty($order)){
             if( empty($new_status) ){
                 $new_status = $order->post_status;
             }
+            $old_status = $order->status_text;
             $update_result = $wpdb->query($wpdb->prepare("UPDATE $wpdb->posts as P SET P.post_status = %s WHERE P.ID = %d", $new_status, $order->ID));
+            $order = get_post($order_id);
+            $order = $order_obj->convert($order);
+            $new_status = $order->status_text;
+            do_action('changing_order_status_email', $profile1->company_email, $profile->business_email, $old_status, $new_status);
             return $update_result;
         }
         return false;
