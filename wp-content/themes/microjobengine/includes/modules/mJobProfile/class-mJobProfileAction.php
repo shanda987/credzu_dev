@@ -672,5 +672,81 @@ class mJobProfileAction extends mJobPostAction
             }
         }
     }
+    /**
+      * profile state
+      *
+      * @param void
+      * @return void
+      * @since 1.4
+      * @package MicrojobEngine
+      * @category CREDZU
+      * @author JACK BUI
+      */
+    public function profileStates($profile){
+        echo '<select name="state" id="state">';
+        $sts = array(
+            'Alabama',
+            'Alaska',
+            'Arizona',
+            'Arkansas',
+            'California',
+            'Colorado',
+            'Connecticut',
+            'Delaware',
+            'District of Columbia',
+            'Florida',
+            'Georgia',
+            'Hawaii',
+            'Idaho',
+            'Illinois',
+            'Indiana',
+            'Iowa',
+            'Kansas',
+            'Kentucky',
+            'Louisiana',
+            'Maine',
+            'Maryland',
+            'Massachusetts',
+            'Michigan',
+            'Minnesota',
+            'Mississippi',
+            'Missouri',
+            'Montana',
+            'Nebraska',
+            'NevadaNew',
+            'HampshireNew',
+            'JerseyNew',
+            'MexicoNew',
+            'YorkNorth',
+            'Carolina',
+            'North',
+            'Dakota',
+            'Ohio',
+            'Oklahoma',
+            'Oregon',
+            'Pennsylvania',
+            'Rhode Island',
+            'South Carolina',
+            'South Dakota',
+            'Tennessee',
+            'Texas',
+            'Utah',
+            'Vermont',
+            'Virginia',
+            'Washington',
+            'West Virginia',
+            'Wisconsin',
+            'Wyoming'
+        );
+        foreach( $sts as $st ):
+            if( $profile->state == $st):
+                $selected = 'selected';
+            else:
+                $selected = '';
+            endif;
+            echo '<option '.$selected.' value="'.$st.'">'.$st.'</option>';
+         endforeach;
+    echo '</select>';
+    }
 }
 $new_instance = mJobProfileAction::getInstance();

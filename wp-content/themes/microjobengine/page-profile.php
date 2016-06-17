@@ -119,71 +119,8 @@ echo mJobProfileAction()->display_company_status($user_role, $profile->company_s
                         <div class="form-group clearfix">
                             <div class="input-group">
                                 <div class="input-group-addon no-addon"><?php _e('State:', ET_DOMAIN); ?></div>
-                                <select name="state" id="state" class="single-chosen">
-                                    <?php $sts = array(
-                                        'Alabama',
-                                        'Alaska',
-                                        'Arizona',
-                                        'Arkansas',
-                                        'California',
-                                        'Colorado',
-                                        'Connecticut',
-                                        'Delaware',
-                                        'District of Columbia',
-                                        'Florida',
-                                        'Georgia',
-                                        'Hawaii',
-                                        'Idaho',
-                                        'Illinois',
-                                        'Indiana',
-                                        'Iowa',
-                                        'Kansas',
-                                        'Kentucky',
-                                        'Louisiana',
-                                        'Maine',
-                                        'Maryland',
-                                        'Massachusetts',
-                                        'Michigan',
-                                        'Minnesota',
-                                        'Mississippi',
-                                        'Missouri',
-                                        'Montana',
-                                        'Nebraska',
-                                        'NevadaNew',
-                                        'HampshireNew',
-                                        'JerseyNew',
-                                        'MexicoNew',
-                                        'YorkNorth',
-                                        'Carolina',
-                                        'North',
-                                        'Dakota',
-                                        'Ohio',
-                                        'Oklahoma',
-                                        'Oregon',
-                                        'Pennsylvania',
-                                        'Rhode Island',
-                                        'South Carolina',
-                                        'South Dakota',
-                                        'Tennessee',
-                                        'Texas',
-                                        'Utah',
-                                        'Vermont',
-                                        'Virginia',
-                                        'Washington',
-                                        'West Virginia',
-                                        'Wisconsin',
-                                        'Wyoming'
-                                    );
-                                    foreach( $sts as $st ):
-                                        if( $profile->state == $st):
-                                            $selected = 'selected';
-                                        else:
-                                            $selected = '';
-                                        endif;
-                                    ?>
-                                    <option <?php echo $selected; ?> value="<?php echo $st; ?>"><?php echo $st; ?></option>
-                                    <?php endforeach; ?>
-                                </select>
+
+                                 <?php mJobProfileAction()->profileStates($profile); ?>
 <!--                                <input type="text" name="state" id="state" placeholder="--><?php //_e('State', ET_DOMAIN); ?><!--" value="--><?php //echo $profile->state; ?><!--">-->
                             </div>
                         </div>
