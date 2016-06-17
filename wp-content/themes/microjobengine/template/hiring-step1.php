@@ -83,7 +83,7 @@ if( isset($_GET['jid']) && !empty($_GET['jid'] ) ){
         <div class="form-group clearfix">
             <div class="input-group">
                 <div class="input-group-addon no-addon"></div>
-                <input type="text" name="state" id="state" placeholder="<?php _e('State', ET_DOMAIN); ?>" value="<?php echo $profile->state; ?>">
+                <?php mJobProfileAction()->profileStates($profile); ?>
             </div>
         </div>
         <div class="form-group clearfix">
