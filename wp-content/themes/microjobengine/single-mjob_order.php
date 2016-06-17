@@ -92,13 +92,21 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                 }
                             endwhile;
                             wp_reset_query();
-                        else:
-//                            if( !empty($profile->company_welcome_message) ):
-//                                echo sprintf(__('<p class="text-disputes note-scroll">%s</p>', ET_DOMAIN), $profile->company_welcome_message);
-//                            else:
-                                _e('<p class="text-disputes note-scroll">Thank you for hiring and trusting us! Under the law, there is a 72 hour waiting period before we can begin work. Once that expires, we will begin. In the meantime, if you have any questions, comments or concerns, message us here. Also, this is a perfect time for you to get all your documents together (if you haven\'t done so already).</p>', ET_DOMAIN);
-//                            endif;
-                        endif;
+                        else: ?>
+                            <li class="clearfix message-item">
+                                <div class="conversation-text">
+                                    <div class="img-avatar">
+                                        <?php mJobAvatar($to_user, 75); ?>
+                                    </div>
+                                    <div class="conversation-text">
+                                        _e('<p class="text-disputes note-scroll">Thank you for hiring and trusting us! Under the law, there is a 72 hour waiting period before we can begin work. Once that expires, we will begin. In the meantime, if you have any questions, comments or concerns, message us here. Also, this is a perfect time for you to get all your documents together (if you haven\'t done so already).</p>', ET_DOMAIN);
+                                    </div>
+                                    <div class="message-time">
+                                    </div>
+                                </div>
+                            </li>
+
+                        <?php endif;
                         echo '</ul></div>';
 
 
