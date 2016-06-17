@@ -99,7 +99,7 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                         <?php echo mJobAvatar($current->mjob_author); ?>
                                     </div>
                                     <div class="conversation-text">
-                                        <?php _e('<p class="text-disputes note-scroll">Thank you for hiring and trusting us! Under the law, there is a 72 hour waiting period before we can begin work. Once that expires, we will begin. In the meantime, if you have any questions, comments or concerns, message us here. Also, this is a perfect time for you to get all your documents together (if you haven\'t done so already).</p>', ET_DOMAIN);?>
+                                        <?php _e('Thank you for hiring and trusting us! Under the law, there is a 72 hour waiting period before we can begin work. Once that expires, we will begin. In the meantime, if you have any questions, comments or concerns, message us here. Also, this is a perfect time for you to get all your documents together (if you haven\'t done so already).', ET_DOMAIN);?>
                                     </div>
                                     <div class="message-time">
                                     </div>
