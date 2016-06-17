@@ -92,9 +92,16 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                 }
                             endwhile;
                             wp_reset_query();
-                        else: ?>
+                        else:
+                            if( $user_role == COMPANY ){
+                                $msg_cl = 'private-message';
+                            }
+                            else{
+                                $msg_cl = 'guest-message';
+                            }
+                            ?>
                             <li class="clearfix message-item">
-                                <div class="guest-message">
+                                <div class="<?php echo $msg_cl; ?>">
                                     <div class="img-avatar">
                                         <?php echo mJobAvatar($current->mjob_author); ?>
                                     </div>
