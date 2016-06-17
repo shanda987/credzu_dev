@@ -426,6 +426,9 @@
             // Save profile data
             onChangeInput: function (event) {
                 event.preventDefault();
+                if( $(event.currentTarget).attr('name') == 'state' ){
+                    return false;
+                }
                 // Get value
                 var view = this,
                     target = $(event.currentTarget),
