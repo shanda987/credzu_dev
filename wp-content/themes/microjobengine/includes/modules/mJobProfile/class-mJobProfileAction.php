@@ -682,8 +682,8 @@ class mJobProfileAction extends mJobPostAction
       * @category CREDZU
       * @author JACK BUI
       */
-    public function profileStates($profile){
-        echo '<select name="state" id="state">';
+    public function profileStates($profile, $name ='state'){
+        echo '<select name="'.$name.'" id="state">';
         $sts = array(
             'Alabama',
             'Alaska',
