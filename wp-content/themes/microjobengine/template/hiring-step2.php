@@ -61,7 +61,7 @@ if($profile_id) {
         <div class="form-group clearfix billing-order-address">
             <div class="input-group">
                 <div class="input-group-addon no-addon"></div>
-                <input type="text" name="billing_state" id="state" placeholder="<?php _e('State', ET_DOMAIN); ?>" value="<?php echo $profile->billing_state; ?>">
+                <?php mJobProfileAction()->profileStates($profile, 'billing_state'); ?>
             </div>
         </div>
         <div class="form-group clearfix billing-order-address">
