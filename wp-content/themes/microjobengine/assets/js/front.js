@@ -946,7 +946,7 @@
                 var view = this;
                 if( resp.success ) {
                     if( type == 'update-profile'){
-                        view.UserStatus();
+                        //view.UserStatus();
                     }
                     if (type == 'update-profile-hiring') {
                         view.showStep2();
