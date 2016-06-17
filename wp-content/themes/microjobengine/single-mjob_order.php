@@ -109,6 +109,7 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                         <?php _e('Thank you for hiring and trusting us! Under the law, there is a 72 hour waiting period before we can begin work. Once that expires, we will begin. In the meantime, if you have any questions, comments or concerns, message us here. Also, this is a perfect time for you to get all your documents together (if you haven\'t done so already).', ET_DOMAIN);?>
                                     </div>
                                     <div class="message-time">
+                                        <?php echo et_the_time(get_the_time('U', $current->ID));?>
                                     </div>
                                 </div>
                             </li>
