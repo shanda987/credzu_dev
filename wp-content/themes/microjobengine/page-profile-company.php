@@ -73,7 +73,7 @@ echo mJobProfileAction()->display_company_status($user_role, $profile->company_s
                         <div class="form-group clearfix">
                             <div class="input-group">
                                 <div class="input-group-addon no-addon"><?php _e('State:', ET_DOMAIN); ?></div>
-                                <input type="text" name="company_state" id="company_state" placeholder="<?php _e('State', ET_DOMAIN); ?>" value="<?php echo $profile->state; ?>">
+                                <?php mJobProfileAction()->profileStates($profile, 'company_state'); ?>
                             </div>
                         </div>
                         <div class="form-group clearfix">
