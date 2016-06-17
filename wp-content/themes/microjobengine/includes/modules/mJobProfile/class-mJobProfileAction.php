@@ -739,7 +739,7 @@ class mJobProfileAction extends mJobPostAction
             'Wyoming'
         );
         foreach( $sts as $st ):
-            if( $profile->state == $st):
+            if( $profile->$name == $st):
                 $selected = 'selected';
             else:
                 $selected = '';
