@@ -52,7 +52,8 @@ echo mJobProfileAction()->getProfileJson($profile);
         <div class="form-group clearfix billing-order-address">
             <div class="input-group">
                 <div class="input-group-addon no-addon"><?php _e('State', ET_DOMAIN); ?></div>
-                <input type="text" name="billing_state" id="state" placeholder="<?php _e('e.g., Florida', ET_DOMAIN); ?>" value="<?php echo $profile->billing_state; ?>">
+                <?php mJobProfileAction()->profileStates($profile, 'billing_state'); ?>
+<!--                <input type="text" name="billing_state" id="state" placeholder="--><?php //_e('e.g., Florida', ET_DOMAIN); ?><!--" value="--><?php //echo $profile->billing_state; ?><!--">-->
             </div>
         </div>
         <div class="form-group clearfix billing-order-address">

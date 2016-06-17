@@ -426,7 +426,7 @@
             // Save profile data
             onChangeInput: function (event) {
                 event.preventDefault();
-                if( $(event.currentTarget).attr('name') == 'state' ){
+                if( $(event.currentTarget).attr('name') == 'state' || $(event.currentTarget).attr('name') == 'billing_state' ){
                     return false;
                 }
                 // Get value
