@@ -7,6 +7,7 @@ $term = $obj->convert($term);
 ?>
 <div class="block-intro">
     <div class="container">
+        <p><?php echo $term->mjob_category_page_content?></p>
         <p class="block-title float-center"><?php echo $term->cat_bottom_title; ?></p>
         <ul>
             <li class="col-lg-4 col-md-4 col-sm-12 col-xs-12 clearfix wow fadeInUp">
