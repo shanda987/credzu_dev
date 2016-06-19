@@ -36,7 +36,7 @@ echo mJobProfileAction()->display_company_status($user_role, $profile->company_s
     <div class="container mjob-payment-method-page dashboard withdraw section-billing-info">
         <div class="row title-top-pages">
             <p class="block-title"><?php _e('Billing Info', ET_DOMAIN); ?></p>
-            <p><a href="<?php echo et_get_page_link('dashboard'); ?>" class="btn-back"><i class="fa fa-angle-left"></i><?php _e('Back to dashboard', ET_DOMAIN); ?></a></p>
+            <p class="btn-back"><?php _e('"Outgoing Payments" requests billing information which we will use to generate payments from you to Credzu, LLC for listings you create. "Incoming Payments" requests information which we will use to generate payments from clients to you for services you provide them.', ET_DOMAIN); ?></p>
         </div>
         <div class="row profile">
             <div class="col-lg-3 col-md-3 col-sm-12 col-sx-12 block-items-detail profile">
