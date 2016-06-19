@@ -94,6 +94,8 @@ class ET_FaceAuth extends ET_SocialAuth
                 return;
             }
             $data = $_POST['content'];
+            var_dump($data);
+            exit;
             if( !isset( $data['id'] ) || $data['id'] == '' ){
                 $resp = array(
                     'success' => false,
