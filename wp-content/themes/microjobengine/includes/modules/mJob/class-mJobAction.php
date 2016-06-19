@@ -780,10 +780,20 @@ class mJobAction extends mJobPostAction{
             ) );
             // Get the meta value
             $value = get_term_meta($term_id, 'mjob_category_image', true);
+            $banner_value = get_term_meta($term_id, 'mjob_category_banner_image', true);
             $hidden = empty( $value )
             ? ' style="display: none;"'
-            : ''; ?>
+            : '';
+             $hidden_banner = empty( $banner_value )
+            ? ' style="display: none;"'
+            : '';
+            ?>
             <div class="form-field term-group">
+            <label><?php _e('Page content', ET_DOMAIN) ?></label>
+            <div>
+                <textarea rows="5" name="<?php echo $taxonomy ?>_page_content" id="<?php echo $taxonomy ?>_page_content"></textarea>
+            </div>
+            <br/>
             <label><?php _e('Pricing plan', ET_DOMAIN) ?></label>
             <div>
                 <select name="pricing_plan">
@@ -795,20 +805,39 @@ class mJobAction extends mJobPostAction{
                     endif; ?>
                 </select>
             </div>
+            <br/>
             <div class="form-field term-group">
+                <p>
                 <label><?php _e('Taxonomy image', ET_DOMAIN) ?></label>
                 <div>
-                    <img id="ae-tax-images-photo" src="<?php echo esc_url( wp_get_attachment_image_url( $value, 'full' ) ); ?>"<?php echo $hidden; ?> />
+                    <img id="<?php echo $taxonomy ?>_image_photo" width="75px" height="75px" src="<?php echo esc_url( wp_get_attachment_image_url( $value, 'full' ) ); ?>"<?php echo $hidden; ?> />
                     <input type="hidden" name="<?php echo $taxonomy; ?>_image" id="<?php echo $taxonomy; ?>_image" value="<?php echo esc_attr( $value ); ?>" />
                 </div>
 
-                <a class="button-secondary ae-tax-images-media">
+                <a class="button-secondary ae-tax-images-media <?php echo $taxonomy ?>_image_button" data-id="<?php echo $taxonomy ?>_image">
                     <?php esc_html_e( 'Choose Image', ET_DOMAIN ); ?>
                 </a>
 
-                <a href="<?php echo esc_url( $remove_url ); ?>" class="button ae-tax-images-remove"<?php echo $hidden; ?>>
+                <a href="<?php echo esc_url( $remove_url ); ?>" class="button ae-tax-images-remove <?php echo $taxonomy ?>_image_photo_remove"<?php echo $hidden; ?> data-id="<?php echo $taxonomy ?>_image">
                     <?php esc_html_e( 'Remove', 'wp-user-avatars' ); ?>
                 </a>
+                </p>
+                <br/>
+                <p>
+                 <label><?php _e('Taxonomy banner image', ET_DOMAIN) ?></label>
+                <div>
+                    <img id="<?php echo $taxonomy; ?>_banner_image_photo" width="75px" height="75px" src="<?php echo esc_url( wp_get_attachment_image_url( $banner_value, 'full' ) ); ?>"<?php echo $hidden_banner; ?> />
+                    <input type="hidden" name="<?php echo $taxonomy; ?>_banner_image" id="<?php echo $taxonomy; ?>_banner_image" value="<?php echo esc_attr( $banner_value ); ?>" />
+                </div>
+
+                <a class="button-secondary ae-tax-images-media <?php echo $taxonomy ?>_banner_image_button" data-id="<?php echo $taxonomy; ?>_banner_image">
+                    <?php esc_html_e( 'Choose Image', ET_DOMAIN ); ?>
+                </a>
+
+                <a href="<?php echo esc_url( $remove_url ); ?>"  class="button ae-tax-images-remove <?php echo $taxonomy; ?>_banner_image_photo_remove"<?php echo $hidden_banner; ?> data-id="<?php echo $taxonomy ?>_banner_image">
+                    <?php esc_html_e( 'Remove', 'wp-user-avatars' ); ?>
+                </a>
+                </p>
                 <div class="clearfix"></div>
                 <br/>
                 <div class="featured-tax">
@@ -891,7 +920,11 @@ class mJobAction extends mJobPostAction{
                 '_wpnonce' => false,
             ) );
             $value = get_term_meta($term->term_id, 'mjob_category_image', true);
+            $banner_value = get_term_meta($term->term_id, 'mjob_category_banner_image', true);
             $hidden = empty( $value )
+                ? ' style="display: none;"'
+                : '';
+            $banner_hidden = empty( $banner_value )
                 ? ' style="display: none;"'
                 : '';
             $arr = array();
@@ -899,6 +932,12 @@ class mJobAction extends mJobPostAction{
                 $arr[$valu] = get_term_meta($term->term_id, $valu, true);
             }
             ?>
+            <tr class="form-field term-group-wrap">
+                <th scope="row"><label for="page-content-tax"><?php _e( 'Page content', ET_DOMAIN ); ?></label></th>
+                <td>
+                   <?php wp_editor( $term->mjob_category_page_content, $taxonomy.'_page_content'  ); ?>
+                </td>
+            </tr>
             <tr class="form-field term-group-wrap">
                 <th scope="row"><label for="featured-tax"><?php _e( 'Pricing plan', ET_DOMAIN ); ?></label></th>
                 <td>
@@ -924,15 +963,32 @@ class mJobAction extends mJobPostAction{
                 <th scope="row"><label for="tax-image"><?php _e( 'taxonomy image', ET_DOMAIN ); ?></label></th>
                 <td>
                     <div>
-                        <img id="ae-tax-images-photo" src="<?php echo esc_url( wp_get_attachment_image_url( $value, 'full' ) ); ?>"<?php echo $hidden; ?> />
+                        <img id="<?php echo $taxonomy ?>_image_photo" width="75px" height="75px" src="<?php echo esc_url( wp_get_attachment_image_url( $value, 'full' ) ); ?>"<?php echo $hidden; ?> />
                         <input type="hidden" name="<?php echo $taxonomy; ?>_image" id="<?php echo $taxonomy; ?>_image" value="<?php echo esc_attr( $value ); ?>" />
                     </div>
 
-                    <a class="button-secondary ae-tax-images-media">
+                    <a class="button-secondary ae-tax-images-media <?php echo $taxonomy ?>_image_button" data-id="<?php echo $taxonomy ?>_image">
                         <?php esc_html_e( 'Choose Image', ET_DOMAIN ); ?>
                     </a>
 
-                    <a href="<?php echo esc_url( $remove_url ); ?>" class="button ae-tax-images-remove"<?php echo $hidden; ?>>
+                    <a href="<?php echo esc_url( $remove_url ); ?>" class="button ae-tax-images-remove <?php echo $taxonomy ?>_image_photo_remove"<?php echo $hidden; ?> data-id="<?php echo $taxonomy ?>_image">
+                        <?php esc_html_e( 'Remove', 'wp-user-avatars' ); ?>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row"><label for="tax-banner-image"><?php _e( 'Taxonomy banner image', ET_DOMAIN ); ?></label></th>
+                <td>
+                    <div>
+                        <img id="ae-tax-banner-images-photo" width="75px" height="75px" src="<?php echo esc_url( wp_get_attachment_image_url( $banner_value, 'full' ) ); ?>"<?php echo $hidden; ?> />
+                        <input type="hidden" name="<?php echo $taxonomy; ?>_banner_image" id="<?php echo $taxonomy; ?>_banner_image" value="<?php echo esc_attr( $banner_value ); ?>" />
+                    </div>
+
+                    <a class="button-secondary ae-tax-images-media <?php echo $taxonomy ?>_banner_image_button" data-id="<?php echo $taxonomy ?>_banner_image">
+                        <?php esc_html_e( 'Choose Image', ET_DOMAIN ); ?>
+                    </a>
+
+                    <a href="<?php echo esc_url( $remove_url ); ?>" class="button ae-tax-images-remove <?php echo $taxonomy ?>_banner_image_photo_remove"<?php echo $banner_hidden; ?> data-id="<?php echo $taxonomy ?>_banner_image">
                         <?php esc_html_e( 'Remove', 'wp-user-avatars' ); ?>
                     </a>
                 </td>

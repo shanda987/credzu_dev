@@ -17,6 +17,7 @@
 		openImage: function(e){
 			var view = this;
 			e.preventDefault();
+			view.data_id = $(e.currentTarget).attr('data-id');
 			// Already adding
 			if ( term_image_working ) {
 				return;
@@ -43,14 +44,14 @@
 				var image = ae_tax_images_modal.state().get( 'selection' ).first().toJSON();
 				if ( '' !== image ) {
 					if ( ! clicked.hasClass( 'quick' ) ) {
-						$( '#mjob_category_image' ).val( image.id );
-						$( '#ae-tax-images-photo' ).attr( 'src', image.url ).show();
-						$( '.ae-tax-images-remove' ).show();
+						$('#'+view.data_id).val(image.id);
+						$( '#'+view.data_id + '_photo' ).attr( 'src', image.url ).show();
+						$(  '.'+view.data_id + '_photo_remove'  ).show();
 					} else {
 						$( 'button.ae-tax-images-media' ).hide();
 						$( 'a.button', '.inline-edit-row' ).show();
-						$( ':input[name="mjob_category_image_image"]', '.inline-edit-row' ).val( image.id );
-						$( 'img.ae-tax-images-media', '.inline-edit-row' ).attr( 'src', image.url ).show();
+						$( ':input[name="'+view.data_id+'"]', '.inline-edit-row' ).val( image.id );
+						$( 'img.'+view.data_id+', .inline-edit-row' ).attr( 'src', image.url ).show();
 					}
 				}
 				view.term_image_lock( 'unlock' );
@@ -60,17 +61,19 @@
 			ae_tax_images_modal.open();
 		},
 		removeImage: function(e){
+			var view = this;
 			e.preventDefault();
 			// Clear image metadata
+			view.data_id = $(e.currentTarget).attr('data-id');
 			if ( ! $( this ).hasClass( 'quick' ) ) {
-				$( '#mjob_category_image' ).val( 0 );
-				$( '#ae-tax-images-photo' ).attr( 'src', '' ).hide();
-				$( '.ae-tax-images-remove' ).hide();
+				$( '#'+view.data_id ).val( 0 );
+				$( '#'+view.data_id+'_photo' ).attr( 'src', '' ).hide();
+				$( '.'+ view.data_id+'_photo_remove' ).hide();
 			} else {
-				$( ':input[name="mjob_category_image"]', '.inline-edit-row' ).val( '' );
-				$( 'img.ae-tax-images-media', '.inline-edit-row' ).attr( 'src', '' ).hide();
+				$( ':input[name="'+view.data_id+'"]', '.inline-edit-row' ).val( '' );
+				$( 'img.'+view.data_id, '.inline-edit-row' ).attr( 'src', '' ).hide();
 				$( 'a.button', '.inline-edit-row' ).hide();
-				$( 'button.ae-tax-images-media' ).show();
+				$( 'button.'+view.data_id + '_button' ).show();
 			}
 		},
 		term_image_lock: function( lock_or_unlock ) {

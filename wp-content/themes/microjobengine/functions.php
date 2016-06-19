@@ -60,7 +60,9 @@ $meta  = array(
     'cat_bottom_block1_content',
     'cat_bottom_block2_content',
     'cat_bottom_block3_content',
-    'pricing_plan'
+    'pricing_plan',
+    'mjob_category_page_content',
+    'mjob_category_banner_image'
 );
 $ae_tax_factory->set('mjob_category', new AE_Taxonomy_Meta('mjob_category', $meta) );
 $meta1 = array('click_type', 'requirement_short_name');
