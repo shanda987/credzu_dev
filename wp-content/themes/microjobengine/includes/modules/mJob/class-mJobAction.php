@@ -980,7 +980,7 @@ class mJobAction extends mJobPostAction{
                 <th scope="row"><label for="tax-banner-image"><?php _e( 'Taxonomy banner image', ET_DOMAIN ); ?></label></th>
                 <td>
                     <div>
-                        <img id="ae-tax-banner-images-photo" width="75px" height="75px" src="<?php echo esc_url( wp_get_attachment_image_url( $banner_value, 'full' ) ); ?>"<?php echo $hidden; ?> />
+                        <img id="<?php echo $taxonomy ?>_banner_image_photo" width="75px" height="75px" src="<?php echo esc_url( wp_get_attachment_image_url( $banner_value, 'full' ) ); ?>"<?php echo $hidden; ?> />
                         <input type="hidden" name="<?php echo $taxonomy; ?>_banner_image" id="<?php echo $taxonomy; ?>_banner_image" value="<?php echo esc_attr( $banner_value ); ?>" />
                     </div>
 
