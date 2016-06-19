@@ -15,6 +15,7 @@ else{
     <div class="container">
         <div class="search-slider float-center job-items-title">
             <h2 class="banner-title"><?php echo $term->name; ?></h2>
+            <p><?php echo $term->mjob_category_page_content; ?></p>
         </div>
     </div>
     <div class="header-images">
