@@ -5,7 +5,7 @@ $term = get_queried_object();
 get_header();
 ?>
     <div id="content">
-        <?php get_template_part('template/content', 'page');?>
+        <?php get_template_part('template/content-taxonomy', 'page');?>
         <div class="block-page mjob-container-control">
             <div class="container">
                 <div class="row functions-items">
