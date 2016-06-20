@@ -131,7 +131,6 @@
                 collection: taskCollection,
                 el: $(this).find('.list-tasks')
             });
-
             new Views.BlockControl({
                 collection: taskCollection,
                 el: $(this),

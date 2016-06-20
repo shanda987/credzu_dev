@@ -1276,8 +1276,8 @@ _.templateSettings = {
             var $target = $(event.currentTarget),
                 name = $target.attr('name'),
                 view = this;
+
             if (name !== 'undefined') {
-                view.query[name] = $target.val();
                 view.page = 1;
                 // fetch page
                 view.fetch($target);

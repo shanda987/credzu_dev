@@ -841,7 +841,7 @@ class ET_Microjobengine extends AE_Base
                 'single-mjob'
             ), ET_VERSION, true);
         }
-        if( is_page_template('page-my-list-order.php') || is_singular('mjob_order') ){
+        if( is_page_template('page-dashboard.php') || is_page_template('page-my-list-order.php') || is_singular('mjob_order') ){
             $this->add_script('order-list', get_template_directory_uri() . '/assets/js/order-list.js', array(
                 'jquery',
                 'underscore',
@@ -1020,7 +1020,7 @@ class ET_Microjobengine extends AE_Base
          * include modal reject mjob
          */
         get_template_part('template-js/modal', 'reject');
-        if( is_page_template('page-my-list-order.php') || is_singular('mjob_order') ){
+        if( is_page_template('page-dashboard.php') || is_page_template('page-my-list-order.php') || is_singular('mjob_order') ){
             get_template_part('template-js/order', 'item');
             get_template_part('template-js/task', 'item');
             get_template_part('template-js/modal-delivery', 'order');
