@@ -44,7 +44,7 @@ if(!function_exists('ae_render_connect_social_button')) {
                                 <span class="social-text"><?php _e("Facebook", ET_DOMAIN); ?></span>
                             </a>
                         <?php } else { ?>
-                            <a href="javascript:void(0)" class="fb facebook_disconnect<?php echo $button_classes['fb']; ?>">
+                            <a href="javascript:void(0)" class="fb connected-text facebook_disconnect<?php echo $button_classes['fb']; ?>">
                                 <i class="<?php echo $icon_classes['fb']; ?>"></i>
                                 <span class="social-text"><?php _e("Connected to Facebook", ET_DOMAIN); ?></span>
                             </a>
@@ -59,7 +59,7 @@ if(!function_exists('ae_render_connect_social_button')) {
                                 <span class="social-text"><?php _e("Plus", ET_DOMAIN); ?></span>
                             </a>
                         <?php } else { ?>
-                            <a href="javascript:void(0)" class="gplus gplus_disconnect <?php echo $button_classes['gplus']; ?>">
+                            <a href="javascript:void(0)" class="gplus connected-text gplus_disconnect <?php echo $button_classes['gplus']; ?>">
                                 <i class="<?php echo $icon_classes['gplus']; ?>"></i>
                                 <span class="social-text"><?php _e("Connected to Plus", ET_DOMAIN); ?></span>
                             </a>
@@ -74,7 +74,7 @@ if(!function_exists('ae_render_connect_social_button')) {
                                 <span class="social-text"><?php _e("Twitter", ET_DOMAIN); ?></span>
                             </a>
                         <?php } else { ?>
-                            <a href="javascript:void(0)" class="tw twitter_disconnect <?php echo $button_classes['tw']; ?>">
+                            <a href="javascript:void(0)" class="tw connected-text twitter_disconnect <?php echo $button_classes['tw']; ?>">
                                 <i class="<?php echo $icon_classes['tw']; ?>"></i>
                                 <span class="social-text"><?php _e("Connected to Twitter", ET_DOMAIN); ?></span>
                             </a>

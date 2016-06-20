@@ -703,3 +703,9 @@
 .change-password{
     padding: 30px 20px 30px 20px!important;
 }
+.connected-text{
+    pointer-events: none;
+    cursor: default;
+    color: #fff;
+    opacity: 0.5;
+}
