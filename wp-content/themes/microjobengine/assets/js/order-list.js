@@ -125,7 +125,6 @@
                     taskCollection = new Collections.Order();
                 }
             }
-
             var listTasks = new ListTasks({
                 itemView: taskItem,
                 collection: taskCollection,

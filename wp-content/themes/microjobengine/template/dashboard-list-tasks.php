@@ -43,9 +43,9 @@
             ?>
         </ul>
 
-        <?php if(is_page_template('page-dashboard.php')) : ?>
-            <div class="view-all float-center"><a href="<?php echo et_get_page_link('my-list-order'); ?>"><?php _e('View all', ET_DOMAIN); ?></a></div>
-        <?php endif; ?>
+<!--        --><?php //if(is_page_template('page-dashboard.php')) : ?>
+<!--            <div class="view-all float-center"><a href="--><?php //echo et_get_page_link('my-list-order'); ?><!--">--><?php //_e('View all', ET_DOMAIN); ?><!--</a></div>-->
+<!--        --><?php //endif; ?>
     <?php } else { ?>
         <p class="no-items">
         <?php
@@ -64,7 +64,7 @@
     <?php } ?>
 </div>
 <?php
-if( !is_page_template('page-dashboard.php') ):
+//if( is_page_template('page-dashboard.php') ):
     echo '<div class="paginations-wrapper">';
     $task_query->query = array_merge($task_query->query, array('is_task' => true));
     ae_pagination($task_query, get_query_var('paged'), 'load');
@@ -73,4 +73,4 @@ if( !is_page_template('page-dashboard.php') ):
      * render post data for js
      */
     echo '<script type="data/json" class="task_postdata" >' . json_encode($postdata) . '</script>';
-endif;
+//endif;

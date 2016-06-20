@@ -2,9 +2,9 @@
 global $ae_post_factory, $user_ID, $wp_query;
 $post_obj = $ae_post_factory->get('mjob_order');
 $default = array();
-if( is_page_template('page-dashboard.php') ){
-    $default = array('posts_per_page'=> 5);
-}
+//if( is_page_template('page-dashboard.php') ){
+//    $default = array('posts_per_page'=> 5);
+//}
 ?>
 <div class="list-order">
     <?php
@@ -40,9 +40,9 @@ if( is_page_template('page-dashboard.php') ){
             wp_reset_postdata();
             ?>
         </ul>
-        <?php if(is_page_template('page-dashboard.php')) : ?>
-            <div class="view-all float-center"><a href="<?php echo et_get_page_link('my-list-order'); ?>"><?php _e('View all', ET_DOMAIN); ?></a></div>
-        <?php endif; ?>
+<!--        --><?php //if(is_page_template('page-dashboard.php')) : ?>
+<!--            <div class="view-all float-center"><a href="--><?php //echo et_get_page_link('my-list-order'); ?><!--">--><?php //_e('View all', ET_DOMAIN); ?><!--</a></div>-->
+<!--        --><?php //endif; ?>
 
     <?php } else { ?>
         <div class="dashboard-notification">
@@ -55,7 +55,7 @@ if( is_page_template('page-dashboard.php') ){
     <?php } ?>
 
     <?php
-    if( !is_page_template('page-dashboard.php') ):
+    //if( !is_page_template('page-dashboard.php') ):
         echo '<div class="paginations-wrapper">';
         ae_pagination($cus_query, get_query_var('paged'), 'load');
         echo '</div>';
@@ -63,6 +63,6 @@ if( is_page_template('page-dashboard.php') ){
          * render post data for js
          */
         echo '<script type="data/json" class="order_postdata" >' . json_encode($postdata) . '</script>';
-    endif;
+    //endif;
     ?>
 </div>

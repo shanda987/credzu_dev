@@ -1279,6 +1279,7 @@ _.templateSettings = {
 
             if (name !== 'undefined') {
                 view.page = 1;
+                view.query[name] = $target.val();
                 // fetch page
                 view.fetch($target);
             }

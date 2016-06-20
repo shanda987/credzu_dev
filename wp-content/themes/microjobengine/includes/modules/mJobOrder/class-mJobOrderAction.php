@@ -629,6 +629,9 @@ class mJobOrderAction extends mJobPostAction{
 
         $query_args['post_status'] = 'any';
         if( isset($query['post_status']) ){
+            if( $query['post_status'] == 'finished' ){
+                $query['post_status'] = array('delivery', 'finished');
+            }
             $query_args['post_status'] = $query['post_status'];
         }
 
@@ -643,7 +646,6 @@ class mJobOrderAction extends mJobPostAction{
                 'finished'
             );
         }
-
         return $query_args;
     }
     /**
