@@ -30,7 +30,7 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
             <div class="row title-top-pages dashboard withdraw no-margin">
                 <div class="box-shadow-title">
                     <p class="block-title">
-                        <?php _e('ORDER DETAILS AND STATUS', ET_DOMAIN); ?>
+                        <?php _e('ORDER DETAILS', ET_DOMAIN); ?>
                     </p>
                     <p class="btn-back"><?php _e('Communicate with your company below.', ET_DOMAIN); ?></p>
                 </div>
