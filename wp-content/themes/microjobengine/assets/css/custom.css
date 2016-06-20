@@ -710,5 +710,5 @@
     opacity: 0.5;
 }
 li > .connected-text{
-    cursor: default;
+    cursor: default!important;
 }
