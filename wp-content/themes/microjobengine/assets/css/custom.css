@@ -694,3 +694,6 @@
     margin-bottom: 30px;
     margin-top: 30px;
 }
+.withdraw .block-items-detail{
+    padding-top: 10px!important;
+}
