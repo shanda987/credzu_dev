@@ -37,49 +37,55 @@ if(!function_exists('ae_render_connect_social_button')) {
             <?php } ?>
             <ul class="list-social-connect">
                 <?php if($use_facebook){ ?>
-                    <li>
                         <?php if(empty($facebook_social_id)) { ?>
+                        <li>
                             <a href="javascript:void(0)" class="fb facebook_auth_btn <?php echo $button_classes['fb']; ?>">
                                 <i class="<?php echo $icon_classes['fb']; ?>"></i>
                                 <span class="social-text"><?php _e("Facebook", ET_DOMAIN); ?></span>
                             </a>
+                        </li>
                         <?php } else { ?>
+                        <li class="connected-text">
                             <a href="javascript:void(0)" class="fb connected-text facebook_disconnect<?php echo $button_classes['fb']; ?>">
                                 <i class="<?php echo $icon_classes['fb']; ?>"></i>
                                 <span class="social-text"><?php _e("Connected to Facebook", ET_DOMAIN); ?></span>
                             </a>
+                        </li>
                         <?php } ?>
-                    </li>
                 <?php } ?>
                 <?php if($gplus_login){ ?>
-                    <li>
                         <?php if(empty($google_social_id)) { ?>
+                        <li>
                             <a href="javascript:void(0)" class="gplus gplus_login_btn <?php echo $button_classes['gplus']; ?>">
                                 <i class="<?php echo $icon_classes['gplus']; ?>"></i>
                                 <span class="social-text"><?php _e("Plus", ET_DOMAIN); ?></span>
                             </a>
+                        </li>
                         <?php } else { ?>
+                        <li class="connected-text">
                             <a href="javascript:void(0)" class="gplus connected-text gplus_disconnect <?php echo $button_classes['gplus']; ?>">
                                 <i class="<?php echo $icon_classes['gplus']; ?>"></i>
                                 <span class="social-text"><?php _e("Connected to Plus", ET_DOMAIN); ?></span>
                             </a>
+                        </li>
                         <?php } ?>
-                    </li>
                 <?php } ?>
                 <?php if($use_twitter){ ?>
-                    <li>
                         <?php if(empty($twitter_social_id)) { ?>
+                        <li>
                             <a href="<?php echo add_query_arg('action', 'twitterauth', home_url()) ?>" class="tw <?php echo $button_classes['tw']; ?>">
                                 <i class="<?php echo $icon_classes['tw']; ?>"></i>
                                 <span class="social-text"><?php _e("Twitter", ET_DOMAIN); ?></span>
                             </a>
+                        </li>
                         <?php } else { ?>
+                        <li class="connected-text">
                             <a href="javascript:void(0)" class="tw connected-text twitter_disconnect <?php echo $button_classes['tw']; ?>">
                                 <i class="<?php echo $icon_classes['tw']; ?>"></i>
                                 <span class="social-text"><?php _e("Connected to Twitter", ET_DOMAIN); ?></span>
                             </a>
+                        </li>
                         <?php } ?>
-                    </li>
                 <?php } ?>
                 <?php if($linkedin_login){ ?>
                     <li>
