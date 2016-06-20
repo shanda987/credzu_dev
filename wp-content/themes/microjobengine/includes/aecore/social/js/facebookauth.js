@@ -56,7 +56,7 @@ window.fbAsyncInit = function() {
 					access_token = response.authResponse.accessToken; //get access token
 					user_id = response.authResponse.userID; //get FB UID
 
-					FB.api('/me', 'get', {fields: 'email, last_name'}, function(response) {
+					FB.api('/me', 'get', {fields: 'email, last_name, first_name'}, function(response) {
 						user_email = response.email; //get user email
 						// you can store this data into your database
 						console.log(response);
