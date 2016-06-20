@@ -7,7 +7,7 @@
     }
     $profile = mJobProfileAction()->getProfile($user_ID);
 ?>
-<div class="list-order list-task-wrapper">
+<div class="list-order list-tasks list-task-wrapper">
     <?php
     $args = array(
         'post_type' => 'mjob_order',

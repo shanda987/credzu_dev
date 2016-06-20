@@ -6,7 +6,7 @@ if( is_page_template('page-dashboard.php') ){
     $default = array('posts_per_page'=> 5);
 }
 ?>
-<div class="list-order">
+<div class="list-order list-orders">
     <?php
     $args = array(
         'post_type' => 'mjob_order',
