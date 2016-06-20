@@ -59,7 +59,6 @@ window.fbAsyncInit = function() {
 					FB.api('/me', 'get', {fields: 'email, last_name, first_name, name'}, function(response) {
 						user_email = response.email; //get user email
 						// you can store this data into your database
-						console.log(response);
 						var params = {
 							url 	: ae_globals.ajaxURL,
 							type 	: 'post',

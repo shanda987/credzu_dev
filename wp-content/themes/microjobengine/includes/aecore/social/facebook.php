@@ -198,7 +198,9 @@ class ET_FaceAuth extends ET_SocialAuth
                     'user_location' => isset($data['location']) ? $data['location']['name'] : false,
                     'et_avatar' => isset($avatars['thumbnail']['0'])? $avatars['thumbnail']['0']: '',
                     'et_social_id'=>$data['id'],
-                    'display_name'=>$username
+                    'display_name'=>$username,
+                    'first_name'=> isset($data['first_name'])? $data['first_name']: '',
+                    'last_name'=> isset($data['last_name'])? $data['first_name']: ''
                 );
                 $params = serialize($params);
                 $params = base64_encode($params);
