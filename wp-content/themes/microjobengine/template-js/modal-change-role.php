@@ -12,7 +12,7 @@
                         <div class="input-group">
                             <p class="notice-message">
                                 <span class="note-action"><?php _e('NOTE: This action is irreversible!', ET_DOMAIN); ?></span><br/>
-                                <?php _e('Changing your account from a "Client (buyer)" profile to a "Company (provider)” is intended for companies only. Unless you are a company intending to provide credit-related services to consumers, do not continue.', ET_DOMAIN ) ?>
+                                <?php _e('Changing your account from a "Client (buyer)" profile to a "Company (provider)" is intended for companies only. Unless you are a company intending to provide credit-related services to consumers, do not continue.', ET_DOMAIN ) ?>
                             </p>
                         </div>
                     </div>
