@@ -44,7 +44,7 @@ echo mJobProfileAction()->display_company_status($user_role, $profile->company_s
             <div class="col-lg-9 col-md-9 col-sm-12 col-sx-12">
                 <div class="block-profile">
 
-                    <div class="block-billing mjob-profile-form">
+                    <div class="block-billing mjob-profile-form dashboard-profile-company">
                         <form class="et-form">
                         <div class="form-group clearfix">
                             <div class="input-group">
