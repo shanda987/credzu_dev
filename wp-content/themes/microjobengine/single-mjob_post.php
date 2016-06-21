@@ -203,7 +203,7 @@ if($profile_id) {
                                                     </div>
                                                     <div class="profile-viewer">
                                                         <a href="<?php echo $value->author_data->author_url; ?>" class="name-author">
-                                                            <?php echo $value->author_data->display_name; ?>
+                                                            <?php echo $value->author_data->initial_display_name; ?>
                                                         </a>
                                                         <p class="review-time"><?php echo $value->date_ago; ?></p>
                                                         <div class="rate-it star" data-score="<?php echo $value->et_rate; ?>"></div>

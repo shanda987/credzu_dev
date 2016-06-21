@@ -236,13 +236,16 @@ class mJobOrderAction extends mJobPostAction{
      */
     public function convertPost($result){
         global $ae_post_factory, $user_ID;
-        $result->author_name = get_the_author_meta('display_name', $result->post_author);
+        $ae_user = AE_Users::get_instance();
+        $auth = get_userdata($result->post_author);
+        $auth = $ae_user->convert($auth);
+        $result->author_name = $auth->initial_display_name;
         $result->mjob_order_author_url = get_author_posts_url($result->post_author);
         $mjob = get_post($result->post_parent);
         $author = get_userdata($mjob->post_author);
         $result->mjob_author = $mjob->post_author;
         $result->mjob = $mjob;
-        $result->mjob_author_name = $author->display_name;
+        $result->mjob_author_name = $author->initial_display_name;
         $result->mjob_author_url = get_author_posts_url($mjob->post_author);
         $result->mjob_content = $mjob->post_content;
         $result->mjob_price_text = mJobPriceFormat($mjob->et_budget);

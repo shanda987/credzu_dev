@@ -8,7 +8,7 @@ $current        = $post_object->current_post;
 
 $mjob = get_post($current->post_parent);
 $author = get_userdata($mjob->post_author);
-$author_name = $author->display_name;
+$author_name = $author->initial_display_name;
 ?>
 <li class="order-item">
     <h2><a href="<?php echo $current->permalink; ?>"><?php echo $current->post_title; ?></a></h2>

@@ -187,10 +187,10 @@ class mJobUserAction extends AE_UserAction
         $l = count($result->initial_display_name);
         if( $l > 1 ){
             $l = $l-1;
-            $result->initial_display_name = strtoupper(substr($result->initial_display_name[$l], 0, 1));
+            $result->initial_display_name = $result->initial_display_name['0'].' '.strtoupper(substr($result->initial_display_name[$l], 0, 1));
         }
         else{
-            $result->display_name;
+            $result->initial_display_name = $result->display_name;
         }
         //echo '<pre>';
         //var_dump($result);
