@@ -372,8 +372,6 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                                     endif;
                                                         endforeach;?>
                                         <?php
-                                        else:
-                                            _e('There are no document found.', ET_DOMAIN);
                                         endif; ?>
                                     </ul>
                                 </div>
