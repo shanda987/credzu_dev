@@ -336,6 +336,13 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                             <div role="tabpanel" class="tab-pane " id="document">
                                 <div id="incomingPaymentsForm">
                                     <ul class="requirement-list document-list">
+                                        <li class="col-lg-6 col-md-6 col-xs-12 item-requirement">
+                                            <a  href="<?php echo et_get_page_link('simple-download').'?id=cancellation' ?>" data-name="<?php echo 'Name : '.date('d/m/Y', strtotime($current->post_date))?>" class="show-requirement-docs">
+                                                <div class="doc-icon"> <i class="fa fa-file-pdf-o" aria-hidden="true"></i></div>
+                                                <div class="doc-name"><?php echo 'name'?></div>
+                                                <div class="doc-time"><?php echo date('d/m/Y', strtotime($current->post_date))?></div>
+
+                                            </a></li>
                                         <?php
                                         if( !empty($current->requirement_files)): ?>
 
