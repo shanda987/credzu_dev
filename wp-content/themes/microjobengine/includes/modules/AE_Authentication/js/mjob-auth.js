@@ -178,6 +178,7 @@
             el: '.page-user-authentication',
             events:{
                 'keyup .check-user-email': 'checkEmail',
+                'keypress .check-user-email': 'checkEenter',
                 'keyup #user_email': 'checkEmailValid',
                 'keyup #user_login': 'checkEmailValidLogin'
             },
@@ -185,36 +186,45 @@
                 var view = this;
                 AE.pubsub.on('ae:form:submit:success', this.authSuccess, this);
             },
+            checkEenter:function(e){
+                if(e.keyCode == 13 ){
+                    e.preventDefault();
+                    return false;
+                }
+            },
             checkEmail: function(e){
                 var view  = this;
                 if(e.keyCode == 13 ){
                     e.preventDefault();
+                    return false;
                 }
-                var reg = /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/;
-                if(reg.test($('#check_user_email').val()) === true){
-                    setTimeout(function(){
-                        view.model = new Models.mJobUser({
-                            check_user_email: $('#check_user_email').val(),
-                            do_action: 'check_email'
-                        });
-                        view.model.save('', '', {
-                            success: function (result, resp, jqXHR) {
-                                if (resp.success) {
-                                    view.$el.find('#signUpForm').show();
-                                    view.$el.find('#user_email').val(resp.user_email);
-                                    view.$el.find('#user_email').focus();
-                                    view.$el.find('#user_login').val('sdfsdf');
-                                    view.$el.find('#signUpFormStep1').hide();
+                else {
+                    var reg = /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/;
+                    if (reg.test($('#check_user_email').val()) === true) {
+                        setTimeout(function () {
+                            view.model = new Models.mJobUser({
+                                check_user_email: $('#check_user_email').val(),
+                                do_action: 'check_email'
+                            });
+                            view.model.save('', '', {
+                                success: function (result, resp, jqXHR) {
+                                    if (resp.success) {
+                                        view.$el.find('#signUpForm').show();
+                                        view.$el.find('#user_email').val(resp.user_email);
+                                        view.$el.find('#user_email').focus();
+                                        view.$el.find('#user_login').val('sdfsdf');
+                                        view.$el.find('#signUpFormStep1').hide();
+                                    }
+                                    else {
+                                        view.$el.find('#signInForm').show();
+                                        view.$el.find('#user_login').val(resp.user_email);
+                                        view.$el.find('#signUpFormStep1').hide();
+                                    }
                                 }
-                                else {
-                                    view.$el.find('#signInForm').show();
-                                    view.$el.find('#user_login').val(resp.user_email);
-                                    view.$el.find('#signUpFormStep1').hide();
-                                }
-                            }
-                        });
-                       // e.preventDefault();
-                    }, 1000);
+                            });
+                            // e.preventDefault();
+                        }, 1000);
+                    }
                 }
             },
             checkEmailValid: function(e){
