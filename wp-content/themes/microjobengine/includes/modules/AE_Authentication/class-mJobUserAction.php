@@ -183,6 +183,17 @@ class mJobUserAction extends AE_UserAction
         $result->avatar = mJobAvatar($result->ID, 35);
         $result->payment_info = get_user_meta($result->ID, 'payment_info', true);
         $result->user_status = get_user_meta($result->ID, 'user_status', true);
+        $result->initial_display_name = explode(' ', $result->display_name);
+        $l = count($result->initial_display_name);
+        if( $l > 1 ){
+            $l = $l-1;
+            $result->initial_display_name = strtoupper(substr($result->initial_display_name[$l], 0, 1));
+        }
+        else{
+            $result->display_name;
+        }
+        //echo '<pre>';
+        //var_dump($result);
         return $result;
     }
 
