@@ -171,16 +171,17 @@ class agreementAction extends mJobPostAction{
                     if( !empty($post->is_notice_cancellation) && $post->is_notice_cancellation == '1' ) {
                         $file_name = 'Notice_Cancellation_'.time();
                         $file_path = AE_Pdf_Creator()->pdfGenarate($content, $file_name);
-                        update_post_meta($profile->ID, 'notice_cancellation', $file_path);
+                        //update_post_meta($profile->ID, 'notice_cancellation', $file_path);
                         array_push($arr_path, $file_path );
                     }
                     else{
                         $file_path = AE_Pdf_Creator()->pdfGenarate($content, $file_name);
-                        update_post_meta($profile->ID, 'agreement_document', $file_path);
+                        //update_post_meta($profile->ID, 'agreement_document', $file_path);
                         array_push($arr_path, $file_path );
                     }
                 }
             }
+            update_post_meta($profile->ID, 'agreement_document', $arr_path);
             do_action('mjob_agreement_email', $emails, $arr_path, $company_name);
             $my_posts = array(
                 'ID'=> $post1->ID,
