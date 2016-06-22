@@ -47,6 +47,16 @@
                     view.showNextStep();
                     view.setupStep3(view.model);
                 }
+                $(".post_listing_agreement_term_content").mCustomScrollbar({
+                    theme:"minimal",
+                    callbacks:{
+                        onInit:function(){
+                            $('#mCSB_1_container').css({
+                                top: "-100%"
+                            })
+                        }
+                    }
+                });
             },
             onAddExtras: function($target){
                 var view = this,

@@ -715,5 +715,27 @@
     margin-bottom: 35px;
 }
 .time-delivery{
-    width: 93%!important;
+    width: 92%!important;
+}
+.padding-0{
+    padding: 0!important;
+}
+.width-100{
+    width: 100%!important;
+}
+.post-image-photo{
+    position: absolute;
+    bottom: -14px;
+}
+.post_listing_agreement_term{
+    background: url(../img/box-line.png) no-repeat;
+    background-size: 90%;
+    width: 100%;
+     height: auto;
+    background-position: center bottom;
+    padding-bottom: 20px;
+}
+.post_listing_agreement_term_content{
+    height: 400px;
+    overflow: auto;
 }

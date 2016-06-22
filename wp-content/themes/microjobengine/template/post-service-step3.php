@@ -25,33 +25,14 @@ else{
             <?php _e('By completing the following form, you will create a public listing on our site through which consumer can hire you. Your listing will remain indefinitely until a client has hired you.', ET_DOMAIN); ?>
         </p>
     <form class="post-job post et-form" id="">
-        <div class="form-group clearfix">
-            <div class="input-group">
-                <div class="input-group-addon">
-<!--                    <i class="fa fa-adn"></i>-->
-                </div>
-                <input type="text" class="input-item input-full" name="post_title" placeholder="<?php _e('Credit Counseling', ET_DOMAIN); ?>" required>
-            </div>
-        </div>
         <div class="form-group row clearfix">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clearfix ">
-                <div class="input-group">
-                    <div class="input-group-addon">
-<!--                        <i class="fa fa-calendar"></i>-->
-                    </div>
-                    <input type="number" name="time_delivery" placeholder="<?php _e('i.e., 10', ET_DOMAIN); ?>" class="input-item time-delivery" min="0" pattern="[-+]?[0-9]*[.,]?[0-9]+" required>
-                    <span class="text-note"><?php _e('Day(s)', ET_DOMAIN); ?></span>
-                </div>
-            </div>
-        </div>
-        <div class="form-group row clearfix">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clearfix ">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clearfix padding-0 ">
                 <div class="input-group">
                     <div class="input-group-addon">
                         <!--                        <i class="fa fa-pagelines"></i>-->
                     </div>
                     <?php ae_tax_dropdown( 'mjob_category' ,
-                        array(  'attr' => 'data-chosen-width="100%" data-chosen-disable-search=""  data-placeholder="'.__("i.e., I will challenge all inaccurate negative items within 35 days", ET_DOMAIN).'"',
+                        array(  'attr' => 'data-chosen-width="100%" data-chosen-disable-search=""  data-placeholder="'.__("select a category", ET_DOMAIN).'"',
                             'class' => 'chosen chosen-single tax-item required',
                             'hide_empty' => false,
                             'hierarchical' => true ,
@@ -59,57 +40,70 @@ else{
                             'show_option_all' => false
                         )
                     ) ;?>
-                    <label><?php _e('Select the relevant category for your service', ET_DOMAIN)?><i class="fa fa-question-circle" aria-hidden="true"></i></label>
+                    <label><?php _e('Select the relevant category for your service ', ET_DOMAIN)?><a href="#" class="mjob-question-post"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
                 </div>
             </div>
         </div>
-        <div class="form-group clearfix">
-            <div class="input-group">
-                <div class="input-group-addon">
-<!--                    <i class="fa fa-money" aria-hidden="true"></i>-->
+        <div class="form-group clearfix padding-0">
+            <div class="input-group width-100">
+                <input type="text" class="input-item input-full " name="post_title" placeholder="<?php _e('i.e., I will challenge all inaccurate negative items within 35 days', ET_DOMAIN); ?>" required>
+                <label><?php _e('Add a title for your listing ', ET_DOMAIN)?><a href="#" class="mjob-question-post"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
+            </div>
+        </div>
+        <div class="form-group row clearfix">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clearfix ">
+                <div class="input-group ">
+                    <input type="number" name="time_delivery" placeholder="<?php _e('i.e., 10', ET_DOMAIN); ?>" class="input-item time-delivery" min="0" pattern="[-+]?[0-9]*[.,]?[0-9]+" required>
+                    <span class="text-note"><?php _e('Day(s)', ET_DOMAIN); ?></span>
+                    <label><?php _e('Enter the amount of days the service will take to complete ', ET_DOMAIN)?><a href="#" class="mjob-question-post"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
                 </div>
+            </div>
+        </div>
+        <div class="form-group clearfix ">
+            <div class="input-group  width-100">
                 <input type="number" name="et_budget" placeholder="<?php _e('i.e., 100', ET_DOMAIN); ?>" class="input-item" min="0" pattern="[-+]?[0-9]*[.,]?[0-9]+" required>
+                <label><?php _e('Enter the amount your client will pay you for the service ', ET_DOMAIN)?><a href="#" class="mjob-question-post"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
             </div>
         </div>
         <div class="form-group">
-            <label><?php _e('YOUR SERVICE DESCRIPTION', ET_DOMAIN) ?></label>
             <?php wp_editor( '', 'post_content', ae_editor_settings()  );  ?>
+            <label><?php _e('Create a thorough and compelling description of your service ', ET_DOMAIN)?><a href="#" class="mjob-question-post"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
         </div>
-        <div class="form-group">
-            <label><?php _e('YOUR CLIENT REQUIREMENTS ', ET_DOMAIN) ?></label>
-            <p>
-            <?php _e('Select the information you require of your client in order to perform the job. Anything selected, we will collect from the client for you.', ET_DOMAIN); ?>
-            </p>
-                <div class="input-group requirement-style">
-                    <?php ae_tax_dropdown( 'mjob_requirement' ,
-                    array(  'attr' => 'multiple data-chosen-width="100%"   data-placeholder="'.__("Choose Client's requirement", ET_DOMAIN).'"',
-                        'class' => 'chosen multi-tax-item tax-item required',
-                        'hide_empty' => false,
-                        'hierarchical' => true ,
-                        'id' => 'mjob_requirement' ,
-                        'show_option_all' => false
-                    )
-                ) ;?>
-                </div>
-        </div>
-        <div class="form-group">
-            <label><?php _e('AGREEMENT TERMS', ET_DOMAIN) ?></label>
-            <p>
-                <?php _e('Reduce your job to a legal description which includes any promises to your client.', ET_DOMAIN); ?>
-            </p>
-            <?php wp_editor( '', 'agreement_terms', ae_editor_settings()  );  ?>
-        </div>
+<!--        <div class="form-group">-->
+<!--            <label>--><?php //_e('YOUR CLIENT REQUIREMENTS ', ET_DOMAIN) ?><!--</label>-->
+<!--            <p>-->
+<!--            --><?php //_e('Select the information you require of your client in order to perform the job. Anything selected, we will collect from the client for you.', ET_DOMAIN); ?>
+<!--            </p>-->
+<!--                <div class="input-group requirement-style">-->
+<!--                    --><?php //ae_tax_dropdown( 'mjob_requirement' ,
+//                    array(  'attr' => 'multiple data-chosen-width="100%"   data-placeholder="'.__("Choose Client's requirement", ET_DOMAIN).'"',
+//                        'class' => 'chosen multi-tax-item tax-item required',
+//                        'hide_empty' => false,
+//                        'hierarchical' => true ,
+//                        'id' => 'mjob_requirement' ,
+//                        'show_option_all' => false
+//                    )
+//                ) ;?>
+<!--                </div>-->
+<!--        </div>-->
+<!--        <div class="form-group">-->
+<!--            <label>--><?php //_e('AGREEMENT TERMS', ET_DOMAIN) ?><!--</label>-->
+<!--            <p>-->
+<!--                --><?php //_e('Reduce your job to a legal description which includes any promises to your client.', ET_DOMAIN); ?>
+<!--            </p>-->
+<!--            --><?php //wp_editor( '', 'agreement_terms', ae_editor_settings()  );  ?>
+<!--        </div>-->
         <div class="form-group group-attachment gallery_container" id="gallery_container">
             <div class="outer-carousel-gallery">
                 <div class="img-avatar carousel-gallery">
                     <img width="100%" src="<?php echo TEMPLATEURL ?>/assets/img/image-avatar.jpg" alt="">
                     <div class="upload-description">
                         <i class="fa fa-picture-o"></i>
-                        <p><?php _e('Up to 5 pictures', ET_DOMAIN); ?></p>
-                        <p><?php _e('Select one picture for your featured image', ET_DOMAIN); ?></p>
+                        <p><?php _e('Preview', ET_DOMAIN); ?></p>
                     </div>
                     <input type="hidden" class="input-item show" name="et_carousels" value="" required />
                 </div>
+                <label class="post-image-photo"><?php _e('Click the plus sign to add up to 5 images to represent your services. ', ET_DOMAIN)?><a href="#" class="mjob-question-post"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
             </div>
             <div class="attachment-image">
                 <ul class="image-list" id="image-list">
@@ -124,7 +118,25 @@ else{
                 <span class="et_ajaxnonce" id="<?php echo wp_create_nonce( 'ad_carousels_et_uploader' ); ?>"></span>
             </div>
         </div>
-        <div class="mjob-extras-wrapper">
+        <div class="form-group post_listing_agreement_term">
+            <label><?php _e('AGREEMENT TERMS', ET_DOMAIN) ?></label>
+            <p>
+                <?php _e('The terms  into which you and your client agree, are shown below. If you want to requrest a change, please email us at info@credzu.com', ET_DOMAIN); ?>
+            </p>
+        </div>
+        <div class="form-group post_listing_agreement_term_content">
+            orem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tempus, enim id maximus aliquet, metus massa tempus leo, sit amet maximus mauris velit a arcu. Cras ac fermentum mi. Nulla dignissim, enim a ullamcorper vehicula, ligula erat tincidunt dui, vel semper purus erat eu arcu. Fusce quis felis porttitor, iaculis lectus eu, maximus nulla. Duis faucibus purus varius, imperdiet purus vel, tristique ex. Donec dignissim efficitur lectus non lacinia. Nullam aliquam, dolor at molestie imperdiet, lacus leo fringilla quam, sit amet scelerisque mauris diam eget metus. Donec hendrerit posuere nisi sollicitudin efficitur. Integer ut velit nulla. Phasellus at cursus arcu. Vivamus ut dui id massa sagittis iaculis. Proin sollicitudin velit et elementum lacinia. Donec luctus pharetra finibus. Vestibulum quis eros imperdiet, placerat turpis at, iaculis est. Vivamus aliquet malesuada tempus.
+
+            In ullamcorper bibendum dictum. Nam felis mi, pulvinar quis ultricies eget, accumsan vel est. Vestibulum mollis varius justo vitae rhoncus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pretium, nisl ut tincidunt maximus, mi tortor vestibulum mauris, et feugiat purus libero nec ligula. Aenean dignissim mollis dui eget auctor. Nulla facilisi. Aliquam libero risus, consequat id suscipit ut, lacinia non quam. Etiam fringilla lectus ac orci facilisis, id mattis tortor luctus. Fusce vel ornare est. Quisque bibendum convallis augue, nec pharetra dui vestibulum id. Mauris feugiat fringilla urna, vel mattis tortor suscipit in. Aliquam posuere vehicula erat, tincidunt sodales ex semper eget. Proin fermentum leo porta sapien convallis, ut eleifend mi condimentum. Suspendisse convallis id leo at semper.
+            orem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tempus, enim id maximus aliquet, metus massa tempus leo, sit amet maximus mauris velit a arcu. Cras ac fermentum mi. Nulla dignissim, enim a ullamcorper vehicula, ligula erat tincidunt dui, vel semper purus erat eu arcu. Fusce quis felis porttitor, iaculis lectus eu, maximus nulla. Duis faucibus purus varius, imperdiet purus vel, tristique ex. Donec dignissim efficitur lectus non lacinia. Nullam aliquam, dolor at molestie imperdiet, lacus leo fringilla quam, sit amet scelerisque mauris diam eget metus. Donec hendrerit posuere nisi sollicitudin efficitur. Integer ut velit nulla. Phasellus at cursus arcu. Vivamus ut dui id massa sagittis iaculis. Proin sollicitudin velit et elementum lacinia. Donec luctus pharetra finibus. Vestibulum quis eros imperdiet, placerat turpis at, iaculis est. Vivamus aliquet malesuada tempus.
+
+            In ullamcorper bibendum dictum. Nam felis mi, pulvinar quis ultricies eget, accumsan vel est. Vestibulum mollis varius justo vitae rhoncus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pretium, nisl ut tincidunt maximus, mi tortor vestibulum mauris, et feugiat purus libero nec ligula. Aenean dignissim mollis dui eget auctor. Nulla facilisi. Aliquam libero risus, consequat id suscipit ut, lacinia non quam. Etiam fringilla lectus ac orci facilisis, id mattis tortor luctus. Fusce vel ornare est. Quisque bibendum convallis augue, nec pharetra dui vestibulum id. Mauris feugiat fringilla urna, vel mattis tortor suscipit in. Aliquam posuere vehicula erat, tincidunt sodales ex semper eget. Proin fermentum leo porta sapien convallis, ut eleifend mi condimentum. Suspendisse convallis id leo at semper.
+        </div>
+        <div class="form-group post_listing_agreement_term_field">
+            <label><?php _e('INFORMATION COLLECTED FROM YOUR CLIENT', ET_DOMAIN) ?></label>
+            <p>
+                <?php _e('We will collect and provide you with the following information and documentation from you client. If you would like other information, Please email us at information', ET_DOMAIN); ?>
+            </p>
         </div>
         <div class="form-group">
             <button class="btn-submit btn-save waves-effect waves-light" type="submit"><?php _e('SAVE', ET_DOMAIN); ?></button>
