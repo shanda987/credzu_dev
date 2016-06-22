@@ -137,6 +137,19 @@ else{
             <p>
                 <?php _e('We will collect and provide you with the following information and documentation from you client. If you would like other information, Please email us at information', ET_DOMAIN); ?>
             </p>
+            <?php
+            $requirements = get_terms( 'mjob_requirement', array(
+                'hide_empty' => false,
+            ) );
+            if( !empty($requirements ) ): ?>
+                <ul>
+                <?php foreach( $requirements as $r): ?>
+                    <li><?php echo $r->name; ?></li>
+            <?php endforeach; ?>
+                </ul>
+
+                <?php endif;
+            ?>
         </div>
         <div class="form-group">
             <button class="btn-submit btn-save waves-effect waves-light" type="submit"><?php _e('SAVE', ET_DOMAIN); ?></button>
