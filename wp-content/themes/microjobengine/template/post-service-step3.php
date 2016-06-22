@@ -22,7 +22,7 @@ else{
 ?>
 <div class="step-wrapper step-post" id="step-post">
         <p>
-            <?php _e('This will post a public listing for a client to find you and hire you for your services. <br>For the best results give your Job Title a descriptive name.', ET_DOMAIN); ?>
+            <?php _e('By completing the following form, you will create a public listing on our site through which consumer can hire you. Your listing will remain indefinitely until a client has hired you.', ET_DOMAIN); ?>
         </p>
     <form class="post-job post et-form" id="">
         <div class="form-group clearfix">
