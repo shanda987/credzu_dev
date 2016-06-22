@@ -7722,14 +7722,15 @@ body.page-template-page-profile-php .plus-circle {
   border: 1px solid #d2d2d2;
 }
 .post-job li {
-  display: block;
-  background: #fff;
-  box-shadow: 2px 5px 43px rgba(188, 207, 219, 0.65);
-  padding: 20px 20px 10px 20px;
-  cursor: pointer;
+  /*display: block;*/
+  /*background: #fff;*/
+  /*box-shadow: 2px 5px 43px rgba(188, 207, 219, 0.65);*/
+  /*padding: 20px 20px 10px 20px;*/
+  /*cursor: pointer;*/
+  list-style: normal;
 }
 .post-job li:hover {
-  border-right: 6px solid #10a2ef;
+  /*border-right: 6px solid #10a2ef;*/
 }
 .post-job .group-attachment {
   position: relative;
