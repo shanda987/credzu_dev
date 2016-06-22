@@ -14,13 +14,10 @@ if( isset($_GET['id']) ){
 }
 elseif( isset($_GET['cid']) && isset($_GET['n'])){
     $id = $_GET['cid'];
-    $files  = get_post_meta($id, 'agreement_files');
+    $files  = get_post_meta($id, 'agreement_files', true);
     $f = '';
-    if( isset($files['0']) && !empty($files['0']) ){
-        foreach( $files['0'] as $file ){
-            var_dump($_GET['n']);
-            var_dump($file);
-            var_dump($file['name']);
+    if( !empty($files) ){
+        foreach( $files as $file ){
             if( !empty($_GET['n']) && $file['name'] == $_GET['n'] ){
                 $f = $file;
                 break;
