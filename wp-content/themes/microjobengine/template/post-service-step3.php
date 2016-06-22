@@ -30,7 +30,7 @@ else{
                 <div class="input-group-addon">
 <!--                    <i class="fa fa-adn"></i>-->
                 </div>
-                <input type="text" class="input-item input-full" name="post_title" placeholder="<?php _e('Job name', ET_DOMAIN); ?>" required>
+                <input type="text" class="input-item input-full" name="post_title" placeholder="<?php _e('Credit Counseling', ET_DOMAIN); ?>" required>
             </div>
         </div>
         <div class="form-group row clearfix">
@@ -39,7 +39,7 @@ else{
                     <div class="input-group-addon">
 <!--                        <i class="fa fa-calendar"></i>-->
                     </div>
-                    <input type="number" name="time_delivery" placeholder="<?php _e('Time delivery', ET_DOMAIN); ?>" class="input-item time-delivery" min="0" pattern="[-+]?[0-9]*[.,]?[0-9]+" required>
+                    <input type="number" name="time_delivery" placeholder="<?php _e('i.e., 10', ET_DOMAIN); ?>" class="input-item time-delivery" min="0" pattern="[-+]?[0-9]*[.,]?[0-9]+" required>
                     <span class="text-note"><?php _e('Day(s)', ET_DOMAIN); ?></span>
                 </div>
             </div>
@@ -49,7 +49,7 @@ else{
 <!--                        <i class="fa fa-pagelines"></i>-->
                     </div>
                     <?php ae_tax_dropdown( 'mjob_category' ,
-                        array(  'attr' => 'data-chosen-width="100%" data-chosen-disable-search=""  data-placeholder="'.__("Choose categories", ET_DOMAIN).'"',
+                        array(  'attr' => 'data-chosen-width="100%" data-chosen-disable-search=""  data-placeholder="'.__("i.e., I will challenge all inaccurate negative items within 35 days", ET_DOMAIN).'"',
                             'class' => 'chosen chosen-single tax-item required',
                             'hide_empty' => false,
                             'hierarchical' => true ,
@@ -65,7 +65,7 @@ else{
                 <div class="input-group-addon">
 <!--                    <i class="fa fa-money" aria-hidden="true"></i>-->
                 </div>
-                <input type="number" name="et_budget" placeholder="<?php _e('Price', ET_DOMAIN); ?>" class="input-item" min="0" pattern="[-+]?[0-9]*[.,]?[0-9]+" required>
+                <input type="number" name="et_budget" placeholder="<?php _e('i.e., 100', ET_DOMAIN); ?>" class="input-item" min="0" pattern="[-+]?[0-9]*[.,]?[0-9]+" required>
             </div>
         </div>
         <div class="form-group">
