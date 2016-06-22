@@ -20,6 +20,7 @@ elseif( isset($_GET['cid']) && isset($_GET['n'])){
     if( !empty($files) ){
         foreach( $files as $file ){
             var_dump($_GET['n']);
+            var_dump($file['name']);
             if( !empty($_GET['n']) && $file['name'] == $_GET['n'] ){
                 $f = $file;
                 break;
