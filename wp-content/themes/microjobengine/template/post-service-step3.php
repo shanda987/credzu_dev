@@ -57,6 +57,7 @@ else{
                             'show_option_all' => false
                         )
                     ) ;?>
+                    <label><?php _e('Select the relevant category for your service', ET_DOMAIN)?><i class="fa fa-question-circle" aria-hidden="true"></i></label>
                 </div>
             </div>
         </div>
