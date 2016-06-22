@@ -710,7 +710,9 @@
     opacity: 0.8;
 }
 .post-mjob-noti{
-    width: 70%;
     margin: 0 auto;
     margin-bottom: 35px;
+}
+.post-job{
+    width: 100%!important;
 }
