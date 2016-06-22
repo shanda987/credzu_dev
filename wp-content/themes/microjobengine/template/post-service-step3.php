@@ -126,24 +126,8 @@ else{
         </div>
         <div class="form-group post_listing_agreement_term_content">
             <?php
-            $args = array(
-                'post_type' => 'agreementPostType',
-                'meta_query' => array(
-                    array(
-                        'key' => 'credit_related_service',
-                        'value' => '1',
-                    )
-                )
-            );
-            $postslist = get_posts( $args );
-            var_dump($postslist);
-            $postl = '';
-            if( !empty($postslist) ):
-                $postl = $postslist['0'];
-                $postl = $postl->post_content;
-            endif;
-            echo $postl;
-
+            $p = get_post(160);
+            echo $p->post_content;
             ?>
         </div>
         <div class="form-group post_listing_agreement_term_field">
