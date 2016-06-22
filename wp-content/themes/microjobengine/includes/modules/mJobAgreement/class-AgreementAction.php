@@ -157,12 +157,18 @@ class agreementAction extends mJobPostAction{
                 if( !empty($email1) ){
                     array_push($emails, $email1);
                 }
+                $arr_save = array();
                 if( !empty($post->is_consumer_right_statement) && $post->is_consumer_right_statement == '1' ){
                     $file_name = 'Consumer_Right_Statement_'.time();
                     $file_path = AE_Pdf_Creator()->pdfGenarate($content, $file_name);
                     update_post_meta($profile->ID, 'consumer_right_statement', $file_path);
                     //$file_path = array($file_path);
+                    $arr_files = array(
+                        'name'=> __('Right Notice', ET_DOMAIN),
+                        'path'=>$file_path
+                        );
                     array_push($arr_path, $file_path );
+                    array_push($arr_save, $arr_files);
                    // do_action('mjob_consumer_rights_email', $emails, $file_path);
                 }
                 else{
@@ -172,16 +178,25 @@ class agreementAction extends mJobPostAction{
                         $file_name = 'Notice_Cancellation_'.time();
                         $file_path = AE_Pdf_Creator()->pdfGenarate($content, $file_name);
                         //update_post_meta($profile->ID, 'notice_cancellation', $file_path);
+                        $arr_files = array(
+                            'name'=> __('Cancellation Notice', ET_DOMAIN),
+                            'path'=>$file_path
+                        );
                         array_push($arr_path, $file_path );
+                        array_push($arr_save, $arr_files);
                     }
                     else{
                         $file_path = AE_Pdf_Creator()->pdfGenarate($content, $file_name);
                         //update_post_meta($profile->ID, 'agreement_document', $file_path);
+                        $arr_files = array(
+                            'name'=> __('Agreement', ET_DOMAIN),
+                            'path'=>$file_path
+                        );
                         array_push($arr_path, $file_path );
+                        array_push($arr_save, $arr_files);
                     }
                 }
             }
-            update_post_meta($profile->ID, 'agreement_document', $arr_path);
             do_action('mjob_agreement_email', $emails, $arr_path, $company_name);
             $my_posts = array(
                 'ID'=> $post1->ID,
@@ -191,7 +206,8 @@ class agreementAction extends mJobPostAction{
             wp_send_json(array(
                 'success'=> true,
                 'msg'=> __('Success!', ET_DOMAIN),
-                'data'=>$post1
+                'data'=>$post1,
+                'files'=>$arr_save
             ));
         }
     }
