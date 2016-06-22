@@ -24,8 +24,6 @@ elseif( isset($_GET['cid']) && isset($_GET['n'])){
             }
         }
     }
-    var_dump($f);
-    exit;
     if( !empty($f) ) {
         $file = $f['path'];
         $fp = fopen($file, 'rb');
