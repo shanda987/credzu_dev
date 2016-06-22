@@ -1091,7 +1091,11 @@
                                                     notice_type: 'success'
                                                 });
                                                 view.blockUi.unblock();
-                                                view.saveOrder();
+                                                if( typeof resp.files !== 'undefined' ){
+                                                    view.saveOrder(resp.files);
+                                                }else {
+                                                    view.saveOrder();
+                                                }
                                                 //window.location.href = resp.data.permalink;
                                             }
                                         })
@@ -1267,8 +1271,9 @@
                     }
                 }
             },
-            saveOrder: function(){
+            saveOrder: function(files){
                 var view = this;
+                view.orderModel.set('agreement_files', files);
                 view.orderModel.save( '', '', {
                     beforeSend: function () {
                     },
