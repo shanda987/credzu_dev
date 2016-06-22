@@ -127,7 +127,9 @@ else{
         <div class="form-group post_listing_agreement_term_content">
             <?php
             $p = get_post(160);
-            echo $p->post_content;
+            if( isset($p->post_content)) {
+                echo $p->post_content;
+            }
             ?>
         </div>
         <div class="form-group post_listing_agreement_term_field">
