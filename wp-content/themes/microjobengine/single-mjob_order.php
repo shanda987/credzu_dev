@@ -20,6 +20,8 @@ else{
 $user_role = ae_user_role($user_ID);
 $profile = mJobProfileAction()->getProfile($to_user);
 $profile_individual = mJobProfileAction()->getProfile($user_ID);
+echo '<pre>';
+var_dump($current);
 echo mJobProfileAction()->getProfileJson($profile_individual);
 $current->_wpnonce = de_create_nonce('ae-mjob_post-sync');
 echo '<script type="text/template" id="order_single_data" >'.json_encode($current).'</script>';
