@@ -20,8 +20,6 @@ else{
 $user_role = ae_user_role($user_ID);
 $profile = mJobProfileAction()->getProfile($to_user);
 $profile_individual = mJobProfileAction()->getProfile($user_ID);
-echo '<pre>';
-var_dump($current);
 echo mJobProfileAction()->getProfileJson($profile_individual);
 $current->_wpnonce = de_create_nonce('ae-mjob_post-sync');
 echo '<script type="text/template" id="order_single_data" >'.json_encode($current).'</script>';
@@ -338,6 +336,17 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                             <div role="tabpanel" class="tab-pane " id="document">
                                 <div id="incomingPaymentsForm">
                                     <ul class="requirement-list document-list">
+                                        <?php if( isset($current->agreement_files) && !empty($current->agreement_files)):
+                                            foreach($current->agreement_files as $item): ?>
+                                            <li class="col-lg-6 col-md-6 col-xs-12 item-requirement">
+                                                <a  href="<?php echo et_get_page_link('simple-download').'?id=' ?>" data-name="<?php echo $item['name'].' : '.date('d/m/Y', strtotime($current->post_date))?>" class="show-requirement-docs">
+                                                    <div class="doc-icon"> <i class="fa fa-file-pdf-o" aria-hidden="true"></i></div>
+                                                    <div class="doc-name"><?php echo $item['name'] ?></div>
+                                                    <div class="doc-time"><?php echo date('d/m/Y', strtotime($current->post_date))?></div>
+
+                                                </a></li>
+
+                                        <?php endforeach; endif; ?>
                                         <?php
                                         if( !empty($current->requirement_files)): ?>
 
