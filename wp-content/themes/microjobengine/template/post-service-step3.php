@@ -34,7 +34,7 @@ else{
             </div>
         </div>
         <div class="form-group row clearfix">
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 clearfix delivery-area">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clearfix ">
                 <div class="input-group">
                     <div class="input-group-addon">
 <!--                        <i class="fa fa-calendar"></i>-->
@@ -43,10 +43,12 @@ else{
                     <span class="text-note"><?php _e('Day(s)', ET_DOMAIN); ?></span>
                 </div>
             </div>
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 clearfix category-area">
+        </div>
+        <div class="form-group row clearfix">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clearfix ">
                 <div class="input-group">
                     <div class="input-group-addon">
-<!--                        <i class="fa fa-pagelines"></i>-->
+                        <!--                        <i class="fa fa-pagelines"></i>-->
                     </div>
                     <?php ae_tax_dropdown( 'mjob_category' ,
                         array(  'attr' => 'data-chosen-width="100%" data-chosen-disable-search=""  data-placeholder="'.__("i.e., I will challenge all inaccurate negative items within 35 days", ET_DOMAIN).'"',
