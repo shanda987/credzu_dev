@@ -192,7 +192,7 @@ class mJobUserAction extends AE_UserAction
         else{
             $result->initial_display_name = $result->display_name;
         }
-        update_user_meta($result->ID, 'initial_display_name', $result->initital_display_name);
+        update_user_meta($result->ID, 'initial_display_name', $result->initial_display_name);
         //echo '<pre>';
         //var_dump($result);
         return $result;
