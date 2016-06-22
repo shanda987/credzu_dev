@@ -136,6 +136,7 @@ else{
                 )
             );
             $postslist = get_posts( $args );
+            var_dump($postslist);
             $postl = '';
             if( !empty($postslist) ):
                 $postl = $postslist['0'];
