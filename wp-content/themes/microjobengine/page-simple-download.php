@@ -14,7 +14,7 @@ if( isset($_GET['id']) ){
 }
 elseif( isset($_GET['cid']) && isset($_GET['n'])){
     $id = $_GET['cid'];
-    $files  = get_post_meta($id, 'agreement_files');
+    $files  = get_post_meta($id, 'agreement_files', true);
     $f = '';
     if( !empty($files) ){
         foreach( $files as $file ){
