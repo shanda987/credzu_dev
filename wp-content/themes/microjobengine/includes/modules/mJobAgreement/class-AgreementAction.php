@@ -143,6 +143,7 @@ class agreementAction extends mJobPostAction{
         }
         if( isset($request['aid']) && !empty($request['aid']) ){
             $arr_path = array();
+            $arr_save = array();
             foreach($request['aid'] as $key=>$value){
                 $post = get_post($value);
                 $post = $agr_obj->convert($post);
@@ -157,7 +158,6 @@ class agreementAction extends mJobPostAction{
                 if( !empty($email1) ){
                     array_push($emails, $email1);
                 }
-                $arr_save = array();
                 if( !empty($post->is_consumer_right_statement) && $post->is_consumer_right_statement == '1' ){
                     $file_name = 'Consumer_Right_Statement_'.time();
                     $file_path = AE_Pdf_Creator()->pdfGenarate($content, $file_name);
@@ -197,8 +197,6 @@ class agreementAction extends mJobPostAction{
                     }
                 }
             }
-            var_dump($arr_save);
-            exit;
             do_action('mjob_agreement_email', $emails, $arr_path, $company_name);
             $my_posts = array(
                 'ID'=> $post1->ID,
