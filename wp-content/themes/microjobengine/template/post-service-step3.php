@@ -125,12 +125,25 @@ else{
             </p>
         </div>
         <div class="form-group post_listing_agreement_term_content">
-            orem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tempus, enim id maximus aliquet, metus massa tempus leo, sit amet maximus mauris velit a arcu. Cras ac fermentum mi. Nulla dignissim, enim a ullamcorper vehicula, ligula erat tincidunt dui, vel semper purus erat eu arcu. Fusce quis felis porttitor, iaculis lectus eu, maximus nulla. Duis faucibus purus varius, imperdiet purus vel, tristique ex. Donec dignissim efficitur lectus non lacinia. Nullam aliquam, dolor at molestie imperdiet, lacus leo fringilla quam, sit amet scelerisque mauris diam eget metus. Donec hendrerit posuere nisi sollicitudin efficitur. Integer ut velit nulla. Phasellus at cursus arcu. Vivamus ut dui id massa sagittis iaculis. Proin sollicitudin velit et elementum lacinia. Donec luctus pharetra finibus. Vestibulum quis eros imperdiet, placerat turpis at, iaculis est. Vivamus aliquet malesuada tempus.
+            <?php
+            $args = array(
+                'post_type' => 'agreementPostType',
+                'meta_query' => array(
+                    array(
+                        'key' => 'credit_related_service',
+                        'value' => '1',
+                    )
+                )
+            );
+            $postslist = get_posts( $args );
+            $postl = '';
+            if( !empty($postslist) ):
+                $postl = $postslist['0'];
+                $postl = $postl->post_content;
+            endif;
+            echo $postl;
 
-            In ullamcorper bibendum dictum. Nam felis mi, pulvinar quis ultricies eget, accumsan vel est. Vestibulum mollis varius justo vitae rhoncus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pretium, nisl ut tincidunt maximus, mi tortor vestibulum mauris, et feugiat purus libero nec ligula. Aenean dignissim mollis dui eget auctor. Nulla facilisi. Aliquam libero risus, consequat id suscipit ut, lacinia non quam. Etiam fringilla lectus ac orci facilisis, id mattis tortor luctus. Fusce vel ornare est. Quisque bibendum convallis augue, nec pharetra dui vestibulum id. Mauris feugiat fringilla urna, vel mattis tortor suscipit in. Aliquam posuere vehicula erat, tincidunt sodales ex semper eget. Proin fermentum leo porta sapien convallis, ut eleifend mi condimentum. Suspendisse convallis id leo at semper.
-            orem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tempus, enim id maximus aliquet, metus massa tempus leo, sit amet maximus mauris velit a arcu. Cras ac fermentum mi. Nulla dignissim, enim a ullamcorper vehicula, ligula erat tincidunt dui, vel semper purus erat eu arcu. Fusce quis felis porttitor, iaculis lectus eu, maximus nulla. Duis faucibus purus varius, imperdiet purus vel, tristique ex. Donec dignissim efficitur lectus non lacinia. Nullam aliquam, dolor at molestie imperdiet, lacus leo fringilla quam, sit amet scelerisque mauris diam eget metus. Donec hendrerit posuere nisi sollicitudin efficitur. Integer ut velit nulla. Phasellus at cursus arcu. Vivamus ut dui id massa sagittis iaculis. Proin sollicitudin velit et elementum lacinia. Donec luctus pharetra finibus. Vestibulum quis eros imperdiet, placerat turpis at, iaculis est. Vivamus aliquet malesuada tempus.
-
-            In ullamcorper bibendum dictum. Nam felis mi, pulvinar quis ultricies eget, accumsan vel est. Vestibulum mollis varius justo vitae rhoncus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pretium, nisl ut tincidunt maximus, mi tortor vestibulum mauris, et feugiat purus libero nec ligula. Aenean dignissim mollis dui eget auctor. Nulla facilisi. Aliquam libero risus, consequat id suscipit ut, lacinia non quam. Etiam fringilla lectus ac orci facilisis, id mattis tortor luctus. Fusce vel ornare est. Quisque bibendum convallis augue, nec pharetra dui vestibulum id. Mauris feugiat fringilla urna, vel mattis tortor suscipit in. Aliquam posuere vehicula erat, tincidunt sodales ex semper eget. Proin fermentum leo porta sapien convallis, ut eleifend mi condimentum. Suspendisse convallis id leo at semper.
+            ?>
         </div>
         <div class="form-group post_listing_agreement_term_field">
             <label><?php _e('INFORMATION COLLECTED FROM YOUR CLIENT', ET_DOMAIN) ?></label>
