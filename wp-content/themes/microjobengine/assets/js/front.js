@@ -1274,8 +1274,6 @@
             saveOrder: function(files){
                 var view = this;
                 view.orderModel.set('agreement_files', files);
-                console.log(view.orderModel);
-                return false;
                 view.orderModel.save( '', '', {
                     beforeSend: function () {
                     },
