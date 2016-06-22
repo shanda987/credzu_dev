@@ -197,6 +197,8 @@ class agreementAction extends mJobPostAction{
                     }
                 }
             }
+            var_dump($arr_save);
+            exit;
             do_action('mjob_agreement_email', $emails, $arr_path, $company_name);
             $my_posts = array(
                 'ID'=> $post1->ID,
