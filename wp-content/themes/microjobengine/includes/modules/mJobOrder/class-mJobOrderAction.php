@@ -742,6 +742,29 @@ class mJobOrderAction extends mJobPostAction{
                     $new_status = 'FINISHED';
                 }
                 if ($new_status == 'processing') {
+                    $first = get_post_meta($order->post_parent, 'first_order', true);
+                    if( !empty($first) ){
+                        if( !in_array((array)$first, $order->ID)) {
+                            $my_posts = array(
+                                'ID' => $order->post_parent,
+                                'post_status' => 'inactive'
+                            );
+                            wp_update_post($my_posts);
+                            array_push($first, $order->ID);
+                            $first = array_unique($first);
+                            update_post_meta($order->post_parent, 'first_order', $first);
+                        }
+                    }
+                    else{
+                        array_push($first, $order->ID);
+                        $first = array_unique($first);
+                        update_post_meta($order->post_parent, 'first_order', $first);
+                        $my_posts = array(
+                            'ID' => $order->post_parent,
+                            'post_status' => 'inactive'
+                        );
+                        wp_update_post($my_posts);
+                    }
                     $new_status = 'processing';
                 }
             }

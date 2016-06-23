@@ -198,11 +198,6 @@ class agreementAction extends mJobPostAction{
                 }
             }
             do_action('mjob_agreement_email', $emails, $arr_path, $company_name);
-            $my_posts = array(
-                'ID'=> $post1->ID,
-                'post_status'=> 'inactive'
-            );
-            wp_update_post( $my_posts );
             wp_send_json(array(
                 'success'=> true,
                 'msg'=> __('Success!', ET_DOMAIN),
