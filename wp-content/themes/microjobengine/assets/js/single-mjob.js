@@ -82,6 +82,18 @@
                 if( this.model.get('is_edit') ){
                     this.OpenEditMjob();
                 }
+                if( $('.post_listing_agreement_term_content').length > 0 ) {
+                    $(".post_listing_agreement_term_content").mCustomScrollbar({
+                        theme: "minimal",
+                        callbacks: {
+                            onInit: function () {
+                                $('#mCSB_1_container').css({
+                                    top: "-100%"
+                                })
+                            }
+                        }
+                    });
+                }
             },
             fetchExtraList: function(result, res, jqXHR){
                 var view = this;
