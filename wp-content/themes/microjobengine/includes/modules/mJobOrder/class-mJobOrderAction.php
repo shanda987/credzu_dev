@@ -741,8 +741,6 @@ class mJobOrderAction extends mJobPostAction{
                 }
                 if ($new_status == 'processing') {
                     $first = get_post_meta($order->post_parent, 'first_order', true);
-                    var_dump($first);
-                    exit;
                     if( !empty($first) ){
                         if( !in_array($order->ID, (array)$first)) {
                             $my_posts = array(
