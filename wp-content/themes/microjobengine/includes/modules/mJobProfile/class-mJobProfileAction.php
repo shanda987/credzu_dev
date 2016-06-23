@@ -659,6 +659,7 @@ class mJobProfileAction extends mJobPostAction
                     'post_status'=> 'draft'
                 );
                 $r = wp_update_post( $my_post );
+                do_action('change_user_role_email', $user_ID);
                 wp_send_json(array(
                     'success'=> true,
                     'msg'=> __('Change to company role success!', ET_DOMAIN)

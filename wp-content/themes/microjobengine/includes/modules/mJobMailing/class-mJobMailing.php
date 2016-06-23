@@ -597,4 +597,23 @@ class mJobMailing extends AE_Mailing
         $this->wp_mail($client_email, $subject, $msg, array('user_id' => $user_ID));
         $this->wp_mail($company_email, $subject1, $msg, array('user_id' => $user_ID));
     }
+    /**
+      * change user role
+      *
+      * @param void
+      * @return void
+      * @since 1.4
+      * @package MicrojobEngine
+      * @category CREDZU
+      * @author JACK BUI
+      */
+    public function email_changing_user_role($user_id){
+        global $user_ID;
+        $subject = __('A user converted his account from Client to Company', ET_DOMAIN);
+        $user_url = get_author_posts_url($user_id);
+        $display_name = get_user_meta($user_id, 'display_name', true);
+        $msg = ae_get_option('changing_user_role_mail_template', sprintf(__('<p>User <p href="%s"> %s<a/> converted his account from Client to Company role </p>', ET_DOMAIN ), $user_url, $display_name ));
+        $emails = ae_get_option('admin_emails', 'info@credzu.com');
+        $result1 = $this->wp_mail($emails, $subject, $msg, array('user_id' => $user_ID));
+    }
 }
