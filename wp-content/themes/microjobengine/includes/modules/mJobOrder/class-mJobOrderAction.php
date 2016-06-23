@@ -736,6 +736,8 @@ class mJobOrderAction extends mJobPostAction{
                 $new_status = 'pending';
             }
             else {
+                echo '2';
+                var_dump($new_status);
                 if ($new_status == 'verification') {
                     $new_status = 'virification';
                 }
