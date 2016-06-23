@@ -60,7 +60,7 @@
                 });
             },
             showQuestionModal: function(e){
-                e.prventDefault();
+                e.preventDefault();
                 if( typeof this.listingquestion === 'undefined' ){
                     this.listingquestion = new Views.listingQuestionModal();
                 }
