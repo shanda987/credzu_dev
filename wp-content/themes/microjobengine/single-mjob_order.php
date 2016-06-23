@@ -217,7 +217,7 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                     $t2 = time();
                                     $t = $t2 - $t1;
                                      if( $t >= 3 ):
-                                         if( $current->post_status == 'publish' ) {
+                                             if( $current->post_status == 'publish' ) {
                                              mJobOrderAction()->updateOrderStatus($current->ID, 'processing');
                                          }
                                          ?>
