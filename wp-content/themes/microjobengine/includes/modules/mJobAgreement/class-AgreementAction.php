@@ -250,6 +250,20 @@ class agreementAction extends mJobPostAction{
     }
 }
 new agreementAction();
+/**
+ * Filter all content of agreement
+ *
+ * @param void
+ * @return void
+ * @since 1.4
+ * @package MicrojobEngine
+ * @category CREDZU
+ * @author JACK BUI
+ */
+function filterContentAgreement($company, $client, $content){
+    $content = str_ireplace('[client-first-name]', $client->first_name, $content);
+    return $content;
+}
 add_shortcode('client-first-name', 'addFirstName');
 /**
  * add first name to shortcode

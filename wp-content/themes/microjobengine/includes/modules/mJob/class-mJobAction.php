@@ -158,6 +158,10 @@ class mJobAction extends mJobPostAction{
         if( !empty($arr_r)){
             $request['mjob_requirement'] = $arr_r;
         }
+        $a = get_post(160);
+        if( !empty($a) && !is_wp_error($a)){
+            $request['agreement_terms'] = $a->post_content;
+        }
         $response = $this->sync_post($request);
         if (isset($response['data']) && !empty($response['data'])) {
             $result = $response['data'];
