@@ -56,10 +56,13 @@
                 $post_link = "<a href='$post_link'>creating a listing</a>";
             }
 
-            _e("The bad news?<br>
-               Currently, you do not have any clients<br>
-               The good news?<br>
-               You can get clients by creating a listing once aproved.", ET_DOMAIN); ?>
+            _e("Currently, you do not have any clients<br>
+               Complete the following requirements:?<br>
+               Personal profile<br/>
+               Company Profile <br/>
+               Billing information<br/>
+               Agreement<br/>
+               Create Listing<br/>", ET_DOMAIN); ?>
         </p>
     <?php } ?>
 </div>
