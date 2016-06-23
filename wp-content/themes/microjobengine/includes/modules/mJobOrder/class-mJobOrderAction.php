@@ -58,7 +58,7 @@ class mJobOrderAction extends mJobPostAction{
             $request['post_author'] = $user_ID;
         }
         if( isset($request['method']) && $request['method'] == 'create'){
-            $request['post_status'] = 'pending';
+            $request['post_status'] = 'publish';
         }
         if( !isset($request['updateAuthor']) || $request['updateAuthor'] != 1) {
             $temp = array();
