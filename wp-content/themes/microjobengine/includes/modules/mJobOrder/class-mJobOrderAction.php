@@ -241,7 +241,9 @@ class mJobOrderAction extends mJobPostAction{
         $auth = $ae_user->convert($auth);
         $result->author_name = $auth->initial_display_name;
         $result->mjob_order_author_url = get_author_posts_url($result->post_author);
+        $mjob_obj = $ae_post_factory->get('mjob');
         $mjob = get_post($result->post_parent);
+        $mjob = $mjob_obj->convert($mjob);
         $author = get_userdata($mjob->post_author);
         $result->mjob_author = $mjob->post_author;
         $result->mjob_category = '';
