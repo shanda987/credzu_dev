@@ -245,7 +245,8 @@ class mJobOrderAction extends mJobPostAction{
         $author = get_userdata($mjob->post_author);
         $result->mjob_author = $mjob->post_author;
         $result->mjob_category = '';
-        var_dump($mjob->tax_input['mjob_category']);
+        echo '<pre>';
+        var_dump($mjob);
         if( isset($mjob->tax_input['mjob_category']['0']->name)){
             $result->mjob_category = $mjob->tax_input['mjob_category']['0']->name;
         }
