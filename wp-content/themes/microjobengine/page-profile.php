@@ -131,14 +131,6 @@ echo mJobProfileAction()->display_company_status($user_role, $profile->company_s
                             </div>
                         </div>
                             <?php if( $user_role == INDIVIDUAL): ?>
-                            <div class="form-group clearfix">
-                                <div class="input-group">
-                                    <div class="input-group-addon no-addon"><?php _e('Credit goals:', ET_DOMAIN); ?></div>
-                                    <input type="text" name="credit_goal" id="credit_goal" placeholder="<?php _e('Credit goals', ET_DOMAIN); ?>" value="<?php echo $credit_goal; ?>">
-                                </div>
-                            </div>
-                            <?php endif; ?>
-                            <?php if( $user_role == INDIVIDUAL): ?>
                             <div class="form-group profile-type-css clearfix">
                                 <p class="title"><?php _e('PROFILE TYPE', ET_DOMAIN); ?></p>
                             </div>
@@ -154,6 +146,12 @@ echo mJobProfileAction()->display_company_status($user_role, $profile->company_s
                                         <input type="radio" name="role" id="role_company" value="<?php echo COMPANY; ?>" <?php echo $check2; ?>>
                                         <span><?php _e(' Company(Provider)', ET_DOMAIN); ?></span>
                                     </label>
+                                </div>
+                            </div>
+                            <div class="form-group clearfix">
+                                <div class="input-group">
+                                    <div class="input-group-addon no-addon"><?php _e('Credit goals:', ET_DOMAIN); ?></div>
+                                    <input type="text" name="credit_goal" id="credit_goal" placeholder="<?php _e('Credit goals', ET_DOMAIN); ?>" value="<?php echo $credit_goal; ?>">
                                 </div>
                             </div>
                             <?php endif; ?>
