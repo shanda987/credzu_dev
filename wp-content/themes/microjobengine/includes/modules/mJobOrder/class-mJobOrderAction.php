@@ -244,6 +244,10 @@ class mJobOrderAction extends mJobPostAction{
         $mjob = get_post($result->post_parent);
         $author = get_userdata($mjob->post_author);
         $result->mjob_author = $mjob->post_author;
+        $result->mjob_category = '';
+        if( isset($mjob->tax_input['mjob_category']['0']->name)){
+            $result->mjob_category = $mjob->tax_input['mjob_category']['0']->name;
+        }
         $result->mjob = $mjob;
         $result->mjob_author_name = $author->initial_display_name;
         $result->mjob_author_url = get_author_posts_url($mjob->post_author);
