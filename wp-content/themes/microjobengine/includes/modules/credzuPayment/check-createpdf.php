@@ -371,7 +371,7 @@ function mjobCreateClientToCompanyPdf($profile, $data){
 		<tr>
 			<td style="font-size:9pt;width:430px;">
 				<br/><br/><br/><br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Kenneth Donald Wiggins For services<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $data->mjob_category; ?><br/>
 				Memo: Authorized by the U.C.C. (2006), the UETA (1999) and ESIGN Act (2000)
 			</td>
 			<td>
@@ -505,7 +505,7 @@ function mjobCreateClientToCompanyPdf($profile, $data){
 				<strong>Pay to the Order Of:</strong>
 			</td>
 			<td style="font-size:12pt;" width="60%">
-				Credit Repair Connection Trust
+				<?php echo $company->company_name; ?>
 			</td>
 			<td width="<?php set_width($fee);?>">
 				<div style="font-weight:bold;text-align:center;border: 1pt solid #000000;font-size: 17pt;">&nbsp;&nbsp;<?php echo $fee;?></div>
