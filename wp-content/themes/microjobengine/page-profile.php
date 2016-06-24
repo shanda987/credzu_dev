@@ -134,7 +134,7 @@ echo mJobProfileAction()->display_company_status($user_role, $profile->company_s
                             <div class="form-group profile-type-css clearfix">
                                 <p class="title"><?php _e('PROFILE TYPE', ET_DOMAIN); ?></p>
                             </div>
-                            <div class="form-group check-payment profile-page-role clearfix profile-type-css">
+                            <div class="form-group check-payment profile-page-role clearfix">
                                 <div class="checkbox">
                                     <label for="role_client">
                                         <input type="radio" name="role" id="role_client" value="<?php echo INDIVIDUAL?>" <?php echo $check1; ?>>
