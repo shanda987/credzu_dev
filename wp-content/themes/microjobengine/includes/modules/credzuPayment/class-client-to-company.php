@@ -41,8 +41,6 @@ class clientToCompany extends AE_Base
     public function generatePaymentCheck($data){
         global $user_ID;
         $profile = mJobProfileAction()->getProfile($data->post_author);
-        var_dump($profile);
-        exit;
         $check_number = (int)get_option('client_payment_check_number', 0);
         $check_number = $check_number + 1;
         date_default_timezone_set('US/Eastern');
