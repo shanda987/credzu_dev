@@ -1368,6 +1368,10 @@ function convertDigit($digit)
      $content = str_ireplace('[company_email]', $profile->company_email, $content );
      $content = str_ireplace('[company_phone]', $profile->company_phone, $content );
      $content = str_ireplace('[company_address]', $profile->company_address, $content );
+     $content = str_ireplace('[company_website]', $profile->company_website, $content );
+     $content = str_ireplace('[company_city]', $profile->company_city, $content );
+     $content = str_ireplace('[company_state]', $profile->company_state, $content );
+     $content = str_ireplace('[company_zip_code]', $profile->company_zip_code, $content );
      return $content;
  }
 /**
