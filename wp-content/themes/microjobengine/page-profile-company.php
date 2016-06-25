@@ -26,6 +26,7 @@ $company_amount_of_employees = !empty($profile->company_amount_of_employees) ? $
 $company_description = !empty($profile->company_description) ? $profile->company_description : '';
 $company_welcome_message = !empty($profile->company_welcome_message) ? $profile->company_welcome_message : '';
 $company_status_message = !empty($profile->company_status_message) ? $profile->company_status_message : '';
+$company_ein = !empty($profile->company_ein) ? $profile->company_ein : '';
 get_header();
 
 // If Company, this outputs the Company Status bar (Doesn't show when approved)
@@ -116,10 +117,14 @@ echo mJobProfileAction()->display_company_status($user_role, $profile->company_s
                                 <div class="input-group">
                                     <div class="input-group-addon no-addon"><?php _e('Company Description:', ET_DOMAIN); ?></div>
                                     <textarea name="company_description" id="company_description" maxlength="500" placeholder="<?php _e('Company Description', ET_DOMAIN); ?>"><?php echo $company_description; ?></textarea>
+                                    <label><?php _e('Tell potential clients about your company.', ET_DOMAIN); ?></label>
                                 </div>
                             </div>
                             <div class="form-group clearfix">
-                                <p><?php _e('Tell potential clients about your company.', ET_DOMAIN); ?></p>
+                                <div class="input-group">
+                                    <div class="input-group-addon no-addon"><?php _e('Company EIN / FTIN:', ET_DOMAIN); ?></div>
+                                    <input type="text" name="company_ein" id="company_ein" placeholder="<?php _e('Company EIN / FTIN', ET_DOMAIN); ?>" value="<?php echo $company_ein; ?>">
+                                </div>
                             </div>
                             <div class="form-group clearfix float-right change-pass-button-method">
                                 <button class="btn-submit"><?php _e('Update', ET_DOMAIN); ?></button>
