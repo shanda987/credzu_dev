@@ -46,11 +46,9 @@ $default = array();
 
     <?php } else { ?>
         <div class="dashboard-notification">
-            <p class="cl-items"><?php _e('The bad news?', ET_DOMAIN); ?></p>
-            <p class="cl-items"><?php _e('... you not have hired a company?', ET_DOMAIN); ?></p>
-            <p class="cl-items"><?php _e('The good news?', ET_DOMAIN); ?></p>
             <?php $archive_link =  get_post_type_archive_link('mjob_post'); ?>
-            <p class="cl-items"><?php echo sprintf(__('... you can <a href="%s">click here</a> to view companies and service', ET_DOMAIN),  $archive_link); ?></p>
+            <p class="cl-items"><?php echo sprintf(__('You can hire a company by clicking <a href="%s">here.</a>', ET_DOMAIN), $archive_link); ?></p>
+            <p class="cl-items"><?php echo sprintf(__('Are you a company? Convert your account by clicking <a href="%s">here.</a>?', ET_DOMAIN), et_get_page_link('profile')); ?></p>
         </div>
     <?php } ?>
 
