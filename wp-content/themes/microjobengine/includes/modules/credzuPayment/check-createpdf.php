@@ -58,7 +58,7 @@ function set_width($fee=""){
 	<tr>
 		<td></td>
 		<td></td>
-		<td colspan="2" style="text-align:right;">Date: <u><?php echo date("F jS h:i A Y",strtotime(time()));?> (EST)</u></td>
+		<td colspan="2" style="text-align:right;">Date: <u><?php echo date("F jS h:i A Y",time());?> (EST)</u></td>
 	</tr>
 	<tr><td></td></tr>
 </table>
@@ -490,7 +490,7 @@ function mjobCreateClientToCompanyPdf($profile, $data){
 		<tr>
 			<td></td>
 			<td></td>
-			<td colspan="2" style="text-align:right;"><?php echo date("F jS h:i A Y",strtotime(time()));?> (EST)</td>
+			<td colspan="2" style="text-align:right;"><?php echo date("F jS h:i A Y",time());?> (EST)</td>
 		</tr>
 	</table>
 	<table width="712px">
