@@ -134,7 +134,7 @@ function set_width($fee=""){
 <table style="font-size:9pt;">
 	<tr>
 		<td width="26%">
-			Memo: For services
+			Memo: Web listing
 		</td>
 		<td width="40%">
 			<i>Pay to the Order Of: </i>Credzu, LLC
@@ -255,7 +255,7 @@ function set_width($fee=""){
 	<tr>
 		<td style="width:430px;">
 			<br/><br/>
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For services<br/>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Web listing<br/>
 			Memo: Authorized by the U.C.C. (2006), the UETA (1999) and ESIGN Act (2000)
 		</td>
 		<td style="border: 1pt solid #000000;font-size:14pt;width:180px;">
