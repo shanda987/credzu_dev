@@ -49,6 +49,7 @@ window.fbAsyncInit = function() {
 
 (function($){
 	$('.facebook_auth_btn').click(function(event){
+		console.log('vsdfsfdsfds');
 		event.preventDefault();
 		if ( FB ){
 			FB.login(function(response) {
