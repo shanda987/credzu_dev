@@ -48,7 +48,7 @@ $default = array();
         <div class="dashboard-notification">
             <?php $archive_link =  get_post_type_archive_link('mjob_post'); ?>
             <p class="cl-items"><?php echo sprintf(__('You can hire a company by clicking <a href="%s">here.</a>', ET_DOMAIN), $archive_link); ?></p>
-            <p class="cl-items"><?php echo sprintf(__('Are you a company? Convert your account by clicking <a href="%s">here.</a>?', ET_DOMAIN), et_get_page_link('profile')); ?></p>
+            <p class="cl-items"><?php echo sprintf(__('Are you a company? Convert your account by clicking <a href="%s">here.</a>', ET_DOMAIN), et_get_page_link('profile')); ?></p>
         </div>
     <?php } ?>
 
