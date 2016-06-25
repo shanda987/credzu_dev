@@ -1330,7 +1330,7 @@ function convertDigit($digit)
   * @category CREDZU
   * @author JACK BUI
   */
- function formatCheckNumber($number, $w = 9){
+ function formatCheckNumber($number, $w = 6){
      $len = strlen($number);
      $dis = (int)($w - $len);
      $text = '';
