@@ -47,8 +47,8 @@ window.fbAsyncInit = function() {
 	fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
 
-(function($){
-	function loginFb(event){
+(function($, Views){
+	Views.loginFb = function (event){
 		event.preventDefault();
 		if ( FB ){
 			FB.login(function(response) {
@@ -138,6 +138,6 @@ window.fbAsyncInit = function() {
 		}
 	}
 	$('.facebook_auth_btn').click(function(event){
-		loginFb(event);
+		Views.loginFb(event);
 	});
-})(jQuery);
+})(jQuery, window.AE.Views);

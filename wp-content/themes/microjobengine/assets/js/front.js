@@ -900,7 +900,7 @@
                 this.openModal();
             },
             fbLogin: function(event){
-                loginFb(event);
+                Views.loginFb(event);
             }
         });
         Views.ProcessHiring = Backbone.View.extend({
