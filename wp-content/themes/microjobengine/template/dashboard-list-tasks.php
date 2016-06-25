@@ -57,7 +57,7 @@
             }
 
             _e("Currently, you do not have any clients<br>
-               Complete the following requirements:?<br>
+               Complete the following requirements:<br>
                Personal profile<br/>
                Company Profile <br/>
                Billing information<br/>
