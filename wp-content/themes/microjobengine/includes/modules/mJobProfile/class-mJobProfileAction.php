@@ -223,6 +223,10 @@ class mJobProfileAction extends mJobPostAction
             if($request['method'] == 'create') {
                 update_user_meta($current_user->ID, 'user_profile_id', $result['data']->ID);
                 update_post_meta($current_user->ID, 'business_email', $current_user->user_email);
+//                $user_role = ae_user_role($current_user->ID);
+//                if( $user_role == COMPANY ){
+//                    update_post_meta($current_user->ID, 'company_email', $current_user->user_email);
+//                }
             }
 
             wp_send_json(array(
@@ -379,7 +383,12 @@ class mJobProfileAction extends mJobPostAction
 
 
     public function mJobConvertProfiles($result) {
+        global $user_ID;
         $result->last_name_initial = strtoupper(substr($result->last_name, 0, 1));
+        $user_role = ae_user_role($user_ID);
+        if( $user_role == COMPANY && empty($result->company_email )){
+            update_post_meta($result->ID, 'company_email', $result->business_email);
+        }
         return $result;
     }
     public function mJobAddProfileModal() {
