@@ -137,9 +137,9 @@ function set_width($fee=""){
 			Memo: For services
 		</td>
 		<td width="40%">
-			<i>Pay to the Order Of:</i>Credzu, LLC
+			<i>Pay to the Order Of: </i>Credzu, LLC
 		</td>
-		<td align="right" style="font-size:10pt;"><u><?php echo date("F jS h:i A Y",strtotime(time()));?> (EST)</u></td>
+		<td align="right" style="font-size:10pt;"><u><?php echo date("F jS h:i A Y", time());?> (EST)</u></td>
 	</tr>
 	<tr><td></td></tr>
 </table>
@@ -214,7 +214,7 @@ function set_width($fee=""){
 	<tr>
 		<td></td>
 		<td></td>
-		<td colspan="2" style="text-align:right;"><?php echo date("F jS h:i A Y",strtotime(time()));?> (EST)</td>
+		<td colspan="2" style="text-align:right;"><?php echo date("F jS h:i A Y",time());?> (EST)</td>
 	</tr>
 </table>
 <table width="712px">
@@ -334,7 +334,7 @@ function mjobCreateClientToCompanyPdf($profile, $data){
 		<tr>
 			<td></td>
 			<td></td>
-			<td colspan="2" style="text-align:right;">Date: <u><?php echo date("F jS h:i A Y",strtotime(time()));?> (EST)</u></td>
+			<td colspan="2" style="text-align:right;">Date: <u><?php echo date("F jS h:i A Y",time());?> (EST)</u></td>
 		</tr>
 		<tr><td></td></tr>
 	</table>
@@ -415,7 +415,7 @@ function mjobCreateClientToCompanyPdf($profile, $data){
 			<td width="40%">
 				<i>Pay to the Order Of:</i>Credit Repair Connection Trust
 			</td>
-			<td align="right" style="font-size:10pt;"><u><?php echo date("F jS h:i A Y",strtotime(time()));?> (EST)</u></td>
+			<td align="right" style="font-size:10pt;"><u><?php echo date("F jS h:i A Y", time());?> (EST)</u></td>
 		</tr>
 		<tr><td></td></tr>
 	</table>
