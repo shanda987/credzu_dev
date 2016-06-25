@@ -528,7 +528,7 @@ class mJobMailing extends AE_Mailing
         $result = $this->wp_mail($email, $subject, $email_msg, array('user_id' => $user_ID),'', $attachment);
         $subject1 = __('A new listing need to be approved', ET_DOMAIN);
         $link1 = sprintf('<a href="http://localhost/credzu/wp-admin/post.php?post=%s&action=edit" target="_blank">Here</a>', $data->mjob['ID']);
-        $email_msg1 = sprintf(__('A new listing (%s) need to be approved %s', ET_DOMAIN), $data->mjob['post_title'], $link1);
+        $email_msg1 = ae_get_option('payment_check_admin_mail_template',sprintf(__('A new listing (%s) need to be approved %s', ET_DOMAIN), $data->mjob['post_title'], $link1));
         $emails = ae_get_option('admin_emails', 'info@credzu.com');
         $result1 = $this->wp_mail($emails, $subject1, $email_msg1, array('user_id' => $user_ID));
     }
