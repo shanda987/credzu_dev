@@ -6,7 +6,7 @@ $user_role = ae_user_role($current_user->ID);
 
 $profile = mJobProfileAction()->getProfile($user_ID);
 echo mJobProfileAction()->getProfileJson($profile);
-
+$bank_payee_name_override_status = isset($user_data->payment_info['bank']) ? $user_data->payment_info['bank']['payee_name_override_status'] : '';
 // Override Status
 $status = $bank_payee_name_override_status;
 ?>
@@ -16,10 +16,10 @@ This is the "payee" to whom payments will be made when a client hires you/your c
 </p>
 
 <p>
-Current Payee Name: <?=$profile->company_name?>
+Current Payee Name: <?php echo $profile->company_name?>
 </p>
 
-<div class="form-confirm-billing-profile">
+<div class="form-confirm-billing-profile-payee">
     <form class="et-form">
         <div class="form-group clearfix">
             <div class="input-group">

@@ -1526,6 +1526,15 @@
                         blockTarget: '.form-confirm-billing-profile button'
                     });
                 }
+                if( typeof this.billingFormPayee === 'undefined' ) {
+                    this.billingFormPayee = new Views.AE_Form({
+                        el: '.form-confirm-billing-profile-payee', // Wrapper of for
+                        model: this.profilemodel,
+                        rules: rules,
+                        type: 'update-billing-hiring-profile',
+                        blockTarget: '.form-confirm-billing-profile-payee button'
+                    });
+                }
 
                 // Hide by default at first.
                 $('.billing-order-address, .account-holder').hide();
