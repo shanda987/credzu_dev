@@ -2248,7 +2248,7 @@ class ET_Admin extends AE_Base
                 ) ,
                 array(
                     'args' => array(
-                        'title' => __("Chaning user roles email", ET_DOMAIN) ,
+                        'title' => __("Changing user roles email", ET_DOMAIN) ,
                         'id' => 'changing_roles_mails',
                         'class' => 'payment-gateway',
                         'name' => '',
