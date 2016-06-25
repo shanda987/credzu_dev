@@ -13,7 +13,7 @@ echo mJobProfileAction()->getProfileJson($profile);
         <div class="form-group clearfix">
             <div class="input-group">
                 <div class="input-group-addon no-addon"><?php _e('Routing number:', ET_DOMAIN); ?></div>
-                <input type="text" name="routing_number" id="routing_number" placeholder="<?php _e('*********', ET_DOMAIN); ?>" value="<?php echo $profile->routing_number; ?>">
+                <input type="text" name="routing_number" id="routing_number" minlength="9" placeholder="<?php _e('*********', ET_DOMAIN); ?>" value="<?php echo $profile->routing_number; ?>">
             </div>
         </div>
         <div class="form-group clearfix">
