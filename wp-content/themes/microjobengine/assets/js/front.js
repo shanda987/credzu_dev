@@ -889,6 +889,7 @@
         Views.ModalHireSignUp = Views.Modal_Box.extend({
             el: '#hire_signup_modal',
             events: {
+                'click .facebook_auth_btn': 'fbLogin'
             },
             initialize: function () {
                 AE.Views.Modal_Box.prototype.initialize.call();
@@ -897,6 +898,9 @@
                 var view = this;
                 this.model = model;
                 this.openModal();
+            },
+            fbLogin: function(event){
+                loginFb(event);
             }
         });
         Views.ProcessHiring = Backbone.View.extend({
