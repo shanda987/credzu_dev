@@ -1455,3 +1455,14 @@ function mJobAddOrderMessage($order_id, $from_user, $to_user, $action, $log = ""
     }
     return $post_id;
 }
+function first_name_shortcode( $atts ) {
+    global $user_ID;
+    if( $user_ID ) {
+        $profile = mJobProfileAction()->getProfile($user_ID);
+        return ucfirst($profile->first_name);
+    }
+    else{
+        return '[first-name]';
+    }
+}
+add_shortcode( 'first-name', 'first_name_shortcode' );

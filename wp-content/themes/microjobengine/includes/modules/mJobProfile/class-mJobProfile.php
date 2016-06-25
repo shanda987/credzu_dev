@@ -24,8 +24,8 @@ class mJobProfile extends mJobPost{
             'payment_info',
             'billing_full_name',
             'billing_full_address',
-            'billing_country',
-            'billing_vat',
+//            'billing_country',
+//            'billing_vat',
             'status',
             'time_delivery',
             'profile_description',
@@ -76,7 +76,12 @@ class mJobProfile extends mJobPost{
             'consumer_right_statement',
             'notice_cancellation',
             'agreement_document',
-            'company_payee_name_override'
+            'company_payee_name_override',
+            'personal_profile_completed',
+            'company_profile_completed',
+            'billing_completed',
+            'agreement_completed',
+            'create_listing_completed'
 
         );
         $this->post_type_singular = 'Profile';
