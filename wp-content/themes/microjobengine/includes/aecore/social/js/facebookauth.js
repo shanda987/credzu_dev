@@ -48,8 +48,8 @@ window.fbAsyncInit = function() {
 }(document, 'script', 'facebook-jssdk'));
 
 (function($){
+	console.log($('.facebook_auth_btn').length);
 	$('.facebook_auth_btn').click(function(event){
-		console.log('vsdfsfdsfds');
 		event.preventDefault();
 		if ( FB ){
 			FB.login(function(response) {
