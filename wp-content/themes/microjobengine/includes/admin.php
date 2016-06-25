@@ -2697,6 +2697,26 @@ class ET_Admin extends AE_Base
                 ),
                 array(
                     'args' => array(
+                        'title' => __('Payment check generated email from client to company(Send to client) ', ET_DOMAIN),
+                        'id' => 'order-status-changing-contents',
+                        'class' => 'payment-gateway',
+                        'name' => '',
+                        'desc' => __("Send to client an email when client hires a company", ET_DOMAIN),
+                        'toggle' => true
+                    ),
+                    'fields' => array(
+                        array(
+                            'id' => 'client_new_payment_check_mail_template',
+                            'type' => 'editor',
+                            'title' => '',
+                            'class' => '',
+                            'name' => 'client_new_payment_check_mail_template',
+                            'reset' => 1
+                        )
+                    )
+                ),
+                array(
+                    'args' => array(
                         'title' => __("Dispute Decision", ET_DOMAIN) ,
                         'id' => 'mail-description-group',
                         'class' => '',

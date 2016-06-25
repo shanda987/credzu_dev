@@ -548,11 +548,10 @@ class mJobMailing extends AE_Mailing
         $email_msg = ae_get_option('client_payment_check_mail_template', __('There is a new payment check for you. Please see the file attached below!', ET_DOAMIN));
         $attachment = $path;
         $result = $this->wp_mail($email, $subject, $email_msg, array('user_id' => $user_ID),'', $attachment);
-//        $subject1 = __('A new listing need to be approved', ET_DOMAIN);
-//        $link1 = sprintf('<a href="http://localhost/credzu/wp-admin/post.php?post=%s&action=edit" target="_blank">Here</a>', $data->mjob['ID']);
-//        $email_msg1 = sprintf(__('A new listing (%s) need to be approved %s', ET_DOMAIN), $data->mjob['post_title'], $link1);
-//        $emails = ae_get_option('admin_emails', 'info@credzu.com');
-//        $result1 = $this->wp_mail($emails, $subject1, $email_msg1, array('user_id' => $user_ID));
+        $client_email = mJobProfileAction()->getProfile($data->post_author);
+        $subject1 = __('A new payment is created', ET_DOMAIN);
+        $email_msg1 = ae_get_option('client_new_payment_check_mail_template',__('You paid for hiring a company on Credzu', ET_DOMAIN));
+        $result1 = $this->wp_mail($client_email, $subject1, $email_msg1, array('user_id' => $user_ID));
     }
     /**
       * Email when company sign agreement
