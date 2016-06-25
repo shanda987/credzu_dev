@@ -7741,7 +7741,7 @@ body.page-template-page-profile-php .plus-circle {
   vertical-align: inherit;
 }
 .link-account-mobile{
-  display:none;
+  display:none!important;
 }
 @media (max-width: 767px) {
   .post-job .btn-save {
