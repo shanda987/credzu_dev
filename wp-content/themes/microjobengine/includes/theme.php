@@ -1051,9 +1051,9 @@ class ET_Microjobengine extends AE_Base
             get_template_part('template-js/modal-work', 'complete');
             get_template_part('template-js/modal', 'reorder');
         }
-        if( is_singular('mjob_post')){
+        //if( is_singular('mjob_post')){
             get_template_part('template-js/modal-signup', 'hire');
-        }
+        //}
         if( is_page_template('page-profile.php')){
             get_template_part('template-js/modal-change', 'role');
         }

@@ -621,7 +621,8 @@
             el: 'body',
             model: [],
             events: {
-                'click .btn-active-action': 'activeAccount'
+                'click .btn-active-action': 'activeAccount',
+                'click .hireSignup': 'showHireSignUpModal'
             },
             initialize: function (options) {
                 this.blockUi = new Views.BlockUi();
@@ -690,6 +691,13 @@
                 if( $('.m-signature-pad').length > 0 ) {
                     new Views.signaturePad({model: this.profilemodel, key: 'company_signature'});
                 }
+            },
+            showHireSignUpModal: function(e){
+                e.preventDefault();
+                if( typeof this.modalhiresignup  === 'undefined' ){
+                    this.modalhiresignup = new Views.ModalHireSignUp();
+                }
+                this.modalhiresignup.onOpen(this.model);
             },
             afterDelete: function(result, res, xhr){
                 AE.pubsub.trigger('ae:notification', {
@@ -874,6 +882,22 @@
         //            }
         //        });
         //    }
+        });
+        /*
+         * Modal sign up on hire page
+         */
+        Views.ModalHireSignUp = Views.Modal_Box.extend({
+            el: '#hire_signup_modal',
+            events: {
+            },
+            initialize: function () {
+                AE.Views.Modal_Box.prototype.initialize.call();
+            },
+            onOpen: function (model) {
+                var view = this;
+                this.model = model;
+                this.openModal();
+            }
         });
         Views.ProcessHiring = Backbone.View.extend({
             el: '.page-template-page-process-hiring',

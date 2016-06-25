@@ -7744,6 +7744,28 @@ body.page-template-page-profile-php .plus-circle {
   .post-job .btn-save {
     padding: 13px 60px;
   }
+  .login-list-icon{
+    font-size: 16px;
+  }
+  #hire_signup_modal .login-list-icon li{
+    margin-right: 43px!important;
+  }
+  #hire_signup_modal .login-list-icon li:last-child {
+    margin-right: 0!important;
+  }
+  .link-account-desktop{
+    display:none!important;
+  }
+  .link-account-mobile{
+    display: block!important;
+    margin-right: 10px!important;
+  }
+  .no-items{
+    font-size: 14px!important;
+  }
+}
+.link-account-mobile{
+  display:none;
 }
 .post-job .btn-discard {
   color: #898a90;
