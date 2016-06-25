@@ -7754,7 +7754,7 @@ body.page-template-page-profile-php .plus-circle {
     margin-right: 0!important;
   }
   .link-account-desktop{
-    display:none!important;
+    /*display:none!important;*/
   }
   .link-account-mobile{
     display: block!important;
