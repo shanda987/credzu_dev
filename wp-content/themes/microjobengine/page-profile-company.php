@@ -127,6 +127,7 @@ echo mJobProfileAction()->display_company_status($user_role, $profile->company_s
                                 </div>
                             </div>
                             <div class="form-group clearfix float-right change-pass-button-method">
+                                <input type="hidden" value="1" name="company_profile_completed"/>
                                 <button class="btn-submit"><?php _e('Update', ET_DOMAIN); ?></button>
                             </div>
 

@@ -1096,6 +1096,7 @@
                             if( view.$el.find('#mjob_id').length > 0){
                                 view.mjob_id = view.$el.find('#mjob_id').val();
                             }
+                            view.profilemodel.set('agreement_completed' , 1);
                             view.profilemodel.save('', '', {
                                 beforeSend: function () {
                                     view.blockUi.block(view.saveButton);

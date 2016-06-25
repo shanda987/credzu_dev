@@ -167,6 +167,11 @@ class mJobAction extends mJobPostAction{
             $result = $response['data'];
             // Email notification to admin
             if($request['method'] == 'create') {
+                global $user_ID;
+                $profile = mJobProfileAction()->getProfile($user_ID);
+                if( isset( $profile->ID) ){
+                    update_post_meta($profile->ID, 'create_listing_completed', 1);
+                }
                 unset($result->skill);
                 if(($result->post_status == 'pending' || $result->post_status == 'publish') || $result->post_status == 'draft') {
                     $this->mail->mJobNewPost($result->ID);
