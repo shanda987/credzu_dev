@@ -89,12 +89,12 @@ echo mJobProfileAction()->display_company_status($user_role, $profile->company_s
                                 <input type="text" name="company_phone" id="company_phone" placeholder="<?php _e('Company Phone', ET_DOMAIN); ?>" value="<?php echo $company_phone; ?>">
                             </div>
                         </div>
-                        <div class="form-group clearfix">
-                            <div class="input-group">
-                                <div class="input-group-addon no-addon"><?php _e('Company Email:', ET_DOMAIN); ?></div>
-                                <input type="email" name="company_email" id="company_email" placeholder="<?php _e('Company Email', ET_DOMAIN); ?>" value="<?php echo $company_email; ?>" >
-                            </div>
-                        </div>
+<!--                        <div class="form-group clearfix">-->
+<!--                            <div class="input-group">-->
+<!--                                <div class="input-group-addon no-addon">--><?php //_e('Company Email:', ET_DOMAIN); ?><!--</div>-->
+<!--                                <input type="email" name="company_email" id="company_email" placeholder="--><?php //_e('Company Email', ET_DOMAIN); ?><!--" value="--><?php //echo $company_email; ?><!--" >-->
+<!--                            </div>-->
+<!--                        </div>-->
                         <div class="form-group clearfix">
                             <div class="input-group">
                                 <div class="input-group-addon no-addon"><?php _e('Company Website:', ET_DOMAIN); ?></div>
