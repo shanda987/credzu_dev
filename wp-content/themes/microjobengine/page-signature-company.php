@@ -40,8 +40,8 @@ get_header();
 ?>
     <div class="container mjob-profile-page withdraw">
         <div class="title-top-pages">
-            <p class="block-title"><?php _e('Agreement signing', ET_DOMAIN); ?></p>
-            <p><?php _e('Your agreement siging', ET_DOMAIN ); ?></p>
+            <p class="block-title"><?php _e('Agreement in both the top title and the menu link.', ET_DOMAIN); ?></p>
+            <p><?php _e('Please sign your agreement below. Once signed, a copy will be emailed to you and a link for download will be made available.', ET_DOMAIN ); ?></p>
         </div>
         <div class="row profile">
             <div class="col-lg-3 col-md-3 col-sm-12 col-sx-12 block-items-detail profile">
