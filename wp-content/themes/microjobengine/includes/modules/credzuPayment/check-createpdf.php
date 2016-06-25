@@ -69,7 +69,7 @@ function set_width($fee=""){
 			<strong>Pay to the Order Of:</strong>
 		</td>
 		<td style="font-size:12pt;" width="60%">
-			Credit Repair Connection Trust
+			Credzu, LLC
 		</td>
 		<td width="<?php set_width($fee);?>">
 			<div style="font-weight:bold;text-align:center;border: 1pt solid #000000;font-size: 17pt;">&nbsp;&nbsp;<?php echo $fee;?></div>
@@ -137,7 +137,7 @@ function set_width($fee=""){
 			Memo: For services
 		</td>
 		<td width="40%">
-			<i>Pay to the Order Of:</i>Credit Repair Connection Trust
+			<i>Pay to the Order Of:</i>Credzu, LLC
 		</td>
 		<td align="right" style="font-size:10pt;"><u><?php echo date("F jS h:i A Y",strtotime(time()));?> (EST)</u></td>
 	</tr>
@@ -229,7 +229,7 @@ function set_width($fee=""){
 			<strong>Pay to the Order Of:</strong>
 		</td>
 		<td style="font-size:12pt;" width="60%">
-			Credit Repair Connection Trust
+			Credzu, LLC
 		</td>
 		<td width="<?php set_width($fee);?>">
 			<div style="font-weight:bold;text-align:center;border: 1pt solid #000000;font-size: 17pt;">&nbsp;&nbsp;<?php echo $fee;?></div>
