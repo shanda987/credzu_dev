@@ -1364,7 +1364,7 @@ function convertDigit($digit)
      $content = str_ireplace('[company_signature]', $img, $content );
      $content = str_ireplace('[company_name]', $profile->company_name, $content );
      $content = str_ireplace('[first_name]', $profile->first_name, $content );
-     $content = str_ireplace('[last_name]', $profile->last_name_full, $content );
+     $content = str_ireplace('[last_name]', $profile->last_name, $content );
      $content = str_ireplace('[company_email]', $profile->company_email, $content );
      $content = str_ireplace('[company_phone]', $profile->company_phone, $content );
      $content = str_ireplace('[company_address]', $profile->company_address, $content );
