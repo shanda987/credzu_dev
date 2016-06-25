@@ -21,15 +21,6 @@ class ET_Admin extends AE_Base
         $this->add_action('after_switch_theme', 'update_first_time');
 
         //declare ajax classes
-        /**
-         * @todo Khúc này không dùng project nữa nên xem lại.
-         */
-        // new AE_CategoryAjax(new AE_Taxonomy_Meta(array(
-        //     'taxonomy' => 'project_category'
-        // )));
-        // new AE_CategoryAjax(new AE_Taxonomy_Meta(array(
-        //     'taxonomy' => 'project_type'
-        // )));
 
         $this->add_ajax('ae-reset-option', 'reset_option');
 
@@ -2362,6 +2353,46 @@ class ET_Admin extends AE_Base
                 ),
                 array(
                     'args' => array(
+                        'title' => __('Payment from company to Credzu (send to Credzu)', ET_DOMAIN),
+                        'id' => 'companny-credzu-mjob-mail-template',
+                        'class' => 'payment-gateway',
+                        'name' => '',
+                        'desc' => __("Send to a Credzu when company pay for posting a listing.", ET_DOMAIN),
+                        'toggle' => true
+                    ),
+                    'fields' => array(
+                        array(
+                            'id' => 'payment_check_admin_mail_template',
+                            'type' => 'editor',
+                            'title' => __("Payment from company to Credzu mail here", ET_DOMAIN) ,
+                            'class' => '',
+                            'name' => 'payment_check_admin_mail_template',
+                            'reset' => 1
+                        )
+                    )
+                ),
+                array(
+                    'args' => array(
+                        'title' => __('Payment from company to Credzu (send to Company)', ET_DOMAIN),
+                        'id' => 'companny-credzu-mjob-mail-template',
+                        'class' => 'payment-gateway',
+                        'name' => '',
+                        'desc' => __("Send to a Company when company pay for posting a listing.", ET_DOMAIN),
+                        'toggle' => true
+                    ),
+                    'fields' => array(
+                        array(
+                            'id' => 'payment_check_mail_template',
+                            'type' => 'editor',
+                            'title' => __("Payment from company to Credzu mail here", ET_DOMAIN) ,
+                            'class' => '',
+                            'name' => 'payment_check_mail_template',
+                            'reset' => 1
+                        )
+                    )
+                ),
+                array(
+                    'args' => array(
                         'title' => __("Pay Package Related Mail Template", ET_DOMAIN) ,
                         'id' => 'mail-description-group',
                         'class' => '',
@@ -2640,6 +2671,26 @@ class ET_Admin extends AE_Base
                             'title' => '',
                             'class' => '',
                             'name' => 'mjob_order_changing_status_content_company',
+                            'reset' => 1
+                        )
+                    )
+                ),
+                array(
+                    'args' => array(
+                        'title' => __('Payment check generated email from client to company ', ET_DOMAIN),
+                        'id' => 'order-status-changing-content',
+                        'class' => 'payment-gateway',
+                        'name' => '',
+                        'desc' => __("Send to company an email when client hires him", ET_DOMAIN),
+                        'toggle' => true
+                    ),
+                    'fields' => array(
+                        array(
+                            'id' => 'client_payment_check_mail_template',
+                            'type' => 'editor',
+                            'title' => '',
+                            'class' => '',
+                            'name' => 'client_payment_check_mail_template',
                             'reset' => 1
                         )
                     )
