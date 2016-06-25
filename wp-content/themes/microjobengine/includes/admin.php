@@ -2248,6 +2248,26 @@ class ET_Admin extends AE_Base
                 ) ,
                 array(
                     'args' => array(
+                        'title' => __("Chaning user roles email", ET_DOMAIN) ,
+                        'id' => 'changing_roles_mails',
+                        'class' => 'payment-gateway',
+                        'name' => '',
+                        'desc' => __("Send to user when he change his role from client to Company!", ET_DOMAIN),
+                        'toggle' => true
+                    ) ,
+                    'fields' => array(
+                        array(
+                            'id' => 'changing_user_role_mail_template',
+                            'type' => 'editor',
+                            'title' => __("Send to user when he change his role from client to Company!", ET_DOMAIN) ,
+                            'name' => 'changing_user_role_mail_template',
+                            'class' => '',
+                            'reset' => 1
+                        )
+                    )
+                ),
+                array(
+                    'args' => array(
                         'title' => __("Microjob Related Mail Template", ET_DOMAIN) ,
                         'id' => 'mail-description-group',
                         'class' => '',
