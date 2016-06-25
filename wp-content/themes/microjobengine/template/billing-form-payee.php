@@ -24,7 +24,7 @@ Current Payee Name: <?=$profile->company_name?>
         <div class="form-group clearfix">
             <div class="input-group">
                 <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
-                <input type="text" name="company_payee_name_override" id="company_payee_name_override" placeholder="<?php _e('Payee Name', ET_DOMAIN); ?>" value="<?=($status == COMPANY_PAYEE_NAME_OVERRIDE_STATUS_APPROVED) ? $bank_payee_name_override : $company_name; ?>">
+                <input type="text" name="company_payee_name_override" id="company_payee_name_override" placeholder="<?php _e('Payee Name', ET_DOMAIN); ?>" value="<?php echo $profile->company_payee_name_override; ?>">
             </div>
         </div>
         <div>

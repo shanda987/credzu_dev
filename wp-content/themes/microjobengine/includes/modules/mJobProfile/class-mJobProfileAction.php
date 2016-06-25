@@ -386,6 +386,9 @@ class mJobProfileAction extends mJobPostAction
         global $user_ID;
         $result->last_name_initial = strtoupper(substr($result->last_name, 0, 1));
         $user_role = ae_user_role($user_ID);
+        if( empty($result->company_payee_name_override && !empty($result->company_name) ) ){
+            $result->company_payee_name_override = $result->company_name;
+        }
         if( $user_role == COMPANY && empty($result->company_email )){
             update_post_meta($result->ID, 'company_email', $result->business_email);
         }

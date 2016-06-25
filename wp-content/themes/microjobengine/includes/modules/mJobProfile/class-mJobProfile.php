@@ -75,7 +75,8 @@ class mJobProfile extends mJobPost{
             'time_wrong_request',
             'consumer_right_statement',
             'notice_cancellation',
-            'agreement_document'
+            'agreement_document',
+            'company_payee_name_override'
 
         );
         $this->post_type_singular = 'Profile';
