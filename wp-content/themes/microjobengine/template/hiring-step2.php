@@ -27,7 +27,7 @@ if($profile_id) {
             <div class="input-group">
                 <div class="input-group-addon no-addon"></div>
                 <label for="account_number"><?php _e('Account Number', ET_DOMAIN); ?></label>
-                <input type="text" name="account_number" id="account_number" placeholder="<?php _e('************', ET_DOMAIN); ?>" value="<?php echo $profile->account_number; ?>">
+                <input type="text" name="account_number" id="account_number" minlength="9" maxlength="9" placeholder="<?php _e('************', ET_DOMAIN); ?>" value="<?php echo $profile->account_number; ?>">
             </div>
         </div>
         <div class="form-group clearfix">
