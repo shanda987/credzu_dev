@@ -213,7 +213,7 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
 //                                    else:
 //                                        echo $profile->company_status_message;
 //                                    endif;
-                                    $t1 = strtotime($current->post_date);
+                                    $t1 = get_post_time('U', true);
                                     $t2 = time();
                                     $t = $t2 - $t1;
                                      if( $t >= 300 ):
