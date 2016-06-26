@@ -742,3 +742,9 @@
 .post-listing-button-wrapper{
     text-align: right;
 }
+#footer{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left:0;
+}
