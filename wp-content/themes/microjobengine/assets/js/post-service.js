@@ -15,7 +15,6 @@
                     'click .mjob-add-extra-btn': 'addExtras',
                     'click .done': 'selectStep',
                     'click .mjob-btn-checkout':  'checkOut',
-                    'click .mjob-question-post': 'showQuestionModal'
                 }, Views.SubmitPost.prototype.events);
             },
             initialize: function(){
@@ -58,13 +57,6 @@
                         }
                     }
                 });
-            },
-            showQuestionModal: function(e){
-                e.preventDefault();
-                if( typeof this.listingquestion === 'undefined' ){
-                    this.listingquestion = new Views.listingQuestionModal();
-                }
-                this.listingquestion.onOpen();
             },
             onAddExtras: function($target){
                 var view = this,
@@ -697,16 +689,6 @@
                     }
                 } );
             }
-        });
-        Views.listingQuestionModal = Views.Modal_Box.extend({
-            el: '#listing_question_modal',
-            initialize: function() {
-                AE.Views.Modal_Box.prototype.initialize.call();
-            },
-            onOpen: function(data){
-                var view = this;
-                view.openModal();
-            },
         });
 
     });

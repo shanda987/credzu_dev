@@ -1060,7 +1060,7 @@ class ET_Microjobengine extends AE_Base
         if( is_page_template('page-process-hiring.php') ){
             get_template_part('template-js/modal', 'agreement');
         }
-        if( is_page_template('page-post-service.php')){
+        if( is_page_template('page-post-service.php') || is_singular('mjob_post')){
             get_template_part('template-js/modal', 'listing-question');
         }
     }

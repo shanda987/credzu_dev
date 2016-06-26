@@ -622,7 +622,8 @@
             model: [],
             events: {
                 'click .btn-active-action': 'activeAccount',
-                'click .hireSignup': 'showHireSignUpModal'
+                'click .hireSignup': 'showHireSignUpModal',
+                'click .mjob-question-post': 'showQuestionModal'
             },
             initialize: function (options) {
                 this.blockUi = new Views.BlockUi();
@@ -691,6 +692,13 @@
                 if( $('.m-signature-pad').length > 0 ) {
                     new Views.signaturePad({model: this.profilemodel, key: 'company_signature'});
                 }
+            },
+            showQuestionModal: function(e){
+                e.preventDefault();
+                if( typeof this.listingquestion === 'undefined' ){
+                    this.listingquestion = new Views.listingQuestionModal();
+                }
+                this.listingquestion.onOpen();
             },
             showHireSignUpModal: function(e){
                 e.preventDefault();
@@ -902,6 +910,16 @@
             fbLogin: function(event){
                 Views.loginFb(event);
             }
+        });
+        Views.listingQuestionModal = Views.Modal_Box.extend({
+            el: '#listing_question_modal',
+            initialize: function() {
+                AE.Views.Modal_Box.prototype.initialize.call();
+            },
+            onOpen: function(data){
+                var view = this;
+                view.openModal();
+            },
         });
         Views.ProcessHiring = Backbone.View.extend({
             el: '.page-template-page-process-hiring',

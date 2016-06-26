@@ -35,54 +35,34 @@ foreach ($existing_meta as $key => $value) {
                     'show_option_all' => false
                 )
             ) ;?>
+            <label><?php _e('Select the relevant category for your service ', ET_DOMAIN)?><a href="#" class="mjob-question-post"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
         </div>
     </div>
     <div class="form-group clearfix">
         <div class="input-group width-100">
 <!--            <div class="input-group-addon"></div>-->
-            <input type="text" class="input-item input-full" name="post_title" placeholder="Job name" value="" required>
+            <input type="text" class="input-item input-full" name="post_title" placeholder="<?php _e('i.e., I will challenge all inaccurate negative items within 35 days', ET_DOMAIN); ?>" value="" required>
+            <label><?php _e('Add a title for your listing ', ET_DOMAIN)?><a href="#" class="mjob-question-post"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
         </div>
     </div>
-    <div class="form-group row clearfix">
+    <div class="form-group row margin-left-0 clearfix">
         <div class="input-group delivery-time width-100">
 <!--            <div class="input-group-addon"></div>-->
-            <input type="number" name="time_delivery" placeholder="Time delivery" value="" class="input-item time-delivery" min="0">
+            <input type="number" name="time_delivery" placeholder="<?php _e('i.e., 10', ET_DOMAIN); ?>" value="" class="input-item time-delivery" min="0">
             <span class="text-note"><?php _e('Day(s', ET_DOMAIN) ?></span>
+            <label><?php _e('Enter the amount of days the service will take to complete ', ET_DOMAIN)?><a href="#" class="mjob-question-post"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
         </div>
     </div>
     <div class="form-group clearfix">
         <div class="input-group width-100">
 <!--            <div class="input-group-addon"></div>-->
-            <input type="number" min="0" class="input-item input-full" name="et_budget" placeholder="<?php _e('Price', ET_DOMAIN); ?>" required>
+            <input type="number" min="0" class="input-item input-full" name="et_budget" placeholder="<?php _e('i.e., 100', ET_DOMAIN); ?>" required>
+            <label><?php _e('Enter the amount your client will pay you for the service ', ET_DOMAIN)?><a href="#" class="mjob-question-post"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
         </div>
     </div>
     <div class="form-group">
-        <label><?php _e('YOUR SERVICE DESCRIPTION', ET_DOMAIN) ?></label>
         <?php wp_editor( '', 'post_content', ae_editor_settings()  );  ?>
-    </div>
-    <div class="form-group">
-        <label><?php _e('YOUR CLIENT REQUIREMENTS ', ET_DOMAIN) ?></label>
-        <p>
-            <?php _e('Select the information you require of your client in order to perform the job. Anything selected, we will collect from the client for you.', ET_DOMAIN); ?>
-        </p>
-        <div class="input-group requirement-style">
-            <?php ae_tax_dropdown( 'mjob_requirement' ,
-                array(  'attr' => 'multiple data-chosen-width="100%"   data-placeholder="'.__("Choose Client's requirement", ET_DOMAIN).'"',
-                    'class' => 'chosen multi-tax-item tax-item required',
-                    'hide_empty' => false,
-                    'hierarchical' => true ,
-                    'id' => 'mjob_requirement' ,
-                    'show_option_all' => false
-                )
-            ) ;?>
-        </div>
-    </div>
-    <div class="form-group">
-        <label><?php _e('AGREEMENT TERMS', ET_DOMAIN) ?></label>
-        <p>
-            <?php _e('This will be appended to the agreement the client signs.', ET_DOMAIN); ?>
-        </p>
-        <?php wp_editor( '', 'agreement_terms', ae_editor_settings()  );  ?>
+        <label><?php _e('Create a thorough and compelling description of your service ', ET_DOMAIN)?><a href="#" class="mjob-question-post"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
     </div>
     <div class="form-group group-attachment gallery_container" id="gallery_container">
         <div class="outer-carousel-gallery">
@@ -90,6 +70,7 @@ foreach ($existing_meta as $key => $value) {
                 <img width="100%" src="<?php echo TEMPLATEURL ?>/assets/img/image-avatar.jpg" alt="">
                 <input type="hidden" class="input-item" name="et_carousels" value="" />
             </div>
+            <label class="post-image-photo"><?php _e('Click the plus sign to add up to 5 images to represent your services. ', ET_DOMAIN)?><a href="#" class="mjob-question-post"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
         </div>
         <div class="attachment-image">
             <ul class="image-list" id="image-list">
@@ -104,7 +85,38 @@ foreach ($existing_meta as $key => $value) {
             <span class="et_ajaxnonce" id="<?php echo wp_create_nonce( 'ad_carousels_et_uploader' ); ?>"></span>
         </div>
     </div>
-    <div class="mjob-extras-wrapper">
+    <div class="form-group post_listing_agreement_term">
+        <label><?php _e('AGREEMENT TERMS', ET_DOMAIN) ?></label>
+        <p>
+            <?php _e('The terms  into which you and your client agree, are shown below. If you want to requrest a change, please email us at info@credzu.com', ET_DOMAIN); ?>
+        </p>
+    </div>
+    <div class="form-group post_listing_agreement_term_content">
+        <?php
+        $p = get_post(160);
+        if( isset($p->post_content)) {
+            echo $p->post_content;
+        }
+        ?>
+    </div>
+    <div class="form-group post_listing_agreement_term_field">
+        <label><?php _e('INFORMATION COLLECTED FROM YOUR CLIENT', ET_DOMAIN) ?></label>
+        <p>
+            <?php _e('We will collect and provide you with the following information and documentation from you client. If you would like other information, Please email us at information', ET_DOMAIN); ?>
+        </p>
+        <?php
+        $requirements = get_terms( 'mjob_requirement', array(
+            'hide_empty' => false,
+        ) );
+        if( !empty($requirements ) ): ?>
+            <ul>
+                <?php foreach( $requirements as $r): ?>
+                    <li><?php echo $r->name; ?></li>
+                <?php endforeach; ?>
+            </ul>
+
+        <?php endif;
+        ?>
     </div>
     <div class="form-group">
         <button class="btn-submit btn-save" type="submit"><?php _e('SAVE', ET_DOMAIN); ?></button>
