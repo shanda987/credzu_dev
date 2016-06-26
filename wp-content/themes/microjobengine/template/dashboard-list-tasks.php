@@ -56,8 +56,10 @@
                 $post_link = "<a href='$post_link'>creating a listing</a>";
             }
 
-            _e("Currently, you do not have any clients<br>
-               Complete the following requirements:<br>", ET_DOMAIN);
+            _e("Currently, you do not have any clients<br>", ET_DOMAIN);
+            if( !empty($profile->personal_profile_completed) || !empty($profile->company_profile_completed) || !empty($profile->billing_completed) || !empty($profile->company_agreement_link)|| !empty($profile->create_listing_completed) ):
+               _e("Complete the following requirements:<br>", ET_DOMAIN);
+                endif;
                if( empty($profile->personal_profile_completed) ):
                 _e('Personal profile<br/>', ET_DOMAIN);
                endif;
