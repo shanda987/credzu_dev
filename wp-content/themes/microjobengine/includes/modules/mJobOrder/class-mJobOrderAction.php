@@ -114,6 +114,8 @@ class mJobOrderAction extends mJobPostAction{
                             'msg' => __('Failed!', ET_DOMAIN),
                         );
                     }
+                    var_dump($response);
+                    exit;
                     wp_send_json($response);
                 }
             }
