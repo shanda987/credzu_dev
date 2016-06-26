@@ -28,7 +28,7 @@ Current Payee Name: <?php echo $profile->company_name?>
 <!--                    <div><textarea class="editable" name="company_payee_name_override">-->
 <!--                                --><?php //echo $profile->company_payee_name_override; ?>
 <!--                            </textarea></div>-->
-                    <input type="text" name="company_payee_name_override" id="company_payee_name_override" placeholder="<?php _e('Payee Name', ET_DOMAIN); ?>" value="<?php echo $profile->company_payee_name_override; ?>">    
+                    <input type="text" name="company_payee_name_override" id="company_payee_name_override" placeholder="<?php _e('Payee Name', ET_DOMAIN); ?>" value="<?php echo $profile->company_payee_name_override; ?>">
                 </div>
             </div>
         </div>
