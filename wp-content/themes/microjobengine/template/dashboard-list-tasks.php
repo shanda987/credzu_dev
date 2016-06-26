@@ -57,12 +57,22 @@
             }
 
             _e("Currently, you do not have any clients<br>
-               Complete the following requirements:<br>
-               Personal profile<br/>
-               Company Profile <br/>
-               Billing information<br/>
-               Agreement<br/>
-               Create Listing<br/>", ET_DOMAIN); ?>
+               Complete the following requirements:<br>", ET_DOMAIN);
+               if( !empty($profile->personal_profile_completed) ):
+                _e('Personal profile<br/>', ET_DOMAIN);
+               endif;
+               if( !empty($profile->company_profile_completed)):
+                _e('Company Profile <br/>', ET_DOMAIN);
+               endif;
+               if( !empty($profile->billing_completed)):
+                _e('Billing information<br/>', ET_DOMAIN);
+                endif;
+               if( !empty($profile->agreement_completed)):
+               _e('Agreement<br/>', ET_DOMAIN);
+               endif;
+               if( !empty($profile->create_listing_completed)):
+               _e("Create Listing<br/>", ET_DOMAIN);
+               endif; ?>
         </p>
     <?php } ?>
 </div>
