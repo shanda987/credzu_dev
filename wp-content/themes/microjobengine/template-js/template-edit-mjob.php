@@ -24,8 +24,8 @@ foreach ($existing_meta as $key => $value) {
 <form  class="post-job step-post post et-form edit-mjob-form" style="display: none">
     <p class="mjob-title"><?php _e('Edit Your Listing', ET_DOMAIN); ?></p>
     <div class="form-group clearfix">
-        <div class="input-group">
-            <div class="input-group-addon"><i class="fa fa-pagelines"></i></div>
+        <div class="input-group width-100">
+<!--            <div class="input-group-addon"></div>-->
             <?php ae_tax_dropdown( 'mjob_category' ,
                 array(  'attr' => 'data-chosen-width="100%" data-chosen-disable-search=""  data-placeholder="'.__("Choose categories", ET_DOMAIN).'"',
                     'class' => 'chosen chosen-single tax-item required',
@@ -38,21 +38,21 @@ foreach ($existing_meta as $key => $value) {
         </div>
     </div>
     <div class="form-group clearfix">
-        <div class="input-group">
-            <div class="input-group-addon"><i class="fa fa-adn"></i></div>
+        <div class="input-group width-100">
+<!--            <div class="input-group-addon"></div>-->
             <input type="text" class="input-item input-full" name="post_title" placeholder="Job name" value="" required>
         </div>
     </div>
     <div class="form-group row clearfix">
-        <div class="input-group delivery-time">
-            <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+        <div class="input-group delivery-time width-100">
+<!--            <div class="input-group-addon"></div>-->
             <input type="number" name="time_delivery" placeholder="Time delivery" value="" class="input-item time-delivery" min="0">
             <span class="text-note"><?php _e('Day(s', ET_DOMAIN) ?></span>
         </div>
     </div>
     <div class="form-group clearfix">
-        <div class="input-group">
-            <div class="input-group-addon"><i class="fa fa-money" aria-hidden="true"></i></div>
+        <div class="input-group width-100">
+<!--            <div class="input-group-addon"></div>-->
             <input type="number" min="0" class="input-item input-full" name="et_budget" placeholder="<?php _e('Price', ET_DOMAIN); ?>" required>
         </div>
     </div>

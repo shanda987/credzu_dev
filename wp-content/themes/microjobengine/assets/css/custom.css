@@ -723,6 +723,9 @@
 .width-100{
     width: 100%!important;
 }
+.margin-left-0{
+    margin-left: 0!important;
+}
 .post-image-photo{
     position: absolute;
     bottom: -14px;
