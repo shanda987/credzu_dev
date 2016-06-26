@@ -58,6 +58,7 @@
 
             _e("Currently, you do not have any clients<br>
                Complete the following requirements:<br>", ET_DOMAIN);
+        var_dump($profile->personal_profile_completed);
                if( !empty($profile->personal_profile_completed) ):
                 _e('Personal profile<br/>', ET_DOMAIN);
                endif;
