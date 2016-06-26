@@ -484,6 +484,9 @@ class ET_Microjobengine extends AE_Base
 //                    wp_redirect(home_url());
 //                }
             }
+            if( !mJobProfileAction()->current_user_can_post_listing($user_ID) ){
+                wp_redirect(home_url());
+            }
         }
         if( is_page_template('page-order.php') ){
             global $is_individual;
@@ -1151,6 +1154,8 @@ class ET_Microjobengine extends AE_Base
         $vars['home_url'] = home_url();
         $vars['dashboard'] = et_get_page_link('dashboard');
         $vars['hiresingup_link'] = et_get_page_link('user-authentication');
+        $vars['current_user_can_post_listing'] = mJobProfileAction()->current_user_can_post_listing($user_ID);
+        $vars['listing_error_message'] = __('Paid listing require complete profile information; namely: Company Name, Company Address, Company Phone and Billing information. Also, your agreement between us must be signed. Please return here once you complete the required information', ET_DOMAIN);
         return $vars;
     }
     /**

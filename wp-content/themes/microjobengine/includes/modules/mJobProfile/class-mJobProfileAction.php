@@ -771,5 +771,24 @@ class mJobProfileAction extends mJobPostAction
          endforeach;
     echo '</select>';
     }
+    /**
+     * current  user  can post a listing
+     *
+     * @param integer $user_id
+     * @return true if current user can post a listing and false if can't
+     * @since 1.0
+     * @package MicrojobEngine
+     * @category void
+     * @author JACK BUI
+     */
+    public function current_user_can_post_listing($user_id){
+        $profile = $this->getProfile($user_id);
+        if( !empty($profile->company_name) && !empty($profile->company_address) &&
+            !empty($profile->company_phone) && !empty($profile->routing_number) &&
+            !empty($profile->account_number) && !empty($profile->company_signature_img)){
+            return true;
+        }
+        return false;
+    }
 }
 $new_instance = mJobProfileAction::getInstance();

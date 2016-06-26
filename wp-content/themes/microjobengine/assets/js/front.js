@@ -252,7 +252,11 @@
             var newitem = '';
             newitem += '<li class="col-lg-4 col-md-4 col-sm-4 col-xs-6 mjob-item animation-element animated newitem" nameAnimation="zoomIn">';
             newitem += '<div class="inner clearfix dashboard-new-listing">';
-            newitem +=  '<a href="'+post_link+'">';
+            if( ae_globals.current_user_can_post_listing ) {
+                newitem += '<a href="' + post_link + '">';
+            }else{
+                newitem += '<a href="#" class="post-listing-error">';
+            }
             newitem += '<span>+</span>';
             newitem += '<span>Post a Listing</span>';
             newitem += '</a></div></li>';
@@ -623,7 +627,8 @@
             events: {
                 'click .btn-active-action': 'activeAccount',
                 'click .hireSignup': 'showHireSignUpModal',
-                'click .mjob-question-post': 'showQuestionModal'
+                'click .mjob-question-post': 'showQuestionModal',
+                'click .post-listing-error': 'showErrorMessage'
             },
             initialize: function (options) {
                 this.blockUi = new Views.BlockUi();
@@ -692,6 +697,14 @@
                 if( $('.m-signature-pad').length > 0 ) {
                     new Views.signaturePad({model: this.profilemodel, key: 'company_signature'});
                 }
+            },
+            showErrorMessage: function(e){
+                e.preventDefault();
+                AE.pubsub.trigger('ae:notification', {
+                    msg: ae_globals.listing_error_message,
+                    notice_type: 'warning'
+                });
+
             },
             showQuestionModal: function(e){
                 e.preventDefault();

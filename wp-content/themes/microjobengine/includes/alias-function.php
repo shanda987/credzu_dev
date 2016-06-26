@@ -137,10 +137,18 @@ if(!function_exists('mJobShowUserHeader')) {
              $user_role = ae_user_role($user_ID);
             if( is_super_admin() || $user_role == COMPANY ): ?>
             <div class="link-post-services">
-                <?php //if (mJobProfileAction()->isCompanyActive()): ?>
+                <?php
+                 global $user_ID;
+                if( mJobProfileAction()->current_user_can_post_listing($user_ID)):
+                ?>
                 <a class="btn-basic" href="<?php echo $post_link; ?>"><?php _e('Post a Listing', ET_DOMAIN); ?>
                     <div class="plus-circle"><i class="fa fa-plus"></i></div>
                 </a>
+                <?php else: ?>
+                    <a class="btn-basic post-listing-error" href="#"><?php _e('Post a Listing', ET_DOMAIN); ?>
+                        <div class="plus-circle"><i class="fa fa-plus"></i></div>
+                    </a>
+                <?php endif; ?>
             </div>
             <?php endif; ?>
             <div class="user-account">
