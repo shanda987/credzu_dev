@@ -73,4 +73,5 @@ function resetOption(){
     ae_update_option('client_payment_check_number', 0);
     ae_update_option('payment_check_number', 0);
 }
-resetOption();
+exit('44');
+///resetOption();
