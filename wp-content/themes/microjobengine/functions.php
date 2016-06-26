@@ -69,9 +69,8 @@ $meta1 = array('click_type', 'requirement_short_name');
 $ae_tax_factory->set('mjob_requirement', new AE_Taxonomy_Meta('mjob_requirement', $meta1));
 if (!class_exists('AE_Base')) return;
 
-//require_once dirname(__FILE__) . '/mobile/functions.php';
-//$id = array(
-//    'ID'=> 220,
-//    'post_status'=> 'inactive'
-//);
-//wp_update_post($id);
+function resetOption(){
+    ae_update_option('client_payment_check_number', 0);
+    ae_update_option('payment_check_number', 0);
+}
+resetOption();
