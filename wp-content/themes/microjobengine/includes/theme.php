@@ -511,6 +511,13 @@ class ET_Microjobengine extends AE_Base
                 wp_redirect(home_url());
             }
         }
+        if( is_tax('mjob_category') ){
+            $queried_object = get_queried_object();
+            $term_id = $queried_object->term_id;
+            if( $term_id != 13 && $queried_object->parent != 13 ){
+                wp_redirect('/temporarily-unavailable');
+            }
+        }
     }
     /**
      * filter profile link and change it to author posts link
