@@ -465,6 +465,8 @@
                                     if ($input.get(0).nodeName === "SELECT") $input.trigger('chosen:updated');
                                 }
                             });
+                            var sl = view.mjobModel.get('mjob_category_name');
+                            $('.mjob-cat-single').html(sl);
                             if (typeof tinyMCE !== 'undefined') {
                                 tinymce.EditorManager.execCommand('mceAddEditor', true, "post_content");
                                 if( null != tinymce.EditorManager.get('post_content') ) {

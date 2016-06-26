@@ -25,17 +25,18 @@ foreach ($existing_meta as $key => $value) {
     <p class="mjob-title"><?php _e('Edit Your Listing', ET_DOMAIN); ?></p>
     <div class="form-group clearfix">
         <div class="input-group width-100">
+            <?php echo sprintf(__('<p class="cat-text"><label>Category: %s', ET_DOMAIN), '</label><span class="mjob-cat-single"></span></p>'); ?>
 <!--            <div class="input-group-addon"></div>-->
-            <?php ae_tax_dropdown( 'mjob_category' ,
-                array(  'attr' => 'data-chosen-width="100%" data-chosen-disable-search=""  data-placeholder="'.__("Choose categories", ET_DOMAIN).'"',
-                    'class' => 'chosen chosen-single tax-item required',
-                    'hide_empty' => false,
-                    'hierarchical' => true ,
-                    'id' => 'mjob_category' ,
-                    'show_option_all' => false
-                )
-            ) ;?>
-            <label><?php _e('Select the relevant category for your service ', ET_DOMAIN)?><a href="#" class="mjob-question-post"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
+<!--            --><?php //ae_tax_dropdown( 'mjob_category' ,
+//                array(  'attr' => 'data-chosen-width="100%" data-chosen-disable-search=""  data-placeholder="'.__("Choose categories", ET_DOMAIN).'"',
+//                    'class' => 'chosen chosen-single tax-item required',
+//                    'hide_empty' => false,
+//                    'hierarchical' => true ,
+//                    'id' => 'mjob_category' ,
+//                    'show_option_all' => false
+//                )
+//            ) ;?>
+<!--            <label>--><?php //_e('Select the relevant category for your service ', ET_DOMAIN)?><!--<a href="#" class="mjob-question-post"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>-->
         </div>
     </div>
     <div class="form-group clearfix">

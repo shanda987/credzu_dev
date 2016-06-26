@@ -265,6 +265,10 @@ class mJobAction extends mJobPostAction{
         }
         $result->author_name = get_the_author_meta('display_name', $result->post_author);
         $result->author_avatar = get_avatar($result->post_author, 35);
+        $result->mjob_category_name = '';
+        if( isset($result->tax_input['mjob_category']['0']->name) && !empty($result->tax_input['mjob_category']['0']->name)){
+            $result->mjob_category_name = $result->tax_input['mjob_category']['0']->name;
+        }
         if( $result->post_status == 'publish' ){
             $result->mjob_status = __('Approved');
             //$result->approve_class = 'mjob-approve';
