@@ -1,6 +1,6 @@
 <?php
 $cl = '';
-if( !is_front_page() ){
+if( is_page_template('page-user-authentication.php') ){
   $cl = 'footer-fix';
 }
 ?>
