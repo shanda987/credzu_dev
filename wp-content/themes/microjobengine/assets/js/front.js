@@ -694,7 +694,7 @@
                 }
                 // Set nonce for security purpose
                 this.profilemodel.set('_wpnonce', $('#profile_wpnonce').val());
-                if( $('.m-signature-pad').length > 0 ) {
+                if( $('.m-signature-pad1').length > 0 ) {
                     new Views.signaturePad({model: this.profilemodel, key: 'company_signature'});
                 }
             },
@@ -1165,8 +1165,6 @@
                         }
                     }
                 });
-                console.log('vaoo');
-                return false;
                 this.showStepThree();
 
             },
@@ -1342,7 +1340,7 @@
                     success: function ( result, res, jqXHR ) {
                         if (res.success ) {
                             if( typeof res.data != 'undefined' ){
-                               // window.location.href = res.data.permalink;
+                                window.location.href = res.data.permalink;
                             }
                         } else {
                             AE.pubsub.trigger('ae:notification', {
