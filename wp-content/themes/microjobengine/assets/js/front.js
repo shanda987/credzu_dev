@@ -1333,6 +1333,7 @@
             },
             saveOrder: function(files){
                 var view = this;
+                console.log(view.orderModel);
                 view.orderModel.set('agreement_files', files);
                 view.orderModel.save( '', '', {
                     beforeSend: function () {
