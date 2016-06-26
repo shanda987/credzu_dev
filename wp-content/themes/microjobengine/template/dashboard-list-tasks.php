@@ -57,6 +57,11 @@
             }
 
             _e("Currently, you do not have any clients<br>", ET_DOMAIN);
+            var_dump(empty($profile->personal_profile_completed));
+            var_dump(empty($profile->company_profile_completed));
+            var_dump(empty($profile->billing_completed));
+            var_dump(empty($profile->company_agreement_link));
+            var_dump(empty($profile->create_listing_completed));
             if( !empty($profile->personal_profile_completed) || !empty($profile->company_profile_completed) || !empty($profile->billing_completed) || !empty($profile->company_agreement_link)|| !empty($profile->create_listing_completed) ):
                _e("Complete the following requirements:<br>", ET_DOMAIN);
                 endif;
