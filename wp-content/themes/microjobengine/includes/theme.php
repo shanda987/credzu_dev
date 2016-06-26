@@ -911,6 +911,9 @@ class ET_Microjobengine extends AE_Base
                 }
             }
         }
+        if( is_tax('mjob_category') ){
+            $query->set('post_type', 'mjob_post');
+        }
         return $query;
     }
     /*
