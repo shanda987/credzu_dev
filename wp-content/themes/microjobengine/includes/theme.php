@@ -514,7 +514,7 @@ class ET_Microjobengine extends AE_Base
         if( is_tax('mjob_category') ){
             $queried_object = get_queried_object();
             $term_id = $queried_object->term_id;
-            if( $term_id != 13 && $queried_object->parent != 13 ){
+            if( $term_id != 2 && $queried_object->parent != 2 ){
                 wp_redirect('/temporarily-unavailable');
             }
         }
