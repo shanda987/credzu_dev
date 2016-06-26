@@ -1,4 +1,10 @@
-<footer id="footer">
+<?php
+$cl = '';
+if( !is_front_page() ){
+  $cl = 'footer-fix';
+}
+?>
+<footer id="footer" class="<?php echo $cl; ?>">
     <?php
     if( is_active_sidebar( 'mjob-footer-1' )    || is_active_sidebar( 'mjob-footer-2' )
     || is_active_sidebar( 'mjob-footer-3' ) || is_active_sidebar( 'mjob-footer-4' )

@@ -25,31 +25,29 @@ foreach ($existing_meta as $key => $value) {
     <p class="mjob-title"><?php _e('Edit Your Listing', ET_DOMAIN); ?></p>
     <div class="form-group clearfix">
         <div class="input-group">
+            <div class="input-group-addon"><i class="fa fa-pagelines"></i></div>
+            <?php ae_tax_dropdown( 'mjob_category' ,
+                array(  'attr' => 'data-chosen-width="100%" data-chosen-disable-search=""  data-placeholder="'.__("Choose categories", ET_DOMAIN).'"',
+                    'class' => 'chosen chosen-single tax-item required',
+                    'hide_empty' => false,
+                    'hierarchical' => true ,
+                    'id' => 'mjob_category' ,
+                    'show_option_all' => false
+                )
+            ) ;?>
+        </div>
+    </div>
+    <div class="form-group clearfix">
+        <div class="input-group">
             <div class="input-group-addon"><i class="fa fa-adn"></i></div>
             <input type="text" class="input-item input-full" name="post_title" placeholder="Job name" value="" required>
         </div>
     </div>
     <div class="form-group row clearfix">
-        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-            <div class="input-group delivery-time">
-                <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
-                <input type="number" name="time_delivery" placeholder="Time delivery" value="" class="input-item time-delivery" min="0">
-                <span class="text-note"><?php _e('Day(s', ET_DOMAIN) ?></span>
-            </div>
-        </div>
-        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 category-area">
-            <div class="input-group">
-                <div class="input-group-addon"><i class="fa fa-pagelines"></i></div>
-                <?php ae_tax_dropdown( 'mjob_category' ,
-                    array(  'attr' => 'data-chosen-width="100%" data-chosen-disable-search=""  data-placeholder="'.__("Choose categories", ET_DOMAIN).'"',
-                        'class' => 'chosen chosen-single tax-item required',
-                        'hide_empty' => false,
-                        'hierarchical' => true ,
-                        'id' => 'mjob_category' ,
-                        'show_option_all' => false
-                    )
-                ) ;?>
-            </div>
+        <div class="input-group delivery-time">
+            <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+            <input type="number" name="time_delivery" placeholder="Time delivery" value="" class="input-item time-delivery" min="0">
+            <span class="text-note"><?php _e('Day(s', ET_DOMAIN) ?></span>
         </div>
     </div>
     <div class="form-group clearfix">

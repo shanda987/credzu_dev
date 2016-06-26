@@ -742,7 +742,7 @@
 .post-listing-button-wrapper{
     text-align: right;
 }
-#footer{
+.footer-fix{
     position: absolute;
     bottom: 0;
     right: 0;
