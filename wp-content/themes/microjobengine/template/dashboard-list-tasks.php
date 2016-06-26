@@ -67,7 +67,7 @@
                if( empty($profile->billing_completed)):
                 _e('Billing information<br/>', ET_DOMAIN);
                 endif;
-               if( empty($profile->agreement_completed)):
+               if( empty($profile->company_agreement_link)):
                _e('Agreement<br/>', ET_DOMAIN);
                endif;
                if( empty($profile->create_listing_completed)):

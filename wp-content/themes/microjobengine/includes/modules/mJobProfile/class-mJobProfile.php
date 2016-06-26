@@ -80,7 +80,6 @@ class mJobProfile extends mJobPost{
             'personal_profile_completed',
             'company_profile_completed',
             'billing_completed',
-            'agreement_completed',
             'create_listing_completed'
 
         );
