@@ -37,7 +37,7 @@ else{
                             'hide_empty' => false,
                             'hierarchical' => true ,
                             'id' => 'mjob_category' ,
-                            'show_option_all' => false
+                            'show_option_all' => __('Select category', ET_DOMAIN)
                         )
                     ) ;?>
                     <label><?php _e('Select the relevant category for your service ', ET_DOMAIN)?><a href="#" class="mjob-question-post"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
