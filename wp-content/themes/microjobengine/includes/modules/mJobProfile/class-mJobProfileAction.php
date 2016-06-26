@@ -110,7 +110,7 @@ class mJobProfileAction extends mJobPostAction
      * @author Tat Thien
      */
     public function syncPost() {
-        global $current_user;
+        global $current_user, $ae_post_factory;
         $request = $_REQUEST;
 
         // Check valid user
@@ -202,10 +202,20 @@ class mJobProfileAction extends mJobPostAction
             }
         }
         if( ae_user_role($current_user->ID) == COMPANY ) {
-            if( $request['post_status'] == 'publish' ){
-                do_action('mjob_company_created_email', $request['ID'], true);
+            if( isset($request['ID']) && !empty($request['ID']) ) {
+                $mj_obj = $ae_post_factory->get('mjob_profile');
+                $mj = get_post($request['ID']);
+                if( $mj && !is_wp_error($mj) ){
+                    $mj = $mj_obj->convert($mj);
+                    if( $mj->company_description != $request['company_description'] ) {
+                        $request['post_status'] = 'draft';
+                        do_action('mjob_company_created_email', $request['ID'], true);
+                    }
+                    else{
+                        $request['post_status'] = 'publish';
+                    }
+                }
             }
-            $request['post_status'] = 'draft';
         }
 //        if( isset($request['last_name']) ){
 //            $request['last_name'] = strtoupper(substr($request['last_name'], 0, 1));
