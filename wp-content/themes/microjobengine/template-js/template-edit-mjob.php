@@ -118,9 +118,9 @@ foreach ($existing_meta as $key => $value) {
         <?php endif;
         ?>
     </div>
-    <div class="form-group">
-        <button class="btn-submit btn-save" type="submit"><?php _e('SAVE', ET_DOMAIN); ?></button>
+    <div class="form-group post-listing-button-wrapper">
         <a href=="#" class="btn-discard mjob-discard-action"><?php _e('DISCARD', ET_DOMAIN ); ?></a>
+        <button class="btn-submit btn-save" type="submit"><?php _e('SAVE', ET_DOMAIN); ?></button>
         <input type="hidden" class="input-item post-service_nonce" name="_wpnonce" value="<?php echo de_create_nonce('ae-mjob_post-sync');?>" />
     </div>
 </form>
