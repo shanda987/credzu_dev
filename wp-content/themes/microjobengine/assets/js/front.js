@@ -1333,8 +1333,6 @@
             },
             saveOrder: function(files){
                 var view = this;
-                console.log(view.orderModel);
-                return false;
                 view.orderModel.set('agreement_files', files);
                 view.orderModel.save( '', '', {
                     beforeSend: function () {
@@ -1342,7 +1340,7 @@
                     success: function ( result, res, jqXHR ) {
                         if (res.success ) {
                             if( typeof res.data != 'undefined' ){
-                                window.location.href = res.data.permalink;
+                               // window.location.href = res.data.permalink;
                             }
                         } else {
                             AE.pubsub.trigger('ae:notification', {
