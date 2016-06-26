@@ -59,8 +59,9 @@ if($user_ID) $step--;
                                 <?php     get_template_part('template/new-list', 'extras'); ?>
                             </div>
                         </div>
-                        <div class="float-right">
+                        <div class="float-right form-group checkout-btn-wrapper">
                             <p><span class="total-text"><?php _e('Total', ET_DOMAIN ); ?></span> <span class="total-price mjob-price pm-pack-price-total">$100</span></p>
+                            <a href="#" class="btn-discard post-listing-back"><i class="fa fa-angle-left"></i><?php _e(' GO BACK', ET_DOMAIN); ?></a>
                             <button class="btn-submit btn-checkout mjob-btn-checkout waves-effect waves-light"><?php _e('Checkout now', ET_DOMAIN); ?></button>
                         </div>
                     </div>

@@ -754,3 +754,15 @@
 .cat-text{
     color: #aaafb3!important;
 }
+.checkout-btn-wrapper{
+    position: relative
+}
+.checkout-btn-wrapper .post-listing-back{
+    color: #898a90;
+    margin-left: 20px;
+    border: none;
+    padding: 10px 20px;
+    position: absolute;
+    bottom: 0;
+    right: 200px;
+}

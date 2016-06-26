@@ -15,6 +15,7 @@
                     'click .mjob-add-extra-btn': 'addExtras',
                     'click .done': 'selectStep',
                     'click .mjob-btn-checkout':  'checkOut',
+                    'click .post-listing-back': 'goBack'
                 }, Views.SubmitPost.prototype.events);
             },
             initialize: function(){
@@ -211,6 +212,17 @@
                         el: $(this)
                     });
                 });
+            },
+            goBack: function(e){
+                console.log('sdfsfsfdsdf');
+                e.preventDefault();
+                $('#step-post').show();
+                $('#step4').hide();
+                $('.post-service-step-1').removeClass('done');
+                $('.post-service-step-1').addClass('active');
+                $('.post-service-step-2').removeClass('active');
+                $('.progress-bar-success').removeClass('full');
+
             },
             showStepFour: function(){
                 //$('.post-service-step-1').addClass('done');
