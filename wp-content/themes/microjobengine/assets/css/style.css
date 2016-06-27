@@ -8382,7 +8382,7 @@ body.page-template-page-profile-php .plus-circle {
     height: 195px;
   }
   #content .carousel-inner .item{
-    height: 195px;
+    min-height: 195px!important;
   }
 }
 #content .carousel-inner .item {
