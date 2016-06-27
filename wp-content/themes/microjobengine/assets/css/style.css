@@ -8373,7 +8373,7 @@ body.page-template-page-profile-php .plus-circle {
   margin-right: 20px;
 }
 #content .carousel-inner {
-  min-height: 380px;
+  /*min-height: 380px;*/
   position: relative;
   margin-top: 30px;
 }
