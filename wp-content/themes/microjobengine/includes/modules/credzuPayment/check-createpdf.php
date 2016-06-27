@@ -94,6 +94,7 @@ function set_width($fee=""){
 <table style="font-size:10pt;">
 	<tr>
 		<td style="font-size:9pt;width:430px;">
+			<br/>
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Web listing<br/>
 			Memo: Authorized by the U.C.C. (2006), the UETA (1999) and ESIGN Act (2000)
 		</td>
@@ -369,12 +370,12 @@ function mjobCreateClientToCompanyPdf($profile, $data){
 	<table style="font-size:10pt;">
 		<tr>
 			<td style="font-size:9pt;width:430px;">
-				<br/><br/><br/><br/>
+				<br/>
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $data->mjob_category; ?><br/>
 				Memo: Authorized by the U.C.C. (2006), the UETA (1999) and ESIGN Act (2000)
 			</td>
 			<td>
-				<img  style="border-bottom:1pt solid #000000;" src="<?php echo $profile->signature_link ?>" alt="Signature" width="140pt" height="54.5pt" /><br/>
+				<img  style="border-bottom:1pt solid #000000;" src="<?php echo $profile->signature_link ?>" alt="Signature" width="120pt" height="22pt" /><br/>
 				<small>Signed from IP Address <?php echo $_SERVER['REMOTE_ADDR'];?></small>
 			</td>
 		</tr>
