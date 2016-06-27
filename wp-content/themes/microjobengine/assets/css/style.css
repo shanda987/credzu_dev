@@ -8381,6 +8381,9 @@ body.page-template-page-profile-php .plus-circle {
   #content .carousel-inner {
     height: 195px;
   }
+  #content .carousel-inner .item{
+    height: 195px;
+  }
 }
 #content .carousel-inner .item {
   position: absolute;
