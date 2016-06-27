@@ -99,7 +99,7 @@ function set_width($fee=""){
 			Memo: Authorized by the U.C.C. (2006), the UETA (1999) and ESIGN Act (2000)
 		</td>
 		<td>
-			<img  style="border-bottom:1pt solid #000000;" src="<?php echo $profile->company_signature_img ?>" alt="Signature" width="140pt" height="54.5pt" /><br/>
+			<img  style="border-bottom:1pt solid #000000;" src="<?php echo $profile->company_signature_img ?>" alt="Signature" width="140pt" height="34.5pt" /><br/>
 			<small>Signed from IP Address <?php echo $_SERVER['REMOTE_ADDR'];?></small>
 		</td>
 	</tr>

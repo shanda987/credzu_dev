@@ -507,7 +507,7 @@ function addCompanySignature(){
             if (!empty($profile)) {
                 $name = $profile->signature;
                 $file_path = decodeImage($name);
-                return '<img style="width:170px" class="signature-img" src="'.$file_path.'" />';
+                return '<img style="width:120px" class="signature-img" src="'.$file_path.'" />';
             }
         }
     }
