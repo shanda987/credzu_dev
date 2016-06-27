@@ -78,7 +78,7 @@ function set_width($fee=""){
 </table>
 <table style="font-size:10pt;" width="100%">
 	<tr>
-		<td width="11%">
+		<td width="15%">
 			The Sum of:
 		</td>
 		<td style="font-size:11pt" width="60%">
@@ -146,7 +146,7 @@ function set_width($fee=""){
 
 <table style="font-size:10pt;">
 	<tr>
-		<td width="11%">
+		<td width="15%">
 			The Sum of:
 		</td>
 		<td style="font-size:11pt" width="60%">
@@ -238,7 +238,7 @@ function set_width($fee=""){
 </table>
 <table style="font-size:10pt;" width="100%">
 	<tr>
-		<td width="11%">
+		<td width="15%">
 			The Sum of:
 		</td>
 		<td style="font-size:11pt" width="60%">
