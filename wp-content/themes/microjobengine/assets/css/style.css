@@ -8379,7 +8379,8 @@ body.page-template-page-profile-php .plus-circle {
 }
 @media (max-width: 767px) {
   #content .carousel-inner {
-    height: 195px;
+    /*height: 195px;*/
+    min-height: 195px!important;
   }
   #content .carousel-inner .item{
     min-height: 195px!important;
