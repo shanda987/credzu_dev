@@ -141,9 +141,9 @@ class mJobAction extends mJobPostAction{
                 }
                 $request['is_featured'] = $is_featured;
                 $request['extra_objects'] = $arr_extras;
-                $request['latest_amount'] = $latest_amount;
-                $request['latest_amount_text'] = mJobPriceFormat($latest_amount, 'default');
             }
+            $request['latest_amount'] = $latest_amount;
+            $request['latest_amount_text'] = mJobPriceFormat($latest_amount, 'default');
             do_action('credzu_do_checkout', $request);
         }
         $requirements = get_terms( 'mjob_requirement', array(
