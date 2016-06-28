@@ -707,6 +707,7 @@
                     var  banner = $('.banner').height();
                     var con = $('.job-items-cat-title').height();
                     var h1 = (banner - con)/2;
+                    console.log(h1);
                     if( h1 > 0 ){
                         console.log(h1);
                         $('.job-items-cat-title').css('margin-top', h1+ 'px!important');
