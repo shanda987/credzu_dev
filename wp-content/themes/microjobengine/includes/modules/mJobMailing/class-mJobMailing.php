@@ -611,9 +611,13 @@ class mJobMailing extends AE_Mailing
         $subject = __('A user converted his account from Client to Company', ET_DOMAIN);
         $user_url = get_author_posts_url($user_id);
         $user = get_userdata($user_id);
+        $profile = mJobProfileAction()->getProfile($user_id);
         $display_name  = $user->display_name;
         $msg = ae_get_option('changing_user_role_mail_template', sprintf(__('<p>User <a href="%s"> %s</a> converted his account from Client to Company role </p>', ET_DOMAIN ), $user_url, $display_name ));
         $emails = ae_get_option('admin_emails', 'info@credzu.com');
-        $result1 = $this->wp_mail($emails, $subject, $msg, array('user_id' => $user_ID));
+        $result = $this->wp_mail($emails, $subject, $msg, array('user_id' => $user_ID));
+        $subject1 = __('Your account is changed to company role', ET_DOMAIN);
+        $msg1 = ae_get_option('changing_roles_mails', __('Your account is changed to company role', ET_DOMAIN));
+        $result1 = $this->wp_mail($profile->business_email, $subject1, $msg1, array('user_id' => $user_ID));
     }
 }
