@@ -791,3 +791,14 @@
 .relate-mjob-post-title{
     color: rgba(137, 138, 144, 0.6);
 }
+@media (max-width: 767px) {
+    .job-items-cat-title{
+        margin-top: 36px!important;
+    }
+    .job-items-cat-title h1{
+        font-size: 26px!important;
+    }
+    .job-items-cat-title p{
+        font-size: 13px!important;
+    }
+}
