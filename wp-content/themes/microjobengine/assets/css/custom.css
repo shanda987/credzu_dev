@@ -236,10 +236,10 @@
 .mjob-profile-page .account-holder, .mjob-profile-page .billing-order-address{
     display: none;
 }
-
 .other-listing-item {
-    border-bottom: 1px solid #ccc;
-    padding: 10px;
+    /*border-bottom: 1px solid #ccc;*/
+    /*padding: 10px;*/
+    padding-bottom: 20px;
 }
 
 .other-listing-item a {
@@ -771,5 +771,20 @@
     margin-top: 35px;
 }
 .block-items-detail .personal-profile ul li:last-child{
+    /*border-bottom: 1px solid #dfe0e5;*/
+}
+.related-mjob-img{
+    border-radius: 0!important;
+    width: 100%!important;
+    height: auto!important;
+    padding: 2px;
+    border: 1px solid #dfe0e5;
+}
+.mjob-category-link{
+    color:#10a2ef!important;
+}
+.order-listing{
+    margin-top: 50px!important;
+    padding-bottom: 20px;
     border-bottom: 1px solid #dfe0e5;
 }

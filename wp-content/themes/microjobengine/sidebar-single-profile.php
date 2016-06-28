@@ -53,6 +53,14 @@ $languages = isset($profile->tax_input['language']) ? $profile->tax_input['langu
                     <?php echo $profile->company_year_established; ?>
                 </div>
             </li>
+            <li class="location clearfix">
+                <div class="pull-left">
+                    <span><i class="fa fa-users" aria-hidden="true"></i><?php _e('Employees ', ET_DOMAIN) ?></span>
+                </div>
+                <div class="pull-right">
+                    <?php echo $profile->company_amount_of_employees; ?>
+                </div>
+            </li>
             <?php
             /**
              * Show information for public profile
@@ -97,7 +105,7 @@ $languages = isset($profile->tax_input['language']) ? $profile->tax_input['langu
         </ul>
 
         <div class="link-personal">
-            <h4>Other Listings</h4>
+            <h4 class="order-listing">Other Listings</h4>
             <?php
             global $ae_post_factory;
             $obj = $ae_post_factory->get('mjob_post');
@@ -105,11 +113,12 @@ $languages = isset($profile->tax_input['language']) ? $profile->tax_input['langu
                 $post = $obj->convert($post);
                 ?>
             <div class="row other-listing-item other-listing-item-new">
-                <div class="col-md-10">
-                    <a href="<?php echo $post->permalink; ?>"><?php echo $post->post_title?></a>
+                <div class="col-md-4">
+                    <img src="<?php echo $post->the_post_thumbnail; ?>" alt="<?php echo $post->post_title; ?>" class="img-response related-mjob-img" />
                 </div>
-                <div class="col-md-2">
-                    <span class="price">$5.00</span>
+                <div class="col-md-8">
+                    <a href="<?php echo $post->permalink; ?>">"<?php echo $post->post_title?>"</a><i><?php _e(' in ', ET_DOMAIN); ?></i>
+                    <a class="mjob-category-link" href="<?php echo get_term_link($post->mjob_category['0'], 'mjob_category'); ?>"> <?php echo $post->mjob_category_name; ?></a>
                 </div>
             </div>
             <?php endforeach;?>
