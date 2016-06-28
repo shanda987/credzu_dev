@@ -697,7 +697,12 @@
                 if( $('.m-signature-pad1').length > 0 ) {
                     new Views.signaturePad({model: this.profilemodel, key: 'company_signature'});
                 }
-                $('#footer').addClass('footer-fix');
+                var w = $(window).height();
+                var b = $('body').height();
+                var h = w - b;
+                if( h > 0 ){
+                    $('#footer').css('margin-top: '+h+'px');
+                }
             },
             showErrorMessage: function(e){
                 e.preventDefault();
