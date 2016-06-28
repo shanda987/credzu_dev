@@ -697,6 +697,7 @@
                 if( $('.m-signature-pad1').length > 0 ) {
                     new Views.signaturePad({model: this.profilemodel, key: 'company_signature'});
                 }
+                $('#footer').addClass('footer-fix');
             },
             showErrorMessage: function(e){
                 e.preventDefault();

@@ -4,7 +4,7 @@ if( is_page_template('page-user-authentication.php') ){
   $cl = 'footer-fix';
 }
 ?>
-<footer id="footer" class="<?php echo $cl; ?>">
+<footer id="footer">
     <?php
     if( is_active_sidebar( 'mjob-footer-1' )    || is_active_sidebar( 'mjob-footer-2' )
     || is_active_sidebar( 'mjob-footer-3' ) || is_active_sidebar( 'mjob-footer-4' )
