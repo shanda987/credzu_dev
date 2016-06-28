@@ -709,7 +709,7 @@
                     var h1 = (banner - con)/2;
                     if( h1 > 0 ){
                         console.log(h1);
-                        $('.job-items-cat-title').css('margin-top', h1+ 'px');
+                        $('.job-items-cat-title').css('margin-top', h1+ 'px !important');
                     }
                 }
 
