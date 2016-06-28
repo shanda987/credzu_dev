@@ -704,11 +704,11 @@
                     $('#footer').css('margin-top', h+'px');
                 }
                 if( $('.job-items-cat-title').length >0 ){
-                    banner = $('.banner').height();
-                    con = $('.job-items-cat-title').height();
-                    h1 = (banner - con)/2;
+                    var  banner = $('.banner').height();
+                    var con = $('.job-items-cat-title').height();
+                    var h1 = (banner - con)/2;
                     if( h1 > 0 ){
-                        $('.job-items-cat-title').css('margin-top', h1+ 'px!important');
+                        $('.job-items-cat-title').css('margin-top', h1+ 'px');
                     }
                 }
 
