@@ -793,7 +793,7 @@
 }
 @media (max-width: 767px) {
     .job-items-cat-title{
-        /*margin-top: 36px!important;*/
+        margin-top: 36px!important;
     }
     .job-items-cat-title h1{
         font-size: 24px!important;
