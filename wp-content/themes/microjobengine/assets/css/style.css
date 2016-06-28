@@ -9943,7 +9943,7 @@ body.archive .block-title {
   font-family: 'Montserrat', sans-serif;
 }
 .block-items-detail .package-statistic .text-content {
-  margin-top: 35px;
+  margin-top: 20px;
   padding: 10px 0;
   border-top: 1px solid #dfe0e5;
   border-bottom: 1px solid #dfe0e5;
@@ -10074,7 +10074,7 @@ body.archive .block-title {
   display: block;
   padding: 10px 0;
   position: relative;
-  border-bottom: 1px solid #dfe0e5;
+  /*border-bottom: 1px solid #dfe0e5;*/
 }
 .block-items-detail .personal-profile ul li .title-items {
   color: #90969b;

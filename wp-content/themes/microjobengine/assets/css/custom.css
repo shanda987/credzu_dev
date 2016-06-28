@@ -767,3 +767,9 @@
     bottom: 0;
     right: 200px;
 }
+.headline-mjob-sidebar{
+    margin-top: 35px;
+}
+.block-items-detail .personal-profile ul li:last-child{
+    border-bottom: 1px solid #dfe0e5;
+}

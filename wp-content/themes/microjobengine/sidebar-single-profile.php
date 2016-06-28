@@ -20,7 +20,7 @@ $other_posts = mJobProfileAction()->getOtherPosts($user_id, 5, array($post->ID) 
 
 // User profile information
 $description = !empty($profile->profile_description) ? $profile->profile_description : "";
-$display_name = isset($user_data->display_name) ? $user_data->display_name : '';
+$display_name = $profile->first_name . ' '. $profile->last_name_initial;
 $country_name = isset($profile->tax_input['country'][0]) ? $profile->tax_input['country'][0]->name : '';
 $languages = isset($profile->tax_input['language']) ? $profile->tax_input['language'] : '';
 ?>
@@ -39,10 +39,18 @@ $languages = isset($profile->tax_input['language']) ? $profile->tax_input['langu
         <ul class="profile">
             <li class="location clearfix">
                 <div class="pull-left">
-                    <span><i class="fa fa-map-marker"></i><?php _e('From ', ET_DOMAIN) ?></span>
+                    <span><i class="fa fa-map-marker"></i><?php _e('Main Offices ', ET_DOMAIN) ?></span>
                 </div>
                 <div class="pull-right">
-                    <?php echo $profile->company_address; ?>
+                    <?php echo $profile->company_city; ?>
+                </div>
+            </li>
+            <li class="location clearfix">
+                <div class="pull-left">
+                    <span><i class="fa fa-clock-o" aria-hidden="true"></i><?php _e('Year Establisted ', ET_DOMAIN) ?></span>
+                </div>
+                <div class="pull-right">
+                    <?php echo $profile->company_year_established; ?>
                 </div>
             </li>
             <?php

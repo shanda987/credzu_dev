@@ -250,6 +250,7 @@ if($profile_id) {
                                 <div class="action">
                                     <button class="btn-bookmark"><i class="fa fa-heart"></i></button>
                                 </div>
+                                <h4><?php _e('Listing details',ET_DOMAIN); ?></h4>
                                 <div class="text-content">
                                     <ul>
                                         <li>
@@ -269,6 +270,7 @@ if($profile_id) {
                                             <div class="total-number time-delivery-label"><?php echo $current->time_delivery; ?></div>
                                         </li>
                                     </ul>
+                                    <h4 class="headline-mjob-sidebar"><?php _e('Company Details',ET_DOMAIN); ?></h4>
                                 </div>
                             </div>
                             <?php get_sidebar('single-profile'); ?>
