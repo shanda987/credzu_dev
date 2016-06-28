@@ -129,7 +129,7 @@ if($profile_id) {
                                     </ul>
                                     <?php endif; ?>
                                     <?php if( !empty($current->agreement_terms) ): ?>
-                                    <span class="title"><?php _e('AGREEMENT TERMS', ET_DOMAIN) ;?></span>
+<!--                                    <span class="title">--><?php //_e('AGREEMENT TERMS', ET_DOMAIN) ;?><!--</span>-->
 <!--                                    <div class="tabs-information" id="agreement_term">-->
 <!--                                        --><?php //echo $current->agreement_terms; ?>
 <!--                                    </div>-->
