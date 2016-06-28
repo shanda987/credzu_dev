@@ -114,10 +114,10 @@ $languages = isset($profile->tax_input['language']) ? $profile->tax_input['langu
                 ?>
             <div class="row other-listing-item other-listing-item-new">
                 <div class="col-md-4">
-                    <img src="<?php echo $post->the_post_thumbnail; ?>" alt="<?php echo $post->post_title; ?>" class="img-response related-mjob-img" />
+                    <a href="<?php echo $post->permalink; ?>"><img src="<?php echo $post->the_post_thumbnail; ?>" alt="<?php echo $post->post_title; ?>" class="img-response related-mjob-img" /></a>
                 </div>
                 <div class="col-md-8">
-                    <a href="<?php echo $post->permalink; ?>">"<?php echo $post->post_title?>"</a><i><?php _e(' in ', ET_DOMAIN); ?></i>
+                    <span class="relate-mjob-post-title">"<?php echo $post->post_title?>"<i><?php _e(' in ', ET_DOMAIN); ?></i></span>
                     <a class="mjob-category-link" href="<?php echo get_term_link($post->mjob_category['0'], 'mjob_category'); ?>"> <?php echo $post->mjob_category_name; ?></a>
                 </div>
             </div>
