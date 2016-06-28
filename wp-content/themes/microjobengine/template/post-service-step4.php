@@ -17,7 +17,7 @@ if($user_ID) $step--;
                     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 items-chosen">
                         <div class="block-items">
                             <ul>
-                                <p class="title-sub"><?php _e('Microjob name', ET_DOMAIN); ?></p>
+                                <p class="title-sub"><?php _e('LISTING PREVIEW', ET_DOMAIN); ?></p>
                                 <li>
                                     <div class="inner">
                                         <div class="ribbon-featured"><span><?php _e('Featured', ET_DOMAIN); ?></span></div>

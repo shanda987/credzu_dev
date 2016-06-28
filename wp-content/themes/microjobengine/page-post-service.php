@@ -37,7 +37,7 @@ $disable_plan = ae_get_option('disable_plan', false);
 <div id="content" class="mjob-post-service">
     <div class="container float-center">
 
-        <p class="block-title"><?php _e('POST A LISTING', ET_DOMAIN); ?></p>
+        <p class="block-title post-service-title"><?php _e('POST A LISTING', ET_DOMAIN); ?></p>
         <?php if(!$disable_plan) : ?>
         <div class="progress-bar">
             <div class="mjob-progress-bar-item">
