@@ -133,9 +133,9 @@ if($profile_id) {
 <!--                                    <div class="tabs-information" id="agreement_term">-->
 <!--                                        --><?php //echo $current->agreement_terms; ?>
 <!--                                    </div>-->
-                                    <div class="form-group post_listing_agreement_term_content">
-                                        <?php echo $current->agreement_terms; ?>
-                                    </div>
+<!--                                    <div class="form-group post_listing_agreement_term_content">-->
+<!--                                        --><?php //echo $current->agreement_terms; ?>
+<!--                                    </div>-->
                                     <div class="tags">
                                         <?php list_tax_of_mjob($current->ID, 'skill', 'skill') ?>
                                     </div>
