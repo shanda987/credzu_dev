@@ -402,6 +402,7 @@ class mJobProfileAction extends mJobPostAction
         if( $user_role == COMPANY && empty($result->company_email )){
             update_post_meta($result->ID, 'company_email', $result->business_email);
         }
+        $result->initial_display_name  = $result->first_name .' '. $result->last_name_initial;
         return $result;
     }
     public function mJobAddProfileModal() {
