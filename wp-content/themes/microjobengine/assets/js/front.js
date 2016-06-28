@@ -700,7 +700,6 @@
                 var w = $(window).height();
                 var b = $('body').height();
                 var h = w - b;
-                console.log(h);
                 if( h > 0 ){
                     $('#footer').css('margin-top', h+'px');
                 }
