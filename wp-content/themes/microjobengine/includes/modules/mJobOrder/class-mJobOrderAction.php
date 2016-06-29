@@ -47,6 +47,7 @@ class mJobOrderAction extends mJobPostAction{
         $order_obj = $ae_post_factory->get('mjob_order');;
         $request = $_POST;
         $response = $this->validatePost($request);
+        var_dump($response);
         if( !$response['success'] ){
             wp_send_json($response);
             exit;
@@ -389,7 +390,7 @@ class mJobOrderAction extends mJobPostAction{
      * @category void
      * @author JACK BUI
      */
-    public function validatePost($data){
+        public function validatePost($data){
         global $user_ID;
         $result = array(
             'success'=> true,
@@ -876,7 +877,6 @@ class mJobOrderAction extends mJobPostAction{
             'posts_per_page'=> 3
         );
         $posts = get_posts($args);
-        var_dump($posts);
         if( $posts && !empty($posts) ) {
             return false;
         }

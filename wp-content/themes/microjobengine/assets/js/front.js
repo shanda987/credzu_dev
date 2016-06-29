@@ -1162,10 +1162,10 @@
 
                                             },
                                             success: function(resp, status, jqXHR) {
-                                                AE.pubsub.trigger('ae:notification', {
-                                                    msg: res.msg,
-                                                    notice_type: 'success'
-                                                });
+                                                //AE.pubsub.trigger('ae:notification', {
+                                                //    msg: res.msg,
+                                                //    notice_type: 'success'
+                                                //});
                                                 view.blockUi.unblock();
                                                 if( typeof resp.files !== 'undefined' ){
                                                     view.saveOrder(resp.files);
