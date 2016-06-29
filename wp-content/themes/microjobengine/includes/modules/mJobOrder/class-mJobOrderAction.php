@@ -879,7 +879,6 @@ class mJobOrderAction extends mJobPostAction{
             'posts_per_page'=> 3
         );
         $posts = get_posts($args);
-        var_dump($posts);
         if( $posts && !empty($posts) ) {
             return array('success'=>false, 'data'=>$order->convert($posts['0']));
         }
