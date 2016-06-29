@@ -11,7 +11,7 @@ $current        = $post_object->current_post;
             <span class="total-review"><?php printf('(%s)', $current->mjob_total_reviews); ?></span>
         </div>
 
-        <?php if(!is_search()) : ?>
+        <?php if(!is_search() && !is_tax('mjob_category')) : ?>
         <div class="bookmark">
             <p class="marks <?php echo $current->status_class; ?>"><?php echo $current->status_text; ?></p>
         </div>
