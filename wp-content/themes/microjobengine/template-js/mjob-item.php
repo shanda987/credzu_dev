@@ -26,9 +26,7 @@
             <# if( is_admin || is_author){ #>
             <div class="status">
                 <input type="hidden" name="_wpnonce" value="<?php echo wp_create_nonce('ae-mjob_post-sync');?>" />
-                <# if( !is_seawrch && !is_tax_mjob_category ){ #>
                 <a  href="#">{{= mjob_status }}</a><br/>
-                <# } #>
                 <# if(  post_status == 'pending') { #>
                     <ul>
                         <# if( !is_admin ){ #>
