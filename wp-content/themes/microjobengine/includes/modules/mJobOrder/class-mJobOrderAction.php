@@ -404,7 +404,7 @@ class mJobOrderAction extends mJobPostAction{
                 return $result;
             }
         }
-        if( !$this>user_can_create_order($data['post_parent'], $user_ID) ){
+        if( !$this->user_can_create_order($data['post_parent'], $user_ID) ){
             $result = array(
                 'success'=> false,
                 'msg'=> __('You already created this order!', ET_DOMAIN)
