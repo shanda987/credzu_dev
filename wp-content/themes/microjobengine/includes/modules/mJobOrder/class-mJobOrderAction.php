@@ -51,7 +51,6 @@ class mJobOrderAction extends mJobPostAction{
             wp_send_json($response);
             exit;
         }
-        var_dump('sdfsfsfds');
         if( !isset($request['post_author']) && !$user_ID ){
             $request['post_author'] = mjob_get_temp_user_id();
         }
