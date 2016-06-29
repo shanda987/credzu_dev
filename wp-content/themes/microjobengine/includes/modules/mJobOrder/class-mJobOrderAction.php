@@ -869,6 +869,8 @@ class mJobOrderAction extends mJobPostAction{
       * @author JACK BUI
       */
     public function user_can_create_order($mjob_id, $user_id){
+        global $ae_post_factory;
+        $order = $ae_post_factory->get('mjob_order');
         $args = array(
             'post_type'=>'mjob_order',
             'post_parent'=> $mjob_id,
@@ -879,7 +881,7 @@ class mJobOrderAction extends mJobPostAction{
         if( $posts && !empty($posts) ) {
             return false;
         }
-        return $posts;
+        return $order->convert($posts['0']);
 
     }
 
