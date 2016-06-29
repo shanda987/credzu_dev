@@ -521,6 +521,19 @@ class ET_Microjobengine extends AE_Base
                 wp_redirect('/temporarily-unavailable');
             }
         }
+        if( is_singular('ae_message')){
+            $id = get_the_ID();
+            $msg = get_post($id);
+            $p = $msg->post_parent;
+            $url = get_permalink($p);
+            if( !empty($url) ) {
+                wp_redirect($url);
+            }
+            else{
+                wp_redirect(home_url());
+            }
+
+        }
     }
     /**
      * filter profile link and change it to author posts link
