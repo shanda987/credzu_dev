@@ -521,6 +521,9 @@ class ET_Microjobengine extends AE_Base
                 wp_redirect('/temporarily-unavailable');
             }
         }
+        if( is_page_template('page-my-list-messages.php')){
+            wp_redirect(et_get_page_link('dashboard'));
+        }
         if( is_singular('ae_message')){
             $id = get_the_ID();
             $msg = get_post($id);
@@ -533,9 +536,6 @@ class ET_Microjobengine extends AE_Base
                 wp_redirect(home_url());
             }
 
-        }
-        if( is_page_template('page-message-list.php')){
-            wp_redirect(et_get_page_link('dashboard'));
         }
     }
     /**
