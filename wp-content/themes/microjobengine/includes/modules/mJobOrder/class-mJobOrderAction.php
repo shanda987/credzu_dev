@@ -390,6 +390,7 @@ class mJobOrderAction extends mJobPostAction{
      * @author JACK BUI
      */
     public function validatePost($data){
+        global $user_ID;
         $result = array(
             'success'=> true,
             'msg'=> __('Successful!', ET_DOMAIN)
@@ -400,7 +401,15 @@ class mJobOrderAction extends mJobPostAction{
                     'success'=> false,
                     'msg'=> __('Failed!', ET_DOMAIN)
                 );
+                return $result;
             }
+        }
+        if( !$this>user_can_create_order($data['post_parent'], $user_ID) ){
+            $result = array(
+                'success'=> false,
+                'msg'=> __('You already created this order!', ET_DOMAIN)
+            );
+            return $result;
         }
         return $result;
     }
@@ -849,5 +858,31 @@ class mJobOrderAction extends mJobPostAction{
             'msg'=> __('Failed!', ET_DOMAIN)
         ));
     }
+    /**
+      * check if user can create a order
+      *
+      * @param void
+      * @return void
+      * @since 1.4
+      * @package MicrojobEngine
+      * @category CREDZU
+      * @author JACK BUI
+      */
+    public function user_can_create_order($mjob_id, $user_id){
+        $args = array(
+            'post_type'=>'mjob_order',
+            'post_status'=> 'any',
+            'post_parent'=> $mjob_id,
+            'author'=> $user_id,
+            'posts_per_page'=> 3
+        );
+        $posts = get_posts($args);
+        if( $posts && !empty($posts) ) {
+            return false;
+        }
+        return true;
+
+    }
+
 }
 new mJobOrderAction();
