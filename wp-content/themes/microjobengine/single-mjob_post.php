@@ -152,7 +152,7 @@ if($profile_id) {
                                             if( $mj_ac ): ?>
                                                 <button class="btn-submit btn-order waves-effect waves-light <?php echo $disableClass; ?>" ><?php echo sprintf(__('ORDER (<span class="mjob-price">%s</span>)', ET_DOMAIN), $current->et_budget_text) ; ?></button>
                                                 <?php else: ?>
-                                                    <button onclick="window.location.href='<?php echo $mj_ac->permalink; ?>'" class="btn-submit btn-orders  waves-effect waves-light <?php echo $disableClass; ?>" ><?php echo sprintf(__('ORDER (<span class="mjob-price">%s</span>)', ET_DOMAIN), $current->et_budget_text) ; ?></button>
+                                                    <button onclick="window.location.href='<?php echo $mj_ac->permalink; ?>'" class="btn-submit btn-orders  waves-effect waves-light " ><?php echo sprintf(__('ORDER (<span class="mjob-price">%s</span>)', ET_DOMAIN), $current->et_budget_text) ; ?></button>
                                                 <?php endif; ?>
                                             <?php else: ?>
                                                <span class="status-noti"><?php //_e('Currently not accepting new clients.', ET_DOMAIN); ?></span>
