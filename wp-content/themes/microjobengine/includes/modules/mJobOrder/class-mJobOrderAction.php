@@ -404,7 +404,8 @@ class mJobOrderAction extends mJobPostAction{
                 return $result;
             }
         }
-        if( !$this->user_can_create_order($data['post_parent'], $user_ID) ){
+        $is_c = $this->user_can_create_order($data['post_parent'], $user_ID);
+        if( !$is_c['success'] ){
             $result = array(
                 'success'=> false,
                 'msg'=> __('You already created this order!', ET_DOMAIN)
@@ -879,9 +880,9 @@ class mJobOrderAction extends mJobPostAction{
         );
         $posts = get_posts($args);
         if( $posts && !empty($posts) ) {
-            return false;
+            return array('success'=>false, 'data'=>$order->convert($posts['0']));
         }
-        return $order->convert($posts['0']);
+        return array('success'=> 'true');
 
     }
 
