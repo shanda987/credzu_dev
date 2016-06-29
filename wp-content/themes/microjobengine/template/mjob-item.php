@@ -2,7 +2,6 @@
 global $wp_query, $ae_post_factory, $post;
 $post_object    = $ae_post_factory->get( 'mjob_post' );
 $current        = $post_object->current_post;
-var_dump(is_tax('mjob_category'));
 ?>
 <li class="col-lg-4 col-md-4 col-sm-4 col-xs-6 mjob-item animation-element animated" nameAnimation="zoomIn">
     <div class="inner clearfix">

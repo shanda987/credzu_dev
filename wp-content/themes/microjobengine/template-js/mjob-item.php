@@ -8,7 +8,7 @@
             <span class="total-review">({{= mjob_total_reviews }})</span>
         </div>
         <?php if(!is_search()) : ?>
-        <# if( is_featured != 1){ #>
+        <# if( is_featured != 1 && !is_search && !is_tax_mjob_category ){ #>
         <div class="bookmark">
             <p class="marks {{= status_class }}">{{= status_text }}</p>
         </div>
