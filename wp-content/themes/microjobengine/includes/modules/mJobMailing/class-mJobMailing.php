@@ -480,13 +480,13 @@ class mJobMailing extends AE_Mailing
      * @category void
      * @author JACK BUI
      */
-    public function email_agreement( $emails, $file_path, $company_name ){
+    public function email_agreement( $client_email,  $company_email, $file_path, $company_name ){
         global $user_ID;
         $subject = ae_get_option('agreement_mail_template_subject', __('Agreements attached.', ET_DOMAIN));
         $subject = strip_tags(str_ireplace('[company_name]', $company_name , $subject));
         $email_msg = ae_get_option('agreement_mail_template', '');
         $attachment = $file_path;
-        $result = $this->wp_mail($emails, $subject, $email_msg, array('user_id' => $user_ID),'', $attachment);
+        $result = $this->wp_mail($client_email, $subject, $email_msg, array('user_id' => $user_ID),'', $attachment);
     }
     /**
       * Email to admin every times a company profile is created

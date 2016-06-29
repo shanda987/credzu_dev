@@ -21,7 +21,7 @@ class mJobMailingAction extends AE_Base
         $this->add_action('mjob_decline_order', 'mJobMailDeclineMjobOrder');
         $this->add_filter('ae_filter_receipt_mail_template', 'mJobMailFilterReceiptContent', 10, 3);
         $this->add_action('mjob_consumer_rights_email', 'mJobMailConsumerRights', 10, 2);
-        $this->add_action('mjob_agreement_email', 'mJobMailAgreement', 10, 3);
+        $this->add_action('mjob_agreement_email', 'mJobMailAgreement', 10, 4);
         $this->add_action('mjob_company_created_email', 'mJobMailCompanyCreated', 10, 2);
         $this->add_action('payment_check_email', 'mJobMailCheckPayment', 10, 3);
         $this->add_action('client_payment_check_email', 'mJobMailClientCheckPayment', 10, 3);
@@ -96,8 +96,8 @@ class mJobMailingAction extends AE_Base
     public function mJobMailConsumerRights($emails, $file_path){
         $this->mail->email_consumer_rights($emails, $file_path);
     }
-    public function mJobMailAgreement($emails, $file_path, $company_name){
-        $this->mail->email_agreement($emails, $file_path, $company_name);
+    public function mJobMailAgreement($client_email, $company_email, $file_path, $company_name){
+        $this->mail->email_agreement($client_email, $company_email, $file_path, $company_name);
     }
     /**
       * Send an email to admin everytime a compnay is created

@@ -197,7 +197,7 @@ class agreementAction extends mJobPostAction{
                     }
                 }
             }
-            do_action('mjob_agreement_email', $emails, $arr_path, $company_name);
+            do_action('mjob_agreement_email', $profile->business_email, $email1, $arr_path, $company_name);
             wp_send_json(array(
                 'success'=> true,
                 'msg'=> __('Success!', ET_DOMAIN),
