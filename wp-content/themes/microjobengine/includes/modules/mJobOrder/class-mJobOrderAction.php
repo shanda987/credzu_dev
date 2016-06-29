@@ -871,12 +871,12 @@ class mJobOrderAction extends mJobPostAction{
     public function user_can_create_order($mjob_id, $user_id){
         $args = array(
             'post_type'=>'mjob_order',
-            'post_status'=> 'any',
             'post_parent'=> $mjob_id,
             'author'=> $user_id,
             'posts_per_page'=> 3
         );
         $posts = get_posts($args);
+        var_dump($posts);
         if( $posts && !empty($posts) ) {
             return false;
         }
