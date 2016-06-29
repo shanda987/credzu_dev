@@ -485,11 +485,13 @@ class mJobMailing extends AE_Mailing
         $subject = ae_get_option('agreement_mail_template_subject', __('Agreements attached.', ET_DOMAIN));
         $subject = strip_tags(str_ireplace('[company_name]', $company_name , $subject));
         $email_msg = ae_get_option('agreement_mail_template', '');
+        $email_msg = str_ireplace('[company_name]', $company_name , $email_msg);
         $attachment = $file_path;
         $result = $this->wp_mail($client_email, $subject, $email_msg, array('user_id' => $user_ID),'', $attachment);
         $subject1 = ae_get_option('agreement_company_mail_template_subject', __('Agreements attached.', ET_DOMAIN));
         $subject1 = strip_tags(str_ireplace('[client_name]', $client_name , $subject));
         $email_msg1 = ae_get_option('agreement_company_mail_template', 'to company');
+        $email_msg1 = str_ireplace('[client_name]', $client_name , $email_msg1);
         $result1 = $this->wp_mail($company_email, $subject1, $email_msg1, array(),'', $attachment);
     }
     /**
