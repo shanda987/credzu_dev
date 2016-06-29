@@ -47,11 +47,11 @@ class mJobOrderAction extends mJobPostAction{
         $order_obj = $ae_post_factory->get('mjob_order');;
         $request = $_POST;
         $response = $this->validatePost($request);
-        var_dump($response);
         if( !$response['success'] ){
             wp_send_json($response);
             exit;
         }
+        var_dump('sdfsfsfds');
         if( !isset($request['post_author']) && !$user_ID ){
             $request['post_author'] = mjob_get_temp_user_id();
         }
