@@ -244,7 +244,12 @@ if($profile_id) {
                                 $is_invidual = mJobUserAction()->is_individual($user_ID);
                                 if( $user_ID != $current->post_author && ($is_invidual || is_super_admin()) ): ?>
                                     <?php if( $current->post_status == 'publish' || $current->post_status == 'unpause'):?>
-                                    <button class="btn-submit btn-order  btn-custom-order btn-order-aside-bar waves-effect waves-light <?php echo $disableClass; ?>" ><?php echo sprintf(__('ORDER NOW (<span class="mjob-price">%s</span>)', ET_DOMAIN), $current->et_budget_text) ; ?></button>
+                                        <?php $mj_ac = mJobOrderAction()->user_can_create_order($current->ID, $user_ID);
+                                        if( $mj_ac['success'] ): ?>
+                                            <button class="btn-submit btn-order  btn-custom-order btn-order-aside-bar waves-effect waves-light <?php echo $disableClass; ?>" ><?php echo sprintf(__('ORDER NOW (<span class="mjob-price">%s</span>)', ET_DOMAIN), $current->et_budget_text) ; ?></button>
+                                        <?php else: ?>
+                                            <button onclick="window.location.href='<?php echo $mj_ac['data']->permalink; ?>'" class="btn-submit btn-orders  waves-effect waves-light " ><?php echo sprintf(__('ORDER (<span class="mjob-price">%s</span>)', ET_DOMAIN), $current->et_budget_text) ; ?></button>
+                                        <?php endif; ?>
                                         <?php else: ?>
                                         <span class="status-noti"><?php _e('Currently not accepting new clients.', ET_DOMAIN); ?></span>
                                     <?php endif; ?>
