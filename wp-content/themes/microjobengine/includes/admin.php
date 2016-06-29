@@ -2228,6 +2228,46 @@ class ET_Admin extends AE_Base
                 ) ,
                 array(
                     'args' => array(
+                        'title' => __("Agreement Mail Subject to company", ET_DOMAIN) ,
+                        'id' => 'company-agreement-mail-subject-company',
+                        'class' => 'payment-gateway',
+                        'name' => '',
+                        'desc' => __("Send to company this content in email subject", ET_DOMAIN),
+                        'toggle' => true
+                    ) ,
+                    'fields' => array(
+                        array(
+                            'id' => 'agreement_company_mail_template_subject',
+                            'type' => 'editor',
+                            'title' => __("Send to Company this content in email subject", ET_DOMAIN) ,
+                            'name' => 'agreement_company_mail_template_subject',
+                            'class' => '',
+                            'reset' => 1
+                        )
+                    )
+                ) ,
+                array(
+                    'args' => array(
+                        'title' => __("Agreement Mail Template To Company", ET_DOMAIN) ,
+                        'id' => 'company-agreement-mail-company',
+                        'class' => 'payment-gateway',
+                        'name' => '',
+                        'desc' => __("Send to  company to notify Agreement!", ET_DOMAIN),
+                        'toggle' => true
+                    ) ,
+                    'fields' => array(
+                        array(
+                            'id' => 'agreement_company_mail_template',
+                            'type' => 'editor',
+                            'title' => __("Send to  company to notify Agreement is signed", ET_DOMAIN) ,
+                            'name' => 'agreement_company_mail_template',
+                            'class' => '',
+                            'reset' => 1
+                        )
+                    )
+                ) ,
+                array(
+                    'args' => array(
                         'title' => __("New company is created email", ET_DOMAIN) ,
                         'id' => 'company_profile_mails',
                         'class' => 'payment-gateway',
