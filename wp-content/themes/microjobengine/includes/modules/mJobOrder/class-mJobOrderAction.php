@@ -879,7 +879,7 @@ class mJobOrderAction extends mJobPostAction{
         if( $posts && !empty($posts) ) {
             return false;
         }
-        return true;
+        return $posts;
 
     }
 
