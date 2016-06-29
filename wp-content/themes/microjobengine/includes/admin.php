@@ -2238,7 +2238,7 @@ class ET_Admin extends AE_Base
                     'fields' => array(
                         array(
                             'id' => 'agreement_company_mail_template_subject',
-                            'type' => 'editor',
+                            'type' => 'text',
                             'title' => __("Send to Company this content in email subject", ET_DOMAIN) ,
                             'name' => 'agreement_company_mail_template_subject',
                             'class' => '',
