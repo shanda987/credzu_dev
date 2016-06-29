@@ -534,6 +534,9 @@ class ET_Microjobengine extends AE_Base
             }
 
         }
+        if( is_page_template('page-message-list.php')){
+            wp_redirect(et_get_page_link('dashboard'));
+        }
     }
     /**
      * filter profile link and change it to author posts link
