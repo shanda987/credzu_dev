@@ -148,10 +148,10 @@ if($profile_id) {
                                         <?php if( $current->post_status == 'publish' || $current->post_status == 'unpause'): ?>
                                             <?php
                                             $mj_ac = mJobOrderAction()->user_can_create_order($current->ID, $user_ID);
-                                            if( !$mj_ac ): ?>
+                                            if( $mj_ac ): ?>
                                                 <button class="btn-submit btn-order waves-effect waves-light <?php echo $disableClass; ?>" ><?php echo sprintf(__('ORDER (<span class="mjob-price">%s</span>)', ET_DOMAIN), $current->et_budget_text) ; ?></button>
                                                 <?php else: ?>
-                                                    <button onclick="window.location.href='<?php echo get_permalink($mj_ac['0']->ID); ?>'"class="btn-submit  waves-effect waves-light <?php echo $disableClass; ?>" ><?php echo sprintf(__('ORDER (<span class="mjob-price">%s</span>)', ET_DOMAIN), $current->et_budget_text) ; ?></button>
+                                                    <button onclick="window.location.href='<?php echo get_permalink($mj_ac['0']->ID); ?>'"class="btn-submit btn-order  waves-effect waves-light <?php echo $disableClass; ?>" ><?php echo sprintf(__('ORDER (<span class="mjob-price">%s</span>)', ET_DOMAIN), $current->et_budget_text) ; ?></button>
                                                 <?php endif; ?>
                                             <?php else: ?>
                                                <span class="status-noti"><?php //_e('Currently not accepting new clients.', ET_DOMAIN); ?></span>
