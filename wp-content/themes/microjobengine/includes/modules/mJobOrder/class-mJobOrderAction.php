@@ -882,7 +882,7 @@ class mJobOrderAction extends mJobPostAction{
         if( $posts && !empty($posts) ) {
             return array('success'=>false, 'data'=>$order->convert($posts['0']));
         }
-        return array('success'=> 'true');
+        return array('success'=> true);
 
     }
 
