@@ -109,12 +109,12 @@ class mJobAction extends mJobPostAction{
         $arr_extras = array();
         $is_featured = 0;
         if( isset($request['checkout']) && $request['checkout'] == 1){
-            if( !mJobProfileAction()->isCompanyActive()){
-                wp_send_json(array(
-                    'success'=> false,
-                    'msg'=> __('Please complete your company profile before post a listing!', ET_DOMAIN)
-                ));
-            }
+//            if( !mJobProfileAction()->isCompanyActive()){
+//                wp_send_json(array(
+//                    'success'=> false,
+//                    'msg'=> __('Please complete your company profile before post a listing!', ET_DOMAIN)
+//                ));
+//            }
             $m = $this->get_mjob($request['ID']);
             $package = $ae_post_factory->get('pack');
             $plan = $package->get($m->et_payment_package);
