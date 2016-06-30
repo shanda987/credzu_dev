@@ -318,12 +318,14 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                                     endif;
                                                 endif;
                                                 ?>
+                                                <?php if( $term->term_id != 43 ): ?>
                                                 <li>
                                                     <a href="#" data-type="<?php echo $term->click_type; ?>" class="<?php echo $cl1.' ';?> <?php echo $class; ?>" data-id="<?php echo $term->slug; ?>" data-name="<?php echo $term->name; ?>"><?php echo $icon; ?>  <?php echo ' '.$term->name ?></a>
                                                     <?php if( ae_user_role($user_ID) == COMPANY):
                                                         echo  ''.$com;
                                                     endif; ?>
                                                 </li>
+                                                <?php endif; ?>
                                             <?php endforeach; ?>
                                         </ul>
                                     <?php endif; ?>
