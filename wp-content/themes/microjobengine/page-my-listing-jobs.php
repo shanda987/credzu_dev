@@ -46,7 +46,9 @@ get_header();
                                     'archive',
                                     'pause',
                                     'unpause',
-                                    'draft'),
+                                    'draft',
+                                    'inactive'
+                                ),
                             );
                         query_posts($args);
                         get_template_part('template/list', 'mjobs');
