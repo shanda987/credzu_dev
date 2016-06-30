@@ -7,12 +7,10 @@
             <div class="rate-it star" data-score="{{= rating_score }}"></div>
             <span class="total-review">({{= mjob_total_reviews }})</span>
         </div>
-        <?php if(!is_search()) : ?>
-        <# if( is_featured != 1 && !ae_globals.is_search && !ae_globals.is_tax_mjob_category ){ #>
+        <?php if(!is_search() && !is_post_type_archive('mjob_post') && !is_tax('mjob_category') ) : ?>
         <div class="bookmark">
             <p class="marks {{= status_class }}">{{= status_text }}</p>
         </div>
-        <# } #>
         <?php else: ?>
             <# if(et_featured == 1) { #>
                 <div class="bookmark">
