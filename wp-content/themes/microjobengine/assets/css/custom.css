@@ -174,6 +174,7 @@
 }
 .mjob-single-order-page .personal-profile{
     padding-bottom: 0!important;
+    border-bottom: 1px solid #dfe0e5;
 }
 .box-aside2{
     margin-top: 60px;
@@ -814,14 +815,17 @@
     height: 500px;
 }
 .order-extra{
-    border-top: none!important;
+    /*border-top: none!important;*/
 }
 .mjob-single-order-page .order-detail-price .total-order-1{
-    width: 430px;
-    left: -30px;
-    bottom: -30px;
+    /*width: 430px;*/
+    /*left: -30px;*/
+    /*bottom: -30px;*/
     border-bottom: 1px solid #dfe0e5;
 }
 .margin-bottom-100{
     margin-bottom: 100px;
+}
+.requirement-task i{
+    color:red;
 }
