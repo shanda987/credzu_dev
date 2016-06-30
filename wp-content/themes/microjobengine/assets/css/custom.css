@@ -514,7 +514,7 @@
 }
 .resend-requirement-style{
     font-size: 18px;
-    color: red;
+    /*color: red;*/
 }
 .unlock-requirement-modal{
     padding-left: 20px;

@@ -166,8 +166,8 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                             <div class="tabs-information">
                                 <ul class="nav nav-tabs requirement-tabs" role="tablist">
                                     <li role="presentation" class="active requirement-list-li"><a href="#my_company" aria-controls="requirement" role="tab" data-toggle="tab" class="left-tab-requirement"><?php _e('MY COMPANY', ET_DOMAIN); ?></a></li>
-                                    <li role="presentation" class="requirement-list-li"><a href="#requirement" aria-controls="requirement" role="tab" data-toggle="tab" class="left-tab-requirement"><?php _e('Requirements', ET_DOMAIN); ?></a></li>
-                                    <li role="presentation" class="requirement-list-li"><a href="#document" aria-controls="document" role="tab" data-toggle="tab"><?php _e('Documents', ET_DOMAIN); ?></a></li>
+                                    <li role="presentation" class="requirement-list-li"><a href="#requirement" aria-controls="requirement" role="tab" data-toggle="tab" class="left-tab-requirement"><?php _e('MY TASKS', ET_DOMAIN); ?></a></li>
+                                    <li role="presentation" class="requirement-list-li"><a href="#document" aria-controls="document" role="tab" data-toggle="tab"><?php _e('MY DOCUMENTS', ET_DOMAIN); ?></a></li>
                                 </ul>
                                 <div class="tab-content order-extra">
                                         <div role="tabpanel" class="tab-pane active personal-profile order-detail-profile" id="my_company">
