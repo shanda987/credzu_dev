@@ -291,7 +291,9 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                                 endif;
                                                 ?>
                                                 <ul class="requirement-list">
-                                                    <?php foreach( $terms as $term):
+                                                    <?php
+                                                    $q = false;
+                                                    foreach( $terms as $term):
                                                         $f = false;
                                                         $term = $obj_tax->convert($term);
                                                         if( $term->click_type == 'open-contact-info' || $term->click_type == 'open-billing-info'):
@@ -306,6 +308,7 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                                                 $com = '';
                                                                 $icon = '<i class="fa fa-square-o" aria-hidden="true"></i>';
                                                                 $class = '';
+                                                                $q = true;
                                                             endif;
                                                         else:
                                                             if( in_array($term->slug, (array)$current->uploaded) ):
@@ -316,6 +319,7 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                                                 $com = '';
                                                                 $icon = '<i class="fa fa-square-o" aria-hidden="true"></i>';
                                                                 $class = '';
+                                                                $q  = true;
                                                             endif;
                                                         endif;
                                                         ?>
@@ -330,6 +334,7 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                                     <?php endforeach; ?>
                                                 </ul>
                                             <?php endif; ?>
+                                            <input type="hidden" value="<?php echo $q; ?>" id="noti-show" />
                                         </div>
                                         <div class="total-order total-order-1">
                                             <p><i class="fa fa-exclamation-circle" aria-hidden="true"></i><?php _e(' These tasks must be completed by you. Without completing these tasks, your company cannot perform the tasks for which you hired them.', ET_DOMAIN); ?></p>

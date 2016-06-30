@@ -824,4 +824,5 @@
 }
 .requirement-task i{
     color:red;
+    display: none;
 }

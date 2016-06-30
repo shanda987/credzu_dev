@@ -224,6 +224,12 @@
                         blockTarget: '.mjob-admin-dispute-form button'
                     });
                 }
+                if( !$('#noti-show').val() ){
+                    $('.requirement-task').find('i').hide();
+                }
+                else{
+                    $('.requirement-task').find('i').show();
+                }
             },
             changeOrderStatus: function(e){
                 e.preventDefault();
