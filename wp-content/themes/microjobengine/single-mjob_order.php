@@ -161,7 +161,7 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                     </div>
                 </div>
                 <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 current block-items-detail profile">
-                    <div class="box-aside">
+                    <div class="box-aside margin-bottom-100">
                         <div class="order-detail-price">
                             <div class="tabs-information">
                                 <ul class="nav nav-tabs requirement-tabs" role="tablist">
