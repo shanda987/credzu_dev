@@ -806,3 +806,6 @@
 .post-service-title{
     text-align: center!important;
 }
+.l-hide, .f-upload{
+    display: none;
+}

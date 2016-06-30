@@ -443,47 +443,59 @@
                 var view = this;
                 view.$el.find('.btn-save-requirement').attr('disabled', false);
                 view.arr_ids.push(res.data.attach_id);
+                $('.f-upload').hide();
             },
             saveOrderRequirment: function(e){
                 e.preventDefault();
                 var view = this;
-                this.model.set('requirement_files', view.arr_ids);
-                this.model.set('requirement_id', view.data_id);
-                view.model.set('need_upload_remove', view.data_id);
-                $target = $(e.currentTarget);
-                this.model.save('', '', {
-                    beforeSend: function () {
-                        view.blockUi.block($target)
-                    },
-                    success: function (result, res, xhr) {
-                        if (res.success) {
+                if( $('#allow_upload').prop('checked') && view.$el.find('.requirement-image-list .image-item').length > 0 ) {
+                    var view = this;
+                    this.model.set('requirement_files', view.arr_ids);
+                    this.model.set('requirement_id', view.data_id);
+                    view.model.set('need_upload_remove', view.data_id);
+                    $target = $(e.currentTarget);
+                    this.model.save('', '', {
+                        beforeSend: function () {
+                            view.blockUi.block($target)
+                        },
+                        success: function (result, res, xhr) {
+                            if (res.success) {
                                 AE.pubsub.trigger('ae:notification', {
                                     msg: res.msg,
                                     notice_type: 'success'
                                 });
-                            view.closeModal();
-                            view.target.addClass('disabled');
-                            view.target.find('i').removeClass('fa-square-o');
-                            view.target.find('i').addClass('fa-check-square-o');
-                            if( typeof res.data.doc_html !== 'undefined'){
-                                $('.document-list').html('');
-                                $('.document-list').append(res.data.doc_html);
+                                view.closeModal();
+                                view.target.addClass('disabled');
+                                view.target.find('i').removeClass('fa-square-o');
+                                view.target.find('i').addClass('fa-check-square-o');
+                                if (typeof res.data.doc_html !== 'undefined') {
+                                    $('.document-list').html('');
+                                    $('.document-list').append(res.data.doc_html);
+                                }
+                            } else {
+                                AE.pubsub.trigger('ae:notification', {
+                                    msg: res.msg,
+                                    notice_type: 'error'
+                                });
                             }
-                        } else {
-                            AE.pubsub.trigger('ae:notification', {
-                                msg: res.msg,
-                                notice_type: 'error'
-                            });
-                        }
-                        view.blockUi.unblock();
+                            view.blockUi.unblock();
 
+                        }
+                    });
+                }
+                else{
+                    if( $(this).find('.requirement-image-list .image-item').length <= 0){
+                        $('.f-upload').show();
                     }
-                });
+                    if( !$('#allow_upload').prop('checked') ) {
+                        $('.l-hide').show();
+                    }
+                }
             },
             removeAll: function(model){
                 var view = this;
                 if( view.$el.find('.requirement-image-list .image-item').length <= 0){
-                    view.$el.find('.btn-save-requirement').attr('disabled', true);
+                    $('.f-upload').show();
                 }
             },
             allow_upload: function(e){
@@ -495,6 +507,7 @@
                 else{
                     view.$el.find('#requirement_container').addClass('disablediv');
                 }
+                $('.l-hide').hide();
             }
         });
         Views.ModaBillingInfo = Views.Modal_Box.extend({
