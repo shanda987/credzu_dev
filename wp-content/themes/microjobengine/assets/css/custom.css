@@ -815,12 +815,8 @@
     height: 500px;
 }
 .order-extra{
-    /*border-top: none!important;*/
 }
 .mjob-single-order-page .order-detail-price .total-order-1{
-    /*width: 430px;*/
-    /*left: -30px;*/
-    /*bottom: -30px;*/
     border-bottom: 1px solid #dfe0e5;
 }
 .margin-bottom-100{
