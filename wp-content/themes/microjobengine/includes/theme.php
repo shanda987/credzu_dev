@@ -1111,7 +1111,7 @@ class ET_Microjobengine extends AE_Base
             $vars['is_admin'] = true;
         }
         $vars['is_search'] = is_search();
-        $vars['is_tax_mjob_category'] = is_tax('mjob_category');
+        $vars['is_tax_mjob_category'] = is_tax('mjob_category') && is_archive();
         $vars['is_tax_skill'] = is_tax('skill');
         $vars['mJobDefaultGalleryImage'] = TEMPLATEURL. '/assets/img/image-avatar.jpg';
         $number_format = ae_get_option('number_format');
