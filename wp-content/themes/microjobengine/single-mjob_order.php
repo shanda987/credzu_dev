@@ -36,7 +36,7 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                 </div>
             </div>
             <div class="row no-margin">
-                <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 conversation-form">
+                <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12 conversation-form">
 <!--                    <p class="text-dispute note-scroll">--><?php //_e('You can scroll up to view all messages', ET_DOMAIN); ?><!--</p>-->
 <!--                    <div class="conversation-date float-center">-->
 <!--                        <div class="line"></div>-->
@@ -76,7 +76,7 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                         ae_pagination($messages_query, get_query_var('paged'), 'load', __('Load older messages', ET_DOMAIN));
                         echo '</div>';
 
-                        echo '<div class="wrapper-list-conversation"><ul class="list-conversation">';
+                        echo '<div class="wrapper-list-conversation new-styles-wrapper-list-conversation"><ul class="list-conversation">';
                             //get_template_part('template/message', 'item');
                         $msg_obj = $ae_post_factory->get('ae_message');
                         $filess = array();
@@ -160,43 +160,154 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                         </form>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 current block-items-detail profile">
+                <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 current block-items-detail profile">
                     <div class="box-aside">
                         <div class="order-detail-price">
-                            <div class="order-extra">
-                                <div class="personal-profile order-detail-profile">
-                                    <div class="float-center profile-avatar">
-                                        <div class="">
-                                            <a href="#" class="">
-                                                <?php
-                                                echo mJobAvatar($current->mjob_author, 75);
-                                                ?>
-                                            </a>
+                            <div class="tabs-information">
+                                <ul class="nav nav-tabs requirement-tabs" role="tablist">
+                                    <li role="presentation" class="active requirement-list-li"><a href="#my_company" aria-controls="requirement" role="tab" data-toggle="tab" class="left-tab-requirement"><?php _e('MY COMPANY', ET_DOMAIN); ?></a></li>
+                                    <li role="presentation" class="requirement-list-li"><a href="#requirement" aria-controls="requirement" role="tab" data-toggle="tab" class="left-tab-requirement"><?php _e('Requirements', ET_DOMAIN); ?></a></li>
+                                    <li role="presentation" class="requirement-list-li"><a href="#document" aria-controls="document" role="tab" data-toggle="tab"><?php _e('Documents', ET_DOMAIN); ?></a></li>
+                                </ul>
+                                <div class="tab-content order-extra">
+                                        <div role="tabpanel" class="tab-pane active personal-profile order-detail-profile" id="my_company">
+                                            <div class="float-center profile-avatar">
+                                                <div class="">
+                                                    <a href="#" class="">
+                                                        <?php
+                                                        echo mJobAvatar($current->mjob_author, 75);
+                                                        ?>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <h4 class="float-center">
+                                                <div id="display_name">
+                                                    <div class="" data-edit="user" data-id="" data-name="display_name" data-type="input"><?php echo $profile->first_name.' '.$profile->last_name; ?></div>
+                                                </div>
+                                            </h4>
+                                            <div class="line">
+                                                <span class="line-distance"></span>
+                                            </div>
+                                            <h4 class="float-center order-mjob-content">
+                                                <div >
+                                                    <div class="" data-edit="user" data-id="" data-name="display_name" data-type="input">
+                                                        <?php
+                                                            $to_role = ae_user_role($to_user);
+                                                            if( $to_role == COMPANY):
+                                                            echo $current->mjob->post_title;
+                                                            elseif( $to_role == INDIVIDUAL ):
+                                                                echo $profile->credit_goal;
+                                                            else:
+                                                                _e('User Description here', ET_DOMAIN);
+                                                            endif;
+                                                        ?></div>
+                                                </div>
+                                            </h4>
                                         </div>
-                                    </div>
-                                    <h4 class="float-center">
-                                        <div id="display_name">
-                                            <div class="" data-edit="user" data-id="" data-name="display_name" data-type="input"><?php echo $profile->first_name.' '.$profile->last_name; ?></div>
-                                        </div>
-                                    </h4>
-                                    <div class="line">
-                                        <span class="line-distance"></span>
-                                    </div>
-                                    <h4 class="float-center order-mjob-content">
-                                        <div >
-                                            <div class="" data-edit="user" data-id="" data-name="display_name" data-type="input">
-                                                <?php
-                                                    $to_role = ae_user_role($to_user);
-                                                    if( $to_role == COMPANY):
-                                                    echo $current->mjob->post_title;
-                                                    elseif( $to_role == INDIVIDUAL ):
-                                                        echo $profile->credit_goal;
-                                                    else:
-                                                        _e('User Description here', ET_DOMAIN);
+                                        <div role="tabpanel" class="tab-pane  order-detail-price" id="requirement">
+                                            <div class="requirment-tab-content">
+                                                <?php $terms = get_the_terms($current->post_parent, 'mjob_requirement');
+                                                if( !empty($terms) && !is_wp_error($terms) ):
+                                                    $user_role = ae_user_role($user_ID);
+                                                    if( $user_role == INDIVIDUAL):
+                                                        $cl1 = 'requirement-item';
+                                                    elseif( $user_role == COMPANY):
+                                                        $cl1 = 'need-uploads';
                                                     endif;
-                                                ?></div>
+                                                    ?>
+                                                    <ul class="requirement-list">
+                                                        <?php foreach( $terms as $term):
+                                                            $f = false;
+                                                            $term = $obj_tax->convert($term);
+                                                            if( $term->click_type == 'open-contact-info' || $term->click_type == 'open-billing-info'):
+                                                                $f = true;
+                                                            endif;
+                                                            if( $f ):
+                                                                if( empty($current->need_uploads) || !in_array( $term->slug, (array)$current->need_uploads )):
+                                                                    $icon = '<i class="fa fa-check-square-o" aria-hidden="true"></i>';
+                                                                    $com = '   <a data-type="'.$term->check_type.'" data-id="'.$term->slug.'" data-name="'.$term->name.'" href="#" class="resend-requirement-style resend-requirement" title="'.__('unlock', ET_DOMAIN).'"><i class="fa fa-refresh" aria-hidden="true"></i></a>';
+                                                                    $class = 'disabled';
+                                                                else:
+                                                                    $com = '';
+                                                                    $icon = '<i class="fa fa-square-o" aria-hidden="true"></i>';
+                                                                    $class = '';
+                                                                endif;
+                                                            else:
+                                                                if( in_array($term->slug, (array)$current->uploaded) ):
+                                                                    $icon = '<i class="fa fa-check-square-o" aria-hidden="true"></i>';
+                                                                    $com = '   <a data-type="'.$term->check_type.'" data-id="'.$term->slug.'" data-name="'.$term->name.'" href="#" class="resend-requirement-style resend-requirement" title="'.__('unlock', ET_DOMAIN).'"><i class="fa fa-refresh" aria-hidden="true"></i></a>';
+                                                                    $class = 'disabled';
+                                                                else:
+                                                                    $com = '';
+                                                                    $icon = '<i class="fa fa-square-o" aria-hidden="true"></i>';
+                                                                    $class = '';
+                                                                endif;
+                                                            endif;
+                                                            ?>
+                                                            <?php if( $term->term_id != 43 ): ?>
+                                                            <li>
+                                                                <a href="#" data-type="<?php echo $term->click_type; ?>" class="<?php echo $cl1.' ';?> <?php echo $class; ?>" data-id="<?php echo $term->slug; ?>" data-name="<?php echo $term->name; ?>"><?php echo $icon; ?>  <?php echo ' '.$term->name ?></a>
+                                                                <?php if( ae_user_role($user_ID) == COMPANY):
+                                                                    echo  ''.$com;
+                                                                endif; ?>
+                                                            </li>
+                                                        <?php endif; ?>
+                                                        <?php endforeach; ?>
+                                                    </ul>
+                                                <?php endif; ?>
+                                            </div>
+                                            <div class="total-order total-order-1">
+                                                <p><i class="fa fa-exclamation-circle" aria-hidden="true"></i><?php _e(' These tasks must be completed by you. Without completing these tasks, your company cannot perform the tasks for which you hired them.', ET_DOMAIN); ?></p>
+                                            </div>
+                                            <input type="hidden" class="input-item" name="_wpnonce" id="profile_wpnonce" value="<?php echo de_create_nonce('ae-mjob_post-sync');?>" />
                                         </div>
-                                    </h4>
+                                        <div role="tabpanel" class="tab-pane " id="document">
+                                            <div id="incomingPaymentsForm">
+                                                <ul class="requirement-list document-list">
+                                                    <?php if( isset($current->agreement_files) && !empty($current->agreement_files)):
+                                                        foreach($current->agreement_files as $item): ?>
+                                                            <li class="col-lg-6 col-md-6 col-xs-12 item-requirement">
+                                                                <a  href="<?php echo et_get_page_link('simple-download').'?cid='.$current->ID.'&n='.$item['name'] ?>" data-name="<?php echo $item['name'].' : '.date('d/m/Y', strtotime($current->post_date))?>" class="show-requirement-docs">
+                                                                    <div class="doc-icon"> <i class="fa fa-file-pdf-o" aria-hidden="true"></i></div>
+                                                                    <div class="doc-name"><?php echo $item['name'] ?></div>
+                                                                    <div class="doc-time"><?php echo date('d/m/Y', strtotime($current->post_date))?></div>
+
+                                                                </a></li>
+
+                                                        <?php endforeach; endif; ?>
+                                                    <?php
+                                                    if( !empty($current->requirement_files)): ?>
+
+                                                        <?php     foreach( $current->requirement_files as $key=> $files):
+                                                            $term = get_term_by('slug', $key, 'mjob_requirement');
+                                                            global $ae_tax_factory;
+                                                            $term_obj = $ae_tax_factory->get('mjob_requirement');
+                                                            $term = $term_obj->convert($term);
+                                                            if(!empty($files)):
+                                                                $i = 0;
+                                                                $tx = '';
+                                                                foreach($files as $file):
+                                                                    $f = get_post($file);
+                                                                    if( $i > 0):
+                                                                        $tx = '_'.$i;
+                                                                    endif;
+                                                                    ?>
+                                                                    <li class="col-lg-6 col-md-6 col-xs-12 item-requirement">
+                                                                        <a  href="<?php echo et_get_page_link('simple-download').'?id='.$f->ID ?>" data-name="<?php echo $term->name.$tx.' : '.date('d/m/Y', strtotime($f->post_date))?>" class="show-requirement-docs">
+                                                                            <div class="doc-icon"> <i class="fa fa-file-pdf-o" aria-hidden="true"></i></div>
+                                                                            <div class="doc-name"><?php echo $term->requirement_short_name.$tx?></div>
+                                                                            <div class="doc-time"><?php echo date('d/m/Y', strtotime($f->post_date))?></div>
+
+                                                                        </a></li>
+                                                                    <?php $i++;
+                                                                endforeach;
+                                                            endif;
+                                                        endforeach;?>
+                                                        <?php
+                                                    endif; ?>
+                                                </ul>
+                                            </div>
+                                        </div>
                                 </div>
                             </div>
                             <div class="order-price">
@@ -271,121 +382,121 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                             </div>
                         </div>
                 </div>
-                <div class="box-aside box-aside2">
-                    <div class="tabs-information">
-                        <ul class="nav nav-tabs requirement-tabs" role="tablist">
-                            <li role="presentation" class="active requirement-list-li"><a href="#requirement" aria-controls="requirement" role="tab" data-toggle="tab" class="left-tab-requirement"><?php _e('Requirements', ET_DOMAIN); ?></a></li>
-                            <li role="presentation" class="requirement-list-li"><a href="#document" aria-controls="document" role="tab" data-toggle="tab"><?php _e('Documents', ET_DOMAIN); ?></a></li>
-                        </ul>
-                        <div class="tab-content">
-                            <div role="tabpanel" class="tab-pane active order-detail-price" id="requirement">
-                                <div class="requirment-tab-content">
-                                    <?php $terms = get_the_terms($current->post_parent, 'mjob_requirement');
-                                    if( !empty($terms) && !is_wp_error($terms) ):
-                                        $user_role = ae_user_role($user_ID);
-                                        if( $user_role == INDIVIDUAL):
-                                            $cl1 = 'requirement-item';
-                                        elseif( $user_role == COMPANY):
-                                            $cl1 = 'need-uploads';
-                                        endif;
-                                        ?>
-                                        <ul class="requirement-list">
-                                            <?php foreach( $terms as $term):
-                                                $f = false;
-                                                $term = $obj_tax->convert($term);
-                                                if( $term->click_type == 'open-contact-info' || $term->click_type == 'open-billing-info'):
-                                                    $f = true;
-                                                endif;
-                                                if( $f ):
-                                                    if( empty($current->need_uploads) || !in_array( $term->slug, (array)$current->need_uploads )):
-                                                        $icon = '<i class="fa fa-check-square-o" aria-hidden="true"></i>';
-                                                        $com = '   <a data-type="'.$term->check_type.'" data-id="'.$term->slug.'" data-name="'.$term->name.'" href="#" class="resend-requirement-style resend-requirement" title="'.__('unlock', ET_DOMAIN).'"><i class="fa fa-refresh" aria-hidden="true"></i></a>';
-                                                        $class = 'disabled';
-                                                    else:
-                                                        $com = '';
-                                                        $icon = '<i class="fa fa-square-o" aria-hidden="true"></i>';
-                                                        $class = '';
-                                                    endif;
-                                                else:
-                                                    if( in_array($term->slug, (array)$current->uploaded) ):
-                                                        $icon = '<i class="fa fa-check-square-o" aria-hidden="true"></i>';
-                                                        $com = '   <a data-type="'.$term->check_type.'" data-id="'.$term->slug.'" data-name="'.$term->name.'" href="#" class="resend-requirement-style resend-requirement" title="'.__('unlock', ET_DOMAIN).'"><i class="fa fa-refresh" aria-hidden="true"></i></a>';
-                                                        $class = 'disabled';
-                                                    else:
-                                                        $com = '';
-                                                        $icon = '<i class="fa fa-square-o" aria-hidden="true"></i>';
-                                                        $class = '';
-                                                    endif;
-                                                endif;
-                                                ?>
-                                                <?php if( $term->term_id != 43 ): ?>
-                                                <li>
-                                                    <a href="#" data-type="<?php echo $term->click_type; ?>" class="<?php echo $cl1.' ';?> <?php echo $class; ?>" data-id="<?php echo $term->slug; ?>" data-name="<?php echo $term->name; ?>"><?php echo $icon; ?>  <?php echo ' '.$term->name ?></a>
-                                                    <?php if( ae_user_role($user_ID) == COMPANY):
-                                                        echo  ''.$com;
-                                                    endif; ?>
-                                                </li>
-                                                <?php endif; ?>
-                                            <?php endforeach; ?>
-                                        </ul>
-                                    <?php endif; ?>
-                                </div>
-                                <div class="total-order">
-                                    <p><i class="fa fa-exclamation-circle" aria-hidden="true"></i><?php _e(' These tasks must be completed by you. Without completing these tasks, your company cannot perform the tasks for which you hired them.', ET_DOMAIN); ?></p>
-                                </div>
-                                <input type="hidden" class="input-item" name="_wpnonce" id="profile_wpnonce" value="<?php echo de_create_nonce('ae-mjob_post-sync');?>" />
-                            </div>
-                            <div role="tabpanel" class="tab-pane " id="document">
-                                <div id="incomingPaymentsForm">
-                                    <ul class="requirement-list document-list">
-                                        <?php if( isset($current->agreement_files) && !empty($current->agreement_files)):
-                                            foreach($current->agreement_files as $item): ?>
-                                            <li class="col-lg-6 col-md-6 col-xs-12 item-requirement">
-                                                <a  href="<?php echo et_get_page_link('simple-download').'?cid='.$current->ID.'&n='.$item['name'] ?>" data-name="<?php echo $item['name'].' : '.date('d/m/Y', strtotime($current->post_date))?>" class="show-requirement-docs">
-                                                    <div class="doc-icon"> <i class="fa fa-file-pdf-o" aria-hidden="true"></i></div>
-                                                    <div class="doc-name"><?php echo $item['name'] ?></div>
-                                                    <div class="doc-time"><?php echo date('d/m/Y', strtotime($current->post_date))?></div>
-
-                                                </a></li>
-
-                                        <?php endforeach; endif; ?>
-                                        <?php
-                                        if( !empty($current->requirement_files)): ?>
-
-                                        <?php     foreach( $current->requirement_files as $key=> $files):
-                                                    $term = get_term_by('slug', $key, 'mjob_requirement');
-                                                    global $ae_tax_factory;
-                                                    $term_obj = $ae_tax_factory->get('mjob_requirement');
-                                                    $term = $term_obj->convert($term);
-                                                    if(!empty($files)):
-                                                        $i = 0;
-                                                        $tx = '';
-                                                        foreach($files as $file):
-                                                            $f = get_post($file);
-                                                            if( $i > 0):
-                                                                $tx = '_'.$i;
-                                                            endif;
-                                                            ?>
-                                                <li class="col-lg-6 col-md-6 col-xs-12 item-requirement">
-                                                    <a  href="<?php echo et_get_page_link('simple-download').'?id='.$f->ID ?>" data-name="<?php echo $term->name.$tx.' : '.date('d/m/Y', strtotime($f->post_date))?>" class="show-requirement-docs">
-                                                        <div class="doc-icon"> <i class="fa fa-file-pdf-o" aria-hidden="true"></i></div>
-                                                        <div class="doc-name"><?php echo $term->requirement_short_name.$tx?></div>
-                                                        <div class="doc-time"><?php echo date('d/m/Y', strtotime($f->post_date))?></div>
-
-                                                    </a></li>
-                                        <?php $i++;
-                                                        endforeach;
-                                                    endif;
-                                                        endforeach;?>
-                                        <?php
-                                        endif; ?>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
+<!--                <div class="box-aside box-aside2">-->
+<!--                    <div class="tabs-information">-->
+<!--                        <ul class="nav nav-tabs requirement-tabs" role="tablist">-->
+<!--                            <li role="presentation" class="active requirement-list-li"><a href="#requirement" aria-controls="requirement" role="tab" data-toggle="tab" class="left-tab-requirement">--><?php //_e('Requirements', ET_DOMAIN); ?><!--</a></li>-->
+<!--                            <li role="presentation" class="requirement-list-li"><a href="#document" aria-controls="document" role="tab" data-toggle="tab">--><?php //_e('Documents', ET_DOMAIN); ?><!--</a></li>-->
+<!--                        </ul>-->
+<!--                        <div class="tab-content">-->
+<!--                            <div role="tabpanel" class="tab-pane active order-detail-price" id="requirement">-->
+<!--                                <div class="requirment-tab-content">-->
+<!--                                    --><?php //$terms = get_the_terms($current->post_parent, 'mjob_requirement');
+//                                    if( !empty($terms) && !is_wp_error($terms) ):
+//                                        $user_role = ae_user_role($user_ID);
+//                                        if( $user_role == INDIVIDUAL):
+//                                            $cl1 = 'requirement-item';
+//                                        elseif( $user_role == COMPANY):
+//                                            $cl1 = 'need-uploads';
+//                                        endif;
+//                                        ?>
+<!--                                        <ul class="requirement-list">-->
+<!--                                            --><?php //foreach( $terms as $term):
+//                                                $f = false;
+//                                                $term = $obj_tax->convert($term);
+//                                                if( $term->click_type == 'open-contact-info' || $term->click_type == 'open-billing-info'):
+//                                                    $f = true;
+//                                                endif;
+//                                                if( $f ):
+//                                                    if( empty($current->need_uploads) || !in_array( $term->slug, (array)$current->need_uploads )):
+//                                                        $icon = '<i class="fa fa-check-square-o" aria-hidden="true"></i>';
+//                                                        $com = '   <a data-type="'.$term->check_type.'" data-id="'.$term->slug.'" data-name="'.$term->name.'" href="#" class="resend-requirement-style resend-requirement" title="'.__('unlock', ET_DOMAIN).'"><i class="fa fa-refresh" aria-hidden="true"></i></a>';
+//                                                        $class = 'disabled';
+//                                                    else:
+//                                                        $com = '';
+//                                                        $icon = '<i class="fa fa-square-o" aria-hidden="true"></i>';
+//                                                        $class = '';
+//                                                    endif;
+//                                                else:
+//                                                    if( in_array($term->slug, (array)$current->uploaded) ):
+//                                                        $icon = '<i class="fa fa-check-square-o" aria-hidden="true"></i>';
+//                                                        $com = '   <a data-type="'.$term->check_type.'" data-id="'.$term->slug.'" data-name="'.$term->name.'" href="#" class="resend-requirement-style resend-requirement" title="'.__('unlock', ET_DOMAIN).'"><i class="fa fa-refresh" aria-hidden="true"></i></a>';
+//                                                        $class = 'disabled';
+//                                                    else:
+//                                                        $com = '';
+//                                                        $icon = '<i class="fa fa-square-o" aria-hidden="true"></i>';
+//                                                        $class = '';
+//                                                    endif;
+//                                                endif;
+//                                                ?>
+<!--                                                --><?php //if( $term->term_id != 43 ): ?>
+<!--                                                <li>-->
+<!--                                                    <a href="#" data-type="--><?php //echo $term->click_type; ?><!--" class="--><?php //echo $cl1.' ';?><!-- --><?php //echo $class; ?><!--" data-id="--><?php //echo $term->slug; ?><!--" data-name="--><?php //echo $term->name; ?><!--">--><?php //echo $icon; ?><!--  --><?php //echo ' '.$term->name ?><!--</a>-->
+<!--                                                    --><?php //if( ae_user_role($user_ID) == COMPANY):
+//                                                        echo  ''.$com;
+//                                                    endif; ?>
+<!--                                                </li>-->
+<!--                                                --><?php //endif; ?>
+<!--                                            --><?php //endforeach; ?>
+<!--                                        </ul>-->
+<!--                                    --><?php //endif; ?>
+<!--                                </div>-->
+<!--                                <div class="total-order">-->
+<!--                                    <p><i class="fa fa-exclamation-circle" aria-hidden="true"></i>--><?php //_e(' These tasks must be completed by you. Without completing these tasks, your company cannot perform the tasks for which you hired them.', ET_DOMAIN); ?><!--</p>-->
+<!--                                </div>-->
+<!--                                <input type="hidden" class="input-item" name="_wpnonce" id="profile_wpnonce" value="--><?php //echo de_create_nonce('ae-mjob_post-sync');?><!--" />-->
+<!--                            </div>-->
+<!--                            <div role="tabpanel" class="tab-pane " id="document">-->
+<!--                                <div id="incomingPaymentsForm">-->
+<!--                                    <ul class="requirement-list document-list">-->
+<!--                                        --><?php //if( isset($current->agreement_files) && !empty($current->agreement_files)):
+//                                            foreach($current->agreement_files as $item): ?>
+<!--                                            <li class="col-lg-6 col-md-6 col-xs-12 item-requirement">-->
+<!--                                                <a  href="--><?php //echo et_get_page_link('simple-download').'?cid='.$current->ID.'&n='.$item['name'] ?><!--" data-name="--><?php //echo $item['name'].' : '.date('d/m/Y', strtotime($current->post_date))?><!--" class="show-requirement-docs">-->
+<!--                                                    <div class="doc-icon"> <i class="fa fa-file-pdf-o" aria-hidden="true"></i></div>-->
+<!--                                                    <div class="doc-name">--><?php //echo $item['name'] ?><!--</div>-->
+<!--                                                    <div class="doc-time">--><?php //echo date('d/m/Y', strtotime($current->post_date))?><!--</div>-->
+<!---->
+<!--                                                </a></li>-->
+<!---->
+<!--                                        --><?php //endforeach; endif; ?>
+<!--                                        --><?php
+//                                        if( !empty($current->requirement_files)): ?>
+<!---->
+<!--                                        --><?php //    foreach( $current->requirement_files as $key=> $files):
+//                                                    $term = get_term_by('slug', $key, 'mjob_requirement');
+//                                                    global $ae_tax_factory;
+//                                                    $term_obj = $ae_tax_factory->get('mjob_requirement');
+//                                                    $term = $term_obj->convert($term);
+//                                                    if(!empty($files)):
+//                                                        $i = 0;
+//                                                        $tx = '';
+//                                                        foreach($files as $file):
+//                                                            $f = get_post($file);
+//                                                            if( $i > 0):
+//                                                                $tx = '_'.$i;
+//                                                            endif;
+//                                                            ?>
+<!--                                                <li class="col-lg-6 col-md-6 col-xs-12 item-requirement">-->
+<!--                                                    <a  href="--><?php //echo et_get_page_link('simple-download').'?id='.$f->ID ?><!--" data-name="--><?php //echo $term->name.$tx.' : '.date('d/m/Y', strtotime($f->post_date))?><!--" class="show-requirement-docs">-->
+<!--                                                        <div class="doc-icon"> <i class="fa fa-file-pdf-o" aria-hidden="true"></i></div>-->
+<!--                                                        <div class="doc-name">--><?php //echo $term->requirement_short_name.$tx?><!--</div>-->
+<!--                                                        <div class="doc-time">--><?php //echo date('d/m/Y', strtotime($f->post_date))?><!--</div>-->
+<!---->
+<!--                                                    </a></li>-->
+<!--                                        --><?php //$i++;
+//                                                        endforeach;
+//                                                    endif;
+//                                                        endforeach;?>
+<!--                                        --><?php
+//                                        endif; ?>
+<!--                                    </ul>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!---->
+<!--                    </div>-->
+<!--                </div>-->
             </div>
         </div>
     </div>

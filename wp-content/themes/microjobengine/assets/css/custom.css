@@ -482,7 +482,7 @@
 }
 .mjob_conversation_detail_page .box-shadow-title {
     background: url(../img/box-line.png) no-repeat;
-    background-size: 66%;
+    background-size: 60%;
     width: 100%;
     height: auto;
     background-position: left bottom;
@@ -514,6 +514,7 @@
 }
 .resend-requirement-style{
     font-size: 18px;
+    color: red;
 }
 .unlock-requirement-modal{
     padding-left: 20px;
@@ -808,4 +809,16 @@
 }
 .l-hide, .f-upload{
     display: none;
+}
+.new-styles-wrapper-list-conversation{
+    height: 500px;
+}
+.order-extra{
+    border-top: none!important;
+}
+.mjob-single-order-page .order-detail-price .total-order-1{
+    width: 430px;
+    left: -30px;
+    bottom: -30px;
+    border-bottom: 1px solid #dfe0e5;
 }
