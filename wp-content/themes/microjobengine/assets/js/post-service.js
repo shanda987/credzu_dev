@@ -15,7 +15,7 @@
                     'click .mjob-add-extra-btn': 'addExtras',
                     'click .done': 'selectStep',
                     'click .mjob-btn-checkout':  'checkOut',
-                    'click .post-listing-back': 'goBack'
+                    'click .post-listing-back': 'goBack',
                 }, Views.SubmitPost.prototype.events);
             },
             initialize: function(){
@@ -489,6 +489,28 @@
             },
             customValidate: function(){
                 var view = this;
+                var pdata = {
+                    action: 'check-mjob-category',
+                    cat_id: $('#mjob_category').val()
+                };
+                $.ajax({
+                    url: ae_globals.ajaxURL,
+                    type: 'post',
+                    data: pdata,
+                    beforeSend: function () {
+                    },
+                    success: function (res) {
+                        if( res.success ){
+                            if( $('#time_delivery').val() < 20 ) {
+                                AE.pubsub.trigger('ae:notification', {
+                                    msg: 'You must enter a number greater than 20 for time delivery field',
+                                    notice_type: 'error'
+                                });
+                                return false;
+                            }
+                        }
+                    }
+                });
                 if(view.extrasListView.collection.models.length > 0 ) {
                     for( i =0; i< view.extrasListView.collection.models.length; i++){
                         if( parseFloat($('#et_budget_'+view.extrasListView.collection.models[i]._listenId).val()) <= 0){

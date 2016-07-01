@@ -38,6 +38,7 @@ class mJobAction extends mJobPostAction{
         $this->disable_plan = ae_get_option('disable_plan', false);
         $this->mail = mJobMailing::getInstance();
         $this->add_filter('ae_convert_user', 'mjob_convert_user');
+        $this->add_ajax('check-mjob-category', 'checkMjobCat');
     }
     /**
      * sync Post function
@@ -109,12 +110,6 @@ class mJobAction extends mJobPostAction{
         $arr_extras = array();
         $is_featured = 0;
         if( isset($request['checkout']) && $request['checkout'] == 1){
-//            if( !mJobProfileAction()->isCompanyActive()){
-//                wp_send_json(array(
-//                    'success'=> false,
-//                    'msg'=> __('Please complete your company profile before post a listing!', ET_DOMAIN)
-//                ));
-//            }
             $m = $this->get_mjob($request['ID']);
             $package = $ae_post_factory->get('pack');
             $plan = $package->get($m->et_payment_package);
@@ -478,6 +473,18 @@ class mJobAction extends mJobPostAction{
                 }
             }
             $result['data'] = $data;
+        }
+        if( isset($data['mjob_category']['0']) ){
+            $t = get_term_by('id', $data['mjob_category']['0'], 'mjob_category');
+            if( $t == 2 || $t->parent == 2){
+                if( $data['time_delivery'] < 20 ){
+                    $result = array(
+                      'success'=>false,
+                      'msg'=> __("Time delivery must be greater than 20 days for this category", ET_DOMAIN),
+                      'data'=> $data
+                    );
+                }
+            }
         }
         return $result;
     }
@@ -1096,6 +1103,32 @@ class mJobAction extends mJobPostAction{
         }
         return $result;
       }
+      /**
+        * check mjob cat is create repair
+        *
+        * @param void
+        * @return void
+        * @since 1.4
+        * @package MicrojobEngine
+        * @category CREDZU
+        * @author JACK BUI
+        */
+        public function checkMjobCat(){
+            $request = $_REQUEST;
+            $response = array('success'=> false);
+            if( isset($request['cat_id']) ){
+                $term = get_term_by('id', $request['cat_id'], 'mjob_category');
+                if( $term && !is_wp_error($term)){
+                    if( $term->id == 2 || $term->parent == 2 ){
+                        $response = array(
+                            'success'=> true,
+                            'msg'=> __('This is a credit repair or child of credit repair', ET_DOMAIN)
+                        );
+                    }
+                }
+            }
+            wp_send_json($response);
+        }
 
 }
 new mJobAction();
