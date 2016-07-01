@@ -1119,7 +1119,7 @@ class mJobAction extends mJobPostAction{
             if( isset($request['cat_id']) ){
                 $term = get_term_by('id', $request['cat_id'], 'mjob_category');
                 if( $term && !is_wp_error($term)){
-                    if( $term->id == 2 || $term->parent == 2 ){
+                    if( $term->term_id == 2 || $term->parent == 2 ){
                         $response = array(
                             'success'=> true,
                             'msg'=> __('This is a credit repair or child of credit repair', ET_DOMAIN)
