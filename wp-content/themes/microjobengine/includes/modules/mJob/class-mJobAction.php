@@ -174,7 +174,7 @@ class mJobAction extends mJobPostAction{
                 }
                 unset($result->skill);
                 if(($result->post_status == 'pending' || $result->post_status == 'publish') || $result->post_status == 'draft') {
-                    $this->mail->mJobNewPost($result->ID);
+                   // $this->mail->mJobNewPost($result->ID);
                 }
             }
             // Email notification to author when post has changed
