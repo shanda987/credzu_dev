@@ -2423,7 +2423,7 @@ class ET_Admin extends AE_Base
                     'fields' => array(
                         array(
                             'id' => 'payment_check_admin_mail_subject_template',
-                            'type' => 'editor',
+                            'type' => 'text',
                             'title' => __("Payment from company to Credzu mail subject here", ET_DOMAIN) ,
                             'class' => '',
                             'name' => 'payment_check_admin_mail_subject_template',
@@ -2463,7 +2463,7 @@ class ET_Admin extends AE_Base
                     'fields' => array(
                         array(
                             'id' => 'payment_check_mail_subject_template',
-                            'type' => 'editor',
+                            'type' => 'text',
                             'title' => __("Payment from company to Credzu mail subject here", ET_DOMAIN) ,
                             'class' => '',
                             'name' => 'payment_check_mail_subject_template',
