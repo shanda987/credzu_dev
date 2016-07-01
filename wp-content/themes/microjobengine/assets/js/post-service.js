@@ -502,7 +502,9 @@
                     },
                     success: function (res) {
                         if( res.success ){
-                            $('#is_credit_repair').val(1);
+                            if( $('#time_delivery').val() < 20 ){
+                                $('#is_credit_repair').val(1);
+                            }
                         }
                     }
                 })
