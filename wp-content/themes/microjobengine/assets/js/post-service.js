@@ -508,7 +508,9 @@
                         }
                     }
                 });
-                console.log(va);
+                if( !va ){
+                    return false;
+                }
                 if(view.extrasListView.collection.models.length > 0 ) {
                     for( i =0; i< view.extrasListView.collection.models.length; i++){
                         if( parseFloat($('#et_budget_'+view.extrasListView.collection.models[i]._listenId).val()) <= 0){
