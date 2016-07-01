@@ -502,10 +502,7 @@
                     success: function (res) {
                         if( res.success ){
                             if( $('#time_delivery').val() < 20 ) {
-                                AE.pubsub.trigger('ae:notification', {
-                                    msg: 'You must enter a number greater than 20 for time delivery field',
-                                    notice_type: 'error'
-                                });
+                                $('#time_delivery').parent().append('<label for="time_delivery" class="error">This field must be greater than 20</label>');
                                 return false;
                             }
                         }
