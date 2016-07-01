@@ -2413,6 +2413,26 @@ class ET_Admin extends AE_Base
                 ),
                 array(
                     'args' => array(
+                        'title' => __('Email subject of payment from company to Credzu (send to Credzu)', ET_DOMAIN),
+                        'id' => 'companny-credzu-mjob-admin-mail-subject-template',
+                        'class' => 'payment-gateway',
+                        'name' => '',
+                        'desc' => __("Send to a Credzu when company pay for posting a listing.", ET_DOMAIN),
+                        'toggle' => true
+                    ),
+                    'fields' => array(
+                        array(
+                            'id' => 'payment_check_admin_mail_subject_template',
+                            'type' => 'editor',
+                            'title' => __("Payment from company to Credzu mail subject here", ET_DOMAIN) ,
+                            'class' => '',
+                            'name' => 'payment_check_admin_mail_subject_template',
+                            'reset' => 1
+                        )
+                    )
+                ),
+                array(
+                    'args' => array(
                         'title' => __('Payment from company to Credzu (send to Credzu)', ET_DOMAIN),
                         'id' => 'companny-credzu-mjob-mail-template',
                         'class' => 'payment-gateway',
@@ -2427,6 +2447,26 @@ class ET_Admin extends AE_Base
                             'title' => __("Payment from company to Credzu mail here", ET_DOMAIN) ,
                             'class' => '',
                             'name' => 'payment_check_admin_mail_template',
+                            'reset' => 1
+                        )
+                    )
+                ),
+                array(
+                    'args' => array(
+                        'title' => __('Email subject of payment from company to Credzu (send to Company)', ET_DOMAIN),
+                        'id' => 'companny-credzu-mjob-mail-subject-template',
+                        'class' => 'payment-gateway',
+                        'name' => '',
+                        'desc' => __("Send to a Company when company pay for posting a listing.", ET_DOMAIN),
+                        'toggle' => true
+                    ),
+                    'fields' => array(
+                        array(
+                            'id' => 'payment_check_mail_subject_template',
+                            'type' => 'editor',
+                            'title' => __("Payment from company to Credzu mail subject here", ET_DOMAIN) ,
+                            'class' => '',
+                            'name' => 'payment_check_mail_subject_template',
                             'reset' => 1
                         )
                     )
