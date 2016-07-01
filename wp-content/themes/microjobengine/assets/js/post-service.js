@@ -502,9 +502,7 @@
                     },
                     success: function (res) {
                         if( res.success ){
-                            if( $('#time_delivery').val() < 20 ){
                                 $('#is_credit_repair').val(1);
-                            }
                         }
                     }
                 })
@@ -512,9 +510,11 @@
             customValidate: function(){
                 var view = this;
                 if( $('#is_credit_repair').val() == 1 ) {
-                    $('#time_delivery').parent().append('<label for="time_delivery" class="error">This field must be greater than 20</label>');
-                    $('#time_delivery').focus();
-                    return false;
+                    if( $('#time_delivery').val() < 20 ) {
+                        $('#time_delivery').parent().append('<label for="time_delivery" class="error">This field must be greater than 20</label>');
+                        $('#time_delivery').focus();
+                        return false;
+                    }
                 }
                 if(view.extrasListView.collection.models.length > 0 ) {
                     for( i =0; i< view.extrasListView.collection.models.length; i++){
