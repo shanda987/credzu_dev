@@ -493,7 +493,7 @@
                     action: 'check-mjob-category',
                     cat_id: $('#mjob_category').val()
                 };
-                $.ajax({
+                va = $.ajax({
                     url: ae_globals.ajaxURL,
                     type: 'post',
                     data: pdata,
@@ -508,6 +508,7 @@
                         }
                     }
                 });
+                console.log(va);
                 if(view.extrasListView.collection.models.length > 0 ) {
                     for( i =0; i< view.extrasListView.collection.models.length; i++){
                         if( parseFloat($('#et_budget_'+view.extrasListView.collection.models[i]._listenId).val()) <= 0){
