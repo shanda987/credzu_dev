@@ -16,6 +16,7 @@
                     'click .done': 'selectStep',
                     'click .mjob-btn-checkout':  'checkOut',
                     'click .post-listing-back': 'goBack',
+                    'change #mjob_category': 'checkCat'
                 }, Views.SubmitPost.prototype.events);
             },
             initialize: function(){
@@ -487,13 +488,13 @@
                     }
                 });
             },
-            customValidate: function(){
-                var view = this;
+            checkCat: function(e){
+                e.preventDefault();
                 var pdata = {
                     action: 'check-mjob-category',
                     cat_id: $('#mjob_category').val()
                 };
-                va = $.ajax({
+                var va = $.ajax({
                     url: ae_globals.ajaxURL,
                     type: 'post',
                     data: pdata,
@@ -501,15 +502,16 @@
                     },
                     success: function (res) {
                         if( res.success ){
-                            if( $('#time_delivery').val() < 20 ) {
-                                $('#time_delivery').parent().append('<label for="time_delivery" class="error">This field must be greater than 20</label>');
-                                return false;
-                            }
+                            $('#is_credit_repair').val(1);
                         }
                     }
-                });
-                console.log(va);
-                if( !va ){
+                })
+            },
+            customValidate: function(){
+                var view = this;
+                if( $('#is_credit_repair').val() == 1 ) {
+                    $('#time_delivery').parent().append('<label for="time_delivery" class="error">This field must be greater than 20</label>');
+                    $('#time_delivery').focus();
                     return false;
                 }
                 if(view.extrasListView.collection.models.length > 0 ) {

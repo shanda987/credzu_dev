@@ -40,6 +40,7 @@ else{
                             'show_option_all' => __('Select category', ET_DOMAIN)
                         )
                     ) ;?>
+                    <input type="hidden" name="is_credit_repair" id="is_credit_repair" value="0" />
                     <label><?php _e('Select the relevant category for your service ', ET_DOMAIN)?><a href="#" class="mjob-question-post"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
                 </div>
             </div>
