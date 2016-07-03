@@ -622,7 +622,7 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                                             </a></li>
                                                     <?php endforeach; ?>
                                                     <?php else:
-                                                        _e('No payment has been generated. Once you complete the work and a payment is generated, it will appear here', ET_DOMAIN);
+                                                        _e('<p class="padding-left-20">No payment has been generated. Once you complete the work and a payment is generated, it will appear here</p>', ET_DOMAIN);
                                                     endif; ?>
                                                 </ul>
                                             </div>
