@@ -404,14 +404,16 @@ class mJobOrderAction extends mJobPostAction{
                 return $result;
             }
         }
-        $is_c = $this->user_can_create_order($data['post_parent'], $user_ID);
-        if( !$is_c['success'] ){
-            $result = array(
-                'success'=> false,
-                'msg'=> __('You already created this order!', ET_DOMAIN)
-            );
-            return $result;
-        }
+            if( $data['method'] == 'create') {
+                $is_c = $this->user_can_create_order($data['post_parent'], $user_ID);
+                if (!$is_c['success']) {
+                    $result = array(
+                        'success' => false,
+                        'msg' => __('You already created this order!', ET_DOMAIN)
+                    );
+                    return $result;
+                }
+            }
         return $result;
     }
     /**
