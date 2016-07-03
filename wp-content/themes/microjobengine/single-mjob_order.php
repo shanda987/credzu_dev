@@ -580,13 +580,13 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                                                         endif; ?>
                                                                     </li>
                                                                 <?php
-                                                                    endif;
-                                                                else:
-                                                                    $q = false;
-                                                                endif;
-                                                                    ?>
+                                                                    endif; endif; ?>
                                                         <?php endforeach; ?>
-                                                        <?php var_dump($q); if( !$q ):
+                                                        <?php
+                                                        if($term->term_id == 43 || $term->term_id == 41 || $term->term_id == 42):
+                                                            $q = false;
+                                                        endif;
+                                                        var_dump($q); if( !$q ):
                                                             _e('Client has not uploaded a document', ET_DOMAIN);
                                                          endif; ?>
                                                     </ul>
