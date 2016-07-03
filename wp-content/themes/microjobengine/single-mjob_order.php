@@ -609,9 +609,9 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                                         'post_status'=> array('pending', 'publish')
                                                     );
                                                     $posts = get_posts($args);
-                                                if( !empty($posts)):
                                                 ?>
                                                 <ul class="requirement-list document-list">
+                                                    <?php if( !empty($posts)): ?>
                                                     <?php foreach($posts as $p ): ?>
                                                         <li class="col-lg-6 col-md-6 col-xs-12 item-requirement">
                                                             <a  href="<?php echo et_get_page_link('simple-download').'?cid='.$current->ID.'&nc='.$p->post_title ?>" data-name="<?php echo $p->post_title.' : '.date('d/m/Y', strtotime($current->post_date))?>" class="show-requirement-docs">
@@ -621,10 +621,10 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
 
                                                             </a></li>
                                                     <?php endforeach; ?>
-                                                </ul>
-                                                 <?php else:
-                                                    _e('No payment has been generated. Once you complete the work and a payment is generated, it will appear here', ET_DOMAIN);
+                                                    <?php else:
+                                                        _e('No payment has been generated. Once you complete the work and a payment is generated, it will appear here', ET_DOMAIN);
                                                     endif; ?>
+                                                </ul>
                                             </div>
                                         </div>
                                     </div>
