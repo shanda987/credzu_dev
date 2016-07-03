@@ -573,7 +573,7 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                                                     if( $term->term_id == 44 ):
                                                                         $term->name = __('Credit Report', ET_DOMAIN);
                                                                     endif;
-                                                                    if( !$q ):
+                                                                    if( $k ):
                                                                     ?>
                                                                     <li>
                                                                         <a href="#" data-type="<?php echo $term->click_type; ?>" class="<?php echo $cl1.' ';?> <?php echo $class; ?>" data-id="<?php echo $term->slug; ?>" data-name="<?php echo $term->name; ?>"><?php echo $icon; ?>  <?php echo ' '.$term->name ?></a>
