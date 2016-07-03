@@ -579,8 +579,12 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                                                     echo  ''.$com;
                                                                 endif; ?>
                                                             </li>
-                                                        <?php endif; endif; ?>
+                                                        <?php
+                                                            endif; endif; ?>
                                                         <?php endforeach; ?>
+                                                        <?php if( !$q ):
+                                                            _e('Client has not uploaded a document', ET_DOMAIN);
+                                                         endif; ?>
                                                     </ul>
                                                 <?php endif; ?>
                                                 <input type="hidden" value="<?php echo $q; ?>" id="noti-show" />
