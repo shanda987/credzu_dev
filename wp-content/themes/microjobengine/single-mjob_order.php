@@ -553,7 +553,7 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                                                     $com = '';
                                                                     $icon = '<i class="fa fa-square-o" aria-hidden="true"></i>';
                                                                     $class = '';
-                                                                    $q = true;
+//                                                                    $q = true;
                                                                 endif;
                                                             else:
                                                                 if( in_array($term->slug, (array)$current->uploaded) ):
@@ -561,11 +561,12 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                                                     $com = '   <a data-type="'.$term->check_type.'" data-id="'.$term->slug.'" data-name="'.$term->name.'" href="#" class="resend-requirement-style resend-requirement" title="'.__('unlock', ET_DOMAIN).'"><i class="fa fa-refresh" aria-hidden="true"></i></a>';
                                                                     $class = 'disabled';
                                                                     $k = true;
+                                                                    $q = true;
                                                                 else:
                                                                     $com = '';
                                                                     $icon = '<i class="fa fa-square-o" aria-hidden="true"></i>';
                                                                     $class = '';
-                                                                    $q  = true;
+                                                                    $q  = false;
                                                                 endif;
                                                             endif;
                                                             ?>
@@ -573,7 +574,7 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                                                     if( $term->term_id == 44 ):
                                                                         $term->name = __('Credit Report', ET_DOMAIN);
                                                                     endif;
-                                                                    if( $k ):
+                                                                    if( $q ):
                                                                     ?>
                                                                     <li>
                                                                         <a href="#" data-type="<?php echo $term->click_type; ?>" class="<?php echo $cl1.' ';?> <?php echo $class; ?>" data-id="<?php echo $term->slug; ?>" data-name="<?php echo $term->name; ?>"><?php echo $icon; ?>  <?php echo ' '.$term->name ?></a>
