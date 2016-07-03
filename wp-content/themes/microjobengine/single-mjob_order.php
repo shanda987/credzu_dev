@@ -569,7 +569,7 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                                             ?>
                                                             <?php if( $term->term_id != 43 && $term->term_id != 41 ):
                                                                 if( $term->term_id == 44 ):
-                                                                    $term->requirement_short_name = __('Credit Report', ET_DOMAIN);
+                                                                    $term->name = __('Credit Report', ET_DOMAIN);
                                                                 endif;
                                                             ?>
                                                             <li>
