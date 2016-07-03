@@ -586,7 +586,7 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                                         if($term->term_id == 43 || $term->term_id == 41 || $term->term_id == 42):
                                                             $q = false;
                                                         endif;
-                                                        var_dump($q); if( !$q ):
+                                                        if( !$q ):
                                                             _e('Client has not uploaded a document', ET_DOMAIN);
                                                          endif; ?>
                                                     </ul>
