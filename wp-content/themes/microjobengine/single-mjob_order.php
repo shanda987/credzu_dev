@@ -567,7 +567,11 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                                                 endif;
                                                             endif;
                                                             ?>
-                                                            <?php if( $term->term_id != 43 ): ?>
+                                                            <?php if( $term->term_id != 43 && $term->term_id != 41 ):
+                                                                if( $term->term_id == 44 ):
+                                                                    $term->requirement_short_name = __('Credit Report', ET_DOMAIN);
+                                                                endif;
+                                                            ?>
                                                             <li>
                                                                 <a href="#" data-type="<?php echo $term->click_type; ?>" class="<?php echo $cl1.' ';?> <?php echo $class; ?>" data-id="<?php echo $term->slug; ?>" data-name="<?php echo $term->name; ?>"><?php echo $icon; ?>  <?php echo ' '.$term->name ?></a>
                                                                 <?php if( ae_user_role($user_ID) == COMPANY):
@@ -615,10 +619,6 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                                                     if( $i > 0):
                                                                         $tx = '_'.$i;
                                                                     endif;
-                                                                    if( $term->term_id != 41):
-                                                                        if( $term->term_id == 44 ):
-                                                                            $term->requirement_short_name = __('Credit Report', ET_DOMAIN);
-                                                                        endif;
                                                                         ?>
                                                                         <li class="col-lg-6 col-md-6 col-xs-12 item-requirement">
                                                                             <a  href="<?php echo et_get_page_link('simple-download').'?id='.$f->ID ?>" data-name="<?php echo $term->name.$tx.' : '.date('d/m/Y', strtotime($f->post_date))?>" class="show-requirement-docs">
@@ -628,7 +628,6 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
 
                                                                             </a></li>
                                                                         <?php $i++;
-                                                                    endif;
                                                                 endforeach;
                                                             endif;
                                                         endforeach;?>
