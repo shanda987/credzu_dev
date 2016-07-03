@@ -619,15 +619,15 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                                                         if( $term->term_id == 44 ):
                                                                             $term->requirement_short_name = __('Credit Report', ET_DOMAIN);
                                                                         endif;
-                                                                    ?>
-                                                                    <li class="col-lg-6 col-md-6 col-xs-12 item-requirement">
-                                                                        <a  href="<?php echo et_get_page_link('simple-download').'?id='.$f->ID ?>" data-name="<?php echo $term->name.$tx.' : '.date('d/m/Y', strtotime($f->post_date))?>" class="show-requirement-docs">
-                                                                            <div class="doc-icon"> <i class="fa fa-file-pdf-o" aria-hidden="true"></i></div>
-                                                                            <div class="doc-name"><?php echo $term->requirement_short_name.$tx?></div>
-                                                                            <div class="doc-time"><?php echo date('d/m/Y', strtotime($f->post_date))?></div>
+                                                                        ?>
+                                                                        <li class="col-lg-6 col-md-6 col-xs-12 item-requirement">
+                                                                            <a  href="<?php echo et_get_page_link('simple-download').'?id='.$f->ID ?>" data-name="<?php echo $term->name.$tx.' : '.date('d/m/Y', strtotime($f->post_date))?>" class="show-requirement-docs">
+                                                                                <div class="doc-icon"> <i class="fa fa-file-pdf-o" aria-hidden="true"></i></div>
+                                                                                <div class="doc-name"><?php echo $term->requirement_short_name.$tx?></div>
+                                                                                <div class="doc-time"><?php echo date('d/m/Y', strtotime($f->post_date))?></div>
 
-                                                                        </a></li>
-                                                                    <?php $i++;
+                                                                            </a></li>
+                                                                        <?php $i++;
                                                                     endif;
                                                                 endforeach;
                                                             endif;
