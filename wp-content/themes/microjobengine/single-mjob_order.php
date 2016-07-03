@@ -537,6 +537,7 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                                     <ul class="requirement-list">
                                                         <?php
                                                         $q = false;
+                                                        $k = false;
                                                         foreach( $terms as $term):
                                                             $f = false;
                                                             $term = $obj_tax->convert($term);
@@ -552,13 +553,14 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                                                     $com = '';
                                                                     $icon = '<i class="fa fa-square-o" aria-hidden="true"></i>';
                                                                     $class = '';
-//                                                                    $q = true;
+                                                                    $q = true;
                                                                 endif;
                                                             else:
                                                                 if( in_array($term->slug, (array)$current->uploaded) ):
                                                                     $icon = '<i class="fa fa-check-square-o" aria-hidden="true"></i>';
                                                                     $com = '   <a data-type="'.$term->check_type.'" data-id="'.$term->slug.'" data-name="'.$term->name.'" href="#" class="resend-requirement-style resend-requirement" title="'.__('unlock', ET_DOMAIN).'"><i class="fa fa-refresh" aria-hidden="true"></i></a>';
                                                                     $class = 'disabled';
+                                                                    $k = true;
                                                                 else:
                                                                     $com = '';
                                                                     $icon = '<i class="fa fa-square-o" aria-hidden="true"></i>';
@@ -584,10 +586,7 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                                         <?php
                                                         endforeach; ?>
                                                         <?php
-                                                        if($term->term_id == 43 || $term->term_id == 41 || $term->term_id == 42):
-                                                            $q = false;
-                                                        endif;
-                                                        if( $q ):
+                                                        if( $k ):
                                                             _e('Client has not uploaded a document', ET_DOMAIN);
                                                          endif; ?>
                                                     </ul>
