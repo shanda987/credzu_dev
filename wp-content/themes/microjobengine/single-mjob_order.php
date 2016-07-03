@@ -581,7 +581,9 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                                                     </li>
                                                                 <?php
                                                                     endif; endif; ?>
-                                                        <?php endforeach; ?>
+                                                        <?php
+                                                        var_dump($q);
+                                                        endforeach; ?>
                                                         <?php
                                                         if($term->term_id == 43 || $term->term_id == 41 || $term->term_id == 42):
                                                             $q = false;
