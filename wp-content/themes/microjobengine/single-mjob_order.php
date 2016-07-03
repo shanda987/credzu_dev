@@ -601,49 +601,30 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                         </div>
                                         <div role="tabpanel" class="tab-pane " id="document">
                                             <div id="incomingPaymentsForm">
+                                                <?php
+                                                    $args = array(
+                                                        'post_type'=> 'payment_history',
+                                                        'post_parent'=>$current->ID,
+                                                        'post_author'=> $user_ID,
+                                                        'post_status'=> array('pending', 'publish')
+                                                    );
+                                                    $posts = get_posts($args);
+                                                if( !empty($posts)):
+                                                ?>
                                                 <ul class="requirement-list document-list">
-                                                    <?php if( isset($current->agreement_files) && !empty($current->agreement_files)):
-                                                        foreach($current->agreement_files as $item): ?>
-                                                            <li class="col-lg-6 col-md-6 col-xs-12 item-requirement">
-                                                                <a  href="<?php echo et_get_page_link('simple-download').'?cid='.$current->ID.'&n='.$item['name'] ?>" data-name="<?php echo $item['name'].' : '.date('d/m/Y', strtotime($current->post_date))?>" class="show-requirement-docs">
-                                                                    <div class="doc-icon"> <i class="fa fa-file-pdf-o" aria-hidden="true"></i></div>
-                                                                    <div class="doc-name"><?php echo $item['name'] ?></div>
-                                                                    <div class="doc-time"><?php echo date('d/m/Y', strtotime($current->post_date))?></div>
+                                                    <?php foreach($posts as $p ): ?>
+                                                        <li class="col-lg-6 col-md-6 col-xs-12 item-requirement">
+                                                            <a  href="<?php echo et_get_page_link('simple-download').'?cid='.$current->ID.'&nc='.$p->post_title ?>" data-name="<?php echo $p->post_title.' : '.date('d/m/Y', strtotime($current->post_date))?>" class="show-requirement-docs">
+                                                                <div class="doc-icon"> <i class="fa fa-file-pdf-o" aria-hidden="true"></i></div>
+                                                                <div class="doc-name"><?php echo $p->post_title; ?></div>
+                                                                <div class="doc-time"><?php echo date('d/m/Y', strtotime($current->post_date))?></div>
 
-                                                                </a></li>
-
-                                                        <?php endforeach; endif; ?>
-                                                    <?php
-                                                    if( !empty($current->requirement_files)): ?>
-
-                                                        <?php     foreach( $current->requirement_files as $key=> $files):
-                                                            $term = get_term_by('slug', $key, 'mjob_requirement');
-                                                            global $ae_tax_factory;
-                                                            $term_obj = $ae_tax_factory->get('mjob_requirement');
-                                                            $term = $term_obj->convert($term);
-                                                            if(!empty($files)):
-                                                                $i = 0;
-                                                                $tx = '';
-                                                                foreach($files as $file):
-                                                                    $f = get_post($file);
-                                                                    if( $i > 0):
-                                                                        $tx = '_'.$i;
-                                                                    endif;
-                                                                        ?>
-                                                                        <li class="col-lg-6 col-md-6 col-xs-12 item-requirement">
-                                                                            <a  href="<?php echo et_get_page_link('simple-download').'?id='.$f->ID ?>" data-name="<?php echo $term->name.$tx.' : '.date('d/m/Y', strtotime($f->post_date))?>" class="show-requirement-docs">
-                                                                                <div class="doc-icon"> <i class="fa fa-file-pdf-o" aria-hidden="true"></i></div>
-                                                                                <div class="doc-name"><?php echo $term->requirement_short_name.$tx?></div>
-                                                                                <div class="doc-time"><?php echo date('d/m/Y', strtotime($f->post_date))?></div>
-
-                                                                            </a></li>
-                                                                        <?php $i++;
-                                                                endforeach;
-                                                            endif;
-                                                        endforeach;?>
-                                                        <?php
-                                                    endif; ?>
+                                                            </a></li>
+                                                    <?php endforeach; ?>
                                                 </ul>
+                                                 <?php else:
+                                                    _e('No payment has been generated. Once you complete the work and a payment is generated, it will appear here', ET_DOMAIN);
+                                                    endif; ?>
                                             </div>
                                         </div>
                                     </div>

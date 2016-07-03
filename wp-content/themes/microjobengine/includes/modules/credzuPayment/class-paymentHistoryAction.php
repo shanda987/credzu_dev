@@ -174,9 +174,10 @@ class credzuPaymentHistoryAction extends mJobPostAction{
     public function create_client_payment_history($data, $profile, $path, $payment_check){
         $company = mJobProfileAction()->getProfile($data->mjob_author);
         $args = array(
-            'post_title'=> sprintf(__('Payment for post: "%s"', ET_DOMAIN), $data->post_title),
+            'post_title'=> sprintf(__('Payment for : "%s"', ET_DOMAIN), $data->post_title),
             'post_type'=>'payment_history',
-            'post_status'=> 'pending'
+            'post_status'=> 'pending',
+            'post_parent'=> $data->ID
         );
         $result = wp_insert_post($args);
         if( $result ){
