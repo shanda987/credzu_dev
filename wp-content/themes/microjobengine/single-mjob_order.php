@@ -552,7 +552,7 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                                                     $com = '';
                                                                     $icon = '<i class="fa fa-square-o" aria-hidden="true"></i>';
                                                                     $class = '';
-                                                                    $q = true;
+//                                                                    $q = true;
                                                                 endif;
                                                             else:
                                                                 if( in_array($term->slug, (array)$current->uploaded) ):
