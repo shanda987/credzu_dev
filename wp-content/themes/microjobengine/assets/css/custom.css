@@ -826,3 +826,12 @@
     color:red;
     display: none;
 }
+.mjob_order_btn{
+    text-align: center;
+}
+.mjob-client-more-info{
+    padding-left: 0!important;
+}
+.mjob-order-right-info{
+    float: right;
+}

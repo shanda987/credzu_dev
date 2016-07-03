@@ -163,6 +163,7 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                 <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 current block-items-detail profile">
                     <div class="box-aside margin-bottom-100">
                         <div class="order-detail-price">
+                            <?php if( $user_role == INDIVIDUAL): ?>
                             <div class="tabs-information">
                                 <ul class="nav nav-tabs requirement-tabs" role="tablist">
                                     <li role="presentation" class="active requirement-list-li"><a href="#my_company" aria-controls="requirement" role="tab" data-toggle="tab" class="left-tab-requirement"><?php _e('MY COMPANY', ET_DOMAIN); ?></a></li>
@@ -233,15 +234,15 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                             <?php if( $user_role == COMPANY): ?>
                                             <?php if( $current->post_status == 'processing' ): ?>
                                                 <p><?php _e('Once you have completed the service, click "Completed" below after  which a payment from your client be generated and your client will be informed to wait for results', ET_DOMAIN); ?></p>
-                                                <button class="btn-submit btn-work-complete-css btn-work-complete-action"><?php _e('Work Complete', ET_DOMAIN); ?></button>
+                                                <p class="mjob_order_btn"><button class="btn-submit btn-work-complete-css btn-work-complete-action"><?php _e('Work Complete', ET_DOMAIN); ?></button></p>
                                             <?php elseif( $current->post_status == 'verification'): ?>
                                                 <p><?php _e("It is important that you update your client with results as soon as you can. Once results are shown, your client can review your company's performanceas well as rehire you", ET_DOMAIN); ?></p>
-                                                <button data-id="<?php echo $current->ID; ?>" class="btn-submit btn-work-complete-css btn-delivery order-delivery-btn"><?php _e('SUBMIT RESULTS', ET_DOMAIN); ?></button>
+                                                <p class="mjob_order_btn"><button data-id="<?php echo $current->ID; ?>" class="btn-submit btn-work-complete-css btn-delivery order-delivery-btn"><?php _e('SUBMIT RESULTS', ET_DOMAIN); ?></button></p>
                                             <?php elseif($current->post_status == 'finished' || $current->post_status == 'delivery'): ?>
                                                 <p><?php _e("This job has ended, so you will need to engourage your client to re-hire you if you want to continue. Upon re-hiring, you can continue services and new payment will be generated once you complete the next cycle of services.", ET_DOMAIN); ?></p>
                                             <?php else: ?>
                                                 <p><?php _e('Once you have completed the service, click "Completed" below after  which a payment from your client be generated and your client will be informed to wait for results', ET_DOMAIN); ?></p>
-                                                <button class="btn-submit btn-work-complete-css btn-work-complete-action"><?php _e('Work Complete', ET_DOMAIN); ?></button>
+                                                <p class="mjob_order_btn"><button class="btn-submit btn-work-complete-css btn-work-complete-action"><?php _e('Work Complete', ET_DOMAIN); ?></button></p>
                                             <?php endif; ?>
                                         <?php else:?>
                                             <?php if( $current->post_status == 'processing' ): ?>
@@ -251,9 +252,9 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                             <?php elseif($current->post_status == 'finished' || $current->post_status == 'delivery'): ?>
                                                 <p><?php _e("Your company completed the work and the results are reported in the message area. No further work will be performed, unless you would like to re-hire the company to continue.", ET_DOMAIN); ?></p>
                                                 <?php if( $current->can_review): ?>
-                                                    <button data-id="<?php echo $current->ID; ?>" class="btn-submit btn-continue-service-css  margin-top-20 order-action"  value="finished"><?php _e('CONTINUE SERVICES', ET_DOMAIN); ?></button>
+                                                    <p class="mjob_order_btn"><button data-id="<?php echo $current->ID; ?>" class="btn-submit btn-continue-service-css  margin-top-20 order-action"  value="finished"><?php _e('CONTINUE SERVICES', ET_DOMAIN); ?></button></p>
                                                 <?php else: ?>
-                                                    <button data-id="<?php echo $current->ID; ?>" class="btn-submit btn-continue-service-css  btn-continue-service-btn margin-top-20" ><?php _e('CONTINUE SERVICES', ET_DOMAIN); ?></button>
+                                                    <p class="mjob_order_btn"><button data-id="<?php echo $current->ID; ?>" class="btn-submit btn-continue-service-css  btn-continue-service-btn margin-top-20" ><?php _e('CONTINUE SERVICES', ET_DOMAIN); ?></button></p>
                                                 <?php endif; ?>
                                             <?php else: ?>
                                                 <p><?php _e('Pursuant to Federal and State law, your company cannot begin credit repair services until the 72 hours cancellation period has ended. Which began at the moment you signed your agreement with the company', ET_DOMAIN); ?></p>
@@ -390,6 +391,250 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                     </div>
                                 </div>
                             </div>
+                            <?php else: ?>
+                                <div class="tabs-information">
+                                    <ul class="nav nav-tabs requirement-tabs" role="tablist">
+                                        <li role="presentation" class="active requirement-list-li"><a href="#my_company" aria-controls="requirement" role="tab" data-toggle="tab" class="left-tab-requirement"><?php _e('CLIENT', ET_DOMAIN); ?></a></li>
+                                        <li role="presentation" class="requirement-list-li requirement-task">
+                                            <a href="#requirement" aria-controls="requirement" role="tab" data-toggle="tab" class="left-tab-requirement">
+                                                <?php _e('DOCUMENTS ', ET_DOMAIN); ?><i class="fa fa-exclamation-circle" aria-hidden="true"></i></a>
+                                        </li>
+                                        <li role="presentation" class="requirement-list-li"><a href="#document" aria-controls="document" role="tab" data-toggle="tab"><?php _e('PAYMENTS', ET_DOMAIN); ?></a></li>
+                                    </ul>
+                                    <div class="tab-content">
+                                        <div role="tabpanel" class="tab-pane  active " id="my_company">
+                                            <div class="personal-profile order-detail-profile">
+                                                <div class="float-center profile-avatar">
+                                                    <div class="">
+                                                        <a href="#" class="">
+                                                            <?php
+                                                            echo mJobAvatar($current->post_author, 75);
+                                                            ?>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <h4 class="float-center">
+                                                    <div id="display_name">
+                                                        <div class="" data-edit="user" data-id="" data-name="display_name" data-type="input"><?php echo $profile->first_name.' '.$profile->last_name; ?></div>
+                                                    </div>
+                                                </h4>
+                                                <div class="line">
+                                                    <span class="line-distance"></span>
+                                                </div>
+                                                <h4 class="float-center order-mjob-content">
+                                                    <div >
+                                                        <div class="" data-edit="user" data-id="" data-name="display_name" data-type="input">
+                                                            <?php
+                                                            $to_role = ae_user_role($to_user);
+                                                            if( $to_role == COMPANY):
+                                                                echo $current->mjob->post_title;
+                                                            elseif( $to_role == INDIVIDUAL ):
+                                                                echo $profile->credit_goal;
+                                                            else:
+                                                                _e('User Description here', ET_DOMAIN);
+                                                            endif;
+                                                            ?></div>
+
+                                                    </div>
+                                                </h4>
+                                                <div class=" mjob-client-more-info">
+                                                    <p>
+                                                        <span class="mjob-order-left-info"><?php _e('Phone', ET_DOMAIN); ?></span>
+                                                        <span class="mjob-order-right-info"><?php echo sprintf(__('%s', ET_DOMAIN), $profile->phone); ?></span>
+                                                    </p>
+                                                    <p>
+                                                        <span class="mjob-order-left-info"><?php _e('Address', ET_DOMAIN); ?></span>
+                                                        <span class="mjob-order-right-info"><?php echo sprintf(__('%s', ET_DOMAIN), $profile->billing_full_address); ?></span>
+                                                    </p>
+                                                    <p>
+                                                        <span class="mjob-order-left-info"><?php _e('Email', ET_DOMAIN); ?></span>
+                                                        <span class="mjob-order-right-info"><?php echo sprintf(__('%s', ET_DOMAIN), $profile->business_email); ?></span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="order-price">
+                                                <p class="title-cate"><?php _e('Price', ET_DOMAIN); ?></p>
+                                                <p class="price-items"><?php echo $current->mjob_price_text; ?></p>
+                                                <p class="time-order"><i class="fa fa-clock-o" aria-hidden="true"></i><?php _e('Time delivery', ET_DOMAIN); ?></p>
+                                                <p class="days-order"><?php echo sprintf(__('%s days', ET_DOMAIN), $current->mjob_time_delivery); ?></p>
+                                            </div>
+                                            <div class="order-extra list-order">
+                                                <p class="title-cate"><?php _e('Status', ET_DOMAIN); ?></p>
+                                                <?php
+                                                //                                    if( empty($profile->company_status_message) ):
+                                                //                                        _e('Pursuant to Federal and State law, your company cannot begin credit repair services until the 72 hours cancellation period has ended. Which began at the moment you signed your agreement with the company', ET_DOMAIN);
+                                                //                                    else:
+                                                //                                        echo $profile->company_status_message;
+                                                //                                    endif;
+                                                $t1 = get_the_time('U', $current->ID);
+                                                $t2 = time();
+                                                $t = $t2 - $t1;
+                                                if( $t >= 259200 ):
+                                                    if( $current->post_status == 'publish' ) {
+                                                        mJobOrderAction()->updateOrderStatus($current->ID, 'processing');
+                                                    }
+                                                    ?>
+                                                    <?php if( $user_role == COMPANY): ?>
+                                                    <?php if( $current->post_status == 'processing' ): ?>
+                                                        <p><?php _e('Once you have completed the service, click "Completed" below after  which a payment from your client be generated and your client will be informed to wait for results', ET_DOMAIN); ?></p>
+                                                        <p class="mjob_order_btn"><button class="btn-submit btn-work-complete-css btn-work-complete-action"><?php _e('Work Complete', ET_DOMAIN); ?></button></p>
+                                                    <?php elseif( $current->post_status == 'verification'): ?>
+                                                        <p><?php _e("It is important that you update your client with results as soon as you can. Once results are shown, your client can review your company's performanceas well as rehire you", ET_DOMAIN); ?></p>
+                                                        <p class="mjob_order_btn"><button data-id="<?php echo $current->ID; ?>" class="btn-submit btn-work-complete-css btn-delivery order-delivery-btn"><?php _e('SUBMIT RESULTS', ET_DOMAIN); ?></button></p>
+                                                    <?php elseif($current->post_status == 'finished' || $current->post_status == 'delivery'): ?>
+                                                        <p><?php _e("This job has ended, so you will need to engourage your client to re-hire you if you want to continue. Upon re-hiring, you can continue services and new payment will be generated once you complete the next cycle of services.", ET_DOMAIN); ?></p>
+                                                    <?php else: ?>
+                                                        <p><?php _e('Once you have completed the service, click "Completed" below after  which a payment from your client be generated and your client will be informed to wait for results', ET_DOMAIN); ?></p>
+                                                        <p class="mjob_order_btn"><button class="btn-submit btn-work-complete-css btn-work-complete-action"><?php _e('Work Complete', ET_DOMAIN); ?></button></p>
+                                                    <?php endif; ?>
+                                                <?php else:?>
+                                                    <?php if( $current->post_status == 'processing' ): ?>
+                                                        <p><?php _e("Good news! The cancellation period has expired and the services will begin shortly, if they haven't begun already. Once the correspondence is prepared, you will be notified ", ET_DOMAIN); ?></p>
+                                                    <?php elseif( $current->post_status == 'verification'): ?>
+                                                        <p><?php _e("Good news! The service is complete, your payment is due and you are not waiting for result. Please forward all correspondence you receive from any creditor or credit bureau so that results can be verified.", ET_DOMAIN); ?></p>
+                                                    <?php elseif($current->post_status == 'finished' || $current->post_status == 'delivery'): ?>
+                                                        <p><?php _e("Your company completed the work and the results are reported in the message area. No further work will be performed, unless you would like to re-hire the company to continue.", ET_DOMAIN); ?></p>
+                                                        <?php if( $current->can_review): ?>
+                                                            <p class="mjob_order_btn"><button data-id="<?php echo $current->ID; ?>" class="btn-submit btn-continue-service-css  margin-top-20 order-action"  value="finished"><?php _e('CONTINUE SERVICES', ET_DOMAIN); ?></button></p>
+                                                        <?php else: ?>
+                                                            <p class="mjob_order_btn"><button data-id="<?php echo $current->ID; ?>" class="btn-submit btn-continue-service-css  btn-continue-service-btn margin-top-20" ><?php _e('CONTINUE SERVICES', ET_DOMAIN); ?></button></p>
+                                                        <?php endif; ?>
+                                                    <?php else: ?>
+                                                        <p><?php _e('Pursuant to Federal and State law, your company cannot begin credit repair services until the 72 hours cancellation period has ended. Which began at the moment you signed your agreement with the company', ET_DOMAIN); ?></p>
+                                                    <?php endif; ?>
+                                                <?php endif ?>
+                                                    <?php
+                                                    if( $current->post_status  != 'verification' && $current->post_status != 'finished' ){
+                                                        $current->status_text == __('PENDING', ET_DOMAIN);
+                                                        $current->status_class == 'pending-color';
+                                                    }
+                                                    ?>
+                                                    <div class="label-status label-status-order <?php echo $current->status_class; ?>">
+                                                        <span><?php echo $current->status_text; ?></span>
+                                                    </div>
+                                                <?php else: ?>
+                                                    <p><?php _e('Pursuant to Federal and State law, your company cannot begin credit repair services until the 72 hours cancellation period has ended. Which began at the moment you signed your agreement with the company', ET_DOMAIN); ?></p>
+                                                    <div class="label-status label-status-order pending-color">
+                                                        <span><?php _e('PENDING', ET_DOMAIN); ?></span>
+                                                    </div>
+                                                <?php      endif; ?>
+                                            </div>
+                                            <div class="total-order">
+                                                <p><i class="fa fa-exclamation-circle" aria-hidden="true"></i><?php _e(' Here are the details for your order and company hired', ET_DOMAIN); ?></p>
+                                            </div>
+                                        </div>
+                                        <div role="tabpanel" class="tab-pane  order-detail-price" id="requirement">
+                                            <div class="requirment-tab-content">
+                                                <?php $terms = get_the_terms($current->post_parent, 'mjob_requirement');
+                                                if( !empty($terms) && !is_wp_error($terms) ):
+                                                    $user_role = ae_user_role($user_ID);
+                                                    if( $user_role == INDIVIDUAL):
+                                                        $cl1 = 'requirement-item';
+                                                    elseif( $user_role == COMPANY):
+                                                        $cl1 = 'need-uploads';
+                                                    endif;
+                                                    ?>
+                                                    <ul class="requirement-list">
+                                                        <?php
+                                                        $q = false;
+                                                        foreach( $terms as $term):
+                                                            $f = false;
+                                                            $term = $obj_tax->convert($term);
+                                                            if( $term->click_type == 'open-contact-info' || $term->click_type == 'open-billing-info'):
+                                                                $f = true;
+                                                            endif;
+                                                            if( $f ):
+                                                                if( empty($current->need_uploads) || !in_array( $term->slug, (array)$current->need_uploads )):
+                                                                    $icon = '<i class="fa fa-check-square-o" aria-hidden="true"></i>';
+                                                                    $com = '   <a data-type="'.$term->check_type.'" data-id="'.$term->slug.'" data-name="'.$term->name.'" href="#" class="resend-requirement-style resend-requirement" title="'.__('unlock', ET_DOMAIN).'"><i class="fa fa-refresh" aria-hidden="true"></i></a>';
+                                                                    $class = 'disabled';
+                                                                else:
+                                                                    $com = '';
+                                                                    $icon = '<i class="fa fa-square-o" aria-hidden="true"></i>';
+                                                                    $class = '';
+                                                                    $q = true;
+                                                                endif;
+                                                            else:
+                                                                if( in_array($term->slug, (array)$current->uploaded) ):
+                                                                    $icon = '<i class="fa fa-check-square-o" aria-hidden="true"></i>';
+                                                                    $com = '   <a data-type="'.$term->check_type.'" data-id="'.$term->slug.'" data-name="'.$term->name.'" href="#" class="resend-requirement-style resend-requirement" title="'.__('unlock', ET_DOMAIN).'"><i class="fa fa-refresh" aria-hidden="true"></i></a>';
+                                                                    $class = 'disabled';
+                                                                else:
+                                                                    $com = '';
+                                                                    $icon = '<i class="fa fa-square-o" aria-hidden="true"></i>';
+                                                                    $class = '';
+                                                                    $q  = true;
+                                                                endif;
+                                                            endif;
+                                                            ?>
+                                                            <?php if( $term->term_id != 43 ): ?>
+                                                            <li>
+                                                                <a href="#" data-type="<?php echo $term->click_type; ?>" class="<?php echo $cl1.' ';?> <?php echo $class; ?>" data-id="<?php echo $term->slug; ?>" data-name="<?php echo $term->name; ?>"><?php echo $icon; ?>  <?php echo ' '.$term->name ?></a>
+                                                                <?php if( ae_user_role($user_ID) == COMPANY):
+                                                                    echo  ''.$com;
+                                                                endif; ?>
+                                                            </li>
+                                                        <?php endif; ?>
+                                                        <?php endforeach; ?>
+                                                    </ul>
+                                                <?php endif; ?>
+                                                <input type="hidden" value="<?php echo $q; ?>" id="noti-show" />
+                                            </div>
+                                            <div class="total-order total-order-1">
+                                                <p><i class="fa fa-exclamation-circle" aria-hidden="true"></i><?php _e(' These tasks must be completed by you. Without completing these tasks, your company cannot perform the tasks for which you hired them.', ET_DOMAIN); ?></p>
+                                            </div>
+                                            <input type="hidden" class="input-item" name="_wpnonce" id="profile_wpnonce" value="<?php echo de_create_nonce('ae-mjob_post-sync');?>" />
+                                        </div>
+                                        <div role="tabpanel" class="tab-pane " id="document">
+                                            <div id="incomingPaymentsForm">
+                                                <ul class="requirement-list document-list">
+                                                    <?php if( isset($current->agreement_files) && !empty($current->agreement_files)):
+                                                        foreach($current->agreement_files as $item): ?>
+                                                            <li class="col-lg-6 col-md-6 col-xs-12 item-requirement">
+                                                                <a  href="<?php echo et_get_page_link('simple-download').'?cid='.$current->ID.'&n='.$item['name'] ?>" data-name="<?php echo $item['name'].' : '.date('d/m/Y', strtotime($current->post_date))?>" class="show-requirement-docs">
+                                                                    <div class="doc-icon"> <i class="fa fa-file-pdf-o" aria-hidden="true"></i></div>
+                                                                    <div class="doc-name"><?php echo $item['name'] ?></div>
+                                                                    <div class="doc-time"><?php echo date('d/m/Y', strtotime($current->post_date))?></div>
+
+                                                                </a></li>
+
+                                                        <?php endforeach; endif; ?>
+                                                    <?php
+                                                    if( !empty($current->requirement_files)): ?>
+
+                                                        <?php     foreach( $current->requirement_files as $key=> $files):
+                                                            $term = get_term_by('slug', $key, 'mjob_requirement');
+                                                            global $ae_tax_factory;
+                                                            $term_obj = $ae_tax_factory->get('mjob_requirement');
+                                                            $term = $term_obj->convert($term);
+                                                            if(!empty($files)):
+                                                                $i = 0;
+                                                                $tx = '';
+                                                                foreach($files as $file):
+                                                                    $f = get_post($file);
+                                                                    if( $i > 0):
+                                                                        $tx = '_'.$i;
+                                                                    endif;
+                                                                    ?>
+                                                                    <li class="col-lg-6 col-md-6 col-xs-12 item-requirement">
+                                                                        <a  href="<?php echo et_get_page_link('simple-download').'?id='.$f->ID ?>" data-name="<?php echo $term->name.$tx.' : '.date('d/m/Y', strtotime($f->post_date))?>" class="show-requirement-docs">
+                                                                            <div class="doc-icon"> <i class="fa fa-file-pdf-o" aria-hidden="true"></i></div>
+                                                                            <div class="doc-name"><?php echo $term->requirement_short_name.$tx?></div>
+                                                                            <div class="doc-time"><?php echo date('d/m/Y', strtotime($f->post_date))?></div>
+
+                                                                        </a></li>
+                                                                    <?php $i++;
+                                                                endforeach;
+                                                            endif;
+                                                        endforeach;?>
+                                                        <?php
+                                                    endif; ?>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php endif; ?>
                         </div>
                 </div>
 <!--                <div class="box-aside box-aside2">-->
