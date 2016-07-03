@@ -397,7 +397,7 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                         <li role="presentation" class="active requirement-list-li"><a href="#my_company" aria-controls="requirement" role="tab" data-toggle="tab" class="left-tab-requirement"><?php _e('CLIENT', ET_DOMAIN); ?></a></li>
                                         <li role="presentation" class="requirement-list-li requirement-task">
                                             <a href="#requirement" aria-controls="requirement" role="tab" data-toggle="tab" class="left-tab-requirement">
-                                                <?php _e('DOCUMENTS ', ET_DOMAIN); ?><i class="fa fa-exclamation-circle" aria-hidden="true"></i></a>
+                                                <?php _e('DOCUMENTS ', ET_DOMAIN); ?></a>
                                         </li>
                                         <li role="presentation" class="requirement-list-li"><a href="#document" aria-controls="document" role="tab" data-toggle="tab"><?php _e('PAYMENTS', ET_DOMAIN); ?></a></li>
                                     </ul>
