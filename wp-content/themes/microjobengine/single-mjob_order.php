@@ -568,19 +568,23 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                                             endif;
                                                             ?>
                                                             <?php if( $term->term_id != 43 && $term->term_id != 41 && $term->term_id != 42 ):
-                                                                if( $term->term_id == 44 ):
-                                                                    $term->name = __('Credit Report', ET_DOMAIN);
+                                                                    if( $term->term_id == 44 ):
+                                                                        $term->name = __('Credit Report', ET_DOMAIN);
+                                                                    endif;
+                                                                    if( !$q ):
+                                                                    ?>
+                                                                    <li>
+                                                                        <a href="#" data-type="<?php echo $term->click_type; ?>" class="<?php echo $cl1.' ';?> <?php echo $class; ?>" data-id="<?php echo $term->slug; ?>" data-name="<?php echo $term->name; ?>"><?php echo $icon; ?>  <?php echo ' '.$term->name ?></a>
+                                                                        <?php if( ae_user_role($user_ID) == COMPANY):
+                                                                            echo  ''.$com;
+                                                                        endif; ?>
+                                                                    </li>
+                                                                <?php
+                                                                    endif;
+                                                                else:
+                                                                    $q = false;
                                                                 endif;
-                                                            if( !$q ):
-                                                            ?>
-                                                            <li>
-                                                                <a href="#" data-type="<?php echo $term->click_type; ?>" class="<?php echo $cl1.' ';?> <?php echo $class; ?>" data-id="<?php echo $term->slug; ?>" data-name="<?php echo $term->name; ?>"><?php echo $icon; ?>  <?php echo ' '.$term->name ?></a>
-                                                                <?php if( ae_user_role($user_ID) == COMPANY):
-                                                                    echo  ''.$com;
-                                                                endif; ?>
-                                                            </li>
-                                                        <?php
-                                                            endif; endif; ?>
+                                                                    ?>
                                                         <?php endforeach; ?>
                                                         <?php var_dump($q); if( !$q ):
                                                             _e('Client has not uploaded a document', ET_DOMAIN);
