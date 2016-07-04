@@ -534,62 +534,51 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                                         $cl1 = 'need-uploads';
                                                     endif;
                                                     ?>
-                                                    <ul class="requirement-list">
-                                                        <?php
-                                                        $q = false;
-                                                        $k = false;
-                                                        foreach( $terms as $term):
-                                                            $f = false;
-                                                            $term = $obj_tax->convert($term);
-                                                            if( $term->click_type == 'open-contact-info' || $term->click_type == 'open-billing-info'):
-                                                                $f = true;
-                                                            endif;
-                                                            if( $f ):
-                                                                if( empty($current->need_uploads) || !in_array( $term->slug, (array)$current->need_uploads )):
-                                                                    $icon = '<i class="fa fa-check-square-o" aria-hidden="true"></i>';
-                                                                    $com = '   <a data-type="'.$term->check_type.'" data-id="'.$term->slug.'" data-name="'.$term->name.'" href="#" class="resend-requirement-style resend-requirement" title="'.__('unlock', ET_DOMAIN).'"><i class="fa fa-refresh" aria-hidden="true"></i></a>';
-                                                                    $class = 'disabled';
-                                                                else:
-                                                                    $com = '';
-                                                                    $icon = '<i class="fa fa-square-o" aria-hidden="true"></i>';
-                                                                    $class = '';
-//                                                                    $q = true;
+                                                    <ul class="requirement-list document-list">
+                                                        <?php if( isset($current->agreement_files) && !empty($current->agreement_files)):
+                                                            foreach($current->agreement_files as $item): ?>
+                                                                <li class="col-lg-6 col-md-6 col-xs-12 item-requirement">
+                                                                    <a  href="<?php echo et_get_page_link('simple-download').'?cid='.$current->ID.'&n='.$item['name'] ?>" data-name="<?php echo $item['name'].' : '.date('d/m/Y', strtotime($current->post_date))?>" class="show-requirement-docs">
+                                                                        <div class="doc-icon"> <i class="fa fa-file-pdf-o" aria-hidden="true"></i></div>
+                                                                        <div class="doc-name"><?php echo $item['name'] ?></div>
+                                                                        <div class="doc-time"><?php echo date('d/m/Y', strtotime($current->post_date))?></div>
+
+                                                                    </a></li>
+
+                                                            <?php endforeach; endif;
+                                                        if( !empty($current->requirement_files)): ?>
+
+                                                            <?php     foreach( $current->requirement_files as $key=> $files):
+                                                                $term = get_term_by('slug', $key, 'mjob_requirement');
+                                                                global $ae_tax_factory;
+                                                                $term_obj = $ae_tax_factory->get('mjob_requirement');
+                                                                $term = $term_obj->convert($term);
+                                                                if(!empty($files)):
+                                                                    $i = 0;
+                                                                    $tx = '';
+                                                                    foreach($files as $file):
+                                                                        $f = get_post($file);
+                                                                        if( $i > 0):
+                                                                            $tx = '_'.$i;
+                                                                        endif;
+                                                                        ?>
+                                                                        <li class="col-lg-6 col-md-6 col-xs-12 item-requirement">
+                                                                            <a  href="<?php echo et_get_page_link('simple-download').'?id='.$f->ID ?>" data-name="<?php echo $term->name.$tx.' : '.date('d/m/Y', strtotime($f->post_date))?>" class="show-requirement-docs">
+                                                                                <div class="doc-icon"> <i class="fa fa-file-pdf-o" aria-hidden="true"></i></div>
+                                                                                <div class="doc-name"><?php echo $term->requirement_short_name.$tx?></div>
+                                                                                <div class="doc-time"><?php echo date('d/m/Y', strtotime($f->post_date))?></div>
+
+                                                                            </a></li>
+                                                                        <?php $i++;
+                                                                    endforeach;
                                                                 endif;
-                                                            else:
-                                                                if( in_array($term->slug, (array)$current->uploaded) ):
-                                                                    $icon = '<i class="fa fa-check-square-o" aria-hidden="true"></i>';
-                                                                    $com = '   <a data-type="'.$term->check_type.'" data-id="'.$term->slug.'" data-name="'.$term->name.'" href="#" class="resend-requirement-style resend-requirement" title="'.__('unlock', ET_DOMAIN).'"><i class="fa fa-refresh" aria-hidden="true"></i></a>';
-                                                                    $class = 'disabled';
-                                                                    $k = true;
-                                                                    $q = true;
-                                                                else:
-                                                                    $com = '';
-                                                                    $icon = '<i class="fa fa-square-o" aria-hidden="true"></i>';
-                                                                    $class = '';
-                                                                    $q  = false;
-                                                                endif;
-                                                            endif;
-                                                            ?>
-                                                            <?php if( $term->term_id != 43 && $term->term_id != 41 && $term->term_id != 42 ):
-                                                                    if( $term->term_id == 44 ):
-                                                                        $term->name = __('Credit Report', ET_DOMAIN);
-                                                                    endif;
-                                                                    if( $q ):
-                                                                    ?>
-                                                                    <li>
-                                                                        <a href="#" data-type="<?php echo $term->click_type; ?>" class="<?php echo $cl1.' ';?> <?php echo $class; ?>" data-id="<?php echo $term->slug; ?>" data-name="<?php echo $term->name; ?>"><?php echo $icon; ?>  <?php echo ' '.$term->name ?></a>
-                                                                        <?php if( ae_user_role($user_ID) == COMPANY):
-                                                                            echo  ''.$com;
-                                                                        endif; ?>
-                                                                    </li>
-                                                                <?php
-                                                                    endif; endif; ?>
+                                                            endforeach;?>
+                                                            <?php
+                                                        endif; ?>
                                                         <?php
-                                                        endforeach; ?>
-                                                        <?php
-                                                        if( !$k ):
-                                                            _e('Client has not uploaded a document', ET_DOMAIN);
-                                                         endif; ?>
+//                                                        if( !$k ):
+//                                                            _e('Client has not uploaded a document', ET_DOMAIN);
+//                                                         endif; ?>
                                                     </ul>
                                                 <?php endif; ?>
                                                 <input type="hidden" value="<?php echo $q; ?>" id="noti-show" />
@@ -632,121 +621,6 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                             <?php endif; ?>
                         </div>
                 </div>
-<!--                <div class="box-aside box-aside2">-->
-<!--                    <div class="tabs-information">-->
-<!--                        <ul class="nav nav-tabs requirement-tabs" role="tablist">-->
-<!--                            <li role="presentation" class="active requirement-list-li"><a href="#requirement" aria-controls="requirement" role="tab" data-toggle="tab" class="left-tab-requirement">--><?php //_e('Requirements', ET_DOMAIN); ?><!--</a></li>-->
-<!--                            <li role="presentation" class="requirement-list-li"><a href="#document" aria-controls="document" role="tab" data-toggle="tab">--><?php //_e('Documents', ET_DOMAIN); ?><!--</a></li>-->
-<!--                        </ul>-->
-<!--                        <div class="tab-content">-->
-<!--                            <div role="tabpanel" class="tab-pane active order-detail-price" id="requirement">-->
-<!--                                <div class="requirment-tab-content">-->
-<!--                                    --><?php //$terms = get_the_terms($current->post_parent, 'mjob_requirement');
-//                                    if( !empty($terms) && !is_wp_error($terms) ):
-//                                        $user_role = ae_user_role($user_ID);
-//                                        if( $user_role == INDIVIDUAL):
-//                                            $cl1 = 'requirement-item';
-//                                        elseif( $user_role == COMPANY):
-//                                            $cl1 = 'need-uploads';
-//                                        endif;
-//                                        ?>
-<!--                                        <ul class="requirement-list">-->
-<!--                                            --><?php //foreach( $terms as $term):
-//                                                $f = false;
-//                                                $term = $obj_tax->convert($term);
-//                                                if( $term->click_type == 'open-contact-info' || $term->click_type == 'open-billing-info'):
-//                                                    $f = true;
-//                                                endif;
-//                                                if( $f ):
-//                                                    if( empty($current->need_uploads) || !in_array( $term->slug, (array)$current->need_uploads )):
-//                                                        $icon = '<i class="fa fa-check-square-o" aria-hidden="true"></i>';
-//                                                        $com = '   <a data-type="'.$term->check_type.'" data-id="'.$term->slug.'" data-name="'.$term->name.'" href="#" class="resend-requirement-style resend-requirement" title="'.__('unlock', ET_DOMAIN).'"><i class="fa fa-refresh" aria-hidden="true"></i></a>';
-//                                                        $class = 'disabled';
-//                                                    else:
-//                                                        $com = '';
-//                                                        $icon = '<i class="fa fa-square-o" aria-hidden="true"></i>';
-//                                                        $class = '';
-//                                                    endif;
-//                                                else:
-//                                                    if( in_array($term->slug, (array)$current->uploaded) ):
-//                                                        $icon = '<i class="fa fa-check-square-o" aria-hidden="true"></i>';
-//                                                        $com = '   <a data-type="'.$term->check_type.'" data-id="'.$term->slug.'" data-name="'.$term->name.'" href="#" class="resend-requirement-style resend-requirement" title="'.__('unlock', ET_DOMAIN).'"><i class="fa fa-refresh" aria-hidden="true"></i></a>';
-//                                                        $class = 'disabled';
-//                                                    else:
-//                                                        $com = '';
-//                                                        $icon = '<i class="fa fa-square-o" aria-hidden="true"></i>';
-//                                                        $class = '';
-//                                                    endif;
-//                                                endif;
-//                                                ?>
-<!--                                                --><?php //if( $term->term_id != 43 ): ?>
-<!--                                                <li>-->
-<!--                                                    <a href="#" data-type="--><?php //echo $term->click_type; ?><!--" class="--><?php //echo $cl1.' ';?><!-- --><?php //echo $class; ?><!--" data-id="--><?php //echo $term->slug; ?><!--" data-name="--><?php //echo $term->name; ?><!--">--><?php //echo $icon; ?><!--  --><?php //echo ' '.$term->name ?><!--</a>-->
-<!--                                                    --><?php //if( ae_user_role($user_ID) == COMPANY):
-//                                                        echo  ''.$com;
-//                                                    endif; ?>
-<!--                                                </li>-->
-<!--                                                --><?php //endif; ?>
-<!--                                            --><?php //endforeach; ?>
-<!--                                        </ul>-->
-<!--                                    --><?php //endif; ?>
-<!--                                </div>-->
-<!--                                <div class="total-order">-->
-<!--                                    <p><i class="fa fa-exclamation-circle" aria-hidden="true"></i>--><?php //_e(' These tasks must be completed by you. Without completing these tasks, your company cannot perform the tasks for which you hired them.', ET_DOMAIN); ?><!--</p>-->
-<!--                                </div>-->
-<!--                                <input type="hidden" class="input-item" name="_wpnonce" id="profile_wpnonce" value="--><?php //echo de_create_nonce('ae-mjob_post-sync');?><!--" />-->
-<!--                            </div>-->
-<!--                            <div role="tabpanel" class="tab-pane " id="document">-->
-<!--                                <div id="incomingPaymentsForm">-->
-<!--                                    <ul class="requirement-list document-list">-->
-<!--                                        --><?php //if( isset($current->agreement_files) && !empty($current->agreement_files)):
-//                                            foreach($current->agreement_files as $item): ?>
-<!--                                            <li class="col-lg-6 col-md-6 col-xs-12 item-requirement">-->
-<!--                                                <a  href="--><?php //echo et_get_page_link('simple-download').'?cid='.$current->ID.'&n='.$item['name'] ?><!--" data-name="--><?php //echo $item['name'].' : '.date('d/m/Y', strtotime($current->post_date))?><!--" class="show-requirement-docs">-->
-<!--                                                    <div class="doc-icon"> <i class="fa fa-file-pdf-o" aria-hidden="true"></i></div>-->
-<!--                                                    <div class="doc-name">--><?php //echo $item['name'] ?><!--</div>-->
-<!--                                                    <div class="doc-time">--><?php //echo date('d/m/Y', strtotime($current->post_date))?><!--</div>-->
-<!---->
-<!--                                                </a></li>-->
-<!---->
-<!--                                        --><?php //endforeach; endif; ?>
-<!--                                        --><?php
-//                                        if( !empty($current->requirement_files)): ?>
-<!---->
-<!--                                        --><?php //    foreach( $current->requirement_files as $key=> $files):
-//                                                    $term = get_term_by('slug', $key, 'mjob_requirement');
-//                                                    global $ae_tax_factory;
-//                                                    $term_obj = $ae_tax_factory->get('mjob_requirement');
-//                                                    $term = $term_obj->convert($term);
-//                                                    if(!empty($files)):
-//                                                        $i = 0;
-//                                                        $tx = '';
-//                                                        foreach($files as $file):
-//                                                            $f = get_post($file);
-//                                                            if( $i > 0):
-//                                                                $tx = '_'.$i;
-//                                                            endif;
-//                                                            ?>
-<!--                                                <li class="col-lg-6 col-md-6 col-xs-12 item-requirement">-->
-<!--                                                    <a  href="--><?php //echo et_get_page_link('simple-download').'?id='.$f->ID ?><!--" data-name="--><?php //echo $term->name.$tx.' : '.date('d/m/Y', strtotime($f->post_date))?><!--" class="show-requirement-docs">-->
-<!--                                                        <div class="doc-icon"> <i class="fa fa-file-pdf-o" aria-hidden="true"></i></div>-->
-<!--                                                        <div class="doc-name">--><?php //echo $term->requirement_short_name.$tx?><!--</div>-->
-<!--                                                        <div class="doc-time">--><?php //echo date('d/m/Y', strtotime($f->post_date))?><!--</div>-->
-<!---->
-<!--                                                    </a></li>-->
-<!--                                        --><?php //$i++;
-//                                                        endforeach;
-//                                                    endif;
-//                                                        endforeach;?>
-<!--                                        --><?php
-//                                        endif; ?>
-<!--                                    </ul>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!---->
-<!--                    </div>-->
-<!--                </div>-->
             </div>
         </div>
     </div>
