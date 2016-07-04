@@ -616,7 +616,7 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                                 </ul>
                                             </div>
                                             <div class="total-order total-order-1">
-                                                <p><i class="fa fa-exclamation-circle" aria-hidden="true"></i><?php _e(' Here are the documents uploaded by your client. Click to view, download or request a new one if necessary.', ET_DOMAIN); ?></p>
+                                                <p><i class="fa fa-exclamation-circle" aria-hidden="true"></i><?php _e(' All payments form your client will appear here. You can click to view and download if payments have been generated.', ET_DOMAIN); ?></p>
                                             </div>
                                         </div>
                                     </div>
