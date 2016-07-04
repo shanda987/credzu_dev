@@ -584,7 +584,7 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                                 <input type="hidden" value="<?php echo $q; ?>" id="noti-show" />
                                             </div>
                                             <div class="total-order total-order-1">
-                                                <p><i class="fa fa-exclamation-circle" aria-hidden="true"></i><?php _e(' These tasks must be completed by you. Without completing these tasks, your company cannot perform the tasks for which you hired them.', ET_DOMAIN); ?></p>
+                                                <p><i class="fa fa-exclamation-circle" aria-hidden="true"></i><?php _e(' Here are the documents uploaded by your client. Click to view, download or request a new one if necessary.', ET_DOMAIN); ?></p>
                                             </div>
                                             <input type="hidden" class="input-item" name="_wpnonce" id="profile_wpnonce" value="<?php echo de_create_nonce('ae-mjob_post-sync');?>" />
                                         </div>
