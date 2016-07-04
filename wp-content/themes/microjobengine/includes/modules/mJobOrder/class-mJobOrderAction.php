@@ -27,6 +27,7 @@ class mJobOrderAction extends mJobPostAction{
         $this->add_filter('mjob_check_pending_account', 'checkPendingAccountOrder', 10, 2);
         $this->add_ajax('mjob-work-complete-confirm', 'mjobWorkCompleteConfirm');
         $this->add_ajax('mjob-reorder', 'mjobReorder');
+        $this->add_ajax('mjob-get-pdf-data', 'mJobGetPdfData');
         $this->ruler = array(
         );
 
@@ -886,6 +887,29 @@ class mJobOrderAction extends mJobPostAction{
         }
         return array('success'=> true);
 
+    }
+    /**
+      * get pdf content
+      *
+      * @param void
+      * @return void
+      * @since 1.4
+      * @package MicrojobEngine
+      * @category CREDZU
+      * @author JACK BUI
+      */
+    public function mJobGetPdfData(){
+        if( isset( $_REQUEST['id']) ){
+            $id = $_REQUEST['id'];
+            $file = get_attached_file($id);
+            $file_name = basename( $file );
+            $fp = fopen($file, 'rb');
+            header("Content-Type: application/octet-stream");
+            header("Content-Disposition: attachment; filename=$file_name");
+            header("Content-Length: " . filesize($file));
+            $file = fread($fp);
+            wp_send_json($file);
+        }
     }
 
 }

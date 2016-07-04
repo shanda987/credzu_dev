@@ -314,7 +314,7 @@
             showRequirementContent: function(e){
                 e.preventDefault();
                 $target = $(e.currentTarget);
-                var data_href = $target.attr('data-href');
+                var data_href = $target.attr('data-id');
                 var name = $target.attr('data-name');
                 if (typeof this.modalrequirementcontent === 'undefined') {
                     this.modalrequirementcontent = new Views.ModalRequirementContent();
@@ -394,6 +394,20 @@
                 view.openModal();
                 $('#modal-show-requirement-title').html(name);
                 $('.show-requirement-iframe').attr('src', this.data_href);
+                var pid = data_href;
+                $.ajax({
+                    url: ae_globals.ajaxURL,
+                    type: 'post',
+                    data: {
+                        action: 'mjob-get-pdf-data',
+                        id: pid
+                    },
+                    beforeSend: function() {
+                    },
+                    success: function(res) {
+
+                    }
+                });
             },
         });
         Views.ModalRequirement = Views.Modal_Box.extend({
