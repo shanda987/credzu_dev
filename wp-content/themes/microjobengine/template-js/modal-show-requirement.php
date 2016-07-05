@@ -14,7 +14,7 @@
                     <div class="form-group clearfix float-right change-pass-button-method button">
                         <a class="btn-submit resend-requirement resend-requirement-css" href="#"><?php _e('Refresh', ET_DOMAIN); ?></a>
                         <a class="btn-submit btn-download" href="#"><?php _e('Download', ET_DOMAIN); ?></a>
-                        <button class="btn-submit btn-close"><?php _e('Close', ET_DOMAIN); ?></button>
+<!--                        <button class="btn-submit btn-close">--><?php //_e('Close', ET_DOMAIN); ?><!--</button>-->
                     </div>
                 </div>
             </div>

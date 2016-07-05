@@ -173,7 +173,6 @@
                 'click .order-delivery-btn': 'openModalDelivery',
                 'click .mjob-dispute-order': 'showFormDispute',
                 'click .requirement-item': 'showModalRequirement',
-                'click .resend-requirement': 'showModalUnlockRequirement',
                 'click .show-requirement-doc': 'showRequirementContent',
                 'click .btn-work-complete-action': 'showWorkComplete',
                 'click .btn-continue-service-btn': 'showContinue'
@@ -300,17 +299,6 @@
                 $('.mjob-dispute-order').fadeOut(500);
                 $('.mjob-dispute-form').fadeIn(500);
             },
-            showModalUnlockRequirement: function(e){
-                e.preventDefault();
-                $target = $(e.currentTarget);
-                var data_id = $target.attr('data-id');
-                var type = $target.attr('data-type');
-                var data_name = $target.attr('data-name');
-                if (typeof this.modalunlockrequirement === 'undefined') {
-                    this.modalunlockrequirement = new Views.ModalUnlockRequirement();
-                }
-                this.modalunlockrequirement.onOpen(this.model, data_id, $target, data_name);
-            },
             showRequirementContent: function(e){
                 e.preventDefault();
                 $target = $(e.currentTarget);
@@ -376,7 +364,8 @@
         Views.ModalRequirementContent = Views.Modal_Box.extend({
             el: '#show_requirement_modal',
             events: {
-                'click .btn-close': 'closeModalR'
+                'click .btn-close': 'closeModalR',
+                'click .resend-requirement': 'showModalUnlockRequirement'
             },
             initialize: function () {
                 AE.Views.Modal_Box.prototype.initialize.call();
@@ -417,6 +406,17 @@
                     view.$el.find('.resend-requirement-css').show();
                 }
             },
+            showModalUnlockRequirement: function(e){
+                e.preventDefault();
+                $target = $(e.currentTarget);
+                var data_id = $target.attr('data-id');
+                var type = $target.attr('data-type');
+                var data_name = $target.attr('data-name');
+                if (typeof this.modalunlockrequirement === 'undefined') {
+                    this.modalunlockrequirement = new Views.ModalUnlockRequirement();
+                }
+                this.modalunlockrequirement.onOpen(this.model, data_id, $target, data_name);
+            }
         });
         Views.ModalRequirement = Views.Modal_Box.extend({
             el: '#requirement_modal',
