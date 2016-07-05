@@ -1175,6 +1175,7 @@ class ET_Microjobengine extends AE_Base
         $vars['hiresingup_link'] = et_get_page_link('user-authentication');
         $vars['current_user_can_post_listing'] = mJobProfileAction()->current_user_can_post_listing($user_ID);
         $vars['listing_error_message'] = __('Paid listing require complete profile information; namely: Company Name, Company Address, Company Phone and Billing information. Also, your agreement between us must be signed. Please return here once you complete the required information', ET_DOMAIN);
+        $vars['view_pdf'] = et_get_page_link('view-pdf');
         return $vars;
     }
     /**

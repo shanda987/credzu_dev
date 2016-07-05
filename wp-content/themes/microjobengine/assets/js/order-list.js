@@ -395,19 +395,7 @@
                 $('#modal-show-requirement-title').html(name);
                 $('.show-requirement-iframe').attr('src', this.data_href);
                 var pid = data_href;
-                $.ajax({
-                    url: ae_globals.ajaxURL,
-                    type: 'post',
-                    data: {
-                        action: 'mjob-get-pdf-data',
-                        id: pid
-                    },
-                    beforeSend: function() {
-                    },
-                    success: function(res) {
-
-                    }
-                });
+                view.$el.find('iframe').attr('src', ae_globals.view_pdf+'?cid='+pid+'&n='+this.name);
             },
         });
         Views.ModalRequirement = Views.Modal_Box.extend({
