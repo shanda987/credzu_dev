@@ -22,12 +22,12 @@ else {
     $file = $f['path'];
     $filename = $f['name'];
 }
-//if( !empty($file) ) {
+if( !empty($file) ) {
     header('Content-Type: application/pdf');
     header('Content-Disposition: inline; filename="' . $filename . '"');
     header('Content-Transfer-Encoding: binary');
     header('Accept-Ranges: bytes');
     echo file_get_contents($file);
-//}else{
-//    _e("This document isn't exists", ET_DOMAIN);
-//}
+}else{
+    _e("The document doesn't exist.", ET_DOMAIN);
+}
