@@ -400,18 +400,21 @@
                     view.$el.find('.btn-download').click(function(){
                         window.location.href = ae_globals.download_pdf+'?cid='+pid+'&n='+view.name;
                     });
+                    view.$el.find('.resend-requirement-css').hide();
                 }
                 else if( this.target.attr('data-payment') == 1 ){
                     view.$el.find('iframe').attr('src', ae_globals.view_pdf + '?pid=' + pid);
                     view.$el.find('.btn-download').click(function(){
                         window.location.href = ae_globals.download_pdf+'?pid='+pid;
                     });
+                    view.$el.find('.resend-requirement-css').hide();
                 }
                 else {
                     view.$el.find('iframe').attr('src', ae_globals.view_pdf + '?id=' + pid);
                     view.$el.find('.btn-download').click(function(){
                         window.location.href = ae_globals.download_pdf+'?id='+pid;
                     });
+                    view.$el.find('.resend-requirement-css').show();
                 }
             },
         });
