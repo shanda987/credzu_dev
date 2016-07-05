@@ -37,7 +37,7 @@ elseif( isset($_GET['cid']) && isset($_GET['n'])){
 else{
     if( isset($_GET['pid']) ){
         $id = $_GET['pid'];
-        $file = get_post_meta($id, 'pdf_path', false);
+        $file = get_post_meta($id, 'pdf_path', true);
         $fp = fopen($file, 'rb');
         $filename = basename($file);
         header("Content-Type: application/octet-stream");
