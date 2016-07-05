@@ -7,7 +7,7 @@ if( isset($_GET['id']) ) {
     $file = get_attached_file($id);
     $filename = basename($file);
 }
-else {
+else if( isset($_GET['cid'])) {
     $id = $_GET['cid'];
     $files = get_post_meta($id, 'agreement_files', true);
     $f = '';
@@ -21,6 +21,11 @@ else {
     }
     $file = $f['path'];
     $filename = $f['name'];
+}
+else{
+    $id = $_GET['pid'];
+    $file = get_post_meta($id, 'pdf_path', false);
+    $filename = basename($file);
 }
 if( !empty($file) ) {
     header('Content-Type: application/pdf');
