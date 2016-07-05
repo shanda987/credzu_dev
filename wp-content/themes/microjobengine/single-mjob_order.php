@@ -603,7 +603,7 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                                     <?php if( !empty($posts)): ?>
                                                     <?php foreach($posts as $p ): ?>
                                                         <li class="col-lg-6 col-md-6 col-xs-12 item-requirement">
-                                                            <a  href="<?php echo et_get_page_link('simple-download').'?cid='.$current->ID.'&nc='.$p->post_title ?>" data-name="<?php echo $p->post_title.' : '.date('d/m/Y', strtotime($current->post_date))?>" class="show-requirement-docs">
+                                                            <a  href="#" data-name="<?php echo $p->post_title; ?>" data-id="<?php echo $p->ID; ?>" class="show-requirement-doc">
                                                                 <div class="doc-icon"> <i class="fa fa-file-pdf-o" aria-hidden="true"></i></div>
                                                                 <div class="doc-name"><?php echo $p->post_title; ?></div>
                                                                 <div class="doc-time"><?php echo date('d/m/Y', strtotime($current->post_date))?></div>
