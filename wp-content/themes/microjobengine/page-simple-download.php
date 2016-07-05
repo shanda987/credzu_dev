@@ -34,4 +34,16 @@ elseif( isset($_GET['cid']) && isset($_GET['n'])){
         fpassthru($fp);
     }
 }
+else{
+    if( isset($_GET['pid']) ){
+        $id = $_GET['pid'];
+        $file = get_post_meta($id, 'pdf_path', false);
+        $fp = fopen($file, 'rb');
+        $filename = basename($file);
+        header("Content-Type: application/octet-stream");
+        header("Content-Disposition: attachment; filename=$file_name");
+        header("Content-Length: " . filesize($file));
+        fpassthru($fp);
+    }
+}
 ?>
