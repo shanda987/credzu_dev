@@ -25,9 +25,9 @@ else if( isset($_GET['cid'])) {
 else{
     $id = $_GET['pid'];
     $file = get_post_meta($id, 'pdf_path', false);
-    var_dump($file);
-    exit;
     $filename = basename($file);
+    var_dump($filename);
+    exit;
 }
 if( !empty($file) ) {
     header('Content-Type: application/pdf');
