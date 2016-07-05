@@ -398,7 +398,7 @@
                 if( this.target.attr('data-agreement') == 1 ){
                     view.$el.find('iframe').attr('src', ae_globals.view_pdf+'?cid='+pid+'&n='+this.name);
                     view.$el.find('.btn-download').click(function(){
-                        window.location.href = ae_globals.download_pdf+'?cid='+pid+'&n='+this.name;
+                        window.location.href = ae_globals.download_pdf+'?cid='+pid+'&n='+view.name;
                     });
                 }
                 else {
