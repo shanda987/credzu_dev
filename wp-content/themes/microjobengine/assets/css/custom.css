@@ -535,6 +535,7 @@
 .show-requirement-content .button{
     padding-top: 20px;
     padding-right: 20px;
+    padding-bottom: 20px;
 }
 .show-requirement-content .button .btn-download {
     margin-right: 20px;
