@@ -304,10 +304,12 @@
                 $target = $(e.currentTarget);
                 var data_href = $target.attr('data-id');
                 var name = $target.attr('data-name');
+                var slug = $target.attr('data-slug');
+                var click_type = $target.attr('data-type');
                 if (typeof this.modalrequirementcontent === 'undefined') {
                     this.modalrequirementcontent = new Views.ModalRequirementContent();
                 }
-                this.modalrequirementcontent.onOpen(this.model, data_href, $target, name);
+                this.modalrequirementcontent.onOpen(this.model, data_href, $target, name, slug, click_type);
             },
             showModalRequirement: function(e){
                 e.preventDefault();
@@ -374,12 +376,14 @@
                 e.preventDefault();
                 this.closeModal();
             },
-            onOpen: function (model, data_href, $target, name) {
+            onOpen: function (model, data_href, $target, name, slug, click_type) {
                 var view = this;
                 this.model = model;
                 this.data_href = data_href;
                 this.target = $target;
                 this.name = name;
+                this.slug = slug;
+                this.click_type  = click_type;
                 view.openModal();
                 $('#modal-show-requirement-title').html(name);
                 $('.show-requirement-iframe').attr('src', this.data_href);
@@ -415,7 +419,7 @@
                 if (typeof this.modalunlockrequirement === 'undefined') {
                     this.modalunlockrequirement = new Views.ModalUnlockRequirement();
                 }
-                this.modalunlockrequirement.onOpen(this.model, data_id, $target, data_name);
+                this.modalunlockrequirement.onOpen(this.model, slug, $target, this.name);
             }
         });
         Views.ModalRequirement = Views.Modal_Box.extend({
@@ -729,15 +733,13 @@
             onOpen: function (model, data_id, $target, data_name) {
                 var view = this;
                 this.model = model;
-                this.data_id = data_id;
-                this.target = $target;
                 this.arr_ids = [];
                 view.openModal();
-                view.$el.find('.unlock-more').html($target.attr('data-name'));
+                view.$el.find('.unlock-more').html(data_name);
             },
             askRequirment: function(e){
                 var view = this;
-                this.model.set('need_upload_add', this.data_id);
+                this.model.set('need_upload_add', data_id);
                 $target = $(e.currentTarget);
                 this.model.save('', '', {
                     beforeSend: function () {
