@@ -637,6 +637,7 @@ class mJobMailing extends AE_Mailing
       * @author JACK BUI
       */
     public function email_request_new_document($ood, $name){
+        var_dump($name);
         $subject = ae_get_option('send_request_new_document_subject', __('Company send to you  a request re-upload new document ', ET_DOMAIN));
         $profile = mJobProfileAction()->getProfile($ood->post_author);
         $msg = ae_get_option('send_request_new_document', sprintf(__('company needs a new [document_title]', ET_DOMAIN )));
