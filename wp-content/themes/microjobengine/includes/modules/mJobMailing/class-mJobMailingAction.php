@@ -28,6 +28,7 @@ class mJobMailingAction extends AE_Base
         $this->add_action('credzu_company_agreement_email', 'mJobMailCompanyCredzu', 10, 2);
         $this->add_action('changing_order_status_email', 'mJobChangingOrderStatus', 10, 4);
         $this->add_action('change_user_role_email', 'mJobChangingUserRole');
+        $this->add_action('send_request_new_document', 'mJobRequestNewDocument', 10, 2);
     }
 
     public function mJobMailRejectPost($args) {
@@ -179,6 +180,19 @@ class mJobMailingAction extends AE_Base
       */
     public function mJobChangingUserRole($user_ID){
         $this->mail->email_changing_user_role($user_ID);
+    }
+    /**
+      * send an email to client when company request a new document
+      *
+      * @param void
+      * @return void
+      * @since 1.4
+      * @package MicrojobEngine
+      * @category CREDZU
+      * @author JACK BUI
+      */
+    public function mJobRequestNewDocument($ood, $name){
+        $this->mail->email_request_new_document($ood, $name);
     }
 }
 $new_instance = mJobMailingAction::getInstance();

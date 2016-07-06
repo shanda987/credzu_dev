@@ -737,12 +737,14 @@
                 this.data_id = data_id;
                 this.target = $target;
                 this.arr_ids = [];
+                this.data_name = data_name;
                 view.openModal();
-                view.$el.find('.unlock-more').html(data_name);
+                //view.$el.find('.unlock-more').html(data_name);
             },
             askRequirment: function(e){
                 var view = this;
                 this.model.set('need_upload_add', this.data_id);
+                this.model.set('document_name', this.data_name);
                 $target = $(e.currentTarget);
                 this.model.save('', '', {
                     beforeSend: function () {

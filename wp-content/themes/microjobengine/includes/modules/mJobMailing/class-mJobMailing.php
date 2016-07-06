@@ -626,4 +626,21 @@ class mJobMailing extends AE_Mailing
         $msg1 = ae_get_option('changing_roles_mails', __('Your account is changed to company role', ET_DOMAIN));
         $result1 = $this->wp_mail($profile->business_email, $subject1, $msg1, array('user_id' => $user_ID));
     }
+    /**
+      * send email to client when company request a new document
+      *
+      * @param void
+      * @return void
+      * @since 1.4
+      * @package MicrojobEngine
+      * @category CREDZU
+      * @author JACK BUI
+      */
+    public function email_request_new_document($ood, $name){
+        $subject = ae_get_option('send_request_new_document_subject', __('Company send to you  a request re-upload new document ', ET_DOMAIN));
+        $profile = mJobProfileAction()->getProfile($ood->post_author);
+        $msg = ae_get_option('send_request_new_document', sprintf(__('company needs a new [document_title]', ET_DOMAIN )));
+        $msg = str_ireplace('[document_title]', $name, $msg);
+        $this->wp_mail($profile->business_email, $subject, $msg, array('user_id' => $ood->post_author));
+    }
 }

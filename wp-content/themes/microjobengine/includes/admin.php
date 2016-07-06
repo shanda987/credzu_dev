@@ -2817,6 +2817,46 @@ class ET_Admin extends AE_Base
                 ),
                 array(
                     'args' => array(
+                        'title' => __('Request new document from Client email subject', ET_DOMAIN),
+                        'id' => 'order-status-changing-contentss',
+                        'class' => 'payment-gateway',
+                        'name' => '',
+                        'desc' => __("Send to client an email when company needs a new document", ET_DOMAIN),
+                        'toggle' => true
+                    ),
+                    'fields' => array(
+                        array(
+                            'id' => 'send_request_new_document_subject',
+                            'type' => 'text',
+                            'title' => '',
+                            'class' => '',
+                            'name' => 'send_request_new_document_subject',
+                            'reset' => 1
+                        )
+                    )
+                ),
+                array(
+                    'args' => array(
+                        'title' => __('Request new document from Client Email template', ET_DOMAIN),
+                        'id' => 'order-status-changing-contentss',
+                        'class' => 'payment-gateway',
+                        'name' => '',
+                        'desc' => __("Send to client an email when company needs a new document", ET_DOMAIN),
+                        'toggle' => true
+                    ),
+                    'fields' => array(
+                        array(
+                            'id' => 'send_request_new_document',
+                            'type' => 'editor',
+                            'title' => '',
+                            'class' => '',
+                            'name' => 'send_request_new_document',
+                            'reset' => 1
+                        )
+                    )
+                ),
+                array(
+                    'args' => array(
                         'title' => __("Dispute Decision", ET_DOMAIN) ,
                         'id' => 'mail-description-group',
                         'class' => '',

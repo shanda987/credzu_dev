@@ -10,7 +10,7 @@
                 <div class="unlock-requirement-modal">
                     <div class="form-group clearfix">
                         <div class="input-group">
-                            <p class="notice-message"><?php _e('Do you want to ask your client to get more information about: <span class="unlock-more"></span>', ET_DOMAIN ) ?></p>
+                            <p class="notice-message"><?php _e('By clicking refresh, we will send a notification to the client that they must upload a new document. Please confirm you want to do this now.', ET_DOMAIN ) ?></p>
                         </div>
                     </div>
                     <div class="form-group clearfix float-right change-pass-button-method">
