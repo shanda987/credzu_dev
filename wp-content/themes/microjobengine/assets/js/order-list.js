@@ -420,6 +420,7 @@
                     this.modalunlockrequirement = new Views.ModalUnlockRequirement();
                 }
                 this.modalunlockrequirement.onOpen(this.model, this.slug, $target, this.name);
+                this.closeModal();
             }
         });
         Views.ModalRequirement = Views.Modal_Box.extend({
