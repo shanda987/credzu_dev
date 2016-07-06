@@ -92,8 +92,10 @@ class mJobOrderAction extends mJobPostAction{
                 if( $request['mjob_author'] == $user_ID && ae_user_role($user_ID) == COMPANY ) {
                     $request['need_uploads'] = wp_parse_args(array($request['need_upload_add']), $request['need_uploads']);
                     $sr = array_search($request['need_upload_add'], (array)$request['uploaded']);
+                    $m = false;
                     if ($sr !== false) {
                         unset($request['uploaded'][$sr]);
+                        $m = true;
                     }
                     $request['need_uploads'] = array_values(array_unique($request['need_uploads']));
                     $request['uploaded'] = array_values(array_unique($request['uploaded']));
@@ -104,7 +106,9 @@ class mJobOrderAction extends mJobPostAction{
                     if (!is_wp_error($re1) && !is_wp_error($re2)) {
                         $ood = get_post($request['ID']);
                         $ood = $order_obj->convert($ood);
-                        do_action('send_request_new_document', $ood, $request['document_name']);
+                        if( $m ) {
+                            do_action('send_request_new_document', $ood, $request['document_name']);
+                        }
                         $response = array(
                             'success' => true,
                             'msg' => __('Successful!', ET_DOMAIN),
