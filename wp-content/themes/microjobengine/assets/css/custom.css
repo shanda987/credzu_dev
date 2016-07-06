@@ -852,3 +852,17 @@
     color: #10a2ef!important;
     margin-right: 20px;
 }
+.block-items-detail .sharing{
+    margin: 0!important;
+}
+.block-items-detail .information-items-detail .sharing li:first-child{
+    margin-right: 0;
+    margin-left: 0;
+}
+.block-items-detail .information-items-detail .sharing li{
+    margin-left: 0;
+    margin-right: 10px;
+}
+.block-items-detail .information-items-detail .sharing{
+    right: 20px;
+}

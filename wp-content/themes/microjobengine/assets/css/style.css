@@ -9700,7 +9700,7 @@ body.archive .block-title {
   border-bottom: 1px solid #dfe0e5;
 }
 .block-items-detail .information-items-detail {
-  padding: 0 30px 0 30px;
+  padding: 0 0px 0 30px;
   position: relative;
 }
 @media (max-width: 991px) {
