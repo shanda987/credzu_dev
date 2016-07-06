@@ -867,3 +867,8 @@
     right: 80%;
     text-align:left;
 }
+@media (max-width: 1336px) {
+    .block-items-detail .information-items-detail .sharing{
+        right: 10%;
+    }
+}
