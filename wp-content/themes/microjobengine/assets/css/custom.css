@@ -536,8 +536,9 @@
     padding-top: 20px;
     padding-right: 20px;
 }
-.show-requirement-content .button .btn-download{
+.show-requirement-content .button .btn-download {
     margin-right: 20px;
+    margin-bottom: 20px;
 }
 .doc-icon{
     font-size: 42px;
@@ -843,4 +844,6 @@
 }
 .resend-requirement-css{
     display: none;
+    margin-right: 20px;
+    margin-bottom: 20px;
 }
