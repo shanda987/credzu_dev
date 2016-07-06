@@ -864,5 +864,6 @@
     margin-right: 10px;
 }
 .block-items-detail .information-items-detail .sharing{
-    right: 20px;
+    right: 80%;
+    text-align:left;
 }

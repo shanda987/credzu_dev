@@ -9707,6 +9707,10 @@ body.archive .block-title {
   .block-items-detail .information-items-detail {
     padding: 0;
   }
+  .block-items-detail .information-items-detail .sharing{
+    right: 60%!important;
+  }
+
 }
 @media (max-width: 991px) {
   .block-items-detail .information-items-detail .btn-order {
