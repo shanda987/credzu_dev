@@ -8,10 +8,24 @@ $breadcrumb = '';
 if( !empty($cats) ) {
 // Show breadcrumb
     $parent = $cats['0']->parent;
-    $breadcrumb = '<div class="mjob-breadcrumb"><a class="parent" href="' . get_term_link($cats["0"]) . '">'.'<p>' . $cats["0"]->name .'</p>'. '</a></div>';
+    $breadcrumb .= '<div class="mjob-breadcrumb"><a class="parent" href="' . get_term_link($cats["0"]) . '">'.'<div>Category: <span class="normal-link">' . $cats["0"]->name .'</span>'. __('Last modified: ', ET_DOMAIN).' <span class="mjob-modified-day">'.$current->modified_date .'</span>';
+    $breadcrumb .= '<div class="sharing">';
+    $breadcrumb .= '<span>'.__('Share', ET_DOMAIN).'</span>';
+    $breadcrumb .= '<ul class="link-social list-share-social addthis_toolbox addthis_default_style">';
+    $breadcrumb .= '<li><a href="'.$current->permalink.'" class="addthis_button_facebook face" title="'.__('Facebook', ET_DOMAIN).'"><i class="fa fa-facebook"></i></a></li>';
+    $breadcrumb .= '<li><a href="'.$current->permalink.'" class="addthis_button_twitter twitter" title="'.__('Twitter', ET_DOMAIN).'"><i class="fa fa-twitter"></i></a></li>';
+    $breadcrumb .= '<li><a href="https://plus.google.com/share?url='.$current->permalink.'" class=" google" title="'.__('Google', ET_DOMAIN).'" target="_blank" ><i class="fa fa-google-plus"></i></a></li>';
+    $breadcrumb .= '</ul></div></div></a></div>';
     if ($parent != 0) {
         $parent = get_term_by('ID', $parent, 'mjob_category');
-        $breadcrumb = '<div class="mjob-breadcrumb"><a class="parent" href="' . get_term_link($parent) . '">'.'<p>' . $parent->name .'</p>'. '</a> <i class="fa fa-angle-right"></i> <span><a class="child" href="' . get_term_link($cats["0"]) . '">' . $cats['0']->name . '</a></span></div>';
+        $breadcrumb .= '<div class="mjob-breadcrumb"><a class="parent" href="' . get_term_link($parent) . '">'.'<div>Category: <span class="normal-link">' . $parent->name .'</span></div>'.__('Last modified: ', ET_DOMAIN).' <span class="mjob-modified-day">'.$current->modified_date .'</span></a> <i class="fa fa-angle-right"></i> <span><a class="child" href="' . get_term_link($cats["0"]) . '">' . $cats['0']->name . '</a></span>';
+        $breadcrumb .= '<div class="sharing">';
+        $breadcrumb .= '<span>'.__('Share', ET_DOMAIN).'</span>';
+        $breadcrumb .= '<ul class="link-social list-share-social addthis_toolbox addthis_default_style">';
+        $breadcrumb .= '<li><a href="'.$current->permalink.'" class="addthis_button_facebook face" title="'.__('Facebook', ET_DOMAIN).'"><i class="fa fa-facebook"></i></a></li>';
+        $breadcrumb .= '<li><a href="'.$current->permalink.'" class="addthis_button_twitter twitter" title="'.__('Twitter', ET_DOMAIN).'"><i class="fa fa-twitter"></i></a></li>';
+        $breadcrumb .= '<li><a href="https://plus.google.com/share?url='.$current->permalink.'" class=" google" title="'.__('Google', ET_DOMAIN).'" target="_blank" ><i class="fa fa-google-plus"></i></a></li>';
+        $breadcrumb .= '</ul></div></div>';
     }
 }
 // End show breadcumb
@@ -63,8 +77,8 @@ if($profile_id) {
                         </div>
                         <div class="single-detail-content">
                             <div class="items-private">
-                                <div class="cate-items mjob-cat"><?php echo $breadcrumb; ?></div>
-                                <div class="time-post"><?php _e('Last modified: ', ET_DOMAIN) ;?> <span class="mjob-modified-day"><?php echo $current->modified_date; ?></span></div>
+                                <div class="cate-items mjob-cat"><?php echo $breadcrumb; ?> </div>
+<!--                                <div class="time-post">--><?php //_e('Last modified: ', ET_DOMAIN) ;?><!-- <span class="mjob-modified-day">--><?php //echo $current->modified_date; ?><!--</span></div>-->
                             </div>
                             <div class="gallery">
                                 <!-- <img src="<?php /*echo $current->the_post_thumbnail; */?>" width="100%" alt="">-->
@@ -158,14 +172,6 @@ if($profile_id) {
                                              <?php endif; ?>
                                     <?php endif; ?>
                                     <button class="btn-bookmark"><i class="fa fa-heart"></i></button>
-                                    <div class="sharing">
-                                        <span><?php _e('Share', ET_DOMAIN); ?></span>
-                                        <ul class="link-social list-share-social addthis_toolbox addthis_default_style">
-                                            <li><a href="<?php echo $current->permalink; ?>" class="addthis_button_facebook face" title="<?php _e('Facebook', ET_DOMAIN); ?>"><i class="fa fa-facebook"></i></a></li>
-                                            <li><a href="<?php echo $current->permalink; ?>" class="addthis_button_twitter twitter" title="<?php _e('Twitter', ET_DOMAIN); ?>"><i class="fa fa-twitter"></i></a></li>
-                                            <li><a href="https://plus.google.com/share?url=<?php echo $current->permalink; ?>" class=" google" title="<?php _e('Google', ET_DOMAIN); ?>" target="_blank" ><i class="fa fa-google-plus"></i></a></li>
-                                        </ul>
-                                    </div>
                                 </div>
                             </div>
                         </div>
