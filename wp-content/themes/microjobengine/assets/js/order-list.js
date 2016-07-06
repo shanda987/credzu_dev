@@ -419,7 +419,7 @@
                 if (typeof this.modalunlockrequirement === 'undefined') {
                     this.modalunlockrequirement = new Views.ModalUnlockRequirement();
                 }
-                this.modalunlockrequirement.onOpen(this.model, slug, $target, this.name);
+                this.modalunlockrequirement.onOpen(this.model, this.slug, $target, this.name);
             }
         });
         Views.ModalRequirement = Views.Modal_Box.extend({
@@ -733,13 +733,15 @@
             onOpen: function (model, data_id, $target, data_name) {
                 var view = this;
                 this.model = model;
+                this.data_id = data_id;
+                this.target = $target;
                 this.arr_ids = [];
                 view.openModal();
                 view.$el.find('.unlock-more').html(data_name);
             },
             askRequirment: function(e){
                 var view = this;
-                this.model.set('need_upload_add', data_id);
+                this.model.set('need_upload_add', this.data_id);
                 $target = $(e.currentTarget);
                 this.model.save('', '', {
                     beforeSend: function () {
