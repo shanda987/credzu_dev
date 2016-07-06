@@ -409,7 +409,7 @@
             showModalUnlockRequirement: function(e){
                 e.preventDefault();
                 $target = $(e.currentTarget);
-                var data_id = $target.attr('data-id');
+                var data_id = $target.attr('data-slug');
                 var type = $target.attr('data-type');
                 var data_name = $target.attr('data-name');
                 if (typeof this.modalunlockrequirement === 'undefined') {
