@@ -121,11 +121,11 @@ if($profile_id) {
                                     </a>
                                 </div>
                             </div>
-                            <div class="review-job">
+                            <div class="review-job carousel slide" data-ride="carousel">
                                 <p class="title">
                                     <?php printf(__('Review <span class="total-review">(%s total)</span>', ET_DOMAIN), $count_review); ?>
                                 </p>
-                                <ul>
+                                <ul class="carousel-indicators">
                                     <?php
                                     $reviews_per_page = 5;
                                     $total_args =  array(
