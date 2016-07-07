@@ -9858,7 +9858,7 @@ body.archive .block-title {
 .block-items-detail .review-job ul li {
   display: block;
   margin-bottom: 30px;
-  border-bottom: 1px solid #dfe0e5;
+  /*border-bottom: 1px solid #dfe0e5;*/
   padding-bottom: 30px;
 }
 .block-items-detail .review-job ul li .image-avatar {
