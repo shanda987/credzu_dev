@@ -643,4 +643,21 @@ class mJobMailing extends AE_Mailing
         $msg = str_ireplace('[document_title]', $name, $msg);
         $this->wp_mail($profile->business_email, $subject, $msg, array('user_id' => $ood->post_author));
     }
+    /**
+      * Send to admin a email when admin approved his comment
+      *
+      * @param void
+      * @return void
+      * @since 1.4
+      * @package MicrojobEngine
+      * @category CREDZU
+      * @author JACK BUI
+      */
+    public function email_comment_approved_by_admin($comment){
+        $post_author = get_post_field( 'post_author', $comment->comment_post_ID );
+        $profile = mJobPostAction()->getProfile($post_author);
+        $subject = ae_get_option('comment_approved_email_subject', __('Credzu approved your interview ', ET_DOMAIN));
+        $msg = ae_get_option('comment_approved_email', sprintf(__('Credzu approved your interview', ET_DOMAIN )));
+        $this->wp_mail($profile->company_email, $subject, $msg, array('user_id' => $post_author));
+    }
 }

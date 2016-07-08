@@ -39,6 +39,7 @@ class mJobAction extends mJobPostAction{
         $this->mail = mJobMailing::getInstance();
         $this->add_filter('ae_convert_user', 'mjob_convert_user');
         $this->add_ajax('check-mjob-category', 'checkMjobCat');
+        $this->add_action('transition_comment_status', 'mjob_approve_comment_callback', 10, 3);
     }
     /**
      * sync Post function
@@ -1129,6 +1130,22 @@ class mJobAction extends mJobPostAction{
             }
             wp_send_json($response);
         }
-
+        /**
+          * send email to company when Admin approved their comment
+          *
+          * @param void
+          * @return void
+          * @since 1.4
+          * @package MicrojobEngine
+          * @category CREDZU
+          * @author JACK BUI
+          */
+        public function mjob_approve_comment_callback($new_status, $old_status, $comment) {
+            if($old_status != $new_status) {
+                if($new_status == 'approved') {
+                    do_action('email_to_company_comment_approved', $comment);
+                }
+            }
+        }
 }
 new mJobAction();
