@@ -195,7 +195,7 @@ if(!function_exists('ae_comments_pagination')):
  * @param Array $query_args the comment query args
  * @author Dakachi
 */
-function ae_comments_pagination( $total, $current = '', $query_args = array()) {
+function ae_comments_pagination( $total, $current = '', $query_args = array(), $wrapper_classes = '', $a_classes = '') {
 
     if(!empty($query_args)) {
         echo '<script type="application/json" class="ae_query">'. json_encode($query_args) . '</script>';
@@ -203,7 +203,7 @@ function ae_comments_pagination( $total, $current = '', $query_args = array()) {
     // don not use paginate or load more
     if(!isset($query_args['paginate']) || !$query_args['paginate'] ) return;
     // render paginate
-    echo '<div class="paginations">';
+    echo '<div class="paginations '.$wrapper_classes.'">';
     if( $query_args['paginate'] == 'page') { // paging
 
         $big = 999999999; // need an unlikely integer
@@ -221,7 +221,7 @@ function ae_comments_pagination( $total, $current = '', $query_args = array()) {
             if(!et_load_mobile() && !$text ){
                  $text = __("Load more", ET_DOMAIN);
             }
-            echo '<a id="'.$query_args['type'].'-inview" class="inview load-more-post" >'. $text .'</a>';
+            echo '<a id="'.$query_args['type'].'-inview" class="inview load-more-post '.$a_classes.'" >'. $text .'</a>';
         }
     }
 

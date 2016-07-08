@@ -138,7 +138,8 @@ if($profile_id) {
 
                                     $query_args = wp_parse_args(array(
                                         'number' => $reviews_per_page,
-                                        'page' => 1
+                                        'page' => 1,
+                                        'text'=> __('VIEW MORE', ET_DOMAIN)
                                     ), $total_args);
 
                                     // Get reviews
@@ -179,7 +180,7 @@ if($profile_id) {
                                 <div class="paginations-wrapper" >
                                     <?php
                                     if($review_pages > 1) {
-                                        ae_comments_pagination($review_pages, $paged ,$query_args);
+                                        ae_comments_pagination($review_pages, $paged ,$query_args, 'load-more float-center', 'hvr-wobble-vertical');
                                     }
                                     ?>
                                 </div>
