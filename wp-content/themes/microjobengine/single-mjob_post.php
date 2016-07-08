@@ -190,6 +190,7 @@ if($profile_id) {
                                 <div class="tabs-information">
                                     <span class="title"><?php _e('DESCRIPTION', ET_DOMAIN) ;?></span>
                                     <div class="tabs-information" id="description"><?php echo $current->post_content; ?></div>
+                                    <p><?php _e('If you have any questions about me, my company or this listing, feel free to ask below and I will answer at my ealiest convenience', ET_DOMAIN); ?></p>
                                     <?php $terms = get_the_terms($current->ID, 'mjob_requirement');
                                     if( !empty($terms) && !is_wp_error($terms) ):
                                     ?>
