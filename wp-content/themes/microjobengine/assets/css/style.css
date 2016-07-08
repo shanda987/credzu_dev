@@ -9605,6 +9605,7 @@ body.archive .block-title {
 }
 .block-items-detail .block-detail-job {
   margin-top: 70px;
+  margin-bottom: 20px;
 }
 @media (max-width: 991px) {
   .block-items-detail .block-detail-job {
@@ -13058,26 +13059,26 @@ body.archive .block-title {
 .post-detail .blog-content .cmt {
   margin-top: 20px;
 }
-.post-detail .blog-content .cmt .text-comment {
+.post-detail .blog-content .cmt .text-comment, .single-mjob_post .cmt .text-comment {
   color: #aaafb2;
   text-transform: uppercase;
   font-family: 'Montserrat', sans-serif;
   margin-right: 5px;
 }
-.post-detail #comments {
+.post-detail #comments, .single-mjob_post #comments{
   margin: 0 -15px;
 }
-.post-detail #comments .comment-reply-title {
+.post-detail #comments .comment-reply-title, .single-mjob_post #comments .comment-reply-title {
   color: #aaafb2;
   text-transform: uppercase;
   font-family: 'Montserrat', sans-serif;
   margin-right: 5px;
   font-size: 14px;
 }
-.post-detail #comments .comment-notes {
+.post-detail #comments .comment-notes, .single-mjob_post #comments .comment-notes {
   margin-bottom: 20px;
 }
-.post-detail #comments label {
+.post-detail #comments label, .single-mjob_post #comments label {
   display: block;
   margin-bottom: 15px;
   font-weight: normal;
@@ -13086,21 +13087,21 @@ body.archive .block-title {
   color: #c1c2c7;
   font-size: 16px;
 }
-.post-detail #comments input[type="text"], .post-detail #comments textarea {
+.post-detail #comments input[type="text"], .single-mjob_post #comments textarea, .post-detail #comments input[type="text"], .post-detail #comments textarea {
   width: 80%;
   border: 1px solid rgba(137, 138, 144, 0.2);
   padding: 20px;
 }
-.post-detail #comments input[type="text"] {
+.post-detail #comments input[type="text"], .single-mjob_post #comments input[type="text"] {
   height: 40px;
 }
-.post-detail #comments .required {
+.post-detail #comments .required, .single-mjob_post #comments .required {
   color: #e52e5d;
 }
-.post-detail #comments .form-submit {
+.post-detail #comments .form-submit, .single-mjob_post #comments .form-submit {
   margin-top: 40px;
 }
-.post-detail #comments .form-submit .submit {
+.post-detail #comments .form-submit .submit, .single-mjob_post #comments .form-submit .submit {
   border-radius: 45px;
   padding: 13px 60px;
   border: none;
@@ -13110,68 +13111,68 @@ body.archive .block-title {
   font-family: 'Montserrat', sans-serif;
   text-transform: uppercase;
 }
-.post-detail #comments .form-submit .submit:hover {
+.post-detail #comments .form-submit .submit:hover, .single-mjob_post #comments .form-submit .submit:hover {
   color: #fff;
   text-decoration: none;
 }
-.post-detail #comments .logged-in-as a {
+.post-detail #comments .logged-in-as a, .single-mjob_post #comments .logged-in-as a {
   color: #10a2ef;
 }
-.post-detail #comments .comment-list {
+.post-detail #comments .comment-list, .single-mjob_post #comments .comment-list {
   padding-left: 0;
 }
-.post-detail #comments .comment-list li {
+.post-detail #comments .comment-list li, .single-mjob_post #comments .comment-list li {
   display: block;
   list-style: none;
   border-bottom: 1px solid #dfe0e5;
   padding: 20px 0;
 }
-.post-detail #comments .comment-list li img {
+.post-detail #comments .comment-list li img, .single-mjob_post #comments .comment-list li img {
   border-radius: 50%;
 }
-.post-detail #comments .comment-list li .says {
+.post-detail #comments .comment-list li .says, .single-mjob_post #comments .comment-list li .says {
   display: none;
 }
-.post-detail #comments .comment-list .pull-left {
+.post-detail #comments .comment-list .pull-left, .single-mjob_post #comments .comment-list .pull-left {
   width: 8%;
 }
-.post-detail #comments .comment-list .pull-right {
+.post-detail #comments .comment-list .pull-right, .single-mjob_post #comments .comment-list .pull-right {
   width: 89%;
 }
 @media (max-width: 480px) {
-  .post-detail #comments .comment-list .pull-right {
+  .post-detail #comments .comment-list .pull-right, .single-mjob_post #comments .comment-list .pull-right {
     width: 75%;
   }
 }
-.post-detail #comments .comment-list .avatar-comment img {
+.post-detail #comments .comment-list .avatar-comment img, .single-mjob_post #comments .comment-list .avatar-comment img {
   width: 70px;
   height: 70px;
 }
-.post-detail #comments .comment-list .media-heading {
+.post-detail #comments .comment-list .media-heading, .single-mjob_post #comments .comment-list .media-heading {
   font-family: 'Open Sans', sans-serif;
   font-weight: 700;
   color: #2a394e;
   font-size: 14px;
 }
-.post-detail #comments .comment-list .time-review {
+.post-detail #comments .comment-list .time-review, .single-mjob_post #comments .comment-list .time-review {
   color: #c1c2c7;
   font-size: 12px;
 }
-.post-detail #comments .comment-list .comment-text {
+.post-detail #comments .comment-list .comment-text, .single-mjob_post #comments .comment-list .comment-text {
   margin-top: 10px;
 }
-.post-detail #comments .comment-list .comment-reply-link {
+.post-detail #comments .comment-list .comment-reply-link, .single-mjob_post #comments .comment-list .comment-reply-link {
   color: #10a2ef;
   text-transform: uppercase;
   font-family: 'Montserrat', sans-serif;
 }
-.post-detail #comments .comment-list .comment-reply-link i {
+.post-detail #comments .comment-list .comment-reply-link i, .single-mjob_post #comments .comment-list .comment-reply-link i {
   display: none;
 }
-.post-detail #comments .comment-list .children {
+.post-detail #comments .comment-list .children, .single-mjob_post #comments .comment-list .children {
   margin-top: 20px;
 }
-.post-detail #comments .comment-list .children li {
+.post-detail #comments .comment-list .children li, .single-mjob_post #comments .comment-list .children li {
   border-bottom: 0;
   border-top: 1px solid #dfe0e5;
 }

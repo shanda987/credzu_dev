@@ -45,6 +45,7 @@ if($profile_id) {
     if($post && !is_wp_error($post)) {
         $profile = $profile_obj->convert($post);
     }
+    wp_reset_query();
     echo '<script type="text/json" id="mjob_profile_data" >'.json_encode($profile).'</script>';
 }
 ?>
@@ -191,46 +192,11 @@ if($profile_id) {
                                     <span class="title"><?php _e('DESCRIPTION', ET_DOMAIN) ;?></span>
                                     <div class="tabs-information" id="description"><?php echo $current->post_content; ?></div>
                                     <p><?php _e('If you have any questions about me, my company or this listing, feel free to ask below and I will answer at my ealiest convenience', ET_DOMAIN); ?></p>
-                                    <?php $terms = get_the_terms($current->ID, 'mjob_requirement');
-                                    if( !empty($terms) && !is_wp_error($terms) ):
-                                    ?>
-                                    <span class="title"><?php _e('REQUIREMENTS', ET_DOMAIN) ;?></span>
-                                    <ul>
-                                        <?php foreach( $terms as $term): ?>
-                                            <li><?php echo $term->name ?></li>
-                                        <?php endforeach; ?>
-                                    </ul>
-                                    <?php endif; ?>
-                                    <?php if( !empty($current->agreement_terms) ): ?>
-<!--                                    <span class="title">--><?php //_e('AGREEMENT TERMS', ET_DOMAIN) ;?><!--</span>-->
-<!--                                    <div class="tabs-information" id="agreement_term">-->
-<!--                                        --><?php //echo $current->agreement_terms; ?>
-<!--                                    </div>-->
-<!--                                    <div class="form-group post_listing_agreement_term_content">-->
-<!--                                        --><?php //echo $current->agreement_terms; ?>
-<!--                                    </div>-->
-                                    <div class="tags">
-                                        <?php list_tax_of_mjob($current->ID, 'skill', 'skill') ?>
-                                    </div>
-                                    <?php endif; ?>
-                                </div>
-                                <div class="outer-function-group">
                                     <?php
-                                    $is_invidual = mJobUserAction()->is_individual($user_ID);
-                                    if( $user_ID != $current->post_author  && ($is_invidual || is_super_admin()) ): ?>
-                                        <?php if( $current->post_status == 'publish' || $current->post_status == 'unpause'): ?>
-                                            <?php
-                                            $mj_ac = mJobOrderAction()->user_can_create_order($current->ID, $user_ID);
-                                            if( $mj_ac['success'] ): ?>
-                                                <button class="btn-submit btn-order waves-effect waves-light <?php echo $disableClass; ?>" ><?php echo sprintf(__('ORDER (<span class="mjob-price">%s</span>)', ET_DOMAIN), $current->et_budget_text) ; ?></button>
-                                                <?php else: ?>
-                                                    <button onclick="window.location.href='<?php echo $mj_ac['data']->permalink; ?>'" class="btn-submit btn-orders  waves-effect waves-light " ><?php echo sprintf(__('ORDER (<span class="mjob-price">%s</span>)', ET_DOMAIN), $current->et_budget_text) ; ?></button>
-                                                <?php endif; ?>
-                                            <?php else: ?>
-                                               <span class="status-noti"><?php //_e('Currently not accepting new clients.', ET_DOMAIN); ?></span>
-                                             <?php endif; ?>
-                                    <?php endif; ?>
-                                    <button class="btn-bookmark"><i class="fa fa-heart"></i></button>
+                                    if( $user_ID ) {
+                                        comments_template('', true);
+                                    }
+                                        ?>
                                 </div>
                             </div>
                         </div>
