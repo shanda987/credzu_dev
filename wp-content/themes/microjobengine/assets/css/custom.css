@@ -899,8 +899,18 @@
 @media (max-width: 767px) {
     .order-fixed-scroll{
         width: 25% !important;
+        padding: 13px 31px!important;
     }
     .title-fixed-scroll{
         font-size: 14px!important;
     }
+    .mobile-btn{
+        display: block!important;
+    }
+    .desktop-btn{
+        display: none;
+    }
+}
+.mobile-btn{
+    display: none;
 }
