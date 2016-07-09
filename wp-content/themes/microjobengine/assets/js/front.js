@@ -1145,7 +1145,7 @@
                         if (view.signaturePad.isEmpty()) {
                             alert("Please provide signature first.");
                         } else {
-                            view.reMoveBlank(view.canvas );
+                            //view.reMoveBlank(view.canvas );
                             view.profilemodel.set('signature', view.signaturePad.toDataURL());
                             view.mjob_id = '';
                             if( view.$el.find('#mjob_id').length > 0){
@@ -1409,7 +1409,7 @@
                             notice_type: 'error'
                         });
                     } else {
-                        view.reMoveBlank(view.canvas );
+                        //view.reMoveBlank(view.canvas );
                         view.model.set(view.options.key, view.signaturePad.toDataURL());
                         var rules = Array(
                             'first_name',
