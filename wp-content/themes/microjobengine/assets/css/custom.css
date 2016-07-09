@@ -950,5 +950,10 @@
     }
     #incomingPaymentsForm{
         display: inline-block;
+        width: 100%;
     }
+    #incomingPaymentsForm .item-requirement{
+        width: 50%;
+    }
+
 }
