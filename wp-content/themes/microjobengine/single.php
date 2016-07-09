@@ -17,6 +17,7 @@ global $post;
 get_header();
 the_post();
 $cats = get_the_category($post->ID);
+$term_link = get_term_link($cats['0']->term_id);
 $parent = $cats['0']->parent;
 $breadcrum = '<h2><span>'.$cats["0"]->name.'</span></h2>';
 if( $parent != 0 ){
@@ -27,18 +28,25 @@ if( $parent != 0 ){
 <div class="container dashboard withdraw">
 	<!-- block control  -->
 	<div class="row block-posts post-detail" id="post-control">
-		<div class="row title-top-pages">
-			<p class="block-title"><a href="<?php the_permalink(); ?>"><?php the_title() ?></a></p>
-			<div class="breadscrums">
-				<?php echo $breadcrum; ?>
+		<div class="col-md-9 cl-xs-12 title-top-pages">
+			<h1 class="block-title"><a href="<?php the_permalink(); ?>"><?php the_title() ?></a></h1>
+			<div class="breadcum">
+				<?php echo sprintf(__('Category:<a href="%s"> %s</a>', ET_DOMAIN),$term_link, $cats["0"]->name); ?>
+			</div>
+			<div class="breadcum">
+				Written by  <?php the_author();?>
+			</div>
+			<div class="breadcum">
+				<?php _e('Published: ', ET_DOMAIN); ?><?php the_time('M j');  ?> <sup><?php the_time('S');?></sup>, <?php the_time('Y');?>
 			</div>
 		</div>
 		<div class="col-lg-9 col-md-9 col-sm-12 col-xs-12 posts-container">
 			<div class="blog-wrapper">
+				<div class="row post-thumbnail">
+					<?php the_post_thumbnail(); ?>
+				</div>
 	            <div class="row">
 					<div class="blog-content">
-						<p class="author-post">Written by <?php the_author();?></p>
-						<p class="date-post"><?php the_time('M j');  ?> <sup><?php the_time('S');?></sup>, <?php the_time('Y');?></p>
 						<div class="post-content">
 							<?php
 							the_content();

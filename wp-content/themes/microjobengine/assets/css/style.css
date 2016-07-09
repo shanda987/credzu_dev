@@ -11819,7 +11819,7 @@ body.archive .block-title {
   color: #10a2ef;
 }
 .dashboard .block-title {
-  border-bottom: 1px solid #dfe0e5;
+  /*border-bottom: 1px solid #dfe0e5;*/
   padding-bottom: 20px;
   margin-bottom: 65px;
 }
