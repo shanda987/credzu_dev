@@ -93,11 +93,16 @@ function blog_comment_callback( $comment, $args, $depth ){
 				<?php comment_text(); ?>
 			</div>
 			<?php
+			global $user_ID;
+			$mjob_author = get_post_field('post_author', $comment->comment_post_ID);
+			?>
+			<?php if( $user_ID == $mjob_author):
 			comment_reply_link(array_merge($args, array(
 				'reply_text' => __( 'Reply ', ET_DOMAIN ).'<i class="fa fa-edit"></i>',
 				'depth'      => $depth,
 				'max_depth'  => $args['max_depth']
 			)));
+			endif;
 			?>
 		</div>
 	</div>
