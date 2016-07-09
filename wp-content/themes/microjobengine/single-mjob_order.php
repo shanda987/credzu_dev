@@ -390,7 +390,7 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                             <ul class="requirement-list document-list mobile-list">
                                                 <?php if( isset($current->agreement_files) && !empty($current->agreement_files)):
                                                     foreach($current->agreement_files as $item): ?>
-                                                        <li class="col-lg-6 col-md-6 col-xs-12 item-requirement">
+                                                        <li class="col-lg-6 col-md-6 col-xs-6 item-requirement">
                                                             <a  href="<?php echo et_get_page_link('simple-download').'?cid='.$current->ID.'&n='.$item['name'] ?>" data-name="<?php echo $item['name'].' : '.date('d/m/Y', strtotime($current->post_date))?>" class="show-requirement-docs">
                                                                 <div class="doc-icon"> <i class="fa fa-file-pdf-o" aria-hidden="true"></i></div>
                                                                 <div class="doc-name"><?php echo $item['name'] ?></div>
@@ -605,7 +605,7 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                                                             $tx = '_'.$i;
                                                                         endif;
                                                                         ?>
-                                                                        <li class="col-lg-6 col-md-6 col-xs-12 item-requirement">
+                                                                        <li class="col-lg-6 col-md-6 col-xs-6 item-requirement">
                                                                             <a  href="#" data-type="<?php echo $term->click_type; ?>" data-slug="<?php echo $term->slug; ?>"  data-id="<?php echo $f->ID; ?>"  data-name="<?php echo $term->name; ?>" class="show-requirement-doc">
                                                                                 <div class="doc-icon"> <i class="fa fa-file-pdf-o" aria-hidden="true"></i></div>
                                                                                 <div class="doc-name"><?php echo $term->requirement_short_name.$tx?></div>
