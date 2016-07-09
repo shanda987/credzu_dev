@@ -28,7 +28,7 @@ if( $parent != 0 ){
 	<!-- block control  -->
 	<div class="row block-posts post-detail" id="post-control">
 		<div class="row title-top-pages">
-			<p class="block-title"><?php _e('BLOGS', ET_DOMAIN); ?></p>
+			<p class="block-title"><a href="<?php the_permalink(); ?>"><?php the_title() ?></a></p>
 			<div class="breadscrums">
 				<?php echo $breadcrum; ?>
 			</div>
@@ -40,9 +40,9 @@ if( $parent != 0 ){
 						<p class="author-post">Written by <?php the_author();?></p>
 						<p class="date-post"><?php the_time('M j');  ?> <sup><?php the_time('S');?></sup>, <?php the_time('Y');?></p>
 
-						<h2 class="title-blog">
-							<a href="<?php the_permalink(); ?>"><?php the_title() ?></a>
-						</h2><!-- end title -->
+<!--						<h2 class="title-blog">-->
+<!--							<a href="--><?php //the_permalink(); ?><!--">--><?php //the_title() ?><!--</a>-->
+<!--						</h2><!-- end title -->-->
 						<div class="post-content">
 							<?php
 							the_content();
