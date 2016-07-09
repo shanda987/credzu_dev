@@ -974,6 +974,7 @@
 }
 .single-post aside ul{
     list-style: none;
+    padding-left: 0;
 }
 .single-post aside ul li{
     margin-bottom: 20px;
