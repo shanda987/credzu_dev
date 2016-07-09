@@ -43,7 +43,9 @@ if( $parent != 0 ){
 		<div class="col-lg-9 col-md-9 col-sm-12 col-xs-12 posts-container">
 			<div class="blog-wrapper">
 				<div class="row post-thumbnail">
-					<?php the_post_thumbnail(); ?>
+					<?php
+					the_post_thumbnail();
+					?>
 				</div>
 	            <div class="row">
 					<div class="blog-content">

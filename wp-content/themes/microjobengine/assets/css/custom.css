@@ -987,6 +987,7 @@
 .single-post .title-top-pages{
     border-bottom: 1px solid #dfe0e5;
     padding-bottom: 10px;
+    display: inline-block;
 }
 .post-thumbnail{
     margin-top: 20px;
