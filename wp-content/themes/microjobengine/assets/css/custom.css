@@ -885,3 +885,19 @@
 .single-mjob_post .comment-form-comment  label{
     display: none!important;
 }
+.order-fixed-scroll {
+    position: fixed!important;
+    top: 19px!important;
+    z-index: 999;
+    border: none;
+    width: 16%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: block;
+    white-space: nowrap;
+}
+@media (max-width: 767px) {
+    .order-fixed-scroll{
+        width: 25% !important;
+    }
+}

@@ -85,12 +85,15 @@
                 if($(window).scrollTop() > title_detail_job_top){
                     $('#logo-site, .search-bar, #myAccount, .navbar-default').css("display", "none");
                     $('.mjob-title').addClass('title-fixed-scroll');
+                    $('.mjob-order-action').addClass('order-fixed-scroll');
                     if(wpadminbar.length > 0){
                         $('.title-fixed-scroll').css("margin-top", "30px");
+                        $('.order-fixed-scroll').addClass('order-fixed-scroll');
                     }
                 }else{
                     $('#logo-site, .search-bar, #myAccount, .navbar-default').css("display", "inline-block");
                     $('.mjob-title').removeClass('title-fixed-scroll');
+                    $('.mjob-order-action').removeClass('order-fixed-scroll');
                 }
             }
             if(btn_order_aside_bar.length){
