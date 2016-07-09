@@ -967,3 +967,14 @@
 .blog-sidebar{
     padding-left: 20px;
 }
+.single-post h2{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    text-transform: uppercase;
+}
+.single-post aside ul{
+    list-style: none;
+}
+.single-post aside ul li{
+    margin-bottom: 20px;
+}
