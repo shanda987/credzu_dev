@@ -899,6 +899,9 @@
 .mobile-btn{
     display: none;
 }
+.mobile-list{
+    display: none;
+}
 @media (max-width: 767px) {
     .order-fixed-scroll{
         width: 25% !important;
