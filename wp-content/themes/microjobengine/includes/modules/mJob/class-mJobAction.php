@@ -40,6 +40,7 @@ class mJobAction extends mJobPostAction{
         $this->add_filter('ae_convert_user', 'mjob_convert_user');
         $this->add_ajax('check-mjob-category', 'checkMjobCat');
         $this->add_action('transition_comment_status', 'mjob_approve_comment_callback', 10, 3);
+        $this->add_action('wp_insert_comment', 'change_comment_status_to_unapproved', 10, 2);
     }
     /**
      * sync Post function
@@ -1147,5 +1148,18 @@ class mJobAction extends mJobPostAction{
                 }
             }
         }
+        /**
+          * change status status
+          *
+          * @param void
+          * @return void
+          * @since 1.4
+          * @package MicrojobEngine
+          * @category CREDZU
+          * @author JACK BUI
+          */
+          public function change_comment_status_to_unapproved($id, $comment){
+            wp_set_comment_status($comment->comment_ID, 'hold');
+          }
 }
 new mJobAction();

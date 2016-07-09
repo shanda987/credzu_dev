@@ -2533,6 +2533,46 @@ class ET_Admin extends AE_Base
                 ),
                 array(
                     'args' => array(
+                        'title' => __('Email subject of comment approved  (send to client)', ET_DOMAIN),
+                        'id' => 'comment-approved-client-subject-template',
+                        'class' => 'payment-gateway',
+                        'name' => '',
+                        'desc' => __("Send to a Client when Credzu approved company's reply.", ET_DOMAIN),
+                        'toggle' => true
+                    ),
+                    'fields' => array(
+                        array(
+                            'id' => 'client_comment_approved_email_subject',
+                            'type' => 'text',
+                            'title' => __("Company's reply is approved by admin here", ET_DOMAIN) ,
+                            'class' => '',
+                            'name' => 'client_comment_approved_email_subject',
+                            'reset' => 1
+                        )
+                    )
+                ),
+                array(
+                    'args' => array(
+                        'title' => __("Company's reply is approved email  (send to Client)", ET_DOMAIN),
+                        'id' => 'client-comment-approved-mail-template',
+                        'class' => 'payment-gateway',
+                        'name' => '',
+                        'desc' => __("Send to a Client when Credzu approved a Company's reply", ET_DOMAIN),
+                        'toggle' => true
+                    ),
+                    'fields' => array(
+                        array(
+                            'id' => 'client_comment_approved_email',
+                            'type' => 'editor',
+                            'title' => __("Company's reply is approved mail here", ET_DOMAIN) ,
+                            'class' => '',
+                            'name' => 'client_comment_approved_email',
+                            'reset' => 1
+                        )
+                    )
+                ),
+                array(
+                    'args' => array(
                         'title' => __("Pay Package Related Mail Template", ET_DOMAIN) ,
                         'id' => 'mail-description-group',
                         'class' => '',

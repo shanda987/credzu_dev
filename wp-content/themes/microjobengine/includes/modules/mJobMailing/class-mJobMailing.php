@@ -655,9 +655,23 @@ class mJobMailing extends AE_Mailing
       */
     public function email_comment_approved_by_admin($comment){
         $post_author = get_post_field( 'post_author', $comment->comment_post_ID );
-        $profile = mJobProfileAction()->getProfile($post_author);
-        $subject = ae_get_option('comment_approved_email_subject', __('Credzu approved your interview ', ET_DOMAIN));
-        $msg = ae_get_option('comment_approved_email', sprintf(__('Credzu approved your interview', ET_DOMAIN )));
-        $this->wp_mail($profile->business_email, $subject, $msg, array('user_id' => $post_author));
+        if( $post_author != $comment->user_id ) {
+            $profile = mJobProfileAction()->getProfile($post_author);
+            $subject = ae_get_option('comment_approved_email_subject', __('You have a new question on Credzu ', ET_DOMAIN));
+            $msg = ae_get_option('comment_approved_email', sprintf(__('You have a new question on Credzu', ET_DOMAIN)));
+            $this->wp_mail($profile->business_email, $subject, $msg, array('user_id' => $post_author));
+        }
+        else{
+            if( !empty($comment->comment_parent) ){
+                $c = get_comment($comment->comment_parent);
+                $profile = mJobProfileAction()->getProfile($c->user_id);
+            }
+            else{
+                $profile = mJobProfileAction()->getProfile($comment->user_id);
+            }
+            $subject = ae_get_option('client_comment_approved_email_subject', __('You have a new answer on Credzu', ET_DOMAIN));
+            $msg = ae_get_option('client_comment_approved_email', sprintf(__('You have a new answer on Credzu', ET_DOMAIN)));
+            $this->wp_mail($profile->business_email, $subject, $msg, array('user_id' => $post_author));
+        }
     }
 }

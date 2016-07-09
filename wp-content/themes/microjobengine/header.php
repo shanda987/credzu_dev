@@ -59,7 +59,7 @@ global $current_user;
 				</div>
 			</div>
 		</div>
-		<?php if( !is_page_template('page-user-authentication.php')): ?>
+		<?php if( !is_page_template('page-user-authentication.php') && !is_singular('mjob_post')): ?>
 		<div class="et-pull-bottom" id="et-nav">
 			<div class="navbar navbar-default megamenu">
 				<div class="navbar-header">
