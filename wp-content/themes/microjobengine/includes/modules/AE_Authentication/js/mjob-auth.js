@@ -179,6 +179,7 @@
             events:{
                 'keyup .check-user-email': 'checkEmail',
                 'keypress .check-user-email': 'checkEenter',
+                'change .check-user-email': 'checkEmail',
                 'keyup #user_email': 'checkEmailValid',
                 'keyup #user_login': 'checkEmailValidLogin'
             },
