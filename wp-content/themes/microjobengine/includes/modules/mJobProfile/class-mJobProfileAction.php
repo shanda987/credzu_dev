@@ -403,6 +403,10 @@ class mJobProfileAction extends mJobPostAction
             update_post_meta($result->ID, 'company_email', $result->business_email);
         }
         $result->initial_display_name  = $result->first_name .' '. $result->last_name_initial;
+        if( $user_role == COMPANY && empty($result->company_state) ){
+            update_post_meta($result->ID, 'company_email', $result->state);
+            $result->company_state = $result->state;
+        }
         return $result;
     }
     public function mJobAddProfileModal() {
