@@ -939,4 +939,10 @@
     .desktop-btn{
         display: none;
     }
+    .mobile-list{
+        display: block;
+    }
+    .desktop-list{
+        display: none;
+    }
 }
