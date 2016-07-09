@@ -9821,7 +9821,7 @@ body.archive .block-title {
     right: 7%;
   }
   .title-fixed-scroll{
-    font-size: 16px!important;
+    font-size: 14px!important;
   }
 }
 @media (max-width: 767px) {
@@ -10544,7 +10544,7 @@ body.archive .block-title {
 @media (max-width: 991px) {
   .single-mjob_post .title-fixed-scroll {
     width: 60%;
-    font-size: 18px!important;
+    font-size: 18px;
   }
   .order-fixed-scroll{
     width: 40%;

@@ -900,4 +900,7 @@
     .order-fixed-scroll{
         width: 25% !important;
     }
+    .title-fixed-scroll{
+        font-size: 14px!important;
+    }
 }
