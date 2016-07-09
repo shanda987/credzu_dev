@@ -948,4 +948,7 @@
     .desktop-list{
         display: none;
     }
+    #incomingPaymentsForm{
+        display: inline-block;
+    }
 }
