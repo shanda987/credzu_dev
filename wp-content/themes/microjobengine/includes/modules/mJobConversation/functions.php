@@ -341,10 +341,6 @@ if(!function_exists('mJobGetUnreadConversation')) {
                 array(
                     'key' => $user_ID . '_conversation_status',
                     'value' => 'unread',
-                ),
-                array(
-                    'key' => 'is_conversation',
-                    'value' => '1'
                 )
             )
         ), $default);

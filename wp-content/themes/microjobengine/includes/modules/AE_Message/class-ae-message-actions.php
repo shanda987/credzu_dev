@@ -117,6 +117,11 @@ class AE_Private_Message_Actions extends mJobPostAction
 
         $request['from_user'] = $user_ID;
         $response = $this->sync_post($request);
+        if( $response && !is_wp_error($response) ){
+            if( $request['method'] == 'create'){
+                update_post_meta($response['data']->ID, $request['to_user'].'_conversation_status', 'unread' );
+            }
+        }
         do_action('ae_after_message', $response, $request);
         $response = apply_filters('ae_message_response', $response, $request);
         wp_send_json($response);

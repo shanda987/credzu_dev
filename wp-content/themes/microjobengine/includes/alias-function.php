@@ -98,17 +98,21 @@ if(!function_exists('mJobShowUserHeader')) {
                     <ul class="list-message-box-body">
                         <?php
                         $default = mJobQueryConversationDefaultArgs();
-
                         $args = wp_parse_args(array(
-                            'posts_per_page' => 5,
-                            'orderby' => 'meta_value',
-                            'meta_key' => 'latest_reply_timestamp',
+                            'posts_per_page' => -1,
+                            'meta_query' => array(
+                                'relation' => 'AND',
+                                array(
+                                    'key' => $user_ID . '_conversation_status',
+                                    'value' => 'unread',
+                                )
+                            )
                         ), $default);
 
                         $conversations_query = new WP_Query($args);
                         while($conversations_query->have_posts()) :
                             $conversations_query->the_post();
-                            get_template_part('template/conversation-dropdown', 'item');
+                            //  get_template_part('template/conversation-dropdown', 'item');
 
                         endwhile;
                         wp_reset_postdata();
