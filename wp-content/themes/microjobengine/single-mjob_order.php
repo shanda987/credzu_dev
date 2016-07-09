@@ -347,7 +347,7 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                             <ul class="requirement-list document-list desktop-list">
                                                 <?php if( isset($current->agreement_files) && !empty($current->agreement_files)):
                                                     foreach($current->agreement_files as $item): ?>
-                                                        <li class="col-lg-6 col-md-6 col-xs-12 item-requirement">
+                                                        <li class="col-lg-6 col-md-6 col-xs-6 item-requirement">
                                                             <a  data-agreement="1" data-id="<?php echo $current->ID; ?>" href="#" data-name="<?php echo $item['name']?>"  class="show-requirement-doc">
                                                                 <div class="doc-icon"> <i class="fa fa-file-pdf-o" aria-hidden="true"></i></div>
                                                                 <div class="doc-name"><?php echo $item['name'] ?></div>
@@ -373,7 +373,7 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                                                     $tx = '_'.$i;
                                                                 endif;
                                                                 ?>
-                                                                <li class="col-lg-6 col-md-6 col-xs-12 item-requirement">
+                                                                <li class="col-lg-6 col-md-6 col-xs-6 item-requirement">
                                                                     <a  href="#" data-name="<?php echo $term->name; ?>" data-id="<?php echo $f->ID; ?>" class="show-requirement-doc">
                                                                         <div class="doc-icon"> <i class="fa fa-file-pdf-o" aria-hidden="true"></i></div>
                                                                         <div class="doc-name"><?php echo $term->requirement_short_name.$tx?></div>
@@ -416,7 +416,7 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                                                     $tx = '_'.$i;
                                                                 endif;
                                                                 ?>
-                                                                <li class="col-lg-6 col-md-6 col-xs-12 item-requirement">
+                                                                <li class="col-lg-6 col-md-6 col-xs-6 item-requirement">
                                                                     <a  href="<?php echo et_get_page_link('simple-download').'?id='.$f->ID ?>" data-name="<?php echo $term->name.$tx.' : '.date('d/m/Y', strtotime($f->post_date))?>" class="show-requirement-docs">
                                                                         <div class="doc-icon"> <i class="fa fa-file-pdf-o" aria-hidden="true"></i></div>
                                                                         <div class="doc-name"><?php echo $term->requirement_short_name.$tx?></div>
@@ -580,7 +580,7 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                                     <ul class="requirement-list document-list desktop-list">
                                                         <?php if( isset($current->agreement_files) && !empty($current->agreement_files)):
                                                             foreach($current->agreement_files as $item): ?>
-                                                                <li class="col-lg-6 col-md-6 col-xs-12 item-requirement">
+                                                                <li class="col-lg-6 col-md-6 col-xs-6 item-requirement">
                                                                     <a data-agreement="1" data-id="<?php echo $current->ID; ?>" href="#" data-name="<?php echo $item['name']?>" class="show-requirement-doc">
                                                                         <div class="doc-icon"> <i class="fa fa-file-pdf-o" aria-hidden="true"></i></div>
                                                                         <div class="doc-name"><?php echo $item['name'] ?></div>
@@ -626,7 +626,7 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                                     <ul class="requirement-list document-list mobile-list">
                                                         <?php if( isset($current->agreement_files) && !empty($current->agreement_files)):
                                                             foreach($current->agreement_files as $item): ?>
-                                                                <li class="col-lg-6 col-md-6 col-xs-12 item-requirement">
+                                                                <li class="col-lg-6 col-md-6 col-xs-6 item-requirement">
                                                                     <a  href="<?php echo et_get_page_link('simple-download').'?cid='.$current->ID.'&n='.$item['name'] ?>" data-name="<?php echo $item['name'].' : '.date('d/m/Y', strtotime($current->post_date))?>" class="show-requirement-docs">
                                                                         <div class="doc-icon"> <i class="fa fa-file-pdf-o" aria-hidden="true"></i></div>
                                                                         <div class="doc-name"><?php echo $item['name'] ?></div>
@@ -652,7 +652,7 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                                                             $tx = '_'.$i;
                                                                         endif;
                                                                         ?>
-                                                                        <li class="col-lg-6 col-md-6 col-xs-12 item-requirement">
+                                                                        <li class="col-lg-6 col-md-6 col-xs-6 item-requirement">
                                                                             <a  href="<?php echo et_get_page_link('simple-download').'?id='.$f->ID ?>" data-name="<?php echo $term->name.$tx.' : '.date('d/m/Y', strtotime($f->post_date))?>" class="show-requirement-docs">
                                                                                 <div class="doc-icon"> <i class="fa fa-file-pdf-o" aria-hidden="true"></i></div>
                                                                                 <div class="doc-name"><?php echo $term->requirement_short_name.$tx?></div>
@@ -688,7 +688,7 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                                 <ul class="requirement-list document-list">
                                                     <?php if( !empty($posts)): ?>
                                                     <?php foreach($posts as $p ): ?>
-                                                        <li class="col-lg-6 col-md-6 col-xs-12 item-requirement">
+                                                        <li class="col-lg-6 col-md-6 col-xs-6 item-requirement">
                                                             <a data-payment="1"  href="#" data-name="<?php echo $p->post_title; ?>" data-id="<?php echo $p->ID; ?>" class="show-requirement-doc">
                                                                 <div class="doc-icon"> <i class="fa fa-file-pdf-o" aria-hidden="true"></i></div>
                                                                 <div class="doc-name"><?php echo $p->post_title; ?></div>
