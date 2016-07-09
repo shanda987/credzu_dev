@@ -685,7 +685,7 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                                     );
                                                     $posts = get_posts($args);
                                                 ?>
-                                                <ul class="requirement-list document-list">
+                                                <ul class="requirement-list document-list desktop-list">
                                                     <?php if( !empty($posts)): ?>
                                                     <?php foreach($posts as $p ): ?>
                                                         <li class="col-lg-6 col-md-6 col-xs-6 item-requirement">
@@ -696,6 +696,21 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
 
                                                             </a></li>
                                                     <?php endforeach; ?>
+                                                    <?php else:
+                                                        _e('<p class="padding-left-20">No payment has been generated. Once you complete the work and a payment is generated, it will appear here</p>', ET_DOMAIN);
+                                                    endif; ?>
+                                                </ul>
+                                                <ul class="requirement-list document-list mobile-list">
+                                                    <?php if( !empty($posts)): ?>
+                                                        <?php foreach($posts as $p ): ?>
+                                                            <li class="col-lg-6 col-md-6 col-xs-6 item-requirement">
+                                                                <a data-payment="1"  href="<?php echo et_get_page_link('simple-download').'?pid='.$p->ID;?>" data-name="<?php echo $p->post_title; ?>" data-id="<?php echo $p->ID; ?>" class="show-requirement-docs">
+                                                                    <div class="doc-icon"> <i class="fa fa-file-pdf-o" aria-hidden="true"></i></div>
+                                                                    <div class="doc-name"><?php echo $p->post_title; ?></div>
+                                                                    <div class="doc-time"><?php echo date('d/m/Y', strtotime($current->post_date))?></div>
+
+                                                                </a></li>
+                                                        <?php endforeach; ?>
                                                     <?php else:
                                                         _e('<p class="padding-left-20">No payment has been generated. Once you complete the work and a payment is generated, it will appear here</p>', ET_DOMAIN);
                                                     endif; ?>
