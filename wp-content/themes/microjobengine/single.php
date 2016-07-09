@@ -29,7 +29,7 @@ if( $parent != 0 ){
 	<!-- block control  -->
 	<div class="row block-posts post-detail" id="post-control">
 		<div class="col-md-9 cl-xs-12 title-top-pages">
-			<h1 class="block-title"><a href="<?php the_permalink(); ?>"><?php the_title() ?></a></h1>
+			<h1 class="block-title"><?php the_title() ?></h1>
 			<div class="breadcum">
 				<?php echo sprintf(__('Category:<a href="%s"> %s</a>', ET_DOMAIN),$term_link, $cats["0"]->name); ?>
 			</div>
