@@ -86,14 +86,19 @@
                     $('#logo-site, .search-bar, #myAccount, .navbar-default').css("display", "none");
                     $('.mjob-title').addClass('title-fixed-scroll');
                     $('.mjob-order-action').addClass('order-fixed-scroll');
+                    if( window.screen.width <= 1024 ) {
+                        $('.mjob-price').hide();
+                    }
                     if(wpadminbar.length > 0){
                         $('.title-fixed-scroll').css("margin-top", "30px");
                         $('.order-fixed-scroll').addClass('order-fixed-scroll');
+                        $('.mjob-price').css('display', 'none!important');
                     }
                 }else{
                     $('#logo-site, .search-bar, #myAccount, .navbar-default').css("display", "inline-block");
                     $('.mjob-title').removeClass('title-fixed-scroll');
                     $('.mjob-order-action').removeClass('order-fixed-scroll');
+                    $('.mjob-price').show();
                 }
             }
             if(btn_order_aside_bar.length){

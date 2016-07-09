@@ -220,8 +220,7 @@ if($profile_id) {
                                     <?php if( $current->post_status == 'publish' || $current->post_status == 'unpause'):?>
                                         <?php $mj_ac = mJobOrderAction()->user_can_create_order($current->ID, $user_ID);
                                         if( $mj_ac['success'] ): ?>
-                                            <button class="btn-submit btn-order  btn-custom-order btn-order-aside-bar waves-effect waves-light desktop-btn <?php echo $disableClass; ?>" ><?php echo sprintf(__('ORDER NOW (<span class="mjob-price">%s</span>)', ET_DOMAIN), $current->et_budget_text) ; ?></button>
-                                            <button class="btn-submit btn-order  btn-custom-order btn-order-aside-bar waves-effect waves-light mobile-btn <?php echo $disableClass; ?>" ><?php echo sprintf(__('HIRE', ET_DOMAIN), $current->et_budget_text) ; ?></button>
+                                            <button class="btn-submit btn-order  btn-custom-order btn-order-aside-bar waves-effect waves-light  <?php echo $disableClass; ?>" ><?php echo sprintf(__('<span class="mobile-btn">HIRE</span> <span class="tablet-btn"> ORDER</span> <span class="desktop-btn">NOW</span> <span class="mjob-price">( %s )</span>', ET_DOMAIN), $current->et_budget_text) ; ?></button>
                                         <?php else: ?>
                                                 <button onclick="window.location.href='<?php echo $mj_ac['data']->permalink; ?>'" class="btn-submit btn-orders  waves-effect waves-light " ><?php echo sprintf(__('ORDER (<span class="mjob-price">%s</span>)', ET_DOMAIN), $current->et_budget_text) ; ?></button>
                                         <?php endif; ?>
@@ -229,8 +228,7 @@ if($profile_id) {
                                         <span class="status-noti"><?php _e('Currently not accepting new clients.', ET_DOMAIN); ?></span>
                                     <?php endif; ?>
                                 <?php elseif( !$user_ID): ?>
-                                    <button class="btn-submit btn-order  btn-custom-order btn-order-aside-bar waves-effect waves-light hireSignup desktop-btn" ><?php echo sprintf(__('ORDER NOW (<span class="mjob-price">%s</span>)', ET_DOMAIN), $current->et_budget_text) ; ?></button>
-                                    <button class="btn-submit btn-order  btn-custom-order btn-order-aside-bar waves-effect waves-light hireSignup mobile-btn" ><?php echo sprintf(__('ORDER NOW (<span class="mjob-price">%s</span>)', ET_DOMAIN), $current->et_budget_text) ; ?></button>
+                                    <button class="btn-submit btn-order  btn-custom-order btn-order-aside-bar waves-effect waves-light hireSignup " ><?php echo sprintf(__('<span class="mobile-btn">HIRE</span> <span class="tablet-btn"> ORDER</span> <span class="desktop-btn">NOW</span> (<span class="mjob-price">%s</span>)', ET_DOMAIN), $current->et_budget_text) ; ?></button>
                                 <?php else:  ?>
                                     <span class="price"><?php echo mJobPriceFormat($current->et_budget) ?></span>
                                 <?php endif; ?>

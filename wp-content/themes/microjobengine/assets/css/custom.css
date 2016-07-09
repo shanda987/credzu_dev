@@ -896,10 +896,13 @@
     display: block;
     white-space: nowrap;
 }
+.mobile-btn{
+    display: none;
+}
 @media (max-width: 767px) {
     .order-fixed-scroll{
         width: 25% !important;
-        padding: 13px 31px!important;
+        padding: 10px 31px!important;
     }
     .title-fixed-scroll{
         font-size: 14px!important;
@@ -910,7 +913,21 @@
     .desktop-btn{
         display: none;
     }
+    .tablet-btn{
+        display: none!important;
+    }
 }
-.mobile-btn{
-    display: none;
+@media (max-width: 1024px) {
+    .order-fixed-scroll{
+        width: 21% !important;
+    }
+    .tablet-btn{
+        display: block;
+    }
+    .mobile-btn{
+        display: none;
+    }
+    .desktop-btn{
+        display: none;
+    }
 }
