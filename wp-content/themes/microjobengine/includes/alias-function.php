@@ -772,20 +772,42 @@ if(!function_exists('mJobGetTotalReview')) {
         $count = 0;
         $args = array(
             'status' => 'approve',
-            'comment_type' => 'mjob_review'
+            'type' => 'mjob_review',
+            'count'=> true
         );
 
         if(!empty($mjob_post_id)) {
             $args = wp_parse_args(array('post_id' => $mjob_post_id), $args);
         }
-
-        $comments = get_comments($args);
-
-        $count = count($comments);
+        $count = get_comments($args);
         return $count;
     }
 }
+if(!function_exists('mJobGetTotalInterview')) {
+    /**
+     * Get review count
+     * @param int $mjob_post_id
+     * @return int $count
+     * @since 1.0
+     * @package MicrojobEngine
+     * @category File Functions
+     * @author Tat Thien
+     */
+    function mJobGetTotalInterview($mjob_post_id = '') {
+        $count = 0;
+        $args = array(
+            'status' => 'approve',
+            'type__not_in' => 'mjob_review',
+            'count'=> true
+        );
 
+        if(!empty($mjob_post_id)) {
+            $args = wp_parse_args(array('post_id' => $mjob_post_id), $args);
+        }
+        $count = get_comments($args);
+        return $count;
+    }
+}
 if(!function_exists('mJobUserCountReview')) {
     function mJobUserCountReview($user_id) {
         $posts = get_posts(array(

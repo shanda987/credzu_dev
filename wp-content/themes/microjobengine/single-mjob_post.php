@@ -199,7 +199,8 @@ if($profile_id) {
                             if( $user_ID ) { ?>
                                 <div class="review-job">
                                 <p class="title">
-                                    <?php printf(__('INTERVIEW(s) <span class="total-review">(%s total)</span>', ET_DOMAIN), $count_review); ?>
+                                    <?php $cm_tt = mJobGetTotalInterview($current->ID); ?>
+                                    <?php printf(__('INTERVIEW(s) <span class="total-review">(%s total)</span>', ET_DOMAIN), $cm_tt); ?>
                                 </p>
                                 <?php comments_template('', true); ?>
                                 </div>

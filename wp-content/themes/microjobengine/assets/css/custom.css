@@ -882,3 +882,6 @@
 .post-detail #comments .comment-list li, .single-mjob_post #comments .comment-list li:first-child{
     margin-top: 10px;
 }
+.single-mjob_post .comment-form-comment  label{
+    display: none!important;
+}

@@ -51,24 +51,36 @@ if ( post_password_required() ) {
 		<p class="no-comments"><?php _e( 'Comments are closed.', ET_DOMAIN ); ?></p>
 	<?php endif; ?>
 
-	<?php comment_form(); ?>
+	<?php
+	if( is_singular('mjob_post')):
+	comment_form(array(
+		'title_reply'=>__('POST YOUR OWN QUESTON:', ET_DOMAIN),
+		'logged_in_as'=> '',
+		'label_submit'=>__('SUBMIT QUESTION', ET_DOMAIN)
+	));
+		else:
+			comment_form();
+		endif;
+		?>
 
 </div><!-- .comments-area -->
 <?php
 function blog_comment_callback( $comment, $args, $depth ){
 	$GLOBALS['comment'] = $comment;
+	if( empty($comment->comment_type) ):
 	?>
 <li class="media et-comment" id="li-comment-<?php comment_ID();?>">
 	<div id="comment-<?php comment_ID(); ?>" class="clearfix">
 		<div class="pull-left">
 			<a class="avatar-comment" href="#">
-				<?php echo get_avatar( $comment->comment_author_email, 40 );?>
+				<?php echo mJobAvatar( $comment->user_id, 40 );?>
 			</a>
 		</div>
 		<div class="media-body pull-right">
 			<h4 class="media-heading">
 				<?php
-				comment_author();
+				$profile  = mJobProfileAction()->getProfile($comment->user_id);
+				echo $profile->initial_display_name;
 				?>
 			</h4>
 				<span class="time-review">
@@ -90,4 +102,5 @@ function blog_comment_callback( $comment, $args, $depth ){
 		</div>
 	</div>
 	<?php
+	endif;
 }
