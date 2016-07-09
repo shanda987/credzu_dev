@@ -928,7 +928,7 @@
     #incomingPaymentsForm{
         display: inline-block;
     }
-    #incomingPaymentsForm .item-requirement{
+    .item-requirement{
         padding-left: 0;
         padding-right: 0;
     }
