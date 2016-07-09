@@ -932,6 +932,9 @@
         padding-left: 0;
         padding-right: 0;
     }
+    .requirment-tab-content{
+        display: inline-block;
+    }
 }
 @media (max-width: 1024px) {
     .order-fixed-scroll{
