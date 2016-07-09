@@ -872,3 +872,13 @@
         right: 10%;
     }
 }
+.information-items-detail{
+    border-bottom: 1px solid #dfe0e5;
+    padding-bottom: 30px!important;
+}
+.block-items-detail .review-job ul li:last-child{
+    padding-bottom: 0!important;
+}
+.post-detail #comments .comment-list li, .single-mjob_post #comments .comment-list li:first-child{
+    margin-top: 10px;
+}

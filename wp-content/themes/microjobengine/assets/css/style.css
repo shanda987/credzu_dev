@@ -13124,7 +13124,7 @@ body.archive .block-title {
 .post-detail #comments .comment-list li, .single-mjob_post #comments .comment-list li {
   display: block;
   list-style: none;
-  border-bottom: 1px solid #dfe0e5;
+  /*border-bottom: 1px solid #dfe0e5;*/
   padding: 20px 0;
 }
 .post-detail #comments .comment-list li img, .single-mjob_post #comments .comment-list li img {

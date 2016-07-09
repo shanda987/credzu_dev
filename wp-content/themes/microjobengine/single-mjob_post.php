@@ -192,13 +192,19 @@ if($profile_id) {
                                     <span class="title"><?php _e('DESCRIPTION', ET_DOMAIN) ;?></span>
                                     <div class="tabs-information" id="description"><?php echo $current->post_content; ?></div>
                                     <p><?php _e('If you have any questions about me, my company or this listing, feel free to ask below and I will answer at my ealiest convenience', ET_DOMAIN); ?></p>
-                                    <?php
-                                    if( $user_ID ) {
-                                        comments_template('', true);
-                                    }
-                                        ?>
+
                                 </div>
                             </div>
+                            <?php
+                            if( $user_ID ) { ?>
+                                <div class="review-job">
+                                <p class="title">
+                                    <?php printf(__('INTERVIEW(s) <span class="total-review">(%s total)</span>', ET_DOMAIN), $count_review); ?>
+                                </p>
+                                <?php comments_template('', true); ?>
+                                </div>
+                            <?php }
+                            ?>
                         </div>
                         <div class="mjob-edit-content">
                             <?php get_template_part('template-js/template', 'edit-mjob');?>
