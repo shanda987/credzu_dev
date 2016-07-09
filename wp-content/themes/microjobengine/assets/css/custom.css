@@ -928,6 +928,10 @@
     #incomingPaymentsForm{
         display: inline-block;
     }
+    #incomingPaymentsForm .item-requirement{
+        padding-left: 0;
+        padding-right: 0;
+    }
 }
 @media (max-width: 1024px) {
     .order-fixed-scroll{
