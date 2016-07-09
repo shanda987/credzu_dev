@@ -3,6 +3,7 @@ global $wp_query, $ae_post_factory, $post;
 $post_object = $ae_post_factory->get('post');
 $postdata    = array();
 if(have_posts()){
+    the_post();
     ?>
     <!-- blog list -->
     <ul class="post-list" id="post-list">
