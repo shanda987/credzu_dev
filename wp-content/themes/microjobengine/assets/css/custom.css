@@ -925,6 +925,9 @@
     .post-detail #comments input[type="text"], .single-mjob_post #comments textarea, .post-detail #comments input[type="text"], .post-detail #comments textarea{
         width: 100%;
     }
+    #incomingPaymentsForm{
+        display: inline-block;
+    }
 }
 @media (max-width: 1024px) {
     .order-fixed-scroll{
