@@ -916,6 +916,12 @@
     .tablet-btn{
         display: none!important;
     }
+    .post-detail #comments, .single-mjob_post #comments{
+        margin: 0;
+    }
+    .post-detail #comments input[type="text"], .single-mjob_post #comments textarea, .post-detail #comments input[type="text"], .post-detail #comments textarea{
+        width: 100%;
+    }
 }
 @media (max-width: 1024px) {
     .order-fixed-scroll{
