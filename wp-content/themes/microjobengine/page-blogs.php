@@ -31,6 +31,7 @@ get_header();
                     <div class="menu-left">
                         <p class="title-menu"><?php _e('Categories', ET_DOMAIN); ?></p>
                         <?php mJobShowFilterCategories('category', array('parent' => 0)); ?>
+                        <?php get_sidebar('blog'); ?>
                     </div>
                 </div>
             </div>
