@@ -160,7 +160,17 @@ if(!function_exists('mJobShowUserHeader')) {
                     <div class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
                 <span class="avatar">
                     <span class="display-avatar"><?php echo mJobAvatar($current_user->ID, 35); ?></span>
-                    <span class="display-name"><?php echo $current_user->initial_display_name; ?></span>
+                    <span class="display-name">
+                        <?php
+                        $profile = mJobProfileAction()->getProfile($current_user->ID);
+                        if( !empty($profile->initial_display_name)):
+                            echo $profile->initial_display_name;
+                        else:
+                            echo $current_user->display_name;
+                        endif;
+
+                        ?>
+                    </span>
                 </span>
                         <span><i class="fa fa-angle-right"></i></span>
                     </div>
