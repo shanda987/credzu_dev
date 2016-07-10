@@ -13111,6 +13111,8 @@ body.archive .block-title {
 }
 .post-detail #comments .form-submit, .single-mjob_post #comments .form-submit {
   margin-top: 40px;
+  text-align: right;
+  margin-right:19%;
 }
 .post-detail #comments .form-submit .submit, .single-mjob_post #comments .form-submit .submit {
   border-radius: 45px;

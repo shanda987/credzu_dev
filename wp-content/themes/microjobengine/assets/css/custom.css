@@ -996,3 +996,6 @@
     width: 100%;
     height: auto;
 }
+.post-detail #comments, .single-mjob_post #comments{
+    margin-left: 20px;
+}

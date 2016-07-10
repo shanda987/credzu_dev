@@ -56,7 +56,7 @@ if ( post_password_required() ) {
 	comment_form(array(
 		'title_reply'=>__('POST YOUR OWN QUESTON:', ET_DOMAIN),
 		'logged_in_as'=> '',
-		'label_submit'=>__('SUBMIT QUESTION', ET_DOMAIN)
+		'label_submit'=>__('SUBMIT', ET_DOMAIN)
 	));
 		else:
 			comment_form();
