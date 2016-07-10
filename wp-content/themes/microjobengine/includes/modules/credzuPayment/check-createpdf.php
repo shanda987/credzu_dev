@@ -94,7 +94,7 @@ function set_width($fee=""){
 <table style="font-size:10pt;">
 	<tr>
 		<td style="font-size:9pt;width:430px;">
-			<br/><br/>
+			<br/><br/><br/>
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Web listing<br/>
 			Memo: Authorized by the U.C.C. (2006), the UETA (1999) and ESIGN Act (2000)
 		</td>
@@ -104,6 +104,7 @@ function set_width($fee=""){
 		</td>
 	</tr>
 </table>
+<br/><br/>
 <table cellspacing="0" cellpadding="0">
 	<tr>
 		<td align="left" style="font-size: 19pt;font-family: micrenc!important" class="EntezarFont">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; c<?php echo str_pad($check_number, 10, '0', STR_PAD_LEFT);?>c a<?php echo $profile->routing_number;?>a <?php echo $profile->account_number;?>c</td>
@@ -370,7 +371,7 @@ function mjobCreateClientToCompanyPdf($profile, $data){
 	<table style="font-size:10pt;">
 		<tr>
 			<td style="font-size:9pt;width:430px;">
-				<br/><br/>
+				<br/><br/><br/>
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $data->mjob_category; ?><br/>
 				Memo: Authorized by the U.C.C. (2006), the UETA (1999) and ESIGN Act (2000)
 			</td>
@@ -380,6 +381,7 @@ function mjobCreateClientToCompanyPdf($profile, $data){
 			</td>
 		</tr>
 	</table>
+	<br/><br/>
 	<table cellspacing="0" cellpadding="0">
 		<tr>
 			<td align="left" style="font-size: 19pt;font-family: micrenc!important" class="EntezarFont">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; c<?php echo str_pad($check_number, 10, '0', STR_PAD_LEFT);?>c a<?php echo $profile->routing_number;?>a <?php echo $profile->account_number;?>c</td>
