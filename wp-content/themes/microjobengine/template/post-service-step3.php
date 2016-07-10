@@ -54,7 +54,7 @@ else{
         <div class="form-group row clearfix">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clearfix ">
                 <div class="input-group ">
-                    <input type="number" name="time_delivery" placeholder="<?php _e('i.e., 10', ET_DOMAIN); ?>" class="input-item time-delivery" id="time_delivery" min="0" pattern="[-+]?[0-9]*[.,]?[0-9]+" required>
+                    <input type="number" name="time_delivery" placeholder="<?php _e('e.g. 22 (or anything over 20).', ET_DOMAIN); ?>" class="input-item time-delivery" id="time_delivery" min="0" pattern="[-+]?[0-9]*[.,]?[0-9]+" required>
                     <span class="text-note"><?php _e('Day(s)', ET_DOMAIN); ?></span>
                     <label><?php _e('Enter the amount of days the service will take to complete ', ET_DOMAIN)?><a href="#" class="mjob-question-post"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
                 </div>
