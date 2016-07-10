@@ -999,3 +999,6 @@
 .post-detail #comments, .single-mjob_post #comments{
     margin-left: 20px;
 }
+.extra-content{
+    color: rgba(137, 138, 144, 0.6);
+}
