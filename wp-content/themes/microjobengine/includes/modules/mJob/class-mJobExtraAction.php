@@ -26,6 +26,7 @@ class mJobExtraAction extends mJobPostAction{
             'post_title'=>'required',
             'et_budget'=>'required'
         );
+        $this->add_action('admin_menu', 'mjob_remove_extra_menu');
     }
     /**
      * sync Post function
@@ -130,6 +131,22 @@ class mJobExtraAction extends mJobPostAction{
         }
         $query_args = wp_parse_args($args, $query_args);
         return $query_args;
+    }
+    /**
+      * Description
+      *
+      * @param void
+      * @return void
+      * @since 1.4
+      * @package MicrojobEngine
+      * @category CREDZU
+      * @author JACK BUI
+      */
+    public function mjob_remove_extra_menu() {
+        global $submenu;
+        if( isset($submenu['edit.php?post_type=mjob_extra']) ){
+            unset($submenu['edit.php?post_type=mjob_extra']);
+        }
     }
 }
 new mJobExtraAction();

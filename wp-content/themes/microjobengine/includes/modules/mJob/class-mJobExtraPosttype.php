@@ -19,8 +19,8 @@ class mJobExtraPosttype extends mJobPost{
     public  function __construct($post_type = '', $taxs = array(), $meta_data = array(), $localize = array()){
         $this->post_type = 'mjob_extra';
         parent::__construct( $this->post_type, $taxs, $meta_data, $localize);
-        $this->post_type_singular = 'Microjob Extra';
-        $this->post_type_regular = 'Microjob Extras';
+        $this->post_type_singular = 'Listing Extra';
+        $this->post_type_regular = 'Listing Extras';
         $this->meta = array(
             'et_budget',
             'is_featured'
