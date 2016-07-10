@@ -201,7 +201,7 @@ if($profile_id) {
                                 <div class="review-job">
                                 <p class="title">
                                     <?php $cm_tt = mJobGetTotalInterview($current->ID); ?>
-                                    <?php printf(__('INTERVIEW(s) <span class="total-review">(%s total)</span>', ET_DOMAIN), $cm_tt); ?>
+                                    <?php printf(__('PRE-SALES INTERVIEW <span class="total-review">(%s total)</span>', ET_DOMAIN), $cm_tt); ?>
                                 </p>
                                 <?php comments_template('', true); ?>
                                 </div>
