@@ -1396,6 +1396,8 @@
                 window.onresize = view.resizeCanvas;
                 view.resizeCanvas(view.canvas);
                 view.signaturePad = new SignaturePad(view.canvas);
+                view.signaturePad.minWidth = 2;
+                view.signaturePad.maxWidth = 5;
                 view.signaturePad.fromDataURL(this.model.get(this.options.key));
                 view.clearButton.addEventListener("click", function (event) {
                     view.signaturePad.clear();
@@ -1469,6 +1471,7 @@
                 // some browsers report devicePixelRatio as less than 1
                 // and only part of the canvas is cleared then.
                 var ratio =  Math.max(window.devicePixelRatio || 1, 1);
+                console.log(ratio);
                 canvas.width = canvas.offsetWidth * ratio;
                 canvas.height = canvas.offsetHeight * ratio;
                 canvas.getContext("2d").scale(ratio, ratio);
