@@ -407,6 +407,10 @@ class mJobProfileAction extends mJobPostAction
             update_post_meta($result->ID, 'company_email', $result->state);
             $result->company_state = $result->state;
         }
+        if( $user_role == COMPANY && empty($result->company_address) ){
+            update_post_meta($result->ID, 'company_address', $result->billing_full_address);
+            $result->company_address = $result->billing_full_address;
+        }
         return $result;
     }
     public function mJobAddProfileModal() {
