@@ -967,16 +967,16 @@
 .blog-sidebar{
     padding-left: 20px;
 }
-.single-post h2{
+.single-post h2, .page-template-page-blogs h2{
     font-family: 'Montserrat', sans-serif;
     font-size: 18px;
     text-transform: uppercase;
 }
-.single-post aside ul{
+.single-post aside ul, .page-template-page-blogs aside ul{
     list-style: none;
     padding-left: 0;
 }
-.single-post aside ul li{
+.single-post aside ul li, .page-template-page-blogs aside ul li{
     margin-bottom: 20px;
 }
 .breadcum{
