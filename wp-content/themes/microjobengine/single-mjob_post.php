@@ -9,10 +9,10 @@ if( !empty($cats) ) {
 // Show breadcrumb
     $parent = $cats['0']->parent;
     $breadcrumb .= '<div class="mjob-breadcrumb"><a class="parent" href="' . get_term_link($cats["0"]) . '">'.'<div>Category: <span class="normal-link">' . $cats["0"]->name .'</span>'. __('Last modified: ', ET_DOMAIN).' <span class="mjob-modified-day">'.$current->modified_date .'</span></div>'. '</a></div>';
-    if ($parent != 0) {
-        $parent = get_term_by('ID', $parent, 'mjob_category');
-        $breadcrumb .= '<div class="mjob-breadcrumb"><a class="parent" href="' . get_term_link($parent) . '">'.'<div>Category: <span class="normal-link">' . $parent->name .'</span></div>'.__('Last modified: ', ET_DOMAIN).' <span class="mjob-modified-day">'.$current->modified_date .'</span></a> <i class="fa fa-angle-right"></i> <span><a class="child" href="' . get_term_link($cats["0"]) . '">' . $cats['0']->name . '</a></span></div>';
-    }
+//    if ($parent != 0) {
+//        $parent = get_term_by('ID', $parent, 'mjob_category');
+//        $breadcrumb .= '<div class="mjob-breadcrumb"><a class="parent" href="' . get_term_link($parent) . '">'.'<div>Category: <span class="normal-link">' . $parent->name .'</span></div>'.__('Last modified: ', ET_DOMAIN).' <span class="mjob-modified-day">'.$current->modified_date .'</span></a> <i class="fa fa-angle-right"></i> <span><a class="child" href="' . get_term_link($cats["0"]) . '">' . $cats['0']->name . '</a></span></div>';
+//    }
 }
 // End show breadcumb
 

@@ -43,8 +43,8 @@ class mJobPosttype extends mJobPost{
             'modified_date',
             'is_featured'
         );
-        $this->post_type_singular = 'Microjob';
-        $this->post_type_regular = 'Microjobs';
+        $this->post_type_singular = 'Listing';
+        $this->post_type_regular = 'Listings';
         /**
          * the constructor of this class
          *
