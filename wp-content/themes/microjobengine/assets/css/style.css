@@ -13130,7 +13130,7 @@ body.archive .block-title {
   color: #10a2ef;
 }
 .post-detail #comments .comment-list, .single-mjob_post #comments .comment-list {
-  padding-left: 0;
+  padding-left: 40px;
 }
 .post-detail #comments .comment-list li, .single-mjob_post #comments .comment-list li {
   display: block;

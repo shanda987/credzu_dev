@@ -79,8 +79,9 @@ function blog_comment_callback( $comment, $args, $depth ){
 		<div class="media-body pull-right">
 			<h4 class="media-heading">
 				<?php
-				$profile  = mJobProfileAction()->getProfile($comment->user_id);
-				echo $profile->initial_display_name;
+//				$profile  = mJobProfileAction()->getProfile($comment->user_id);
+//				echo $profile->initial_display_name;
+				comment_author();
 				?>
 			</h4>
 				<span class="time-review">
