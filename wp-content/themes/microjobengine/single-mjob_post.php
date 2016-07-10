@@ -174,8 +174,9 @@ if($profile_id) {
                                             </li>
                                             <?php
                                         }
-
-                                    endif; ?>
+                                else:
+                                        _e('Listing has no reviews, yet. You could be the first!', ET_DOMAIN);
+                                endif; ?>
                                 </ul>
 
                                 <div class="paginations-wrapper" >
