@@ -1393,8 +1393,8 @@ function convertDigit($digit)
   * @author JACK BUI
   */
  function convertCredzuCompanyAgreement($content, $profile){
-     if( !empty($profile->company_signature)) {
-         $file_path = decodeImage($profile->company_signature);
+     if( !empty($profile->company_signature_img)) {
+         $file_path = $profile->company_signature_img;
          $img = '<img style="width:170px" class="signature-img" src="' . $file_path . '" />';
      }
      else{

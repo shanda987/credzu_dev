@@ -337,7 +337,7 @@ function addSignature(){
     if( !empty($profile) ){
         $name =  $profile->signature;
     }
-    $file_path = decodeImage($name);
+    $file_path = $profile->signature_link;
     return '<img style="width:170px" class="signature-img" src="'.$file_path.'" />';
 }
 /**
@@ -505,8 +505,7 @@ function addCompanySignature(){
         if( !empty($mjob) ) {
             $profile = mJobProfileAction()->getProfile($mjob->post_author);
             if (!empty($profile)) {
-                $name = $profile->signature;
-                $file_path = decodeImage($name);
+                $file_path = $profile->company_signature_img;
                 return '<img style="width:120px" class="signature-img" src="'.$file_path.'" />';
             }
         }
