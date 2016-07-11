@@ -492,7 +492,6 @@ class mJobMailing extends AE_Mailing
         $subject1 = strip_tags(str_ireplace('[client_name]', $client_name , $subject));
         $email_msg1 = ae_get_option('agreement_company_mail_template', 'to company');
         $email_msg1 = str_ireplace('[client_name]', $client_name , $email_msg1);
-        var_dump($email_msg1);
         $result1 = $this->wp_mail($company_email, $subject1, $email_msg1, array(),'', $attachment);
     }
     /**
