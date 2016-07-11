@@ -77,7 +77,7 @@ get_header();
                         <?php else: ?>
                             <div class="dashboard-notification agreement-view">
                             <?php $archive_link =  get_post_type_archive_link('mjob_post'); ?>
-                            <p class="cl-items"><?php echo sprintf(__('You can view your agreement <a target="_blank" href="%s"> here</a>', ET_DOMAIN),  $profile->company_agreement_link); ?></p>
+                            <p class="cl-items"><?php echo sprintf(__('You can view your agreement <a target="_blank" href="%s"> here</a>', ET_DOMAIN),  et_get_page_link('view-pdf').'?aid=1'); ?></p>
                         </div>
                         <?php
                         endif; ?>

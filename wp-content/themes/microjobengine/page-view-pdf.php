@@ -22,6 +22,12 @@ else if( isset($_GET['cid'])) {
     $file = $f['path'];
     $filename = $f['name'];
 }
+else if(isset($_GET['aid']) && $_GET['aid'] == 1){
+    global $user_ID;
+    $profile = mJobProfileAction()->getProfile($user_ID);
+    $file = $profile->company_agreement_link;
+    $filename = basename($file);
+}
 else{
     $id = $_GET['pid'];
     $file = get_post_meta($id, 'pdf_path', true);
