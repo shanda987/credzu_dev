@@ -720,6 +720,11 @@
                         $('.job-items-cat-title').css('margin-top', h1+ 'px');
                     }
                 }
+                if( $('.agreement-view').length > 0){
+                    $('html, body').animate({
+                        scrollTop: $("html, body").offset().top
+                    }, 1000);
+                }
 
             },
             showErrorMessage: function(e){
