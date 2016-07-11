@@ -655,10 +655,12 @@ class mJobMailing extends AE_Mailing
       */
     public function email_comment_approved_by_admin($comment){
         $post_author = get_post_field( 'post_author', $comment->comment_post_ID );
+        $link = '<a href="'.get_permalink($comment->comment_post_ID).'#comment-'.$comment->comment_ID.'">HERE</a>';
         if( $post_author != $comment->user_id ) {
             $profile = mJobProfileAction()->getProfile($post_author);
             $subject = ae_get_option('comment_approved_email_subject', __('You have a new question on Credzu ', ET_DOMAIN));
             $msg = ae_get_option('comment_approved_email', sprintf(__('You have a new question on Credzu', ET_DOMAIN)));
+            $msg = str_ireplace('[comment_link]', $link, $msg );
             $this->wp_mail($profile->business_email, $subject, $msg, array('user_id' => $post_author));
         }
         else{
@@ -671,6 +673,7 @@ class mJobMailing extends AE_Mailing
             }
             $subject = ae_get_option('client_comment_approved_email_subject', __('You have a new answer on Credzu', ET_DOMAIN));
             $msg = ae_get_option('client_comment_approved_email', sprintf(__('You have a new answer on Credzu', ET_DOMAIN)));
+            $msg = str_ireplace('[comment_link]', $link, $msg );
             $this->wp_mail($profile->business_email, $subject, $msg, array('user_id' => $post_author));
         }
     }
