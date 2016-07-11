@@ -122,7 +122,7 @@ else{
         <div class="form-group post_listing_agreement_term">
             <label><?php _e('AGREEMENT TERMS', ET_DOMAIN) ?></label>
             <p>
-                <?php _e('The terms  into which you and your client agree, are shown below. If you want to requrest a change, please email us at info@credzu.com', ET_DOMAIN); ?>
+                <?php _e('The terms to which you and your client agree, are shown below. If you want to requrest a change, please email us at info@credzu.com', ET_DOMAIN); ?>
             </p>
         </div>
         <div class="form-group post_listing_agreement_term_content">
