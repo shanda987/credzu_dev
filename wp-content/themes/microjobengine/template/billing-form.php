@@ -24,10 +24,12 @@ echo mJobProfileAction()->getProfileJson($profile);
         </div>
         <div class="form-group clearfix">
             <div class="input-group">
-                <div class="input-group-addon no-addon"><?php _e('Billing address ( same as your address):', ET_DOMAIN); ?></div>
-                <select class="hiring-process-select selectpicker" name="use_billing_address">
-                    <option value="yes"><?php _e('Yes', ET_DOMAIN);?></option>
-                    <option value="no"><?php _e('No', ET_DOMAIN);?></option>
+                <div class="input-group-addon no-addon"><?php _e('Billing address:', ET_DOMAIN); ?></div>
+                <select class="hiring-process-select selectpicker required" name="use_billing_address">
+                    <option value=""><?php _e('Select Address', ET_DOMAIN);?></option>
+                    <option value="personal"><?php _e('Personal Address', ET_DOMAIN);?></option>
+                    <option value="comapany"><?php _e('Company Address', ET_DOMAIN);?></option>
+                    <option value="no"><?php _e('Other', ET_DOMAIN);?></option>
                 </select>
             </div>
         </div>
