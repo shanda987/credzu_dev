@@ -41,8 +41,8 @@ function set_width($fee=""){
 		<td width="1%"></td>
 		<td align="left" width="24%">
 			<strong><?php echo $profile->company_name;?></strong><br/>
-			<span style="font-size:9pt"><?php echo $profile->company_address;?></span><br/>
-			<span style="font-size:9pt"><?php echo $profile->company_city.", ".$profile->company_state." ".$profile->company_zip_code;?></span><br/>
+			<span style="font-size:9pt"><?php echo $profile->r_billing_address;?></span><br/>
+			<span style="font-size:9pt"><?php echo $profile->r_billing_city.", ".$profile->r_state." ".$profile->r_zip_code;?></span><br/>
 			<span style="font-size:9pt"><?php echo $profile->company_phone;?></span>
 		</td>
 		<td align="center" width="22%">
@@ -167,8 +167,8 @@ function set_width($fee=""){
 	<tr>
 		<td style="font-weight:bold;font-size:9pt;width:440px;" width="60%">
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $profile->company_name;?><br/>
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $profile->company_address;?><br/>
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $profile->company_city.", ".$profile->company_state." ".$profile->company_zip_code;?><br/>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $profile->r_billing_address;?><br/>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $profile->r_billing_city.", ".$profile->r_state." ".$profile->r_zip_code;?><br/>
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $profile->company_phone;?>
 		</td>
 		<td rowspan="2" style="text-align:center;border: 1pt solid #000000;width:265px;" >
@@ -201,8 +201,8 @@ function set_width($fee=""){
 		<td width="1%"></td>
 		<td align="left" width="24%">
 			<strong><?php echo $profile->company_name;?></strong><br/>
-			<span style="font-size:9pt"><?php echo $profile->company_address.""?><br/></span>
-			<span style="font-size:9pt"><?php echo $profile->company_city.", ".$profile->company_state." ".$profile->company_zip_code;?><br/></span>
+			<span style="font-size:9pt"><?php echo $profile->r_billing_address.""?><br/></span>
+			<span style="font-size:9pt"><?php echo $profile->r_billing_city.", ".$profile->r_state." ".$profile->r_zip_code;?><br/></span>
 			<span style="font-size:9pt"><?php echo $profile->company_phone;?></span>
 		</td>
 		<td align="center" width="22%">
@@ -318,8 +318,8 @@ function mjobCreateClientToCompanyPdf($profile, $data){
 			<td width="1%"></td>
 			<td align="left" width="24%">
 				<strong><?php echo $profile->first_name.' '.$profile->last_name;?></strong><br/>
-				<span style="font-size:9pt"><?php echo $profile->billing_full_address;?></span><br/>
-				<span style="font-size:9pt"><?php echo $profile->city.", ".$profile->state." ".$profile->zip_code;?></span><br/>
+				<span style="font-size:9pt"><?php echo $profile->r_billing_address;?></span><br/>
+				<span style="font-size:9pt"><?php echo $profile->r_billing_city.", ".$profile->r_state." ".$profile->r_zip_code;?></span><br/>
 				<span style="font-size:9pt"><?php echo $profile->phone;?></span>
 			</td>
 			<td align="center" width="22%">
@@ -444,8 +444,8 @@ function mjobCreateClientToCompanyPdf($profile, $data){
 		<tr>
 			<td style="font-weight:bold;font-size:9pt;width:440px;" width="60%">
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $profile->first_name.' '.$profile->last_name;?><br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $profile->billing_full_address;?><br/>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $profile->city.", ".$profile->state." ".$profile->zip_code;?><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $profile->r_billing_address;?><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $profile->r_billing_city.", ".$profile->r_state." ".$profile->r_zip_code;?><br/>
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $profile->phone;?>
 			</td>
 			<td rowspan="2" style="text-align:center;border: 1pt solid #000000;width:265px;" >
@@ -478,8 +478,8 @@ function mjobCreateClientToCompanyPdf($profile, $data){
 			<td width="1%"></td>
 			<td align="left" width="24%">
 				<strong><?php echo $profile->first_name.' '.$profile->last_name;?></strong><br/>
-				<span style="font-size:9pt"><?php echo $profile->billing_full_address.""?><br/></span>
-				<span style="font-size:9pt"><?php echo $profile->city.", ".$profile->state." ".$profile->zip_code;?><br/></span>
+				<span style="font-size:9pt"><?php echo $profile->r_billing_address.""?><br/></span>
+				<span style="font-size:9pt"><?php echo $profile->r_billing_city.", ".$profile->r_state." ".$profile->r_zip_code;?><br/></span>
 				<span style="font-size:9pt"><?php echo $profile->phone;?></span>
 			</td>
 			<td align="center" width="22%">
