@@ -47,6 +47,7 @@ class mJobUserAction extends AE_UserAction
         $this->add_action('wp_footer', 'mJobAuthenticationTemplate');
         $this->add_filter('ae_register_email_template_select', 'mJobFilterEmailRegister', 10, 2);
         $this->add_filter('ae_pre_insert_user', 'filterUserInfo');
+        $this->add_filter('mjobChangePassMessage', 'password_change_email');
     }
 
     /**
@@ -515,6 +516,12 @@ class mJobUserAction extends AE_UserAction
     public function filterUserInfo($user_data){
         $user_data['role'] = INDIVIDUAL;
         return $user_data;
+    }
+    public function password_change_email($message){
+        global $user_ID;
+        $profile= mJobProfileAction()->getProfile($user_ID);
+        $message = str_replace( '###USERNAME###', $profile->initial_display_name, $message );
+        return $message;
     }
 }
 
