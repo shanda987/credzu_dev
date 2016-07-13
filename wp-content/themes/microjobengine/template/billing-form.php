@@ -32,7 +32,7 @@ echo mJobProfileAction()->getProfileJson($profile);
                     if( $user_role == COMPANY ): ?>
                     <option value=""><?php _e('Select Address', ET_DOMAIN);?></option>
                     <option value="personal"><?php _e('Personal Address', ET_DOMAIN);?></option>
-                    <option value="comapany"><?php _e('Company Address', ET_DOMAIN);?></option>
+                    <option value="company"><?php _e('Company Address', ET_DOMAIN);?></option>
                     <option value="no"><?php _e('Other', ET_DOMAIN);?></option>
                     <?php else: ?>
                     <option value="yes"><?php _e('Yes', ET_DOMAIN);?></option>
