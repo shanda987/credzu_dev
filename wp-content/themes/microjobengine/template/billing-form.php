@@ -26,10 +26,18 @@ echo mJobProfileAction()->getProfileJson($profile);
             <div class="input-group">
                 <div class="input-group-addon no-addon"><?php _e('Billing address:', ET_DOMAIN); ?></div>
                 <select class="hiring-process-select selectpicker required" name="use_billing_address">
+                    <?php
+                    global $user_ID;
+                    $user_role = ae_user_role($user_ID);
+                    if( $user_role == COMPANY ): ?>
                     <option value=""><?php _e('Select Address', ET_DOMAIN);?></option>
                     <option value="personal"><?php _e('Personal Address', ET_DOMAIN);?></option>
                     <option value="comapany"><?php _e('Company Address', ET_DOMAIN);?></option>
                     <option value="no"><?php _e('Other', ET_DOMAIN);?></option>
+                    <?php else: ?>
+                    <option value="yes"><?php _e('Yes', ET_DOMAIN);?></option>
+                    <option value="no"><?php _e('No', ET_DOMAIN);?></option>
+                    <?php endif; ?>
                 </select>
             </div>
         </div>
