@@ -62,13 +62,13 @@ echo mJobProfileAction()->display_company_status($user_role, $profile->company_s
                         <div class="form-group clearfix">
                             <div class="input-group">
                                 <div class="input-group-addon no-addon"><?php _e('Address line 2:', ET_DOMAIN); ?></div>
-                                <input type="text" name="company_address_line2" id="company_address_line2" placeholder="<?php _e('Address Line 2', ET_DOMAIN); ?>" value="<?php echo $profile->address_line2; ?>">
+                                <input type="text" name="company_address_line2" id="company_address_line2" placeholder="<?php _e('Address Line 2', ET_DOMAIN); ?>" value="<?php echo $profile->company_address_line2; ?>">
                             </div>
                         </div>
                         <div class="form-group clearfix">
                             <div class="input-group">
                                 <div class="input-group-addon no-addon"><?php _e('City:', ET_DOMAIN); ?></div>
-                                <input type="text" name="company_city" id="company_city" placeholder="<?php _e('City', ET_DOMAIN); ?>" value="<?php echo $profile->city; ?>">
+                                <input type="text" name="company_city" id="company_city" placeholder="<?php _e('City', ET_DOMAIN); ?>" value="<?php echo $profile->company_city; ?>">
                             </div>
                         </div>
                         <div class="form-group clearfix">
@@ -80,7 +80,7 @@ echo mJobProfileAction()->display_company_status($user_role, $profile->company_s
                         <div class="form-group clearfix">
                             <div class="input-group">
                                 <div class="input-group-addon no-addon"><?php _e('Zip code:', ET_DOMAIN); ?></div>
-                                <input type="text" name="company_zip_code" id="company_zip_code" placeholder="<?php _e('Zip code', ET_DOMAIN); ?>" value="<?php echo $profile->zip_code; ?>">
+                                <input type="text" name="company_zip_code" id="company_zip_code" placeholder="<?php _e('Zip code', ET_DOMAIN); ?>" value="<?php echo $profile->company_zip_code; ?>">
                             </div>
                         </div>
                         <div class="form-group clearfix">
