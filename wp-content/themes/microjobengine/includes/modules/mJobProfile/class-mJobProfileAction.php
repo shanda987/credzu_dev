@@ -415,34 +415,57 @@ class mJobProfileAction extends mJobPostAction
             update_post_meta($result->ID, 'company_address_line2', $result->address_line2);
             $result->company_address_line2 = $result->address_line2;
         }
-        if( $result->use_billing_address == 'personal' ){
-            $result->r_billing_address = $result->billing_full_address;
-            $result->r_billing_city = $result->city;
-            $result->r_address_2 = $result->address_line2;
-            $result->r_state = $result->state;
-            $result->r_zip_code = $result->zip_code;
-        }
-        else if( $result->use_billing_address == 'company' ){
-            $result->r_billing_address = $result->company_address;
-            $result->r_billing_city = $result->company_city;
-            $result->r_address_2 = $result->company_address_line2;
-            $result->r_state = $result->company_state;
-            $result->r_zip_code = $result->company_zip_code;
-        }
-        else if( $result->use_billing_address == 'no' ){
-            $result->r_billing_address = $result->billing_other_address;
-            $result->r_billing_city = $result->billing_city;
-            $result->r_address_2 = $result->billing_address_line2;
-            $result->r_state = $result->billing_state;
-            $result->r_zip_code = $result->billing_zip_code;
+        if( $user_role == COMPANY ) {
+            if ($result->use_billing_address == 'personal') {
+                $result->r_billing_address = $result->billing_full_address;
+                $result->r_billing_city = $result->city;
+                $result->r_address_2 = $result->address_line2;
+                $result->r_state = $result->state;
+                $result->r_zip_code = $result->zip_code;
+            } else if ($result->use_billing_address == 'company') {
+                $result->r_billing_address = $result->company_address;
+                $result->r_billing_city = $result->company_city;
+                $result->r_address_2 = $result->company_address_line2;
+                $result->r_state = $result->company_state;
+                $result->r_zip_code = $result->company_zip_code;
+            } else if ($result->use_billing_address == 'no') {
+                $result->r_billing_address = $result->billing_other_address;
+                $result->r_billing_city = $result->billing_city;
+                $result->r_address_2 = $result->billing_address_line2;
+                $result->r_state = $result->billing_state;
+                $result->r_zip_code = $result->billing_zip_code;
+            } else {
+                $result->r_billing_address = $result->billing_full_address;
+                $result->r_billing_city = $result->city;
+                $result->r_address_2 = $result->address_line2;
+                $result->r_state = $result->state;
+                $result->r_zip_code = $result->zip_code;
+            }
         }
         else{
-            $result->r_billing_address = $result->billing_full_address;
-            $result->r_billing_city = $result->city;
-            $result->r_address_2 = $result->address_line2;
-            $result->r_state = $result->state;
-            $result->r_zip_code = $result->zip_code;
-        }
+            if ($result->use_billing_address == 'yes') {
+                $result->r_billing_address = $result->billing_full_address;
+                $result->r_billing_city = $result->city;
+                $result->r_address_2 = $result->address_line2;
+                $result->r_state = $result->state;
+                $result->r_zip_code = $result->zip_code;
+            }
+            else if ($result->use_billing_address == 'no') {
+                $result->r_billing_address = $result->billing_other_address;
+                $result->r_billing_city = $result->billing_city;
+                $result->r_address_2 = $result->billing_address_line2;
+                $result->r_state = $result->billing_state;
+                $result->r_zip_code = $result->billing_zip_code;
+            }
+            else{
+                $result->r_billing_address = $result->billing_full_address;
+                $result->r_billing_city = $result->city;
+                $result->r_address_2 = $result->address_line2;
+                $result->r_state = $result->state;
+                $result->r_zip_code = $result->zip_code;
+            }
+
+    }
         return $result;
     }
     public function mJobAddProfileModal() {
