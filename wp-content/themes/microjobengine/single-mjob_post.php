@@ -231,7 +231,8 @@ if($profile_id) {
                                 <?php elseif( !$user_ID): ?>
                                     <button class="btn-submit btn-order  btn-custom-order btn-order-aside-bar waves-effect waves-light hireSignup " ><?php echo sprintf(__('<span class="mobile-btn">HIRE</span> <span class="tablet-btn"> ORDER</span> <span class="desktop-btn">NOW</span> (<span class="mjob-price">%s</span>)', ET_DOMAIN), $current->et_budget_text) ; ?></button>
                                 <?php else:  ?>
-                                    <span class="price"><?php echo mJobPriceFormat($current->et_budget) ?></span>
+<!--                                    <span class="price">--><?php //echo mJobPriceFormat($current->et_budget) ?><!--</span>-->
+                                    <button class="btn-submit btn-order  btn-custom-order btn-order-aside-bar  waves-light  mjob-order-disable1" data-container="body" data-toggle="popover" data-placement="top" data-content="<?php _e('Not accepting new customers at this time. Please check back later.', ET_DOMAIN); ?>" ><?php echo sprintf(__('<span class="mobile-btn">HIRE</span> <span class="tablet-btn"> ORDER</span> <span class="desktop-btn">NOW</span> <span class="mjob-price">( %s )</span>', ET_DOMAIN), $current->et_budget_text) ; ?></button>
                                 <?php endif; ?>
                                 <div class="action">
                                     <button class="btn-bookmark"><i class="fa fa-heart"></i></button>

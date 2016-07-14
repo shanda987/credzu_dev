@@ -11409,8 +11409,14 @@ body.archive .block-title {
   background: #dae0e6 !important;
   box-shadow: 1px 3px 9px rgba(218, 224, 230, 0.3) !important;
   color: #90969b !important;
+  cursor: auto;
 }
-
+.mjob-order-disable1 {
+  background: #dae0e6 !important;
+  box-shadow: 1px 3px 9px rgba(218, 224, 230, 0.3) !important;
+  color: #90969b !important;
+  cursor: auto;
+}
 .mjob-order-page {
   padding-top: 50px;
 }

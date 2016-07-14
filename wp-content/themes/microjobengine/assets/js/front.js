@@ -728,6 +728,7 @@
                 if( $('.single-post').length > 0 ){
                     $('.comment-respond').show();
                 }
+                $('[data-toggle="popover"]').popover();
 
             },
             showErrorMessage: function(e){
