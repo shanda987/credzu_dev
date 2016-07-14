@@ -1008,3 +1008,6 @@
 .comment-respond{
     display:none;
 }
+.comment-list{
+    padding-left: 0!important;
+}
