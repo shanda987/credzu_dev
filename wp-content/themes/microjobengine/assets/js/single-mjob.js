@@ -48,7 +48,9 @@
                 //'click .mjob-order-action': 'mJobOrderAction',
                 'click .mjob-order-action': 'showConfirmForm',
                 'click .edit-mjob-action': 'openEditForm',
-                'click .mjob-order-disable': 'disableNotification'
+                'click .mjob-order-disable': 'disableNotification',
+                'mouseover .mjob-order-disable1': 'showPopever',
+                'mouseleave .mjob-order-disable1': 'hidePopover'
             },
             initialize: function (options) {
                 var view = this;
@@ -311,6 +313,12 @@
                 e.preventDefault();
                 var view = this;
                 window.location.href = ae_globals.process_hiring+'?jid='+ this.model.get('ID');
+            },
+            showPopever: function(e){
+                $('[data-toggle="popover"]').popover('show');
+            },
+            hidePopover: function(){
+                $('[data-toggle="popover"]').popover('hide');
             }
         });
         /**
