@@ -109,7 +109,7 @@ function blog_comment_callback( $comment, $args, $depth ){
 			global $user_ID;
 			$mjob_author = get_post_field('post_author', $comment->comment_post_ID);
 			?>
-			<?php if( $user_ID == $mjob_author):
+			<?php if( $user_ID == $mjob_author && $user_ID != $comment->user_id):
 			comment_reply_link(array_merge($args, array(
 				'reply_text' => __( 'Reply ', ET_DOMAIN ).'<i class="fa fa-edit"></i>',
 				'depth'      => $depth,

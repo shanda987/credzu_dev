@@ -1011,3 +1011,6 @@
 .comment-list{
     padding-left: 0!important;
 }
+.post-detail #comments .comment-list .pull-right, .single-mjob_post #comments .comment-list .pull-right{
+    padding-left: 20px;
+}
