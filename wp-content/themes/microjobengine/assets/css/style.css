@@ -10883,6 +10883,7 @@ body.archive .block-title {
 }
 .profile .block-connect-social {
   margin-top: 30px;
+  margin-left:20px;
 }
 .profile .block-connect-social ul {
   padding: 0;

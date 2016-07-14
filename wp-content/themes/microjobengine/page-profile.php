@@ -155,14 +155,6 @@ echo mJobProfileAction()->display_company_status($user_role, $profile->company_s
                                 </div>
                             </div>
                             <?php endif; ?>
-                            <div class="block-connect-social block-connect-social-css form-group clearfix">
-                                <p class="title title-connect-social"><?php _e('CONNECT TO SOCIALS', ET_DOMAIN); ?>
-                                </p>
-                                <br/><span class="social-noti"><?php _e('This is not required, but to avoid possible confusion, you can link all of your accounts.', ET_DOMAIN) ?></span>
-                                <?php
-                                ae_render_connect_social_button();
-                                ?>
-                            </div>
                             <div class="form-group clearfix float-right change-pass-button-method">
                                 <input type="hidden" name="personal_profile_completed" value="1"/>
                                 <button class="btn-submit"><?php _e('Update', ET_DOMAIN); ?></button>
@@ -171,7 +163,14 @@ echo mJobProfileAction()->display_company_status($user_role, $profile->company_s
                         </form>
                     </div>
                 </div>
-
+                <div class="block-connect-social block-connect-social-css form-group clearfix">
+                    <p class="title title-connect-social"><?php _e('CONNECT TO SOCIALS', ET_DOMAIN); ?>
+                    </p>
+                    <br/><span class="social-noti"><?php _e('This is not required, but to avoid possible confusion, you can link all of your accounts.', ET_DOMAIN) ?></span>
+                    <?php
+                    ae_render_connect_social_button();
+                    ?>
+                </div>
             </div>
         </div>
     </div>
