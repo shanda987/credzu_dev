@@ -873,7 +873,7 @@
     }
 }
 .information-items-detail{
-    border-bottom: 1px solid #dfe0e5;
+    /*border-bottom: 1px solid #dfe0e5;*/
     padding-bottom: 30px!important;
 }
 .block-items-detail .review-job ul li:last-child{

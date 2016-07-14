@@ -53,20 +53,26 @@ if ( post_password_required() ) {
 
 	<?php
 	if( is_singular('mjob_post')):
-		if( isset($_GET['replytocom']) && !empty($_GET['replytocom']) ){
+		if( isset($_GET['replytocom']) && !empty($_GET['replytocom']) ):
 			$comment = get_comment($_GET['replytocom']);
 			$user_id = $comment->user_id;
 			$profile = mJobProfileAction()->getProfile($user_id);
-		}
-		comment_form(array(
-			'title_reply'=>__('POST YOUR OWN QUESTON:', ET_DOMAIN),
-			'logged_in_as'=> '',
-			'label_submit'=>__('SUBMIT', ET_DOMAIN),
-			'title_reply_to'=>sprintf(__('Leave a Reply to %s', ET_DOMAIN), $profile->initial_display_name)
-		));
+			comment_form(array(
+				'title_reply'=>__('POST YOUR OWN QUESTON:', ET_DOMAIN),
+				'logged_in_as'=> '',
+				'label_submit'=>__('SUBMIT', ET_DOMAIN),
+				'title_reply_to'=>sprintf(__('Leave a Reply to %s', ET_DOMAIN), $profile->initial_display_name)
+			));
 		else:
-			comment_form();
+			comment_form(array(
+				'title_reply'=>__('POST YOUR OWN QUESTON:', ET_DOMAIN),
+				'logged_in_as'=> '',
+				'label_submit'=>__('SUBMIT', ET_DOMAIN)
+			));
 		endif;
+	else:
+		comment_form();
+	endif;
 		?>
 
 </div><!-- .comments-area -->
