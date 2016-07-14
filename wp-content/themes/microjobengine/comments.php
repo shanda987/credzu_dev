@@ -53,11 +53,11 @@ if ( post_password_required() ) {
 
 	<?php
 	if( is_singular('mjob_post')):
-	comment_form(array(
-		'title_reply'=>__('POST YOUR OWN QUESTON:', ET_DOMAIN),
-		'logged_in_as'=> '',
-		'label_submit'=>__('SUBMIT', ET_DOMAIN)
-	));
+		comment_form(array(
+			'title_reply'=>__('POST YOUR OWN QUESTON:', ET_DOMAIN),
+			'logged_in_as'=> '',
+			'label_submit'=>__('SUBMIT', ET_DOMAIN)
+		));
 		else:
 			comment_form();
 		endif;

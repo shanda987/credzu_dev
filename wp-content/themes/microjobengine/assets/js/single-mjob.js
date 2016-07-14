@@ -93,6 +93,18 @@
                         }
                     });
                 }
+                if( ae_globals.user_role == 'individual' ){
+                    $('.comment-respond').show();
+                }
+                else {
+                    if (typeof view.getUrlVars()['replytocom'] !== 'undefined') {
+                        $('.comment-respond').show();
+                    }
+                    else {
+                        $('.comment-respond').hide();
+                    }
+
+                }
             },
             fetchExtraList: function(result, res, jqXHR){
                 var view = this;
@@ -115,6 +127,14 @@
                        // view.extraCollection.set(res.data);
                     }
                 });
+            },
+            getUrlVars: function () {
+                var vars = {};
+                var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi,
+                    function(m,key,value) {
+                        vars[key] = value;
+                    });
+                return vars;
             },
             renderExtras: function(){
                 var view = this;

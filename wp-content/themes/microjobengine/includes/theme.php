@@ -1177,6 +1177,7 @@ class ET_Microjobengine extends AE_Base
         $vars['listing_error_message'] = __('Paid listing require complete profile information; namely: Company Name, Company Address, Company Phone and Billing information. Also, your agreement between us must be signed. Please return here once you complete the required information', ET_DOMAIN);
         $vars['view_pdf'] = et_get_page_link('view-pdf');
         $vars['download_pdf'] = et_get_page_link('simple-download');
+        $vars['user_role'] = ae_user_role($user_ID);
         return $vars;
     }
     /**

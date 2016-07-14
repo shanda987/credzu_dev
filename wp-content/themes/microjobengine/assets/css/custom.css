@@ -1002,3 +1002,9 @@
 .extra-content{
     color: rgba(137, 138, 144, 0.6);
 }
+.display-none{
+    display:none;
+}
+.comment-respond{
+    display:none;
+}
