@@ -26,7 +26,7 @@ echo mJobProfileAction()->getProfileJson($profile);
             <div class="input-group">
                 <?php global $user_ID;
                 $user_role = ae_user_role($user_ID); ?>
-                <?php if( $user_roler == COMPANY): ?>
+                <?php if( $user_role == COMPANY): ?>
                 <div class="input-group-addon no-addon"><?php _e('Billing address:', ET_DOMAIN); ?></div>
                 <?php else:  ?>
                     <div class="input-group-addon no-addon"><?php _e('Billing address ( same as your address):', ET_DOMAIN); ?></div>
