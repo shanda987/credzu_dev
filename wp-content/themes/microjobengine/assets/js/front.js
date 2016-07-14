@@ -725,6 +725,9 @@
                         scrollTop: $("html, body").offset().top
                     }, 1000);
                 }
+                if( $('.single-post').length > 0 ){
+                    $('.comment-respond').show();
+                }
 
             },
             showErrorMessage: function(e){
