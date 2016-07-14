@@ -200,7 +200,6 @@ if(!function_exists('mJobShowUserHeader')) {
                             <li class="display-mobile"><a <?=(is_page('profile-company')) ? 'class="active"' : '' ?>" href="<?php echo et_get_page_link('profile-company'); ?>"><?php _e('Company Profile', ET_DOMAIN); ?></a></li>
                             <li class="display-mobile"><a <?=(is_page('billing-info-company')) ? 'class="active"' : '' ?>" href="<?php echo et_get_page_link('billing-info-company'); ?>"><?php _e('Billing Information', ET_DOMAIN); ?></a></li>
                             <li class="display-mobile"><a <?=(is_page('signature-company')) ? 'class="active"' : '' ?>" href="<?php echo et_get_page_link('signature-company'); ?>"><?php _e('Agreement', ET_DOMAIN); ?></a></li>
-                            <li class="line-distance"></li>
                         <?php elseif ($user_role == ADMIN):?>
                             <!-- Admin Options -->
                             <li class="display-mobile"><a <?=(is_page('profile')) ? 'class="active"' : '' ?>" href="<?php echo et_get_page_link('profile'); ?>"><?php _e('Personal Profile', ET_DOMAIN); ?></a></li>
