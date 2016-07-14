@@ -183,6 +183,36 @@ if(!function_exists('mJobShowUserHeader')) {
                         <li class="get-message-link">
                             <a href="<?php echo et_get_page_link('my-list-messages'); ?>"><?php _e('Message', ET_DOMAIN); ?></a>
                         </li>
+                        <?php
+                        if( is_page_template('page-profile.php') || is_page_template('page-profile-company') ||
+                            is_page_template('page-billing-info.php') || is_page_template('page-billing-info-company.php') ||
+                            is_page_template('page-change-password.php') || is_page_template('page-my-listing-job.php') ||
+                            is_page_template('page-dashboard.php')
+                        ){
+                        if ($user_role == INDIVIDUAL ):?>
+                            <li class="display-mobile"><a <?=(is_page('profile')) ? 'class="active"' : '' ?>" href="<?php echo et_get_page_link('profile'); ?>"><?php _e('My Profile', ET_DOMAIN); ?></a></li>
+                            <!--                <li class="hvr-wobble-horizontal"><a --><?//=(is_page('earn-money')) ? 'class="active"' : '' ?><!--" href="#">--><?php //_e('Earn money', ET_DOMAIN); ?><!--</a></li>-->
+                            <!--                <li class="line-distance"></li>-->
+                            <li class="display-mobile"><a <?=(is_page('billing-info')) ? 'class="active"' : '' ?>" href="<?php echo et_get_page_link('billing-info'); ?>"><?php _e('Billing information', ET_DOMAIN); ?></a></li>
+                        <?php elseif ($user_role == COMPANY ): ?>
+                            <li class=" display-mobile"><a <?=(is_page('my-listing-jobs')) ? 'class="active"' : '' ?>" href="<?php echo et_get_page_link('my-listing-jobs'); ?>"><?php _e('My Listings', ET_DOMAIN); ?></a></li>
+                            <li class=" display-mobile"><a <?=(is_page('profile')) ? 'class="active"' : '' ?>" href="<?php echo et_get_page_link('profile'); ?>"><?php _e('Personal Profile', ET_DOMAIN); ?></a></li>
+                            <li class="display-mobile"><a <?=(is_page('profile-company')) ? 'class="active"' : '' ?>" href="<?php echo et_get_page_link('profile-company'); ?>"><?php _e('Company Profile', ET_DOMAIN); ?></a></li>
+                            <li class="display-mobile"><a <?=(is_page('billing-info-company')) ? 'class="active"' : '' ?>" href="<?php echo et_get_page_link('billing-info-company'); ?>"><?php _e('Billing Information', ET_DOMAIN); ?></a></li>
+                            <li class="display-mobile"><a <?=(is_page('signature-company')) ? 'class="active"' : '' ?>" href="<?php echo et_get_page_link('signature-company'); ?>"><?php _e('Agreement', ET_DOMAIN); ?></a></li>
+                            <li class="line-distance"></li>
+                        <?php elseif ($user_role == ADMIN):?>
+                            <!-- Admin Options -->
+                            <li class="display-mobile"><a <?=(is_page('profile')) ? 'class="active"' : '' ?>" href="<?php echo et_get_page_link('profile'); ?>"><?php _e('Personal Profile', ET_DOMAIN); ?></a></li>
+                        <?php elseif ($user_role == STAFF):?>
+                            <li class="display-mobile"><a <?=(is_page('profile')) ? 'class="active"' : '' ?>" href="<?php echo et_get_page_link('profile'); ?>"><?php _e('Personal Profile', ET_DOMAIN); ?></a></li>
+                            <li class="display-mobile"><a <?=(is_page('staff-manage-company')) ? 'class="active"' : '' ?>" href="<?php echo et_get_page_link('staff-manage-company') ?>"><?php _e('Manage Companies', ET_DOMAIN); ?></a></li>
+                            <li class="display-mobile"><a <?=(is_page('staff-manage-listing')) ? 'class="active"' : '' ?>" href="<?php echo et_get_page_link('staff-manage-listing') ?>"><?php _e('Manage Listings', ET_DOMAIN); ?></a></li>
+                            <li class="display-mobile"><a <?=(is_page('staff-manage-billing')) ? 'class="active"' : '' ?>" href="<?php echo et_get_page_link('staff-manage-billing') ?>"><?php _e('Manage Billing', ET_DOMAIN); ?></a></li>
+                            <li class="display-mobile"><a <?=(is_page('staff-manage-dispute')) ? 'class="active"' : '' ?>" href="<?php echo et_get_page_link('staff-manage-dispute') ?>"><?php _e('Manage Disputes', ET_DOMAIN); ?></a></li>
+                        <?php endif; ?>
+                            <li class="display-mobile"><a <?=(is_page('change-password')) ? 'class="active"' : '' ?>" href="<?php echo et_get_page_link('change-password') ?>"><?php _e('Change password', ET_DOMAIN); ?></a></li>
+                    <?php } ?>
                         <li><a href="<?php echo wp_logout_url(home_url()); ?>"><?php _e('Sign out', ET_DOMAIN); ?></a></li>
                     </ul>
                 </div>

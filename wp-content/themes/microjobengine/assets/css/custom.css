@@ -1014,3 +1014,11 @@
 .post-detail #comments .comment-list .pull-right, .single-mjob_post #comments .comment-list .pull-right{
     padding-left: 20px;
 }
+.display-mobile{
+    display:none;
+}
+@media (max-width: 768px) {
+    .display-mobile{
+        display:block;
+    }
+}
