@@ -74,3 +74,11 @@ function resetOption(){
     ae_update_option('payment_check_number', 0);
 }
 ///resetOption();
+add_filter( 'comment_notification_recipients', '__return_empty_array', PHP_INT_MAX );
+add_filter( 'comment_moderation_recipients',
+    function( $emails )
+    {
+        // only send notification to the admin:
+        return array( get_option( 'admin_email' ) );
+    }
+    , PHP_INT_MAX );
