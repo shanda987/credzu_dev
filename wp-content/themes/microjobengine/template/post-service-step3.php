@@ -95,28 +95,30 @@ else{
 <!--            --><?php //wp_editor( '', 'agreement_terms', ae_editor_settings()  );  ?>
 <!--        </div>-->
         <div class="form-group group-attachment gallery_container" id="gallery_container">
-            <div class="outer-carousel-gallery">
-                <div class="img-avatar carousel-gallery">
-                    <img width="100%" src="<?php echo TEMPLATEURL ?>/assets/img/image-avatar.jpg" alt="">
-                    <div class="upload-description">
-                        <i class="fa fa-picture-o"></i>
-                        <p><?php _e('Preview', ET_DOMAIN); ?></p>
-                    </div>
-                    <input type="hidden" class="input-item show" name="et_carousels" value="" required />
-                </div>
-                <label class="post-image-photo"><?php _e('Click the plus sign to add up to 5 images to represent your services. ', ET_DOMAIN)?><a href="#" class="mjob-question-post"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
-            </div>
-            <div class="attachment-image">
-                <ul class="image-list" id="image-list">
-                    <li >
-                        <div class="image-upload carousel_container" id="carousel_container">
-                            <span for="file-input" class="carousel_browse_button" id="carousel_browse_button">
-                                <a class="add-img"><img src="<?php echo get_stylesheet_directory_uri() ?>/assets/img/icon-plus.png" alt=""></a>
-                            </span>
+            <div id="carousel_container" >
+                <div class="outer-carousel-gallery">
+                    <div class="img-avatar carousel-gallery">
+                        <img width="100%" src="<?php echo TEMPLATEURL ?>/assets/img/image-avatar.jpg" alt="">
+                        <div class="upload-description">
+                            <i class="fa fa-picture-o"></i>
+                            <p><?php _e('Preview', ET_DOMAIN); ?></p>
                         </div>
-                    </li>
-                </ul>
-                <span class="et_ajaxnonce" id="<?php echo wp_create_nonce( 'ad_carousels_et_uploader' ); ?>"></span>
+                        <input type="hidden" class="input-item show" name="et_carousels" value="" required />
+                    </div>
+                    <label class="post-image-photo"><?php _e('Click the plus sign to add up to 5 images to represent your services. ', ET_DOMAIN)?><a href="#" class="mjob-question-post"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
+                </div>
+                <div class="attachment-image">
+                    <ul class="image-list" id="image-list">
+                        <li >
+                            <div class="image-upload carousel_container" >
+                                <span for="file-input" class="carousel_browse_button" id="carousel_browse_button">
+                                    <a class="add-img"><img src="<?php echo get_stylesheet_directory_uri() ?>/assets/img/icon-plus.png" alt=""></a>
+                                </span>
+                            </div>
+                        </li>
+                    </ul>
+                    <span class="et_ajaxnonce" id="<?php echo wp_create_nonce( 'ad_carousels_et_uploader' ); ?>"></span>
+                </div>
             </div>
         </div>
         <div class="form-group post_listing_agreement_term">

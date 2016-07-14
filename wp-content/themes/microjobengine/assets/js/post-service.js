@@ -415,7 +415,8 @@
                         el: $('.gallery_container'),
                         name_item:'et_carousel',
                         uploaderID:'carousel',
-                        model: view.model
+                        model: view.model,
+                        dragdrop: true
                     });
                 }
                 view.redirect = false;
