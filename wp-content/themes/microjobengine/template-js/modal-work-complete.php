@@ -4,7 +4,7 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><img
                             src="<?php echo get_template_directory_uri() ?>/assets/img/icon-close.png" alt=""></span></button>
-                <h4 class="modal-title" id="myModalLabelForgot"><?php _e('Word is complete?', ET_DOMAIN); ?></h4>
+                <h4 class="modal-title" id="myModalLabelForgot"><?php _e('Work is complete?', ET_DOMAIN); ?></h4>
             </div>
             <div class="modal-body delivery-order">
                 <div class="unlock-requirement-modal">
@@ -12,7 +12,7 @@
                         <div class="input-group">
                             <p class="notice-message">
                                 <span class="note-action"><?php _e('Confirm your job is done.', ET_DOMAIN); ?></span><br/>
-                                <?php _e('By confirming that you have completed the work ou agreed to perform for your client. a payment from your client will be generated and they will informed. Please communicate with your client so they understand the difference between performing work and obtaining results.', ET_DOMAIN ) ?>
+                                <?php _e('By confirming that you have completed the work you agreed to perform for your client, a payment from your client will be generated and they will informed. Please communicate with your client so they understand the difference between performing work and obtaining results.', ET_DOMAIN ) ?>
                             </p>
                         </div>
                     </div>
