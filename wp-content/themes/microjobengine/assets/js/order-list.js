@@ -406,7 +406,7 @@
                 }
                 else if( this.target.attr('data-attachment') == 1){
                     view.$el.find('iframe').attr('src', ae_globals.view_pdf + '?pid=' + pid+'&type=attachment');
-                    if( this.target.attr('data-mime-type') == 'image/jpg' || this.target.attr('data-mime-type') == 'image/jpeg' || this.target.attr('data-mime-type') == 'image/png'){
+                    if( this.target.attr('data-mine-type') == 'image/jpg' || this.target.attr('data-mine-type') == 'image/jpeg' || this.target.attr('data-mine-type') == 'image/png'){
                         view.$el.find('iframe').hide();
                         view.$el.find('.show-requirement-img').attr('src', ae_globals.view_pdf + '?pid=' + pid+'&type=attachment');
                         view.$el.find('.show-requirement-img').show();
@@ -422,7 +422,7 @@
                 }
                 else {
                     view.$el.find('iframe').attr('src', ae_globals.view_pdf + '?id=' + pid);
-                    if( this.target.attr('data-mine-type') == 'image/jpg' || this.target.attr('data-mine-type') == 'image/jpeg' || this.target.attr('data-mine-type') == 'image/png'){
+                    if( this.target.attr('data-mime-type') == 'image/jpg' || this.target.attr('data-mime-type') == 'image/jpeg' || this.target.attr('data-mime-type') == 'image/png'){
                         view.$el.find('iframe').hide();
                         view.$el.find('.show-requirement-img').attr('src', ae_globals.view_pdf + '?id=' + pid)
                     }
