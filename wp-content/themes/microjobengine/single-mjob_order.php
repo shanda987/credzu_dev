@@ -252,7 +252,7 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                             <?php endif; ?>
                                         <?php else:?>
                                             <?php if( $current->post_status == 'processing' ): ?>
-                                                <p><?php _e("Good news! The cancellation period has expired and the services will begin shortly, if they haven't begun already. Once the correspondence is prepared, you will be notified ", ET_DOMAIN); ?></p>
+                                                <p><?php _e("Good news! The cancellation period has expired and the services will begin shortly, if they haven't begun already. When the status changes, you will be notified.", ET_DOMAIN); ?></p>
                                             <?php elseif( $current->post_status == 'verification'): ?>
                                                 <p><?php _e("Good news! The service is complete, your payment is due and you are not waiting for result. Please forward all correspondence you receive from any creditor or credit bureau so that results can be verified.", ET_DOMAIN); ?></p>
                                             <?php elseif($current->post_status == 'finished' || $current->post_status == 'delivery'): ?>
@@ -525,7 +525,7 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                                     ?>
                                                     <?php if( $user_role == COMPANY): ?>
                                                     <?php if( $current->post_status == 'processing' ): ?>
-                                                        <p><?php _e('Once you have completed the service, click "Completed" below after  which a payment from your client be generated and your client will be informed to wait for results', ET_DOMAIN); ?></p>
+                                                        <p><?php _e('Once you have completed the service, click "Work Complete." This will generate a payment from your client and your client will be informed. Please keep your client informed so they understand the status change.', ET_DOMAIN); ?></p>
                                                         <p class="mjob_order_btn"><button class="btn-submit btn-work-complete-css btn-work-complete-action"><?php _e('Work Complete', ET_DOMAIN); ?></button></p>
                                                     <?php elseif( $current->post_status == 'verification'): ?>
                                                         <p><?php _e("It is important that you update your client with results as soon as you can. Once results are shown, your client can review your company's performanceas well as rehire you", ET_DOMAIN); ?></p>
@@ -533,7 +533,7 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                                     <?php elseif($current->post_status == 'finished' || $current->post_status == 'delivery'): ?>
                                                         <p><?php _e("This job has ended, so you will need to engourage your client to re-hire you if you want to continue. Upon re-hiring, you can continue services and new payment will be generated once you complete the next cycle of services.", ET_DOMAIN); ?></p>
                                                     <?php else: ?>
-                                                        <p><?php _e('Once you have completed the service, click "Completed" below after  which a payment from your client be generated and your client will be informed to wait for results', ET_DOMAIN); ?></p>
+                                                        <p><?php _e('Once you have completed the service, click "Work Complete." This will generate a payment from your client and your client will be informed. Please keep your client informed so they understand the status change.', ET_DOMAIN); ?></p>
                                                         <p class="mjob_order_btn"><button class="btn-submit btn-work-complete-css btn-work-complete-action"><?php _e('Work Complete', ET_DOMAIN); ?></button></p>
                                                     <?php endif; ?>
                                                 <?php else:?>
