@@ -962,6 +962,9 @@
         display: inline-block;
         width: 100%;
     }
+    .display-desktop{
+        display: none;
+    }
 
 }
 .blog-sidebar{
@@ -1016,6 +1019,22 @@
 }
 .display-mobile{
     display:none;
+}
+.show-requirement-iframe-style img{
+    width: 100%;
+}
+.show-requirement-modal{
+    padding-top: 20px;
+    text-align: center;
+    min-height: 500px;
+}
+.show-requirement-modal img{
+    width: 90%;
+    display: none;
+
+}
+.show-requirement-modal iframe{
+    display: none;
 }
 @media (max-width: 768px) {
     .display-mobile{

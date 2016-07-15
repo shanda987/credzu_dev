@@ -293,7 +293,14 @@ class mJobConversationAction extends mJobPostAction
         if( !empty($result->et_files) ):
             foreach($result->et_files as $key=> $value){
                 $output .= '<li class="image-item" id="'. $value->ID .'">';
-                $output .= '<a class="ellipsis" title="'. $value->post_title .'" href="'. $value->guid . '"><i class="fa fa-paperclip"></i>' .$value->post_title. '</a>';
+                if( $value->post_mime_type == 'application/msword'){
+                    $output .= '<a  data-attachment="1" data-id="' . $value->ID . '" href="'.et_get_page_link('simple-download').'?pid='.$value->ID.'&type=attachment" data-name="' . $value->post_title . '"  class="show-requirement-docs">' . $value->post_title . '</a>';
+                }
+                else {
+                    $output .= '<a data-mine-type="'.$value->post_mime_type.'" data-attachment="1" data-id="' . $value->ID . '" href="#" data-name="' . $value->post_title . '"  class="show-requirement-doc display-desktop">' . $value->post_title . '</a>';
+                    $output .= '<a  data-attachment="1" data-id="' . $value->ID . '" href="'.et_get_page_link('simple-download').'?pid='.$value->ID.'&type=attachment" data-name="' . $value->post_title . '"  class="show-requirement-docs display-mobile display-tablet">' . $value->post_title . '</a>';
+                }
+//                $output .= '<a class="ellipsis attachment-show-on-modal" title="'. $value->post_title .'" href="'.et_get_page_link('view-pdf').'?attach_id='. $value->ID . '"><i class="fa fa-paperclip"></i>' .$value->post_title. '</a>';
                 $output .= '</li>';
             }
         endif;

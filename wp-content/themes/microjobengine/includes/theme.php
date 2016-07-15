@@ -1137,7 +1137,7 @@ class ET_Microjobengine extends AE_Base
         $vars['min_images_notification'] = __('You must have at least one picture!', ET_DOMAIN);
         $vars['delivery_status'] = __('DELIVERED', ET_DOMAIN);
         $vars['disputing_status'] = __('DISPUTING', ET_DOMAIN);
-        $file_types = ae_get_option('file_types', 'pdf,doc,docx,zip,psd,jpg,png');
+        $file_types = ae_get_option('file_types', 'pdf,doc,docx,jpg,png,jpeg');
         $file_types = preg_replace('/\s+/', '', $file_types);
         $vars['file_types'] = $file_types;
 

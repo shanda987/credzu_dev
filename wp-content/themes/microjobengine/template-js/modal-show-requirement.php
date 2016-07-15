@@ -11,6 +11,7 @@
                     <iframe class="show-requirement-iframe-style show-requirement-iframe" width="500px" src="">
 
                     </iframe>
+                    <img class="show-requirement-img" width="100%" src="" />
                     <div class="form-group clearfix float-right change-pass-button-method button">
                         <a class="btn-submit resend-requirement resend-requirement-css" href="#"><?php _e('Refresh', ET_DOMAIN); ?></a>
 <!--                        <a class="btn-submit btn-download" href="#">--><?php //_e('Download', ET_DOMAIN); ?><!--</a>-->

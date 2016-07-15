@@ -402,6 +402,22 @@
                     });
                     view.$el.find('.resend-requirement-css').hide();
                 }
+                else if( this.target.attr('data-attachment') == 1){
+                    view.$el.find('iframe').attr('src', ae_globals.view_pdf + '?pid=' + pid+'&type=attachment');
+                    if( this.target.attr('data-mine-type') == 'image/jpg' || this.target.attr('data-mine-type') == 'image/jpeg' || this.target.attr('data-mine-type') == 'image/png'){
+                        view.$el.find('iframe').hide();
+                        view.$el.find('.show-requirement-img').attr('src', ae_globals.view_pdf + '?pid=' + pid+'&type=attachment');
+                        view.$el.find('.show-requirement-img').show();
+                    }
+                    else{
+                        view.$el.find('iframe').show();
+                        view.$el.find('.show-requirement-img').hide();
+                    }
+                    view.$el.find('.btn-download').click(function(){
+                        window.location.href = ae_globals.download_pdf+'?pid='+pid+'&type=attachment';
+                    });
+                    view.$el.find('.resend-requirement-css').hide();
+                }
                 else {
                     view.$el.find('iframe').attr('src', ae_globals.view_pdf + '?id=' + pid);
                     view.$el.find('.btn-download').click(function(){
