@@ -556,7 +556,7 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                                         <span><?php echo $current->status_text; ?></span>
                                                     </div>
                                                 <?php else: ?>
-                                                    <p><?php _e('Pursuant to Federal and State law, your company cannot begin credit repair services until the 72 hours cancellation period has ended. Which began at the moment you signed your agreement with the company', ET_DOMAIN); ?></p>
+                                                    <p><?php _e('The 72-hour cancellation period required by the Credit Repair Organizations Act is pending; no service may be performed until it has expired. You will be notified when you may begin.', ET_DOMAIN); ?></p>
                                                     <div class="label-status label-status-order pending-color">
                                                         <span><?php _e('PENDING', ET_DOMAIN); ?></span>
                                                     </div>
