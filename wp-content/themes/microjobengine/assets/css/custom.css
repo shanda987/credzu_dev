@@ -1044,3 +1044,21 @@
         display:none;
     }
 }
+.company-side .img-avatar{
+    width: 15%!important;
+    text-align: right;
+}
+@media (max-width: 767px) {
+    .company-side .img-avatar{
+        width: 8px!important;
+    }
+    .company-side .conversation-text{
+        margin-right: 0!important;
+        margin-left: 40px;
+        width: 77%!important;
+        float: left!important;
+    }
+    .company-side .message-time{
+        float:right;
+    }
+}

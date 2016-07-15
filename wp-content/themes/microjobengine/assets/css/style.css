@@ -12673,7 +12673,7 @@ body.archive .block-title {
   float: left;
   margin-right: 20px;
   width: 7%;
-  display: none;
+  /*display: none;*/
 }
 .mjob_conversation_detail_page .private-message .img-avatar img {
   width: 50px;

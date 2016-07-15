@@ -112,7 +112,7 @@ if(!function_exists('mJobShowUserHeader')) {
                         $conversations_query = new WP_Query($args);
                         while($conversations_query->have_posts()) :
                             $conversations_query->the_post();
-                            //get_template_part('template/conversation-dropdown', 'item');
+                            get_template_part('template/conversation-dropdown', 'item');
 
                         endwhile;
                         wp_reset_postdata();

@@ -2,11 +2,16 @@
 global $wp_query, $ae_post_factory, $post, $user_ID;
 $post_object = $ae_post_factory->get('ae_message');
 $current = $post_object->convert($post);
+if( $current->post_author == $user_ID ){
+    $cls = 'company-side';
+}
+else{
+    $cls = 'client-side';
+}
 if($user_ID == $current->to_user) {
     update_post_meta($current->ID, "receiver_unread", "");
 }
 ?>
-
 <?php if($current->type == 'changelog'): ?>
     <li class="clearfix message-item block-changelog">
         <div class="changelog-item">
@@ -22,7 +27,7 @@ if($user_ID == $current->to_user) {
         </div>
     </li>
 <?php else: ?>
-    <li class="clearfix message-item">
+    <li class="clearfix message-item <?php echo $cls; ?>">
         <div class="<?php echo $current->message_class; ?>">
             <div class="img-avatar">
                 <?php echo $current->author_avatar; ?>

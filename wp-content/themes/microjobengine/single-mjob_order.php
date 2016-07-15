@@ -32,15 +32,17 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                     <p class="block-title">
                         <?php _e('ORDER DETAILS', ET_DOMAIN); ?>
                     </p>
-                    <?php if( $user_role == COMPANY ): ?>
+                    <?php if( $user_role == COMPANY ):
+                        $cls = 'company-side';
+                        ?>
                         <p class="btn-back"><?php _e('Communicate with your client below.', ET_DOMAIN); ?></p>
-                    <?php else: ?>
+                    <?php else: $cls = 'client-side'; ?>
                     <p class="btn-back"><?php _e('Communicate with your company below.', ET_DOMAIN); ?></p>
                     <?php endif; ?>
                 </div>
             </div>
             <div class="row no-margin">
-                <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12 conversation-form">
+                <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12 conversation-form ">
 <!--                    <p class="text-dispute note-scroll">--><?php //_e('You can scroll up to view all messages', ET_DOMAIN); ?><!--</p>-->
 <!--                    <div class="conversation-date float-center">-->
 <!--                        <div class="line"></div>-->
@@ -191,7 +193,7 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                             </div>
                                             <h4 class="float-center">
                                                 <div id="display_name">
-                                                    <div class="" data-edit="user" data-id="" data-name="display_name" data-type="input"><?php echo $profile->first_name.' '.$profile->last_name; ?></div>
+                                                    <div class="" data-edit="user" data-id="" data-name="display_name" data-type="input"><?php echo $profile->initial_display_name; ?></div>
                                                 </div>
                                             </h4>
                                             <div class="line">
@@ -462,7 +464,7 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                                 </div>
                                                 <h4 class="float-center">
                                                     <div id="display_name">
-                                                        <div class="" data-edit="user" data-id="" data-name="display_name" data-type="input"><?php echo $profile->first_name.' '.$profile->last_name; ?></div>
+                                                        <div class="" data-edit="user" data-id="" data-name="display_name" data-type="input"><?php echo $profile->initial_display_name; ?></div>
                                                     </div>
                                                 </h4>
                                                 <div class="line">

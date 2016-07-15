@@ -201,11 +201,15 @@ class AE_Taxonomy_Meta extends AE_Base{
       * @author JACK BUI
       */
     public function convert($term){
-        foreach( $this->meta as $key=>$value ){
-            $val = get_term_meta($term->term_id, $value, true);
-            $term->$value = $val;
+        if( term_exists($term)) {
+            foreach ($this->meta as $key => $value) {
+                $val = get_term_meta($term->term_id, $value, true);
+                $term->$value = $val;
+            }
+            return apply_filters('jb_convert_' . $term->taxonomy, $term);
         }
-        return apply_filters('jb_convert_'.$term->taxonomy, $term);
+        return false;
+
     }
 
 }
