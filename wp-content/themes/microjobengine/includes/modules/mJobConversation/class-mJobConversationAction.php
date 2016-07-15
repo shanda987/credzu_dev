@@ -282,6 +282,13 @@ class mJobConversationAction extends mJobPostAction
             } else {
                 $result->author_avatar = mJobAvatar($user_ID, 50);
             }
+            $conversation_status = get_post_meta($result->ID, $user_ID . '_conversation_status', true);
+            if($conversation_status == "unread") {
+                // If unread
+                $result->unread_class = "unread";
+            } else {
+                $result->unread_class = "";
+            }
 
         }
 

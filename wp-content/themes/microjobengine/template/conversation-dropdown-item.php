@@ -11,7 +11,7 @@ $current = $post_object->convert($post);
                 <?php echo $current->author_avatar ?>
             </div>
             <div class="conversation-text">
-                <span class="latest-reply"> <?php echo $current->post_content; ?></span>
+                <span class="latest-reply"> <?php echo strip_tags($current->post_content); ?></span>
                 <span class="latest-reply-time"><?php echo $current->post_date; ?></span>
             </div>
         </div>
