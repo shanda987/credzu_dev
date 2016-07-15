@@ -422,6 +422,14 @@
                 }
                 else {
                     view.$el.find('iframe').attr('src', ae_globals.view_pdf + '?id=' + pid);
+                    if( this.target.attr('data-mine-type') == 'image/jpg' || this.target.attr('data-mine-type') == 'image/jpeg' || this.target.attr('data-mine-type') == 'image/png'){
+                        view.$el.find('iframe').hide();
+                        view.$el.find('.show-requirement-img').attr('src', ae_globals.view_pdf + '?id=' + pid)
+                    }
+                    else{
+                        view.$el.find('iframe').show();
+                        view.$el.find('.show-requirement-img').hide();
+                    }
                     view.$el.find('.btn-download').click(function(){
                         window.location.href = ae_globals.download_pdf+'?id='+pid;
                     });
