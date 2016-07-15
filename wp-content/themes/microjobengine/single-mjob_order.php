@@ -32,7 +32,11 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                     <p class="block-title">
                         <?php _e('ORDER DETAILS', ET_DOMAIN); ?>
                     </p>
+                    <?php if( $user_role == COMPANY ): ?>
+                        <p class="btn-back"><?php _e('Communicate with your client below.', ET_DOMAIN); ?></p>
+                    <?php else: ?>
                     <p class="btn-back"><?php _e('Communicate with your company below.', ET_DOMAIN); ?></p>
+                    <?php endif; ?>
                 </div>
             </div>
             <div class="row no-margin">
@@ -563,7 +567,7 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                                 <?php      endif; ?>
                                             </div>
                                             <div class="total-order">
-                                                <p><i class="fa fa-exclamation-circle" aria-hidden="true"></i><?php _e(' Here are the details for your order and company hired', ET_DOMAIN); ?></p>
+                                                <p><i class="fa fa-exclamation-circle" aria-hidden="true"></i><?php _e(' Here are the details for your order and the client who hired you.', ET_DOMAIN); ?></p>
                                             </div>
                                         </div>
                                         <div role="tabpanel" class="tab-pane  order-detail-price" id="requirement">
