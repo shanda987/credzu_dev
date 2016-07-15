@@ -552,6 +552,7 @@
 }
 .document-list .item-requirement{
     text-align: center;
+    min-height: 97px;
 }
 .login-list-icon li{
     margin-right: 15px;
