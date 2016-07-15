@@ -746,6 +746,9 @@
                     $(this).siblings(".popover").on("mouseleave", function () {
                         $(_this).popover('hide');
                     });
+                    $('.facebook_auth_btn').click(function(e){
+                        Views.loginFb(e);
+                    })
                 }).on("mouseleave", function () {
                     var _this = this;
                     setTimeout(function () {
