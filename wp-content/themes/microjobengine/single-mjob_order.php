@@ -263,7 +263,7 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                                     <p class="mjob_order_btn"><button data-id="<?php echo $current->ID; ?>" class="btn-submit btn-continue-service-css  btn-continue-service-btn margin-top-20" ><?php _e('CONTINUE SERVICES', ET_DOMAIN); ?></button></p>
                                                 <?php endif; ?>
                                             <?php else: ?>
-                                                <p><?php _e('Pursuant to Federal and State law, your company cannot begin credit repair services until the 72 hours cancellation period has ended. Which began at the moment you signed your agreement with the company', ET_DOMAIN); ?></p>
+                                                <p><?php _e('Pursuant to Federal and State law, your company cannot begin credit related services until the 72 hours cancellation period has ended, which began at the moment you signed your agreement with the company.', ET_DOMAIN); ?></p>
                                             <?php endif; ?>
                                         <?php endif ?>
                                             <?php
