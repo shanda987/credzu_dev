@@ -632,6 +632,7 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                                                                     else:
                                                                                         $file_name = $term->requirement_short_name.$tx;
                                                                                     endif;
+                                                                                var_dump($f);
                                                                                 ?>
                                                                                 <a  data-mime-type="<?php $f->post_mime_type; ?>" href="#" data-type="<?php echo $term->click_type; ?>" data-slug="<?php echo $term->slug; ?>"  data-id="<?php echo $f->ID; ?>"  data-name="<?php echo $term->name; ?>" class="show-requirement-doc">
                                                                                     <div class="doc-icon"> <i class="fa fa-file-pdf-o" aria-hidden="true"></i></div>
