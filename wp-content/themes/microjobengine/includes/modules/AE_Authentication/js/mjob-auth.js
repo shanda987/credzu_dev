@@ -215,11 +215,13 @@
                                         view.$el.find('#user_email').focus();
                                         view.$el.find('#user_login').val('sdfsdf');
                                         view.$el.find('#signUpFormStep1').hide();
+                                        view.$el.find('#signInForm').hide();
                                     }
                                     else {
                                         view.$el.find('#signInForm').show();
                                         view.$el.find('#user_login').val(resp.user_email);
                                         view.$el.find('#signUpFormStep1').hide();
+                                        view.$el.find('#signUpForm').hide();
                                     }
                                 }
                             });
