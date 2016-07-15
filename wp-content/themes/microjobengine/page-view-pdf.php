@@ -40,7 +40,6 @@ else {
         }
         $file = $f['path'];
         $filename = $f['name'];
-        var_dump($file);
     } else if (isset($_GET['aid']) && $_GET['aid'] == 1) {
         global $user_ID;
         $profile = mJobProfileAction()->getProfile($user_ID);
