@@ -85,7 +85,7 @@
                 if($(window).scrollTop() > title_detail_job_top){
                     $('#logo-site, .search-bar, #myAccount, .navbar-default').css("display", "none");
                     $('.mjob-title').addClass('title-fixed-scroll');
-                    $('.mjob-order-action').addClass('order-fixed-scroll');
+                    $('.btn-order-aside-bar').addClass('order-fixed-scroll');
                     if( window.screen.width <= 1024 ) {
                         $('.mjob-price').hide();
                     }
@@ -97,7 +97,7 @@
                 }else{
                     $('#logo-site, .search-bar, #myAccount, .navbar-default').css("display", "inline-block");
                     $('.mjob-title').removeClass('title-fixed-scroll');
-                    $('.mjob-order-action').removeClass('order-fixed-scroll');
+                    $('.btn-order-aside-bar').removeClass('order-fixed-scroll');
                     $('.mjob-price').show();
                 }
             }
