@@ -486,8 +486,15 @@
                         var $parent = $(element ).parent();
                         $parent.removeClass('has-error');
                         $target.removeClass('has-visited');
+                    },
+                    invalidHandler: function(form, validator) {
+                        AE.pubsub.trigger('ae:notification', {
+                            msg: 'You have no completed all required fields. Please review those fields marked as incomplete.',
+                            notice_type: 'error'
+                        });
                     }
                 });
+
             },
             checkCat: function(e){
                 e.preventDefault();
@@ -509,6 +516,7 @@
                 })
             },
             customValidate: function(){
+
                 var view = this;
                 if( $('#is_credit_repair').val() == 1 ) {
                     if( $('#time_delivery').val() < 20 ) {
@@ -543,6 +551,7 @@
                             return false;
                         }
                     }
+
                 }
                 return true;
             },

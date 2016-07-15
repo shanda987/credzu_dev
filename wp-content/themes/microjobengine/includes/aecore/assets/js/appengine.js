@@ -2012,6 +2012,7 @@ _.templateSettings = {
                     } else {
                         $(element).closest('div').append(label);
                     }
+
                 }
             });
         },
