@@ -1047,6 +1047,9 @@
     .block-statistic{
         display:none;
     }
+    .requirment-tab-content{
+        display: inline-block;
+    }
 }
 .company-side .img-avatar{
     width: 15%!important;
