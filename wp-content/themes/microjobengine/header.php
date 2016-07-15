@@ -47,15 +47,32 @@ global $current_user;
 						?>
 					</div>
 				</div>
+				<?php if(is_user_logged_in()) {
+					$cls = 'myaccount-login';
+				}
+				else{
+					$cls = 'myaccount-unlogin';
+				}
+				?>
 				<!--Function right-->
-				<div id="myAccount" class="col-lg-5 col-md-5 col-sm-3 col-xs-6 float-right header-right">
+				<div id="myAccount" class="col-lg-5 col-md-5 col-sm-3 col-xs-6 float-right header-right <?php echo $cls; ?>">
 					<?php
 					if(is_user_logged_in()) {
 						mJobShowUserHeader();
-					} else {
-						mJobShowAuthenticationLink();
-					}
+					} else { ?>
+						<a class="btn btn-default display-desktop btn-authentication-pop" data-placement="bottom" data-popover-content="#a1" data-toggle="popover" data-trigger="focus" href="#" tabindex="0"><?php _e('SIGN UP | LOGIN', ET_DOMAIN); ?></a>
+						<!-- Content for Popover #1 -->
+						<div class="hidden" id="a1">
+							<div class="popover-body">
+								<p><?php _e('You can access our site through Facebook, Google, Twitter, or any email. Choose any option:', ET_DOMAIN); ?></p>
+								<?php mJobShowAuthenticationLink(); ?>
+							</div>
+						</div>
+						<a class="btn btn-default hireSignup display-mobile display-tablet" href="#" ><?php _e('LOGIN', ET_DOMAIN); ?></a>
+					<?php }
 					?>
+
+
 				</div>
 			</div>
 		</div>

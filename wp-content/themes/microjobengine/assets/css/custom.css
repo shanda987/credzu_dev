@@ -556,8 +556,8 @@
 .login-list-icon li{
     margin-right: 15px;
 }
-.login-list-icon li:last-child{
-    margin-right: 0;
+.login-list-icon li i {
+    font-size: 2em;
 }
 .login-list-icon .login-facebook i{
     color:  #3b5998;
@@ -962,9 +962,9 @@
         display: inline-block;
         width: 100%;
     }
-    .display-desktop{
-        display: none;
-    }
+    /*.display-desktop{*/
+        /*display: none;*/
+    /*}*/
 
 }
 .blog-sidebar{
@@ -1040,6 +1040,9 @@
     .display-mobile{
         display:block;
     }
+    .display-desktop{
+        display: none;
+    }
     .block-statistic{
         display:none;
     }
@@ -1061,4 +1064,17 @@
     .company-side .message-time{
         float:right;
     }
+    .myaccount-unlogin{
+        margin-top: 17px!important;
+    }
+    .myaccount-unlogin a{
+        width: 33%;
+        float: right;
+        margin-right: 2%;
+    }
+
+}
+.myaccount-unlogin{
+    margin-top: 28px;
+    height: 100%;
 }

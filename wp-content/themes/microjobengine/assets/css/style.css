@@ -8823,7 +8823,7 @@ body.page-template-page-profile-php .plus-circle {
 }
 @media (max-width: 991px) {
   .home #et-nav {
-    z-index: 9999;
+    z-index: 1000;
   }
 }
 @media (max-width: 991px) {
