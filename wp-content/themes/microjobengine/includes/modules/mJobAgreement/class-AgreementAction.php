@@ -487,6 +487,56 @@ function addCompanyFirstName(){
     }
     return $name;
 }
+add_shortcode('company-last-name', 'addCompanyLastName');
+/**
+ * add first name to shortcode
+ *
+ * @param array $atts
+ * @return void
+ * @since 1.0
+ * @package MicrojobEngine
+ * @category void
+ * @author JACK BUI
+ */
+function addCompanyLastName(){
+    $name = '[company-last-name]';
+    if( isset($_REQUEST['jid']) ){
+        $mjob = mJobAction()->get_mjob($_REQUEST['jid']);
+        if( !empty($mjob) ) {
+            $profile = mJobProfileAction()->getProfile($mjob->post_author);
+            if (!empty($profile)) {
+                $name = $profile->last_name;
+                return $name;
+            }
+        }
+    }
+    return $name;
+}
+add_shortcode('company-phone', 'addCompanyPhone');
+/**
+ * add first name to shortcode
+ *
+ * @param array $atts
+ * @return void
+ * @since 1.0
+ * @package MicrojobEngine
+ * @category void
+ * @author JACK BUI
+ */
+function addCompanyPhone(){
+    $name = '[company-phone]';
+    if( isset($_REQUEST['jid']) ){
+        $mjob = mJobAction()->get_mjob($_REQUEST['jid']);
+        if( !empty($mjob) ) {
+            $profile = mJobProfileAction()->getProfile($mjob->post_author);
+            if (!empty($profile)) {
+                $name = $profile->company_phone;
+                return $name;
+            }
+        }
+    }
+    return $name;
+}
 add_shortcode('company-signature', 'addCompanySignature');
 /**
  * add company signature
@@ -592,7 +642,7 @@ function addMjobDuration(){
     }
     return '[service-duration]';
 }
-add_shortcode('timestamp', 'addTimeStamp');
+add_shortcode('time-stamp', 'addTimeStamp');
 /**
  * add first name to shortcode
  *
