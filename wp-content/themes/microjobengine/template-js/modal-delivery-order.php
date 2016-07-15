@@ -4,17 +4,17 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><img
                             src="<?php echo get_template_directory_uri() ?>/assets/img/icon-close.png" alt=""></span></button>
-                <h4 class="modal-title" id="myModalLabelForgot"><?php _e('Provide Results', ET_DOMAIN) ?></h4>
+                <h4 class="modal-title" id="myModalLabelForgot"><?php _e('Submit Results', ET_DOMAIN) ?></h4>
             </div>
             <div class="modal-body delivery-order">
                 <div class="form-delivery-order">
                 <p class="notice-message">
                     <span class="note-action"><?php _e('Confirm your job is done.', ET_DOMAIN); ?></span><br/>
-                    <?php _e('By confirming that you have completed the work ou agreed to perform for your client. a payment from your client will be generated and they will informed. Please communicate with your client so they understand the difference between performing work and obtaining results.', ET_DOMAIN ) ?>
+                    <?php _e('It is critical that you provide a detailed explanation of the work you performed and the results you obtained. This becomes a part of your record with the client, so please make sure it is thorough and represents your work altogether. You can also use the upload field to provide any documents that support the description you created for the work you performed.', ET_DOMAIN ) ?>
                 </p>
                 <form class="form-authentication">
                     <div class="form-group">
-                        <textarea name="post_content" placeholder="Inactive text field"></textarea>
+                        <textarea name="post_content" placeholder="Describe your work here."></textarea>
                     </div>
                     <!--                        <div class="attachment-file gallery_container" id="gallery_container">-->
                     <!--                            <div class="attachment-image">-->
