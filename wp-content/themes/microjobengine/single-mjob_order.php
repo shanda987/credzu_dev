@@ -612,7 +612,7 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                                                         endif;
                                                                         ?>
                                                                         <li class="col-lg-6 col-md-6 col-xs-6 item-requirement">
-                                                                            <?php if( $f->post_mime_type = 'application/msword'): ?>
+                                                                            <?php if( $f->post_mime_type == 'application/msword'): ?>
                                                                                 <a  href="<?php echo et_get_page_link('simple-download').'?cid='.$current->ID.'&n='.$item['name'] ?>" data-name="<?php echo $item['name'].' : '.date('d/m/Y', strtotime($current->post_date))?>" class="show-requirement-docs">
                                                                                     <div class="doc-icon"> <i class="fa fa-file-pdf-o" aria-hidden="true"></i></div>
                                                                                     <div class="doc-name"><?php echo $item['name'] ?></div>
