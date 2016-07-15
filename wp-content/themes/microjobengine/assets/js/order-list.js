@@ -425,6 +425,7 @@
                     if( this.target.attr('data-mime-type') == 'image/jpg' || this.target.attr('data-mime-type') == 'image/jpeg' || this.target.attr('data-mime-type') == 'image/png'){
                         view.$el.find('iframe').hide();
                         view.$el.find('.show-requirement-img').attr('src', ae_globals.view_pdf + '?id=' + pid)
+                        view.$el.find('.show-requirement-img').show();
                     }
                     else{
                         view.$el.find('iframe').show();
