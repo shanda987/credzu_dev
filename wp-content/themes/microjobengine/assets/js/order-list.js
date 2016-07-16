@@ -476,6 +476,7 @@
                 view.$el.find('.requirement-modal-title').html(modal_name);
                 view.$el.find('.requirement-modal-title-allow').html(checkbox_name);
                 $('.requirement-modal-title-here').html(modal_name+' here');
+                $('#allow_upload').attr('checked', false);
                 view.initCarousel();
             },
             initCarousel: function(){
