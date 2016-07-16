@@ -11,7 +11,7 @@ $mjob_post = get_post($post->post_parent);
 					<span aria-hidden="true"><img
 							src="<?php echo get_template_directory_uri() ?>/assets/img/icon-close.png" alt=""></span>
 				</button>
-				<h4 class="modal-title"><?php _e("Write review", ET_DOMAIN) ?></h4>
+				<h4 class="modal-title"><?php _e("Submit a rating and review.", ET_DOMAIN) ?></h4>
 			</div>
 			<div class="modal-body">
 			<form role="form" id="review_form" class="review-form">
