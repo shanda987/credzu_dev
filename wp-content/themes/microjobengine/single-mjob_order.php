@@ -302,8 +302,8 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                                     $q = false;
                                                     foreach( $terms as $term):
                                                         $f = false;
-                                                        var_dump($term);
                                                         $term = $obj_tax->convert($term);
+                                                        var_dump($term);
                                                         if( $term->click_type == 'open-contact-info' || $term->click_type == 'open-billing-info'):
                                                             $f = true;
                                                         endif;
