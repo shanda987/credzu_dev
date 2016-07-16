@@ -426,6 +426,7 @@
                         view.$el.find('iframe').hide();
                         view.$el.find('.show-requirement-img').attr('src', ae_globals.view_pdf + '?id=' + pid)
                         view.$el.find('.show-requirement-img').show();
+                        console.log('sdfsaaaaaa');
                     }
                     else{
                         view.$el.find('iframe').show();
