@@ -1179,6 +1179,11 @@ class mJobAction extends mJobPostAction{
                         do_action('email_to_company_comment_approved', $comment);
                     }
                 }
+                else{
+                    if($new_status == 'approved') {
+                        do_action('email_mjob_review', $comment);
+                    }
+                }
             }
         }
         /**

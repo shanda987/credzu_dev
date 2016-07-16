@@ -2573,6 +2573,46 @@ class ET_Admin extends AE_Base
                 ),
                 array(
                     'args' => array(
+                        'title' => __('Email subject of Review action', ET_DOMAIN),
+                        'id' => 'review-subject-template',
+                        'class' => 'payment-gateway',
+                        'name' => '',
+                        'desc' => __("Send to a Company  when Client review him", ET_DOMAIN),
+                        'toggle' => true
+                    ),
+                    'fields' => array(
+                        array(
+                            'id' => 'mjob_review_email_subject',
+                            'type' => 'text',
+                            'title' => __("Send to a Company  when Client review him", ET_DOMAIN) ,
+                            'class' => '',
+                            'name' => 'mjob_review_email_subject',
+                            'reset' => 1
+                        )
+                    )
+                ),
+                array(
+                    'args' => array(
+                        'title' => __("Email content of Review action", ET_DOMAIN),
+                        'id' => 'review-mail-template',
+                        'class' => 'payment-gateway',
+                        'name' => '',
+                        'desc' => __("Send to a Company  when Client review him", ET_DOMAIN),
+                        'toggle' => true
+                    ),
+                    'fields' => array(
+                        array(
+                            'id' => 'mjob_review_email',
+                            'type' => 'editor',
+                            'title' => __("Send to a Company  when Client review him", ET_DOMAIN) ,
+                            'class' => '',
+                            'name' => 'mjob_review_email',
+                            'reset' => 1
+                        )
+                    )
+                ),
+                array(
+                    'args' => array(
                         'title' => __("Pay Package Related Mail Template", ET_DOMAIN) ,
                         'id' => 'mail-description-group',
                         'class' => '',

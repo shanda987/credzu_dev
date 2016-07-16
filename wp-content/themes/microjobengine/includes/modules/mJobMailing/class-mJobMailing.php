@@ -677,4 +677,38 @@ class mJobMailing extends AE_Mailing
             $this->wp_mail($profile->business_email, $subject, $msg, array('user_id' => $post_author));
         }
     }
+    /**
+     * Send to admin a email when admin approved his comment
+     *
+     * @param void
+     * @return void
+     * @since 1.4
+     * @package MicrojobEngine
+     * @category CREDZU
+     * @author JACK BUI
+     */
+    public function email_mjob_review($comment){
+        $post_author = get_post_field( 'post_author', $comment->comment_post_ID );
+        $link = '<a href="'.get_permalink($comment->comment_post_ID).'#comment-'.$comment->comment_ID.'">HERE</a>';
+        if( $post_author != $comment->user_id ) {
+            $profile = mJobProfileAction()->getProfile($post_author);
+            $subject = ae_get_option('mjob_review_email_subject', __('A client reviewed your company. ', ET_DOMAIN));
+            $msg = ae_get_option('mjob_review_email', sprintf(__('A client reviewed your company.', ET_DOMAIN)));
+            $msg = str_ireplace('[comment_link]', $link, $msg );
+            $this->wp_mail($profile->business_email, $subject, $msg, array('user_id' => $post_author));
+        }
+        else{
+            if( !empty($comment->comment_parent) ){
+                $c = get_comment($comment->comment_parent);
+                $profile = mJobProfileAction()->getProfile($c->user_id);
+            }
+            else{
+                $profile = mJobProfileAction()->getProfile($comment->user_id);
+            }
+            $subject = ae_get_option('mjob_review_email_subject', __('A client reviewed your company.', ET_DOMAIN));
+            $msg = ae_get_option('mjob_review_email', sprintf(__('A client reviewed your company.', ET_DOMAIN)));
+            $msg = str_ireplace('[comment_link]', $link, $msg );
+            $this->wp_mail($profile->business_email, $subject, $msg, array('user_id' => $post_author));
+        }
+    }
 }
