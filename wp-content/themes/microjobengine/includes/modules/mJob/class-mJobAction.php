@@ -1174,8 +1174,10 @@ class mJobAction extends mJobPostAction{
           */
         public function mjob_approve_comment_callback($new_status, $old_status, $comment) {
             if($old_status != $new_status) {
-                if($new_status == 'approved') {
-                    do_action('email_to_company_comment_approved', $comment);
+                if( $comment->comment_type != 'mjob_review'){
+                    if($new_status == 'approved') {
+                        do_action('email_to_company_comment_approved', $comment);
+                    }
                 }
             }
         }
