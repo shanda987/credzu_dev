@@ -187,7 +187,7 @@ class MjobReviewAction extends AE_Base
         /*
          *  check status of project
         */
-        if ($status != 'delivery') {
+        if ($status != 'delivery' && $status != 'finished') {
             wp_send_json(array(
                 'succes' => false,
                 'msg' => __('Wait until the order is delivered to review!', ET_DOMAIN)

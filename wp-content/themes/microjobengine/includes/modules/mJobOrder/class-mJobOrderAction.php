@@ -850,9 +850,13 @@ class mJobOrderAction extends mJobPostAction{
       * @author JACK BUI
       */
     public function mjobReorder(){
+        global $user_ID;
         $request = $_REQUEST;
         if( isset($request['order_id']) && !empty($request['order_id'])){
+            $o = get_post($request['order_id']);
             $result = $this->updateOrderStatus($request['order_id'], 'processing');
+            $msg = __('Thanks for trusting us, again! Since you are continuing service, we do not need to wait for the cancellation period this time. We will begin performing the service right away.', ET_DOMAIN);
+            mJobAddOrderMessage($request['order_id'], $user_ID, $o->post_author, 'reoder_message', $msg );
             if( $result && !is_wp_error($result)){
                 wp_send_json(array(
                     'success'=> true,
