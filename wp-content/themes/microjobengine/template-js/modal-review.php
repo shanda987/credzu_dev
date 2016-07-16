@@ -19,7 +19,7 @@ $mjob_post = get_post($post->post_parent);
 			 	$employer_name = get_the_author_meta( 'display_name', $mjob_post->post_author );
 			  ?>
                 <div class="form-group">
-                    <span class="post_content"><?php printf(__('Rating',ET_DOMAIN),$mjob_post->post_title); ?> </span>
+<!--                    <span class="post_content">--><?php //printf(__('Rating',ET_DOMAIN),$mjob_post->post_title); ?><!-- </span>-->
                     <div class="rating-it" style="cursor: pointer;"></div>
 				</div>
 				<div class="form-group">

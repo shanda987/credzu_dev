@@ -10348,7 +10348,7 @@ body.archive .block-title {
 }
 .review-form span.post_content, .review-form .rating-it {
   display: inline-block;
-  margin-bottom: 50px;
+  margin-bottom: 0;
 }
 .review-form span.post_content {
   color: #898a90;

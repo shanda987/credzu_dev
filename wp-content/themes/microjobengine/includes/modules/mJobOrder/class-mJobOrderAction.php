@@ -850,10 +850,12 @@ class mJobOrderAction extends mJobPostAction{
       * @author JACK BUI
       */
     public function mjobReorder(){
-        global $user_ID;
+        global $user_ID, $ae_post_factory;
+        $o_obj = $ae_post_factory->get('mjob_order');
         $request = $_REQUEST;
         if( isset($request['order_id']) && !empty($request['order_id'])){
             $o = get_post($request['order_id']);
+            $o = $o_obj->convert($o);
             $mjob_author = get_post_field('post_author', $o->mjob->ID);
             mJobAddOrderChangeLog($request['order_id'], $user_ID, 'reorder_message', 'reorder' );
             $result = $this->updateOrderStatus($request['order_id'], 'processing');
