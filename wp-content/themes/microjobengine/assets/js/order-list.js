@@ -431,7 +431,9 @@
                         view.$el.find('iframe').show();
                         view.$el.find('.show-requirement-img').hide();
                         console.log(view.$el.find('.show-requirement-img').length);
+                        console.log('sdfsfdsfd');
                     }
+                    console.log('sdfsfdsfd1');
                     view.$el.find('.btn-download').click(function(){
                         window.location.href = ae_globals.download_pdf+'?id='+pid;
                     });
