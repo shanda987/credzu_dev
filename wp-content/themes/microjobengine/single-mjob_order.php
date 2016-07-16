@@ -654,7 +654,7 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                                     </ul>
                                                     <ul class="requirement-list document-list mobile-list">
                                                         <?php if( isset($current->agreement_files) && !empty($current->agreement_files)):
-                                                            foreach($current->agreement_files as $item): ?>
+                                                            foreach($current->agreement_files as $item):?>
                                                                 <li class="col-lg-6 col-md-6 col-xs-6 item-requirement">
                                                                     <a  href="<?php echo et_get_page_link('simple-download').'?cid='.$current->ID.'&n='.$item['name'] ?>" data-name="<?php echo $item['name'].' : '.date('d/m/Y', strtotime($current->post_date))?>" class="show-requirement-docs">
                                                                         <div class="doc-icon"> <i class="fa fa-file-pdf-o" aria-hidden="true"></i></div>
@@ -682,9 +682,14 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                                                         endif;
                                                                         ?>
                                                                         <li class="col-lg-6 col-md-6 col-xs-6 item-requirement">
+                                                                            <?php  if( !$term ):
+                                                                                        $file_name = $f->post_title;
+                                                                                    else:
+                                                                                        $file_name = $term->requirement_short_name.$tx;
+                                                                                    endif; ?>
                                                                             <a  href="<?php echo et_get_page_link('simple-download').'?id='.$f->ID ?>" data-name="<?php echo $term->name.$tx.' : '.date('d/m/Y', strtotime($f->post_date))?>" class="show-requirement-docs">
                                                                                 <div class="doc-icon"> <i class="fa fa-file-pdf-o" aria-hidden="true"></i></div>
-                                                                                <div class="doc-name"><?php echo $term->requirement_short_name.$tx?></div>
+                                                                                <div class="doc-name"><?php echo $file_name; ?></div>
                                                                                 <div class="doc-time"><?php echo date('d/m/Y', strtotime($f->post_date))?></div>
 
                                                                             </a></li>
