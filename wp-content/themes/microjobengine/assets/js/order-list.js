@@ -316,6 +316,8 @@
                 $target = $(e.currentTarget);
                 var data_id = $target.attr('data-id');
                 var type = $target.attr('data-type');
+                var modal_name = $target.attr('data-modal-name');
+                var checkbox_name = $target.attr('data-checkbox-name');
                 if( type == 'open-contact-info'){
                     if( $('#mjob_profile_data').length > 0 ){
                         this.profileModel = new Models.mJobProfile(JSON.parse($('#mjob_profile_data').html()));
@@ -345,7 +347,7 @@
                     if (typeof this.modalrequirement === 'undefined') {
                         this.modalrequirement = new Views.ModalRequirement();
                     }
-                    this.modalrequirement.onOpen(this.model, data_id, $target, data_name);
+                    this.modalrequirement.onOpen(this.model, data_id, $target, data_name, modal_name, checkbox_name);
                 }
             },
             showWorkComplete: function(e){
@@ -464,16 +466,16 @@
                 this.blockUi = new Views.BlockUi();
 
             },
-            onOpen: function(model, data_id, $target, data_name){
+            onOpen: function(model, data_id, $target, data_name, modal_name, checkbox_name){
                 var view = this;
                 this.model = model;
                 this.data_id = data_id;
                 this.target = $target;
                 this.arr_ids = [];
                 view.openModal();
-                view.$el.find('.requirement-modal-title').html(data_name);
-                view.$el.find('.requirement-modal-title-allow').html('The upload file is '+data_name);
-                $('.requirement-modal-title-here').html(data_name+' here');
+                view.$el.find('.requirement-modal-title').html(modal_name);
+                view.$el.find('.requirement-modal-title-allow').html(checkbox_name);
+                $('.requirement-modal-title-here').html(modal_name+' here');
                 view.initCarousel();
             },
             initCarousel: function(){

@@ -923,6 +923,19 @@ class mJobAction extends mJobPostAction{
                         </select>
                     </div>
                     <br/>
+
+                     <div class="form-field term-group-wrap">
+                        <label for="featured-tax"><?php _e( 'Short name', ET_DOMAIN ); ?></label>
+                            <input type="text" name="requirement_short_name" id="requirement_short_name" value="" />
+                    </div>
+                <div class="form-field term-group-wrap">
+                    <label for="featured-tax"><?php _e( 'Modal name', ET_DOMAIN ); ?></label>
+                        <input type="text" name="requirement_modal_name" id="requirement_modal_name" value="" />
+                </div>
+                 <div class="form-field term-group-wrap">
+                    <label for="featured-tax"><?php _e( 'checkbox  name', ET_DOMAIN ); ?></label>
+                        <input type="text" name="requirement_checkbox_name" id="requirement_checkbox_name" value="" />
+                </div>
             <?php    endif;
         }
     /**
@@ -1087,6 +1100,18 @@ class mJobAction extends mJobPostAction{
                     <input type="text" name="requirement_short_name" id="requirement_short_name" value="<?php echo $term->requirement_short_name; ?>" />
                 </td>
             </tr>
+            <tr class="form-field term-group-wrap">
+                <th scope="row"><label for="featured-tax"><?php _e( 'Modal name', ET_DOMAIN ); ?></label></th>
+                <td>
+                    <input type="text" name="requirement_modal_name" id="requirement_modal_name" value="<?php echo $term->requirement_modal_name; ?>" />
+                </td>
+            </tr>
+             <tr class="form-field term-group-wrap">
+                <th scope="row"><label for="featured-tax"><?php _e( 'Checkbox name', ET_DOMAIN ); ?></label></th>
+                <td>
+                    <input type="text" name="requirement_checkbox_name" id="requirement_checkbox_name" value="<?php echo $term->requirement_checkbox_name; ?>" />
+                </td>
+            </tr>
            <?php endif;
     }
     /**
@@ -1102,6 +1127,12 @@ class mJobAction extends mJobPostAction{
       public function filterTaxInfo($result){
         if( empty($result->requirement_short_name)){
             $result->requirement_short_name = $result->name;
+        }
+        if( empty($result->requirement_modal_name)){
+            $result->requirement_modal_name = $result->name;
+        }
+        if( empty($result->requirement_checkbox_name)){
+            $result->requirement_checkbox_name = $result->name;
         }
         return $result;
       }
