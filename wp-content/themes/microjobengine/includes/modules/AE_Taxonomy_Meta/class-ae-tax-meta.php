@@ -201,7 +201,7 @@ class AE_Taxonomy_Meta extends AE_Base{
       * @author JACK BUI
       */
     public function convert($term){
-        if( term_exists($term)) {
+        if( !empty($term)) {
             foreach ($this->meta as $key => $value) {
                 $val = get_term_meta($term->term_id, $value, true);
                 $term->$value = $val;
