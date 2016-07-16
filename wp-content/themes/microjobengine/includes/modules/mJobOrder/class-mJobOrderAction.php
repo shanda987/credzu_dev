@@ -626,8 +626,8 @@ class mJobOrderAction extends mJobPostAction{
      * override filter query args
      *
      * @param void
-     * @return void
-     * @since 1.0
+     * @returnvoid
+     * @since 10
      * @package MicrojobEngine
      * @category void
      * @author JACK BUI
@@ -854,9 +854,11 @@ class mJobOrderAction extends mJobPostAction{
         $request = $_REQUEST;
         if( isset($request['order_id']) && !empty($request['order_id'])){
             $o = get_post($request['order_id']);
+            $mjob_author = get_post_field('post_author', $o->mjob->ID);
+            mJobAddOrderChangeLog($request['order_id'], $user_ID, 'reorder_message', 'reorder' );
             $result = $this->updateOrderStatus($request['order_id'], 'processing');
             $msg = __('Thanks for trusting us, again! Since you are continuing service, we do not need to wait for the cancellation period this time. We will begin performing the service right away.', ET_DOMAIN);
-            mJobAddOrderMessage($request['order_id'], $user_ID, $o->post_author, 'reoder_message', $msg );
+            mJobAddOrderMessage($request['order_id'], $mjob_author, $o->post_author, 'reoder_message', $msg );
             if( $result && !is_wp_error($result)){
                 wp_send_json(array(
                     'success'=> true,

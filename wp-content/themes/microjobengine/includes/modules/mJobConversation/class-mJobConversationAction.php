@@ -383,6 +383,13 @@ class mJobConversationAction extends mJobPostAction
                     $result->et_files = array();
                 }
                 break;
+            case 'reorder_message':
+                $order_author_name = get_the_author_meta('display_name', $order->post_author);
+                $result->changelog = sprintf(__("%s, rehired you!"), $order_author_name);
+                if( !isset($result->et_files) ){
+                    $result->et_files = array();
+                }
+                break;
             case 'update_profile':
                 $result->changelog = sprintf(__("%s updated %s"), $author_link, $result->post_content);
                 break;
