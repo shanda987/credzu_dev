@@ -2613,6 +2613,46 @@ class ET_Admin extends AE_Base
                 ),
                 array(
                     'args' => array(
+                        'title' => __('Email subject of Rehire action', ET_DOMAIN),
+                        'id' => 'rehire-subject-template',
+                        'class' => 'payment-gateway',
+                        'name' => '',
+                        'desc' => __("Send to a Company  when Client rehired him", ET_DOMAIN),
+                        'toggle' => true
+                    ),
+                    'fields' => array(
+                        array(
+                            'id' => 'mjob_rehire_email_subject',
+                            'type' => 'text',
+                            'title' => __("Send to a Company  when Client rehired him", ET_DOMAIN) ,
+                            'class' => '',
+                            'name' => 'mjob_rehire_email_subject',
+                            'reset' => 1
+                        )
+                    )
+                ),
+                array(
+                    'args' => array(
+                        'title' => __("Email content of Rehire action", ET_DOMAIN),
+                        'id' => 'rehire-mail-template',
+                        'class' => 'payment-gateway',
+                        'name' => '',
+                        'desc' => __("Send to a Company  when Client rehired him", ET_DOMAIN),
+                        'toggle' => true
+                    ),
+                    'fields' => array(
+                        array(
+                            'id' => 'mjob_rehire_email',
+                            'type' => 'editor',
+                            'title' => __("Send to a Company  when Client rehired him", ET_DOMAIN) ,
+                            'class' => '',
+                            'name' => 'mjob_rehire_email',
+                            'reset' => 1
+                        )
+                    )
+                ),
+                array(
+                    'args' => array(
                         'title' => __("Pay Package Related Mail Template", ET_DOMAIN) ,
                         'id' => 'mail-description-group',
                         'class' => '',
