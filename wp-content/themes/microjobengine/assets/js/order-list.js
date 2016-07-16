@@ -395,6 +395,7 @@
                         window.location.href = ae_globals.download_pdf+'?cid='+pid+'&n='+view.name;
                     });
                     view.$el.find('.resend-requirement-css').hide();
+                    view.$el.find('.show-requirement-img').hide();
                 }
                 else if( this.target.attr('data-payment') == 1 ){
                     view.$el.find('iframe').show();
@@ -426,15 +427,11 @@
                         view.$el.find('iframe').hide();
                         view.$el.find('.show-requirement-img').attr('src', ae_globals.view_pdf + '?id=' + pid)
                         view.$el.find('.show-requirement-img').show();
-                        console.log('sdfsaaaaaa');
                     }
                     else{
                         view.$el.find('iframe').show();
                         view.$el.find('.show-requirement-img').hide();
-                        console.log(view.$el.find('.show-requirement-img').length);
-                        console.log('sdfsfdsfd');
                     }
-                    console.log('sdfsfdsfd1');
                     view.$el.find('.btn-download').click(function(){
                         window.location.href = ae_globals.download_pdf+'?id='+pid;
                     });
