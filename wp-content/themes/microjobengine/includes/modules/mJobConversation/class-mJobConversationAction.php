@@ -396,6 +396,12 @@ class mJobConversationAction extends mJobPostAction
                     $result->et_files = array();
                 }
                 break;
+            case 'work_complete_confirm_message':
+                $result->changelog = __("Please update your report on [date] so we can verify results. Please don't update before [date]. Only update on [date] or after.");
+                if( !isset($result->et_files) ){
+                    $result->et_files = array();
+                }
+                break;
             case 'update_profile':
                 $result->changelog = sprintf(__("%s updated %s"), $author_link, $result->post_content);
                 break;
