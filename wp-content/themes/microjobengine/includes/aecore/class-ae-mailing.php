@@ -506,7 +506,7 @@ class AE_Mailing extends AE_Base
                         <body style="font-family: Arial, sans-serif;font-size: 0.9em;margin: 0; padding: 0; color: #222222;">
                         <div style="margin: 0px auto; width:600px; border: 1px solid ' . $customize['background'] . '">
                             <table width="100%" cellspacing="0" cellpadding="0">
-                            <tr style="background: ' . $customize['header'] . '; height: 63px; vertical-align: middle;">
+                            <tr style=" height: 63px; vertical-align: middle;">
                                 <td style="padding: 10px 5px 10px 20px; width: 20%;">
                                     <img style="max-height: 100px" src="' . $logo_url . '" alt="' . get_option('blogname') . '">
                                 </td>
@@ -516,7 +516,7 @@ class AE_Mailing extends AE_Base
                             </tr>
                             <tr><td colspan="2" style="height: 5px; background-color: ' . $customize['background'] . ';"></td></tr>
                             <tr>
-                                <td colspan="2" style="background: #ffffff; color: #222222; line-height: 18px; padding: 10px 20px;">';
+                                <td colspan="2" style="background: #ffffff; color: #222222; line-height: 18px; padding: 10px 20px; box-shadow: 1px 0px 30px rgba(188, 207, 219, 0.7);">';
         return $mail_header;
     }
     
