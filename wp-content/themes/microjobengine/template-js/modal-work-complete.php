@@ -9,13 +9,12 @@
             <div class="modal-body delivery-order">
                 <div class="unlock-requirement-modal">
                     <div class="form-group clearfix">
-                        <div class="input-group">
+                        <div class="input-group et-form">
                             <p class="notice-message">
                                 <span class="note-action"><?php _e('Confirm your job is done.', ET_DOMAIN); ?></span><br/>
                                 <span class="note-body"><?php _e('By confirming that you have completed the work you agreed to perform for your client, a payment from your client will be generated and they will informed. Please communicate with your client so they understand the difference between performing work and obtaining results.', ET_DOMAIN ) ?></span>
                             </p>
                             <p>
-                                <label for="work_complete_date"> DATE </label>
                                 <input type="text"  name="work_complete_date" id="work_complete_date" placeholder="<?php _e('DATE', ET_DOMAIN); ?>" value="">
                             </p>
                         </div>
