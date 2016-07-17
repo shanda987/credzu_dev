@@ -828,12 +828,10 @@ class mJobOrderAction extends mJobPostAction{
         if( isset($request['order_id']) && !empty($request['order_id'])){
             $result = $this->updateOrderStatus($request['order_id'], 'verification');
             if( $result && !is_wp_error($result)){
+                mJobAddOrderChangeLog($request['order_id'], $user_ID, 'work_complete_message', 'workcomplete', '', false );
+                mJobAddOrderChangeLog($request['order_id'], $user_ID, 'work_complete_confirm_message', 'workcomplete' );
                 $order = get_post($request['order_id']);
                 $order = $order_object->convert($order);
-                mJobAddOrderChangeLog($request['order_id'], $user_ID, 'work_complete_message', 'workcomplete', '', false );
-                if( isset($order->mjob->tax_input['mjob_category']['0']) && $order->mjob->tax_input['mjob_category']['0'] == 58 ) {
-                    mJobAddOrderChangeLog($request['order_id'], $user_ID, 'work_complete_confirm_message', 'workcomplete');
-                }
                 if( $order->post_status == 'processing' ){
                     do_action('client_do_checkout', $order);
                     if(isset($request['work_complete_date'] )) {
