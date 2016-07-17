@@ -9,7 +9,7 @@
             <div class="modal-body delivery-order">
                 <div class="unlock-requirement-modal">
                     <div class="form-group clearfix">
-                        < class="input-group">
+                        <div class="input-group">
                             <p class="notice-message">
                                 <span class="note-action"><?php _e('Confirm your job is done.', ET_DOMAIN); ?></span><br/>
                                 <span class="note-body"><?php _e('By confirming that you have completed the work you agreed to perform for your client, a payment from your client will be generated and they will informed. Please communicate with your client so they understand the difference between performing work and obtaining results.', ET_DOMAIN ) ?></span>
