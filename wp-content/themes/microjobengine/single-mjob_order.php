@@ -254,7 +254,11 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                             <?php if( $current->post_status == 'processing' ): ?>
                                                 <p><?php _e("Good news! The cancellation period has expired and the services will begin shortly, if they haven't begun already. When the status changes, you will be notified.", ET_DOMAIN); ?></p>
                                             <?php elseif( $current->post_status == 'verification'): ?>
-                                                <p><?php _e("Good news! The service is complete. Your payment is due, and you are now waiting for results. Please communicate and cooperate with your company so that you can verify the results of your company's performance.", ET_DOMAIN); ?></p>
+                                                <?php if( isset($current->mjob_category_verification_content) && !empty($current->mjob_category_verification_content)): ?>
+                                                    <p><?php echo $current->mjob_category_verification_content; ?></p>
+                                                <?php else: ?>
+                                                    <p><?php _e("Good news! The service is complete. Your payment is due, and you are now waiting for results. Please communicate and cooperate with your company so that you can verify the results of your company's performance.", ET_DOMAIN); ?></p>
+                                                <?php endif; ?>
                                             <?php elseif($current->post_status == 'finished' || $current->post_status == 'delivery'): ?>
                                                 <p><?php _e("Your company completed the work and the results are reported in the message area. No further work will be performed, unless you would like to re-hire the company to continue.", ET_DOMAIN); ?></p>
                                                 <?php if( $current->can_review): ?>

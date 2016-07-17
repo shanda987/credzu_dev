@@ -63,7 +63,8 @@ $meta  = array(
     'pricing_plan',
     'mjob_category_page_content',
     'mjob_category_banner_image',
-    'mjob_category_modal_content'
+    'mjob_category_modal_content',
+    'mjob_category_verification_content'
 );
 $ae_tax_factory->set('mjob_category', new AE_Taxonomy_Meta('mjob_category', $meta) );
 $meta1 = array(

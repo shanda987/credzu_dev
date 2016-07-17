@@ -835,6 +835,12 @@ class mJobAction extends mJobPostAction{
                 <textarea rows="5" name="<?php echo $taxonomy ?>_modal_content" id="<?php echo $taxonomy ?>_modal_content"></textarea>
             </div>
             <br/>
+            <div class="form-field term-group">
+            <label><?php _e('Verification content', ET_DOMAIN) ?></label>
+            <div>
+                <textarea rows="5" name="<?php echo $taxonomy ?>_verification_content" id="<?php echo $taxonomy ?>_verification_content"></textarea>
+            </div>
+            <br/>
             <label><?php _e('Pricing plan', ET_DOMAIN) ?></label>
             <div>
                 <select name="pricing_plan">
@@ -996,6 +1002,12 @@ class mJobAction extends mJobPostAction{
                 <th scope="row"><label for="modal-content-tax"><?php _e( 'Modal content', ET_DOMAIN ); ?></label></th>
                 <td>
                    <?php wp_editor( $term->mjob_category_modal_content, $taxonomy.'_modal_content'  ); ?>
+                </td>
+            </tr>
+            <tr class="form-field term-group-wrap">
+                <th scope="row"><label for="modal-content-tax"><?php _e( 'Verification content', ET_DOMAIN ); ?></label></th>
+                <td>
+                   <?php wp_editor( $term->mjob_category_verification_content, $taxonomy.'_verification_content'  ); ?>
                 </td>
             </tr>
             <tr class="form-field term-group-wrap">

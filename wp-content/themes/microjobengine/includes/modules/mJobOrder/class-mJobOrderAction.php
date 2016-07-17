@@ -265,6 +265,10 @@ class mJobOrderAction extends mJobPostAction{
         if( isset($mjob_tax->mjob_category_modal_content) ){
             $result->mjob_category_modal_content = $mjob_tax->mjob_category_modal_content;
         }
+        $result->mjob_category_verification_content = '';
+        if( isset($mjob_tax->mjob_category_verification_content) ){
+            $result->mjob_category_verification_content = $mjob_tax->mjob_category_verification_content;
+        }
         $result->mjob = $mjob;
         $result->mjob_author_name = $author->initial_display_name;
         $result->mjob_author_url = get_author_posts_url($mjob->post_author);
