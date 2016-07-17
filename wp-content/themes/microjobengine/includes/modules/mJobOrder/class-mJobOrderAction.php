@@ -854,14 +854,15 @@ class mJobOrderAction extends mJobPostAction{
         $o_obj = $ae_post_factory->get('mjob_order');
         $request = $_REQUEST;
         if( isset($request['order_id']) && !empty($request['order_id'])){
-            $o = get_post($request['order_id']);
-            $o = $o_obj->convert($o);
-            $mjob_author = get_post_field('post_author', $o->mjob->ID);
-            mJobAddOrderChangeLog($request['order_id'], $user_ID, 'reorder_message', 'reorder' );
             $result = $this->updateOrderStatus($request['order_id'], 'processing');
-            $msg = __('Thanks for trusting us, again! Since you are continuing service, we do not need to wait for the cancellation period this time. We will begin performing the service right away.', ET_DOMAIN);
-            mJobAddOrderMessage($request['order_id'], $mjob_author, $o->post_author, 'reoder_message', $msg );
             if( $result && !is_wp_error($result)){
+                $o = get_post($request['order_id']);
+                $o = $o_obj->convert($o);
+                $mjob_author = get_post_field('post_author', $o->mjob->ID);
+                mJobAddOrderChangeLog($request['order_id'], $user_ID, 'reorder_message', 'reorder' );
+                $msg = __('Thanks for trusting us, again! Since you are continuing service, we do not need to wait for the cancellation period this time. We will begin performing the service right away.', ET_DOMAIN);
+                mJobAddOrderMessage($request['order_id'], $mjob_author, $o->post_author, 'reoder_message', $msg );
+                do_action('email_mjob_rehire', $o);
                 wp_send_json(array(
                     'success'=> true,
                     'msg'=> __('Confirm success!', ET_DOMAIN)

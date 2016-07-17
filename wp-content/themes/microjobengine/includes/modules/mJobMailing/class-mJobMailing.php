@@ -711,4 +711,22 @@ class mJobMailing extends AE_Mailing
             $this->wp_mail($profile->business_email, $subject, $msg, array('user_id' => $post_author));
         }
     }
+    /**
+     * Send to admin a email when admin approved his comment
+     *
+     * @param void
+     * @return void
+     * @since 1.4
+     * @package MicrojobEngine
+     * @category CREDZU
+     * @author JACK BUI
+     */
+    public function email_mjob_rehire($o){
+        if( !empty($o)) {
+            $profile = mJobProfileAction()->getProfile($o->mjob->post_author);
+            $subject = ae_get_option('mjob_rehire_email_subject', __('A client rehired you.', ET_DOMAIN));
+            $msg = ae_get_option('mjob_rehire_email', sprintf(__('A client rehired you.', ET_DOMAIN)));
+            $this->wp_mail($profile->company_email, $subject, $msg, array('user_id' => $o->mjob->post_author));
+        }
+    }
 }

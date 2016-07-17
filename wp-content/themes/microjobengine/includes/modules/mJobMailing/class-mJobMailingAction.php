@@ -31,6 +31,7 @@ class mJobMailingAction extends AE_Base
         $this->add_action('send_request_new_document', 'mJobRequestNewDocument', 10, 2);
         $this->add_action('email_to_company_comment_approved', 'mJobCommentApprovedEmail');
         $this->add_action('email_mjob_review', 'mJobReviewEmail');
+        $this->add_action('email_mjob_rehire', 'mJobRehireEmail');
     }
 
     public function mJobMailRejectPost($args) {
@@ -221,6 +222,19 @@ class mJobMailingAction extends AE_Base
      */
     public function mJobReviewEmail($comment){
         $this->mail->email_mjob_review($comment);
+    }
+    /**
+     * Send to company a email when admin approved their comment
+     *
+     * @param void
+     * @return void
+     * @since 1.4
+     * @package MicrojobEngine
+     * @category CREDZU
+     * @author JACK BUI
+     */
+    public function mJobRehireEmail($o){
+        $this->mail->email_mjob_rehire($o);
     }
 }
 $new_instance = mJobMailingAction::getInstance();
