@@ -822,14 +822,7 @@
                 if( target.attr('data-content') != '' ) {
                     $('.note-body').html(target.attr('data-content'));
                 }
-                $('#work_complete_date').datepicker({
-                    //comment the beforeShow handler if you want to see the ugly overlay
-                    beforeShow: function() {
-                        setTimeout(function(){
-                            $('.ui-datepicker').css('z-index', 9999999);
-                        }, 0);
-                    }
-                });
+                $('#work_complete_date').datepicker();
             },
             workComplete: function(e){
                 e.preventDefault();

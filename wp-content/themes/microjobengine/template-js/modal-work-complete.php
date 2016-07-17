@@ -15,7 +15,7 @@
                                 <span class="note-body"><?php _e('By confirming that you have completed the work you agreed to perform for your client, a payment from your client will be generated and they will informed. Please communicate with your client so they understand the difference between performing work and obtaining results.', ET_DOMAIN ) ?></span>
                             <div class="form-group clearfix">
                                 <div class="input-group">
-                                    <div class="input-group-addon no-addon"><label for="work_complete_date"> DATE </label> </div>
+                                    <div class="input-group-addon"><label for="work_complete_date"> DATE </label> </div>
                                     <input type="text" name="work_complete_date" id="work_complete_date" placeholder="<?php _e('DATE', ET_DOMAIN); ?>" value="">
                                 </div>
                             </div>
