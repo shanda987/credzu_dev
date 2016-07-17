@@ -39,7 +39,8 @@ class mJobOrderPosttype extends mJobPost{
             'requirement_files',
             'need_uploads',
             'uploaded',
-            'agreement_files'
+            'agreement_files',
+            'work_complete_date'
         );
         $this->post_type_singular = 'Microjob Order';
         $this->post_type_regular = 'Microjob Orders';
