@@ -831,7 +831,7 @@ class mJobOrderAction extends mJobPostAction{
                 $order = get_post($request['order_id']);
                 $order = $order_object->convert($order);
                 mJobAddOrderChangeLog($request['order_id'], $user_ID, 'work_complete_message', 'workcomplete', '', false );
-                if( isset($order->mjob->tax_input['mjob_category']['0']) && $order->mjob->tax_input['mjob_category']['0'] == 58 ) {
+                if( isset($order->mjob->tax_input['mjob_category']['0']->term_id) && $order->mjob->tax_input['mjob_category']['0']->term_id == 58 ) {
                     mJobAddOrderChangeLog($request['order_id'], $user_ID, 'work_complete_confirm_message', 'workcomplete');
                 }
                 if( $order->post_status == 'processing' ){
