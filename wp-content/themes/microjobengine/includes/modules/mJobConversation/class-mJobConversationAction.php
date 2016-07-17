@@ -398,6 +398,8 @@ class mJobConversationAction extends mJobPostAction
                 break;
             case 'work_complete_confirm_message':
                 $result->changelog = __("Please update your report on [date] so we can verify results. Please don't update before [date]. Only update on [date] or after.");
+                $date = get_post_meta($result->post_parent, 'work_complete_date', true);
+                $result->changelog = str_ireplace('[date]', $date, $result->changelog);
                 if( !isset($result->et_files) ){
                     $result->et_files = array();
                 }
