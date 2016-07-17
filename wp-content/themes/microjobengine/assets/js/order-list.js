@@ -822,6 +822,7 @@
                 if( target.attr('data-content') != '' ) {
                     $('.note-body').html(target.attr('data-content'));
                 }
+                $('#work_complete_date').datepicker();
             },
             workComplete: function(e){
                 e.preventDefault();
