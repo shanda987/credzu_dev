@@ -62,14 +62,15 @@ $meta  = array(
     'cat_bottom_block3_content',
     'pricing_plan',
     'mjob_category_page_content',
-    'mjob_category_banner_image'
+    'mjob_category_banner_image',
+    'mjob_category_modal_content'
 );
 $ae_tax_factory->set('mjob_category', new AE_Taxonomy_Meta('mjob_category', $meta) );
 $meta1 = array(
     'click_type',
     'requirement_short_name',
     'requirement_checkbox_name',
-    'requirement_modal_name'
+    'requirement_modal_name',
     );
 $ae_tax_factory->set('mjob_requirement', new AE_Taxonomy_Meta('mjob_requirement', $meta1));
 if (!class_exists('AE_Base')) return;
