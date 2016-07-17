@@ -1462,7 +1462,8 @@ function convertDigit($digit)
  * @category File Functions
  * @author Tat Thien
  */
-function mJobAddOrderChangeLog($order_id, $user_id, $action, $log = "", $post_date = null) {
+function mJobAddOrderChangeLog($order_id, $user_id, $action, $log = "", $post_date = null, $to_user = true, $from_user = true) {
+    global $user_ID;
     $log_content = !empty($log) ? $log : $action;
     $array_post = array(
         'post_title' => sprintf(__('Log for order %s', ET_DOMAIN), $order_id),
@@ -1484,8 +1485,20 @@ function mJobAddOrderChangeLog($order_id, $user_id, $action, $log = "", $post_da
         update_post_meta($post_id, 'type', 'changelog');
         update_post_meta($post_id, 'action_type', $action);
         update_post_meta($post_id, 'parent_conversation_id', $order_id);
-        update_post_meta($post_id, 'to_user', $post->mjob_author);
-        update_post_meta($post_id, 'from_user', $post->post_author);
+        if( $user_ID == $post->mjob_author ){
+            $t_user = $post->post_author;
+            $f_user = $post->mjob_author;
+        }
+        else{
+            $t_user = $post->mjob_author;
+            $f_user = $post->post_author;
+        }
+        if( $to_user ) {
+            update_post_meta($post_id, 'to_user', $t_user);
+        }
+        if( $from_user ) {
+            update_post_meta($post_id, 'from_user', $f_user);
+        }
     }
 
     return $post_id;

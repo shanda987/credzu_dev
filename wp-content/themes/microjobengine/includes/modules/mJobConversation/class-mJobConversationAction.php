@@ -390,6 +390,12 @@ class mJobConversationAction extends mJobPostAction
                     $result->et_files = array();
                 }
                 break;
+            case 'work_complete_message':
+                $result->changelog = __("A payment has been generated, which you can view in the payments tab.");
+                if( !isset($result->et_files) ){
+                    $result->et_files = array();
+                }
+                break;
             case 'update_profile':
                 $result->changelog = sprintf(__("%s updated %s"), $author_link, $result->post_content);
                 break;
