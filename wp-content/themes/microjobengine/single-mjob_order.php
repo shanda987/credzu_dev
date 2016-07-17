@@ -255,7 +255,10 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                                 <p><?php _e("Good news! The cancellation period has expired and the services will begin shortly, if they haven't begun already. When the status changes, you will be notified.", ET_DOMAIN); ?></p>
                                             <?php elseif( $current->post_status == 'verification'): ?>
                                                 <?php if( isset($current->mjob_category_verification_content) && !empty($current->mjob_category_verification_content)): ?>
-                                                    <p><?php echo $current->mjob_category_verification_content; ?></p>
+                                                    <p><?php
+                                                        $current->mjob_category_verification_content = str_ireplace('[date]', $current->work_complete_date, $current->mjob_category_verification_content);
+                                                        echo $current->mjob_category_verification_content;
+                                                        ?></p>
                                                 <?php else: ?>
                                                     <p><?php _e("Good news! The service is complete. Your payment is due, and you are now waiting for results. Please communicate and cooperate with your company so that you can verify the results of your company's performance.", ET_DOMAIN); ?></p>
                                                 <?php endif; ?>
