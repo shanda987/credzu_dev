@@ -819,7 +819,9 @@
                 var view = this;
                 this.model = model;
                 view.openModal();
-                $('.note-body').html(target.attr('data-content'));
+                if( target.attr('data-content') != '' ) {
+                    $('.note-body').html(target.attr('data-content'));
+                }
             },
             workComplete: function(e){
                 e.preventDefault();
