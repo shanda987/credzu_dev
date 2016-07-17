@@ -833,7 +833,11 @@ class mJobOrderAction extends mJobPostAction{
                 mJobAddOrderChangeLog($request['order_id'], $user_ID, 'work_complete_message', 'workcomplete', '', false );
                 if( isset($request['work_complete_date']) ){
                     update_post_meta($request['order_id'], 'work_complete_date', $request['work_complete_date']);
-                    mJobAddOrderChangeLog($request['order_id'], $user_ID, 'work_complete_confirm_message', 'workcomplete' );
+                    $msg = __("Please update your report on [date] so we can verify results. Please don't update before [date]. Only update on [date] or after.");
+                    $date = $request['work_complete_date'];
+                    $msg = str_ireplace('[date]', $date, $msg);
+                    mJobAddOrderMessage($request['order_id'], $user_ID, $order->post_author, 'work_complete_confirm_message', $msg );
+//                    mJobAddOrderChangeLog($request['order_id'], $user_ID, 'work_complete_confirm_message', 'workcomplete' );
                 }
                 if( $order->post_status == 'processing' ){
                     do_action('client_do_checkout', $order);
