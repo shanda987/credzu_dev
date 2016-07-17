@@ -41,14 +41,14 @@ function ae_page_social_connect(){
 	    <p class="text-page-not social-big"><?php _e('SIGN IN WITH FACEBOOK',ET_DOMAIN);?></p>
 	    <p class="social-small">
 	    <?php
-	         printf(__("This seems to be your first time signing in using your Facebook account. <br />If you already have an account with %s, please log in using the form below to link it to your Facebook account. Otherwise, please enter an email address and a password on the form, and a username on the next page to create an account.<br />You will only do this step ONCE. Next time, you'll get logged in right away.", ET_DOMAIN), get_bloginfo('name') );?>
+	         printf(__("You only have to do this one time. After that, you can sign in to Credzu.com in one click of the Facebook icon at the top of our website.", ET_DOMAIN), get_bloginfo('name') );?>
 	    </p>
 	    <?php
 	} else if ($type == 'twitter'){ ?>
 	    <p class="text-page-not social-big"><?php _e('SIGN IN WITH TWITTER',ET_DOMAIN);?></p>
 	    <p class="social-small">
 	        <?php
-	        printf(__("This seems to be your first time signing in using your Twitter account.<br />If you already have an account with %s, please log in using the form below to link it to your Twitter account. Otherwise, please enter an email address and a password on the form, and a username on the next page to create an account.<br > You will only do this step ONCE. Next time, you'll get logged in right away.</p>", ET_DOMAIN), get_bloginfo('name') );
+	        printf(__("You only have to do this one time. After that, you can sign in to Credzu.com in one click of the Twitter icon at the top of our website.", ET_DOMAIN), get_bloginfo('name') );
 	    ?>
 	    </p>
 
@@ -56,7 +56,7 @@ function ae_page_social_connect(){
 		<p class="text-page-not social-big"><?php _e('SIGN IN WITH GOOGLE+',ET_DOMAIN);?></p>
 	    <p class="social-small">
 	        <?php
-	        printf(__("This seems to be your first time signing in using your Google+ account.If you already have an account, please log in using the form below to link it to your Google+  account. Otherwise, please enter an email address and a password on the form, and a username on the next page to create an account.You will only do this step ONCE. Next time, you'll get logged in right away.</p>", ET_DOMAIN), get_bloginfo('name') );
+	        printf(__("You only have to do this one time. After that, you can sign in to Credzu.com in one click of the Google plus icon at the top of our website.", ET_DOMAIN) );
 	    ?>
 		</p>
 	<?php } else if ($type == 'linkedin'){ ?>
