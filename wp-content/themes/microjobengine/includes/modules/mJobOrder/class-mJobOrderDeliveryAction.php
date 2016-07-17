@@ -77,7 +77,9 @@ class mJobOrderDeliveryAction extends mJobPostAction{
                     $attach_id = wp_insert_attachment( $attachment, $filename, $msg_id );
                 }
             }
-           mJobAddOrderChangeLog($response['data']->post_parent, $user_ID, 'delivery_new', 'delivery' );
+           if( $msg_id){
+             mJobAddOrderChangeLog($response['data']->post_parent, $user_ID, 'delivery_new', 'delivery');
+           }
         }
         wp_send_json($response);
     }
