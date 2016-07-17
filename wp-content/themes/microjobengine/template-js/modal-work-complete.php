@@ -8,7 +8,7 @@
             </div>
             <div class="modal-body delivery-order">
                 <div class="unlock-requirement-modal">
-                    < class="form-group clearfix">
+                    <div class="form-group clearfix">
                         < class="input-group">
                             <p class="notice-message">
                                 <span class="note-action"><?php _e('Confirm your job is done.', ET_DOMAIN); ?></span><br/>
