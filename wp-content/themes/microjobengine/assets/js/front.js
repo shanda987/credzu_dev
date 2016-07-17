@@ -757,7 +757,9 @@
                         }
                     }, 100);
                 });
-
+                if( $('.social-auth').length > 0 ){
+                    $('.title-blog').hide();
+                }
 
             },
             showErrorMessage: function(e){
