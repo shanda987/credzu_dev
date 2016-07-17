@@ -354,7 +354,8 @@
                 if (typeof this.modalworkcomplete === 'undefined') {
                     this.modalworkcomplete = new Views.ModalWordComplete();
                 }
-                this.modalworkcomplete.onOpen(this.model);
+                var target = $(e.currentTarget);
+                this.modalworkcomplete.onOpen(this.model, target);
             },
             showContinue: function(e){
                 e.preventDefault();
@@ -814,10 +815,11 @@
                 this.blockUi = new Views.BlockUi();
 
             },
-            onOpen: function (model) {
+            onOpen: function (model, target) {
                 var view = this;
                 this.model = model;
                 view.openModal();
+                $('.note-body').html(target.attr('data-content'));
             },
             workComplete: function(e){
                 e.preventDefault();

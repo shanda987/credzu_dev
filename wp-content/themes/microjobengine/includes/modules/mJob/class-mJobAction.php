@@ -64,7 +64,7 @@ class mJobAction extends mJobPostAction{
             exit;
         }
         $request = $response['data'];
-        if( isset($request['mjob_category'])) {
+        if( isset($request['mjob_category']) ) {
             global $ae_tax_factory;
             $term = get_term_by('id', $request['mjob_category'], 'mjob_category');
             $obj = $ae_tax_factory->get('mjob_category');

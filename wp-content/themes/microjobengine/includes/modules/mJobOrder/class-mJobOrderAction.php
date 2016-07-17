@@ -241,7 +241,7 @@ class mJobOrderAction extends mJobPostAction{
      * @author JACK BUI
      */
     public function convertPost($result){
-        global $ae_post_factory, $user_ID;
+        global $ae_post_factory, $user_ID, $ae_tax_factory;
         $ae_user = AE_Users::get_instance();
         $auth = get_userdata($result->post_author);
         $auth = $ae_user->convert($auth);
@@ -253,8 +253,17 @@ class mJobOrderAction extends mJobPostAction{
         $author = get_userdata($mjob->post_author);
         $result->mjob_author = $mjob->post_author;
         $result->mjob_category = '';
+        $tax_obj = $ae_tax_factory->get('mjob_category');
+        $mjob_tax = '';
+        if( isset($mjob->tax_input['mjob_category']['0']) ){
+            $mjob_tax = $tax_obj->convert($mjob->tax_input['mjob_category']['0']);
+        }
         if( isset($mjob->tax_input['mjob_category']['0']->name)){
             $result->mjob_category = $mjob->tax_input['mjob_category']['0']->name;
+        }
+        $result->mjob_category_modal_content = '';
+        if( isset($mjob_tax->mjob_category_modal_content) ){
+            $result->mjob_category_modal_content = $mjob_tax->mjob_category_modal_content;
         }
         $result->mjob = $mjob;
         $result->mjob_author_name = $author->initial_display_name;
