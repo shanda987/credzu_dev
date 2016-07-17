@@ -14,9 +14,11 @@
                                 <span class="note-action"><?php _e('Confirm your job is done.', ET_DOMAIN); ?></span><br/>
                                 <span class="note-body"><?php _e('By confirming that you have completed the work you agreed to perform for your client, a payment from your client will be generated and they will informed. Please communicate with your client so they understand the difference between performing work and obtaining results.', ET_DOMAIN ) ?></span>
                             <div class="form-group clearfix">
-                                <div class="input-group row">
+                                <div class="input-group">
+                                    <p>
                                         <div class="input-group col-md-3 col-xs-12"><label for="work_complete_date"> DATE </label> </div>
                                         <div class="col-md-9 col-xs-12"> <input type="text"  name="work_complete_date" id="work_complete_date" placeholder="<?php _e('DATE', ET_DOMAIN); ?>" value=""></div>
+                                    </p>
                                 </div>
                             </div>
                             </p>
