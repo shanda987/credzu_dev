@@ -832,6 +832,13 @@
                     action: 'mjob-work-complete-confirm',
                     'order_id': view.model.get('ID')
                 };
+                if( $('#work_complete_date').length > 0 ){
+                    view.data ={
+                        action: 'mjob-work-complete-confirm',
+                        'order_id': view.model.get('ID'),
+                        'work_complete_date': $('#work_complete_date').val()
+                    };
+                }
                 $.ajax({
                     url: ae_globals.ajaxURL,
                     type: 'post',

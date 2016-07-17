@@ -833,6 +833,9 @@ class mJobOrderAction extends mJobPostAction{
                 $order = $order_object->convert($order);
                 if( $order->post_status == 'processing' ){
                     do_action('client_do_checkout', $order);
+                    if(isset($request['work_complete_date'] )) {
+                        update_post_meta('work_complete_date', $request['work_complete_date']);
+                    }
                 }
                 wp_send_json(array(
                     'success'=> true,
