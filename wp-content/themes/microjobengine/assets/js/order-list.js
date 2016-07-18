@@ -393,7 +393,7 @@
                 var pid = data_href;
                 if( this.target.attr('data-agreement') == 1 ){
                     view.$el.find('iframe').show();
-                    $('.show-requirement-modal').css('style', 'padding-top:0!important');
+                    $('.show-requirement-modal').addClass('padding-top-0');
                     view.$el.find('iframe').attr('src', ae_globals.view_pdf+'?cid='+pid+'&n='+this.name);
                     view.$el.find('.btn-download').click(function(){
                         window.location.href = ae_globals.download_pdf+'?cid='+pid+'&n='+view.name;
@@ -404,7 +404,7 @@
                 else if( this.target.attr('data-payment') == 1 ){
                     view.$el.find('iframe').show();
                     view.$el.find('iframe').attr('src', ae_globals.view_pdf + '?pid=' + pid);
-                    $('.show-requirement-modal').css('padding-top', '0!important');
+                    $('.show-requirement-modal').addClass('padding-top-0');
                     view.$el.find('.btn-download').click(function(){
                         window.location.href = ae_globals.download_pdf+'?pid='+pid;
                     });
@@ -416,12 +416,12 @@
                         view.$el.find('iframe').hide();
                         view.$el.find('.show-requirement-img').attr('src', ae_globals.view_pdf + '?pid=' + pid+'&type=attachment');
                         view.$el.find('.show-requirement-img').show();
-                        $('.show-requirement-modal').css('padding-top', '20px!important');
+                        $('.show-requirement-modal').removeClass('padding-top-0');
                     }
                     else{
                         view.$el.find('iframe').show();
                         view.$el.find('.show-requirement-img').hide();
-                        $('.show-requirement-modal').css('padding-top', '0!important');
+                        $('.show-requirement-modal').addClass('padding-top-0');
                     }
                     view.$el.find('.btn-download').click(function(){
                         window.location.href = ae_globals.download_pdf+'?pid='+pid+'&type=attachment';
@@ -434,7 +434,7 @@
                         view.$el.find('iframe').hide();
                         view.$el.find('.show-requirement-img').attr('src', ae_globals.view_pdf + '?id=' + pid)
                         view.$el.find('.show-requirement-img').show();
-                        $('.show-requirement-modal').css('padding-top', '20px!important');
+                        $('.show-requirement-modal').removeClass('padding-top-0');
                     }
                     else{
                         view.$el.find('iframe').show();
