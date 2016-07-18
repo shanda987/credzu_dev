@@ -42,12 +42,12 @@ class AE_Pdf_Creator extends AE_Base{
      * @category void
      * @author JACK BUI
      */
-    public function pdfGenarate($content, $file_name, $fonts){
+    public function pdfGenarate($content, $file_name, $fonts, $file_title = 'Payment'){
         $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
         // set document information
         $pdf->SetCreator(PDF_CREATOR);
         $pdf->SetAuthor('Credzu');
-        $pdf->SetTitle($file_name);
+        $pdf->SetTitle($file_title);
         $pdf->SetSubject('Payment');
         $pdf->SetKeywords('TCPDF, PDF, example, test, guide');
 
