@@ -504,7 +504,7 @@ class AE_Mailing extends AE_Base
                         <head>              
                         </head>
                         <body style="font-family: Arial, sans-serif;font-size: 0.9em;margin: 0; padding: 0; color: #222222;">
-                        <div style="margin: 0px auto; width:600px; border: 1px solid ' . $customize['background'] . '">
+                        <div style="margin: 0px auto; width:600px; border: 1px solid; ' . $customize['background'] . '">
                             <table width="100%" cellspacing="0" cellpadding="0">
                             <tr style=" height: 63px; vertical-align: middle;">
                                 <td style="padding: 10px 5px 10px 20px; width: 20%;">
