@@ -873,7 +873,8 @@
         Views.ModalReorder = Views.Modal_Box.extend({
             el: '#reorder_modal',
             events: {
-                'click .btn-reorder': 'reOrder'
+                'click .btn-reorder': 'reOrder',
+                'click .agreement-title-link': 'showModalAgreement',
             },
             initialize: function () {
                 AE.Views.Modal_Box.prototype.initialize.call();
@@ -893,6 +894,11 @@
                     action: 'mjob-reorder',
                     'order_id': view.model.get('ID')
                 };
+                $('#signature-form').find('input[type="checkbox"]').each( function(){
+                    view.field_to_check[$(this).attr('name')] = "required"
+                    view.ageement_ids.push($(this).attr('data-id'));
+                });
+                view.initValidator(view.target_form, view.field_to_check);
                 $.ajax({
                     url: ae_globals.ajaxURL,
                     type: 'post',
@@ -917,7 +923,37 @@
                         }
                     }
                 });
-            }
+            },
+            initValidator: function($target_form, field_to_check){
+                var view = this;
+                var form_validator = $target_form.validate({
+                    errorElement: "p",
+                    rules: field_to_check,
+                    highlight:function(element, errorClass, validClass){
+                        var $target = $(element );
+                        var $parent = $(element ).parent();
+                        $parent.addClass('has-error');
+                        $target.addClass('has-visited');
+                    },
+                    unhighlight:function(element, errorClass, validClass){
+                        // position error label after generated textarea
+                        var $target = $(element );
+                        var $parent = $(element ).parent();
+                        $parent.removeClass('has-error');
+                        $target.removeClass('has-visited');
+                    }
+                });
+            },
+            showModalAgreement: function(e){
+                e.preventDefault();
+                $target = $(e.currentTarget);
+                if( typeof this.agreementModal == 'undefined' ){
+                    this.agreementModal = new Views.agreementModal();
+                }
+                var aid = $target.attr('data-id');
+                var data = JSON.parse($('#agreement_data_'+aid).html());
+                this.agreementModal.onOpen(data);
+            },
         });
         Views.ModalDelivery = Views.Modal_Box.extend({
             el: '#delivery',

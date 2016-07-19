@@ -1099,3 +1099,6 @@
 .padding-top-0{
     padding-top: 0!important;
 }
+#reorder_modal .checkbox input{
+    top: 5px;
+}
