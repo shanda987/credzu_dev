@@ -898,31 +898,31 @@
                     view.field_to_check[$(this).attr('name')] = "required"
                     view.ageement_ids.push($(this).attr('data-id'));
                 });
-                view.initValidator(view.target_form, view.field_to_check);
-                $.ajax({
-                    url: ae_globals.ajaxURL,
-                    type: 'post',
-                    data: view.data,
-                    beforeSend: function() {
-                        view.blockUi.block($target);
-                    },
-                    success: function(res) {
-                        view.blockUi.unblock();
-                        if (res.success) {
-                            AE.pubsub.trigger('ae:notification', {
-                                msg: res.msg,
-                                notice_type: 'success'
-                            });
-                            view.closeModal();
-                            window.location.reload(true);
-                        } else {
-                            AE.pubsub.trigger('ae:notification', {
-                                msg: res.msg,
-                                notice_type: 'error'
-                            });
-                        }
-                    }
-                });
+                view.initValidator($target, view.field_to_check);
+                //$.ajax({
+                //    url: ae_globals.ajaxURL,
+                //    type: 'post',
+                //    data: view.data,
+                //    beforeSend: function() {
+                //        view.blockUi.block($target);
+                //    },
+                //    success: function(res) {
+                //        view.blockUi.unblock();
+                //        if (res.success) {
+                //            AE.pubsub.trigger('ae:notification', {
+                //                msg: res.msg,
+                //                notice_type: 'success'
+                //            });
+                //            view.closeModal();
+                //            window.location.reload(true);
+                //        } else {
+                //            AE.pubsub.trigger('ae:notification', {
+                //                msg: res.msg,
+                //                notice_type: 'error'
+                //            });
+                //        }
+                //    }
+                //});
             },
             initValidator: function($target_form, field_to_check){
                 var view = this;

@@ -21,7 +21,7 @@ the_post();
 	<!-- block control  -->
 	<div class="row block-posts post-detail" id="post-control">
 		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 posts-container">
-			<div class="blog-wrapper list-page">
+			<div class="blog-wrapper">
 	            <div class="rows">
 					<div class="blog-contents">
 						<div class="post-contents">
