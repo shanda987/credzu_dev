@@ -899,7 +899,7 @@
                 view.data1=  {
                     action: 'mjob-send-agreement-email',
                         aid: view.ageement_ids,
-                        jid: view.mjob_id
+                        jid: view.model.get('mjob_id'),
                 };
                 view.data ={
                     action: 'mjob-reorder',
@@ -939,7 +939,7 @@
                                                 notice_type: 'success'
                                             });
                                             view.closeModal();
-                                            window.location.reload(true);
+                                           // window.location.reload(true);
                                         } else {
                                             AE.pubsub.trigger('ae:notification', {
                                                 msg: res.msg,
