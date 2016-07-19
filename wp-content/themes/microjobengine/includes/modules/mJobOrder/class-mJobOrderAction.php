@@ -778,7 +778,7 @@ class mJobOrderAction extends mJobPostAction{
                     $new_status = 'FINISHED';
                 }
                 if ($new_status == 'processing') {
-                    $first = get_post_meta($order->post_parent, 'first_order', true);
+                    $first = (array)get_post_meta($order->post_parent, 'first_order', true);
                     if( !empty($first) ){
                         if( !in_array($order->ID, (array)$first)) {
                             $my_posts = array(
@@ -879,7 +879,7 @@ class mJobOrderAction extends mJobPostAction{
         $o_obj = $ae_post_factory->get('mjob_order');
         $request = $_REQUEST;
         if( isset($request['order_id']) && !empty($request['order_id'])){
-            $result = $this->updateOrderStatus($request['order_id'], 'processing');
+            $result = $this->updateOrderStatus($request['order_id'], 'publish');
             if( $result && !is_wp_error($result)){
                 $o = get_post($request['order_id']);
                 $o = $o_obj->convert($o);

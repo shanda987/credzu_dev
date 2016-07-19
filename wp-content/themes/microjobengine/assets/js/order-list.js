@@ -873,7 +873,7 @@
         Views.ModalReorder = Views.Modal_Box.extend({
             el: '#reorder_modal',
             events: {
-                'click .btn-reorder': 'reOrder',
+                'submit #reoder-agreement': 'reOrder',
                 'click .agreement-title-link': 'showModalAgreement',
             },
             initialize: function () {
@@ -890,39 +890,74 @@
                 e.preventDefault();
                 var view = this;
                 $target = $(e.currentTarget);
-                view.data ={
-                    action: 'mjob-reorder',
-                    'order_id': view.model.get('ID')
-                };
-                $('#signature-form').find('input[type="checkbox"]').each( function(){
+                view.field_to_check = new Array();
+                view.ageement_ids = new Array();
+                $('#reorder_modal').find('input[type="checkbox"]').each( function(){
                     view.field_to_check[$(this).attr('name')] = "required"
                     view.ageement_ids.push($(this).attr('data-id'));
                 });
+                view.data1=  {
+                    action: 'mjob-send-agreement-email',
+                        aid: view.ageement_ids,
+                        jid: view.mjob_id
+                };
+                view.data ={
+                    action: 'mjob-reorder',
+                    'order_id': view.model.get('ID'),
+                    'jid': view.model.get('mjob_id'),
+                    'aid': view.agreement_ids
+
+                };
                 view.initValidator($target, view.field_to_check);
-                //$.ajax({
-                //    url: ae_globals.ajaxURL,
-                //    type: 'post',
-                //    data: view.data,
-                //    beforeSend: function() {
-                //        view.blockUi.block($target);
-                //    },
-                //    success: function(res) {
-                //        view.blockUi.unblock();
-                //        if (res.success) {
-                //            AE.pubsub.trigger('ae:notification', {
-                //                msg: res.msg,
-                //                notice_type: 'success'
-                //            });
-                //            view.closeModal();
-                //            window.location.reload(true);
-                //        } else {
-                //            AE.pubsub.trigger('ae:notification', {
-                //                msg: res.msg,
-                //                notice_type: 'error'
-                //            });
-                //        }
-                //    }
-                //});
+                if($target.valid()){
+                    $.ajax({
+                        url: ae_globals.ajaxURL,
+                        type: 'post',
+                        data: view.data1,
+                        beforeSend: function() {
+                            view.blockUi.block($target);
+                        },
+                        success: function(res) {
+                            view.blockUi.unblock();
+                            if (res.success) {
+                                AE.pubsub.trigger('ae:notification', {
+                                    msg: res.msg,
+                                    notice_type: 'success'
+                                });
+                                $.ajax({
+                                    url: ae_globals.ajaxURL,
+                                    type: 'post',
+                                    data: view.data,
+                                    beforeSend: function() {
+                                        view.blockUi.block($target);
+                                    },
+                                    success: function(res) {
+                                        view.blockUi.unblock();
+                                        if (res.success) {
+                                            AE.pubsub.trigger('ae:notification', {
+                                                msg: res.msg,
+                                                notice_type: 'success'
+                                            });
+                                            view.closeModal();
+                                            window.location.reload(true);
+                                        } else {
+                                            AE.pubsub.trigger('ae:notification', {
+                                                msg: res.msg,
+                                                notice_type: 'error'
+                                            });
+                                        }
+                                    }
+                                });
+                            } else {
+                                AE.pubsub.trigger('ae:notification', {
+                                    msg: res.msg,
+                                    notice_type: 'error'
+                                });
+                            }
+                        }
+                    });
+
+                }
             },
             initValidator: function($target_form, field_to_check){
                 var view = this;

@@ -15,6 +15,7 @@ $profile = mJobProfileAction()->getProfile($current->mjob_author);
             </div>
             <div class="modal-body delivery-order block-items-detail">
                 <div class="unlock-requirement-modal">
+                    <form method="post" class="et-form" id="reoder-agreement">
                     <div class="form-group clearfix">
                         <div >
                             <div class="personal-profile order-detail-profile">
@@ -97,9 +98,10 @@ $profile = mJobProfileAction()->getProfile($current->mjob_author);
                         </div>
                     </div>
                     <div class="form-group clearfix float-right change-pass-button-method">
-                        <button class="btn-submit btn-reorder"><?php echo sprintf(__('REORDER NOW (%s)', ET_DOMAIN),$current->amount_text); ?></button>
+                        <button type="submit" class="btn-submit btn-reorder"><?php echo sprintf(__('REORDER NOW (%s)', ET_DOMAIN),$current->amount_text); ?></button>
                         <input type="hidden" class="input-item" name="_wpnonce" id="profile_wpnonce" value="<?php echo de_create_nonce('ae-mjob_post-sync');?>" />
                     </div>
+                    </form>
                 </div>
             </div>
         </div>
