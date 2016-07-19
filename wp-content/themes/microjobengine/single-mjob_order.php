@@ -229,7 +229,7 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                         //                                    else:
                                         //                                        echo $profile->company_status_message;
                                         //                                    endif;
-                                        $t1 = get_the_time('U', $current->ID);
+                                        $t1 = get_post_modified_time('U', $current->ID);
                                         $t2 = time();
                                         $t = $t2 - $t1;
                                         if( $t >= 600 ):
@@ -550,7 +550,7 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                                 //                                    else:
                                                 //                                        echo $profile->company_status_message;
                                                 //                                    endif;
-                                                $t1 = get_the_time('U', $current->ID);
+                                                $t1 = get_post_modified_time('U', $current->ID);
                                                 $t2 = time();
                                                 $t = $t2 - $t1;
                                                 if( $t >= 600 ):
