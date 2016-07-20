@@ -13042,7 +13042,7 @@ body.archive .block-title {
 }
 .post-detail .blog-content .post-content {
   margin-top: 20px;
-  border-bottom: 1px solid #dfe0e5;
+  /*border-bottom: 1px solid #dfe0e5;*/
   padding-bottom: 50px;
 }
 .post-detail .blog-content .post-content h1 {
