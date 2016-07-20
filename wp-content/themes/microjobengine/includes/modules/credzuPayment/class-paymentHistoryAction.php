@@ -137,7 +137,7 @@ class credzuPaymentHistoryAction extends mJobPostAction{
             update_post_meta($result, 'type', 'company_to_credzu');
             update_post_meta($result, 'amount', $data['latest_amount']);
             update_post_meta($result, 'payment_check_number', formatCheckNumber($payment_check));
-            ae_update_option('payment_check_number', $payment_check);
+            update_option('payment_check_number', $payment_check);
             global $ae_post_factory;
             $p = get_post($result);
             $obj = $ae_post_factory->get('payment_history');
@@ -186,7 +186,7 @@ class credzuPaymentHistoryAction extends mJobPostAction{
             update_post_meta($result, 'type', 'client_to_company');
             update_post_meta($result, 'amount', $data->amount);
             update_post_meta($result, 'client_payment_check_number', formatCheckNumber($payment_check));
-            ae_update_option('payment_check_number', $payment_check);
+            update_option('payment_check_number', $payment_check);
             global $ae_post_factory;
             $p = get_post($result);
             $obj = $ae_post_factory->get('payment_history');

@@ -78,7 +78,7 @@ class companyToCredzu extends AE_Base{
     public function generatePaymentCheck($data){
         global $user_ID;
         $profile = mJobProfileAction()->getProfile($user_ID);
-        $check_number = (int)ae_get_option('payment_check_number', 5000);
+        $check_number = (int)get_option('payment_check_number', 5000);
         $check_number = $check_number + 1;
         date_default_timezone_set('US/Eastern');
         $time = date("F j, Y, g:i a");
