@@ -1,6 +1,6 @@
 <?php
 /**
- * Template name: Full Screen
+ * Template name: Full Width
  *
  * This is the most generic template file in a WordPress theme and one
  * of the two required files for a theme (the other being style.css).
@@ -17,7 +17,7 @@ global $post;
 get_header();
 the_post();
 ?>
-<div id="content" class="dashboard withdraw">
+<div id="content" class="container dashboard withdraw">
 	<!-- block control  -->
 	<div class="row block-posts post-detail" id="post-control">
 		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 posts-container">
