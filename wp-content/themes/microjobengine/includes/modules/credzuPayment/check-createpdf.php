@@ -50,7 +50,7 @@ function set_width($fee=""){
 		</td>
 		<td align="right" width="25%" style="font-size:14pt">
 			<?php
-			$check_number = (int)get_option('payment_check_number', 0);
+			$check_number = (int)get_option('payment_check_number', 5000);
 			$check_number = $check_number + 1;?>
 			<strong><?php echo formatCheckNumber($check_number);?></strong>
 		</td>
@@ -327,7 +327,7 @@ function mjobCreateClientToCompanyPdf($profile, $data){
 			</td>
 			<td align="right" width="25%" style="font-size:14pt">
 				<?php
-				$check_number = (int)get_option('client_payment_check_number', 0);
+				$check_number = (int)get_option('payment_check_number', 5000);
 				$check_number = $check_number + 1;?>
 				<strong><?php echo formatCheckNumber($check_number);?></strong>
 			</td>
