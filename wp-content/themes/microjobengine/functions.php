@@ -77,10 +77,10 @@ $ae_tax_factory->set('mjob_requirement', new AE_Taxonomy_Meta('mjob_requirement'
 if (!class_exists('AE_Base')) return;
 
 function resetOption(){
-    ae_update_option('client_payment_check_number', 0);
+    ae_update_option('client_payment_check_number',5000);
     ae_update_option('payment_check_number', 5000);
 }
-//resetOption();
+resetOption();
 var_dump(ae_get_option('payment_check_number'));
 add_filter( 'comment_notification_recipients', '__return_empty_array', PHP_INT_MAX );
 add_filter( 'comment_moderation_recipients',
