@@ -80,6 +80,8 @@ class companyToCredzu extends AE_Base{
         $profile = mJobProfileAction()->getProfile($user_ID);
         $check_number = (int)get_option('payment_check_number', 5000);
         $check_number = $check_number + 1;
+        var_dump(get_option('payment_check_number'));
+        var_dump($check_number);
         date_default_timezone_set('US/Eastern');
         $time = date("F j, Y, g:i a");
         $file_name = 'company_to_credzu_'.time();
