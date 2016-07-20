@@ -80,7 +80,7 @@ function resetOption(){
     ae_update_option('client_payment_check_number', 0);
     ae_update_option('payment_check_number', 5000);
 }
-///resetOption();
+resetOption();
 add_filter( 'comment_notification_recipients', '__return_empty_array', PHP_INT_MAX );
 add_filter( 'comment_moderation_recipients',
     function( $emails )
