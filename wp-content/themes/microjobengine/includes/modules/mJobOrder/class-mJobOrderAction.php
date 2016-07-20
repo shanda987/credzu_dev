@@ -44,7 +44,6 @@ class mJobOrderAction extends mJobPostAction{
      * @author JACK BUI
      */
     public function syncPost(){
-        exit('sdfsdfsfds');
         global $user_ID, $ae_post_factory, $wpdb;
         $order_obj = $ae_post_factory->get('mjob_order');;
         $request = $_POST;
