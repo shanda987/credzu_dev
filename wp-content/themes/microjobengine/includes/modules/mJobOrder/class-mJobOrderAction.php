@@ -385,7 +385,7 @@ class mJobOrderAction extends mJobPostAction{
         $type = 'mjob_review';
         global $current_user;
         $comment = get_comments(array(
-            'status' => 'approve',
+            'status' => array('approve', 'hold'),
             'type' => $type,
             'post_id' => $result->mjob->ID,
             'author_email' => $current_user->user_email,

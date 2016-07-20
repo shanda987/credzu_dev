@@ -199,7 +199,7 @@ class MjobReviewAction extends AE_Base
          */
         $type = 'mjob_review';
         $comment = get_comments(array(
-            'status' => 'approve',
+            'status' => array('approve', 'hold'),
             'type' => $type,
             'post_id' => $mjob_id,
             'author_email' => $current_user->user_email,

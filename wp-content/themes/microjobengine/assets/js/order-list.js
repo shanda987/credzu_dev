@@ -939,7 +939,7 @@
                                                 notice_type: 'success'
                                             });
                                             view.closeModal();
-                                           // window.location.reload(true);
+                                            window.location.reload(true);
                                         } else {
                                             AE.pubsub.trigger('ae:notification', {
                                                 msg: res.msg,
