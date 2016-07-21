@@ -22,7 +22,10 @@ $profile = mJobProfileAction()->getProfile($to_user);
 $profile_individual = mJobProfileAction()->getProfile($user_ID);
 echo mJobProfileAction()->getProfileJson($profile_individual);
 $current->_wpnonce = de_create_nonce('ae-mjob_post-sync');
-echo '<script type="text/template" id="order_single_data" >'.json_encode($current).'</script>';
+$current_save = (array)$current;
+unset($current_save['ae_message']);
+$current_save = (object)$current_save;
+echo '<script type="text/template" id="order_single_data" >'.json_encode($current_save).'</script>';
 ?>
 <div id="content" class="mjob-single-order-page mjob_conversation_detail_page">
     <div class="block-page">
