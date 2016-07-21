@@ -524,6 +524,8 @@
                     this.model.set('requirement_id', view.data_id);
                     view.model.set('need_upload_remove', view.data_id);
                     $target = $(e.currentTarget);
+                    this.model.unset('ae_message');
+                    this.model.unset('order_delivery');
                     this.model.save('', '', {
                         beforeSend: function () {
                             view.blockUi.block($target)
@@ -554,6 +556,7 @@
                     });
                 }
                 else{
+                    console.log($(this).find('.requirement-image-list .image-item').length);
                     if( $(this).find('.requirement-image-list .image-item').length <= 0){
                         $('.f-upload').show();
                     }

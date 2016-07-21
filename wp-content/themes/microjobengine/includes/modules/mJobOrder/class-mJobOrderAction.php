@@ -106,13 +106,17 @@ class mJobOrderAction extends mJobPostAction{
                     if (!is_wp_error($re1) && !is_wp_error($re2)) {
                         $ood = get_post($request['ID']);
                         $ood = $order_obj->convert($ood);
+                        $current_save = (array)$ood;
+                        unset($current_save['ae_message']);
+                        unset($current_save['order_delivery']);
+                        $current_save = (object)$current_save;
                         if( $m ) {
                             do_action('send_request_new_document', $ood, $request['document_name']);
                         }
                         $response = array(
                             'success' => true,
                             'msg' => __('Successful!', ET_DOMAIN),
-                            'data' => $ood
+                            'data' => $current_save
                         );
                     } else {
                         $response = array(
@@ -131,6 +135,10 @@ class mJobOrderAction extends mJobPostAction{
                         $temp_order->status_text = __('LATE', ET_DOMAIN);
                         $temp_order->status_class = 'late-color';
                         $temp_order->status_text_color = 'late-text';
+                        $temp_order = (array)$temp_order;
+                        unset($temp_order['ae_message']);
+                        unset($temp_order['order_delivery']);
+                        $temp_order = (object)$temp_order;
                         wp_send_json(array(
                             'success' => true,
                             'msg' => __("Successful update!", ET_DOMAIN),

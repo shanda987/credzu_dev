@@ -24,6 +24,7 @@ echo mJobProfileAction()->getProfileJson($profile_individual);
 $current->_wpnonce = de_create_nonce('ae-mjob_post-sync');
 $current_save = (array)$current;
 unset($current_save['ae_message']);
+unset($current_save['order_delivery']);
 $current_save = (object)$current_save;
 echo '<script type="text/template" id="order_single_data" >'.json_encode($current_save).'</script>';
 ?>
