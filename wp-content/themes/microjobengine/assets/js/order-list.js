@@ -514,6 +514,7 @@
                 view.$el.find('.btn-save-requirement').attr('disabled', false);
                 view.arr_ids.push(res.data.attach_id);
                 $('.f-upload').hide();
+                $('.f-upload').remove();
             },
             saveOrderRequirment: function(e){
                 e.preventDefault();
@@ -568,6 +569,7 @@
             removeAll: function(model){
                 var view = this;
                 if( view.$el.find('.requirement-image-list .image-item').length <= 0){
+                    $('#requirement_container').append('<label for="f_upload" class="error f-upload">This field is required.</label>');
                     $('.f-upload').show();
                 }
             },
