@@ -677,6 +677,24 @@ function addTimeStamp(){
     $time_option = get_option('date_format');
     return date($time_option, time());
 }
+add_shortcode('three-days', 'addThreeDay');
+/**
+ * add first name to shortcode
+ *
+ * @param array $atts
+ * @return void
+ * @since 1.0
+ * @package MicrojobEngine
+ * @category void
+ * @author JACK BUI
+ */
+function addThreeDay(){
+    $time_option = get_option('date_format');
+    $d = 3*24*60*60;
+    $t = time();
+    $t = $d + $t;
+    return date($time_option, $t);
+}
 add_shortcode('ip-address', 'addIpAddress');
 /**
  * add first name to shortcode
