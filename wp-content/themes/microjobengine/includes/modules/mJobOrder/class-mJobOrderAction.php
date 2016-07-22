@@ -86,11 +86,11 @@ class mJobOrderAction extends mJobPostAction{
                 if( $se !== false && NULL != $se){
                     unset($request['need_uploads'][$se]);
                 }
-                $request['uploaded'] = wp_parse_args(array($request['need_upload_remove']), array($request['uploaded']));
+                $request['uploaded'] = wp_parse_args((array)$request['need_upload_remove'], (array)$request['uploaded']);
             }
             if( isset($request['need_upload_add']) && isset($request['need_uploads'])){
                 if( $request['mjob_author'] == $user_ID && ae_user_role($user_ID) == COMPANY ) {
-                    $request['need_uploads'] = wp_parse_args(array($request['need_upload_add']), $request['need_uploads']);
+                    $request['need_uploads'] = wp_parse_args((array)$request['need_upload_add'], $request['need_uploads']);
                     $sr = array_search($request['need_upload_add'], (array)$request['uploaded']);
                     $m = false;
                     if ($sr !== false) {
