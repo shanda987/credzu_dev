@@ -1106,3 +1106,6 @@
     font-size: 55px;
     font-weight: bold;
 }
+.job-items-cat-title >span{
+    font-size: 18px;
+}
