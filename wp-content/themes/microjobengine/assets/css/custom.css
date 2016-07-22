@@ -1099,3 +1099,7 @@
 .padding-top-0{
     padding-top: 0!important;
 }
+.job-items-cat-title h1{
+    font-size: 55px;
+    font-weight: bold;
+}
