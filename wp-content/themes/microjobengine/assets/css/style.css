@@ -6931,6 +6931,7 @@ body.page-template-page-profile-php .plus-circle {
 .banner {
   min-height: 385px;
   position: relative;
+  top:85px;
 }
 
 .search-slider {
