@@ -8800,10 +8800,13 @@ body.page-template-page-profile-php .plus-circle {
     min-height: 65px;
   }
 }
-.home .et-pull-top, .archive .et-pull-top {
+.home .et-pull-top  {
   position: fixed;
   top: auto;
   width: 100%;
+  z-index: 999;
+}
+.archive .et-pull-top{
   z-index: 999;
 }
 @media (max-width: 767px) {
