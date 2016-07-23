@@ -1113,9 +1113,9 @@
 .job-items-cat-title .header-image{
     top:85px;
 }
-.font-size-40{
-    font-size: 40px;
+    .font-size-40{
+    font-size: 40px!important;
 }
 .font-size-14{
-    font-size: 14px;
+    font-size: 14px!important;
 }
