@@ -759,6 +759,9 @@
                 if( $('.social-auth').length > 0 ){
                     $('.title-blog').hide();
                 }
+                if( $('.job-items-cat-title').length > 0 ){
+                    console.log($('.job-items-cat-title').find('h1').length);
+                }
 
             },
             showErrorMessage: function(e){
