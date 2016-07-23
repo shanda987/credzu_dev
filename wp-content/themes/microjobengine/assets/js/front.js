@@ -712,7 +712,7 @@
                     $('#footer').css('margin-top', h+'px');
                 }
                 if( $('.job-items-cat-title').length >0 ){
-                    var  banner = $('.banner').height();
+                    var  banner = $('.header-images').height();
                     var con = $('.job-items-cat-title').height();
                     var h1 = (banner - con)/2;
                     console.log(h1);
