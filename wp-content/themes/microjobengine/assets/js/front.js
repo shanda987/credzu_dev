@@ -760,7 +760,8 @@
                     $('.title-blog').hide();
                 }
                 if( $('.job-items-cat-title').length > 0 ){
-                    console.log($('.job-items-cat-title').find('h1').length);
+                    var str = $('.job-items-cat-title').find('h1').html();
+                    console.log(str.length);
                 }
 
             },
