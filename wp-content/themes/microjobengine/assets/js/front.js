@@ -711,14 +711,6 @@
                 if( h > 0 ){
                     $('#footer').css('margin-top', h+'px');
                 }
-                if( $('.job-items-cat-title').length >0 ){
-                    var  banner = $('.header-images').height();
-                    var con = $('.job-items-cat-title').height();
-                    var h1 = (banner - con)/2;
-                    if( h1 > 0 ){
-                        $('.job-items-cat-title').css('margin-top', h1+ 'px');
-                    }
-                }
                 if( $('.agreement-view').length > 0){
                     $('html, body').animate({
                         scrollTop: $("html, body").offset().top
@@ -765,9 +757,16 @@
                         $('.job-items-cat-title').find('h1').addClass('font-size-40');
                     }
                     var slt = $('.job-items-cat-title').find('span').html();
-                    console.log(slt.length);
                     if( slt.length > 144 ){
                         $('.job-items-cat-title').find('span').addClass('font-size-14');
+                    }
+                }
+                if( $('.job-items-cat-title').length >0 ){
+                    var  banner = $('.header-images').height();
+                    var con = $('.job-items-cat-title').height();
+                    var h1 = (banner - con)/2;
+                    if( h1 > 0 ){
+                        $('.job-items-cat-title').css('margin-top', h1+ 'px');
                     }
                 }
 
