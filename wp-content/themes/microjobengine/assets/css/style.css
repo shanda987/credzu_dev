@@ -6727,7 +6727,7 @@ body.page-template-page-profile-php .plus-circle {
   z-index: 0;
   width: 100%;
   height: auto;
-  top: 85px;
+  top: 0px;
   overflow: hidden;
 }
 .header-images img {
