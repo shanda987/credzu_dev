@@ -761,7 +761,9 @@
                 }
                 if( $('.job-items-cat-title').length > 0 ){
                     var str = $('.job-items-cat-title').find('h1').html();
-                    console.log(str.length);
+                    if( str.length >= 45 ){
+                        $('.job-items-cat-title').find('h1').addClass('font-size-40');
+                    }
                 }
 
             },
