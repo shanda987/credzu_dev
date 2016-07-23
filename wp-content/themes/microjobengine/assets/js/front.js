@@ -764,6 +764,11 @@
                     if( str.length >= 45 ){
                         $('.job-items-cat-title').find('h1').addClass('font-size-40');
                     }
+                    var slt = $('.job-items-cat-title').find('span').html();
+                    console.log(slt.length);
+                    if( slt.length > 70 ){
+                        $('.job-items-cat-title').find('span').addClass('font-size-14');
+                    }
                 }
 
             },
