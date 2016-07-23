@@ -8808,7 +8808,7 @@ body.page-template-page-profile-php .plus-circle {
   z-index: 999;
 }
 .archive .et-pull-top{
-  z-index: 999;
+  z-index: 99999;
   position: fixed;
   width: 100%;
 }
