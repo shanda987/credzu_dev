@@ -6723,7 +6723,7 @@ body.page-template-page-profile-php .plus-circle {
 
 .header-images {
   min-height: 300px;
-  /*position: absolute;*/
+  position: absolute;
   z-index: 0;
   width: 100%;
   height: auto;
