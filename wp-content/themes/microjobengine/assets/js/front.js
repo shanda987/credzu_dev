@@ -766,7 +766,7 @@
                     }
                     var slt = $('.job-items-cat-title').find('span').html();
                     console.log(slt.length);
-                    if( slt.length > 70 ){
+                    if( slt.length > 144 ){
                         $('.job-items-cat-title').find('span').addClass('font-size-14');
                     }
                 }
