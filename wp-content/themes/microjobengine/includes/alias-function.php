@@ -1592,9 +1592,6 @@ function mjob_add_submenu_page() {
 //    $menu['32']['4'] = '';
 //    $menu['32']['5'] = '';
 //    $menu['32']['6'] = '';
-    echo '<pre>';
-    var_dump($menu);
-    exit;
     $submenu['edit.php?post_type=mjob_profile']['10']['0']= '';
     $submenu['edit.php?post_type=mjob_profile']['10']['1']= '';
     $submenu['edit.php?post_type=mjob_profile']['10']['2']= '';
