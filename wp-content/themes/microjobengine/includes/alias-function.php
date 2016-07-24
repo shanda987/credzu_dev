@@ -1572,6 +1572,9 @@ function mjob_add_submenu_page() {
     $menu['26']['5'] = '';
     $menu['26']['6'] = '';
     unset($menu['26']);
+    unset($menu['27']);
+    unset($menu['28']);
+    unset($menu['32']);
 //    $menu['27']['0'] = '';
 //    $menu['27']['1'] = '';
 //    $menu['27']['2'] = '';
