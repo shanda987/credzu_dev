@@ -59,7 +59,6 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                 'post_status' => 'publish',
                                 'post_parent'=>$current->ID,
                                 'meta_query' => array(
-                                    'relation' => 'AND',
                                     array(
                                         'relation' => 'OR',
                                         array(
