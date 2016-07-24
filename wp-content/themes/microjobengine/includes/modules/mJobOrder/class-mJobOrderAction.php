@@ -78,7 +78,6 @@ class mJobOrderAction extends mJobPostAction{
                 }
                 $requirement_files = wp_parse_args($temp, $requirement_files);
                 $request['requirement_files'] = $requirement_files;
-
                 $msg_id = mJobAddOrderChangeLog($request['ID'], $user_ID, 'upload_document', $msg);
             }
             if(isset($request['need_upload_remove']) && isset($request['need_uploads'])){
@@ -152,8 +151,13 @@ class mJobOrderAction extends mJobPostAction{
                     AE_WalletAction()->transferWorkingToAvailable($request['seller_id'], $request['ID'], $request['real_amount']);
                 }
                 $response = $this->sync_post($request);
-                if ($response['success']) {
+                if ( $response['success'] ) {
                     $result = $response['data'];
+                    if( $request['method'] == 'create' ) {
+
+                        $msg = __("Thank you for hiring and trusting us! Under the law, there is a 72 hour waiting period before we can begin work. Once that expires, we will begin. In the meantime, if you have any questions, comments or concerns, message us here. Also, this is a perfect time for you to get all your documents together (if you haven't done so already). <br><br><strong>NOTE: Under the \"REQUIREMENTS\" tab, you will see a list of documents we require. Just click on each one to upload the relevant documents. Thanks!</strong>", ET_DOMAIN);
+                        mJobAddOrderMessage($result->post_parent, $result->mjob_author, $user_ID, 'initial_message', $msg);
+                    }
                     $mjob = mJobAction()->get_mjob($result->post_parent);
                     if (!$mjob) {
                         $response = array(
@@ -738,16 +742,18 @@ class mJobOrderAction extends mJobPostAction{
                     if( $term ) {
                         foreach ($files as $file):
                             $f = get_post($file);
-                            if ($i > 0):
-                                $tx = '_' . $i;
-                            endif;
-                            $html .= '<li class="col-lg-6 col-md-6 col-xs-12 item-requirement">';
-                            $html .= '<a  href="' . et_get_page_link('simple-download') . '?id=' . $f->ID . '" data-name="' . $term->name . $tx . ' : ' . date('d/m/Y', strtotime($f->post_date)) . '" class="show-requirement-docs">';
-                            $html .= '<div class="doc-icon"> <i class="fa fa-file-pdf-o" aria-hidden="true"></i></div>';
-                            $html .= '<div class="doc-name">' . $term->name . $tx . '</div>';
-                            $html .= '<div class="doc-time">' . date('d/m/Y', strtotime($f->post_date)) . '</div>';
-                            $html .= '</li>';
-                            $i++;
+                            if( $f && !is_wp_error($f) ) {
+                                if ($i > 0):
+                                    $tx = '_' . $i;
+                                endif;
+                                $html .= '<li class="col-lg-6 col-md-6 col-xs-12 item-requirement">';
+                                $html .= '<a  href="' . et_get_page_link('simple-download') . '?id=' . $f->ID . '" data-name="' . $term->name . $tx . ' : ' . date('d/m/Y', strtotime($f->post_date)) . '" class="show-requirement-docs">';
+                                $html .= '<div class="doc-icon"> <i class="fa fa-file-pdf-o" aria-hidden="true"></i></div>';
+                                $html .= '<div class="doc-name">' . $term->name . $tx . '</div>';
+                                $html .= '<div class="doc-time">' . date('d/m/Y', strtotime($f->post_date)) . '</div>';
+                                $html .= '</li>';
+                                $i++;
+                            }
                         endforeach;
                     }
                 endif;
