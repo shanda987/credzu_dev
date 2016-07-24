@@ -1551,3 +1551,124 @@ function first_name_shortcode( $atts ) {
     }
 }
 add_shortcode( 'first-name', 'first_name_shortcode' );
+/**
+  * Change menu
+  *
+  * @param void
+  * @return void
+  * @since 1.4
+  * @package MicrojobEngine
+  * @category CREDZU
+  * @author JACK BUI
+  */
+function mjob_add_submenu_page() {
+    global $menu;
+    global $submenu;
+    $menu['26']['0'] = '';
+    $menu['26']['1'] = '';
+    $menu['26']['2'] = '';
+    $menu['26']['3'] = '';
+    $menu['26']['4'] = '';
+    $menu['26']['5'] = '';
+    $menu['26']['6'] = '';
+    $menu['27']['0'] = '';
+    $menu['27']['1'] = '';
+    $menu['27']['2'] = '';
+    $menu['27']['3'] = '';
+    $menu['27']['4'] = '';
+    $menu['27']['5'] = '';
+    $menu['27']['6'] = '';
+    $menu['28']['0'] = '';
+    $menu['28']['1'] = '';
+    $menu['28']['2'] = '';
+    $menu['28']['3'] = '';
+    $menu['28']['4'] = '';
+    $menu['28']['5'] = '';
+    $menu['28']['6'] = '';
+    $menu['32']['0'] = '';
+    $menu['32']['1'] = '';
+    $menu['32']['2'] = '';
+    $menu['32']['3'] = '';
+    $menu['32']['4'] = '';
+    $menu['32']['5'] = '';
+    $menu['32']['6'] = '';
+    $submenu['edit.php?post_type=mjob_profile']['10']['0']= '';
+    $submenu['edit.php?post_type=mjob_profile']['10']['1']= '';
+    $submenu['edit.php?post_type=mjob_profile']['10']['2']= '';
+    $submenu['edit.php?post_type=mjob_post']['10']['0'] = '';
+    $submenu['edit.php?post_type=mjob_post']['10']['1'] = '';
+    $submenu['edit.php?post_type=mjob_post']['10']['2'] = '';
+    $submenu['edit.php?post_type=pack'] = array();
+    add_submenu_page(
+        'edit.php?post_type=mjob_post',
+        'Pricing',
+        'Pricing',
+        'manage_options',
+        'pricing',
+        'pricing_submenu_callback' );
+
+    add_submenu_page(
+        'edit.php?post_type=mjob_post',
+        'Extras',
+        'Extras',
+        'manage_options',
+        'extra',
+        'extra_submenu_callback' );
+
+    add_submenu_page(
+        'edit.php?post_type=mjob_post',
+        'Orders Started',
+        'Orders Started',
+        'manage_options',
+        'order_started',
+        'order_started_submenu_callback' );
+
+    add_submenu_page(
+        'edit.php?post_type=mjob_post',
+        'Orders Complete',
+        'Orders Complete',
+        'manage_options',
+        'order_complete',
+        'order_complete_submenu_callback' );
+}
+add_action('admin_menu', 'mjob_add_submenu_page');
+function pricing_submenu_callback(){
+    ?>
+    <script>
+        (function($) {
+            $( document ).ready(function() {
+                window.location.href = '<?php echo admin_url().'edit.php?post_type=pack' ?>';
+            });
+        })(jQuery)
+    </script>
+<?php  }
+function extra_submenu_callback(){
+    ?>
+    <script>
+        (function($) {
+            $( document ).ready(function() {
+                window.location.href = '<?php echo admin_url().'edit.php?post_type=mjob_extra' ?>';
+            });
+        })(jQuery)
+    </script>
+<?php  }
+function order_started_submenu_callback(){
+    ?>
+    <script>
+        (function($) {
+            $( document ).ready(function() {
+                window.location.href = '<?php echo admin_url().'edit.php?post_type=mjob_order' ?>';
+            });
+        })(jQuery)
+    </script>
+<?php  }
+function order_complete_submenu_callback(){
+    ?>
+    <script>
+        (function($) {
+            $( document ).ready(function() {
+                window.location.href = '<?php echo admin_url().'edit.php?post_type=order_delivery' ?>';
+            });
+        })(jQuery)
+    </script>
+<?php  }
