@@ -1598,6 +1598,11 @@ function mjob_add_submenu_page() {
     $submenu['edit.php?post_type=mjob_post']['10']['0'] = '';
     $submenu['edit.php?post_type=mjob_post']['10']['1'] = '';
     $submenu['edit.php?post_type=mjob_post']['10']['2'] = '';
+    $submenu['edit.php?post_type=mjob_post']['15']['0'] = 'Categories';
+    $submenu['edit.php?post_type=mjob_post']['16']['0'] = 'Requirements';
+    $submenu['edit.php?post_type=mjob_post']['17']['0'] = '';
+    $submenu['edit.php?post_type=mjob_post']['17']['1'] = '';
+    $submenu['edit.php?post_type=mjob_post']['17']['2'] = '';
     $submenu['edit.php?post_type=pack'] = array();
     add_submenu_page(
         'edit.php?post_type=mjob_post',
