@@ -198,13 +198,13 @@ class agreementAction extends mJobPostAction{
                 }
             }
             do_action('mjob_agreement_email', $profile->business_email, $email1, $arr_path, $company_name, $profile->fist_name.' '.$profile->last_name);
-            wp_send_json(array(
-                'success'=> true,
-                'msg'=> __('Success!', ET_DOMAIN),
-                'data'=>$post1,
-                'files'=>$arr_save
-            ));
         }
+        wp_send_json(array(
+            'success'=> true,
+            'msg'=> __('Success!', ET_DOMAIN),
+            'data'=>$post1,
+            'files'=>$arr_save
+        ));
     }
     /**
       * Send email when company sign agreement

@@ -720,6 +720,7 @@
                     $('.comment-respond').show();
                 }
                 $('.mjob-order-disable1').popover();
+                $('.review-popover').popover();
                 $(".btn-authentication-pop").popover({
                     html : true,
                     trigger: 'manual',

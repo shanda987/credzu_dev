@@ -372,11 +372,15 @@ class mJobConversationAction extends mJobPostAction
                 break;
             case 'delivery_new':
                 $order_author_name = get_the_author_meta('display_name', $order->post_author);
-                if( $order->can_review ) {
-                    $click_here = sprintf('<a href="#"  class="order-action" value="finished">%s</a>', __('click here', ET_DOMAIN));
+                if( $order->post_status == 'finished' || $order->post_status == 'delivery') {
+                    if ($order->can_review) {
+                        $click_here = sprintf('<a href="#"  class="order-action" value="finished">%s</a>', __('click here', ET_DOMAIN));
+                    } else {
+                        $click_here = sprintf('<a href="#"  class="order-action btn-continue-service-btn" >%s</a>', __('click here', ET_DOMAIN));
+                    }
                 }
                 else{
-                    $click_here = sprintf('<a href="#"  class="order-action btn-continue-service-btn" >%s</a>', __('click here', ET_DOMAIN));
+                    $click_here = sprintf('<a href="#"  class="order-action review-popover" data-container="body" data-toggle="popover" data-placement="top" data-content="%s" >%s</a>', __('You already reviewed the company.', ET_DOMAIN),  __('click here', ET_DOMAIN));
                 }
                 $result->changelog = sprintf(__("%s, please %s to review your company"), $order_author_name, $click_here);
                 if( !isset($result->et_files) ){
