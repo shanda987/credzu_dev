@@ -198,21 +198,21 @@ class MjobReviewAction extends AE_Base
          *
          */
         $type = 'mjob_review';
-        $comment = get_comments(array(
-            'status' => array('approve', 'hold'),
-            'type' => $type,
-            'post_id' => $mjob_id,
-            'author_email' => $current_user->user_email,
-            'meta_key' => 'order_id',
-            'meta_value' => $order_id
-        ));
-
-        if (!empty($comment)) {
-            wp_send_json(array(
-                'succes' => false,
-                'msg' => __('You have already reviewed this mJob!', ET_DOMAIN)
-            ));
-        }
+//        $comment = get_comments(array(
+//            'status' => array('approve', 'hold'),
+//            'type' => $type,
+//            'post_id' => $mjob_id,
+//            'author_email' => $current_user->user_email,
+//            'meta_key' => 'order_id',
+//            'meta_value' => $order_id
+//        ));
+//
+//        if (!empty($comment)) {
+//            wp_send_json(array(
+//                'succes' => false,
+//                'msg' => __('You have already reviewed this mJob!', ET_DOMAIN)
+//            ));
+//        }
 
         // end check user review project owner
 

@@ -41,7 +41,8 @@ class mJobPosttype extends mJobPost{
 //            'option_government_issued_id',
 //            'option_billing_information',
             'modified_date',
-            'is_featured'
+            'is_featured',
+            'can_review'
         );
         $this->post_type_singular = 'Listing';
         $this->post_type_regular = 'Listings';

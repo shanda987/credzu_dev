@@ -165,6 +165,7 @@ class mJobOrderAction extends mJobPostAction{
                         );
                         wp_send_json($response);
                     }
+                    update_post_meta($mjob->ID, 'can_review', -1);
                     $total = $mjob->et_budget;
 //                    if (!empty($result->extra_ids)) {
 //                        foreach ($result->extra_ids as $key => $value) {
@@ -388,25 +389,16 @@ class mJobOrderAction extends mJobPostAction{
         if(empty($result->uploaded) ){
             add_post_meta($result->ID, 'uploaded', ' ');
         }
-//        echo '<pre>';
-//        var_dump($result->need_uploads);
-//        var_dump($result->uploaded);
-//        exit;
-//        update_post_meta($result->ID, 'need_uploads', array('billing-information', 'contact-information'));
-        $type = 'mjob_review';
-        global $current_user;
-        $comment = get_comments(array(
-            'status' => array('approve', 'hold'),
-            'type' => $type,
-            'post_id' => $result->mjob->ID,
-            'author_email' => $current_user->user_email,
-            'meta_key' => 'order_id',
-            'meta_value' => $result->ID
-        ));
-        $result->can_review = true;
-        if( !empty($comment)){
-            $result->can_review = false;
+        if( $mjob->can_review == ''){
+            $mjob->can_review = true;
         }
+        else if( $mjob->can_review == -1 ){
+            $mjob->can_review = false;
+        }
+        else{
+            $mjob->can_review = true;
+        }
+        $result->can_review = $mjob->can_review;
         return $result;
     }
     /**
@@ -906,6 +898,7 @@ class mJobOrderAction extends mJobPostAction{
                 $msg = __('Thanks for trusting us, again! Since you are continuing service, we do not need to wait for the cancellation period this time. We will begin performing the service right away.', ET_DOMAIN);
                 mJobAddOrderMessage($request['order_id'], $mjob_author, $o->post_author, 'reoder_message', $msg );
                 do_action('email_mjob_rehire', $o);
+                update_post_meta($o->mjob_id, 'can_review', 1);
                 wp_send_json(array(
                     'success'=> true,
                     'msg'=> __('Confirm success!', ET_DOMAIN)
