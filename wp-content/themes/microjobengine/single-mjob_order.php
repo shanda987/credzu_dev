@@ -562,9 +562,14 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                                 else:
                                                     $t1 = get_the_time('U', $current->ID);
                                                 endif;
+                                                the_post();
+                                                ob_start();
+                                                the_time('U');;
+                                                $t3 = ob_get_clean();
                                                 $t2 = time();
                                                 var_dump($t1);
                                                 var_dump($t2);
+                                                var_dump($t3);
                                                 $t = $t2 - $t1;
                                                 var_dump($t);
                                                 if( $t >= 600 ):
