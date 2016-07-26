@@ -235,12 +235,9 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                         if( !empty($current->rehire_time) && $current->rehire_time > 0 ):
                                             $t1 = $current->rehire_time;
                                         else:
-                                            $t1 = get_the_time('U', $current->ID);
+                                            $t1 = get_the_time('U', 1313);
                                         endif;
-                                        the_post();
-                                        ob_start();
-                                        the_time('U');;
-                                        $t3 = ob_get_clean();
+                                        var_dump($current->post_date);
                                         $t2 = time();
                                         var_dump($t1);
                                         var_dump($t2);
@@ -570,7 +567,7 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                                 if( !empty($current->rehire_time)  && $current->rehire_time > 0 ):
                                                     $t1 = $current->rehire_time;
                                                 else:
-                                                    $t1 = get_the_time('U', 1313);
+                                                    $t1 = get_the_time('U', $current->ID);
                                                 endif;
                                                 $t2 = time();
                                                 $t = $t2 - $t1;
