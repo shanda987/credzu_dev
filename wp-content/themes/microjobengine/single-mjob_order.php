@@ -240,7 +240,8 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                         $ss = get_the_time('d-m-yy H:i:s', 1313);
                                         $ss1 = date('d-m-yy H:i:s', time());
                                         $date = new DateTime();
-                                        $ss2 =  $ss1 = date('d-m-yy H:i:s', $date->getTimestamp());
+                                        $ss2  = current_time('mysql');
+                                        $ss2 = date('d-m-yy H:i:s', $ss2);
                                         var_dump($ss);
                                         var_dump($ss1);
                                         var_dump($ss2);
