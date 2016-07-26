@@ -557,6 +557,7 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                                 //                                    else:
                                                 //                                        echo $profile->company_status_message;
                                                 //                                    endif;
+                                                var_dump($current->rehire_time);
                                                 if( !empty($current->rehire_time)  && $current->rehire_time > 0 ):
                                                     $t1 = $current->rehire_time;
                                                 else:
