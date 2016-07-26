@@ -239,7 +239,6 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                         endif;
                                         $ss = get_the_time('d-m-yy H:i:s', 1313);
                                         $ss1 = date('d-m-yy H:i:s', time());
-                                        $date = new DateTime();
                                         $ss2  = current_time('mysql');
                                         $ss2 = date('d-m-yy H:i:s', $ss2);
                                         var_dump($ss);
