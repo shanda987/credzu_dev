@@ -129,69 +129,69 @@ class mJobProfileAction extends mJobPostAction
         }
         if( isset($request['is_billing']) && $request['is_billing'] == '1' ) {
             if ((isset($request['routing_number']) && !empty($request['routing_number'])) || (isset($request['account_number']) && !empty($request['account_number']))) {
-//                $response = $this->getBankName($request['routing_number']);
-//                if (!$response['success']) {
-//                    wp_send_json($response);
-//                } else {
-//                    $request['bank_name'] = $response['data'];
-//                }
-//                if (isset($request['ID'])) {
-//                    $check_ac_rt = get_post_meta($request['ID'], 'account_routing', true);
-//                    $str_ac = isset($request['routing_number']) ? $request['routing_number'] : '';
-//                    $str_rt = isset($request['account_number']) ? $request['account_number'] : '';
-//                    $str_ac_rt = $str_ac . '_' . $str_rt;
-//                    if ($check_ac_rt == $str_ac_rt || empty($check_ac_rt)) {
-//                        $wrong_request = get_post_meta($request['ID'], 'wrong_request', true);
-//                        if ((int)$wrong_request < 3) {
-//                            $res = $this->verifyBankInfo($request['account_number'], $request['routing_number']);
-//                            if (!$res['success']) {
-//                                $wrong_request = (int)$wrong_request + 1;
-//                                $time = time();
-//                                update_post_meta($request['ID'], 'wrong_request', $wrong_request);
-//                                update_post_meta($request['ID'], 'time_wrong_request', $time);
-//                                update_post_meta($request['ID'], 'account_routing', $str_ac_rt);
-//                                $res['msg'] = __('Error with billing information. Please try again. Call 888-831-4742 if the problem continues', ET_DOMAIN);
-//                                wp_send_json($res);
-//                            }
-//                        } else {
-//                            $wrong_time = get_post_meta($request['ID'], 'time_wrong_request', true);
-//                            $t = time() - (int)$wrong_time;
-//                            if ($t >= 8460 && (int)$wrong_time > 0) {
-//                                update_post_meta($request['ID'], 'wrong_request', 0);
-//                                $res = $this->verifyBankInfo($request['account_number'], $request['routing_number']);
-//                                if (!$res['success']) {
-//                                    update_post_meta($request['ID'], 'wrong_request', 1);
-//                                    update_post_meta($request['ID'], 'time_wrong_request', time());
-//                                    update_post_meta($request['ID'], 'account_routing', $str_ac_rt);
-//                                    $res['msg'] = __('Error with billing information. Please try again. Call 888-831-4742 if the problem continues', ET_DOMAIN);
-//                                    wp_send_json($res);
-//                                }
-//                            } else {
-//                                $res['msg'] = __('Error with billing information. Please try again. Call 888-831-4742 if the problem continues', ET_DOMAIN);
-//                                wp_send_json($res);
-//                            }
-//                        }
-//                        update_post_meta($request['ID'], 'wrong_request', 0);
-//                        update_post_meta($request['ID'], 'time_wrong_request', time());
-//                        unset($request['wrong_request']);
-//                        unset($request['time_wrong_request']);
-//                    } else {
-//                        $res = $this->verifyBankInfo($request['account_number'], $request['routing_number']);
-//                        if (!$res['success']) {
-//                            $res['msg'] = __('Error with billing information. Please try again. Call 888-831-4742 if the problem continues', ET_DOMAIN);
-//                            update_post_meta($request['ID'], 'account_routing', $str_ac_rt);
-//                            wp_send_json($res);
-//                        }
-//                        update_post_meta($request['ID'], 'account_routing', '');
-//                        update_post_meta($request['ID'], 'wrong_request', 0);
-//                        update_post_meta($request['ID'], 'time_wrong_request', time());
-//                    }
-//                }
-//                if( isset($request['mjob_order_id']) && !empty($request['mjob_order_id'])) {
-//                    global $user_ID;
-//                    $msg = __('Billing information', ET_DOMAIN);
-//                    mJobAddOrderChangeLog($request['mjob_order_id'], $user_ID, 'update_profile', $msg);
-//                }
+                $response = $this->getBankName($request['routing_number']);
+                if (!$response['success']) {
+                    wp_send_json($response);
+                } else {
+                    $request['bank_name'] = $response['data'];
+                }
+                if (isset($request['ID'])) {
+                    $check_ac_rt = get_post_meta($request['ID'], 'account_routing', true);
+                    $str_ac = isset($request['routing_number']) ? $request['routing_number'] : '';
+                    $str_rt = isset($request['account_number']) ? $request['account_number'] : '';
+                    $str_ac_rt = $str_ac . '_' . $str_rt;
+                    if ($check_ac_rt == $str_ac_rt || empty($check_ac_rt)) {
+                        $wrong_request = get_post_meta($request['ID'], 'wrong_request', true);
+                        if ((int)$wrong_request < 3) {
+                            $res = $this->verifyBankInfo($request['account_number'], $request['routing_number']);
+                            if (!$res['success']) {
+                                $wrong_request = (int)$wrong_request + 1;
+                                $time = time();
+                                update_post_meta($request['ID'], 'wrong_request', $wrong_request);
+                                update_post_meta($request['ID'], 'time_wrong_request', $time);
+                                update_post_meta($request['ID'], 'account_routing', $str_ac_rt);
+                                $res['msg'] = __('Error with billing information. Please try again. Call 888-831-4742 if the problem continues', ET_DOMAIN);
+                                wp_send_json($res);
+                            }
+                        } else {
+                            $wrong_time = get_post_meta($request['ID'], 'time_wrong_request', true);
+                            $t = time() - (int)$wrong_time;
+                            if ($t >= 8460 && (int)$wrong_time > 0) {
+                                update_post_meta($request['ID'], 'wrong_request', 0);
+                                $res = $this->verifyBankInfo($request['account_number'], $request['routing_number']);
+                                if (!$res['success']) {
+                                    update_post_meta($request['ID'], 'wrong_request', 1);
+                                    update_post_meta($request['ID'], 'time_wrong_request', time());
+                                    update_post_meta($request['ID'], 'account_routing', $str_ac_rt);
+                                    $res['msg'] = __('Error with billing information. Please try again. Call 888-831-4742 if the problem continues', ET_DOMAIN);
+                                    wp_send_json($res);
+                                }
+                            } else {
+                                $res['msg'] = __('Error with billing information. Please try again. Call 888-831-4742 if the problem continues', ET_DOMAIN);
+                                wp_send_json($res);
+                            }
+                        }
+                        update_post_meta($request['ID'], 'wrong_request', 0);
+                        update_post_meta($request['ID'], 'time_wrong_request', time());
+                        unset($request['wrong_request']);
+                        unset($request['time_wrong_request']);
+                    } else {
+                        $res = $this->verifyBankInfo($request['account_number'], $request['routing_number']);
+                        if (!$res['success']) {
+                            $res['msg'] = __('Error with billing information. Please try again. Call 888-831-4742 if the problem continues', ET_DOMAIN);
+                            update_post_meta($request['ID'], 'account_routing', $str_ac_rt);
+                            wp_send_json($res);
+                        }
+                        update_post_meta($request['ID'], 'account_routing', '');
+                        update_post_meta($request['ID'], 'wrong_request', 0);
+                        update_post_meta($request['ID'], 'time_wrong_request', time());
+                    }
+                }
+                if( isset($request['mjob_order_id']) && !empty($request['mjob_order_id'])) {
+                    global $user_ID;
+                    $msg = __('Billing information', ET_DOMAIN);
+                    mJobAddOrderChangeLog($request['mjob_order_id'], $user_ID, 'update_profile', $msg);
+                }
             }
         }
         else{
