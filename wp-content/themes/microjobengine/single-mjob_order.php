@@ -237,8 +237,8 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                         else:
                                             $t1 = get_the_time('U', 1313);
                                         endif;
-                                        $ss = get_the_time('d-m-yyyy H:i:s', 1313);
-                                        $ss1 = date('d-m-yyyy H:i:s', time());
+                                        $ss = get_the_time('d-m-yy H:i:s', 1313);
+                                        $ss1 = date('d-m-yy H:i:s', time());
                                         var_dump($ss);
                                         var_dump($ss1);
                                         $t2 = time();;
