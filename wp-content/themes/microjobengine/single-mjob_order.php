@@ -243,6 +243,7 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                         $ss2 =  $ss1 = date('d-m-yy H:i:s', $date->getTimestamp());
                                         var_dump($ss);
                                         var_dump($ss1);
+                                        var_dump($ss2);
                                         $t2 = time();;
                                         $t = $t2 - $t1;
                                         $t2 = time();
