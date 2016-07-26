@@ -570,7 +570,7 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                                 if( !empty($current->rehire_time)  && $current->rehire_time > 0 ):
                                                     $t1 = $current->rehire_time;
                                                 else:
-                                                    $t1 = get_the_time('U', $current->ID);
+                                                    $t1 = get_the_time('U', 1313);
                                                 endif;
                                                 $t2 = time();
                                                 $t = $t2 - $t1;
