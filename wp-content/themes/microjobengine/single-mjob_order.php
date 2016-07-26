@@ -237,14 +237,12 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                         else:
                                             $t1 = get_the_time('U', 1313);
                                         endif;
-                                        $ss = get_the_time('d-m-yyyy H:i:s', 1313);;
+                                        $ss = get_the_time('d-m-yyyy H:i:s', 1313);
+                                        $ss1 = date('d-m-yyyy H:i:s', time());
                                         var_dump($ss);
-                                        $t2 = time();
-                                        var_dump($t1);
-                                        var_dump($t2);
-                                        var_dump($t3);
+                                        var_dump($ss1);
+                                        $t2 = time();;
                                         $t = $t2 - $t1;
-                                        var_dump($t);
                                         $t2 = time();
                                         $t = $t2 - $t1;
                                         if( $t >= 600 ):
