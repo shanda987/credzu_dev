@@ -823,7 +823,6 @@
             initialize: function () {
                 AE.Views.Modal_Box.prototype.initialize.call();
                 this.blockUi = new Views.BlockUi();
-
             },
             onOpen: function (model, target) {
                 var view = this;
@@ -838,41 +837,60 @@
                 e.preventDefault();
                 var view = this;
                 $target = $(e.currentTarget);
-                view.data ={
-                    action: 'mjob-work-complete-confirm',
-                    'order_id': view.model.get('ID')
-                };
-                if( $('#work_complete_date').length > 0 ){
-                    view.data ={
-                        action: 'mjob-work-complete-confirm',
-                        'order_id': view.model.get('ID'),
-                        'work_complete_date': $('#work_complete_date').val()
-                    };
-                }
-                $.ajax({
-                    url: ae_globals.ajaxURL,
-                    type: 'post',
-                    data: view.data,
-                    beforeSend: function() {
-                        view.blockUi.block($target);
-                    },
-                    success: function(res) {
-                        view.blockUi.unblock();
-                        if (res.success) {
-                            AE.pubsub.trigger('ae:notification', {
-                                msg: res.msg,
-                                notice_type: 'success'
-                            });
-                            view.closeModal();
-                            window.location.reload(true);
-                        } else {
-                            AE.pubsub.trigger('ae:notification', {
-                                msg: res.msg,
-                                notice_type: 'error'
-                            });
+                var myDate = $('#work_complete_date').val();
+                var fl = false;
+                if( myDate != '' ){
+                    var parts = myDate.split('/');
+                    myDate = new Date(parts[2],parts[0]-1,parts[1]);
+                    today = new Date();
+                    if( myDate != 'Invalid Date' ){
+                        if( myDate >= today ){
+                            fl = true;
                         }
                     }
-                });
+
+                }
+                if( fl ) {
+                    $('#work_complete_date').parent().find('.error').remove();
+                    view.data = {
+                        action: 'mjob-work-complete-confirm',
+                        'order_id': view.model.get('ID')
+                    };
+                    if ($('#work_complete_date').length > 0) {
+                        view.data = {
+                            action: 'mjob-work-complete-confirm',
+                            'order_id': view.model.get('ID'),
+                            'work_complete_date': $('#work_complete_date').val()
+                        };
+                    }
+                    $.ajax({
+                        url: ae_globals.ajaxURL,
+                        type: 'post',
+                        data: view.data,
+                        beforeSend: function () {
+                            view.blockUi.block($target);
+                        },
+                        success: function (res) {
+                            view.blockUi.unblock();
+                            if (res.success) {
+                                AE.pubsub.trigger('ae:notification', {
+                                    msg: res.msg,
+                                    notice_type: 'success'
+                                });
+                                view.closeModal();
+                                window.location.reload(true);
+                            } else {
+                                AE.pubsub.trigger('ae:notification', {
+                                    msg: res.msg,
+                                    notice_type: 'error'
+                                });
+                            }
+                        }
+                    });
+                }
+                else{
+                    $('#work_complete_date').parent().append('<label for="work_complete_date" class="error">Invalid date.</label>')
+                }
             }
         });
         Views.ModalReorder = Views.Modal_Box.extend({
