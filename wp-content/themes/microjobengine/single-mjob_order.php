@@ -235,15 +235,9 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                         if( !empty($current->rehire_time) && $current->rehire_time > 0 ):
                                             $t1 = $current->rehire_time;
                                         else:
-                                            $t1 = get_the_time('U', 1313);
+                                            $t1 = get_the_time('U', $current->ID);
                                         endif;
-                                        $ss = get_the_time('d-m-yy H:i:s', 1313);
-                                        $ss1 = date('d-m-yy H:i:s', time());
-                                        $ss2  = current_time('mysql');
-                                        var_dump(strtotime($ss2));
-                                        var_dump($ss);
-                                        var_dump($ss1);
-                                        $t2 = time();;
+                                        $t2 = strtotime(current_time('mysql'));
                                         $t = $t2 - $t1;
                                         $t2 = time();
                                         $t = $t2 - $t1;
@@ -570,7 +564,7 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                                 else:
                                                     $t1 = get_the_time('U', $current->ID);
                                                 endif;
-                                                $t2 = time();
+                                                $t2 = strtotime(current_time('mysql'));
                                                 $t = $t2 - $t1;
                                                 if( $t >= 600 ):
                                                     if( $current->post_status == 'publish' ) {
