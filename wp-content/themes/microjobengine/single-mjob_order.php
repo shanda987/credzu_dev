@@ -235,7 +235,7 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                         if( !empty($current->rehire_time) && $current->rehire_time > 0 ):
                                             $t1 = $current->rehire_time;
                                         else:
-                                            $t1 = get_the_time('U', 1313);
+                                            $t1 = get_the_time('d-m-yyyy H:i:s', 1313);
                                         endif;
                                         var_dump($current->post_date);
                                         $t2 = time();
