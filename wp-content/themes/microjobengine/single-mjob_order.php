@@ -566,6 +566,7 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                                 var_dump($t1);
                                                 var_dump($t2);
                                                 $t = $t2 - $t1;
+                                                var_dump($t);
                                                 if( $t >= 600 ):
                                                     if( $current->post_status == 'publish' ) {
                                                         mJobOrderAction()->updateOrderStatus($current->ID, 'processing');
