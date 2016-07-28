@@ -204,7 +204,7 @@ if(!function_exists('mJobFilterMessageContent')) {
         // Get bad words
         $bad_words = trim(ae_get_option('filter_bad_words'));
         $bad_words = preg_replace('/\s+/', '', $bad_words);
-
+//        var_dump($bad_words);
         $content = apply_filters('mjob_before_filter_message_content', $content);
         if(!empty($bad_words)) {
             // Get bad words replace
@@ -215,7 +215,8 @@ if(!function_exists('mJobFilterMessageContent')) {
             $bad_words_arr = explode(",", $bad_words);
             foreach($bad_words_arr as $bad_word) {
                 if(!empty($bad_word)) {
-                    $content = str_ireplace($bad_word, $bad_words_replace, $content);
+                    $content = replace_bad_word($content, $bad_word, $bad_words_replace);
+//                    $content = str_ireplace($bad_word, $bad_words_replace, $content);
                 }
             }
         }
@@ -225,7 +226,41 @@ if(!function_exists('mJobFilterMessageContent')) {
         return $content;
     }
 }
+/**
+  * find word position
+  *
+  * @param void
+  * @return void
+  * @since 1.4
+  * @package MicrojobEngine
+  * @category CREDZU
+  * @author JACK BUI
+  */
+function replace_bad_word($str, $search_word, $text_replace){
+    $tem = trim(strtolower(($str)));
+    $c = strpos_all($tem, strtolower($search_word));
+    if( !empty($c) ) {
+        foreach ($c as $i) {
+            $p = $i + strlen($search_word);
+            $string = substr($tem, $p, 1);
+            $string = strip_tags($string);
+            if ( $string == ' ' || $string == '') {
+                $str = substr_replace($str, $text_replace.' ', $i, $p);
+            }
+        }
+    }
+    return $str;
 
+}
+function strpos_all($haystack, $needle) {
+    $offset = 0;
+    $allpos = array();
+    while (($pos = strpos($haystack, $needle, $offset)) !== FALSE) {
+        $offset   = $pos + 1;
+        $allpos[] = $pos;
+    }
+    return $allpos;
+}
 /**
  * Return default arguments to get conversations of a user;
  * @param void
