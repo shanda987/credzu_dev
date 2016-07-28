@@ -11,7 +11,7 @@ $current        = $post_object->current_post;
     <div class="label-status <?php echo $current->status_class; ?>">
         <span><?php echo $current->status_text; ?></span>
     </div>
-    <p><?php _e('Order by ', ET_DOMAIN);?><a href="<?php echo $current->mjob_order_author_url; ?>"><?php echo $current->author_name;?></a></p>
+    <p><?php _e('Order by ', ET_DOMAIN);?><span class="author-name"> <?php echo $current->author_name;?></span></p>
     <span class="date-post">
         <?php echo et_the_time(get_the_time('U')); ?>
     </span>

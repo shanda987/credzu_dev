@@ -3,6 +3,6 @@
     <div class="label-status {{= status_class }}">
         <span>{{= status_text }}</span>
     </div>
-    <p><?php _e('Author ', ET_DOMAIN);?><a href="{{= mjob_author_url }}">{{= mjob_author_name }}</a></p>
+    <p><?php _e('Author ', ET_DOMAIN);?><span class="author-name">{{= mjob_author_name }}</span></p>
     <span class="date-post">{{= post_date }}</span>
 </script>

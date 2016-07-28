@@ -15,7 +15,7 @@ $author_name = $author->initial_display_name;
     <div class="label-status <?php echo $current->status_class; ?>">
         <span><?php echo $current->status_text; ?></span>
     </div>
-    <p class="author"><span><?php _e('Author ', ET_DOMAIN);?></span> <a href="<?php echo get_author_posts_url($mjob->post_author); ?>"><?php echo $author_name; ?></a></p>
+    <p class="author"><span><?php _e('Author ', ET_DOMAIN);?></span> <span class="author-name"><?php echo $author_name; ?></span></p>
     <span class="date-post">
         <?php echo et_the_time(get_the_time('U')); ?>
     </span>
