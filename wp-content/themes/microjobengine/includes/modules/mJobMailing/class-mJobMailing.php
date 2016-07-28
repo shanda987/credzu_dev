@@ -181,7 +181,7 @@ class mJobMailing extends AE_Mailing
         $mjob_order = $order_obj->convert($mjob_order);
         $profile = mJobProfileAction()->getProfile($mjob_order->post_author);
         $profile1 = mJobProfileAction()->getProfile($mjob_order->mjob_author);
-        $this->email_changing_order_status($profile->business_email, $profile1->company_email, 'VERIFICATION', 'FINISHED');
+        $this->email_changing_order_status($profile1, $profile, 'VERIFICATION', 'FINISHED');
     }
 
     /**
@@ -599,8 +599,8 @@ class mJobMailing extends AE_Mailing
         $subject1 = strip_tags($subject1);
         $msg = str_ireplace('[old_status]', $old_status, $msg);
         $msg = str_ireplace('[new_status]', $new_status, $msg);
-        $this->wp_mail($client_email, $subject, $msg, array('user_id' => $user_ID));
-        $this->wp_mail($company_email, $subject1, $msg, array('user_id' => $user_ID));
+        $this->wp_mail($client_email->business_email, $subject, $msg, array('user_id' => $client_email->post_author));
+        $this->wp_mail($company_email->business_email, $subject1, $msg, array('user_id' => $company_email->post_author));
     }
     /**
       * change user role
