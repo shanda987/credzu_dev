@@ -829,7 +829,7 @@ class mJobOrderAction extends mJobPostAction{
             }
             $new_status = strtoupper($new_status);
             //if( $old_status != $new_status ) {
-                do_action('changing_order_status_email', $profile1->company_email, $profile->business_email, $old_status, $new_status);
+                do_action('changing_order_status_email', $profile1->business_email, $profile->business_email, $old_status, $new_status);
             //}
             return $update_result;
         }
