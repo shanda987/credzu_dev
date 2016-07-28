@@ -153,11 +153,12 @@ class mJobOrderAction extends mJobPostAction{
                 $response = $this->sync_post($request);
                 if ( $response['success'] ) {
                     $result = $response['data'];
+                    $mjob = mJobAction()->get_mjob($result->post_parent);
                     if( $request['method'] == 'create' ) {
                         $msg = __("Thank you for hiring and trusting us! Under the law, there is a 72 hour waiting period before we can begin work. Once that expires, we will begin. In the meantime, if you have any questions, comments or concerns, message us here. Also, this is a perfect time for you to get all your documents together (if you haven't done so already). <br><br><strong>NOTE: Under the \"REQUIREMENTS\" tab, you will see a list of documents we require. Just click on each one to upload the relevant documents. Thanks!</strong>", ET_DOMAIN);
                         mJobAddOrderMessage($result->ID, $result->mjob_author, $user_ID, 'initial_message', $msg);
+                        update_post_meta($result->ID,'et_budget_type', $mjob->et_budget_type );
                     }
-                    $mjob = mJobAction()->get_mjob($result->post_parent);
                     if (!$mjob) {
                         $response = array(
                             'success' => false,
@@ -252,7 +253,8 @@ class mJobOrderAction extends mJobPostAction{
      * @category void
      * @author JACK BUI
      */
-    public function convertPost($result){
+    public function convertPost($result)
+    {
         global $ae_post_factory, $user_ID, $ae_tax_factory;
         $ae_user = AE_Users::get_instance();
         $auth = get_userdata($result->post_author);
@@ -267,18 +269,18 @@ class mJobOrderAction extends mJobPostAction{
         $result->mjob_category = '';
         $tax_obj = $ae_tax_factory->get('mjob_category');
         $mjob_tax = '';
-        if( isset($mjob->tax_input['mjob_category']['0']) ){
+        if (isset($mjob->tax_input['mjob_category']['0'])) {
             $mjob_tax = $tax_obj->convert($mjob->tax_input['mjob_category']['0']);
         }
-        if( isset($mjob->tax_input['mjob_category']['0']->name)){
+        if (isset($mjob->tax_input['mjob_category']['0']->name)) {
             $result->mjob_category = $mjob->tax_input['mjob_category']['0']->name;
         }
         $result->mjob_category_modal_content = '';
-        if( isset($mjob_tax->mjob_category_modal_content) ){
+        if (isset($mjob_tax->mjob_category_modal_content)) {
             $result->mjob_category_modal_content = $mjob_tax->mjob_category_modal_content;
         }
         $result->mjob_category_verification_content = '';
-        if( isset($mjob_tax->mjob_category_verification_content) ){
+        if (isset($mjob_tax->mjob_category_verification_content)) {
             $result->mjob_category_verification_content = $mjob_tax->mjob_category_verification_content;
         }
         $result->mjob = $mjob;
@@ -289,10 +291,10 @@ class mJobOrderAction extends mJobPostAction{
         $result->mjob_id = $mjob->ID;
         $result->mjob_price = $mjob->et_budget;
         $result->mjob_time_delivery = $mjob->time_delivery;
-        $result->order_date = sprintf( _x( '%s ago', '%s = human-readable time difference', ET_DOMAIN ), human_time_diff( strtotime($result->post_date), time() ));
+        $result->order_date = sprintf(_x('%s ago', '%s = human-readable time difference', ET_DOMAIN), human_time_diff(strtotime($result->post_date), time()));
         $result->amount_text = mJobPriceFormat($result->amount);
         $date_format = get_option('date_format');
-        $result->modified_date = the_modified_date( $date_format, '', '', false );
+        $result->modified_date = the_modified_date($date_format, '', '', false);
         if (current_user_can('manage_options') || $result->post_author == $user_ID || $result->mjob_author == $user_ID) {
             $children = get_children(array(
                 'numberposts' => 15,
@@ -321,7 +323,7 @@ class mJobOrderAction extends mJobPostAction{
                 $result->ae_message[] = $value;
             }
         }
-        switch($result->post_status){
+        switch ($result->post_status) {
             case 'publish':
                 $result->status_text = __('PENDING', ET_DOMAIN);
                 $result->status_class = 'pending-color';
@@ -379,26 +381,39 @@ class mJobOrderAction extends mJobPostAction{
                 break;
         }
 
-        if(!isset($result->real_amount) || empty($result->real_amount)) {
+        if (!isset($result->real_amount) || empty($result->real_amount)) {
             $result->real_amount = mJobRealPrice($result->amount);
         }
-        $result->doc_html =  $this->mjob_get_requirement_template($result->requirement_files);
-        if( empty($result->need_uploads)){
+        $result->doc_html = $this->mjob_get_requirement_template($result->requirement_files);
+        if (empty($result->need_uploads)) {
             add_post_meta($result->ID, 'need_uploads', ' ');
         }
-        if(empty($result->uploaded) ){
+        if (empty($result->uploaded)) {
             add_post_meta($result->ID, 'uploaded', ' ');
         }
-        if( $mjob->can_review == ''){
+        if ($mjob->can_review == '') {
             $mjob->can_review = true;
-        }
-        else if( $mjob->can_review == -1 ){
+        } else if ($mjob->can_review == -1) {
             $mjob->can_review = false;
-        }
-        else{
+        } else {
             $mjob->can_review = true;
         }
         $result->can_review = $mjob->can_review;
+        if (empty($result->et_budget_type)) {
+            $result->et_budget_type = $mjob->et_budget_type;
+        }
+//        if (!empty($result->rehire_time) && $result->rehire_time > 0):
+//            $t1 = $result->rehire_time;
+//        else:
+//            $t1 = get_the_time('U', $result->ID);
+//        endif;
+//        $t2 = strtotime(current_time('mysql'));
+//        $t = $t2 - $t1;
+//        if ($t >= ORDER_TIME ){
+//            if ($result->post_status == 'publish') {
+//                mJobOrderAction()->updateOrderStatus($result->ID, 'processing');
+//            }
+//        }
         return $result;
     }
     /**
@@ -849,7 +864,9 @@ class mJobOrderAction extends mJobPostAction{
 //                    mJobAddOrderChangeLog($request['order_id'], $user_ID, 'work_complete_confirm_message', 'workcomplete' );
                 }
                 if( $order->post_status == 'processing' ){
-                    do_action('client_do_checkout', $order);
+                    if( $order->et_budget_type == 'fixed' ) {
+                        do_action('client_do_checkout', $order);
+                    }
                     if(isset($request['work_complete_date'] )) {
                         update_post_meta('work_complete_date', $request['work_complete_date']);
                     }

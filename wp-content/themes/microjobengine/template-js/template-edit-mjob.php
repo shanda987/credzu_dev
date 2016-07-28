@@ -54,6 +54,16 @@ foreach ($existing_meta as $key => $value) {
             <label><?php _e('Enter the amount of days the service will take to complete ', ET_DOMAIN)?><a href="#" class="mjob-question-post"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
         </div>
     </div>
+    <div class="form-group clearfix ">
+        <div class="input-group  width-100">
+            <select data-chosen-width="100%" data-chosen-disable-search=""  data-placeholder="<?php _e("select a category", ET_DOMAIN); ?>" name="et_budget_type" class="chosen chosen-single tax-item required">
+                <option value=""><?php _e('Select an option', ET_DOMAIN); ?></option>
+                <option value="fixed"><?php _e('Flat Fee', ET_DOMAIN); ?></option>
+                <option value="dynamic"><?php _e('Pay for results', ET_DOMAIN); ?></option>
+            </select>
+            <label><?php _e('Select your service payment type', ET_DOMAIN)?><a href="#" class="mjob-question-post" data-content="Slect an option"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
+        </div>
+    </div>
     <div class="form-group clearfix">
         <div class="input-group width-100">
 <!--            <div class="input-group-addon"></div>-->

@@ -42,7 +42,8 @@ class mJobPosttype extends mJobPost{
 //            'option_billing_information',
             'modified_date',
             'is_featured',
-            'can_review'
+            'can_review',
+            'et_budget_type'
         );
         $this->post_type_singular = 'Listing';
         $this->post_type_regular = 'Listings';

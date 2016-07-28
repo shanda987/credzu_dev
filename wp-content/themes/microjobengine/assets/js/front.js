@@ -782,10 +782,11 @@
             },
             showQuestionModal: function(e){
                 e.preventDefault();
+                var target = $(e.currentTarget);
                 if( typeof this.listingquestion === 'undefined' ){
                     this.listingquestion = new Views.listingQuestionModal();
                 }
-                this.listingquestion.onOpen();
+                this.listingquestion.onOpen(target);
             },
             showHireSignUpModal: function(e){
                 e.preventDefault();
@@ -1003,9 +1004,11 @@
             initialize: function() {
                 AE.Views.Modal_Box.prototype.initialize.call();
             },
-            onOpen: function(data){
+            onOpen: function(target){
                 var view = this;
                 view.openModal();
+                var data = target.attr('data-content');
+                view.$el.find('.agreement_modal_content').html(data);
             },
         });
         Views.ProcessHiring = Backbone.View.extend({

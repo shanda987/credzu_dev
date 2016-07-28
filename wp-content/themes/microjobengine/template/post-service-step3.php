@@ -62,6 +62,16 @@ else{
         </div>
         <div class="form-group clearfix ">
             <div class="input-group  width-100">
+                <select data-chosen-width="100%" data-chosen-disable-search=""  data-placeholder="<?php _e("select a category", ET_DOMAIN); ?>" name="et_budget_type" class="chosen chosen-single tax-item required">
+                    <option value=""><?php _e('Select an option', ET_DOMAIN); ?></option>
+                    <option value="fixed"><?php _e('Flat Fee', ET_DOMAIN); ?></option>
+                    <option value="dynamic"><?php _e('Pay for results', ET_DOMAIN); ?></option>
+                </select>
+                <label><?php _e('Select your service payment type', ET_DOMAIN)?><a href="#" class="mjob-question-post" data-content="Slect an option"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
+            </div>
+        </div>
+        <div class="form-group clearfix ">
+            <div class="input-group  width-100">
                 <input type="number" name="et_budget" placeholder="<?php _e('i.e., 100', ET_DOMAIN); ?>" class="input-item" min="0" pattern="[-+]?[0-9]*[.,]?[0-9]+" required>
                 <label><?php _e('Enter the amount your client will pay you for the service ', ET_DOMAIN)?><a href="#" class="mjob-question-post"> <i class="fa fa-question-circle" aria-hidden="true"></i></a></label>
             </div>

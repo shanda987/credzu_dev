@@ -410,6 +410,9 @@ class mJobAction extends mJobPostAction{
             }
         }
         $result->p_permalink = get_permalink( $result->ID );
+        if( !isset($result->et_budget_type) || empty($result->et_budget_type)){
+            $result->et_budget_type = 'fixed';
+        }
         return $result;
     }
 
