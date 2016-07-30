@@ -159,6 +159,7 @@ class mJobOrderAction extends mJobPostAction{
                         mJobAddOrderMessage($result->ID, $result->mjob_author, $user_ID, 'initial_message', $msg);
                         update_post_meta($result->ID,'et_budget_type', $mjob->et_budget_type );
                     }
+                   // exit('sdfsfd');
                     if (!$mjob) {
                         $response = array(
                             'success' => false,
@@ -907,6 +908,12 @@ class mJobOrderAction extends mJobPostAction{
                 $o = get_post($request['order_id']);
                 $o = $o_obj->convert($o);
                 update_post_meta($request['order_id'], 'rehire_time', time());
+                if( !empty($request['agreement_new_files']) ) {
+                    foreach( $request['agreement_new_files'] as $item ){
+                        array_push($o->agreement_files, $item);
+                    }
+                    update_post_meta($o->ID, 'agreement_files', $o->agreement_files);
+                }
                 $rehire_count = (int)$o->rehire_count;
                 $rehire_count += 1;
                 update_post_meta($request['order_id'], 'rehire_count', $rehire_count);

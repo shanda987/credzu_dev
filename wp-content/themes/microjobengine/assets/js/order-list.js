@@ -943,10 +943,11 @@
                         success: function(res) {
                             view.blockUi.unblock();
                             if (res.success) {
-                                AE.pubsub.trigger('ae:notification', {
-                                    msg: res.msg,
-                                    notice_type: 'success'
-                                });
+                                //AE.pubsub.trigger('ae:notification', {
+                                //    msg: res.msg,
+                                //    notice_type: 'success'
+                                //});
+                                view.data.agreement_new_files = res.files;
                                 $.ajax({
                                     url: ae_globals.ajaxURL,
                                     type: 'post',
