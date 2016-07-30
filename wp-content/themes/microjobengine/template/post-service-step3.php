@@ -141,7 +141,7 @@ else{
             <?php
             $p = get_post(160);
             if( isset($p->post_content)) {
-                echo $p->post_content;
+                echo apply_filters('the_content', $p->post_content);
             }
             ?>
         </div>
