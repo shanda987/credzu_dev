@@ -242,6 +242,7 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                         if( $t >= ORDER_TIME ):
                                             if( $current->post_status == 'publish' ) {
                                                 mJobOrderAction()->updateOrderStatus($current->ID, 'processing');
+                                                $current->post_status = 'processing';
                                             }
                                             ?>
                                             <?php if( $user_role == COMPANY): ?>
@@ -567,6 +568,7 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                                 if( $t >= ORDER_TIME ):
                                                     if( $current->post_status == 'publish' ) {
                                                         mJobOrderAction()->updateOrderStatus($current->ID, 'processing');
+                                                        $current->post_status = 'processing';
                                                     }
                                                     ?>
                                                     <?php if( $user_role == COMPANY): ?>
