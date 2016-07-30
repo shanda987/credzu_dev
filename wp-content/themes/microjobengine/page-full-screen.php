@@ -17,7 +17,7 @@ global $post;
 get_header();
 the_post();
 ?>
-<div id="content" class="dashboard withdraw">
+<div id="content" class="dashboard withdraw full-page">
 	<!-- block control  -->
 	<div class="row block-posts post-detail" id="post-control">
 		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 posts-container">
