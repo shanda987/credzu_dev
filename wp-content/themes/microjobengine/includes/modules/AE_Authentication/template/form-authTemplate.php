@@ -113,9 +113,12 @@ if(!function_exists('mJobSignUpForm')) {
                             ?>
                             <div class="form-group clearfix">
                                 <div class="input-group">
-                                    <div class="input-group-addon"><i class="fa fa-user"></i></div>
+                                    <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
                                     <input type="text" name="user_email" id="user_email" class="form-control" placeholder="Email">
                                     <p><label><?php _e('Email Address', ET_DOMAIN); ?></label></p>
+                                </div>
+                                <div class="input-group">
+                                    <div class="input-group-addon"></div>
                                     <p>We din't recognize this email. <i>Double check to make sure you typed it correctly.</i> Otherwise, you can create an account below.</p>
                                 </div>
                             </div>
