@@ -298,8 +298,7 @@ class mJobOrderAction extends mJobPostAction{
         $result->modified_date = the_modified_date($date_format, '', '', false);
         if (current_user_can('manage_options') || $result->post_author == $user_ID || $result->mjob_author == $user_ID) {
             $children = get_children(array(
-                'numberposts' => 15,
-                'order' => 'ASC',
+                'numberposts' => 200,
                 'post_parent' => $result->ID,
                 'post_type' => 'order_delivery'
             ));

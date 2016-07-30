@@ -14,6 +14,34 @@
                 this.paged = 1;
             }
         });
+        Models.AddMore = Backbone.Model.extend({
+            action: 'ae-sync-addmore',
+        });
+        Collections.addmore = Backbone.Collection.extend({
+            model: Models.AddMore,
+            action: 'ae-fetch-more',
+            initialize: function(){
+                this.paged = 1;
+            }
+        })
+        var addMoreItem = Views.PostItem.extend({
+            tagName: "li",
+            className: 'addmore-item',
+            template: _.template($('#addmore-item-loop').html()),
+            onItemBeforeRender: function() {
+                // before render view
+            },
+            onItemRendered: function() {
+                // after render view
+            }
+        });
+        Views.listAddMore = Views.ListPost.extend({
+            tagName: 'ul',
+            itemView: addMoreItem,
+            itemClass: 'addmore-item',
+            el: $('.addmore-block-control').find('.addmore-listing'),
+
+        });
         /**
          * define mjob item view
          */
@@ -277,7 +305,7 @@
                 if( typeof view.deliveryModal  === 'undefined' ){
                     view.deliveryModal = new Views.ModalDelivery();
                 }
-                view.deliveryModal.onOpen(parent);
+                view.deliveryModal.onOpen(parent, view.model);
             },
             deliverySuccess: function(result, resp, jqXHR, type){
                 var view = this;
@@ -1016,19 +1044,48 @@
         });
         Views.ModalDelivery = Views.Modal_Box.extend({
             el: '#delivery',
+            events:{
+                'click .mjob-add-more-btn': 'addMoreDelivery',
+                'click .btn-submit-pay-for-result': 'submitPayForResult'
+
+            },
             initialize: function() {
                 AE.Views.Modal_Box.prototype.initialize.call();
                 if( typeof this.model === 'undefined' ){
                     this.model = new Models.Delivery();
                 }
                 AE.pubsub.on('carousels:success:upload', this.enableButtons, this);
+                this.blockUi = new Views.BlockUi();
             },
-            onOpen: function(parent){
+            initDelivery: function(){
+                var view = this;
+                if( $('.addmore-block-control').length > 0 ){
+                    if( typeof view.deliveryCl === 'undefined' ){
+                        view.deliveryCl = new Collections.addmore();
+                    }
+                    view.listDelivery = new Views.listAddMore({
+                        collection: view.deliveryCl,
+                        el: $('.addmore-block-control').find('.addmore-listing'),
+                        itemView: addMoreItem
+                    });
+                }
+            },
+            addMoreDelivery: function(e){
+                var view = this;
+                e.preventDefault();
+                var model = new Models.AddMore({
+                    addmore_item: ''
+                });
+                this.deliveryCl.add(model);
+            },
+            onOpen: function(parent, orderModel){
                 var view = this;
                 this.model.set('post_type', 'order_delivery');
                 view.model.set('post_parent', parent);
+                view.orderModel = orderModel;
                 view.openModal();
                 view.setupFields();
+                view.initDelivery();
             },
             setupFields: function(){
                 var view = this;
@@ -1043,21 +1100,60 @@
 
                     });
                 }
-                var deliveryForm = new Views.AE_Form({
-                    el: '.delivery-order', // parent of form
-                    model: view.model,
-                    rules: {
-                        post_content: 'required'
-                    },
-                    type: 'delivery',
-                    blockTarget: '.delivery-order button'
-                });
+                if( view.orderModel.get('et_budget_type') == 'dynamic'){
+                    view.$el.find('.addmore-block-control').show();
+                    view.$el.find('.fixed-content').hide();
+                    view.$el.find('.btn-submit').addClass('btn-submit-pay-for-result')
+                }
+                else {
+                    var deliveryForm = new Views.AE_Form({
+                        el: '.delivery-order', // parent of form
+                        model: view.model,
+                        rules: {
+                            post_content: 'required'
+                        },
+                        type: 'delivery',
+                        blockTarget: '.delivery-order button'
+                    });
+                }
 
             },
             enableButtons: function(up, file, res){
                 var view = this;
-                console.log( view.$el.find('button').length);
                 view.$el.find('button').removeAttr('disabled');
+            },
+            submitPayForResult: function(e){
+                e.preventDefault();
+                var view = this;
+                view.arr = new Array();
+                var content = '<p>The result we have obtained are outline below:</p>'
+                view.$el.find('.addmore-item textarea').each(function(){
+                    if( $(this).val() != '' ) {
+                        view.arr.push($(this).val());
+                        content += '<p>- '+ $(this).val() + '</p>';
+                    }
+                })
+                content += "Here's a file for the results above:";
+                view.model.set('pay_result_items', view.arr);
+                view.model.set('_wpnonce', view.$el.find('input[name="_wpnonce"]').val());
+                view.model.set('post_content', content);
+                view.model.save('', '', {
+                    beforeSend: function(){
+                        view.blockUi.block(view.$el.find('.btn-submit'));
+                    },
+                    success: function (result, res, jqXHR) {
+                        if( res.success ){
+                            view.blockUi.unblock();
+                            window.location.reload(false);
+                        }
+                        else{
+                            AE.pubsub.trigger('ae:notification', {
+                                msg: 'Submit results failed!',
+                                notice_type: 'error'
+                            });
+                        }
+                    }
+                })
             }
         });
         Views.ModalReview = Views.Modal_Box.extend({

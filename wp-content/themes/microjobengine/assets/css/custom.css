@@ -1126,3 +1126,16 @@
 .full-page{
     margin-top: 70px;
 }
+.mjob-add-more-btn{
+    margin-bottom: 20px;
+}
+.addmore-block-control{
+    display: none;
+}
+.addmore-block-control ul{
+    padding: 0;
+    list-style: none;
+}
+.addmore-block-control textarea{
+    height: 90px;
+}

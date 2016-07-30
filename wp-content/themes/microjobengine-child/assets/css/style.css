@@ -7843,6 +7843,13 @@ body.page-template-page-profile-php .plus-circle {
   padding: 3px 7px;
   margin-left: 10px;
 }
+.add-more a .icon-plus {
+  background: #10a2ef;
+  color: #fff;
+  border-radius: 50%;
+  padding: 3px 7px;
+  margin-left: 10px;
+}
 .post-job .package {
   margin-bottom: 30px;
 }

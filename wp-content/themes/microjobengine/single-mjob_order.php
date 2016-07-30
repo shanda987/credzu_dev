@@ -4,7 +4,6 @@ global $wp_query, $ae_post_factory, $post, $user_ID, $current_user, $ae_tax_fact
 $obj_tax = $ae_tax_factory->get('mjob_requirement');
 $post_object    = $ae_post_factory->get( 'mjob_order' );
 $current        = $post_object->convert($post);
-$current        = $post_object->convert($post);
 $user = mJobUser::getInstance();
 $user_data = $user->convert($current_user->data);
 $flag = false;

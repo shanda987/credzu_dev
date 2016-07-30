@@ -47,7 +47,9 @@ class mJobOrderDeliveryAction extends mJobPostAction{
             exit;
         }
         $request['post_title'] = sprintf(__('Delivery for: %s', ET_DOMAIN), $response['order_title']);
-        $order = mJobAction()->get_mjob($request['post_parent']);
+        $order = get_post($request['post_parent']);
+        $order_obj = $ae_post_factory->get('mjob_order');
+        $order = $order_obj->convert($order);
         $request['post_status'] = 'publish';
         $response = $this->sync_post($request);
         if( $response['success'] ){
@@ -56,6 +58,17 @@ class mJobOrderDeliveryAction extends mJobPostAction{
                 'post_status'=> 'delivery',
             );
             wp_update_post( $my_post );
+            $a = 1;
+            if( !empty($response['data']->pay_result_items) ){
+                $a = count($response['data']->pay_result_items);
+
+            }
+            $amount = $a*$order->amount;
+            update_post_meta($order->ID, 'amount', $amount);
+            if( $order->et_budget_type == 'dynamic' ){
+                $order->amount = $amount;
+                do_action('client_do_checkout', $order);
+            }
             $post_date = get_the_time('Y-m-d H:i:s', $response['data']->ID);
             update_post_meta($response['data']->post_parent, 'order_delivery_day', $post_date);
             // Send email order delivery

@@ -13,7 +13,11 @@
                     <?php _e('It is critical that you provide a detailed explanation of the work you performed and the results you obtained. This becomes a part of your record with the client, so please make sure it is thorough and represents your work altogether. You can also use the upload field to provide any documents that support the description you created for the work you performed.', ET_DOMAIN ) ?>
                 </p>
                 <form class="form-authentication">
-                    <div class="form-group">
+                    <div class="form-group add-more addmore-block-control">
+                        <ul class="addmore-listing"></ul>
+                        <a href="#" class="mjob-add-more-btn"><?php _e('Add more', ET_DOMAIN); ?><span class="icon-plus"><i class="fa fa-plus"></i></span></a>
+                    </div>
+                    <div class="form-group fixed-content">
                         <textarea name="post_content" placeholder="Describe your work here."></textarea>
                     </div>
                     <!--                        <div class="attachment-file gallery_container" id="gallery_container">-->

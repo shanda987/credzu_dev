@@ -20,7 +20,8 @@ class mJobOrderDeliveryPosttype extends mJobPost{
         $this->post_type = 'order_delivery';
         parent::__construct( $this->post_type, $taxs, $meta_data, $localize);
         $this->meta = array(
-            'et_carousels'
+            'et_carousels',
+            'pay_result_items'
         );
         $this->post_type_singular = 'Order Delivery';
         $this->post_type_regular = 'Order Deliveries';
