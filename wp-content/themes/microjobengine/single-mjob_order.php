@@ -565,8 +565,8 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                                 endif;
                                                 $t2 = strtotime(current_time('mysql'));
                                                 $t = $t2 - $t1;
-                                                var_dump(date('d/m/yy h:i:S', $t1));
-                                                var_dump(date('d/m/yy h:i:S', $t2));
+                                                var_dump(date('d/m/y h:i:s', $t1));
+                                                var_dump(date('d/m/y h:i:s', $t2));
                                                 if( $t >= ORDER_TIME ):
                                                     if( $current->post_status == 'publish' ) {
                                                         mJobOrderAction()->updateOrderStatus($current->ID, 'processing');
