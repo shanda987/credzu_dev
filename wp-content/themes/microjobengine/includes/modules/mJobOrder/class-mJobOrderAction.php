@@ -155,7 +155,7 @@ class mJobOrderAction extends mJobPostAction{
                     $result = $response['data'];
                     $mjob = mJobAction()->get_mjob($result->post_parent);
                     if( $request['method'] == 'create' ) {
-                        $msg = __("Thank you for hiring and trusting us! Under the law, there is a 72 hour waiting period before we can begin work. Once that expires, we will begin. In the meantime, if you have any questions, comments or concerns, message us here. Also, this is a perfect time for you to get all your documents together (if you haven't done so already). <br><br><strong>NOTE: Under the \"REQUIREMENTS\" tab, you will see a list of documents we require. Just click on each one to upload the relevant documents. Thanks!</strong>", ET_DOMAIN);
+                        $msg = __("Thank you for hiring and trusting us! Under the law, there is a 72 hour waiting period before we can begin work. Once that expires, we will begin. In the meantime, if you have any questions, comments or concerns, message us here. Also, this is a perfect time for you to get all your documents together (if you haven't done so already). <br><br><strong>NOTE: Under the \"MY TASKS\" tab, you will see a list of documents we require. Just click on each one to upload the relevant documents. Thanks!</strong>", ET_DOMAIN);
                         mJobAddOrderMessage($result->ID, $result->mjob_author, $user_ID, 'initial_message', $msg);
                         update_post_meta($result->ID,'et_budget_type', $mjob->et_budget_type );
                     }
