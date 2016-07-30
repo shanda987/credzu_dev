@@ -156,7 +156,7 @@ if(!function_exists('mJobSignUpForm')) {
                     <div class="form-group clearfix float-left check-terms">
                         <div class="checkbox">
                             <label>
-                                <input type="checkbox" name="term_privacy" id="term_privacy"><span class="text-choosen"><?php _e('I accept with the', ET_DOMAIN); ?>
+                                <input type="checkbox" name="term_privacy" id="term_privacy"><span class="text-choosen"><?php _e('I accept the', ET_DOMAIN); ?>
                                     <a href="<?php echo et_get_page_link('tos'); ?>" target="_blank"><?php _e('terms and conditions', ET_DOMAIN); ?></a></span>
                             </label>
                         </div>
