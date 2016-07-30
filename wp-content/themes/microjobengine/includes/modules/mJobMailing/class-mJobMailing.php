@@ -600,7 +600,7 @@ class mJobMailing extends AE_Mailing
         $msg = str_ireplace('[old_status]', $old_status, $msg);
         $msg = str_ireplace('[new_status]', $new_status, $msg);
         $this->wp_mail($client_email->business_email, $subject, $msg, array('user_id' => $client_email->post_author));
-        if( strtoupper($new_status) == 'PROCESSING' ) {
+        if( strtoupper($old_status) == 'PUBLISH' && strtoupper($new_status) == 'PROCESSING' ) {
             $this->wp_mail($company_email->business_email, $subject1, $msg, array('user_id' => $company_email->post_author));
         }
     }
