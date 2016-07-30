@@ -130,7 +130,7 @@ echo mJobProfileAction()->display_company_status($user_role, $profile->company_s
                                 <input type="text" name="zip_code" id="zip_code" placeholder="<?php _e('Zip code', ET_DOMAIN); ?>" value="<?php echo $profile->zip_code; ?>">
                             </div>
                         </div>
-                            <?php if( $user_role == INDIVIDUAL): ?>
+                            <?php if( $user_role == INDIVIDUAL && empty($profile->agreement_document) ): ?>
                             <div class="form-group profile-type-css clearfix">
                                 <p class="title"><?php _e('PROFILE TYPE', ET_DOMAIN); ?></p>
                             </div>
