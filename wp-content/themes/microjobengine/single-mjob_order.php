@@ -578,9 +578,14 @@ echo '<script type="text/template" id="order_single_data" >'.json_encode($curren
                                                     }
                                                     ?>
                                                     <?php if( $user_role == COMPANY): ?>
-                                                    <?php if( $current->post_status == 'processing' ): ?>
+                                                    <?php if( $current->post_status == 'processing' ):  ?>
+                                                        <?php if( $current->et_budget_type == 'dynamic' ): ?>
+                                                            <p><?php _e("It is important that you update your client with results. Payments are generated when you submit results. Also, once you submit results, your client can review your company's performance and rehire you.", ET_DOMAIN); ?></p>
+                                                            <p class="mjob_order_btn"><button data-id="<?php echo $current->ID; ?>" class="btn-submit btn-work-complete-css btn-delivery order-delivery-btn"><?php _e('SUBMIT RESULTS', ET_DOMAIN); ?></button></p>
+                                                        <?php else: ?>
                                                         <p><?php _e('Once you have completed the service, click "Work Complete." This will generate a payment from your client and your client will be informed. Please keep your client informed so they understand the status change.', ET_DOMAIN); ?></p>
-                                                        <p class="mjob_order_btn"><button class="btn-submit btn-work-complete-css btn-work-complete-action" data-content="<?php echo $current->mjob_category_modal_content; ?>"><?php _e('Work Complete', ET_DOMAIN); ?></button></p>
+                                                            <p class="mjob_order_btn"><button class="btn-submit btn-work-complete-css btn-work-complete-action" data-content="<?php echo $current->mjob_category_modal_content; ?>"><?php _e('Work Complete', ET_DOMAIN); ?></button></p>
+                                                        <?php endif; ?>
                                                     <?php elseif( $current->post_status == 'verification'): ?>
                                                         <p><?php _e("It is important, especially in this stage, that you update your client with results as soon as you can. Once results are shown, your client can review your company and rehire you.", ET_DOMAIN); ?></p>
                                                         <p class="mjob_order_btn"><button data-id="<?php echo $current->ID; ?>" class="btn-submit btn-work-complete-css btn-delivery order-delivery-btn"><?php _e('SUBMIT RESULTS', ET_DOMAIN); ?></button></p>

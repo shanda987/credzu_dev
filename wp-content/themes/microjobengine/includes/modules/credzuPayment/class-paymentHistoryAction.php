@@ -191,18 +191,19 @@ class credzuPaymentHistoryAction extends mJobPostAction{
             $p = get_post($result);
             $obj = $ae_post_factory->get('payment_history');
             $p = $obj->convert($p);
-           do_action('client_payment_check_email', $company->company_email, $p, array($path));
+            do_action('client_payment_check_email', $company->company_email, $p, array($path));
+//            return array(
+//                'success'=> true,
+//                'msg'=> __('Success!', ET_DOMAIN),
+//                'data'=> $p
+//            );
+        }
+        else {
             wp_send_json(array(
-                'success'=> true,
-                'msg'=> __('Success!', ET_DOMAIN),
-                'data'=> $p
+                'sucess' => false,
+                'msg' => __('Failed!', ET_DOMAIN),
             ));
         }
-        wp_send_json(array(
-            'sucess'=> false,
-            'msg'=> __('Failed!', ET_DOMAIN),
-        ));
-        exit;
     }
 }
 new credzuPaymentHistoryAction();

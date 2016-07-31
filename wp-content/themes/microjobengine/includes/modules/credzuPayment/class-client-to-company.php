@@ -52,7 +52,6 @@ class clientToCompany extends AE_Base
         $path = AE_Pdf_Creator()->pdfGenarate($ct, $file_name, true, 'Payment from '.$profile->first_name.' '.$profile->last_name);
         if( !empty($path) ){
             do_action('create_client_payment_history', $data, $profile, $path, $check_number);
-            exit;
         }
         else{
             wp_send_json(array(

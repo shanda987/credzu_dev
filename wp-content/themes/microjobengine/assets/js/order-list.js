@@ -1125,35 +1125,42 @@
             submitPayForResult: function(e){
                 e.preventDefault();
                 var view = this;
-                view.arr = new Array();
-                var content = '<p>The result we have obtained are outline below:</p>'
-                view.$el.find('.addmore-item textarea').each(function(){
-                    if( $(this).val() != '' ) {
-                        view.arr.push($(this).val());
-                        content += '<p>- '+ $(this).val() + '</p>';
-                    }
-                })
-                content += "Here's a file for the results above:";
-                view.model.set('pay_result_items', view.arr);
-                view.model.set('_wpnonce', view.$el.find('input[name="_wpnonce"]').val());
-                view.model.set('post_content', content);
-                view.model.save('', '', {
-                    beforeSend: function(){
-                        view.blockUi.block(view.$el.find('.btn-submit'));
-                    },
-                    success: function (result, res, jqXHR) {
-                        if( res.success ){
-                            view.blockUi.unblock();
-                            window.location.reload(false);
+                if(view.$el.find('.addmore-item textarea').length > 0 ){
+                    view.arr = new Array();
+                    var content = '<p>The result we have obtained are outline below:</p>'
+                    view.$el.find('.addmore-item textarea').each(function(){
+                        if( $(this).val() != '' ) {
+                            view.arr.push($(this).val());
+                            content += '<p>- '+ $(this).val() + '</p>';
                         }
-                        else{
-                            AE.pubsub.trigger('ae:notification', {
-                                msg: 'Submit results failed!',
-                                notice_type: 'error'
-                            });
+                    })
+                    content += "Here's a file for the results above:";
+                    view.model.set('pay_result_items', view.arr);
+                    view.model.set('_wpnonce', view.$el.find('input[name="_wpnonce"]').val());
+                    view.model.set('post_content', content);
+                    view.model.save('', '', {
+                        beforeSend: function(){
+                            view.blockUi.block(view.$el.find('.btn-submit'));
+                        },
+                        success: function (result, res, jqXHR) {
+                            if( res.success ){
+                                view.blockUi.unblock();
+                                window.location.reload(false);
+                            }
+                            else{
+                                AE.pubsub.trigger('ae:notification', {
+                                    msg: 'Submit results failed!',
+                                    notice_type: 'error'
+                                });
+                            }
                         }
-                    }
-                })
+                    });
+                }else{
+                    AE.pubsub.trigger('ae:notification', {
+                        msg: 'You submit at least one entry for results.',
+                        notice_type: 'error'
+                    });
+                }
             }
         });
         Views.ModalReview = Views.Modal_Box.extend({
