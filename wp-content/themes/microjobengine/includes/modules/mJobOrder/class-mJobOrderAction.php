@@ -398,8 +398,8 @@ class mJobOrderAction extends mJobPostAction{
         } else {
             $mjob->can_review = true;
         }
+        var_dump($mjob->can_review);
         $result->can_review = $mjob->can_review;
-        var_dump($result->can_review);
         if (empty($result->et_budget_type)) {
             $result->et_budget_type = $mjob->et_budget_type;
         }
