@@ -798,14 +798,12 @@ class mJobOrderAction extends mJobPostAction{
             }
             $old_status = $order->status_text;
             $update_result = $wpdb->query($wpdb->prepare("UPDATE $wpdb->posts as P SET P.post_status = %s WHERE P.ID = %d", $new_status, $order->ID));
-            var_dump($new_status);
             if( $new_status == 'verification' || $new_status == 'finished' || $new_status == 'processing'){
                 if ($new_status == 'verification') {
                     $new_status = 'virification';
                 }
                 if ($new_status == 'delivery') {
                     $new_status = 'FINISHED';
-                    update_post_meta($order->ID, 'can_review', 1);
                 }
                 if ($new_status == 'processing') {
                     $first = (array)get_post_meta($order->post_parent, 'first_order', true);
