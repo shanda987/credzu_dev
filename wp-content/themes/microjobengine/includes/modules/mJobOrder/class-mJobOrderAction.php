@@ -167,7 +167,12 @@ class mJobOrderAction extends mJobPostAction{
                         );
                         wp_send_json($response);
                     }
-                    update_post_meta($mjob->ID, 'can_review', -1);
+                    if( $result->post_status == 'finished' || $result->post_status == 'delivery'){
+                        update_post_meta($mjob->ID, 'can_review', 1);
+                    }
+                    else {
+                        update_post_meta($mjob->ID, 'can_review', -1);
+                    }
                     $total = $mjob->et_budget;
 //                    if (!empty($result->extra_ids)) {
 //                        foreach ($result->extra_ids as $key => $value) {
@@ -391,7 +396,6 @@ class mJobOrderAction extends mJobPostAction{
         if (empty($result->uploaded)) {
             add_post_meta($result->ID, 'uploaded', ' ');
         }
-        var_dump($mjob->can_review);
         if ($mjob->can_review == '') {
             $mjob->can_review = true;
         } else if ($mjob->can_review == -1) {
@@ -922,7 +926,7 @@ class mJobOrderAction extends mJobPostAction{
                 $msg = __('Thanks for trusting us, again! Since you are continuing service, we do not need to wait for the cancellation period this time. We will begin performing the service right away.', ET_DOMAIN);
                 mJobAddOrderMessage($request['order_id'], $mjob_author, $o->post_author, 'reoder_message', $msg );
                 do_action('email_mjob_rehire', $o);
-                update_post_meta($o->mjob_id, 'can_review', 1);
+//                update_post_meta($o->mjob_id, 'can_review', 1);
                 wp_send_json(array(
                     'success'=> true,
                     'msg'=> __('Confirm success!', ET_DOMAIN)
