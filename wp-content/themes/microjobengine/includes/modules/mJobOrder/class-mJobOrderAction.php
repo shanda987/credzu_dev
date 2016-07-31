@@ -391,6 +391,7 @@ class mJobOrderAction extends mJobPostAction{
         if (empty($result->uploaded)) {
             add_post_meta($result->ID, 'uploaded', ' ');
         }
+        var_dump($mjob->can_review);
         if ($mjob->can_review == '') {
             $mjob->can_review = true;
         } else if ($mjob->can_review == -1) {
@@ -398,7 +399,6 @@ class mJobOrderAction extends mJobPostAction{
         } else {
             $mjob->can_review = true;
         }
-        var_dump($mjob->can_review);
         $result->can_review = $mjob->can_review;
         if (empty($result->et_budget_type)) {
             $result->et_budget_type = $mjob->et_budget_type;
