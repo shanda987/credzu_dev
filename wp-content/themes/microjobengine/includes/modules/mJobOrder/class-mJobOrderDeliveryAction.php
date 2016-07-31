@@ -59,13 +59,14 @@ class mJobOrderDeliveryAction extends mJobPostAction{
             );
             wp_update_post( $my_post );
             update_post_meta($response['data']->post_parent, 'can_review', 1);
+            var_dump($response['data']->post_parent);
             $a = 1;
             if( !empty($response['data']->pay_result_items) ){
                 $a = count($response['data']->pay_result_items);
 
             }
             $amount = $a*$order->amount;
-            update_post_meta($order->ID, 'amount', $amount);
+            update_post_meta($order->ID, 'amount_payment', $amount);
             if( $order->et_budget_type == 'dynamic' ){
                 $order->amount = $amount;
                 do_action('client_do_checkout', $order);
