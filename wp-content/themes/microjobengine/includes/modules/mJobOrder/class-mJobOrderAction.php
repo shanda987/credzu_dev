@@ -804,6 +804,7 @@ class mJobOrderAction extends mJobPostAction{
                 }
                 if ($new_status == 'delivery') {
                     $new_status = 'FINISHED';
+                    update_post_meta($order->ID, 'can_review', 1);
                 }
                 if ($new_status == 'processing') {
                     $first = (array)get_post_meta($order->post_parent, 'first_order', true);
