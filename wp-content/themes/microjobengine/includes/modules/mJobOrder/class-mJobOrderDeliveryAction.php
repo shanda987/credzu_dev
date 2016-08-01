@@ -69,6 +69,7 @@ class mJobOrderDeliveryAction extends mJobPostAction{
             update_post_meta($order->ID, 'amount_payment', $amount);
             if( $order->et_budget_type == 'dynamic' ){
                 $order->amount = $amount;
+                $order->amount_payment = $amount;
                 do_action('client_do_checkout', $order);
             }
             $post_date = get_the_time('Y-m-d H:i:s', $response['data']->ID);
