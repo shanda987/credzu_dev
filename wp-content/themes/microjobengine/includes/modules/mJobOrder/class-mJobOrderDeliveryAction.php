@@ -94,7 +94,16 @@ class mJobOrderDeliveryAction extends mJobPostAction{
                 }
             }
            if( $msg_id){
-             mJobAddOrderChangeLog($response['data']->post_parent, $user_ID, 'delivery_new', 'delivery');
+             $id = mJobAddOrderChangeLog($response['data']->post_parent, $user_ID, 'delivery_new', 'delivery');
+               $ms = get_post($id);
+               $tim = strtotime($ms->post_date);
+               $tim = $tim + 60;
+               $my_post = array(
+                   'ID'            => $id,
+                   'post_date'     => date("Y-m-d H:i:s", $tim),
+                   'post_date_gmt'     => date("Y-m-d H:i:s", $tim)
+               );
+               wp_update_post( $my_post );
            }
         }
         wp_send_json($response);
