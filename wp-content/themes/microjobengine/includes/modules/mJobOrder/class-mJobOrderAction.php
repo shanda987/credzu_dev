@@ -149,6 +149,7 @@ class mJobOrderAction extends mJobPostAction{
             } else {
                 if(isset($request['finished']) && $request['finished'] == '1') {
                     AE_WalletAction()->transferWorkingToAvailable($request['seller_id'], $request['ID'], $request['real_amount']);
+                    update_post_meta($request['ID'], 'can_review', -1);
                 }
                 $response = $this->sync_post($request);
                 if ( $response['success'] ) {
@@ -167,7 +168,7 @@ class mJobOrderAction extends mJobPostAction{
                         );
                         wp_send_json($response);
                     }
-                    update_post_meta($mjob->ID, 'can_review', -1);
+                    update_post_meta($result->ID, 'can_review', -1);
 
                     $total = $mjob->et_budget;
 //                    if (!empty($result->extra_ids)) {
