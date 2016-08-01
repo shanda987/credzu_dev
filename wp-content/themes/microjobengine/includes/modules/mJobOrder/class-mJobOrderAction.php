@@ -393,7 +393,7 @@ class mJobOrderAction extends mJobPostAction{
         if (empty($result->uploaded)) {
             add_post_meta($result->ID, 'uploaded', ' ');
         }
-        if( $result->can_review == 1 || $result->can_review ){
+        if( $result->can_review == 1 || $result->can_review == true ){
             $result->can_review = true;
         }
         else{
