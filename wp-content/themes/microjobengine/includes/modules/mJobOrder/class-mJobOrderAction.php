@@ -167,12 +167,8 @@ class mJobOrderAction extends mJobPostAction{
                         );
                         wp_send_json($response);
                     }
-                    if( $result->post_status == 'finished' || $result->post_status == 'delivery'){
-                        update_post_meta($mjob->ID, 'can_review', 1);
-                    }
-                    else {
-                        update_post_meta($mjob->ID, 'can_review', -1);
-                    }
+                    update_post_meta($mjob->ID, 'can_review', -1);
+
                     $total = $mjob->et_budget;
 //                    if (!empty($result->extra_ids)) {
 //                        foreach ($result->extra_ids as $key => $value) {
