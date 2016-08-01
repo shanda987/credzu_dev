@@ -80,6 +80,7 @@ class mJobOrderDeliveryAction extends mJobPostAction{
             }
             $msg = $response['data']->post_content;
             $msg_id = mJobAddOrderMessage($response['data']->post_parent, $user_ID, $response['data']->order_author, 'delivery_message', $msg );
+            var_dump($msg_id);
             if( !empty($response['data']->et_carousels)){
                 foreach($response['data']->et_carousels as $att){
                     $filename = get_attached_file( $att->ID );
