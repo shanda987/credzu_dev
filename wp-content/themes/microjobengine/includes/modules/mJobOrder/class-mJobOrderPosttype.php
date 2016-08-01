@@ -43,7 +43,8 @@ class mJobOrderPosttype extends mJobPost{
             'work_complete_date',
             'rehire_time',
             'rehire_count',
-            'et_budget_type'
+            'et_budget_type',
+            'can_review'
         );
         $this->post_type_singular = 'Microjob Order';
         $this->post_type_regular = 'Microjob Orders';

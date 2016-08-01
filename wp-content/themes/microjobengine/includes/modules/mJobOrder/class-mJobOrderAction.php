@@ -396,14 +396,14 @@ class mJobOrderAction extends mJobPostAction{
         if (empty($result->uploaded)) {
             add_post_meta($result->ID, 'uploaded', ' ');
         }
-        if ($mjob->can_review == '') {
-            $mjob->can_review = true;
-        } else if ($mjob->can_review == -1) {
-            $mjob->can_review = false;
-        } else {
-            $mjob->can_review = true;
-        }
-        $result->can_review = $mjob->can_review;
+//        if ($mjob->can_review == '') {
+//            $mjob->can_review = true;
+//        } else if ($mjob->can_review == -1) {
+//            $mjob->can_review = false;
+//        } else {
+//            $mjob->can_review = true;
+//        }
+//        $result->can_review = $mjob->can_review;
 //        if( $result->post_status == 'finished' || $result->post_status == 'delivery'){
 //            $result->can_review = true;
 //        }
