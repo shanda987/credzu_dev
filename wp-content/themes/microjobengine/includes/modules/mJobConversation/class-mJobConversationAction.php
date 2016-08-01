@@ -373,8 +373,7 @@ class mJobConversationAction extends mJobPostAction
             case 'delivery_new':
                 $order_author_name = get_the_author_meta('display_name', $order->post_author);
                 if( $order->post_status == 'finished' || $order->post_status == 'delivery') {
-                    var_dump($order->can_review);
-                    if ($order->can_review) {
+                    if ($order->can_review && $order->can_review != -1) {
                         $click_here = sprintf('<a href="#"  class="order-action" value="finished">%s</a>', __('click here', ET_DOMAIN));
                     } else {
                         $click_here = sprintf('<a href="#"  class="order-action btn-continue-service-btn" >%s</a>', __('click here', ET_DOMAIN));
