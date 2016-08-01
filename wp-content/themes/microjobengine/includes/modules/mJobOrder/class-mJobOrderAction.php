@@ -402,6 +402,9 @@ class mJobOrderAction extends mJobPostAction{
         if (empty($result->et_budget_type)) {
             $result->et_budget_type = $mjob->et_budget_type;
         }
+        if( empty($result->amount_payment) ){
+            $result->amount_payment = $result->amount;
+        }
 //        if (!empty($result->rehire_time) && $result->rehire_time > 0):
 //            $t1 = $result->rehire_time;
 //        else:
