@@ -1018,7 +1018,7 @@
                 'change select[name="use_holder_account"]': 'selectAccount',
                 'click .agreement-title-link': 'showModalAgreement',
                 'click .mjob-process-hiring-back-step2': 'backStep2',
-                'click .mjob-process-hiring-back-step1': 'backStep1',
+                'click .mjob-process- hiring-back-step1': 'backStep1',
 
             },
             initialize: function () {
@@ -1085,10 +1085,14 @@
                         //view.UserStatus();
                     }
                     if (type == 'update-profile-hiring') {
-                        view.showStep2();
+                        view.showStep3();
                     }
                     else if(type == 'update-billing-hiring'){
-                        view.showStep3();
+                        if( typeof view.files !== 'undefined' ){
+                            view.saveOrder(view.files);
+                        }else {
+                            view.saveOrder();
+                        }
                     }
                 }
             },
@@ -1138,11 +1142,11 @@
                     });
                 }
             },
-            showStep2: function(){
+            showStep: function(){
                 this.initStep2(this.profilemodel.get('use_billing_address'));
                 $('.page-template-page-process-hiring .block-title').html(ae_globals.process_hiring_step2);
                 $('.form-confirm-billing').show();
-                $('.form-confirm-info').hide();
+                $('.form-sign-agreement').hide();
                 var use_billing_address = this.profilemodel.get('use_billing_address');
                 var use_holder_account = this.profilemodel.get('use_holder_account');
                 if( use_billing_address != '' ) {
@@ -1167,7 +1171,7 @@
                 var view = this;
                 $('.page-template-page-process-hiring .block-title').html(ae_globals.process_hiring_step3);
                 $('.form-sign-agreement').show();
-                $('.form-confirm-billing').hide();
+                $('.form-confirm-info').hide();
                 view.wrapper = document.getElementById("signature-form");
                     view.clearButton = view.wrapper.querySelector("[data-action=clear]");
                     view.saveButton = view.wrapper.querySelector("[data-action=save]");
@@ -1225,16 +1229,14 @@
 
                                             },
                                             success: function(resp, status, jqXHR) {
-                                                //AE.pubsub.trigger('ae:notification', {
-                                                //    msg: res.msg,
-                                                //    notice_type: 'success'
-                                                //});
+                                                view.files = resp.files;
                                                 view.blockUi.unblock();
-                                                if( typeof resp.files !== 'undefined' ){
-                                                    view.saveOrder(resp.files);
-                                                }else {
-                                                    view.saveOrder();
-                                                }
+                                                AE.pubsub.trigger('ae:notification', {
+                                                    msg: res.msg,
+                                                    notice_type: 'success'
+                                                });
+                                                view.showStep();
+                                                view.showStepThree();
                                                 //window.location.href = resp.data.permalink;
                                             }
                                         })
@@ -1244,7 +1246,7 @@
                         }
                     }
                 });
-                this.showStepThree();
+                this.showStepTwo();
 
             },
             initValidator: function($target_form, field_to_check){
