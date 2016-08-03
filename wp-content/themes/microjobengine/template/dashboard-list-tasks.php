@@ -72,9 +72,10 @@
                if( empty($profile->company_agreement_link)):
                _e('Agreement<br/>', ET_DOMAIN);
                endif;
-               if( empty($profile->create_listing_completed)):
-               _e("Create Listing<br/>", ET_DOMAIN);
-               endif; ?>
+               // if( empty($profile->create_listing_completed)):
+               // _e("Create Listing<br/>", ET_DOMAIN);
+               // endif; 
+			   ?>
         </p>
     <?php } ?>
 </div>
