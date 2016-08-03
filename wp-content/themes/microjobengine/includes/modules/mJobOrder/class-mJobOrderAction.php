@@ -402,7 +402,7 @@ class mJobOrderAction extends mJobPostAction{
         if (empty($result->et_budget_type)) {
             $result->et_budget_type = $mjob->et_budget_type;
         }
-        if( empty($result->amount_payment) ){
+        if(!isset($result->amount_payment) || empty($result->amount_payment) ){
             $result->amount_payment = $result->amount;
         }
 //        if (!empty($result->rehire_time) && $result->rehire_time > 0):
@@ -860,9 +860,10 @@ class mJobOrderAction extends mJobPostAction{
                 mJobAddOrderChangeLog($request['order_id'], $user_ID, 'work_complete_message', 'workcomplete', '', false );
                 if( isset($request['work_complete_date']) ){
                     update_post_meta($request['order_id'], 'work_complete_date', $request['work_complete_date']);
-                    $msg = __("Please update your report on [date] so we can verify results. Please don't update before [date]. Only update on [date] or after.");
+                    $msg = __("Please update your report on [date] so we can verify results. Please don't update before [date]. Only update on [date] or after. <br/>PLEASE NOTE: A payment has been generated for [amount], and we will process this payment today. It is imperative that you notify us if you anticipate any problems with the payment going through.");
                     $date = $request['work_complete_date'];
                     $msg = str_ireplace('[date]', $date, $msg);
+                    $msg = str_ireplace('[amount]', mJobPriceFormat($order->amount_payment), $msg);
                     mJobAddOrderMessage($request['order_id'], $user_ID, $order->post_author, 'work_complete_confirm_message', $msg );
 //                    mJobAddOrderChangeLog($request['order_id'], $user_ID, 'work_complete_confirm_message', 'workcomplete' );
                 }

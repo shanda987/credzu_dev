@@ -237,7 +237,7 @@ class mJobConversationAction extends mJobPostAction
      * @author Tat Thien
      */
     public function mJobConversationFilter($result) {
-        global $user_ID;
+        global $user_ID, $ae_post_factory;
 
         if($result->is_conversation == "1") {
             // Latest reply
@@ -326,6 +326,7 @@ class mJobConversationAction extends mJobPostAction
         $author_name = get_the_author_meta('display_name', $result->post_author);
         $author_link = sprintf('<a href="%s" target="_blank">%s</a>', $author_url, $author_name);
         $order = get_post($result->post_parent);
+        $amount_payment = get_post_meta($order->ID, 'amount_payment', true);
         $changelog_time = get_the_time(get_option('date_format') . ' ' . get_option('time_format'));
         switch($result->action_type) {
             case 'dispute':
@@ -401,8 +402,10 @@ class mJobConversationAction extends mJobPostAction
                 }
                 break;
             case 'work_complete_confirm_message':
-                $result->changelog = __("Please update your report on [date] so we can verify results. Please don't update before [date]. Only update on [date] or after.");
+//                $result->changelog = __("Please update your report on [date] so we can verify results. Please don't update before [date]. Only update on [date] or after.");
+                $result->changelog = __("PLEASE NOTE: A payment has been generated for [amount], and we will process this payment today. It is imperative that you notify us if you anticipate any problems with the payment going through.");
                 $date = get_post_meta($result->post_parent, 'work_complete_date', true);
+                $result->changelog = str_ireplace('[amount]', $amount_payment, $result->changelog);
                 $result->changelog = str_ireplace('[date]', $date, $result->changelog);
                 if( !isset($result->et_files) ){
                     $result->et_files = array();
@@ -410,6 +413,8 @@ class mJobConversationAction extends mJobPostAction
                 break;
             case 'update_profile':
                 $result->changelog = sprintf(__("%s updated %s"), $author_link, $result->post_content);
+                break;
+            default:
                 break;
         }
         return $result;
